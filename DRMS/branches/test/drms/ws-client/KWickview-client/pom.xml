@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>ws-client-parent</artifactId>
+		<groupId>com.akuacom.drms.ws-client</groupId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.akuacom.drms.ws-client</groupId>
+	<artifactId>KWickview-client</artifactId>
+	<version>7.26-SNAPSHOT</version>
+	<name>KWickview-client</name>
+	<dependencies>
+	
+	</dependencies>
+	<build>
+		<plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>1.10</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>epotest.energyinteractive.com/sdgeepo/webService/CurtailmentWebService/CurtailmentService.asmx.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <wsdlLocation>http://epotest.energyinteractive.com/sdgeepo/webService/CurtailmentWebService/CurtailmentService.asmx?WSDL</wsdlLocation>
+                        </configuration>
+                        <id>wsimport-generate-CurtailmentService.asmx</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>javax.xml</groupId>
+                        <artifactId>webservices-api</artifactId>
+                        <version>1.4</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
+                    <xnocompile>true</xnocompile>
+                    <verbose>true</verbose>
+                    <extension>true</extension>
+                    <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
+                </configuration>
+            </plugin>
+		</plugins>
+	</build>
+
+</project>

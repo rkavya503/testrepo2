@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.akuacom.drms.ear</groupId>
+    <artifactId>drpro</artifactId>
+    <packaging>ear</packaging>
+    <version>7.26-SNAPSHOT</version>
+    <name>drpro</name>
+
+    <parent>
+        <groupId>com.akuacom.drms.ear</groupId>
+        <artifactId>ear-parent</artifactId>
+        <version>7.26-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.akuacom.drms.web</groupId>
+            <artifactId>drw-admin</artifactId>
+            <type>war</type>
+        </dependency>
+		<dependency>
+            <groupId>com.akuacom.drms.web</groupId>
+            <artifactId>drw-customer</artifactId>
+            <type>war</type>
+        </dependency>
+		<dependency>
+            <groupId>com.akuacom.drms.web</groupId>
+            <artifactId>drw-customer-mobile</artifactId>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+			
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+
+                <!-- configuring the ear plugin -->
+                <configuration>
+                    <defaultJavaBundleDir>/lib</defaultJavaBundleDir>
+                    <includeLibInApplicationXml>true</includeLibInApplicationXml>
+					 <earName>drpro</earName>
+                    <jboss>
+                        <version>5</version>
+                        <!-- DRMS-5213, create seperate class loader for ear -->
+                        <loader-repository>com.akuacom:loader=drpro</loader-repository>
+                        <module-order>strict</module-order>
+                    </jboss>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                    </archive>
+                    <modules>
+                        <webModule>
+                            <groupId>com.akuacom.drms.web</groupId>
+                            <artifactId>drw-admin</artifactId>
+                            <contextRoot>drw.admin</contextRoot>
+                        </webModule>
+						 <webModule>
+                            <groupId>com.akuacom.drms.web</groupId>
+                            <artifactId>drw-customer</artifactId>
+                            <contextRoot>dr.website</contextRoot>
+                        </webModule>
+						<webModule>
+                            <groupId>com.akuacom.drms.web</groupId>
+                            <artifactId>drw-customer-mobile</artifactId>
+                            <contextRoot>m.dr.website</contextRoot>
+                        </webModule>
+                        <ejbModule>
+                            <groupId>com.akuacom.drms.drw</groupId>
+                            <artifactId>drw-ejb</artifactId>
+                        </ejbModule>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>exploded</id>
+            <activation>
+                <property>
+                    <name>exploded</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-ear-plugin</artifactId>
+                        <configuration>
+                            <unpackTypes>ejb,war</unpackTypes>
+                            <workDirectory>${jbossServerConfig}/deploy/drpro.ear</workDirectory>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

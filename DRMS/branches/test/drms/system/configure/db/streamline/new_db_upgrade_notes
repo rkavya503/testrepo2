@@ -1,0 +1,156 @@
+** bid_level_mapping
+   new FK to program_participants, drop implied FK to participants.
+   used participants_uuid and programName as natual key to create an insert statement
+   into program_participant_uuid in BLM.
+
+** contacts
+   Asumed that "state" was renamed to "contactState"
+   ownerID becomes program_uuid
+   message_filter_setting is assumed to have 1 row only.
+   participant_uuid is a mistake, there should really be a many-many between participant and contact.
+   TODO: fix mapping between contact and participant, move participant_contact data to new participantContact table.
+
+** contacts_offline_error
+    What is participantUuid (new column) for? duplicate of participant_uuid
+    new columns participantUuid, program_uuid, contact_uuid
+    TODO: map the above columnts
+    cannot find a way to map program_uuid. Tried through the contact relationship, but all values are null.
+    find out if the contact_uuid and contactsUuid columns are redundant
+    Per veera, keep two columns for now.
+
+** custom_rule
+  No major issues
+
+** dataentry
+  No major issues
+
+** dataset
+  No major issues
+
+** datasource
+  No major issues
+
+** db_version
+  No major issues
+
+** event
+  Several additional columns, don't know if they come from another table.
+  20110311 Look at the new schema from veera to check
+
+** event_bid_block
+  No major issues
+
+** event_participant_bid_entry
+  No major issues
+
+** event_participant_rule
+  No major issies
+
+** event_participant_signal_entry
+  No major issues
+  may fail if expired int(3) can't convert to bit
+
+** event_signal_entry
+  No major issues
+
+** event_state
+  eventModNumber and eventStateId may be wrong int(10) unsigned vs. int(11)
+  didn't drop default = 0 on eventModNumber
+  should programName be dropped since program_uuid exists?
+
+** event_template
+	Note that event_template is empty in sce production, is it used?
+	Data migration scripts have not been tested against actual data since there is none.
+
+** event_template_signal_entry
+	No major issues
+
+** event_timeblock
+	endTime and startTime may be wrong int(10) unsigned vs. int(11)
+
+**** message
+	Should contactId be dropped since contact_uuid is there?
+	contact_uuid is not null, all contactId's in SCE are null, this conversion is impossible.
+	T nversion
+	20110311 Keep contactId for now till java code is refactored.
+
+** message_filter_setting
+ 	Various default='0' were not changed to default=null
+
+** noaa_weather
+	No major issues
+
+** participant_manualsignal
+	Creation time is null for all values, not - null constraint will fail.
+
+** program
+	Cannot add bid_config relationship as not null. Only 2 bid config entries exist for sce.
+	creationTime will fail on sce due to a null value.
+	autoAccept default null wasn't dropped.
+	20110311 per veera should be nullable.
+
+** program_participant
+	optStatus is missing from the new ddl, it was added late in 6.4. Kept this column in migration.
+	program_participant_uuid actually should be named program_participant_constraint_uuid.
+	program_participant_uuid is not null, however there are no program_participant_constraints to reference so migration is impossible.
+
+** program_participant_bid_level_map
+	not null on creation time has 8 null values in sce.
+	20110311 Create time for missing values in SCE.
+
+** program_signal_entry
+	conversion of expired from tinyint(3) to bit(1) could cause problems.
+
+** report_event
+	No major issues
+
+** report_event_participation
+	type (keyword) wasn't renamed
+	what is the relationship between report_event? programName + eventName? what about participantName?
+	dropping participantName will lose data.
+	not null constraint on report_event_uuid will result in massive loss of data.
+
+** report_event_signal
+	cannot satisfy not null constraint on report_event_uuid
+	will result in loss of data.
+	dropping participantName will result in loss of data.
+	20110311 per veera, should be good through report_event_uuid.
+
+** rtp_remote_price
+	programName is not dropped. Redundant to program_uuid
+	eventName dropped, does this result in data loss (check mappings).
+
+** baseline_config
+	No major issues
+
+** baseline_model
+	no major issues
+
+** bid_block
+    No major issues
+
+** bid_config
+    No major issues
+
+** constraint_invalid_date
+
+
+** event_participant
+    No major issues
+
+** event_participant_signal
+    No major issues
+
+** event_signal
+    No major issues
+
+** participant
+    No major issues
+
+** program_matrix
+    No major issues
+
+** signal_def
+    column name "type" should be renamed.
+
+

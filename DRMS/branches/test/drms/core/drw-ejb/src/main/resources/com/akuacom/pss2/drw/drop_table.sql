@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS `zip_to_location_temp`;

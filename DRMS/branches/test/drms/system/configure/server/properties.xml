@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="server-properties"
+         basedir="."
+         xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+    <!-- includes -->
+
+    <!-- properties -->
+
+    <property name="JbossBaseConfDir" value="${drmsBaseConfig}/jboss-5.1.0" />
+    <property name="jbossConfDir" value="${drmsConfig}/jboss-5.1.0" />
+    <property name="jbossBaseInstallationsDir"
+              value="${JbossBaseConfDir}/installations" />
+    <property name="jbossBaseEnvironmentsDir"
+              value="${JbossBaseConfDir}/environments" />
+
+    <property name="accmgrDsFile"
+              value="${jboss.config.dir}/deploy/mysql-accmgr-ds.xml" />
+    <property name="pss2DsFile"
+              value="${jboss.config.dir}/deploy/mysql-pss2-ds.xml" />
+			  
+	<property name="drwebsiteDsFile"
+              value="${jboss.config.dir}/deploy/mysql-drwebsite-ds.xml" />
+	<property name="mobimsgDsFile"
+              value="${jboss.config.dir}/deploy/mysql-mobimsg-ds.xml" />		  
+
+			  
+    <property name="firelogDsFile"
+              value="${jboss.config.dir}/deploy/mysql-firelog-ds.xml" />
+    <property name="jmsDsFile"
+              value="${jboss.config.dir}/deploy/mysql-jms-ds.xml" />
+	<property name="cacerts"
+              value="${resourceDir}/certificate/cacerts.jks" />
+
+    <available property="jmsDsFile"
+               file="${jboss.config.dir}/deploy/mysql-jms-ds.xml"
+               value="${jboss.config.dir}/deploy/mysql-jms-ds.xml" />
+
+    <available property="pss2ProgramConfigFile"
+               file="${drmsUtilConfig}/pss2.programs.conf"
+               value="${drmsUtilConfig}/pss2.programs.conf" />
+    <available property="pss2BaseProgramConfigFile"
+               file="${drmsBaseUtilConfig}/pss2.programs.conf"
+               value="${drmsBaseUtilConfig}/pss2.programs.conf" />
+
+    <available property="pss2SignalsConfigFile"
+               file="${drmsUtilConfig}/pss2.signals.conf"
+               value="${drmsUtilConfig}/pss2.signals.conf" />
+    <available property="pss2BaseSignalsConfigFile"
+               file="${drmsBaseUtilConfig}/pss2.signals.conf"
+               value="${drmsBaseUtilConfig}/pss2.signals.conf" />
+
+    <property name="pss2MailPropertiesFile"
+              value="${drmsBaseUtilConfig}/mail.properties" />
+			  
+	<property name="propertiesService"
+              value="${resourceDir}/properties/properties-service.xml" />
+
+</project>

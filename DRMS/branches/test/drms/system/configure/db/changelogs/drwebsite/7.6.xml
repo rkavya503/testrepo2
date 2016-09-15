@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	
+	<changeSet id="1" author="Liu">		
+		<comment>DRMS-7471 add BIP 16-30 to program table</comment>
+		<insert tableName="program">
+			<column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+			<column name="name" value="I6-30"/>
+			<column name="utilityName" value="Time-of-Use Base Interruptible Program"/>
+			<column name="programClass" value="BIP"/>
+			<column name="longProgramName" value="Time-of-Use Base Interruptible Program"/>
+			<column name="creationTime" valueNumeric="now() "/>
+			<column name="product" value="I6-30"/>
+		</insert>
+	</changeSet>
+    <changeSet id="2" author="Dichen">
+        <comment>DRMS-7544</comment>
+        <sql>
+            insert into drwebsite_property (uuid, creationTime, propertyName, stringValue, textValue)
+            values (REPLACE(uuid(), '-', ''), now(),'DISCLAIMER_SDP_RESIDENTIAL', null,
+            'End times shown for SDP Residential events are estimates only and subject to change without notice. SCE may not be able to estimate end times for all SDP Residential events.');
+        </sql>
+    </changeSet>
+    <changeSet id="3" author="Dichen">
+        <comment>DRMS-7545</comment>
+        <sql>
+            insert into drwebsite_property (uuid, creationTime, propertyName, stringValue, textValue)
+            values (REPLACE(uuid(), '-', ''), now(),'DISCLAIMER_SDP_COMMERCIAL', null,
+            'End Times for SDP Commercial events are determined by grid reliability and cannot be estimated by SCE.');
+
+            insert into drwebsite_property (uuid, creationTime, propertyName, stringValue, textValue)
+            values (REPLACE(uuid(), '-', ''), now(),'DISCLAIMER_API_COMMERCIAL', null,
+            'End Times for AP-I events are determined by grid reliability and cannot be estimated by SCE. Courtesy notifications will be sent to subscribed participants at the end of the event.');
+
+            insert into drwebsite_property (uuid, creationTime, propertyName, stringValue, textValue)
+            values (REPLACE(uuid(), '-', ''), now(),'DISCLAIMER_BIP_COMMERCIAL', null,
+            'End Times for BIP events are determined by grid reliability and cannot be estimated by SCE. Customers will be notified when the event has been terminated.');
+        </sql>
+    </changeSet>
+	
+		
+	<changeSet id="4" author="Frank">		
+		<comment>DRMS-7611	DR Website - Create unique phone numbers for each program</comment>
+		<sql>
+			insert  into `drwebsite_property`(`uuid`,`propertyName`,`stringValue`,`textValue`,`creationTime`) values 
+			(REPLACE(uuid(), '-', ''),'contact_Info_Sdp_Resi',NULL,'For event information, please call 1-800-497-2813.',now()),
+			(REPLACE(uuid(), '-', ''),'contact_info_sai_resi',NULL,'For event information, please call 1-800-798-3723.',now()),
+			(REPLACE(uuid(), '-', ''),'contact_info_api_com',NULL,'For event information, please call 1-800-206-9279.',now()),
+			(REPLACE(uuid(), '-', ''),'contact_info_dbp_com',NULL,'For event information, please call 1-866-334-7827.',now()),
+			(REPLACE(uuid(), '-', ''),'contact_info_sai_com',NULL,'For event information, if you are a business customer with an Edison SmartConnect meter, please call: 1-800-798-3723. &lt;br&gt; Business customer with other types of meters, please call: 1-8866-334-7827.',now()),
+			(REPLACE(uuid(), '-', ''),'contact_info_sdp_com',NULL,'For event information, please call 1-866-334-0653.',now()),
+			(REPLACE(uuid(), '-', ''),'contact_info_bip_com',NULL,'For event information, please call 1-866-334-7827.',now());
+		</sql>
+	</changeSet>
+			
+	<changeSet id="5" author="Frank">		
+		<comment>DRMS-7611	DR Website - Create unique phone numbers for each program</comment>
+		<sql>
+			update drwebsite_property set textValue='For event information, if you are a business customer with an Edison SmartConnect meter, please call:&lt;br&gt; 1-800-798-3723. &lt;br&gt; Business customer with other types of meters, please call: 1-866-334-7827.' where propertyName='contact_info_sai_com';
+		</sql>
+	</changeSet>
+	
+	<changeSet id="5" author="Jerry">		
+		<comment>DRMS-7611	DR Website - Create unique phone numbers for each program</comment>
+		<sql>
+			update drwebsite_property set textValue='For event information, if you are a business customer with an Edison SmartConnect meter, please call:&lt;br&gt; 1-800-798-3723. &lt;br&gt; Business customers with other types of meters, please call: 1-866-334-7827.' where propertyName='contact_info_sai_com';
+		</sql>
+	</changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,690 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>SCE Demand Response Event Status</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	
+    
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.3.0.js"></script>
+    <script type='text/javascript' src='js/knockout-2.3.0.js'></script>
+	<link rel="stylesheet" href="css/themes/default/jquery-ui.css" />
+	<script src="js/jquery-ui.js"></script>
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.3.0.css" />
+<style type="text/css">
+.evtsHistryNoticebox{
+background: url(images/bg-evtsResult.gif) no-repeat 10px 7px;
+padding-left: 56px;
+padding-right: 25px;
+padding-top: 5px;
+font: normal 7pt arial;
+background-color: #C30;
+color: #58595b;
+background-color: #F4F6E5;
+_padding-top: 0px;
+margin-top: 0px;
+min-height: 40px;
+_height: 40px;
+}
+.searchResultCtrl {
+height: 22px;
+border-top: solid 1px #cccccc;
+border-bottom: solid 1px #cccccc;
+margin: 0 20px;
+padding: 5px;
+text-align: center;
+}
+
+</style>   
+  <script>
+  	function createCookie(name, value) {
+		   var date = new Date();
+		   date.setTime(date.getTime()+(4*60*60*1000));// 4 hours
+		   var expires = "; expires="+date.toGMTString();
+
+		   document.cookie = name+"="+value+expires+"; path=/";
+		}
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+	  minDate: "07/27/1998",
+	  maxDate: new Date()
+    });
+  });
+  </script>
+    
+</head> 
+<body> 
+
+<div data-role="page"  id="drp-event-history" data-cache="never">
+	<div data-role="header" data-theme="c">
+		<div class="logoHolder"><img src="images/sce-logo.png" width="127" height="39"/></div>
+        <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal" style="margin-top:15px;">
+     <a href="#" data-rel="back" ><img src="images/back-btn.jpg" width="24" height="19"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="index.html"  data-ajax="false" rel="external"><img src="images/home-btn.png" width="23" height="24"/></a>
+    </div>
+       
+	</div><!-- /header -->
+
+		
+		  <div data-role="content" style="clear:both">
+          	<div class="main-page-title"><span class="title" style="font-size:17px !important;">Demand Response Event Status</span><br /><br />
+            Search for event history by program and date range. Past events do not indicate nor guarantee future event activity.</div>
+          <div data-role="navbar">
+            <ul>
+                <li><a href="drp-residential.html" data-theme="b"  data-ajax="false">Residential</a></li>
+                <li><a href="drp-commercial.html" data-theme="b"  data-ajax="false">Commercial</a></li>
+                <li><a id="currentTab" class="ui-btn-active" href="drp-event-history.html"  data-ajax="false" data-theme="b" style="width:100% !important;">Event History</a></li>
+            </ul>
+          </div><!-- /navbar -->
+          </div>
+      
+
+		
+          <div data-role="content">
+			<div id="searchFilter" data-role="collapsible" class="collapseHeader" data-inset="false" data-iconpos="right" data-theme="c" data-collapsed="false">
+                <h4>Search Filter</h4>
+				<div id="eh-wrapper">
+					<div class="eh-lastUpdate">Updated <span data-bind="text: systemUpdateTime"></span></div>
+					<div class="eh-formHolder">
+					Search and export event histories by program.
+					<br><br>
+					<hr style="color:#CCC">
+					<form action="" method="post">
+					<!-- program drop down -->
+						<div data-role="fieldcontain">
+						   <label for="programs" class="select" style="font-weight:bold;font-size:15px;">Program</label>
+						   <select name="programs" id="programs" data-bind="options: programs, optionsText: 'utilityName', value: selectedProgram, optionsCaption: 'Select'"></select>
+						</div>
+					<!-- end program drop down -->
+					<!-- product drop down -->
+						<div data-role="fieldcontain">
+						   <label for="products" class="select" style="font-weight:bold;font-size:15px;">Product Type</label>
+						   <select name="products" id="products" data-bind="options: products, optionsText: 'product', value: selectedProduct, optionsCaption: 'Select'"></select>
+						</div>
+					<!-- end product drop down -->
+					<!-- zipcode input field -->
+					<div data-role="fieldcontain" data-bind="visible: zipcodeVisible">
+						<label for="zipcode" style="font-weight:bold;font-size:15px;">Zip Code </label>
+						<input data-clear-btn="true" name="zipcode" id="zipcode" value="" placeholder="00001-99999">
+					<!-- end zipcode input field -->
+					<!-- date range -->
+					</div>
+					<div data-role="fieldcontain">
+						<label for="date" style="font-weight:bold;font-size:15px;">Date Range</label>
+						<!--<input type="date" name="startdate" id="date"/>-->
+						<input type="text" class="datepicker" name="startdate" id="date" readonly="readonly"/>
+					</div>
+					<div data-role="fieldcontain">
+						<label for="date" style="font-weight:bold;font-size:15px;">- To -</label>
+						<!--<input type="date" name="enddate" id="date"/>-->
+						<input type="text" class="datepicker" name="enddate" id="date2" readonly="readonly"/>
+					</div>
+					<!-- end date range -->
+					<div data-role="fieldcontain" style="text-align:right">
+						<a href="#" data-role="button" data-inline="true" data-theme="d" name="clearButton">Clear All</a>
+						<a href="#" data-role="button" data-inline="true" data-theme="d" name="searchButton" id="searchButton">Search</a>
+					</div>
+					<div class="evtsHistryNoticebox" id="warningDIV" style="display:none;">
+							<span id="programWarning" style="display:none;color:red;font-size: 13px;font-weight: bold;">Please select a program <br/></span>
+							<span id="productWarning" style="display:none;color:red;font-size: 13px;font-weight: bold;">Please select a product <br/></span>						
+							<span id="startWarning" style="display:none;color:red;font-size: 13px;font-weight: bold;">Please enter a start date <br/></span>
+							<span id="startWarning2" style="display:none;color:red;font-size: 13px;font-weight: bold;">Start date must be &lt;= today <br/></span>
+							<span id="endWarning" style="display:none;color:red;font-size: 13px;font-weight: bold;">Please enter an end date <br/></span>
+							<span id="endWarning2" style="display:none;color:red;font-size: 13px;font-weight: bold;">End date must be &gt;= start date and must be &lt;= today <br/></span>
+							<span id="dateWarning" style="display:none;color:red;font-size: 13px;font-weight: bold;">End date should be later than start date <br/></span>
+							<span id="zipcodeWarning" style="display:none;color:red;font-size: 13px;font-weight: bold;">Zip code pattern should be 5 digits number <br/></span>
+					</div> 
+				   
+					</form> 
+					</div>
+					<!-- end of form div -->
+				</div>
+            </div>
+			
+			
+          	
+           <div id="eh-result-wrapper" style="display:none">
+				<div>
+					<a id="exportDIV" href="#" style="float:right;font-size:17px; text-decoration:none; color:#999">
+					Export CSV <img src="images/leftGreenArrow.png" width="18" height="19" align="texttop" border="0"/>
+				</a>
+				</div>
+				
+				
+            	<div class="product-title">
+					<span id="programTitleSpan"></span>
+				</div>
+				
+				<div style="text-align:center">
+					<a id="previousActionLink2" href="#" style="float:left;" onclick="previousAction()">Previous</a>	
+					<span>
+						<span id="resultIndexFromSpan2"></span>
+						 - 
+						<span id="resultIndexToSpan2" ></span>
+						 of
+						<span id="resultSizeSpan2" ></span>
+						 Results 
+					</span>
+					<a id="nextActionLink2" href="#" style="float:right;" onclick="nextAction()">Next</a>
+				</div>
+				<br/>
+				
+				
+                <div data-bind="foreach: results()">
+					<table style="width: 100%;" data-bind="if:!RTP">
+						<tr class="eh-result-alt" >
+						  <th width="30%">Product</th>
+						  <td width="30%"><label data-bind="text:product"></label></td>
+						</tr>
+						<tr>
+						  <th width="30%">Start Date</th>
+						  <td width="30%"><label data-bind="text:startDate"></label></td>
+						</tr> 
+						<tr class="eh-result-alt" >
+						  <th>End Date</th>
+						  <td><label data-bind="text:endDate"></label></td>
+						</tr> 
+						<tr>  
+						  <th>Start Time</th>
+						  <td><label data-bind="text:startTime"></label></td>
+						</tr> 
+						<tr class="eh-result-alt" >  
+						  <th>End Time</th>
+						  <td><label data-bind="text:endTime"></label></td>
+						</tr> 
+						<!-- ko if:displayBlocks -->
+						<tr>  
+						  <th>Blocks</th>
+						  <td><label data-bind="text:blocks"></label></td>
+						</tr>    
+						<!-- /ko -->
+					</table>
+					
+					<table style="width: 100%;" data-bind="if:RTP">
+						<tr class="eh-result-alt">
+						  <th width="30%">Date of Usage</th>
+						  <td width="30%"><label data-bind="text:rtpDate"></label></td>
+						</tr> 
+						<tr>
+						  <th>Pricing Category*</th>
+						  <td><label data-bind="text:rtpPricing"></label></td>
+						</tr>
+					</table>
+					
+					<hr style="color: rgb(200, 200, 200);background-color: rgb(200, 200, 200);height: 5px;border: 0px none;">
+					
+                </div>
+				
+				
+					<div style="text-align:center">
+					<a id="previousActionLink" href="#" style="float:left;" onclick="previousAction()">Previous</a>	
+					<span>
+						<span id="resultIndexFromSpan"></span>
+						 - 
+						<span id="resultIndexToSpan" ></span>
+						 of
+						<span id="resultSizeSpan" ></span>
+						 Results 
+					</span>
+					<a id="nextActionLink" href="#" style="float:right;" onclick="nextAction()">Next</a>
+					</div>
+	<div>
+		<div class="footerLinks" style="text-align:center;font-size:11px;padding:10px;padding-top:20px; font-weight:normal;color:#666 !important;">
+			<label data-bind="text:disclaim"></label>
+		</div>
+	</div>					
+					
+					
+					
+            </div>
+            
+          </div>
+		  
+	
+
+		
+       <div class="footerLinks" style="text-align:center;font-size:11px;padding:10px;padding-top:20px; font-weight:normal;color:#666 !important;"><a href="https://www.sce.com/wps/portal/home/about-us" target="_blank">About</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.sce.com/wps/portal/home/mysce/sitemap" target="_blank">Site Map</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.sce.com/wps/portal/home/privacy" target="_blank">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.sce.com/wps/portal/home/regulatory" target="_blank">Regulatory</a>&nbsp;&nbsp;|<br>&nbsp;&nbsp;<a href="http://www.edison.com/" target="_blank">Edison International</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="../dr.website/scepr-event-status.jsf" onclick="createCookie('FULL_SITE_ON_MOBILE','TRUE');" target="_blank">Desktop Site</a>
+        <br>Copyright &copy; 2013 Southern California Edison. <br>All Rights Reserved
+</div>  <br><br><br>
+	
+	<div data-role="footer" data-position="fixed" data-fullscreen="true">
+    	<div class="footerWrapper">
+		<div class="footerNavLeft"><a href="#relative-link-page" data-rel="dialog" style="color:#FFF; text-decoration:none;">Related Links</a></div>
+        <div class="footerNavRight"><a href="#relative-link-page" data-rel="dialog"><img src="images/dot.png" width="27" height="7" border="0"/></a></div>
+        </div>
+	</div>
+    
+</div><!-- /page -->
+<!-- relative links page -->
+<div data-role="dialog"  id="relative-link-page">
+	
+    <div data-role="content" data-theme="c">
+          
+          <div>
+           <table style="width:100%">
+              	<tr><td>
+          	<ul data-role="listview" data-inset="false" data-filter="false">
+                <li data-icon="false"><a href="https://www.sce.com/wps/portal/home/business/savings-incentives/demand-response/?from=adr_demand" target="blank">SCE Demand Response Programs</a></li>
+                <li data-icon="false"><a href="https://www.sce.com/wps/portal/home/outage-center/rotating-outages/?from=adr_outage" target="blank">SCE Rotating Outage Status</a></li>
+                <li data-icon="false"><a href="https://www.sce.com/wps/portal/home/regulatory/tariff-books" target="blank">SCE Tariff Book</a></li>
+                <li data-icon="false"><a href="http://www.caiso.com/Pages/TodaysOutlook.aspx" target="blank">California ISO - Today's Outlook</a></li>
+                <li data-icon="false"><a href="drp-blockview.jsp" target="_blank">SCE Block view</a></li>
+				<li data-icon="false"><a href="../dr.website/scepr-event-status.jsf" target="blank" onclick="createCookie('FULL_SITE_ON_MOBILE','TRUE');" >Desktop Version</a></li>
+                <li data-theme="e" data-icon="back"><a href="#" data-rel="back"  data-ajax="false" >Return to Home</a>
+                </li>
+            </ul>
+			</td></tr></table>
+          </div>
+          </div>
+       
+</div>
+<script>
+function parseResult(input){
+	if(input) return [].concat(input);
+	return [];
+}
+Date.prototype.Format = function(fmt)   
+{ 
+  var o = {   
+    "M+" : this.getMonth()+1,                    
+    "d+" : this.getDate(),                    
+    "h+" : this.getHours(),                     
+    "m+" : this.getMinutes(),                   
+    "s+" : this.getSeconds(),                  
+    "q+" : Math.floor((this.getMonth()+3)/3),   
+    "S"  : this.getMilliseconds()               
+  };   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  return fmt;   
+} 
+var current = new Date().Format("MM/dd/yyyy");	
+function addTask(url_value,callback){
+	$.ajax({
+		url: url_value,
+		dataType: "json"
+	}).done(function(response) {
+		callback(response);
+	}).fail(function(){
+		//alert( "ERROR:Retrieve system service error,can't fetch response data." );
+	});
+}
+
+	function ViewModel() {
+		var self = this;
+		self.systemUpdateTime = ko.observable();
+		
+		self.results = ko.observableArray();
+		
+		self.selectedProgram = ko.observable({"utilityName":"Select","programClass":"","irProgram":false});
+		self.programs = ko.observableArray();
+		
+		self.selectedProduct = ko.observable({"product":"Select"});
+		self.products = ko.observableArray();
+		
+		self.getProducts = function(){
+			self.products.removeAll();
+			if(self.selectedProgram()){
+				addTask("resteasy/services/getProducts?programName="+self.selectedProgram().programClass+"&irProgram="+self.selectedProgram().irProgram, function(allData) {
+					$.each(allData, function(key, val) {
+						self.products.push(val);
+					});
+				}); 
+			}
+		};
+		
+		self.zipcodeVisible = ko.computed(function(){
+			if(self.selectedProgram()){
+				switch (self.selectedProgram().programClass){
+					case "API":return true;
+					case "BIP":return true;
+					case "CBP":return true;
+					case "SDP":return true;
+				}
+			}
+			return false;
+		});
+		self.isRTP = ko.computed(function(){
+			if(self.selectedProgram()&&(self.selectedProgram().programClass=="RTP")){
+				return true;
+			}
+			return false;
+		});
+		self.disclaim = ko.computed(function(){
+			if(self.selectedProgram()&&(self.selectedProgram().programClass=="RTP")){
+				return "*Historical data is provided as a reference only and is not intended to be a promise or guarantee of future activity or pricing.";
+			}else{
+				return "*Historical data is provided as a reference only and is not intended to be a promise or guarantee of future activity or pricing. ZIP Codes listed above indicate some customers within the area were impacted by an event. Not all customers in a listed ZIP Code were necessarily impacted. SCE makes this data available as a courtesy only and cannot guarantee complete accuracy in the information provided.";
+			}
+		});
+		
+		self.getEvtTimestamps = function(){
+			addTask("resteasy/services/getLastUpdateTime", function(allData) {
+				self.systemUpdateTime(allData.timeStamp.systemTime);
+			});
+		};
+		
+		
+		self.initialize = function(){
+			self.programs.removeAll();
+			
+			addTask("resteasy/services/getPrograms", function(allData) {
+				
+				$.each(allData, function(key, val) {
+					self.programs.push(val.program);
+				});
+			}); 			
+			self.getEvtTimestamps();
+			return self;
+		};
+		self.searchResult = function(indexFrom){
+
+			self.results.removeAll();
+			self.url ="" ;
+			var isRTP=false;
+			var zipcode=$("input[name='zipcode']").val();
+			if(zipcode!=""){
+				zipcode="&zipcode="+zipcode;
+			}
+			if(self.selectedProgram().programClass=="RTP"){
+				self.url = "resteasy/services/getHistoryTems?start="+$("input[name='startdate']").val()+"&end="+$("input[name='enddate']").val()+"&index="+indexFrom+"&offset=5";
+				isRTP = true;
+			}else{
+				if(self.selectedProduct().product=="ALL"){
+					self.url = "resteasy/services/getHistoryEvents?start="+$("input[name='startdate']").val()+"&end="+$("input[name='enddate']").val()+"&index="+indexFrom+"&offset=5&program="+self.selectedProgram().programClass+zipcode;
+				}else{
+					self.url = "resteasy/services/getHistoryEvents?start="+$("input[name='startdate']").val()+"&end="+$("input[name='enddate']").val()+"&index="+indexFrom+"&offset=5&program="+self.selectedProgram().programClass+"&product="+self.selectedProduct().product+zipcode;
+				}
+				
+			}
+			addTask(self.url, function(allData) {
+				self.systemUpdateTime(allData['ns2.resultList']['updateTime']);
+				
+				$.each(allData, function(key, val) {
+					//empty result
+					if((typeof val.results.result=='undefined')){
+					}else{
+						$.each(val.results,function(key,val){
+							if(typeof val.RTP=='undefined'){
+							}else{
+								
+								val.displayBlocks=false;
+								switch (self.selectedProgram().programClass){
+									case "API":val.displayBlocks=true;break;
+									case "BIP":val.displayBlocks=true;break;
+									case "CBP":val.displayBlocks=true;break;
+								}
+								self.results.push(val);
+							}
+							
+						});
+						$.each(val.results.result,function(key,val){
+								if(typeof val.RTP=='undefined'){	
+								}else{
+									val.displayBlocks=false;
+									switch (self.selectedProgram().programClass){
+										case "API":val.displayBlocks=true;break;
+										case "BIP":val.displayBlocks=true;break;
+										case "CBP":val.displayBlocks=true;break;
+									}
+									self.results.push(val);
+								}
+						});
+					}
+					
+					
+					$("#resultIndexToSpan").text(val.indexTo);
+					$("#resultSizeSpan").text(val.size);	
+					$("#resultIndexToSpan2").text(val.indexTo);
+					$("#resultSizeSpan2").text(val.size);
+					if(val.size>0){
+						$("#resultIndexFromSpan").text(Number(val.indexFrom)+1);
+						$("#resultIndexFromSpan2").text(Number(val.indexFrom)+1);
+						$("#exportDIV").css("display","");
+						$("#previousActionLink").css("display","");
+						$("#nextActionLink").css("display","");
+						$("#previousActionLink2").css("display","");
+						$("#nextActionLink2").css("display","");
+					}else{
+						$("#resultIndexFromSpan").text(0);
+						$("#resultIndexFromSpan2").text(0);
+						$("#exportDIV").css("display","none");
+						$("#previousActionLink").css("display","none");
+						$("#nextActionLink").css("display","none");
+						$("#previousActionLink2").css("display","none");
+						$("#nextActionLink2").css("display","none");
+					}
+				});
+				$("#searchFilter").trigger( "collapse" );
+			});
+			$("#programTitleSpan").text(self.selectedProgram().utilityName);
+			if(self.selectedProgram()){
+				switch (self.selectedProgram().programClass){
+					
+					case "API": $("#blocksDIV").css("display","");return;
+					case "BIP":$("#blocksDIV").css("display",""); return;
+					case "CBP":$("#blocksDIV").css("display","");return;
+					case "SDP":$("#blocksDIV").css("display","none"); return;
+					case "SPD":$("#blocksDIV").css("display","none"); return;
+					case "SAI":$("#blocksDIV").css("display","none"); return;
+					case "CPP":$("#blocksDIV").css("display","none"); return;
+					case "DBP":$("#blocksDIV").css("display","none"); return;
+				}
+			}
+				
+			return self;
+		};	
+	}	
+	var vm = new ViewModel().initialize();
+	ko.applyBindings(vm);
+
+	$('#programs').change(function(event){
+		vm.getProducts();
+		$("input[name='zipcode']").val("");
+	});
+	
+	$("a[name='clearButton']").click(function(event){
+		vm.initialize();
+		$("input[name='zipcode']").val("");
+		$("input[name='startdate']").val("");
+		$("input[name='enddate']").val("");
+		$("#warningDIV").css("display","none");
+		$("#eh-result-wrapper").css("display","none");
+	});
+	
+	
+	
+	$("a[name='searchButton']").click(function(event){
+		validateDateFormat();
+		var flagPro = validateProgram();
+		var flagPrd = validateProduct();
+		var flagZip = validateZipcode();
+		var flagSta = validateStartDate();
+		var flagEnd = validateEndDate();
+		var flagDate = validateDateCompare();
+		if(flagPro&&flagPrd&&flagZip&&flagSta&&flagEnd&&flagDate){
+			$("#warningDIV").css("display","none");
+			$("#eh-result-wrapper").css("display","");
+			//retrieve data from server side
+			vm.searchResult(0);
+		}else{
+			$("#warningDIV").css("display","");
+			$("#eh-result-wrapper").css("display","none");
+		}
+	});
+	$("#exportDIV").click(function(event){
+		var isRTP=false;
+		var program = vm.selectedProgram().programClass;
+		var product = vm.selectedProduct().product;
+		var start = $("input[name='startdate']").val();
+		var end = $("input[name='enddate']").val();
+		var zipcode=$("input[name='zipcode']").val();
+		
+		product=(product=="ALL"?"":"&product="+product);
+		zipcode=(zipcode==""?"":"&zipcodes="+zipcode);
+		if(program=="RTP"){
+			isRTP = true;
+		}
+		var url = "getHistoryData.export?isRTP="+isRTP+"&program="+program+"&start="+start+"&end="+end+product+zipcode;
+		event.preventDefault();  //stop the browser from following
+		window.location.href = url;
+	});
+
+	
+function previousAction(){
+	var indexFrom = Number($("#resultIndexFromSpan").text());
+		var indexTo = Number($("#resultIndexToSpan").text());
+		var size = Number($("#resultSizeSpan").text());
+		if(indexFrom>=6){
+			vm.searchResult(indexFrom-1-5);
+		}
+}
+function nextAction(){
+	var indexFrom = Number($("#resultIndexFromSpan").text());
+	var indexTo = Number($("#resultIndexToSpan").text());
+	var size = Number($("#resultSizeSpan").text());
+	if(indexTo!=size){
+		vm.searchResult(indexFrom-1+5);
+	}
+}
+
+$("body").bind('swiperight', function() {
+  previousAction();
+}).bind('swipeleft', function() {
+   nextAction();
+});
+function validateProgram(){
+		if(vm.selectedProgram()==undefined){
+			$( "#programWarning" ).css( "display", "" );
+			return false;
+		}else{
+			$( "#programWarning" ).css( "display", "none" );
+			return true;
+		}
+	}
+	function validateProduct(){
+		if(vm.selectedProduct()==undefined){
+			
+			$( "#productWarning" ).css( "display", "" );
+			return false;
+		}else{
+			$( "#productWarning" ).css( "display", "none" );
+			return true;
+		}
+	}
+	function validateZipcode(){
+		var zipcodeRegex = /^((\d{5})|(\s*))$/;
+		var zipcode = $("input[name='zipcode']").val();
+		if ( !zipcodeRegex.test( zipcode ) ) {
+			$( "#zipcodeWarning" ).css( "display", "" );
+			return false;
+		} else {
+			$( "#zipcodeWarning" ).css( "display", "none" );
+			return true;
+		}
+	}
+	function validateDateFormat(date){
+		var regex = /^(\d{1,2}\/\d{1,2}\/\d{4})$/;
+		if ( !regex.test( date ) ) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	function isValidDate(d) {
+		
+	  if ( Object.prototype.toString.call(d) !== "[object Date]" )
+		return false;
+	  return !isNaN(d.getTime());
+	}
+	function validateStartDate(){
+		if($("input[name='startdate']").val()==""){
+			$( "#startWarning" ).css( "display", "" );
+			return false;
+		}else{
+			if(!validateDateFormat($("input[name='startdate']").val())){
+				$( "#startWarning" ).css( "display", "" );
+				return false;
+			}
+			var startDate = new Date($("input[name='startdate']").val());
+			if(!isValidDate(startDate)){
+				$( "#startWarning" ).css( "display", "" );
+				return false;
+			}
+			var endDate = new Date();
+			if((startDate>endDate)){
+				$( "#startWarning2" ).css( "display", "" );
+				return false;
+			}else{
+				$( "#startWarning" ).css( "display", "none" );
+				$( "#startWarning2" ).css( "display", "none" );
+				return true;
+			}
+		}
+	}
+	function validateEndDate(){
+		if($("input[name='enddate']").val()==""){
+			$( "#endWarning" ).css( "display", "" );
+			return false;
+		}else{
+			if(!validateDateFormat($("input[name='enddate']").val())){
+				$( "#endWarning" ).css( "display", "" );
+				return false;
+			}
+			var startDate = new Date($("input[name='enddate']").val());
+			if(!isValidDate(startDate)){
+				$( "#endWarning" ).css( "display", "" );
+				return false;
+			}
+			var endDate = new Date();
+			if((startDate>endDate)){
+				$( "#endWarning2" ).css( "display", "" );
+				return false;
+			}else{
+				$( "#endWarning" ).css( "display", "none" );
+				$( "#endWarning2" ).css( "display", "none" );
+				return true;
+			}
+		}
+	}
+	function validateDateCompare(){
+		if(validateStartDate()&&validateEndDate()){
+			var startDate = new Date($("input[name='startdate']").val());
+			var endDate = new Date($("input[name='enddate']").val());
+			if((startDate>endDate)){
+				$( "#dateWarning" ).css( "display", "" );
+				return false;
+			}else{
+				$( "#dateWarning" ).css( "display", "none" );
+				return true;
+			}
+		}
+	}
+	$("input[name='startdate']").change(function(event){
+		if($("input[name='enddate']").val()==""){
+			$("input[name='enddate']").val(current);
+		}		
+	});
+	
+	$("input[name='enddate']").change(function(event){
+		if($("input[name='startdate']").val()==""){
+			$("input[name='startdate']").val($("input[name='enddate']").val());
+		}		
+	});
+	window.onunload = function(){
+		$("#currentTab").attr("class","ui-btn-active ui-btn ui-btn-inline ui-btn-up-b");
+	};
+var cssRefresh = setInterval(function() {
+	var tmp = $("#currentTab").attr("class");
+	if(tmp.indexOf("ui-btn-active")==-1){
+		$("#currentTab").attr("class","ui-btn-active ui-btn ui-btn-inline ui-btn-up-b");
+	}
+},1000);
+</script>
+</body>
+</html>

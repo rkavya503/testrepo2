@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="1" author="Navya">
+		<comment>
+               Request Id 
+		</comment>
+		<sql>	
+			ALTER TABLE pss2.participant
+			ADD requestId varchar(128) NULL;
+		</sql>
+	</changeSet>
+	<changeSet id="2" author="MR">
+		<comment>
+              DRMS 8740: Add core property
+		</comment>
+		<sql>
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'openadr.granularity',
+				'null', null, 15, null, 'Number', 'script', null, now(),
+				null);
+		</sql>		
+		<sql>	
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'openadr.reportbackduration',
+				'null', null, 15, null, 'Number', 'script', null, now(),
+				null);
+		</sql>			
+	</changeSet>  
+	<changeSet id="3" author="Amit">
+		<comment>
+               Day-of Baseline Adjustment For Program
+		</comment>
+		<sql>	
+			ALTER TABLE pss2.program_participant
+			ADD applyDayOfBaselineAdjustment int(11) DEFAULT 0;
+		</sql>
+	</changeSet>
+	<changeSet id="4" author="Amit">
+		<comment>
+               Day-of Baseline Adjustment For Event
+		</comment>
+		<sql>	
+			ALTER TABLE pss2.event_participant
+			ADD applyDayOfBaselineAdjustment int(11) DEFAULT 2;
+		</sql>
+	</changeSet>
+	<changeSet id="5" author="Navya">
+		<comment>
+             DRMS-8817 : Delete appstore.url property
+		</comment>
+		<sql>	
+			DELETE from pss2.core_property where propertyName = 'appstore.url';
+		</sql>
+	</changeSet>
+	<changeSet id="6" author="Navya">
+		<comment>
+			DRMS-8817 : Delete playstore.url property
+		</comment>
+		<sql>	
+			DELETE from pss2.core_property where propertyName = 'playstore.url';
+		</sql>
+	</changeSet>
+	<changeSet id="7" author="Arun">
+		<comment>
+			SGSFI-598 - Datatype change to allow more char for DBP event creation validation errors
+		</comment>
+		<sql>	
+			ALTER TABLE pss2.dbp_event_creation 
+			CHANGE COLUMN description description LONGTEXT NULL DEFAULT NULL ;
+		</sql>
+	</changeSet>
+	<changeSet id="8" author="Bindu">
+		<comment>
+               openadr multiple usage data enable
+		</comment>
+		<sql>	
+			insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'openadr.multipledata.enable',
+				'null', false, null, null, 'Boolean', 'script', null, now(),
+				null);
+		</sql>
+	</changeSet>
+	<changeSet id="9" author="Bindu">
+		<comment>
+               openadr selection of usage data
+		</comment>
+		<sql>	
+			insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'openadr.baseline.usage',
+				'null', null, null, null, 'String', 'script', null, now(),
+				null);
+		</sql>
+	</changeSet>
+	<changeSet id="10" author="Amit">
+		<comment>
+               Raw Time stamp for dataentry
+		</comment>
+		<sql>	
+			ALTER TABLE pss2.dataentry 
+			ADD rawTime datetime DEFAULT NULL;
+		</sql>
+	</changeSet>
+	<changeSet id="11" author="Amit">
+		<comment>
+               Raw Time stamp for dataentry_temp
+		</comment>
+		<sql>	
+			ALTER TABLE pss2.dataentry_temp 
+			ADD rawTime datetime DEFAULT NULL;
+		</sql>
+	</changeSet>
+	<changeSet id="12" author="Vikram">
+		<comment>
+               Date-Opt out program until
+		</comment>
+		<sql>	
+			ALTER TABLE pss2.program_participant
+			ADD optOutUntil date;
+		</sql>
+	</changeSet>
+	<changeSet id="13" author="Vikram">
+		<comment>
+               configure opt out timeout
+		</comment>
+		<sql>	
+			insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'optout.timeout',
+				'null', null, 01, null, 'Number', 'script', null, now(),
+				null);
+		</sql>
+	</changeSet>
+	<changeSet id="14" author="Bindu">
+		<comment>
+               Add core property
+		</comment>
+		<sql>
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'openadr.statusgranularityreportbackduration',
+				'null', null, 60, null, 'Number', 'script', null, now(),
+				null);
+		</sql>		
+	</changeSet>  
+	<changeSet id="15" author="Bindu">
+		<comment>
+              update core_property doublevalue for propertyname 'openadr.granularity' and 'openadr.reportbackduration'
+		</comment>
+		<sql>
+				update core_property set doubleValue = '900' where propertyName = 'openadr.granularity';
+				update core_property set doubleValue = '900' where propertyName = 'openadr.reportbackduration';
+		</sql>		
+	</changeSet> 
+	<changeSet id="16" author="Navya">
+		<comment>
+               Add core property openadr.disablereportregistration
+		</comment>
+
+		<sql>	
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'openadr.disablereportregistration',
+				'true', null, null, null, 'String', 'script', null, now(),
+				null);
+		</sql>
+	</changeSet>	
+	<changeSet id="17" author="Bindu">
+		<comment>
+              create ProgramAggregator table 
+		</comment>
+		<sql>
+				  CREATE TABLE pss2.programaggregator (
+				  uuid varchar(250) NOT NULL,
+				  creationtime timestamp NULL DEFAULT NULL,
+				  creator varchar(255) DEFAULT NULL,
+				  modifiedtime timestamp NULL DEFAULT NULL,
+				  modifier varchar(255) DEFAULT NULL,
+				  version int(11) DEFAULT NULL,
+				  aggregatorname varchar(255) DEFAULT NULL,
+				  aggregatorClient varchar(255) DEFAULT NULL,
+				  aggregatoraccountNumber varchar(255) NOT NULL,
+				  aggregatorclientidmappedwithendpoint varchar(255) NOT NULL,
+				  eventid varchar(255) NOT NULL,
+				  eventstarttime timestamp NULL DEFAULT NULL,
+				  eventendtime timestamp NULL DEFAULT NULL,
+				  eventissuetime timestamp NULL DEFAULT NULL,
+				  aggregatorresource varchar(255) DEFAULT NULL,
+				  eventuuid varchar(250) NOT NULL,
+				  secondaryaccount varchar(128) NULL,
+				  PRIMARY KEY (uuid),
+				  FOREIGN KEY (eventuuid) REFERENCES event (uuid) ON DELETE CASCADE ON UPDATE CASCADE);
+		</sql>		
+	</changeSet> 
+</databaseChangeLog>

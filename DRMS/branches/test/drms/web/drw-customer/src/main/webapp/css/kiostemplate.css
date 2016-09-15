@@ -1,0 +1,357 @@
+body {
+	margin: 0;
+	padding: 0;
+	line-height: 1em;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;	
+	background: #fff;	
+	background-attachment: fixed
+	}
+
+img {
+	margin: 0px;
+	padding: 0px;
+	border: none;
+}
+
+/*layout wrapper*/
+#kiosWrapper
+{
+	width:1665px;
+	margin:0 auto;
+	padding:0;
+	text-align:left;
+}
+
+.kiosHeader
+{
+	background:#ffffff url(../images/backgrounds/pageHeader.jpg) 0 0 no-repeat;
+	width:1665px;
+	height:120px;
+	padding:0;
+	margin:0;
+	border:0;
+	position:relative;
+}
+
+.kiosHeader h1 {
+	color: #4c4c4c;
+	font: 150% Arial, Helvetica, sans-serif;
+	display: block;
+	margin: 0;
+	float: left;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+.kiosHeader h1 a {
+	display: block;
+	width: 244px;
+	height:120px;
+	text-decoration: none;
+	text-indent: -90000px;
+	border: none;
+}
+.kiosHeader h1 a:hover {
+	background-color: transparent;
+}
+
+
+.kiosInnerWrapper
+{
+	width: 1665px;
+	background: #ffffff;
+	color:#000000;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	text-align:left;
+	font-size:11px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+.kiosLeftContent
+{
+	float:left;
+	width:1024px;
+	padding: 0px;
+	margin: 0px;
+	text-align: left;
+	position:relative;
+}
+
+div.resultGridHeaderBg
+{
+	background:url(../images/backgrounds/resultGridHeaderBg.jpg) 0 0 no-repeat;
+	width:979px;
+	height:31px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:23px;
+	font-weight:normal;
+	color:#000000;
+	padding:20px 0 0 45px;
+	margin:0;
+}
+
+.resultGridHeaderBg span.datetime
+{
+	font-size:12px;
+	font-style:italic;
+	font-weight:normal;
+	color:#000000;
+}
+
+
+div.resultGridBodyBg
+{
+	background:url(../images/backgrounds/resultGridBodyBg.jpg) 0 0 repeat-y;
+	width:1007px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	color:#999999;
+	padding:14px 0 0 17px;
+	margin:0;
+}
+
+div.resultGridFooterBg
+{
+	clear:both;
+	background:url(../images/backgrounds/resultGridFooterBg.jpg) 0 0 no-repeat;
+	width:1024px;
+	height:25px;
+	margin:0 0 20px 0;
+	padding:0;
+}
+div.resultGridFooterBgScheduled
+{
+	clear:both;
+	background:url(../images/backgrounds/resultGridFooterBg.jpg) 0 0 no-repeat;
+	width:1024px;
+	height:25px;
+	margin:0 0 0px 0;
+	padding:0;
+}
+.dataWrapper
+{
+	width:985px;
+	height:250px;
+	overflow:auto;
+  	padding: 0;
+  	margin: 22px 0px 10px 15px;
+}
+
+.kiosResultTable
+{
+  	border-collapse: collapse;
+  	clear:both;
+  	font-family:Arial, Helvetica, sans-serif;
+  	color: #000000;
+  	font-size:13px;
+	line-height:15px;
+  	width:950px;
+  	padding: 0;
+  	margin: 0;
+}
+.kiosResultTable th
+{
+  	text-align: left;
+  	color: #000000;
+	font-weight:normal;
+  	padding: 0 5px 10px 10px;
+}
+
+.kiosResultTable th[scope=col]
+{
+  	font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color: #000000;
+	font-weight:bold;
+	text-align:left;
+}
+
+.kiosResultTable th[scope=col]
+{  
+	background-color: #ffffff;
+}
+
+.kiosResultTable tr
+{  
+	background-color: #f4f6e5;
+	vertical-align:top;
+}
+
+.kiosResultTable tr.alt
+{  
+	background-color: #ffffff;
+	vertical-align:top;
+}
+
+.kiosResultTable td
+{
+	font-weight:normal;
+  	padding: 8px 5px 8px 10px;
+  	text-align: left;
+  	color: #000000;
+}
+
+.kiosResultTable td.title
+{
+	width:450px;
+	font-weight:normal;
+  	padding: 8px 5px 8px 10px;
+  	text-align: left;
+  	color: #000000;
+}
+
+.kiosResultTable td.impacted
+{
+	width:80px;
+  	padding: 8px 5px 8px 10px;
+  	text-align: left;
+  	color: #000000;
+}
+
+.kiosResultTable a
+{
+	color:#000000;
+	text-decoration:none;
+}
+
+
+
+img.headlineIcon
+{
+	margin-left:5px;
+	margin-right:15px;
+	margin-bottom:-5px;
+}
+
+
+
+
+
+
+
+.kiosRightContent
+{
+	float:right;
+	//width:601px;
+	padding:0;
+	margin:0;
+}
+
+
+
+
+div.legendGridHeaderBg
+{
+	background:url(../images/backgrounds/legendGridHeaderBg.jpg) 0 0 no-repeat;
+	width:570px;
+	height:23px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	color:#417300;
+	padding:18px 0 0 45px;
+	margin:0;
+}
+
+
+
+div.legendGridBodyBg
+{
+	background:url(../images/backgrounds/legendGridBodyBg.jpg) 0 0 repeat-y;
+	width:600px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	color:#999999;
+	padding:14px 0 0 17px;
+	margin:0;
+}
+
+div.legendGridFooterBg
+{
+	clear:both;
+	background:url(../images/backgrounds/legendGridFooterBg.jpg) 0 0 no-repeat;
+	width:615px;
+	height:19px;
+	margin:0 0 15px 0;
+	padding:0;
+}
+
+ul.legendList
+{
+	width:612px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#999999;
+	font-weight:bold;
+	list-style:none;
+	padding:0;
+	margin: 0 0 0 3px;
+}
+
+ul.legendList li
+{
+	float:left;
+	width:180px;
+	padding:0 5px 0 10px;
+	margin-bottom:18px;
+}
+
+ul.legendList li a
+{
+	text-decoration:none;
+	color:#999999;
+}
+
+ul.legendList li a:hover
+{
+	text-decoration:none;
+	color:#adadad;
+}
+
+ul.legendList li img.icon
+{
+	float:left;
+	width:19px;
+	margin-right:4px;
+}
+
+ul.legendList li img.homeicon
+{
+	float:left;
+	width:24px;
+	margin-right:4px;
+	vertical-align:middle;
+}
+.KioskNoEventsDateTable
+{
+  	border-collapse: collapse;
+  	clear:both;
+  	font-family:Arial, Helvetica, sans-serif;
+  	color: #000000;
+  	font-size:14px;
+	font-weight: normal;
+  	width:920px;
+  	padding: 0;
+  	margin: 10px 0px 20px 16px;
+}
+.KioskNoEventsDateTable tr
+{  
+	background-color: #f4f6e5;
+}
+
+.clearfix:after {
+        clear: both;
+        height: 0;        
+        display: block;
+        visibility: hidden;        
+        content: ".";
+}
+.clearfix {display:inline-block;}
+/* Hide from IE Mac \*/
+.clearfix {display:block;}
+/* End hide from IE Mac */

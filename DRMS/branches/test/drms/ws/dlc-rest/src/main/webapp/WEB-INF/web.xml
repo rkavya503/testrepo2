@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app version="2.5"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name>dlc-rest</display-name>
+  <description>DLC interface</description>
+  <distributable/>
+
+  <servlet>
+    <servlet-name>dlc-customer</servlet-name>
+    <servlet-class>com.akuacom.pss2.dlc.CustomerServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>dlc-customer</servlet-name>
+    <url-pattern>/customer/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>dlc-signal</servlet-name>
+    <servlet-class>com.akuacom.pss2.dlc.SignalServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>dlc-signal</servlet-name>
+    <url-pattern>/signal/*</url-pattern>
+  </servlet-mapping>
+
+  <mime-mapping>
+    <extension>xsl</extension>
+    <mime-type>text/xml</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>xml</extension>
+    <mime-type>text/xml</mime-type>
+  </mime-mapping>
+
+    <security-constraint>
+      <web-resource-collection>
+        <web-resource-name>DLCRESTWS</web-resource-name>
+        <url-pattern>/*</url-pattern>
+      </web-resource-collection>
+      <auth-constraint>
+        <role-name>Operator</role-name>
+      </auth-constraint>
+    </security-constraint>
+    <login-config>
+      <auth-method>BASIC</auth-method>
+      <realm-name>Operator</realm-name>
+    </login-config>
+    <security-role>
+      <description>Operator</description>
+      <role-name>Operator</role-name>
+    </security-role>
+</web-app>
+

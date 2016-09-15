@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Maven">
+  <bannerLeft>
+    <name>Akuacom</name>
+    <src>https://akuacom.jira.com/plugins/servlet/studiologo/Akuacom-logo-sm.gif</src>
+    <href>https://akuacom.jira.com/builds/browse/DRMS-SITE</href>
+  </bannerLeft>
+  <bannerRight>
+    <src>http://maven.apache.org/images/maven-small.gif</src>
+  </bannerRight>
+  <body>
+    <links>
+      <item name="JIRA" href="https://akuacom.jira.com" />
+    </links>
+    <menu ref="parent"  />
+    <menu ref="reports" />
+    <menu ref="modules" />
+  </body>
+</project>

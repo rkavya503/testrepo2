@@ -1,0 +1,1821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="ParticipantOperatorWSService" targetNamespace="http://www.openadr.org/DRAS/ParticipantOperator/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns9="http://www.openadr.org/DRAS/OptOutState" xmlns:ns12="http://www.openadr.org/DRAS/EventState" xmlns:ns5="http://www.openadr.org/DRAS/DRASClient" xmlns:ns6="http://www.openadr.org/DRAS/ResponseSchedule" xmlns:ns10="http://www.openadr.org/DRAS/Logs" xmlns:ns7="http://www.openadr.org/DRAS/EventInfo" xmlns:ns11="http://www.openadr.org/DRAS/UtilityDREvent" xmlns:ns8="http://www.openadr.org/DRAS/Feedback" xmlns:ns2="http://www.openadr.org/DRAS/UtilityProgram" xmlns:ns1="http://www.openadr.org/DRAS/ParticipantAccount" xmlns:ns4="http://www.openadr.org/DRAS/Bid" xmlns:ns3="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:tns="http://www.openadr.org/DRAS/ParticipantOperator/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+
+    <xs:schema targetNamespace="http://www.openadr.org/DRAS/ParticipantOperator/" version="1.0" xmlns:ns1="http://www.openadr.org/DRAS/ParticipantAccount" xmlns:ns10="http://www.openadr.org/DRAS/Logs" xmlns:ns11="http://www.openadr.org/DRAS/UtilityDREvent" xmlns:ns12="http://www.openadr.org/DRAS/EventState" xmlns:ns2="http://www.openadr.org/DRAS/DRASClient" xmlns:ns3="http://www.openadr.org/DRAS/UtilityProgram" xmlns:ns4="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:ns5="http://www.openadr.org/DRAS/EventInfo" xmlns:ns6="http://www.openadr.org/DRAS/ResponseSchedule" xmlns:ns7="http://www.openadr.org/DRAS/Feedback" xmlns:ns8="http://www.openadr.org/DRAS/Bid" xmlns:ns9="http://www.openadr.org/DRAS/OptOutState" xmlns:tns="http://www.openadr.org/DRAS/ParticipantOperator/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:import namespace="http://www.openadr.org/DRAS/ParticipantAccount" schemaLocation="ParticipantAccount.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/DRASClient" schemaLocation="DRASClient.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/UtilityProgram" schemaLocation="UtilityProgram.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/ProgramConstraint" schemaLocation="ProgramConstraint.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/EventInfo" schemaLocation="EventInfo.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/ResponseSchedule" schemaLocation="ResponseSchedule.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/Feedback" schemaLocation="FeedBack.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/Bid" schemaLocation="Bid.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/OptOutState" schemaLocation="OptOutState.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/Logs" schemaLocation="Logs.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/UtilityDREvent" schemaLocation="UtilityDREvent.xsd"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/EventState" schemaLocation="EventState.xsd"/>
+   <xs:element name="CreateDRASClient" nillable="true" type="tns:CreateDRASClient"/>
+   <xs:element name="CreateDRASClientResponse" nillable="true" type="tns:CreateDRASClientResponse"/>
+   <xs:element name="CreateOptOutState" nillable="true" type="tns:CreateOptOutState"/>
+   <xs:element name="CreateOptOutStateResponse" nillable="true" type="tns:CreateOptOutStateResponse"/>
+   <xs:element name="CreateResponseSchedule" nillable="true" type="tns:CreateResponseSchedule"/>
+   <xs:element name="CreateResponseScheduleResponse" nillable="true" type="tns:CreateResponseScheduleResponse"/>
+   <xs:element name="DeleteDRASClient" nillable="true" type="tns:DeleteDRASClient"/>
+   <xs:element name="DeleteDRASClientProgramConstraints" nillable="true" type="tns:DeleteDRASClientProgramConstraints"/>
+   <xs:element name="DeleteDRASClientProgramConstraintsResponse" nillable="true" type="tns:DeleteDRASClientProgramConstraintsResponse"/>
+   <xs:element name="DeleteDRASClientResponse" nillable="true" type="tns:DeleteDRASClientResponse"/>
+   <xs:element name="DeleteOptOutState" nillable="true" type="tns:DeleteOptOutState"/>
+   <xs:element name="DeleteOptOutStateResponse" nillable="true" type="tns:DeleteOptOutStateResponse"/>
+   <xs:element name="DeleteParticipantProgramConstraints" nillable="true" type="tns:DeleteParticipantProgramConstraints"/>
+   <xs:element name="DeleteParticipantProgramConstraintsResponse" nillable="true" type="tns:DeleteParticipantProgramConstraintsResponse"/>
+   <xs:element name="DeleteResponseSchedule" nillable="true" type="tns:DeleteResponseSchedule"/>
+   <xs:element name="DeleteResponseScheduleResponse" nillable="true" type="tns:DeleteResponseScheduleResponse"/>
+   <xs:element name="DeleteStandingBid" nillable="true" type="tns:DeleteStandingBid"/>
+   <xs:element name="DeleteStandingBidResponse" nillable="true" type="tns:DeleteStandingBidResponse"/>
+   <xs:element name="GetBid" nillable="true" type="tns:GetBid"/>
+   <xs:element name="GetBidResponse" nillable="true" type="tns:GetBidResponse"/>
+   <xs:element name="GetDRASClientAlarms" nillable="true" type="tns:GetDRASClientAlarms"/>
+   <xs:element name="GetDRASClientAlarmsResponse" nillable="true" type="tns:GetDRASClientAlarmsResponse"/>
+   <xs:element name="GetDRASClientCommsStatus" nillable="true" type="tns:GetDRASClientCommsStatus"/>
+   <xs:element name="GetDRASClientCommsStatusResponse" nillable="true" type="tns:GetDRASClientCommsStatusResponse"/>
+   <xs:element name="GetDRASClientInfo" nillable="true" type="tns:GetDRASClientInfo"/>
+   <xs:element name="GetDRASClientInfoResponse" nillable="true" type="tns:GetDRASClientInfoResponse"/>
+   <xs:element name="GetDRASClientProgramConstraints" nillable="true" type="tns:GetDRASClientProgramConstraints"/>
+   <xs:element name="GetDRASClientProgramConstraintsResponse" nillable="true" type="tns:GetDRASClientProgramConstraintsResponse"/>
+   <xs:element name="GetDRASEventStates" nillable="true" type="tns:GetDRASEventStates"/>
+   <xs:element name="GetDRASEventStatesResponse" nillable="true" type="tns:GetDRASEventStatesResponse"/>
+   <xs:element name="GetDRASTransactions" nillable="true" type="tns:GetDRASTransactions"/>
+   <xs:element name="GetDRASTransactionsResponse" nillable="true" type="tns:GetDRASTransactionsResponse"/>
+   <xs:element name="GetDREventFeedback" nillable="true" type="tns:GetDREventFeedback"/>
+   <xs:element name="GetDREventFeedbackResponse" nillable="true" type="tns:GetDREventFeedbackResponse"/>
+   <xs:element name="GetOptOutStates" nillable="true" type="tns:GetOptOutStates"/>
+   <xs:element name="GetOptOutStatesResponse" nillable="true" type="tns:GetOptOutStatesResponse"/>
+   <xs:element name="GetParticipantAccounts" nillable="true" type="tns:GetParticipantAccounts"/>
+   <xs:element name="GetParticipantAccountsResponse" nillable="true" type="tns:GetParticipantAccountsResponse"/>
+   <xs:element name="GetParticipantProgramConstraints" nillable="true" type="tns:GetParticipantProgramConstraints"/>
+   <xs:element name="GetParticipantProgramConstraintsResponse" nillable="true" type="tns:GetParticipantProgramConstraintsResponse"/>
+   <xs:element name="GetProgramInformation" nillable="true" type="tns:GetProgramInformation"/>
+   <xs:element name="GetProgramInformationResponse" nillable="true" type="tns:GetProgramInformationResponse"/>
+   <xs:element name="GetResponseSchedule" nillable="true" type="tns:GetResponseSchedule"/>
+   <xs:element name="GetResponseScheduleResponse" nillable="true" type="tns:GetResponseScheduleResponse"/>
+   <xs:element name="GetStandingBid" nillable="true" type="tns:GetStandingBid"/>
+   <xs:element name="GetStandingBidResponse" nillable="true" type="tns:GetStandingBidResponse"/>
+   <xs:element name="GetTestModeState" nillable="true" type="tns:GetTestModeState"/>
+   <xs:element name="GetTestModeStateResponse" nillable="true" type="tns:GetTestModeStateResponse"/>
+   <xs:element name="ModifyDRASClient" nillable="true" type="tns:ModifyDRASClient"/>
+   <xs:element name="ModifyDRASClientResponse" nillable="true" type="tns:ModifyDRASClientResponse"/>
+   <xs:element name="ModifyParticipantAccounts" nillable="true" type="tns:ModifyParticipantAccounts"/>
+   <xs:element name="ModifyParticipantAccountsResponse" nillable="true" type="tns:ModifyParticipantAccountsResponse"/>
+   <xs:element name="SetDRASClientProgramConstraints" nillable="true" type="tns:SetDRASClientProgramConstraints"/>
+   <xs:element name="SetDRASClientProgramConstraintsResponse" nillable="true" type="tns:SetDRASClientProgramConstraintsResponse"/>
+   <xs:element name="SetDREventFeedback" nillable="true" type="tns:SetDREventFeedback"/>
+   <xs:element name="SetDREventFeedbackResponse" nillable="true" type="tns:SetDREventFeedbackResponse"/>
+   <xs:element name="SetParticipantProgramConstraints" nillable="true" type="tns:SetParticipantProgramConstraints"/>
+   <xs:element name="SetParticipantProgramConstraintsResponse" nillable="true" type="tns:SetParticipantProgramConstraintsResponse"/>
+   <xs:element name="SetTestMode" nillable="true" type="tns:SetTestMode"/>
+   <xs:element name="SetTestModeResponse" nillable="true" type="tns:SetTestModeResponse"/>
+   <xs:element name="SetTestModeState" nillable="true" type="tns:SetTestModeState"/>
+   <xs:element name="SetTestModeStateResponse" nillable="true" type="tns:SetTestModeStateResponse"/>
+   <xs:element name="SubmitBid" nillable="true" type="tns:SubmitBid"/>
+   <xs:element name="SubmitBidResponse" nillable="true" type="tns:SubmitBidResponse"/>
+   <xs:element name="SubmitStandingBid" nillable="true" type="tns:SubmitStandingBid"/>
+   <xs:element name="SubmitStandingBidResponse" nillable="true" type="tns:SubmitStandingBidResponse"/>
+   <xs:complexType name="GetParticipantAccounts">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="participantIDs" nillable="true" type="ns1:ListOfParticipantAccountIDs"/>
+     <xs:element minOccurs="0" name="participantGroup" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetParticipantAccountsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="participantAccounts" nillable="true" type="ns1:ListOfParticipantAccounts"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ModifyParticipantAccounts">
+    <xs:sequence>
+     <xs:element name="participantIDs" type="ns1:ListOfParticipantAccountIDs"/>
+     <xs:element name="participantGroup" type="xs:string"/>
+     <xs:element name="participantAccount" type="ns1:ParticipantAccount"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ModifyParticipantAccountsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateDRASClient">
+    <xs:sequence>
+     <xs:element name="DRASClient" type="ns2:DRASClient"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateDRASClientResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ModifyDRASClient">
+    <xs:sequence>
+     <xs:element name="DRASClient" type="ns2:DRASClient"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ModifyDRASClientResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteDRASClient">
+    <xs:sequence>
+     <xs:element name="DRASClientID" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteDRASClientResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientInfo">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DRASClientIDs" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="participantIDs" nillable="true" type="ns1:ListOfParticipantAccountIDs"/>
+     <xs:element minOccurs="0" name="participantGroup" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientInfoResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DRASClients" nillable="true" type="ns2:ListOfDRASClients"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetParticipantProgramConstraints">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="participantIDs" nillable="true" type="ns1:ListOfParticipantAccountIDs"/>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="participantGroup" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetParticipantProgramConstraintsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programConstraints" nillable="true" type="ns4:ListOfProgramConstraints"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetParticipantProgramConstraints">
+    <xs:sequence>
+     <xs:element name="participantIDs" type="ns1:ListOfParticipantAccountIDs"/>
+     <xs:element minOccurs="0" name="participantGroup" nillable="true" type="xs:string"/>
+     <xs:element name="programConstraint" type="ns4:ProgramConstraint"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetParticipantProgramConstraintsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteParticipantProgramConstraints">
+    <xs:sequence>
+     <xs:element name="participantIDs" type="ns1:ListOfParticipantAccountIDs"/>
+     <xs:element minOccurs="0" name="participantGroup" nillable="true" type="xs:string"/>
+     <xs:element name="programName" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteParticipantProgramConstraintsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientProgramConstraints">
+    <xs:sequence>
+     <xs:element name="drasClientIDs" type="ns3:ListOfIDs"/>
+     <xs:element name="participantIDs" type="ns1:ListOfParticipantAccountIDs"/>
+     <xs:element minOccurs="0" name="participantGroup" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientProgramConstraintsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programConstraints" nillable="true" type="ns4:ListOfProgramConstraints"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetDRASClientProgramConstraints">
+    <xs:sequence>
+     <xs:element name="drasClientIDs" type="ns3:ListOfIDs"/>
+     <xs:element name="participantIDs" type="ns1:ListOfParticipantAccountIDs"/>
+     <xs:element minOccurs="0" name="participantGroup" nillable="true" type="xs:string"/>
+     <xs:element name="programConstraint" type="ns4:ProgramConstraint"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetDRASClientProgramConstraintsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteDRASClientProgramConstraints">
+    <xs:sequence>
+     <xs:element name="drasClientIDs" type="ns3:ListOfIDs"/>
+     <xs:element name="participantIDs" type="ns1:ListOfParticipantAccountIDs"/>
+     <xs:element minOccurs="0" name="participantGroup" nillable="true" type="xs:string"/>
+     <xs:element name="programName" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteDRASClientProgramConstraintsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetProgramInformation">
+    <xs:sequence>
+     <xs:element name="programName" type="xs:string"/>
+     <xs:element minOccurs="0" name="drasClientID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetProgramInformationResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programConstraints" type="ns4:ProgramConstraint"/>
+     <xs:element minOccurs="0" name="eventInfo" nillable="true" type="ns5:ListOfEventInfoType"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateResponseSchedule">
+    <xs:sequence>
+     <xs:element name="responseSchedule" type="ns6:ResponseSchedule"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateResponseScheduleResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteResponseSchedule">
+    <xs:sequence>
+     <xs:element name="programName" type="xs:string"/>
+     <xs:element name="drasClientID" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteResponseScheduleResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetResponseSchedule">
+    <xs:sequence>
+     <xs:element name="programName" type="xs:string"/>
+     <xs:element name="drasClientID" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetResponseScheduleResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="responseSchedule" type="ns6:ResponseSchedule"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetDREventFeedback">
+    <xs:sequence>
+     <xs:element name="feedBack" type="ns7:FeedBack"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetDREventFeedbackResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SubmitStandingBid">
+    <xs:sequence>
+     <xs:element name="bid" type="ns8:Bid"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SubmitStandingBidResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetStandingBid">
+    <xs:sequence>
+     <xs:element name="participantID" type="xs:string"/>
+     <xs:element name="programName" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetStandingBidResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="bid" type="ns8:Bid"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteStandingBid">
+    <xs:sequence>
+     <xs:element name="participantID" type="xs:string"/>
+     <xs:element name="programName" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteStandingBidResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SubmitBid">
+    <xs:sequence>
+     <xs:element name="bid" type="ns8:Bid"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SubmitBidResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetBid">
+    <xs:sequence>
+     <xs:element name="eventID" type="xs:string"/>
+     <xs:element name="participantID" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetBidResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="bid" type="ns8:Bid"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateOptOutState">
+    <xs:sequence>
+     <xs:element name="optOutState" type="ns9:OptOutState"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateOptOutStateResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteOptOutState">
+    <xs:sequence>
+     <xs:element name="optOutStateID" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteOptOutStateResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetOptOutStates">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="participantID" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="drasClientID" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="optOutID" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="eventID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetOptOutStatesResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="optOutStates" nillable="true" type="ns9:ListOfOptOutStates"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientCommsStatus">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="participants" nillable="true" type="ns3:ParticipantList"/>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns3:ListOfProgramNames"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientCommsStatusResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DRASClientStatus" nillable="true" type="ns2:ListOfCommsStatus"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASTransactions">
+    <xs:sequence>
+     <xs:element name="userNames" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="DRASClientIDs" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element name="participantIDs" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="methodName" nillable="true" type="xs:string"/>
+     <xs:element name="timeInterval" type="ns4:DateTimeWindow"/>
+     <xs:element name="resultCode" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASTransactionsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="transactions" nillable="true" type="ns10:ListOfTransactionLogs"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientAlarms">
+    <xs:sequence>
+     <xs:element name="DRASClientIDs" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="participantIDs" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="timeInterval" nillable="true" type="ns4:DateTimeWindow"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientAlarmsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="alarms" nillable="true" type="ns10:ListOfDRASClientAlarms"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDREventFeedback">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DRASClientIDs" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="participantIDs" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="timeInterval" nillable="true" type="ns4:DateTimeWindow"/>
+     <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDREventFeedbackResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="feedback" nillable="true" type="ns7:ListOfFeedback"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetTestMode">
+    <xs:sequence>
+     <xs:element name="drasClientID" type="xs:string"/>
+     <xs:element name="mode" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetTestModeResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetTestModeState">
+    <xs:sequence>
+     <xs:element name="drasClientID" type="xs:string"/>
+     <xs:element name="opertaionModeValue" type="xs:string"/>
+     <xs:element name="eventStatus" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetTestModeStateResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetTestModeState">
+    <xs:sequence>
+     <xs:element name="drasClientID" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetTestModeStateResponse">
+    <xs:sequence>
+     <xs:element name="GetTestModeStateResponse" type="xs:string"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASEventStates">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="eventIDs" nillable="true" type="ns11:ListOfEventIDs"/>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns3:ListOfProgramNames"/>
+     <xs:element minOccurs="0" name="participants" nillable="true" type="ns3:ParticipantList"/>
+     <xs:element minOccurs="0" name="drasClients" nillable="true" type="ns3:ListOfIDs"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASEventStatesResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="eventStates" nillable="true" type="ns12:ListOfEventStates"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/Bid" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="Bid">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="bidBlocks">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="block" nillable="true" type="ns1:BidBlock" xmlns:ns1="http://www.openadr.org/DRAS/Bid"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="participantAccount" type="xs:string" use="required"/>
+    <xs:attribute name="programName" type="xs:string"/>
+    <xs:attribute name="eventID" type="xs:string"/>
+    <xs:attribute name="options" type="xs:string"/>
+    <xs:attribute name="signature" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="BidBlock">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="load" type="xs:double"/>
+     <xs:element minOccurs="0" name="price" type="xs:double"/>
+     <xs:element minOccurs="0" name="duration" type="xs:double"/>
+     <xs:element minOccurs="0" name="timePeriod">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="startTime" type="xs:dateTime"/>
+        <xs:element name="endTime" type="xs:dateTime"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/ProgramConstraint" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ProgramConstraint">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="eventWindow" nillable="true" type="tns:EventWindow"/>
+     <xs:element minOccurs="0" name="eventWindowFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="maxEventDuration" nillable="true" type="xs:double"/>
+     <xs:element minOccurs="0" name="maxEventDurationFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="notificationWindow" nillable="true" type="tns:NotificationWindow"/>
+     <xs:element minOccurs="0" name="notificationFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="blackOutDateTimes" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="dateTimeWindow" nillable="true" type="tns:DateTimeWindow"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="blackOutDateTimeFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="validDateTimes" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="dateTimeWindow" nillable="true" type="tns:DateTimeWindow"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="maxConsecutiveDays" nillable="true" type="xs:unsignedLong"/>
+     <xs:element minOccurs="0" name="maxConsecutiveDaysFilter" nillable="true" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="constraintID" type="xs:string" use="required"/>
+    <xs:attribute name="programName" type="xs:string" use="required"/>
+    <xs:attribute name="participantID" type="xs:string"/>
+    <xs:attribute name="DRASClientID" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="EventWindow">
+    <xs:sequence>
+     <xs:element name="startTime" type="xs:time"/>
+     <xs:element name="endTime" type="xs:time"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="NotificationWindow">
+    <xs:sequence>
+     <xs:element name="minimumTime" type="xs:unsignedLong"/>
+     <xs:element name="maximumTime" type="xs:unsignedLong"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DateTimeWindow">
+    <xs:sequence>
+     <xs:element name="startDateTime" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="endDateTime" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfProgramConstraints">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="programConstraint" nillable="true" type="tns:ProgramConstraint"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="ConstraintFilter">
+    <xs:restriction base="xs:string">
+     <xs:enumeration value="ACCEPT"/>
+     <xs:enumeration value="REJECT"/>
+     <xs:enumeration value="FORCE"/>
+     <xs:enumeration value="RESTRICT"/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/UtilityProgram" version="1.0" xmlns:ns1="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:import namespace="http://www.openadr.org/DRAS/ProgramConstraint"/>
+   <xs:complexType name="ProgramInfo">
+    <xs:sequence>
+     <xs:element name="programName" type="xs:string"/>
+     <xs:element minOccurs="0" name="programConstraints" type="ns1:ProgramConstraint"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfIDs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ParticipantList">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="accounts" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="participantID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="groups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="locations" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="location" nillable="true" type="ns2:Location" xmlns:ns2="http://www.openadr.org/DRAS/DRASClient"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfProgramNames">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="programID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/EventInfo" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/EventInfo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfEventInfoType">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="eventInfoType" nillable="true" type="tns:EventInfoType"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="EventInfoType">
+    <xs:sequence>
+     <xs:element name="scheduleType" type="xs:string"/>
+     <xs:element minOccurs="0" name="schedule">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="timeSlot" type="xs:double"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="enumerations" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="value" nillable="true" type="xs:double"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="minValue" type="xs:double"/>
+     <xs:element minOccurs="0" name="maxValue" type="xs:double"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="typeID" type="tns:EventInfoTypeID" use="required"/>
+   </xs:complexType>
+   <xs:simpleType name="EventInfoTypeID">
+    <xs:restriction base="xs:string">
+     <xs:enumeration value="PRICE_ABSOLUTE"/>
+     <xs:enumeration value="PRICE_RELATIVE"/>
+     <xs:enumeration value="PRICE_MULTIPLE"/>
+     <xs:enumeration value="LOAD_LEVEL"/>
+     <xs:enumeration value="LOAD_AMOUNT"/>
+     <xs:enumeration value="LOAD_PERCENTAGE"/>
+     <xs:enumeration value="GRID_RELIABILITY"/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/EventState" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/EventState" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfEventStates">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="eventStates" nillable="true" type="tns:EventState"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="EventState">
+    <xs:sequence>
+     <xs:element name="simpleDRModeData" type="tns:SimpleClientEventData"/>
+     <xs:element minOccurs="0" name="drEventData" nillable="true" type="tns:SmartClientDREventData"/>
+     <xs:element minOccurs="0" name="customData" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="generalInfoInstances" nillable="true" type="tns:GeneralInfoInstance"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="programName" type="xs:string" use="required"/>
+    <xs:attribute name="eventModNumber" type="xs:unsignedInt" use="required"/>
+    <xs:attribute name="eventIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="drasClientID" type="xs:string" use="required"/>
+    <xs:attribute name="eventStateID" type="xs:unsignedInt" use="required"/>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="drasName" type="xs:string" use="required"/>
+    <xs:attribute name="testEvent" type="xs:boolean"/>
+    <xs:attribute name="offLine" type="xs:boolean"/>
+   </xs:complexType>
+   <xs:complexType name="SimpleClientEventData">
+    <xs:sequence>
+     <xs:element name="EventStatus" type="xs:string"/>
+     <xs:element name="OperationModeValue" type="xs:string"/>
+     <xs:element name="currentTime" type="xs:decimal"/>
+     <xs:element minOccurs="0" name="operationModeSchedule" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="modeSlot" nillable="true" type="tns:OperationState"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="OperationState">
+    <xs:sequence>
+     <xs:element name="OperationModeValue" type="xs:string"/>
+     <xs:element name="modeTimeSlot" type="xs:nonNegativeInteger"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SmartClientDREventData">
+    <xs:sequence>
+     <xs:element name="notificationTime" type="xs:dateTime"/>
+     <xs:element name="startTime" type="xs:dateTime"/>
+     <xs:element name="endTime" type="xs:dateTime"/>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="eventInfoInstances" nillable="true" type="tns:EventInfoInstance"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="EventInfoInstance">
+    <xs:sequence>
+     <xs:element name="eventInfoTypeID" type="tns:EventInfoTypeID"/>
+     <xs:element name="eventInfoName" type="xs:string"/>
+     <xs:element maxOccurs="unbounded" name="eventInfoValues" type="tns:EventInfoValue"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="EventInfoTypeID">
+    <xs:restriction base="xs:string"/>
+   </xs:simpleType>
+   <xs:complexType name="EventInfoValue">
+    <xs:sequence>
+     <xs:element name="value" type="xs:decimal"/>
+     <xs:element name="timeOffset" type="xs:unsignedInt"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GeneralInfoInstance">
+    <xs:sequence>
+     <xs:element name="infoName" type="xs:string"/>
+     <xs:element name="infoType" type="xs:string"/>
+     <xs:element maxOccurs="unbounded" name="infoValues" type="tns:GeneralInfoValue"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GeneralInfoValue">
+    <xs:sequence>
+     <xs:element name="value" type="xs:string"/>
+     <xs:element name="timeOffset" type="xs:unsignedInt"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/ParticipantAccount" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/ParticipantAccount" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfParticipantAccountIDs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="participantAccountID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfParticipantAccounts">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="participantAccount" nillable="true" type="tns:ParticipantAccount"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ParticipantAccount">
+    <xs:sequence>
+     <xs:element name="participantName" type="xs:string"/>
+     <xs:element name="userName" type="xs:string"/>
+     <xs:element minOccurs="0" name="userGroups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="programs" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="program" nillable="true" type="ns1:ProgramInfo" xmlns:ns1="http://www.openadr.org/DRAS/UtilityProgram"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="utilityGroups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="participantGroups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="DRASClients" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="clientID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="contactInformation" nillable="true" type="tns:ContactInformation"/>
+     <xs:element minOccurs="0" name="standingBids" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="bid" nillable="true" type="ns2:Bid" xmlns:ns2="http://www.openadr.org/DRAS/Bid"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="accountID" type="xs:string" use="required"/>
+   </xs:complexType>
+   <xs:complexType name="ContactInformation">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="emailAddresses" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="address" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="voiceNumbers" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="number" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="pagerNumbers" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="number" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="faxNumbers" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="number" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/DRASClient" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/DRASClient" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="DRASClient">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="clientType" type="xs:string"/>
+     <xs:element name="onLine" type="xs:boolean"/>
+     <xs:element minOccurs="0" name="programs" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="program" nillable="true" type="ns1:ProgramInfo" xmlns:ns1="http://www.openadr.org/DRAS/UtilityProgram"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="commsParams">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="connectionType" type="xs:string"/>
+        <xs:element minOccurs="0" name="clientURI" type="xs:string"/>
+        <xs:element minOccurs="0" name="clientAuthentication" type="xs:string"/>
+        <xs:element minOccurs="0" name="pollingPeriod" type="xs:unsignedLong"/>
+        <xs:element minOccurs="0" name="retryCount" type="xs:unsignedInt"/>
+        <xs:element minOccurs="0" name="retryPeriod" type="xs:unsignedLong"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="locationInformation" type="tns:Location"/>
+     <xs:element minOccurs="0" name="simpleClientResponseSchedules">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="responseSchedule" nillable="true" type="ns2:ResponseSchedule" xmlns:ns2="http://www.openadr.org/DRAS/ResponseSchedule"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+    <xs:attribute name="participantID" type="xs:string" use="required"/>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="Location">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="gridLocation" type="xs:string"/>
+     <xs:element minOccurs="0" name="address" type="xs:string"/>
+     <xs:element minOccurs="0" name="coordinate" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="latitude" type="xs:double"/>
+        <xs:element name="longitude" type="xs:double"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfDRASClients">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="drasClient" nillable="true" type="tns:DRASClient"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfCommsStatus">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="status" nillable="true" type="tns:CommsStatus"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CommsStatus">
+    <xs:sequence>
+     <xs:element name="DRASClientID" type="xs:string"/>
+     <xs:element name="status" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/Feedback" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/Feedback" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="FeedBack">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="participantID" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="DRASClientID" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="eventID" nillable="true" type="xs:string"/>
+     <xs:element name="feedback">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="value" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element name="timeStamp" type="xs:dateTime"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="ListOfFeedback">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="feedback" nillable="true" type="tns:FeedBack"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/Logs" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/Logs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfTransactionLogs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="transactionLog" nillable="true" type="tns:TransactionLog"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="TransactionLog">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="userName" type="xs:string"/>
+     <xs:element minOccurs="0" name="role" type="xs:string"/>
+     <xs:element minOccurs="0" name="timeStamp" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="transactionName" type="xs:string"/>
+     <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="result" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="ListOfDRASClientAlarms">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="drasClientAlarm" nillable="true" type="tns:DRASClientAlarm"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DRASClientAlarm">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DRASClientID" type="xs:string"/>
+     <xs:element minOccurs="0" name="timeStamp" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/ResponseSchedule" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ResponseSchedule">
+    <xs:sequence>
+     <xs:element name="nearTransitionTime" type="xs:double"/>
+     <xs:element name="operationStates">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="stateSpec" type="ns1:OperationStateSpec" xmlns:ns1="http://www.openadr.org/DRAS/ResponseSchedule"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="identifier" type="xs:string" use="required"/>
+    <xs:attribute name="programName" type="xs:string" use="required"/>
+    <xs:attribute name="DRASClientID" type="xs:anySimpleType"/>
+   </xs:complexType>
+   <xs:complexType name="OperationStateSpec">
+    <xs:sequence>
+     <xs:element name="startTime" type="xs:double"/>
+     <xs:element minOccurs="0" name="rules">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="rule" nillable="true" type="ns2:Rule" xmlns:ns2="http://www.openadr.org/DRAS/ResponseSchedule"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="Rule">
+    <xs:sequence>
+     <xs:element name="value" type="xs:string"/>
+     <xs:element name="equation" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/UtilityDREvent" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfEventIDs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="eventID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/OptOutState" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/OptOutState" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="OptOutState">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="participantID" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="DRASClients" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="DRASClientID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="eventID" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="schedule" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="timeElement" nillable="true">
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element name="start" type="xs:dateTime"/>
+           <xs:element name="end" type="xs:dateTime"/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="identifier" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="ListOfOptOutStates">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="optOutState" nillable="true" type="tns:OptOutState"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+  </types>
+  <message name="ParticipantOperator_GetResponseSchedule">
+    <part name="GetResponseSchedule" element="tns:GetResponseSchedule">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASClientInfo">
+    <part name="GetDRASClientInfo" element="tns:GetDRASClientInfo">
+    </part>
+  </message>
+  <message name="ParticipantOperator_ModifyDRASClient">
+    <part name="ModifyDRASClient" element="tns:ModifyDRASClient">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetStandingBidResponse">
+    <part name="GetStandingBidResponse" element="tns:GetStandingBidResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_ModifyDRASClientResponse">
+    <part name="ModifyDRASClientResponse" element="tns:ModifyDRASClientResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASEventStates">
+    <part name="GetDRASEventStates" element="tns:GetDRASEventStates">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SetTestMode">
+    <part name="SetTestMode" element="tns:SetTestMode">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SetDREventFeedbackResponse">
+    <part name="SetDREventFeedbackResponse" element="tns:SetDREventFeedbackResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SetTestModeResponse">
+    <part name="SetTestModeResponse" element="tns:SetTestModeResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetProgramInformationResponse">
+    <part name="GetProgramInformationResponse" element="tns:GetProgramInformationResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SetDREventFeedback">
+    <part name="SetDREventFeedback" element="tns:SetDREventFeedback">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASClientCommsStatus">
+    <part name="GetDRASClientCommsStatus" element="tns:GetDRASClientCommsStatus">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteDRASClient">
+    <part name="DeleteDRASClient" element="tns:DeleteDRASClient">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASClientInfoResponse">
+    <part name="GetDRASClientInfoResponse" element="tns:GetDRASClientInfoResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SubmitStandingBidResponse">
+    <part name="SubmitStandingBidResponse" element="tns:SubmitStandingBidResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetOptOutStates">
+    <part name="GetOptOutStates" element="tns:GetOptOutStates">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteResponseScheduleResponse">
+    <part name="DeleteResponseScheduleResponse" element="tns:DeleteResponseScheduleResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetParticipantProgramConstraintsResponse">
+    <part name="GetParticipantProgramConstraintsResponse" element="tns:GetParticipantProgramConstraintsResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_CreateOptOutState">
+    <part name="CreateOptOutState" element="tns:CreateOptOutState">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SetTestModeState">
+    <part name="SetTestModeState" element="tns:SetTestModeState">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteDRASClientProgramConstraintsResponse">
+    <part name="DeleteDRASClientProgramConstraintsResponse" element="tns:DeleteDRASClientProgramConstraintsResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASClientAlarms">
+    <part name="GetDRASClientAlarms" element="tns:GetDRASClientAlarms">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetParticipantAccountsResponse">
+    <part name="GetParticipantAccountsResponse" element="tns:GetParticipantAccountsResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_ModifyParticipantAccounts">
+    <part name="ModifyParticipantAccounts" element="tns:ModifyParticipantAccounts">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteOptOutState">
+    <part name="DeleteOptOutState" element="tns:DeleteOptOutState">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASTransactionsResponse">
+    <part name="GetDRASTransactionsResponse" element="tns:GetDRASTransactionsResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetTestModeState">
+    <part name="GetTestModeState" element="tns:GetTestModeState">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetBid">
+    <part name="GetBid" element="tns:GetBid">
+    </part>
+  </message>
+  <message name="ParticipantOperator_CreateResponseSchedule">
+    <part name="CreateResponseSchedule" element="tns:CreateResponseSchedule">
+    </part>
+  </message>
+  <message name="ParticipantOperator_CreateDRASClientResponse">
+    <part name="CreateDRASClientResponse" element="tns:CreateDRASClientResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_CreateDRASClient">
+    <part name="CreateDRASClient" element="tns:CreateDRASClient">
+    </part>
+  </message>
+  <message name="ParticipantOperator_CreateResponseScheduleResponse">
+    <part name="CreateResponseScheduleResponse" element="tns:CreateResponseScheduleResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SubmitBidResponse">
+    <part name="SubmitBidResponse" element="tns:SubmitBidResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_CreateOptOutStateResponse">
+    <part name="CreateOptOutStateResponse" element="tns:CreateOptOutStateResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASEventStatesResponse">
+    <part name="GetDRASEventStatesResponse" element="tns:GetDRASEventStatesResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASClientProgramConstraints">
+    <part name="GetDRASClientProgramConstraints" element="tns:GetDRASClientProgramConstraints">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteParticipantProgramConstraintsResponse">
+    <part name="DeleteParticipantProgramConstraintsResponse" element="tns:DeleteParticipantProgramConstraintsResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDREventFeedbackResponse">
+    <part name="GetDREventFeedbackResponse" element="tns:GetDREventFeedbackResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetResponseScheduleResponse">
+    <part name="GetResponseScheduleResponse" element="tns:GetResponseScheduleResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetTestModeStateResponse">
+    <part name="GetTestModeStateResponse" element="tns:GetTestModeStateResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetBidResponse">
+    <part name="GetBidResponse" element="tns:GetBidResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SubmitStandingBid">
+    <part name="SubmitStandingBid" element="tns:SubmitStandingBid">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SetDRASClientProgramConstraints">
+    <part name="SetDRASClientProgramConstraints" element="tns:SetDRASClientProgramConstraints">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteResponseSchedule">
+    <part name="DeleteResponseSchedule" element="tns:DeleteResponseSchedule">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteParticipantProgramConstraints">
+    <part name="DeleteParticipantProgramConstraints" element="tns:DeleteParticipantProgramConstraints">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SetTestModeStateResponse">
+    <part name="SetTestModeStateResponse" element="tns:SetTestModeStateResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASTransactions">
+    <part name="GetDRASTransactions" element="tns:GetDRASTransactions">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SetDRASClientProgramConstraintsResponse">
+    <part name="SetDRASClientProgramConstraintsResponse" element="tns:SetDRASClientProgramConstraintsResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteDRASClientProgramConstraints">
+    <part name="DeleteDRASClientProgramConstraints" element="tns:DeleteDRASClientProgramConstraints">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDREventFeedback">
+    <part name="GetDREventFeedback" element="tns:GetDREventFeedback">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SetParticipantProgramConstraintsResponse">
+    <part name="SetParticipantProgramConstraintsResponse" element="tns:SetParticipantProgramConstraintsResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteStandingBidResponse">
+    <part name="DeleteStandingBidResponse" element="tns:DeleteStandingBidResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteOptOutStateResponse">
+    <part name="DeleteOptOutStateResponse" element="tns:DeleteOptOutStateResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SetParticipantProgramConstraints">
+    <part name="SetParticipantProgramConstraints" element="tns:SetParticipantProgramConstraints">
+    </part>
+  </message>
+  <message name="ParticipantOperator_SubmitBid">
+    <part name="SubmitBid" element="tns:SubmitBid">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteDRASClientResponse">
+    <part name="DeleteDRASClientResponse" element="tns:DeleteDRASClientResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASClientCommsStatusResponse">
+    <part name="GetDRASClientCommsStatusResponse" element="tns:GetDRASClientCommsStatusResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetOptOutStatesResponse">
+    <part name="GetOptOutStatesResponse" element="tns:GetOptOutStatesResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetProgramInformation">
+    <part name="GetProgramInformation" element="tns:GetProgramInformation">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetParticipantAccounts">
+    <part name="GetParticipantAccounts" element="tns:GetParticipantAccounts">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASClientAlarmsResponse">
+    <part name="GetDRASClientAlarmsResponse" element="tns:GetDRASClientAlarmsResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_DeleteStandingBid">
+    <part name="DeleteStandingBid" element="tns:DeleteStandingBid">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetDRASClientProgramConstraintsResponse">
+    <part name="GetDRASClientProgramConstraintsResponse" element="tns:GetDRASClientProgramConstraintsResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetStandingBid">
+    <part name="GetStandingBid" element="tns:GetStandingBid">
+    </part>
+  </message>
+  <message name="ParticipantOperator_ModifyParticipantAccountsResponse">
+    <part name="ModifyParticipantAccountsResponse" element="tns:ModifyParticipantAccountsResponse">
+    </part>
+  </message>
+  <message name="ParticipantOperator_GetParticipantProgramConstraints">
+    <part name="GetParticipantProgramConstraints" element="tns:GetParticipantProgramConstraints">
+    </part>
+  </message>
+  <portType name="ParticipantOperator">
+    <operation name="CreateDRASClient" parameterOrder="CreateDRASClient">
+      <input message="tns:ParticipantOperator_CreateDRASClient">
+    </input>
+      <output message="tns:ParticipantOperator_CreateDRASClientResponse">
+    </output>
+    </operation>
+    <operation name="CreateOptOutState" parameterOrder="CreateOptOutState">
+      <input message="tns:ParticipantOperator_CreateOptOutState">
+    </input>
+      <output message="tns:ParticipantOperator_CreateOptOutStateResponse">
+    </output>
+    </operation>
+    <operation name="CreateResponseSchedule" parameterOrder="CreateResponseSchedule">
+      <input message="tns:ParticipantOperator_CreateResponseSchedule">
+    </input>
+      <output message="tns:ParticipantOperator_CreateResponseScheduleResponse">
+    </output>
+    </operation>
+    <operation name="DeleteDRASClient" parameterOrder="DeleteDRASClient">
+      <input message="tns:ParticipantOperator_DeleteDRASClient">
+    </input>
+      <output message="tns:ParticipantOperator_DeleteDRASClientResponse">
+    </output>
+    </operation>
+    <operation name="DeleteDRASClientProgramConstraints" parameterOrder="DeleteDRASClientProgramConstraints">
+      <input message="tns:ParticipantOperator_DeleteDRASClientProgramConstraints">
+    </input>
+      <output message="tns:ParticipantOperator_DeleteDRASClientProgramConstraintsResponse">
+    </output>
+    </operation>
+    <operation name="DeleteOptOutState" parameterOrder="DeleteOptOutState">
+      <input message="tns:ParticipantOperator_DeleteOptOutState">
+    </input>
+      <output message="tns:ParticipantOperator_DeleteOptOutStateResponse">
+    </output>
+    </operation>
+    <operation name="DeleteParticipantProgramConstraints" parameterOrder="DeleteParticipantProgramConstraints">
+      <input message="tns:ParticipantOperator_DeleteParticipantProgramConstraints">
+    </input>
+      <output message="tns:ParticipantOperator_DeleteParticipantProgramConstraintsResponse">
+    </output>
+    </operation>
+    <operation name="DeleteResponseSchedule" parameterOrder="DeleteResponseSchedule">
+      <input message="tns:ParticipantOperator_DeleteResponseSchedule">
+    </input>
+      <output message="tns:ParticipantOperator_DeleteResponseScheduleResponse">
+    </output>
+    </operation>
+    <operation name="DeleteStandingBid" parameterOrder="DeleteStandingBid">
+      <input message="tns:ParticipantOperator_DeleteStandingBid">
+    </input>
+      <output message="tns:ParticipantOperator_DeleteStandingBidResponse">
+    </output>
+    </operation>
+    <operation name="GetBid" parameterOrder="GetBid">
+      <input message="tns:ParticipantOperator_GetBid">
+    </input>
+      <output message="tns:ParticipantOperator_GetBidResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASClientAlarms" parameterOrder="GetDRASClientAlarms">
+      <input message="tns:ParticipantOperator_GetDRASClientAlarms">
+    </input>
+      <output message="tns:ParticipantOperator_GetDRASClientAlarmsResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASClientCommsStatus" parameterOrder="GetDRASClientCommsStatus">
+      <input message="tns:ParticipantOperator_GetDRASClientCommsStatus">
+    </input>
+      <output message="tns:ParticipantOperator_GetDRASClientCommsStatusResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASClientInfo" parameterOrder="GetDRASClientInfo">
+      <input message="tns:ParticipantOperator_GetDRASClientInfo">
+    </input>
+      <output message="tns:ParticipantOperator_GetDRASClientInfoResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASClientProgramConstraints" parameterOrder="GetDRASClientProgramConstraints">
+      <input message="tns:ParticipantOperator_GetDRASClientProgramConstraints">
+    </input>
+      <output message="tns:ParticipantOperator_GetDRASClientProgramConstraintsResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASEventStates" parameterOrder="GetDRASEventStates">
+      <input message="tns:ParticipantOperator_GetDRASEventStates">
+    </input>
+      <output message="tns:ParticipantOperator_GetDRASEventStatesResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASTransactions" parameterOrder="GetDRASTransactions">
+      <input message="tns:ParticipantOperator_GetDRASTransactions">
+    </input>
+      <output message="tns:ParticipantOperator_GetDRASTransactionsResponse">
+    </output>
+    </operation>
+    <operation name="GetDREventFeedback" parameterOrder="GetDREventFeedback">
+      <input message="tns:ParticipantOperator_GetDREventFeedback">
+    </input>
+      <output message="tns:ParticipantOperator_GetDREventFeedbackResponse">
+    </output>
+    </operation>
+    <operation name="GetOptOutStates" parameterOrder="GetOptOutStates">
+      <input message="tns:ParticipantOperator_GetOptOutStates">
+    </input>
+      <output message="tns:ParticipantOperator_GetOptOutStatesResponse">
+    </output>
+    </operation>
+    <operation name="GetParticipantAccounts" parameterOrder="GetParticipantAccounts">
+      <input message="tns:ParticipantOperator_GetParticipantAccounts">
+    </input>
+      <output message="tns:ParticipantOperator_GetParticipantAccountsResponse">
+    </output>
+    </operation>
+    <operation name="GetParticipantProgramConstraints" parameterOrder="GetParticipantProgramConstraints">
+      <input message="tns:ParticipantOperator_GetParticipantProgramConstraints">
+    </input>
+      <output message="tns:ParticipantOperator_GetParticipantProgramConstraintsResponse">
+    </output>
+    </operation>
+    <operation name="GetProgramInformation" parameterOrder="GetProgramInformation">
+      <input message="tns:ParticipantOperator_GetProgramInformation">
+    </input>
+      <output message="tns:ParticipantOperator_GetProgramInformationResponse">
+    </output>
+    </operation>
+    <operation name="GetResponseSchedule" parameterOrder="GetResponseSchedule">
+      <input message="tns:ParticipantOperator_GetResponseSchedule">
+    </input>
+      <output message="tns:ParticipantOperator_GetResponseScheduleResponse">
+    </output>
+    </operation>
+    <operation name="GetStandingBid" parameterOrder="GetStandingBid">
+      <input message="tns:ParticipantOperator_GetStandingBid">
+    </input>
+      <output message="tns:ParticipantOperator_GetStandingBidResponse">
+    </output>
+    </operation>
+    <operation name="GetTestModeState" parameterOrder="GetTestModeState">
+      <input message="tns:ParticipantOperator_GetTestModeState">
+    </input>
+      <output message="tns:ParticipantOperator_GetTestModeStateResponse">
+    </output>
+    </operation>
+    <operation name="ModifyDRASClient" parameterOrder="ModifyDRASClient">
+      <input message="tns:ParticipantOperator_ModifyDRASClient">
+    </input>
+      <output message="tns:ParticipantOperator_ModifyDRASClientResponse">
+    </output>
+    </operation>
+    <operation name="ModifyParticipantAccounts" parameterOrder="ModifyParticipantAccounts">
+      <input message="tns:ParticipantOperator_ModifyParticipantAccounts">
+    </input>
+      <output message="tns:ParticipantOperator_ModifyParticipantAccountsResponse">
+    </output>
+    </operation>
+    <operation name="SetDRASClientProgramConstraints" parameterOrder="SetDRASClientProgramConstraints">
+      <input message="tns:ParticipantOperator_SetDRASClientProgramConstraints">
+    </input>
+      <output message="tns:ParticipantOperator_SetDRASClientProgramConstraintsResponse">
+    </output>
+    </operation>
+    <operation name="SetDREventFeedback" parameterOrder="SetDREventFeedback">
+      <input message="tns:ParticipantOperator_SetDREventFeedback">
+    </input>
+      <output message="tns:ParticipantOperator_SetDREventFeedbackResponse">
+    </output>
+    </operation>
+    <operation name="SetParticipantProgramConstraints" parameterOrder="SetParticipantProgramConstraints">
+      <input message="tns:ParticipantOperator_SetParticipantProgramConstraints">
+    </input>
+      <output message="tns:ParticipantOperator_SetParticipantProgramConstraintsResponse">
+    </output>
+    </operation>
+    <operation name="SetTestMode" parameterOrder="SetTestMode">
+      <input message="tns:ParticipantOperator_SetTestMode">
+    </input>
+      <output message="tns:ParticipantOperator_SetTestModeResponse">
+    </output>
+    </operation>
+    <operation name="SetTestModeState" parameterOrder="SetTestModeState">
+      <input message="tns:ParticipantOperator_SetTestModeState">
+    </input>
+      <output message="tns:ParticipantOperator_SetTestModeStateResponse">
+    </output>
+    </operation>
+    <operation name="SubmitBid" parameterOrder="SubmitBid">
+      <input message="tns:ParticipantOperator_SubmitBid">
+    </input>
+      <output message="tns:ParticipantOperator_SubmitBidResponse">
+    </output>
+    </operation>
+    <operation name="SubmitStandingBid" parameterOrder="SubmitStandingBid">
+      <input message="tns:ParticipantOperator_SubmitStandingBid">
+    </input>
+      <output message="tns:ParticipantOperator_SubmitStandingBidResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="ParticipantOperatorBinding" type="tns:ParticipantOperator">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="CreateDRASClient">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/CreateDRASClient"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateOptOutState">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/CreateOptOutState"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateResponseSchedule">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/CreateResponseSchedule"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteDRASClient">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteDRASClient"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteDRASClientProgramConstraints">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteDRASClientProgramConstraints"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteOptOutState">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteOptOutState"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteParticipantProgramConstraints">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteParticipantProgramConstraints"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteResponseSchedule">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteResponseSchedule"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteStandingBid">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteStandingBid"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetBid">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetBid"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASClientAlarms">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASClientAlarms"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASClientCommsStatus">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASClientCommsStatus"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASClientInfo">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASClientInfo"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASClientProgramConstraints">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASClientProgramConstraints"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASEventStates">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASEventStates"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASTransactions">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASTransactions"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDREventFeedback">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDREventFeedback"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetOptOutStates">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetOptOutStates"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetParticipantAccounts">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/NewOperation"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetParticipantProgramConstraints">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetParticipantProgramConstraints"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetProgramInformation">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetProgramInformation"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetResponseSchedule">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetResponseSchedule"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetStandingBid">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetStandingBid"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetTestModeState">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetTestModeState"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ModifyDRASClient">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/ModifyDRASClient"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ModifyParticipantAccounts">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/ModifyParticipantAccounts"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SetDRASClientProgramConstraints">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SetDRASClientProgramConstraints"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SetDREventFeedback">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SetDREventFeedback"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SetParticipantProgramConstraints">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SetParticipantProgramConstraints"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SetTestMode">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SetTestMode"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SetTestModeState">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SetTestModeState"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SubmitBid">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SubmitBid"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SubmitStandingBid">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SubmitStandingBid"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ParticipantOperatorWSService">
+    <port name="ParticipantOperatorPort" binding="tns:ParticipantOperatorBinding">
+      <soap:address location="http://127.0.0.1:8080/ParticipantOperatorWS/ParticipantOperatorWS"/>
+    </port>
+  </service>
+</definitions>

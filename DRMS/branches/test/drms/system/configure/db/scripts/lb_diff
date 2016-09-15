@@ -1,0 +1,9 @@
+java -jar ~/.m2/repository/org/liquibase/liquibase-core/1.9.5/liquibase-core-1.9.5.jar \
+    --driver=com.mysql.jdbc.Driver \
+    --classpath=/Users/brian/lib/mysql-connector-java-5.1.8.jar  \
+    --url="jdbc:mysql://localhost/sge" \
+    --username=root \
+    diff \
+    --referenceUrl="jdbc:mysql://localhost/pge" \
+    --referenceUsername=root 
+

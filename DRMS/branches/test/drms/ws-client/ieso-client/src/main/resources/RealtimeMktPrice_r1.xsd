@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Realtime Market Price XML Schema -->
+<xs:schema targetNamespace="http://www.ieso.ca/schema" elementFormDefault="qualified" xmlns="http://www.ieso.ca/schema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<!-- Following stuff is report specific -->
+	<xs:include schemaLocation="Document_r1.xsd"/>
+	<xs:element name="DocBody">
+		<xs:annotation>
+			<xs:documentation>Document Body</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="DeliveryDate" type="xs:date">
+					<xs:annotation>
+						<xs:documentation>The Date for which this data applies</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DeliveryHour" type="Hour1To24" maxOccurs="24">
+					<xs:annotation>
+						<xs:documentation>The Hour for which this data applies</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="IntertieZonalPrices" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="IntertieZoneName" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>The Zone Name for which the MCP price applies</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="Prices" maxOccurs="4">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PriceType" type="xs:string">
+											<xs:annotation>
+												<xs:documentation>Type of Price (Energy, 10N, 10S, 30R etc.)</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="IntervalPrice" maxOccurs="12">
+											<xs:annotation>
+												<xs:documentation>Groups the Market clearing Price and the Interval</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:complexContent>
+													<xs:extension base="IntervalPriceValues">
+														<xs:sequence>
+															<xs:element name="Flag" type="xs:string" minOccurs="0">
+																<xs:annotation>
+																	<xs:documentation>This value indicates if the data is administered or from the DSO_RD</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+													</xs:extension>
+												</xs:complexContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- IntervalPriceValues combined Interval andMarket clearing Price -->
+	<xs:complexType name="IntervalPriceValues">
+		<xs:sequence>
+			<xs:element name="Interval" type="Interval">
+				<xs:annotation>
+					<xs:documentation>Identify the five minutes period of an hour</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<!-- Energy MW -->
+			<xs:element name="MCP" type="Money">
+				<xs:annotation>
+					<xs:documentation>Market clearing Price ($)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- interval -->
+	<xs:simpleType name="Interval">
+		<xs:annotation>
+			<xs:documentation>The Interval for which this data applies (1 to 12)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Price - 2 decimals -->
+	<xs:simpleType name="Money">
+		<xs:annotation>
+			<xs:documentation>Money - 2 decimals</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Delivery hour indicates hour ending at (1 to 24)-->
+	<xs:simpleType name="Hour1To24">
+		<xs:annotation>
+			<xs:documentation>The Hour for which this data applies (1 to 24)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:integer">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="24"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

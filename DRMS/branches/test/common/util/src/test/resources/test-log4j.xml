@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- ===================================================================== -->
+<!--                                                                       -->
+<!--  Log4j Configuration                                                  -->
+<!--                                                                       -->
+<!-- ===================================================================== -->
+
+<!-- $Id$ -->
+
+<!--
+	| For more configuration infromation and examples see the Jakarta Log4j
+	| owebsite: http://jakarta.apache.org/log4j
+-->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+
+	<!-- ================================= -->
+	<!-- Preserve messages in a local file -->
+	<!-- ================================= -->
+
+	<!-- A size based file rolling appender -->
+	<appender name="FILE"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<errorHandler
+			class="org.jboss.logging.util.OnlyOnceErrorHandler" />
+		<param name="File"
+			value="target/test.log" />
+		<param name="Append" value="true" />
+		<param name="Threshold" value="INFO" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%c] %m%n" />
+		</layout>
+	</appender>
+
+	<!-- ============================== -->
+	<!-- Append messages to the console -->
+	<!-- ============================== -->
+
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<errorHandler
+			class="org.jboss.logging.util.OnlyOnceErrorHandler" />
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="INFO" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- The default pattern: Date Priority [Category] Message\n -->
+			<param name="ConversionPattern"
+				value="%d{ABSOLUTE} %-5p [%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+	<!-- ======================================= -->
+	<!-- PSS2 Appenders                          -->
+	<!-- ======================================= 
+	<appender name="PSS2_JSP.firelog"
+		class="com.kanaeki.firelog.logger.FireLogAppender">
+		<errorHandler
+			class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p [%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="PSS2_EJB.firelog"
+		class="com.kanaeki.firelog.logger.FireLogAppender">
+		<errorHandler
+			class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p [%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="PSS2_SERVLETS.firelog"
+		class="com.kanaeki.firelog.logger.FireLogAppender">
+		<errorHandler
+			class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p [%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="PSS2_JSP"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<errorHandler
+			class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<param name="File"
+			value="${jboss.server.home.dir}/log/PSS2_JSP.log" />
+		<param name="Append" value="true" />
+		<param name="Threshold" value="DEBUG" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p [%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="PSS2_EJB"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<errorHandler
+			class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<param name="File"
+			value="${jboss.server.home.dir}/log/PSS2_EJB.log" />
+		<param name="Append" value="true" />
+		<param name="Threshold" value="DEBUG" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p [%c{1}] %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="PSS2_SERVLETS"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<errorHandler
+			class="org.apache.log4j.helpers.OnlyOnceErrorHandler" />
+		<param name="File"
+			value="${jboss.server.home.dir}/log/PSS2_SERVLETS.log" />
+		<param name="Append" value="true" />
+		<param name="Threshold" value="DEBUG" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d %-5p [%c{1}] %m%n" />
+		</layout>
+	</appender> -->
+
+    <!-- ============================== -->
+    <!-- accmgr appenders               -->
+    <!-- ==============================
+
+    <appender name="ACCMGR.firelog"
+        class="com.kanaeki.firelog.logger.FireLogAppender">
+        <errorHandler
+            class="org.jboss.logging.util.OnlyOnceErrorHandler" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%d{ABSOLUTE} %-5p [%c{1}] %m%n" />
+        </layout>
+    </appender>
+
+
+    <appender name="ACCMGR"
+        class="org.apache.log4j.DailyRollingFileAppender">
+        <errorHandler
+            class="org.jboss.logging.util.OnlyOnceErrorHandler" />
+        <param name="Append" value="true" />
+        <param name="File"
+            value="${jboss.server.home.dir}/log/ACCMGR.log" />
+        <param name="Threshold" value="DEBUG" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                value="%d{ABSOLUTE} %-5p [%c{1}] %m%n" />
+        </layout>
+    </appender> -->
+
+    <!-- ================ -->
+    <!-- Limit categories -->
+    <!-- ================ -->
+
+    <!-- Limit the org.apache category to INFO as its DEBUG is verbose -->
+<!--
+    <category name="org.apache">
+        <priority value="INFO" />
+    </category>
+-->
+
+    <!-- Limit the org.apache category to INFO as its DEBUG is verbose -->
+<!--
+    <category name="org.apache">
+        <priority value="INFO" />
+    </category>
+-->
+
+    <!-- Limit the org.jgroups category to WARN as its INFO is verbose -->
+<!--
+    <category name="org.jgroups">
+        <priority value="WARN" />
+    </category>
+-->
+
+    <!-- Limit apache axis to INFO as its DEBUG is even more verbose -->
+<!--
+    <category name="org.jboss.axis">
+        <priority value="INFO" />
+    </category>
+-->
+
+    <!-- Limit the JSR77 categories -->
+<!--
+    <category name="org.jboss.management">
+        <priority value="INFO" />
+    </category>
+-->
+
+	<category name="org.hibernate.engine.loading.LoadContexts">        
+	   <priority value="ERROR"/>     
+	</category>
+
+	<!-- ======================================= -->
+	<!-- PSS2 loggers                            -->
+	<!-- ======================================= 
+	<logger name="com.akuacom.pss2.program"
+		additivity="false">
+		<appender-ref ref="PSS2_EJB.firelog" />
+		<appender-ref ref="PSS2_EJB" />
+	</logger>
+	<logger name="com.akuacom.pss2.ws.PSS2WS" additivity="false">
+		<appender-ref ref="PSS2_SERVLETS.firelog" />
+		<appender-ref ref="PSS2_SERVLETS" />
+	</logger> -->
+
+	<!-- ============================== -->
+	<!-- accmgr loggers                 -->
+	<!-- ============================== -->
+
+	<!-- ACCMGR 
+	<logger name="com.akuacom.accmgr" additivity="false">
+		<appender-ref ref="ACCMGR.firelog" />
+		<appender-ref ref="ACCMGR" />
+	</logger> -->
+
+	<!-- ======================= -->
+	<!-- Setup the Root category -->
+	<!-- ======================= -->
+
+    <!-- CAUTION, the firelog threshold is set to debug, if you let loose this priority,
+    your firelogger will be overwhelmed. -->
+<!-- DRMS-3067
+    <logger name="com">
+        <level value="WARN" />
+    </logger>
+-->
+    <logger name="org">
+        <level value="WARN" />
+    </logger>
+
+    <logger name="org.jboss.ws.extensions.validation.SchemaExtractor">
+        <level value="ERROR" />
+    </logger>
+
+    <logger name="org.jboss.logging.util.LoggerStream">
+        <level value="FATAL"/>
+    </logger>
+
+    <logger name="org.jboss.ws.metadata.wsdl.WSDLDefinitions">
+        <level value="ERROR"/>
+    </logger>
+
+    <logger name="STDOUT">
+        <level value="WARN"/>
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <logger name="org.jboss.ejb.plugins.LogInterceptor">
+        <level value="FATAL"/>
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </logger>
+
+
+    <!-- com.ibm is verbose on debug for wsdl component -->
+    <logger name="com.ibm">
+        <level value="INFO"/>
+    </logger>
+
+   <logger name="com.arjuna.ats.internal.jta.resources.arjunacore.XAResourceRecord">
+    <!-- Print only messages of level info or above in the package com.arjuna.ats.internal.jta.resources.arjunacore -->
+    <level value="ERROR"/> 
+   </logger>
+
+   <logger name="com.arjuna.ats.internal.jta.resources.arjunacore.norecoveryxa">
+    <!-- Print only messages of level info or above in the package com.arjuna.ats.internal.jta.resources.arjunacore -->
+    <level value="ERROR"/> 
+   </logger>
+
+
+   <logger name="org.jboss.ws.core.soap.EnvelopeBuilderDOM">
+    <level value="ERROR"/> 
+   </logger>
+   
+
+   <logger name="com.akuacom.accmgr.wsclient">
+    <level value="ERROR"/> 
+   </logger>
+
+
+
+   
+   
+
+    <root>
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</root>
+
+</log4j:configuration>

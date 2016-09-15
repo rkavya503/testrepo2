@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:DR-034A-22w Schema.xsd" defaultLocale="en">
+    <!-- 
+        These are example instances the DRAS data structures definied in file DR-034E-??.xml
+    -->
+
+    <!-- 
+         Below is an example DRAS message expressed as a CSML instance of the 
+        "0-DRAS-EventState-2008-1" type.
+        
+        This is the XML that would be used as the contents of BACnet/WS messages: 
+        today using setValue/getValue messages into a "String" node, and later
+        as the ontents of the future setComplexValue/getComplexValue messages.
+    -->
+
+    <Sequence name="eventState" type="0-DRAS-EventState-2008-1">
+        <String name="programName" value="CPP"/>
+        <Unsigned name="eventModNumber" value="0"/>
+        <String name="eventIdentifier" value="35648"/>
+        <String name="drasClientID" value="DRC-245"/>
+        <Unsigned name="eventStateID" value="1156075897843451309"/>
+        <String name="schemaVersion" value="20080509"/>
+        <String name="drasName" value="Akua003"/>
+        <Boolean name="testEvent" value="false"/>
+        <Boolean name="offLine" value="false"/>
+        <Sequence name="simpleDRModeData">
+            <Enumerated name="EventStatus" value="ACTIVE"/>
+            <Enumerated name="OperationModeValue" value="MODERATE"/>
+            <Real name="currentTime" value="12675.5"/>
+            <Array name="operationModeSchedule">
+                <Sequence>
+                    <Enumerated name="OperationModeValue" value="HIGH"/>
+                    <Unsigned name="modeTimeSlot" value="0"/>
+                </Sequence>
+                <Sequence>
+                    <Enumerated name="OperationModeValue" value="MODERATE"/>
+                    <Unsigned name="modeTimeSlot" value="10000"/>
+                </Sequence>
+                <Sequence>
+                    <Enumerated name="OperationModeValue" value="NORMAL"/>
+                    <Unsigned name="modeTimeSlot" value="100000"/>
+                </Sequence>
+            </Array>
+        </Sequence>
+        <Sequence name="drEventData">
+            <DateTime name="notificationTime" value="2008-03-06T09:15:00.00"/>
+            <DateTime name="startTime" value="2008-03-06T12:00:00.00"/>
+            <DateTime name="endTime" value="2008-03-06T16:30:00.00"/>
+            <Array name="eventInfoInstances">
+                <Sequence>
+                    <Enumerated name="eventInfoTypeID" value="PRICE_ABSOLUTE"/>
+                    <String name="eventInfoName" value="daily minimum price"/>
+                    <Array name="eventInfoValues">
+                        <Sequence>
+                            <Real name="value" value="15.5"/>
+                            <Unsigned name="timeOffset" value="0"/>
+                        </Sequence>
+                        <Sequence>
+                            <Real name="value" value="20.0"/>
+                            <Unsigned name="timeOffset" value="20000"/>
+                        </Sequence>
+                        <Sequence>
+                            <Real name="value" value="25.0"/>
+                            <Unsigned name="timeOffset" value="30000"/>
+                        </Sequence>
+                        <Sequence>
+                            <Real name="value" value="10.0"/>
+                            <Unsigned name="timeOffset" value="40000"/>
+                        </Sequence>
+                    </Array>
+                </Sequence>
+                <Sequence>
+                    <Enumerated name="eventInfoTypeID" value="PRICE_ABSOLUTE"/>
+                    <String name="eventInfoName" value="daily maximum price"/>
+                    <Array name="eventInfoValues">
+                        <Sequence>
+                            <Real name="value" value="30.0"/>
+                            <Unsigned name="timeOffset" value="0"/>
+                        </Sequence>
+                        <Sequence>
+                            <Real name="value" value="45.0"/>
+                            <Unsigned name="timeOffset" value="20000"/>
+                        </Sequence>
+                        <Sequence>
+                            <Real name="value" value="60.0"/>
+                            <Unsigned name="timeOffset" value="30000"/>
+                        </Sequence>
+                        <Sequence>
+                            <Real name="value" value="15.0"/>
+                            <Unsigned name="timeOffset" value="40000"/>
+                        </Sequence>
+                    </Array>
+                </Sequence>
+                <Sequence>
+                    <Enumerated name="eventInfoTypeID" value="LOAD_AMOUNT"/>
+                    <String name="eventInfoName" value="shed value"/>
+                    <Array name="eventInfoValues">
+                        <Sequence>
+                            <Real name="value" value="100.0"/>
+                            <Unsigned name="timeOffset" value="0"/>
+                        </Sequence>
+                        <Sequence>
+                            <Real name="value" value="200.0"/>
+                            <Unsigned name="timeOffset" value="30000"/>
+                        </Sequence>
+                    </Array>
+                </Sequence>
+            </Array>
+        </Sequence>
+    </Sequence>
+    
+    <!-- 
+        Below is an example DRAS message expressed as a CSML instance of the 
+        "0-DRAS-EventStateConfirmation-2008-1" type.
+        
+        This is the XML that would be used as the contents of BACnet/WS messages: 
+        today using setValue/getValue messages into a "String" node, and later
+        as the ontents of the future setComplexValue/getComplexValue messages.
+    -->
+    
+    <Sequence name="eventStateConfirmation" type="0-DRAS-EventStateConfirmation-2008-1">
+        <String name="programName" value="CPP" />
+        <Unsigned name="eventModNumber"  value="0"/>
+        <String name="eventIdentifier" value="35648" />
+        <String name="drasClientID" value="DRC-245"/>
+        <Unsigned name="eventStateID" value="1156075897843451309"/>
+        <String name="schemaVersion" value="20080509"/>  
+        <Enumerated name="operationModeValue" value="MODERATE" />
+        <Boolean name="optInStatus"  value="true"/>
+        <Real name="currentTime"  value="12675.5"/>
+        <String name="drasName" value="Akua003"/>
+    </Sequence>
+    
+    
+
+</CSML>

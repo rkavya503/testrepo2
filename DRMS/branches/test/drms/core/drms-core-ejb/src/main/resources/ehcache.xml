@@ -1,0 +1,17 @@
+<ehcache>
+    <cache name="clientConversationStateCache"
+           maxElementsInMemory="2000"
+           eternal="false"
+           timeToIdleSeconds="600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+            />
+     <cache name="geInterfaceCache"
+         maxElementsInMemory="2000"
+         eternal="false"
+         timeToIdleSeconds="600"
+         timeToLiveSeconds="0"
+         overflowToDisk="false"
+          />
+</ehcache>
+

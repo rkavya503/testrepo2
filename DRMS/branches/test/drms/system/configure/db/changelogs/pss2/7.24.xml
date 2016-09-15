@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	
+	<changeSet id="1" author="Ram">
+        <comment>
+               VEN online offline status 
+        </comment>
+		<sql>	
+			CREATE  TABLE venresourcestatus (
+			  UUID VARCHAR(250) NOT NULL ,
+			  creationTime TIMESTAMP,
+			  creator VARCHAR(45),
+			  modifiedTime TIMESTAMP,
+			  modifier VARCHAR(45),
+			  version INT,
+			  venId VARCHAR(250) NOT NULL,
+			  participantName VARCHAR(250),
+			  resourceName VARCHAR(250) NOT NULL,
+			  isResourceOnline boolean DEFAULT false,
+			  reportedTime TIMESTAMP,
+			  PRIMARY KEY (UUID));
+	   </sql>
+    </changeSet>
+
+    
+	
+</databaseChangeLog>

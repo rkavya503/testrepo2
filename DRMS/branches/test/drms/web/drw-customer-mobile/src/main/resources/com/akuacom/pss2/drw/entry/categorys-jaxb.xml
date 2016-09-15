@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:categotyList xmlns:ns2="com.akuacom.drweb">
+    <categorys>
+        <category>
+            <name>SAI_RESIDENTIAL_ACTIVE</name>
+            <programName>SAI</programName>
+			<program>CPP</program>
+            <products>
+            </products>
+            <active>true</active>
+            <eventType>DR</eventType>
+        </category>
+        <category>
+            <name>SAI_RESIDENTIAL_SCHEDULED</name>
+			<programName>SAI</programName>
+            <program>CPP</program>
+            <products>
+            </products>
+            <active>false</active>
+            <eventType>DR</eventType>
+        </category>
+		
+		<category>
+            <name>SPD_RESIDENTIAL_ACTIVE</name>
+            <programName>SPD</programName>
+			<program>SPD</program>
+            <products>
+            </products>
+            <active>true</active>
+            <eventType>DR</eventType>
+        </category>
+        <category>
+            <name>SPD_RESIDENTIAL_SCHEDULED</name>
+			<programName>SPD</programName>
+            <program>SPD</program>
+            <products>
+            </products>
+            <active>false</active>
+            <eventType>DR</eventType>
+        </category>
+		
+		<category>
+            <name>SDP_RESIDENTIAL_ACTIVE</name>
+            <programName>SDP</programName>
+			<program>SDP</program>
+            <products>
+				<product>SDP</product>
+            </products>
+            <active>true</active>
+            <eventType>IR</eventType>
+        </category>
+        <category>
+            <name>SDP_RESIDENTIAL_SCHEDULED</name>
+			<programName>SDP</programName>
+            <program>SDP</program>
+            <products>
+				<product>SDP</product>
+            </products>
+            <active>false</active>
+            <eventType>IR</eventType>
+        </category>
+		
+		<category>
+            <name>API_COMMERCIAL_ACTIVE</name>
+            <programName>API</programName>
+			<program>API</program>
+            <products>
+				<product>API</product>
+            </products>
+            <active>true</active>
+            <eventType>IR</eventType>
+        </category>
+        <category>
+            <name>API_COMMERCIAL_SCHEDULED</name>
+			<programName>API</programName>
+            <program>API</program>
+            <products>
+				<product>API</product>
+            </products>
+            <active>false</active>
+            <eventType>IR</eventType>
+        </category>
+		
+		<category>
+            <name>CBP_COMMERCIAL_ACTIVE</name>
+            <programName>CBP</programName>
+			<program>CBP</program>
+            <products>
+				<product>CBP 1-4 DO</product>
+				<product>CBP 2-6 DO</product>
+				<product>CBP 4-8 DO</product>
+				<product>CBP 1-4 DA</product>
+				<product>CBP 2-6 DA</product>
+				<product>CBP 4-8 DA</product>
+            </products>
+            <active>true</active>
+            <eventType>IR</eventType>
+        </category>
+        <category>
+            <name>CBP_COMMERCIAL_SCHEDULED</name>
+			<programName>CBP</programName>
+            <program>CBP</program>
+            <products>
+				<product>CBP 1-4 DO</product>
+				<product>CBP 2-6 DO</product>
+				<product>CBP 4-8 DO</product>
+				<product>CBP 1-4 DA</product>
+				<product>CBP 2-6 DA</product>
+				<product>CBP 4-8 DA</product>
+            </products>
+            <active>false</active>
+            <eventType>IR</eventType>
+        </category>
+		
+		<category>
+            <name>DBP_COMMERCIAL_ACTIVE</name>
+            <programName>DBP DA</programName>
+			<program>DBP</program>
+            <products>
+            </products>
+            <active>true</active>
+            <eventType>DR</eventType>
+        </category>
+        <category>
+            <name>DBP_COMMERCIAL_SCHEDULED</name>
+			<programName>DBP DA</programName>
+            <program>DBP</program>
+            <products>
+            </products>
+            <active>false</active>
+            <eventType>DR</eventType>
+        </category>
+		
+		<category>
+            <name>SDP_COMMERCIAL_ACTIVE</name>
+            <programName>SDP</programName>
+			<program>SDP</program>
+            <products>
+				<product>APS</product>
+				<product>APS-E</product>
+            </products>
+            <active>true</active>
+            <eventType>IR</eventType>
+        </category>
+        <category>
+            <name>SDP_COMMERCIAL_SCHEDULED</name>
+			<programName>SDP</programName>
+            <program>SDP</program>
+            <products>
+				<product>APS</product>
+				<product>APS-E</product>
+            </products>
+            <active>false</active>
+            <eventType>IR</eventType>
+        </category>
+		
+		<category>
+            <name>BIP_COMMERCIAL_ACTIVE</name>
+            <programName>BIP</programName>
+			<program>BIP</program>
+            <products>
+				<product>BIP</product>
+				<product>BIP2013</product>
+            </products>
+            <active>true</active>
+            <eventType>IR</eventType>
+        </category>
+        <category>
+            <name>BIP_COMMERCIAL_SCHEDULED</name>
+			<programName>BIP</programName>
+            <program>BIP</program>
+            <products>
+				<product>BIP</product>
+				<product>BIP2013</product>
+            </products>
+            <active>false</active>
+            <eventType>IR</eventType>
+        </category>
+    </categorys>
+</ns2:categotyList>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>system-parent</artifactId>
+		<groupId>com.akuacom.drms.system</groupId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+	<groupId>com.akuacom.drms.it</groupId>
+	<artifactId>it-parent</artifactId>
+	<version>7.26-SNAPSHOT</version>
+	<name>it-parent</name>
+	<packaging>pom</packaging>
+	<description />
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<modules>
+		<module>integration-tests</module>
+		<module>performance-tests</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.akuacom.drms.ear</groupId>
+			<artifactId>drms-ear</artifactId>
+			<version>7.26-SNAPSHOT</version>
+			<type>ear</type>
+			<scope>provided</scope>
+		</dependency>		
+		<dependency>
+			<groupId>com.akuacom.drms.ear</groupId>
+			<artifactId>pss2-destinations-service</artifactId>
+			<type>sar</type>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven2-plugin</artifactId>
+					<configuration>
+						<container>
+							<timeout>900000</timeout>
+							<containerId>jboss51x</containerId>
+							<home>${jbossHome}</home>
+							<!-- <zipUrlInstaller> <url>http://downloads.sourceforge.net/jboss/jboss-4.2.3.GA-jdk6.zip?big_mirror=1</url>
+								<installDir>${user.home}/dev/cargo/installs</installDir> </zipUrlInstaller> -->
+						</container>
+
+						<!-- Standalone would be nice, but there is a bug where the logging
+							is too verbose. https://akuacom.jira.com/browse/DRMS-937 -->
+						<!-- <configuration> <type>standalone</type> <home>${project.build.directory}/jboss</home>
+							<properties> <cargo.jboss.configuration>pss2</cargo.jboss.configuration>
+							</properties> </configuration> -->
+						<configuration>
+							<type>existing</type>
+							<home>${jbossServerConfig}</home>
+							<properties>
+								<cargo.jboss.configuration>${drmsEnv}</cargo.jboss.configuration>
+								<cargo.jvmargs>-Xmx1026m
+									-Xms512m
+									-XX:MaxPermSize=256m
+									-XX:PermSize=196m
+									-Djava.net.preferIPv4Stack=true</cargo.jvmargs>
+							</properties>
+						</configuration>
+						<deployer>
+							<type>installed</type>
+							<deployables>
+								<deployable>
+									<!-- <location>${project.build.directory}/${earName}.ear</location> -->
+									<groupId>com.akuacom.drms.ear</groupId>
+									<artifactId>drms-ear</artifactId>
+									<type>ear</type>
+								</deployable>								
+								<deployable>
+									<groupId>com.akuacom.drms.ear</groupId>
+									<artifactId>pss2-destinations-service</artifactId>
+									<type>sar</type>
+								</deployable>
+							</deployables>
+						</deployer>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<!-- include modules here, however activate profiles in these modules using
+		properties below -->
+
+	<profiles>
+		<profile>
+			<!-- Deploys the ear(s) to the Installed JBoss directory -->
+			<id>jboss</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>uber</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven2-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>earDeploy</id>
+								<phase>package</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>install</phase>
+								<configuration>
+									<tasks>
+										<copy file="${settings.localRepository}/com/akuacom/common/drms-logger/${pom.version}/drms-logger-${pom.version}.jar" todir="${env.JBOSS_HOME}/server/${drmsEnv}/lib" />
+									</tasks>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>sce</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.akuacom.drms.ear</groupId>
+					<artifactId>drpro</artifactId>
+					<type>ear</type>
+					<version>${project.version}</version>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.cargo</groupId>
+						<artifactId>cargo-maven2-plugin</artifactId>
+						<configuration>
+							<deployer>
+							<type>installed</type>
+							<deployables>
+								<deployable>
+									<!-- <location>${project.build.directory}/${earName}.ear</location> -->
+									<groupId>com.akuacom.drms.ear</groupId>
+									<artifactId>drms-ear</artifactId>
+									<type>ear</type>
+								</deployable>								
+								<deployable>
+									<groupId>com.akuacom.drms.ear</groupId>
+									<artifactId>drpro</artifactId>
+									<type>ear</type>
+								</deployable>
+								<deployable>
+									<groupId>com.akuacom.drms.ear</groupId>
+									<artifactId>pss2-destinations-service</artifactId>
+									<type>sar</type>
+								</deployable>
+							</deployables>
+						</deployer>
+						</configuration>
+						<executions>
+							<execution>
+								<id>earDeploy</id>
+								<phase>package</phase>
+								<goals>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

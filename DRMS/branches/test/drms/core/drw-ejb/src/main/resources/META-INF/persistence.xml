@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	version="1.0">
+	<persistence-unit name="drw" transaction-type="JTA">
+		<jta-data-source>java:/mysql-drwebsite-ds</jta-data-source>
+
+		<class>com.akuacom.pss2.drw.core.Block</class>
+		<class>com.akuacom.pss2.drw.core.Event</class>
+		<class>com.akuacom.pss2.drw.core.EventDetail</class>
+		<class>com.akuacom.pss2.drw.core.Location</class>
+		<class>com.akuacom.pss2.drw.core.Program</class>
+		<class>com.akuacom.pss2.drw.core.ZipCode</class>
+		<class>com.akuacom.pss2.drw.core.ZipCodeEntry</class>
+		<class>com.akuacom.pss2.drw.core.LocationKmlEntry</class>
+		<class>com.akuacom.pss2.drw.core.DRWebsiteProperty</class>
+
+		<properties>
+		</properties>
+	</persistence-unit>
+</persistence>

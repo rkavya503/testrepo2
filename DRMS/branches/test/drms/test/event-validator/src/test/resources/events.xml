@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+ <event start="0" stop="60">
+ 	<event-data event-status="FAR" operation-mode="NORMAL"/>
+ 	<event-data event-status="ACTIVE" operation-mode="NORMAL"/>
+ </event>
+ <event start="60" stop="70">
+ 	<event-data event-status="ACTIVE" operation-mode="NORMAL"/>
+ 	<event-data event-status="ACTIVE" operation-mode="NORMAL"/>
+ </event>
+</events>

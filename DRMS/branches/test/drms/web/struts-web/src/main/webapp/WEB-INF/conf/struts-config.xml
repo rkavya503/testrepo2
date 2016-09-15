@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+<struts-config>
+    <!-- 
+========== Action Form Definitions ============================== -->
+    <form-beans>
+        <form-bean name="CommDeviceListForm" type="com.akuacom.pss2.web.commdev.CommDevListForm"/>
+        <form-bean name="CommDevDetailForm" type="com.akuacom.pss2.web.commdev.CommDevDetailForm"/>
+        <form-bean name="sceAccountForm" type="com.akuacom.pss2.web.commdev.SceAccountsForm"/>
+        <form-bean name="LogFilterForm" type="com.akuacom.pss2.web.logs.LogListForm"/>
+        <form-bean name="LogDetailForm" type="com.akuacom.pss2.web.logs.LogDetailForm"/>
+        <form-bean name="EventListForm" type="com.akuacom.pss2.web.event.EventListForm"/>
+        <form-bean name="EventDetailForm" type="com.akuacom.pss2.web.event.EventDetailForm"/>
+        <form-bean name="DbpEventDetailForm" type="com.akuacom.pss2.web.event.dbp.DbpEventDetailForm"/>
+        <form-bean name="DbpNoBidEventDetailForm" type="com.akuacom.pss2.web.event.dbp.DbpNoBidEventDetailForm"/>
+        <form-bean name="ButtonOnlyEventDetailForm" type="com.akuacom.pss2.web.event.ButtonOnlyEventDetailForm"/>
+        <form-bean name="SCERTPEventDetailForm" type="com.akuacom.pss2.web.event.scertp.SCERTPEventDetailForm"/>
+        <form-bean name="IssueEventDetailForm" type="com.akuacom.pss2.web.event.IssueEventDetailForm"/>
+        <form-bean name="SignalListForm" type="com.akuacom.pss2.web.event.signal.SignalListForm"/>
+        <form-bean name="SignalDetailForm" type="com.akuacom.pss2.web.event.signal.SignalDetailForm"/>
+        <form-bean name="WeatherDetailForm" type="com.akuacom.pss2.web.report.WeatherDetailForm"/>
+        <form-bean name="ProgramParticipantsForm" type="com.akuacom.pss2.web.program.ProgramForm"/>
+        <form-bean name="AboutForm" type="com.akuacom.pss2.web.about.AboutForm"/>
+        <form-bean name="OptionsForm" type="com.akuacom.pss2.web.options.OptionsForm"/>
+        <form-bean name="EmailsForm" type="com.akuacom.pss2.web.options.EmailsForm"/>
+        <form-bean name="OptionsContactsForm" type="com.akuacom.pss2.web.options.OptionsContactsForm"/>
+        <form-bean name="OptionsAboutForm" type="com.akuacom.pss2.web.options.OptionsAboutForm"/>
+        <form-bean name="OptionsPropertyForm" type="com.akuacom.pss2.web.options.OptionsPropertyForm"/>
+        <form-bean name="OptionsSignalForm" type="com.akuacom.pss2.web.options.OptionsSignalForm"/>
+        <!-- <form-bean name="EventSignalReportForm" type="com.akuacom.pss2.web.report.EventSignalReportForm"/> -->
+        <!-- <form-bean name="EventListReportForm" type="com.akuacom.pss2.web.report.EventListReportForm"/> -->
+        <!-- <form-bean name="EventParticipantListReportForm" type="com.akuacom.pss2.web.report.EventParticipantListReportForm"/> -->
+        <form-bean name="NewsForm" type="com.akuacom.pss2.web.news.NewsForm"/>
+        <form-bean name="AccountsReportForm" type="com.akuacom.pss2.web.report.AccountsReportForm"/>
+        <form-bean name="ObixOnlineReportForm" type="com.akuacom.pss2.web.report.ObixOnlineReportForm"/>
+       <!--  <form-bean name="EventParticipationForm" type="com.akuacom.pss2.web.report.EventParticipationReportForm"/> -->
+        <!-- <form-bean name="ClientParticipationForm" type="com.akuacom.pss2.web.report.ClientParticipationReportForm"/> -->
+        <form-bean name="DBPEventCreationForm" type="com.akuacom.pss2.web.report.DBPEventCreationReportForm"/>
+        <!--  form-bean name="OffLineForm" type="com.akuacom.pss2.web.report.OffLineReportForm"/-->
+        <form-bean name="WeatherForm" type="com.akuacom.pss2.web.report.WeatherReportForm"/>
+        <form-bean name="ProgramMatrixForm" type="com.akuacom.pss2.web.program.ProgramMatrixForm"/>
+        <form-bean name="EditBidForm" type="com.akuacom.pss2.web.event.dbp.EditBidForm"/>
+        <form-bean name="NSSettingsForm" type="com.akuacom.pss2.web.nssettings.NSSettingsForm"/>
+        <form-bean name="DataCreatorForm" type="com.akuacom.pss2.web.partdata.DataCreatorForm"/>
+        <form-bean name="DbpSimulatorForm" type="com.akuacom.pss2.web.options.DbpSimulatorForm"/>
+        <form-bean name="VaroliiTestForm" type="com.akuacom.pss2.web.options.VaroliiTestForm"/>
+    </form-beans>
+    <global-exceptions>
+        <exception key="global.errors.Exception" type="java.lang.Exception" path="tile.error"/>
+    </global-exceptions>
+
+    <!-- 
+========== Action Mapping Definitions ============================== -->
+    <action-mappings>
+        <!-- Session related actions. -->
+        <action path="/index" type="com.akuacom.pss2.web.session.LoginAction">
+            <forward name="success" path="/uoProgram.do" redirect="true"/>
+            <forward name="logout" path="/logout.do" redirect="true"/>
+        </action>
+
+        <action path="/logout" type="com.akuacom.pss2.web.session.LogoutAction">
+            <forward name="success" path="/Login" redirect="true"/>
+        </action>
+
+        <action path="/sce_rtp_import" type="org.apache.struts.actions.ForwardAction" parameter="/WEB-INF/jsp/sce_rtp_import.jsp">
+        </action>
+
+        <!-- To Display to Tabs for each page that has a tab. -->
+        <action path="/tabs" type="com.akuacom.pss2.web.tabs.TabsAction">
+            <forward name="success" path="/WEB-INF/jsp/tile-tabs.jsp"/>
+        </action>
+
+        <action path="/clientsMap" name="CommDeviceListForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.commdev.CommDevMapAction"
+                scope="request" validate="false">
+            <forward name="success" path="tile.clientMap"/>
+            <forward name="export" path="/WEB-INF/jsp/commdev/commDevList-body.jsp"/>
+            <forward name="deleted" path="/clientsMap.do" redirect="true"/>
+        </action>
+
+        <action path="/participantsMap" name="CommDeviceListForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.commdev.CommDevMapPartAction"
+                scope="request" validate="false">
+            <forward name="success" path="tile.participantsMap"/>
+            <forward name="export" path="/WEB-INF/jsp/commdev/commDevList-body.jsp"/>
+            <forward name="deleted" path="/participantsMap.do" redirect="true"/>
+        </action>
+
+        <action path="/opdash" name="CommDeviceListForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.commdev.CommDevMapAction"
+                scope="request" validate="false">
+            <forward name="success" path="tile.opdash"/>
+            <forward name="export" path="/WEB-INF/jsp/commdev/commDevList-body.jsp"/>
+            <forward name="deleted" path="/participantsMap.do" redirect="true"/>
+        </action>
+
+        <action path="/export" name="CommDeviceListForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.commdev.CommDevMapAction"
+                scope="request" validate="false">
+        </action>
+
+        <action path="/commDevDetail"
+                name="CommDevDetailForm"
+                parameter="dispatch"
+                input="tile.commDevDetail"
+                type="com.akuacom.pss2.web.commdev.CommDevDetailAction"
+                scope="request"  validate="true"
+            >
+            <forward name="success" path="tile.commDevDetail" />
+            <forward name="reset" path="tile.commDevEditPassword" redirect="true" />
+            <forward name="edit" path="tile.commDevEdit" redirect="true"  />
+            <forward name="editPassword" path="tile.commDevEditPassword" redirect="true"  />
+            <forward name="view" path="tile.commDevView"/>
+            <forward name="parent" path="/participantsMap.do" redirect="true"/>
+            <forward name="parentMap" path="/participantsMap.do" redirect="true"/>
+
+        </action>
+
+        <action path="/commDevDetailReset"
+                name="CommDevDetailForm"
+                parameter="dispatch"
+                input="tile.commDevEditPassword"
+                type="com.akuacom.pss2.web.commdev.CommDevDetailAction"  
+                scope="request"  validate="true"
+            >
+            <forward name="success" path="tile.commDevDetail" />
+            <forward name="reset" path="tile.commDevEditPassword" redirect="true" />
+            <forward name="edit" path="tile.commDevEdit" redirect="true"  />
+            <forward name="editPassword" path="tile.commDevEditPassword" redirect="true"  />
+            <forward name="view" path="tile.commDevView"/>
+            <forward name="parent" path="/participantsMap.do" redirect="true"/>
+            <forward name="parentMap" path="/participantsMap.do" redirect="true"/>
+      
+        </action>
+        
+        <!-- For Program/Event Tab for UtilOperator -->
+        <action path="/uoProgram" name="EventListForm"
+                parameter="dispatch"
+                type="com.akuacom.pss2.web.uohome.UOProgramAction"
+                id = "program"
+                scope="session"
+              >
+            <forward name="success" path="tile.uohome" />
+            <forward name="export" path="/WEB-INF/jsp/uohome/uohome-body.jsp"/>
+            <forward name="deleteEdit" path="tile.programDeleteEdit" redirect="true" />
+            <forward name="cancel" path="tile.uohome" redirect="true" />
+            <forward name="delete" path="tile.uohome" redirect="true" />
+            <forward name="updated" path="/uoProgram.do" redirect="true"/>
+        </action>
+        
+        <action path="/program" name="ProgramParticipantsForm"
+                     input="tile.programCloneEdit"
+                     parameter="dispatch"
+                     type="com.akuacom.pss2.web.program.ProgramAction"
+                     scope="request"
+                     validate="true" >
+            <forward name="list" path="tile.program" />
+            <forward name="create" path="tile.programDetail" />
+            <forward name="cloneEdit" path="tile.programCloneEdit" redirect="true" />
+            <forward name="clone" path="tile.programCloneEdit" redirect="true" />
+        
+            <forward name="delete" path="tile.programDeleteEdit" redirect="true" />
+            <forward name="edit" path="tile.programDetail"/>
+            <forward name="export" path="/WEB-INF/jsp/program/programParticipants-body.jsp"/>
+        </action>
+        
+
+        <action path="/sceAccounts" name="sceAccountForm" parameter="dispatch"
+                input="tile.sceAccounts" scope="request"
+                type="com.akuacom.pss2.web.commdev.SceAccountsAction">
+            <forward name="success" path="tile.sceAccounts"/>
+            <forward name="parent" path="/commDevDetail.do"/>
+        </action>
+
+        <!-- For Program/Event Tab -->
+        <action path="/eventList" name="EventListForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.EventListAction">
+            <forward name="success" path="tile.eventList"/>
+            <forward name="updated" path="/eventList.do" redirect="true"/>
+             <!--<forward name="deleteEdit" path="tile.programDeleteEdit" redirect="true" /> -->
+            <forward name="delete" path="tile.programDeleteEdit" redirect="true"/>
+
+        </action>
+
+        <action path="/uoParticipant" name="ProgramParticipantsForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.uohome.UOParticipantAction">
+               <forward name="success" path="tile.clientMap"/>
+        </action>
+
+        <action path="/uoEvent" name="EventListForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.uohome.UOEventAction">
+            <forward name="success" path="tile.uoeventList"/>
+            <forward name="success2" path="/eventList.do"/>
+            <forward name="create" path="tile.eventTemplate"/>
+            <forward name="view" path="/cppEventDetail.do"/>
+            <forward name="deleteEdit" path="tile.programDeleteEdit" redirect="true" />
+            <forward name="delete" path="/uoEvent.do" redirect="true"/>
+            <forward name="export" path="/export.do?dispatch=exportEvents"/>
+        </action>
+
+        <action path="/eventDetail" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.EventDetailAction">
+            <forward name="deleteEdit" path="tile.programDeleteEdit" redirect="true" />
+            <forward name="CPPSchedulePage" path="/cppEventDetail.do"/>
+            <forward name="DBPSchedulePage" path="/dbpEventDetail.do"/>
+            <forward name="DBPNoBidSchedulePage" path="/dbpNoBidEventDetail.do"/>
+            <forward name="IssueSchedulePage" path="/issueEventDetail.do"/>
+            <forward name="DemoSchedulePage" path="/uoEvent.do"/>
+            <forward name="TestSchedulePage" path="/testEventDetail.do"/>
+            <forward name="ButtonOnlySchedulePage" path="/buttonOnlyEventDetail.do"/>
+            <forward name="SCERTPSchedulePage" path="/sceRTPEventDetail.do"/>
+            <forward name="parent" path="/eventList.do" redirect="true"/>
+        </action>
+        
+        <!-- Participants Selection For Event Dispatch -->
+        <action path="/dispatchEventDetail" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.EventDetailDispatchAction">
+            <forward name="CPPSchedulePage" path="/cppEventDetail.do"/>
+            <forward name="FastDRSchedulePage" path="/fastdrEventDetail.do"/>
+            <forward name="FastDRNotificationPage" path="/fastdrEventDetail.do"/>
+            <forward name="DBPSchedulePage" path="/dbpEventDetail.do"/>
+            <forward name="DBPNoBidSchedulePage" path="/dbpNoBidEventDetail.do"/>
+            <forward name="IssueSchedulePage" path="/issueEventDetail.do"/>
+            <forward name="DemoSchedulePage" path="/uoEvent.do"/>
+            <forward name="TestSchedulePage" path="/testEventDetail.do"/>
+            <forward name="ButtonOnlySchedulePage" path="/buttonOnlyEventDetail.do"/>
+            <forward name="SCERTPSchedulePage" path="/sceRTPEventDetail.do"/>
+            <forward name="parent" path="/eventList.do" redirect="true"/>
+        </action>
+        
+        <action path="/cppEventDetail" name="EventDetailForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.BasicEventDetailAction"
+                input="tile.cppEventDetail">
+            <forward name="success" path="tile.cppEventDetail"/>
+            <forward name="view" path="tile.cppEventView"/>
+            <forward name="confirmView" path="tile.cppConfirmEventView"/>
+            <forward name="viewRDS" path="tile.uoevent"/>
+            <forward name="parent" path="/uoEvent.do" redirect="true"/>
+        </action>
+
+        <action path="/fastdrEventDetail" name="EventDetailForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.BasicEventDetailAction"
+                input="tile.cppEventDetail">
+            <forward name="success" path="tile.cppEventDetail"/>
+            <forward name="view" path="tile.cppEventView"/>
+            <forward name="confirmView" path="tile.cppConfirmEventView"/>
+            <forward name="viewRDS" path="tile.uoevent"/>
+            <forward name="parent" path="/uoEvent.do" redirect="true"/>
+        </action>
+
+        <action path="/dbpEventDetail" name="DbpEventDetailForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.dbp.DbpEventDetailAction"
+                input="tile.dbpEventDetail">
+            <forward name="success" path="tile.dbpEventDetail"/>
+            <forward name="view" path="tile.dbpEventView"/>
+            <forward name="parent" path="/uoProgram.do" redirect="true"/>
+        </action>
+
+        <action path="/dbpNoBidEventDetail" name="DbpNoBidEventDetailForm" 
+        	      parameter="dispatch"
+                type="com.akuacom.pss2.web.event.dbp.DbpNoBidEventDetailAction"
+                input="tile.dbpNoBidEventDetail">
+            <forward name="success" path="tile.dbpNoBidEventDetail"/>
+            <forward name="view" path="tile.dbpNoBidEventView"/>
+            <forward name="confirmView" path="tile.dbpNoBidConfirmEventView"/>
+            <forward name="parent" path="/uoProgram.do" redirect="true"/>
+            <forward name="events" path="/uoEvent.do" redirect="true"/>
+        </action>
+
+        <action path="/editBid" name="EditBidForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.dbp.EditBidAction"
+                input="tile.editBid">
+            <forward name="success" path="tile.editBid"/>
+            <forward name="events" path="/eventDetail.do"/>
+        </action>
+
+        <action path="/issueEventDetail" name="IssueEventDetailForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.IssueEventDetailAction"
+                input="tile.issueEventDetail">
+            <forward name="success" path="tile.issueEventDetail"/>
+            <forward name="view" path="tile.cppEventView"/>
+            <forward name="parent" path="/uoProgram.do" redirect="true"/>
+        </action>
+
+        <action path="/testEventDetail" name="EventDetailForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.TestEventDetailAction"
+                input="tile.testEventDetail">
+            <forward name="success" path="tile.testEventDetail"/>
+            <forward name="view" path="tile.cppEventView"/>
+            <forward name="parent" path="/uoProgram.do" redirect="true"/>
+        </action>
+
+        <action path="/buttonOnlyEventDetail" name="ButtonOnlyEventDetailForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.ButtonOnlyEventDetailAction"
+                input="tile.buttonOnlyEventDetail">
+            <forward name="success" path="tile.buttonOnlyEventDetail"/>
+            <forward name="view" path="tile.cppEventView"/>
+            <forward name="parent" path="/uoProgram.do" redirect="true"/>
+            <forward name="events" path="/uoEvent.do" redirect="true"/>
+        </action>
+
+        <action path="/sceRTPEventDetail" name="SCERTPEventDetailForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.scertp.SCERTPEventDetailAction"
+                input="tile.sceRTPEventDetail">
+            <forward name="success" path="tile.sceRTPEventDetail"/>
+            <forward name="view" path="tile.sceRTPEventView"/>
+            <forward name="parent" path="/uoProgram.do" redirect="true"/>
+            <forward name="events" path="/uoEvent.do" redirect="true"/>
+        </action>
+
+        <action path="/weatherDetail" name="WeatherDetailForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.report.WeatherDetailAction">
+            <forward name="success" path="tile.weatherDetail"/>
+            <forward name="parent" path="tile.weatherReport"/>
+        </action>
+
+        <action path="/signalList" name="SignalListForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.signal.SignalListAction">
+            <forward name="success" path="tile.signalList"/>
+        </action>
+
+        <action path="/signalDetail" name="SignalDetailForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.event.signal.SignalDetailAction">
+            <forward name="success" path="tile.signalDetail"/>
+            <forward name="parent" path="/signalList.do" redirect="true"/>
+        </action>
+
+        <action path="/news" name="NewsForm"
+                type="com.akuacom.pss2.web.news.NewsAction"
+                scope="request" validate="false">
+            <forward name="success" path="tile.news"/>
+        </action>
+
+        <!--For Logs Tab -->
+        <action path="/logList" name="LogFilterForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.logs.LogListAction">
+            <forward name="success" path="tile.LogList"/>
+            <forward name="interim" path="tile.LogForward"/>
+            <forward name="export" path="/WEB-INF/jsp/log/logList-body.jsp"/>
+        </action>
+
+        <action path="/logDetail" name="LogDetailForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.logs.LogDetailAction"
+                scope="request" validate="false">
+            <forward name="success" path="tile.logDetail"/>
+            <forward name="parent" path="/logList.do?dispatch=back" redirect="true"/>
+        </action>
+
+<!--         <action path="/eventListReport" name="EventListReportForm"
+                type="com.akuacom.pss2.web.report.EventListReportAction"
+                scope="request">
+            <forward name="success" path="tile.eventListReport"/>
+            <forward name="export" path="/WEB-INF/jsp/report/eventListReport-body.jsp"/>
+        </action>
+ -->
+
+<!--         <action path="/eventParticipantListReport" name="EventParticipantListReportForm"
+                type="com.akuacom.pss2.web.report.EventParticipantListReportAction"
+                scope="request">
+            <forward name="success" path="tile.eventParticipantListReport"/>
+            <forward name="export" path="/WEB-INF/jsp/report/eventParticipantListReport-body.jsp"/>
+        </action>
+-->
+
+<!--        <action path="/eventSignalReport" name="EventSignalReportForm"
+                type="com.akuacom.pss2.web.report.EventSignalReportAction"
+                scope="request">
+            <forward name="success" path="tile.eventSignalReport"/>
+            <forward name="export" path="/WEB-INF/jsp/report/signalReport-body.jsp"/>
+        </action>
+-->
+
+        <action path="/accountsReport" name="AccountsReportForm"
+                type="com.akuacom.pss2.web.report.AccountsReportAction"
+                scope="request">
+            <forward name="success" path="tile.accountsReport"/>
+            <forward name="export" path="/WEB-INF/jsp/report/accountsReport-body.jsp"/>
+        </action>
+        
+        <action path="/obixOnlineReport" name="ObixOnlineReportForm"
+                type="com.akuacom.pss2.web.report.ObixOnlineReportAction"
+                scope="request">
+            <forward name="success" path="tile.obixOnlineReport"/>
+        </action>
+
+        <!-- action path="/eventParticipationReport" name="EventParticipationForm"
+                type="com.akuacom.pss2.web.report.EventParticipationAction"
+                scope="request">
+            <forward name="success" path="tile.participationReport"/>
+            <forward name="export" path="/WEB-INF/jsp/report/participationReport-body.jsp"/>
+        </action> -->
+
+       <!--  <action path="/clientParticipationReport" name="ClientParticipationForm"
+                type="com.akuacom.pss2.web.report.ClientParticipationAction"
+                scope="request"  parameter="dispatch">
+            <forward name="success" path="tile.clientParticipationReport"/>
+            <forward name="export" path="/WEB-INF/jsp/report/clientParticipationReport-body.jsp"/>
+        </action>-->
+		
+        <action path="/dbpEventCreationReport" name="DBPEventCreationForm"
+                type="com.akuacom.pss2.web.report.DBPEventCreationReportAction"
+                scope="request"  parameter="dispatch">
+            <forward name="success" path="tile.dbpEventCreationReport"/>
+            <forward name="export" path="/WEB-INF/jsp/report/dbpEventCreationReport-body.jsp"/>
+        </action>
+
+        <!--  action path="/offlineReport" name="OffLineForm"
+                type="com.akuacom.pss2.web.report.OfflineReportAction"
+                scope="request"  parameter="dispatch">
+            <forward name="success" path="tile.offlineReport"/>
+            <forward name="export" path="/WEB-INF/jsp/report/offlineReport-body.jsp"/>
+        </action>-->
+
+        <action path="/weatherReport" name="WeatherForm"
+                type="com.akuacom.pss2.web.report.WeatherReportAction"
+                scope="request"  parameter="dispatch">
+            <forward name="success" path="tile.weatherReport"/>
+            <forward name="export" path="/WEB-INF/jsp/report/weatherReport-body.jsp"/>
+        </action>
+
+        <!--For Options tab -->
+        <action path="/options" name="OptionsForm" parameter="dispatch"
+                input="tile.options" validate="true"
+                type="com.akuacom.pss2.web.options.OptionsAction">
+            <forward name="edit" path="tile.options"/>
+            <forward name="parent" path="tile.options"/>
+            <forward name="cancel" path="/index.do"/>
+        </action>
+
+        <action path="/emails" name="EmailsForm" parameter="dispatch"
+            input="tile.emails"
+            type="com.akuacom.pss2.web.options.EmailsAction">
+            <forward name="success" path="tile.emails"/>
+            <forward name="viewEmailDetails" path="tile.emailDetails"/>
+        </action>
+
+        <action path="/optionsContacts" name="OptionsContactsForm" parameter="dispatch"
+            input="tile.optionsContacts"
+            type="com.akuacom.pss2.web.options.OptionsContactsAction">
+            <forward name="success" path="tile.optionsContacts"/>
+        </action>
+
+        <action path="/optionsAbout" name="OptionsAboutForm" parameter="dispatch"
+            input="tile.optionsAbout"
+            type="com.akuacom.pss2.web.options.OptionsAboutAction">
+            <forward name="success" path="tile.optionsAbout"/>
+        </action>
+
+        <action path="/optionsProperties" name="OptionsPropertyForm" parameter="dispatch"
+            input="tile.optionsProperties"
+            type="com.akuacom.pss2.web.options.OptionsPropertyAction">
+            <forward name="success" path="tile.optionsProperties"/>
+        </action>
+
+        <action path="/optionsSignals" name="OptionsSignalForm" parameter="dispatch"
+            input="tile.optionsSignals"
+            type="com.akuacom.pss2.web.options.OptionsSignalAction">
+            <forward name="success" path="tile.optionsSignals"/>
+        </action>
+
+        <action path="/dataCreator" name="DataCreatorForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.partdata.DataCreatorAction">
+            <forward name="success" path="tile.dataCreator"/>
+        </action>
+	
+		<!-- 
+        <action path="/report" name="LogFilterForm" parameter="dispatch"
+                type="com.akuacom.pss2.web.report.ReportAction"
+                scope="request" validate="false">
+            <forward name="success" path="tile.report"/>
+        </action>
+         -->
+
+        <action path="/programMatrix" name="ProgramMatrixForm" parameter="dispatch"
+                input="tile.programMatrix"
+                type="com.akuacom.pss2.web.program.ProgramMatrixAction"
+                scope="request" validate="false">
+            <forward name="view" path="tile.programMatrix"/>
+            <forward name="cancel" path="/index.do"/>
+        </action>
+
+        <action path="/dbpSimulator" name="DbpSimulatorForm"
+                type="com.akuacom.pss2.web.options.DbpSimulatorAction"
+                scope="request" validate="true">
+            <forward name="success" path="tile.dbpSimulator"/>
+        </action>
+
+        <action path="/varoliiTest" name="VaroliiTestForm"
+                type="com.akuacom.pss2.web.options.VaroliiTestAction"
+                scope="request" validate="true">
+            <forward name="success" path="tile.varoliiTest"/>
+        </action>
+
+        <!--For NS Settings tab -->
+        <action path="/nssettings" name="NSSettingsForm" 
+                type="com.akuacom.pss2.web.nssettings.NSSettingsAction"
+                scope="request" validate="true">
+            <forward name="edit" path="tile.nssettings"/>
+
+        </action>
+
+        <!--For About Tab -->
+        <action path="/about" name="AboutForm"
+                type="com.akuacom.pss2.web.about.AboutAction"
+                scope="request" validate="false">
+            <forward name="success" path="tile.about"/>
+        </action>
+
+        <action path="/home" name="AboutForm"
+                type="com.akuacom.pss2.web.home.HomeAction"
+                scope="request" validate="false">
+            <forward name="success" path="tile.home"/>
+        </action>
+
+    </action-mappings>
+
+    <message-resources parameter="pss2Web" null="false"/>
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config" value="/WEB-INF/conf/tiles-defs.xml"/>
+    </plug-in>
+</struts-config>

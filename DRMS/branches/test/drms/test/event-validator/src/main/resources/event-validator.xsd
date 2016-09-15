@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="events">
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="event" type="event-type"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="event-type">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="event-data" type="event-data-type"/>
+    </xs:choice>
+    <xs:attribute name="start" type="xs:int" use="required"/>
+    <xs:attribute name="stop" type="xs:int" use="required"/>
+  </xs:complexType>
+  <xs:complexType name="event-data-type">
+    <xs:attribute name="event-status" type="xs:string" use="required"/>
+    <xs:attribute name="operation-mode" type="xs:string" use="required"/>
+  </xs:complexType>
+</xs:schema>

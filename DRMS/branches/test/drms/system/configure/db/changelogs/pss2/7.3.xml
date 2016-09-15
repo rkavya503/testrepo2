@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	
+	<changeSet id="1" author="Linda">
+        <comment>
+               DRMS-6491 SCE Improvement Request: Core Property to ignore Program Matrix
+        </comment>
+		<sql>
+		        insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.programMatrixCheck',
+                null, false, null, null, 'Boolean', 'script', null, now(),
+                null);
+		</sql>
+    </changeSet>
+	
+	<changeSet id="2" author="Frank">
+        <comment>
+               DRMS-6353 To keep consistent with Simple Dashboard, change the kWh value on the Telemetry graph to kw
+        </comment>
+		<sql>
+		        UPDATE dataset SET unit='kw' WHERE name IN ('Baseline','Usage');
+		</sql>
+    </changeSet>
+	
+	<changeSet id="3" author="Linda">
+		<comment>
+			DRMS-6834 SCE Improvement Request: Change Test Event to Client Test.
+		</comment>
+		<sql>
+			update program set name = 'Client Test' where name = 'Test Program';
+		</sql>
+	</changeSet>
+
+	<changeSet id="4" author="Linda">
+        <comment>
+               DRMS-6682 obix client communication status check time window increment, default is 25%
+        </comment>
+		<sql>
+             insert into core_property (uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.usageClientTimeOut.increment',
+                null, null, 0.25, null, 'Number', 'script', null, now(),
+                null);
+		</sql>
+    </changeSet>
+	
+	<changeSet id="5" author="Frank">
+        <comment>
+               DRMS-6551 Add a third line to Usage for Baseline-usage
+        </comment>
+		<sql>
+		        insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.entireDayShedLine.enable',
+                null, true, null, null, 'Boolean', 'script', null, now(),
+                null);
+				
+				insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.eventPeriodShedLine.enable',
+                null, true, null, null, 'Boolean', 'script', null, now(),
+                null);
+				
+				insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'entireDayShedLine.name',
+                'Baseline-Usage', null, null, null, 'String', 'script', null, now(),
+                null);
+				
+				insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'eventPeriodShedLine.Name',
+                'Shed', null, null, null, 'String', 'script', null, now(),
+                null);
+				
+				insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'entireDayShedLine.color',
+                '0xFF9900', null, null, null, 'String', 'script', null, now(),
+                null);
+				
+				insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'eventPeriodShedLine.color',
+                '0x009900', null, null, null, 'String', 'script', null, now(),
+                null);
+		</sql>
+    </changeSet>
+	<changeSet id="6" author="Liu">
+        <comment>
+               DRMS-6795 Client Export Info
+        </comment>
+		<sql>
+		        insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.clientInfo.enable',
+                null, true, null, null, 'Boolean', 'script', null, now(),
+                null);
+		</sql>
+    </changeSet>
+	<changeSet id="8" author="Frank">
+        <comment>
+               DRMS-6563 Change the style of the FacDash to be very different from Utility GUI for non-production servers.
+        </comment>
+		<sql>
+		        insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.isProductionServer',
+                null, false, null, null, 'Boolean', 'script', null, now(),
+                null);
+		</sql>
+    </changeSet>
+	<changeSet id="9" author="Linda">
+        <comment>
+                DRMS-6990 The log time for usage data entry is not following the log time spec
+        </comment>
+		<sql>
+			CREATE TABLE dataentry_back_real LIKE dataentry;
+			CREATE TABLE dataentry_back_virtual LIKE dataentry;
+
+			INSERT INTO dataentry_back_real SELECT del.* FROM dataentry del, (
+			SELECT de.dataset_uuid, de.datasource_uuid, MAX(de.time) AS max_time, 
+			(TIME_TO_SEC(de.time) + ds.period DIV 2) DIV ds.period AS group_id, DATE(de.time) AS d
+			FROM dataentry de, dataset ds
+			WHERE de.dataset_uuid=ds.uuid AND ds.name='Usage' AND actual=1
+			GROUP BY de.dataset_uuid, de.datasource_uuid, d,group_id) con
+			WHERE del.dataset_uuid=con.dataset_uuid AND del.datasource_uuid=con.datasource_uuid AND del.time=con.max_time;
+
+			UPDATE dataentry_back_real de, dataset ds SET de.time = IF((TIME_TO_SEC(de.time) MOD ds.period)*2 >ds.period, 
+				DATE_ADD(de.time, INTERVAL ds.period - TIME_TO_SEC(de.time) MOD ds.period SECOND),
+				DATE_ADD(de.time, INTERVAL - TIME_TO_SEC(de.time) MOD ds.period SECOND))
+			WHERE de.dataset_uuid=ds.uuid AND ds.name='Usage';
+
+			INSERT INTO dataentry_back_virtual SELECT del.* FROM dataentry del, (
+			SELECT de.dataset_uuid, de.datasource_uuid, MAX(de.time) AS max_time, 
+			(TIME_TO_SEC(de.time) + ds.period DIV 2) DIV ds.period AS group_id, DATE(de.time) AS d, ds.period
+			FROM dataentry de, dataset ds
+			WHERE de.dataset_uuid=ds.uuid AND ds.name='Usage' AND actual=0
+			GROUP BY de.dataset_uuid, de.datasource_uuid, d,group_id) con
+			WHERE del.dataset_uuid=con.dataset_uuid AND del.datasource_uuid=con.datasource_uuid AND del.time=con.max_time;
+
+			UPDATE dataentry_back_virtual de, dataset ds SET de.time = IF((TIME_TO_SEC(de.time) MOD ds.period)*2 >ds.period, 
+				DATE_ADD(de.time, INTERVAL ds.period - TIME_TO_SEC(de.time) MOD ds.period SECOND),
+				DATE_ADD(de.time, INTERVAL - TIME_TO_SEC(de.time) MOD ds.period SECOND))
+			WHERE de.dataset_uuid=ds.uuid AND ds.name='Usage';
+
+			INSERT INTO dataentry_back_real SELECT * FROM dataentry_back_virtual bak2 WHERE NOT EXISTS (SELECT * FROM dataentry_back_real bak1
+			WHERE bak1.dataset_uuid=bak2.dataset_uuid AND bak1.datasource_uuid=bak2.datasource_uuid AND bak1.time=bak2.time);
+
+			TRUNCATE dataentry;
+
+			INSERT INTO dataentry SELECT * FROM dataentry_back_real;
+
+			TRUNCATE dataentry_back_real;
+			TRUNCATE dataentry_back_virtual;
+			DROP TABLE IF EXISTS dataentry_back_real;
+			DROP TABLE IF EXISTS dataentry_back_virtual;
+		</sql>
+    </changeSet>
+	<changeSet id="10" author="Linda">
+        <comment>
+                DRMS-6990 The log time for usage data entry is not following the log time spec
+        </comment>
+		<sql>
+			CREATE TABLE dataentry_back_real LIKE dataentry_temp;
+			CREATE TABLE dataentry_back_virtual LIKE dataentry_temp;
+
+			INSERT INTO dataentry_back_real SELECT del.* FROM dataentry_temp del, (
+			SELECT de.dataset_uuid, de.datasource_uuid, MAX(de.time) AS max_time, 
+			(TIME_TO_SEC(de.time) + ds.period DIV 2) DIV ds.period AS group_id, DATE(de.time) AS d
+			FROM dataentry_temp de, dataset ds
+			WHERE de.dataset_uuid=ds.uuid AND ds.name='Usage' AND actual=1
+			GROUP BY de.dataset_uuid, de.datasource_uuid, d,group_id) con
+			WHERE del.dataset_uuid=con.dataset_uuid AND del.datasource_uuid=con.datasource_uuid AND del.time=con.max_time;
+
+			UPDATE dataentry_back_real de, dataset ds SET de.time = IF((TIME_TO_SEC(de.time) MOD ds.period)*2 >ds.period, 
+				DATE_ADD(de.time, INTERVAL ds.period - TIME_TO_SEC(de.time) MOD ds.period SECOND),
+				DATE_ADD(de.time, INTERVAL - TIME_TO_SEC(de.time) MOD ds.period SECOND))
+			WHERE de.dataset_uuid=ds.uuid AND ds.name='Usage';
+
+			INSERT INTO dataentry_back_virtual SELECT del.* FROM dataentry_temp del, (
+			SELECT de.dataset_uuid, de.datasource_uuid, MAX(de.time) AS max_time, 
+			(TIME_TO_SEC(de.time) + ds.period DIV 2) DIV ds.period AS group_id, DATE(de.time) AS d, ds.period
+			FROM dataentry_temp de, dataset ds
+			WHERE de.dataset_uuid=ds.uuid AND ds.name='Usage' AND actual=0
+			GROUP BY de.dataset_uuid, de.datasource_uuid, d,group_id) con
+			WHERE del.dataset_uuid=con.dataset_uuid AND del.datasource_uuid=con.datasource_uuid AND del.time=con.max_time;
+
+			UPDATE dataentry_back_virtual de, dataset ds SET de.time = IF((TIME_TO_SEC(de.time) MOD ds.period)*2 >ds.period, 
+				DATE_ADD(de.time, INTERVAL ds.period - TIME_TO_SEC(de.time) MOD ds.period SECOND),
+				DATE_ADD(de.time, INTERVAL - TIME_TO_SEC(de.time) MOD ds.period SECOND))
+			WHERE de.dataset_uuid=ds.uuid AND ds.name='Usage';
+
+			INSERT INTO dataentry_back_real SELECT * FROM dataentry_back_virtual bak2 WHERE NOT EXISTS (SELECT * FROM dataentry_back_real bak1
+			WHERE bak1.dataset_uuid=bak2.dataset_uuid AND bak1.datasource_uuid=bak2.datasource_uuid AND bak1.time=bak2.time);
+
+			TRUNCATE dataentry_temp;
+
+			INSERT INTO dataentry_temp SELECT * FROM dataentry_back_real;
+
+			TRUNCATE dataentry_back_real;
+			TRUNCATE dataentry_back_virtual;
+			DROP TABLE IF EXISTS dataentry_back_real;
+			DROP TABLE IF EXISTS dataentry_back_virtual;
+		</sql>
+    </changeSet>
+
+	<changeSet id="11" author="Liu">
+        <comment>
+               DRMS-6904	Sanity Check for Incoming Usage Data . a core property for max usage data (kw). default value is 1000kw
+        </comment>
+		<sql>
+             insert into core_property (uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.maxUsageData',
+                null, null, 1000, null, 'Number', 'script', null, now(),
+                null);
+		</sql>
+    </changeSet>	
+</databaseChangeLog>

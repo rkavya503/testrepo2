@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <property name="program_demo" value="demo" />
+
+    <!-- include signals first -->
+    <include
+        file="db/changelogs/fixtures/signal_def/signal_def-bid.xml" />
+    <include
+        file="db/changelogs/fixtures/signal_def/signal_def-cpp_price.xml" />
+    <include
+        file="db/changelogs/fixtures/signal_def/signal_def-mode.xml" />
+    <include
+        file="db/changelogs/fixtures/signal_def/signal_def-pending.xml" />
+    <include
+        file="db/changelogs/fixtures/signal_def/signal_def-price.xml" />
+
+    <changeSet id="1" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='test_program';
+            </sqlCheck>
+        </preConditions>
+        <comment>Create Program test_program DRMS-5358</comment>
+        <insert tableName="program">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="name" value="${program_demo}" />
+            <column name="utilityProgramName" value="Test Program" />
+            <column name="className"
+                value="com.akuacom.pss2.program.testProgram.TestProgramEJB" />
+            <column name="validatorClass"
+                value="com.akuacom.pss2.program.testProgram.TestValidator" />
+            <column name="validatorConfigFile" value="cpp.validator.config" />
+            <column name="uiScheduleEventString" value="DemoSchedulePage" />
+            <column name="minIssueToStartM" valueNumeric="0" />
+            <column name="minStartTimeH" valueNumeric="0" />
+            <column name="minStartTimeM" valueNumeric="0" />
+            <column name="maxStartTimeH" valueNumeric="23" />
+            <column name="maxStartTimeM" valueNumeric="59" />
+            <column name="maxIssueTimeH" valueNumeric="23" />
+            <column name="maxIssueTimeM" valueNumeric="59" />
+            <column name="minEndTimeH" valueNumeric="0" />
+            <column name="minEndTimeM" valueNumeric="0" />
+            <column name="maxEndTimeH" valueNumeric="23" />
+            <column name="maxEndTimeM" valueNumeric="59" />
+            <column name="minDurationM" valueNumeric="1" />
+            <column name="maxDurationM" valueNumeric="1440" />
+            <column name="pendingTimeDBEH" valueNumeric="21" />
+            <column name="pendingTimeDBEM" valueNumeric="00" />
+            <column name="mustIssueBDBE" valueBoolean="false" />
+            <column name="programType" value="TestProgram" />
+            <column name="state" valueNumeric="1" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="manualCreatable" valueBoolean="true" />
+        </insert>
+        <sql>
+            update program set priority=(select MAX(priority) from
+            program where name=${program_demo});
+        </sql>
+    </changeSet>
+
+    <!--program_signals -->
+    <changeSet id="2" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demo}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_pending}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demo} and signal ${signal_pending} DRMS-5358</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demo}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_pending}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="3" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demo}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_mode}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demo} and signal ${signal_mode} DRMS-5358</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demo}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_mode}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="4" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demo}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_price}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demo} and signal ${signal_price} DRMS-5358</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demo}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_price}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="5" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demo}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_bid}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demo} and signal ${signal_bid} DRMS-5358</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demo}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_bid}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="6" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demo}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_cpp_price}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demo} and signal ${signal_cpp_price} DRMS-5358</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demo}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_cpp_price}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

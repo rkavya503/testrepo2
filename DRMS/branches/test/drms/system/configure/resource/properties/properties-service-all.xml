@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE server>
+<!-- $Id: properties-service.xml 16662 2003-08-27 04:38:22Z patriot1burke $ -->
+
+<server>
+
+  <!-- ==================================================================== -->
+  <!-- PropertyEditorManager Service                                        -->
+  <!-- ==================================================================== -->
+
+  <!--
+     | Allows access to the PropertyEditorManager, which is used when setting
+     | MBean attribute values from configuration.
+   -->
+
+  <mbean code="org.jboss.varia.property.PropertyEditorManagerService" 
+	 name="jboss:type=Service,name=PropertyEditorManager">
+
+    <!-- 
+       | Register and editor for each of the type_name=editor_type_name listed
+       | in properties file style convetion.
+
+    <attribute name="Editors">
+      java.net.URL=my.project.editors.URLPropertyEditor
+    </attribute>
+
+    -->
+
+  </mbean>
+
+
+  <!-- ==================================================================== -->
+  <!-- System Properties Service                                            -->
+  <!-- ==================================================================== -->
+
+  <!--
+     | Allows rich access to system properties.
+   -->
+
+  <mbean code="org.jboss.varia.property.SystemPropertiesService" 
+	 name="jboss:type=Service,name=SystemProperties">
+
+    <!-- 
+       | Load properties from each of the given comma seperated URLs
+
+    <attribute name="URLList">
+      http://somehost/some-location.properties,
+      ./conf/somelocal.properties
+    </attribute>
+
+    -->
+
+    <!-- 
+       | Set raw properties file style properties.
+
+    <attribute name="Properties">
+
+      my.project.property=This is the value of my property
+      my.project.anotherProperty=This is the value of my other property
+
+    </attribute>
+     
+    -->
+
+	<attribute name="Properties">
+            com.honeywell.dras.vtn.dras.service.VtnDrasServiceUrl=http://localhost:8080/SOAPClientADRWS/oadr2bvtn/Oadr2bVtnDrasService?wsdl
+    	    com.honeywell.dras.vtn.VtnId=env.VTN_ID
+    	    com.honeywell.dras.soap.isCertCommonNameValidationEnabled=TRUE
+			com.honeywell.ssm.view.arq.url=http://localhost:8081/ssm/viewARQ
+			com.honeywell.ssm.view.enrollment.url=http://localhost:8081/ssm/enrollment
+			com.honeywell.accmgr.keycloak.useKeycloak=true
+			com.honeywell.accmgr.keycloak.realmPrefix=SCE
+			com.honeywell.accmgr.keycloak.uri=http://192.168.120.34:7000/auth
+			com.honeywell.accmgr.keycloak.auth_un=pss2auth
+			com.honeywell.accmgr.keycloak.auth_pw=Test_1234
+			com.honeywell.accmgr.keycloak.test_un=pss2test
+			com.honeywell.roles.optOut=ADMIN,OPERATOR,AGGREGATOR,CUSTOMER		
+  </attribute>
+
+  
+  </mbean>
+
+</server>

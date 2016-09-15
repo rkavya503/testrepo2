@@ -1,0 +1,1738 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-AU" lang="en">
+<!--Page: 100108-->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="language" content="english" />
+    <meta http-equiv="refresh" content="300" />
+    <title>All NT Weather Observations</title>
+    <link rel="Schema.AGLS" href="http://www.naa.gov.au/recordkeeping/gov_online/agls/1.2" />
+    <meta name="DC.Publisher" content="corporateName=Bureau of Meteorology" />
+    <meta name="DC.Format" content="text/html" />
+    <meta name="DC.Coverage.jurisdiction" content="Commonwealth of Australia" />
+    <meta name="DC.Rights" scheme="URI" content="http://www.bom.gov.au/other/copyright.shtml" />
+    <meta name="DC.Language" scheme="RFC1766" content="en" />
+    <meta name="AGLS.Audience" scheme="BoM_audience list" content="All" />
+    <link rel="stylesheet" type="text/css" href="/css/core.css" />
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/css/core-ie.css" /><![endif]-->
+    <link rel="stylesheet" type="text/css" href="/css/weather/weather.css" />
+    <script type="text/javascript" src="/scripts/utilities.js"></script>
+    <script type="text/javascript" src="/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/libs/jquery/external/plugins/superfish/1.4.8/superfish.js"></script>
+    <script type="text/javascript" src="/libs/jquery/external/plugins/superfish/1.4.8/hoverIntent.js"></script>
+    <script type="text/javascript" src="/scripts/header-menus.js"></script>
+  </head>
+  <body>
+	<ul id="jumplinks">
+		<li><a href="#content">Skip to main content</a></li>
+	</ul>
+
+    <!-- Start: PageHeight -->
+    <div id="pageheight">
+	  <div id="pagewrap">
+      <!-- Start: Header -->
+      <div id="header">
+		<div class="l_content">
+			<div id="header-logo">
+				<img class="bannerprint" width="1" height="1" alt="Print Background" src="/images/ui/bannerprint.gif" />
+				<a id="logo" href="/index.shtml?ref=logo"><img src="/images/ui/bom_logo_clr.gif" title="Australian Government - Bureau of Meteorology" alt="Australian Government - Bureau of Meteorology" /></a>
+			</div>
+			<div id="header-main">
+				<div class="l_top">
+					<div id="header-search">
+						<form action="http://agencysearch.australia.gov.au/search/search.cgi" method="get" class="searchform" enctype="application/x-www-form-urlencoded (default)">
+							<label for="query">Search</label><input type="text" id="query" name="query" size="30" value="" />
+							<input type="hidden" name="collection" value="agencies" />
+							<input type="hidden" name="form" value="simple" />
+							<input type="hidden" name="profile" value="bom" />
+							<input type="hidden" name="scope_disable" value="off" />
+							<input type="submit" value="Search" name="Submit" alt="Search" class="search" />
+						</form>
+					</div>
+					<ul>
+						<li><a href="/index.shtml?ref=hdr">Home</a></li>
+						<li><a href="/inside/index.shtml?ref=hdr">About</a></li>
+						<li class="last"><a href="/inside/contacts.shtml?ref=hdr">Contacts</a></li>
+					</ul>
+				</div>
+				<div class="l_bottom">
+					<ul class="sf-menu">
+						<li id="sf-menu-nsw">
+							<abbr title="New South Wales"><a href="/nsw/?ref=hdr" title="New South Wales">NSW</a></abbr>
+							<ul>
+								<li class="decoration"><img src="/images/weather/nsw-thumb.png" alt="" /></li>
+								<li class="heading"><a href="/nsw/index.shtml?ref=hdr" title="New South Wales Weather and Warnings">NSW Weather &amp; Warnings</a></li>
+								<li><a href="/nsw/warnings/index.shtml?ref=hdr" title="New South Wales Warnings Summary">Warnings Summary</a></li>
+								<li><a href="/nsw/forecasts/index.shtml?ref=hdr" title="New South Wales Forecasts">Forecasts</a></li>
+								<li><a href="/nsw/forecasts/sydney.shtml?ref=hdr" title="Sydney Forecast">Sydney Forecast</a></li>
+								<li><a href="/nsw/forecasts/map.shtml?ref=hdr" title="New South Wales Forecast Area Map">NSW Forecast Area Map</a></li>
+								<li><a href="/nsw/observations/index.shtml?ref=hdr" title="New South Wales Weather Observations">Observations</a></li>
+								<li><a href="/nsw/observations/sydney.shtml?ref=hdr" title="Latest Weather Observations for the Sydney Area">Sydney Observations</a></li>
+								<li><a href="/nsw/observations/nswall.shtml?ref=hdr" title="Latest Weather Observations for New South Wales">All NSW Observations</a></li>
+								<li class="last"><a href="/nsw/flood/index.shtml?ref=hdr" title="New South Wales Rainfall and River Conditions">Rainfall &amp; River Conditions</a></li>
+							</ul>
+							<div class="sf-menu-pointer"></div>
+						</li>
+						<li id="sf-menu-vic">
+							<abbr title="Victoria"><a href="/vic/?ref=hdr" title="Victoria">VIC</a></abbr>
+							<ul>
+								<li class="decoration"><img src="/images/weather/vic-thumb.png" alt="" /></li>
+								<li class="heading"><a href="/vic/index.shtml?ref=hdr" title="Victorian Weather and Warnings">VIC Weather &amp; Warnings</a></li>
+								<li><a href="/vic/warnings/index.shtml?ref=hdr" title="Victorian Warnings Summary">Warnings Summary</a></li>
+								<li><a href="/vic/forecasts/index.shtml?ref=hdr" title="Victorian Forecasts">Forecasts</a></li>
+								<li><a href="/vic/forecasts/melbourne.shtml?ref=hdr" title="Melbourne Forecast">Melbourne Forecast</a></li>
+								<li><a href="/vic/forecasts/map.shtml?ref=hdr" title="Victorian Forecast Areas Map">Vic. Forecast Areas Map</a></li>
+								<li><a href="/vic/observations/index.shtml?ref=hdr" title="Victorian Observations">Observations</a></li>
+								<li><a href="/vic/observations/melbourne.shtml?ref=hdr" title="Latest Weather Observations for the Melbourne Area">Melbourne Observations</a></li>
+								<li><a href="/vic/observations/vicall.shtml?ref=hdr" title="Latest Weather Observations for Victoria">All Victorian Observations</a></li>
+								<li class="last"><a href="/vic/flood/index.shtml?ref=hdr" title="Victoria Rainfall and River Conditions">Rainfall &amp; River Conditions</a></li>
+							</ul>
+							<div class="sf-menu-pointer"></div>
+						</li>
+						<li id="sf-menu-qld">
+							<abbr title="Queensland"><a href="/qld/?ref=hdr" title="Queensland">QLD</a></abbr>
+							<ul>
+								<li class="decoration"><img src="/images/weather/qld-thumb.png" alt="" /></li>
+								<li class="heading"><a href="/qld/index.shtml?ref=hdr" title="Queensland Weather and Warnings">QLD Weather &amp; Warnings</a></li>
+								<li><a href="/qld/warnings/index.shtml?ref=hdr" title="Queensland Warnings Summary">Warnings Summary</a></li>
+								<li><a href="/qld/forecasts/index.shtml?ref=hdr" title="Queensland Forecasts">Forecasts</a></li>
+								<li><a href="/qld/forecasts/brisbane.shtml?ref=hdr" title="Brisbane Forecast">Brisbane Forecast</a></li>
+								<li><a href="/qld/forecasts/map.shtml?ref=hdr" title="Queensland Forecast Areas Map">Qld. Forecast Areas Map</a></li>
+								<li><a href="/qld/observations/index.shtml?ref=hdr" title="Queensland Observations">Observations</a></li>
+								<li><a href="/qld/observations/brisbane.shtml?ref=hdr" title="Latest Weather Observations for the Brisbane Area">Brisbane Observations</a></li>
+								<li><a href="/qld/observations/qldall.shtml?ref=hdr" title="Latest Weather Observations for Queensland">All Queensland Observations</a></li>
+								<li class="last"><a href="/qld/flood/index.shtml?ref=hdr" title="Queensland Rainfall and River Conditions">Rainfall &amp; River Conditions</a></li>
+							</ul>
+							<div class="sf-menu-pointer"></div>
+						</li>
+						<li id="sf-menu-wa">
+							<abbr title="Western Australia"><a href="/wa/?ref=hdr" title="Western Australia">WA</a></abbr>
+							<ul>
+								<li class="decoration"><img src="/images/weather/wa-thumb.png" alt="" /></li>
+								<li class="heading"><a href="/wa/index.shtml?ref=hdr" title="Western Australia Weather and Warnings">WA Weather &amp; Warnings</a></li>
+								<li><a href="/wa/warnings/index.shtml?ref=hdr" title="Western Australia Warnings Summary">Warnings Summary</a></li>
+								<li><a href="/wa/forecasts/index.shtml?ref=hdr" title="Western Australia Forecasts">Forecasts</a></li>
+								<li><a href="/wa/forecasts/perth.shtml?ref=hdr" title="Perth Forecast">Perth Forecast</a></li>
+								<li><a href="/wa/forecasts/map.shtml?ref=hdr" title="Western Australian Forecast Areas Map">WA Forecast Areas Map</a></li>
+								<li><a href="/wa/observations/index.shtml?ref=hdr" title="Western Australia Observations">Observations</a></li>
+								<li><a href="/wa/observations/perth.shtml?ref=hdr" title="Latest Weather Observations for the Perth Area">Perth Observations</a></li>
+								<li><a href="/wa/observations/waall.shtml?ref=hdr" title="Latest Weather Observations for Western Australia">All WA Observations</a></li>
+								<li class="last"><a href="/wa/flood/index.shtml?ref=hdr" title="Western Australia Rainfall and River Conditions">Rainfall &amp; River Conditions</a></li>
+							</ul>
+							<div class="sf-menu-pointer"></div>
+						</li>
+						<li id="sf-menu-sa">
+							<abbr title="South Australia"><a href="/sa/?ref=hdr" title="South Australia">SA</a></abbr>
+							<ul>
+								<li class="decoration"><img src="/images/weather/sa-thumb.png" alt="" /></li>
+								<li class="heading"><a href="/sa/index.shtml?ref=hdr" title="South Australian Weather and Warnings">SA Weather &amp; Warnings</a></li>
+								<li><a href="/sa/warnings/index.shtml?ref=hdr" title="Warnings for South Australia">Warnings Summary</a></li>
+								<li><a href="/sa/forecasts/index.shtml?ref=hdr" title="South Australian Forecasts">Forecasts</a></li>
+								<li><a href="/sa/forecasts/adelaide.shtml?ref=hdr" title="Adelaide Forecast">Adelaide Forecast</a></li>
+								<li><a href="/sa/forecasts/map.shtml?ref=hdr" title="South Australia Forecast Area Map">SA Forecast Area Map</a></li>
+								<li><a href="/sa/observations/index.shtml?ref=hdr" title="South Australian Observations">Observations</a></li>
+								<li><a href="/sa/observations/adelaide.shtml?ref=hdr" title="Latest Weather Observations for the Adelaide Area">Adelaide Observations</a></li>
+								<li><a href="/sa/observations/saall.shtml?ref=hdr" title="Latest Weather Observations for South Australia">All SA Observations</a></li>
+								<li class="last"><a href="/sa/flood/index.shtml?ref=hdr" title="South Australia Rainfall and River Conditions">Rainfall &amp; River Conditions</a></li>
+							</ul>
+							<div class="sf-menu-pointer"></div>
+						</li>
+						<li id="sf-menu-tas">
+							<abbr title="Tasmania"><a href="/tas/?ref=hdr" title="Tasmania">TAS</a></abbr>
+							<ul>
+								<li class="decoration"><img src="/images/weather/tas-thumb.png" alt="" /></li>
+								<li class="heading"><a href="/tas/index.shtml?ref=hdr" title="Tasmanian Weather and Warnings">TAS Weather &amp; Warnings</a></li>
+								<li><a href="/tas/warnings/index.shtml?ref=hdr" title="Tasmanian Warnings Summary">Warnings Summary</a></li>
+								<li><a href="/tas/forecasts/index.shtml?ref=hdr" title="Tasmanian Forecasts">Forecasts</a></li>
+								<li><a href="/tas/forecasts/hobart.shtml?ref=hdr" title="Hobart Forecast">Hobart Forecast</a></li>
+								<li><a href="/tas/forecasts/map.shtml?ref=hdr" title="Tasmanian Forecast Areas Map">Tas. Forecast Areas Map</a></li>
+								<li><a href="/tas/observations/index.shtml?ref=hdr" title="Tasmanian Observations">Observations</a></li>
+								<li><a href="/tas/observations/hobart.shtml?ref=hdr" title="Latest Weather Observations for the Hobart Area">Hobart Observations</a></li>
+								<li><a href="/tas/observations/tasall.shtml?ref=hdr" title="Latest Weather Observations for Tasmania">All Tasmanian Observations</a></li>
+								<li class="last"><a href="/tas/flood/index.shtml?ref=hdr" title="Tasmania Rainfall and River Conditions">Rainfall &amp; River Conditions</a></li>
+							</ul>
+							<div class="sf-menu-pointer"></div>
+						</li>
+						<li id="sf-menu-act">
+							<abbr title="Australian Capital Territory"><a href="/act/?ref=hdr" title="Australian Capital Territory">ACT</a></abbr>
+							<ul>
+								<li class="decoration"><img src="/images/weather/act-thumb.png" alt="" /></li>
+								<li class="heading"><a href="/act/index.shtml?ref=hdr" title="Australian Capital Territory Weather and Warnings">ACT Weather &amp; Warnings</a></li>
+								<li><a href="/act/warnings/index.shtml?ref=hdr" title="Australian Capital Territory Warnings Summary">Warnings Summary</a></li>
+								<li><a href="/act/forecasts/index.shtml?ref=hdr" title="Australian Capital Territory Forecasts">Forecasts</a></li>
+								<li><a href="/act/forecasts/canberra.shtml?ref=hdr" title="Canberra Forecast">Canberra Forecast</a></li>
+								<li><a href="/act/forecasts/act.shtml?ref=hdr" title="Australian Capital Territory Forecast">ACT Forecast</a></li>
+								<li><a href="/act/observations/index.shtml?ref=hdr" title="Australian Capital Territory Observations">Observations</a></li>
+								<li class="last"><a href="/act/observations/canberra.shtml?ref=hdr" title="Latest Weather Observations for the Canberra Area">Canberra Observations</a></li>
+							</ul>
+							<div class="sf-menu-pointer"></div>
+						</li>
+						<li id="sf-menu-nt">
+							<abbr title="Northern Territory"><a href="/nt/?ref=hdr" title="Northern Territory">NT</a></abbr>
+							<ul>
+								<li class="decoration"><img src="/images/weather/nt-thumb.png" alt="" /></li>
+								<li class="heading"><a href="/nt/index.shtml?ref=hdr" title="Northern Territory Weather and Warnings">NT Weather &amp; Warnings</a></li>
+								<li><a href="/nt/warnings/index.shtml?ref=hdr" title="Northern Territory Warnings Summary">Warning Summary</a></li>
+								<li><a href="/nt/forecasts/index.shtml?ref=hdr" title="Northern Territory Forecasts">Forecasts</a></li>
+								<li><a href="/nt/forecasts/darwin.shtml?ref=hdr" title="Darwin and Rural Forecasts">Darwin and Rural Forecast</a></li>
+								<li><a href="/nt/forecasts/map.shtml?ref=hdr" title="Northern Territory Forecast Area Map">NT Forecast Areas Map</a></li>
+								<li><a href="/nt/observations/index.shtml?ref=hdr" title="Northern Territory Weather Observations">Observations</a></li>
+								<li><a href="/nt/observations/darwin.shtml?ref=hdr" title="Latest Weather Observations for Darwin Area">Darwin Observations</a></li>
+								<li><a href="/nt/observations/ntall.shtml?ref=hdr" title="All NT Weather Observations">All NT Observations</a></li>
+								<li class="last"><a href="/nt/flood/index.shtml?ref=hdr" title="Northern Territory Rainfall and River Conditions">Rainfall &amp; River Conditions</a></li>
+							</ul>
+							<div class="sf-menu-pointer"></div>
+						</li>
+						<li id="sf-menu-aus" class="separator">
+							<a href="/australia/?ref=hdr" title="National Weather and Warnings">Australia</a>
+							<ul>
+								<li class="decoration"><img src="/images/weather/aus-thumb.png" alt="" /></li>
+								<li class="heading"><a href="/australia/index.shtml?ref=hdr" title="National Weather and Warnings">National Weather &amp; Warnings</a></li>
+								<li><a href="/australia/warnings/index.shtml?ref=hdr" title="National Warnings Summary">Warnings Summary</a></li>
+								<li><a href="/australia/majorcities.shtml?ref=hdr" title="Major Cities Forecast plus Outlook">Major Cities</a></li>
+								<li><a href="/australia/radar/index.shtml?ref=hdr" title="Radar Images">Radar Images</a></li>
+								<li><a href="/australia/charts/index.shtml?ref=hdr" title="Weather Maps">Weather Maps</a></li>
+								<li><a href="/australia/satellite/index.shtml?ref=hdr" title="Recent Satellite Images">Satellite Images</a></li>
+								<li class="last"><a href="/australia/flood/index.shtml?ref=hdr" title="Australia Rainfall and River Conditions">Rainfall &amp; River Conditions</a></li>
+							</ul>
+							<div class="sf-menu-pointer"></div>
+						</li>
+						<li class="no-menu"><a href="/global/?ref=hdr" title="Global Weather and Warnings">Global</a></li>
+						<li class="last no-menu"><a href="/ant/?ref=hdr" title="Antarctic and Southern Ocean Weather">Antarctica</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="l_shadow"></div>
+      </div>
+            <!-- <div style="margin: 12px 20px 12px 23px;" class="service-notice">
+            </div> -->
+
+      <!-- End: Header -->
+
+      <!-- Start: Columns -->
+      <div id="columns">
+
+<!-- Start: Container -->
+    <div id="container" class="fullwidth">
+<!-- Begin: Breadcrumb -->
+      <p id="breadcrumb"><a href="/index.shtml">Bureau Home</a> &gt; <a href="/australia/index.shtml">Australia</a> &gt; <a href="/nt/index.shtml">Northern Territory</a> &gt; <a href="/nt/observations/index.shtml">Observations</a> &gt; <strong>All NT Weather Observations</strong></p>
+<!-- End: Breadcrumb -->
+      <h1>All NT Weather Observations</h1>
+<!-- Start: Content -->
+      <div id="content">
+
+<div class="smaller" style="color: #999999">IDD60800</div>
+
+<h1>Latest Weather Observations for Northern Territory</h1>
+
+<div class="box1 noPrint">
+<a href="#DD">Darwin-Daly</a> | <a href="#ARN">Arnhem</a> | <a href="#RM">Roper-McArthur</a> |
+<a href="#VR">Victoria River</a> | <a href="#BAR">Barkly</a> | <a href="#AS">Alice Springs</a>
+
+</div>
+
+
+
+<p>
+Issued at  4:35 pm CST Tuesday 28 August 2012 (issued every 30 minutes, with the page automatically refreshed every 10 minutes)
+</p>
+
+<div>
+<span class="noPrint"><a href="/catalogue/observations/about-weather-observations.shtml">
+	<img src="/images/symbols/about.gif" alt="" width="20" height="18" border="0" align="middle" />About weather observations</a>
+		| <a href="/nt/observations/map.shtml">Map of weather stations</a>
+		| <a href="/nt/observations/index.shtml" title="Northern Territory weather observations">Northern Territory observations</a>
+		| <a href="/nt/observations/darwin.shtml" title="Darwin area weather observations">Darwin area observations</a>
+	<br />
+</span>
+
+<p>Where no observation is available within the last 75 minutes, the latest observation is shown in <span class="contrast">italics and coloured</span> and removed from the table after 24 hours.<br />
+Station names link to data for the previous 72 hours.</p>
+</div>
+
+<h2 id="DD">DARWIN-DALY</h2>
+<table id="tDD" border="1" cellspacing="0" class="tabledata obs_table" summary="Observations for DD including temperature, wind, rain and other weather elements"> <!-- ABCD open product division table before col headings -->
+<colgroup>
+<col class="col_station" />
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+  <th id="tDD-station" rowspan="2" class="rowleftcolumn"></th>
+  <th id="tDD-datetime" rowspan="2">Date/Time<br /><acronym title="Central Standard Time">CST</acronym></th>
+  <th id="tDD-tmp" rowspan="2"><abbr title="Temperature degrees Celsius">Tmp<br /><br />&deg;C</abbr></th>
+  <th id="tDD-apptmp" rowspan="2"><abbr title="Apparent Temperature degrees Celsius">App<br />Tmp<br />&deg;C</abbr></th>
+  <th id="tDD-dewpoint" rowspan="2"><abbr title="Dew Point Temperature degrees Celsius">Dew<br />Point<br />&deg;C</abbr></th>
+  <th id="tDD-relhum" rowspan="2"><abbr title="Relative Humidity Percentage">Rel<br />Hum<br />%</abbr></th>
+  <th id="tDD-delta-t" rowspan="2"><abbr title="Wet Bulb Depression degrees Celsius">Delta-T<br /><br />&deg;C</abbr></th>
+  <th id="tDD-wind" colspan="5">Wind</th>
+  <th id="tDD-pressure" rowspan="2"><abbr title="Pressure hectopascals">Press<br />hPa</abbr></th>
+  <th id="tDD-rainsince9am" rowspan="2">Rain<br />since<br />9&nbsp;am<br /><abbr title="millimetres">mm</abbr></th>
+  <!-- extremes -->
+  <th id="tDD-lowtmp" rowspan="2" class="bgcolor1"><abbr title="Lowest Temperature, degrees Celsius, from 6pm to 9am">Low<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+  <th id="tDD-hightmp" rowspan="2" class="bgcolor1"><abbr title="Highest Temperature, degrees Celsius, from 6am to 9pm">High<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+</tr>
+
+<tr>
+  <th headers="tDD-wind" id="tDD-wind-dir"><abbr title="Direction the wind comes from">Dir</abbr><br />&nbsp;</th>
+  <th headers="tDD-wind" id="tDD-wind-spd-kmh"><abbr title="Wind speed, kilometres per hour, 10-minute average from the standard height of 10 metres">Spd<br />km/h</abbr></th>
+  <th headers="tDD-wind" id="tDD-wind-gust-kmh"><abbr title="Wind gust, kilometres per hour,  is measured over 3 seconds from the standard height of 10 metres">Gust<br />km/h</abbr></th>
+  <th headers="tDD-wind" id="tDD-wind-wind-spd-kts"><abbr title="Wind speed, knots, 10-minute average from the standard height of 10 metres">Spd<br />kts</abbr></th>
+  <th headers="tDD-wind" id="tDD-wind-gust-kts"><abbr title="Wind gust, knots, is measured over 3 seconds from the standard height of 10 metres">Gust<br />kts</abbr></th>
+</tr>
+
+</thead>
+
+<tbody> <!-- abcd open product tbody -->
+<tr class="rowleftcolumn">
+  <th id="tDD-station-batchelor" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94125.shtml">Batchelor</a></th>
+  <td headers="tDD-datetime tDD-station-batchelor">28/04:35pm</td>
+  <td headers="tDD-tmp tDD-station-batchelor">34.6</td>
+  <td headers="tDD-apptmp tDD-station-batchelor">30.3</td>
+  <td headers="tDD-dewpoint tDD-station-batchelor">-1.5</td>
+  <td headers="tDD-relhum tDD-station-batchelor">10</td>
+  <td headers="tDD-delta-t tDD-station-batchelor">17.4</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-batchelor">E</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-batchelor">11</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-batchelor">15</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-batchelor">6</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-batchelor">8</td>
+  <td headers="tDD-pressure tDD-station-batchelor">-</td>
+  <td headers="tDD-rainsince9am tDD-station-batchelor">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-batchelor">17.0<br /><small>05:00am</small></td>
+  <td headers="tDD-hightmp tDD-station-batchelor">35.5<br /><small>03:13pm</small></td>
+</tr>
+<tr class="contrast">
+  <th id="tDD-station-black-point" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94134.shtml">Black Point</a></th>
+  <td headers="tDD-datetime tDD-station-black-point">28/03:00pm</td>
+  <td headers="tDD-tmp tDD-station-black-point">30.5</td>
+  <td headers="tDD-apptmp tDD-station-black-point">24.7</td>
+  <td headers="tDD-dewpoint tDD-station-black-point">13.8</td>
+  <td headers="tDD-relhum tDD-station-black-point">36</td>
+  <td headers="tDD-delta-t tDD-station-black-point">10.1</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-black-point">ESE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-black-point">37</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-black-point">-</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-black-point">20</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-black-point">-</td>
+  <td headers="tDD-pressure tDD-station-black-point">1012.0</td>
+  <td headers="tDD-rainsince9am tDD-station-black-point">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-black-point">-</td>
+  <td headers="tDD-hightmp tDD-station-black-point">-</td>
+</tr>
+<tr class="contrast">
+  <th id="tDD-station-bradshaw" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94130.shtml">Bradshaw</a></th>
+  <td headers="tDD-datetime tDD-station-bradshaw">28/03:00pm</td>
+  <td headers="tDD-tmp tDD-station-bradshaw">35.9</td>
+  <td headers="tDD-apptmp tDD-station-bradshaw">30.6</td>
+  <td headers="tDD-dewpoint tDD-station-bradshaw">-0.5</td>
+  <td headers="tDD-relhum tDD-station-bradshaw">10</td>
+  <td headers="tDD-delta-t tDD-station-bradshaw">18.0</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-bradshaw">ESE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-bradshaw">17</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-bradshaw">-</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-bradshaw">9</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-bradshaw">-</td>
+  <td headers="tDD-pressure tDD-station-bradshaw">1012.7</td>
+  <td headers="tDD-rainsince9am tDD-station-bradshaw">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-bradshaw">-</td>
+  <td headers="tDD-hightmp tDD-station-bradshaw">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-cape-don" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94129.shtml">Cape Don</a></th>
+  <td headers="tDD-datetime tDD-station-cape-don">28/04:30pm</td>
+  <td headers="tDD-tmp tDD-station-cape-don">29.2</td>
+  <td headers="tDD-apptmp tDD-station-cape-don">31.6</td>
+  <td headers="tDD-dewpoint tDD-station-cape-don">20.9</td>
+  <td headers="tDD-relhum tDD-station-cape-don">61</td>
+  <td headers="tDD-delta-t tDD-station-cape-don">5.5</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-cape-don">WNW</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-cape-don">9</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-cape-don">17</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-cape-don">5</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-cape-don">9</td>
+  <td headers="tDD-pressure tDD-station-cape-don">1011.8</td>
+  <td headers="tDD-rainsince9am tDD-station-cape-don">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-cape-don">-</td>
+  <td headers="tDD-hightmp tDD-station-cape-don">-</td>
+</tr>
+<tr class="contrast">
+  <th id="tDD-station-central-arnhem-plateau" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94141.shtml">Central Arnhem Plateau</a></th>
+  <td headers="tDD-datetime tDD-station-central-arnhem-plateau">28/03:00pm</td>
+  <td headers="tDD-tmp tDD-station-central-arnhem-plateau">31.5</td>
+  <td headers="tDD-apptmp tDD-station-central-arnhem-plateau">26.5</td>
+  <td headers="tDD-dewpoint tDD-station-central-arnhem-plateau">-1.3</td>
+  <td headers="tDD-relhum tDD-station-central-arnhem-plateau">12</td>
+  <td headers="tDD-delta-t tDD-station-central-arnhem-plateau">15.8</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-central-arnhem-plateau">SSE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-central-arnhem-plateau">15</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-central-arnhem-plateau">-</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-central-arnhem-plateau">8</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-central-arnhem-plateau">-</td>
+  <td headers="tDD-pressure tDD-station-central-arnhem-plateau">1012.5</td>
+  <td headers="tDD-rainsince9am tDD-station-central-arnhem-plateau">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-central-arnhem-plateau">-</td>
+  <td headers="tDD-hightmp tDD-station-central-arnhem-plateau">-</td>
+</tr>
+<tr class="contrast">
+  <th id="tDD-station-channel-point" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94121.shtml">Channel Point</a></th>
+  <td headers="tDD-datetime tDD-station-channel-point">28/03:00pm</td>
+  <td headers="tDD-tmp tDD-station-channel-point">28.5</td>
+  <td headers="tDD-apptmp tDD-station-channel-point">31.3</td>
+  <td headers="tDD-dewpoint tDD-station-channel-point">24.9</td>
+  <td headers="tDD-relhum tDD-station-channel-point">81</td>
+  <td headers="tDD-delta-t tDD-station-channel-point">2.5</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-channel-point">W</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-channel-point">19</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-channel-point">-</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-channel-point">10</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-channel-point">-</td>
+  <td headers="tDD-pressure tDD-station-channel-point">1011.7</td>
+  <td headers="tDD-rainsince9am tDD-station-channel-point">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-channel-point">-</td>
+  <td headers="tDD-hightmp tDD-station-channel-point">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-darwin" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94120.shtml">Darwin</a></th>
+  <td headers="tDD-datetime tDD-station-darwin">28/04:34pm</td>
+  <td headers="tDD-tmp tDD-station-darwin">29.4</td>
+  <td headers="tDD-apptmp tDD-station-darwin">26.6</td>
+  <td headers="tDD-dewpoint tDD-station-darwin">17.4</td>
+  <td headers="tDD-relhum tDD-station-darwin">48</td>
+  <td headers="tDD-delta-t tDD-station-darwin">7.6</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-darwin">WNW</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-darwin">28</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-darwin">32</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-darwin">15</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-darwin">17</td>
+  <td headers="tDD-pressure tDD-station-darwin">1011.3</td>
+  <td headers="tDD-rainsince9am tDD-station-darwin">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-darwin">20.1<br /><small>06:15am</small></td>
+  <td headers="tDD-hightmp tDD-station-darwin">34.4<br /><small>01:50pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-delamere" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94225.shtml">Delamere</a></th>
+  <td headers="tDD-datetime tDD-station-delamere">28/04:30pm</td>
+  <td headers="tDD-tmp tDD-station-delamere">33.0</td>
+  <td headers="tDD-apptmp tDD-station-delamere">28.0</td>
+  <td headers="tDD-dewpoint tDD-station-delamere">-4.0</td>
+  <td headers="tDD-relhum tDD-station-delamere">9</td>
+  <td headers="tDD-delta-t tDD-station-delamere">17.0</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-delamere">SE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-delamere">13</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-delamere">24</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-delamere">7</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-delamere">13</td>
+  <td headers="tDD-pressure tDD-station-delamere">1012.6</td>
+  <td headers="tDD-rainsince9am tDD-station-delamere">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-delamere">-</td>
+  <td headers="tDD-hightmp tDD-station-delamere">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-douglas-river" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94128.shtml">Douglas River</a></th>
+  <td headers="tDD-datetime tDD-station-douglas-river">28/04:30pm</td>
+  <td headers="tDD-tmp tDD-station-douglas-river">34.3</td>
+  <td headers="tDD-apptmp tDD-station-douglas-river">27.4</td>
+  <td headers="tDD-dewpoint tDD-station-douglas-river">-2.5</td>
+  <td headers="tDD-relhum tDD-station-douglas-river">9</td>
+  <td headers="tDD-delta-t tDD-station-douglas-river">17.4</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-douglas-river">SE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-douglas-river">24</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-douglas-river">32</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-douglas-river">13</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-douglas-river">17</td>
+  <td headers="tDD-pressure tDD-station-douglas-river">1011.6</td>
+  <td headers="tDD-rainsince9am tDD-station-douglas-river">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-douglas-river">-</td>
+  <td headers="tDD-hightmp tDD-station-douglas-river">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-dum-in-mirrie" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94116.shtml">Dum In Mirrie</a></th>
+  <td headers="tDD-datetime tDD-station-dum-in-mirrie">28/04:35pm</td>
+  <td headers="tDD-tmp tDD-station-dum-in-mirrie">27.0</td>
+  <td headers="tDD-apptmp tDD-station-dum-in-mirrie">29.5</td>
+  <td headers="tDD-dewpoint tDD-station-dum-in-mirrie">23.2</td>
+  <td headers="tDD-relhum tDD-station-dum-in-mirrie">80</td>
+  <td headers="tDD-delta-t tDD-station-dum-in-mirrie">2.6</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-dum-in-mirrie">W</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-dum-in-mirrie">15</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-dum-in-mirrie">17</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-dum-in-mirrie">8</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-dum-in-mirrie">9</td>
+  <td headers="tDD-pressure tDD-station-dum-in-mirrie">-</td>
+  <td headers="tDD-rainsince9am tDD-station-dum-in-mirrie">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-dum-in-mirrie">20.4<br /><small>07:13am</small></td>
+  <td headers="tDD-hightmp tDD-station-dum-in-mirrie">29.8<br /><small>01:22pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-fish-reef" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94114.shtml">Fish Reef</a></th>
+  <td headers="tDD-datetime tDD-station-fish-reef">28/04:35pm</td>
+  <td headers="tDD-tmp tDD-station-fish-reef">-</td>
+  <td headers="tDD-apptmp tDD-station-fish-reef">-</td>
+  <td headers="tDD-dewpoint tDD-station-fish-reef">-</td>
+  <td headers="tDD-relhum tDD-station-fish-reef">-</td>
+  <td headers="tDD-delta-t tDD-station-fish-reef">-</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-fish-reef">W</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-fish-reef">22</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-fish-reef">24</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-fish-reef">12</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-fish-reef">13</td>
+  <td headers="tDD-pressure tDD-station-fish-reef">-</td>
+  <td headers="tDD-rainsince9am tDD-station-fish-reef">-</td>
+  <td headers="tDD-lowtmp tDD-station-fish-reef">-</td>
+  <td headers="tDD-hightmp tDD-station-fish-reef">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-jabiru" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94137.shtml">Jabiru</a></th>
+  <td headers="tDD-datetime tDD-station-jabiru">28/04:35pm</td>
+  <td headers="tDD-tmp tDD-station-jabiru">35.0</td>
+  <td headers="tDD-apptmp tDD-station-jabiru">30.8</td>
+  <td headers="tDD-dewpoint tDD-station-jabiru">1.4</td>
+  <td headers="tDD-relhum tDD-station-jabiru">12</td>
+  <td headers="tDD-delta-t tDD-station-jabiru">17.0</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-jabiru">ESE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-jabiru">13</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-jabiru">15</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-jabiru">7</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-jabiru">8</td>
+  <td headers="tDD-pressure tDD-station-jabiru">1010.6</td>
+  <td headers="tDD-rainsince9am tDD-station-jabiru">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-jabiru">19.6<br /><small>06:53am</small></td>
+  <td headers="tDD-hightmp tDD-station-jabiru">35.8<br /><small>04:00pm</small></td>
+</tr>
+<tr class="contrast">
+  <th id="tDD-station-katherine" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94132.shtml">Katherine</a></th>
+  <td headers="tDD-datetime tDD-station-katherine">28/03:00pm</td>
+  <td headers="tDD-tmp tDD-station-katherine">33.8</td>
+  <td headers="tDD-apptmp tDD-station-katherine">29.1</td>
+  <td headers="tDD-dewpoint tDD-station-katherine">5.3</td>
+  <td headers="tDD-relhum tDD-station-katherine">17</td>
+  <td headers="tDD-delta-t tDD-station-katherine">15.3</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-katherine">ESE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-katherine">19</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-katherine">-</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-katherine">10</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-katherine">-</td>
+  <td headers="tDD-pressure tDD-station-katherine">-</td>
+  <td headers="tDD-rainsince9am tDD-station-katherine">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-katherine">-</td>
+  <td headers="tDD-hightmp tDD-station-katherine">-</td>
+</tr>
+<tr class="contrast">
+  <th id="tDD-station-mango-farm" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94117.shtml">Mango Farm</a></th>
+  <td headers="tDD-datetime tDD-station-mango-farm">28/03:00pm</td>
+  <td headers="tDD-tmp tDD-station-mango-farm">34.6</td>
+  <td headers="tDD-apptmp tDD-station-mango-farm">31.7</td>
+  <td headers="tDD-dewpoint tDD-station-mango-farm">2.7</td>
+  <td headers="tDD-relhum tDD-station-mango-farm">13</td>
+  <td headers="tDD-delta-t tDD-station-mango-farm">16.4</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-mango-farm">SSE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-mango-farm">7</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-mango-farm">-</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-mango-farm">4</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-mango-farm">-</td>
+  <td headers="tDD-pressure tDD-station-mango-farm">1011.4</td>
+  <td headers="tDD-rainsince9am tDD-station-mango-farm">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-mango-farm">-</td>
+  <td headers="tDD-hightmp tDD-station-mango-farm">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-mccluer-island" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94135.shtml">McCluer Island</a></th>
+  <td headers="tDD-datetime tDD-station-mccluer-island">28/04:34pm</td>
+  <td headers="tDD-tmp tDD-station-mccluer-island">26.3</td>
+  <td headers="tDD-apptmp tDD-station-mccluer-island">24.6</td>
+  <td headers="tDD-dewpoint tDD-station-mccluer-island">19.7</td>
+  <td headers="tDD-relhum tDD-station-mccluer-island">67</td>
+  <td headers="tDD-delta-t tDD-station-mccluer-island">4.3</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-mccluer-island">E</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-mccluer-island">28</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-mccluer-island">32</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-mccluer-island">15</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-mccluer-island">17</td>
+  <td headers="tDD-pressure tDD-station-mccluer-island">1011.4</td>
+  <td headers="tDD-rainsince9am tDD-station-mccluer-island">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-mccluer-island">22.8<br /><small>03:34am</small></td>
+  <td headers="tDD-hightmp tDD-station-mccluer-island">27.8<br /><small>01:09pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-middle-point" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.95121.shtml">Middle Point</a></th>
+  <td headers="tDD-datetime tDD-station-middle-point">28/04:35pm</td>
+  <td headers="tDD-tmp tDD-station-middle-point">35.9</td>
+  <td headers="tDD-apptmp tDD-station-middle-point">31.4</td>
+  <td headers="tDD-dewpoint tDD-station-middle-point">-0.5</td>
+  <td headers="tDD-relhum tDD-station-middle-point">10</td>
+  <td headers="tDD-delta-t tDD-station-middle-point">18.0</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-middle-point">SSE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-middle-point">13</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-middle-point">15</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-middle-point">7</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-middle-point">8</td>
+  <td headers="tDD-pressure tDD-station-middle-point">-</td>
+  <td headers="tDD-rainsince9am tDD-station-middle-point">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-middle-point">15.7<br /><small>03:18am</small></td>
+  <td headers="tDD-hightmp tDD-station-middle-point">38.0<br /><small>02:21pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-noonamah" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.99504.shtml">Noonamah</a></th>
+  <td headers="tDD-datetime tDD-station-noonamah">28/04:35pm</td>
+  <td headers="tDD-tmp tDD-station-noonamah">35.7</td>
+  <td headers="tDD-apptmp tDD-station-noonamah">31.9</td>
+  <td headers="tDD-dewpoint tDD-station-noonamah">1.9</td>
+  <td headers="tDD-relhum tDD-station-noonamah">12</td>
+  <td headers="tDD-delta-t tDD-station-noonamah">17.3</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-noonamah">SE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-noonamah">11</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-noonamah">13</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-noonamah">6</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-noonamah">7</td>
+  <td headers="tDD-pressure tDD-station-noonamah">1010.6</td>
+  <td headers="tDD-rainsince9am tDD-station-noonamah">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-noonamah">16.4<br /><small>01:22am</small></td>
+  <td headers="tDD-hightmp tDD-station-noonamah">36.9<br /><small>03:40pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-pirlangimpi" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94119.shtml">Pirlangimpi</a></th>
+  <td headers="tDD-datetime tDD-station-pirlangimpi">28/04:35pm</td>
+  <td headers="tDD-tmp tDD-station-pirlangimpi">31.6</td>
+  <td headers="tDD-apptmp tDD-station-pirlangimpi">29.9</td>
+  <td headers="tDD-dewpoint tDD-station-pirlangimpi">14.7</td>
+  <td headers="tDD-relhum tDD-station-pirlangimpi">36</td>
+  <td headers="tDD-delta-t tDD-station-pirlangimpi">10.4</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-pirlangimpi">NE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-pirlangimpi">17</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-pirlangimpi">22</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-pirlangimpi">9</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-pirlangimpi">12</td>
+  <td headers="tDD-pressure tDD-station-pirlangimpi">-</td>
+  <td headers="tDD-rainsince9am tDD-station-pirlangimpi">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-pirlangimpi">18.9<br /><small>06:31am</small></td>
+  <td headers="tDD-hightmp tDD-station-pirlangimpi">35.6<br /><small>02:48pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-wadeye-port-keats" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.95111.shtml">Wadeye (Port Keats)</a></th>
+  <td headers="tDD-datetime tDD-station-wadeye-port-keats">28/04:34pm</td>
+  <td headers="tDD-tmp tDD-station-wadeye-port-keats">29.2</td>
+  <td headers="tDD-apptmp tDD-station-wadeye-port-keats">29.7</td>
+  <td headers="tDD-dewpoint tDD-station-wadeye-port-keats">19.2</td>
+  <td headers="tDD-relhum tDD-station-wadeye-port-keats">54</td>
+  <td headers="tDD-delta-t tDD-station-wadeye-port-keats">6.5</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-wadeye-port-keats">W</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-wadeye-port-keats">15</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-wadeye-port-keats">19</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-wadeye-port-keats">8</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-wadeye-port-keats">10</td>
+  <td headers="tDD-pressure tDD-station-wadeye-port-keats">1011.5</td>
+  <td headers="tDD-rainsince9am tDD-station-wadeye-port-keats">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-wadeye-port-keats">16.6<br /><small>07:03am</small></td>
+  <td headers="tDD-hightmp tDD-station-wadeye-port-keats">33.1<br /><small>12:12pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tDD-station-tindal" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94131.shtml">Tindal</a></th>
+  <td headers="tDD-datetime tDD-station-tindal">28/04:35pm</td>
+  <td headers="tDD-tmp tDD-station-tindal">33.7</td>
+  <td headers="tDD-apptmp tDD-station-tindal">29.1</td>
+  <td headers="tDD-dewpoint tDD-station-tindal">-0.8</td>
+  <td headers="tDD-relhum tDD-station-tindal">11</td>
+  <td headers="tDD-delta-t tDD-station-tindal">16.8</td>
+  <td headers="tDD-wind tDD-wind-dir tDD-station-tindal">SE</td>
+  <td headers="tDD-wind tDD-wind-spd-kmh tDD-station-tindal">13</td>
+  <td headers="tDD-wind tDD-wind-gust-kmh tDD-station-tindal">19</td>
+  <td headers="tDD-wind tDD-wind-spd_kts tDD-station-tindal">7</td>
+  <td headers="tDD-wind tDD-wind-gust_kts tDD-station-tindal">10</td>
+  <td headers="tDD-pressure tDD-station-tindal">1012.4</td>
+  <td headers="tDD-rainsince9am tDD-station-tindal">0.0</td>
+  <td headers="tDD-lowtmp tDD-station-tindal">11.5<br /><small>06:44am</small></td>
+  <td headers="tDD-hightmp tDD-station-tindal">34.3<br /><small>03:00pm</small></td>
+</tr>
+</tbody> <!-- abcd close product tbody for this division -->
+</table> <!-- ABCD close product table for this division -->
+
+<h2 id="ARN">ARNHEM</h2>
+<table id="tARN" border="1" cellspacing="0" class="tabledata obs_table" summary="Observations for ARN including temperature, wind, rain and other weather elements"> <!-- ABCD open product division table before col headings -->
+<colgroup>
+<col class="col_station" />
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+  <th id="tARN-station" rowspan="2" class="rowleftcolumn"></th>
+  <th id="tARN-datetime" rowspan="2">Date/Time<br /><acronym title="Central Standard Time">CST</acronym></th>
+  <th id="tARN-tmp" rowspan="2"><abbr title="Temperature degrees Celsius">Tmp<br /><br />&deg;C</abbr></th>
+  <th id="tARN-apptmp" rowspan="2"><abbr title="Apparent Temperature degrees Celsius">App<br />Tmp<br />&deg;C</abbr></th>
+  <th id="tARN-dewpoint" rowspan="2"><abbr title="Dew Point Temperature degrees Celsius">Dew<br />Point<br />&deg;C</abbr></th>
+  <th id="tARN-relhum" rowspan="2"><abbr title="Relative Humidity Percentage">Rel<br />Hum<br />%</abbr></th>
+  <th id="tARN-delta-t" rowspan="2"><abbr title="Wet Bulb Depression degrees Celsius">Delta-T<br /><br />&deg;C</abbr></th>
+  <th id="tARN-wind" colspan="5">Wind</th>
+  <th id="tARN-pressure" rowspan="2"><abbr title="Pressure hectopascals">Press<br />hPa</abbr></th>
+  <th id="tARN-rainsince9am" rowspan="2">Rain<br />since<br />9&nbsp;am<br /><abbr title="millimetres">mm</abbr></th>
+  <!-- extremes -->
+  <th id="tARN-lowtmp" rowspan="2" class="bgcolor1"><abbr title="Lowest Temperature, degrees Celsius, from 6pm to 9am">Low<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+  <th id="tARN-hightmp" rowspan="2" class="bgcolor1"><abbr title="Highest Temperature, degrees Celsius, from 6am to 9pm">High<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+</tr>
+
+<tr>
+  <th headers="tARN-wind" id="tARN-wind-dir"><abbr title="Direction the wind comes from">Dir</abbr><br />&nbsp;</th>
+  <th headers="tARN-wind" id="tARN-wind-spd-kmh"><abbr title="Wind speed, kilometres per hour, 10-minute average from the standard height of 10 metres">Spd<br />km/h</abbr></th>
+  <th headers="tARN-wind" id="tARN-wind-gust-kmh"><abbr title="Wind gust, kilometres per hour,  is measured over 3 seconds from the standard height of 10 metres">Gust<br />km/h</abbr></th>
+  <th headers="tARN-wind" id="tARN-wind-wind-spd-kts"><abbr title="Wind speed, knots, 10-minute average from the standard height of 10 metres">Spd<br />kts</abbr></th>
+  <th headers="tARN-wind" id="tARN-wind-gust-kts"><abbr title="Wind gust, knots, is measured over 3 seconds from the standard height of 10 metres">Gust<br />kts</abbr></th>
+</tr>
+
+</thead>
+
+<tbody> <!-- abcd open product tbody -->
+<tr class="contrast">
+  <th id="tARN-station-cape-wessel" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94147.shtml">Cape Wessel</a></th>
+  <td headers="tARN-datetime tARN-station-cape-wessel">28/03:00pm</td>
+  <td headers="tARN-tmp tARN-station-cape-wessel">29.4</td>
+  <td headers="tARN-apptmp tARN-station-cape-wessel">29.5</td>
+  <td headers="tARN-dewpoint tARN-station-cape-wessel">21.9</td>
+  <td headers="tARN-relhum tARN-station-cape-wessel">64</td>
+  <td headers="tARN-delta-t tARN-station-cape-wessel">5.1</td>
+  <td headers="tARN-wind tARN-wind-dir tARN-station-cape-wessel">SE</td>
+  <td headers="tARN-wind tARN-wind-spd-kmh tARN-station-cape-wessel">24</td>
+  <td headers="tARN-wind tARN-wind-gust-kmh tARN-station-cape-wessel">-</td>
+  <td headers="tARN-wind tARN-wind-spd_kts tARN-station-cape-wessel">13</td>
+  <td headers="tARN-wind tARN-wind-gust_kts tARN-station-cape-wessel">-</td>
+  <td headers="tARN-pressure tARN-station-cape-wessel">1012.0</td>
+  <td headers="tARN-rainsince9am tARN-station-cape-wessel">0.0</td>
+  <td headers="tARN-lowtmp tARN-station-cape-wessel">-</td>
+  <td headers="tARN-hightmp tARN-station-cape-wessel">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tARN-station-gove-airport" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94150.shtml">Gove Airport</a></th>
+  <td headers="tARN-datetime tARN-station-gove-airport">28/04:00pm</td>
+  <td headers="tARN-tmp tARN-station-gove-airport">28.0</td>
+  <td headers="tARN-apptmp tARN-station-gove-airport">25.5</td>
+  <td headers="tARN-dewpoint tARN-station-gove-airport">17.0</td>
+  <td headers="tARN-relhum tARN-station-gove-airport">51</td>
+  <td headers="tARN-delta-t tARN-station-gove-airport">6.9</td>
+  <td headers="tARN-wind tARN-wind-dir tARN-station-gove-airport">SE</td>
+  <td headers="tARN-wind tARN-wind-spd-kmh tARN-station-gove-airport">26</td>
+  <td headers="tARN-wind tARN-wind-gust-kmh tARN-station-gove-airport">-</td>
+  <td headers="tARN-wind tARN-wind-spd_kts tARN-station-gove-airport">14</td>
+  <td headers="tARN-wind tARN-wind-gust_kts tARN-station-gove-airport">-</td>
+  <td headers="tARN-pressure tARN-station-gove-airport">1012.8</td>
+  <td headers="tARN-rainsince9am tARN-station-gove-airport">0.0</td>
+  <td headers="tARN-lowtmp tARN-station-gove-airport">-</td>
+  <td headers="tARN-hightmp tARN-station-gove-airport">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tARN-station-groote-eylandt airport" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94153.shtml">Groote Eylandt Airport</a></th>
+  <td headers="tARN-datetime tARN-station-groote-eylandt airport">28/04:35pm</td>
+  <td headers="tARN-tmp tARN-station-groote-eylandt airport">30.1</td>
+  <td headers="tARN-apptmp tARN-station-groote-eylandt airport">25.1</td>
+  <td headers="tARN-dewpoint tARN-station-groote-eylandt airport">1.5</td>
+  <td headers="tARN-relhum tARN-station-groote-eylandt airport">16</td>
+  <td headers="tARN-delta-t tARN-station-groote-eylandt airport">14.0</td>
+  <td headers="tARN-wind tARN-wind-dir tARN-station-groote-eylandt airport">SSE</td>
+  <td headers="tARN-wind tARN-wind-spd-kmh tARN-station-groote-eylandt airport">17</td>
+  <td headers="tARN-wind tARN-wind-gust-kmh tARN-station-groote-eylandt airport">20</td>
+  <td headers="tARN-wind tARN-wind-spd_kts tARN-station-groote-eylandt airport">9</td>
+  <td headers="tARN-wind tARN-wind-gust_kts tARN-station-groote-eylandt airport">11</td>
+  <td headers="tARN-pressure tARN-station-groote-eylandt airport">1013.0</td>
+  <td headers="tARN-rainsince9am tARN-station-groote-eylandt airport">0.0</td>
+  <td headers="tARN-lowtmp tARN-station-groote-eylandt airport">19.5<br /><small>02:27am</small></td>
+  <td headers="tARN-hightmp tARN-station-groote-eylandt airport">32.2<br /><small>01:22pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tARN-station-maningrida-airport" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.95142.shtml">Maningrida Airport</a></th>
+  <td headers="tARN-datetime tARN-station-maningrida-airport">28/04:35pm</td>
+  <td headers="tARN-tmp tARN-station-maningrida-airport">29.3</td>
+  <td headers="tARN-apptmp tARN-station-maningrida-airport">27.6</td>
+  <td headers="tARN-dewpoint tARN-station-maningrida-airport">15.8</td>
+  <td headers="tARN-relhum tARN-station-maningrida-airport">44</td>
+  <td headers="tARN-delta-t tARN-station-maningrida-airport">8.3</td>
+  <td headers="tARN-wind tARN-wind-dir tARN-station-maningrida-airport">ENE</td>
+  <td headers="tARN-wind tARN-wind-spd-kmh tARN-station-maningrida-airport">19</td>
+  <td headers="tARN-wind tARN-wind-gust-kmh tARN-station-maningrida-airport">20</td>
+  <td headers="tARN-wind tARN-wind-spd_kts tARN-station-maningrida-airport">10</td>
+  <td headers="tARN-wind tARN-wind-gust_kts tARN-station-maningrida-airport">11</td>
+  <td headers="tARN-pressure tARN-station-maningrida-airport">1010.9</td>
+  <td headers="tARN-rainsince9am tARN-station-maningrida-airport">0.0</td>
+  <td headers="tARN-lowtmp tARN-station-maningrida-airport">14.7<br /><small>05:30am</small></td>
+  <td headers="tARN-hightmp tARN-station-maningrida-airport">34.5<br /><small>02:33pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tARN-station-milingimbi" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94140.shtml">Milingimbi</a></th>
+  <td headers="tARN-datetime tARN-station-milingimbi">28/04:35pm</td>
+  <td headers="tARN-tmp tARN-station-milingimbi">31.2</td>
+  <td headers="tARN-apptmp tARN-station-milingimbi">-</td>
+  <td headers="tARN-dewpoint tARN-station-milingimbi">-</td>
+  <td headers="tARN-relhum tARN-station-milingimbi">-</td>
+  <td headers="tARN-delta-t tARN-station-milingimbi">-</td>
+  <td headers="tARN-wind tARN-wind-dir tARN-station-milingimbi">ENE</td>
+  <td headers="tARN-wind tARN-wind-spd-kmh tARN-station-milingimbi">15</td>
+  <td headers="tARN-wind tARN-wind-gust-kmh tARN-station-milingimbi">19</td>
+  <td headers="tARN-wind tARN-wind-spd_kts tARN-station-milingimbi">8</td>
+  <td headers="tARN-wind tARN-wind-gust_kts tARN-station-milingimbi">10</td>
+  <td headers="tARN-pressure tARN-station-milingimbi">1011.5</td>
+  <td headers="tARN-rainsince9am tARN-station-milingimbi">0.0</td>
+  <td headers="tARN-lowtmp tARN-station-milingimbi">18.1<br /><small>07:04am</small></td>
+  <td headers="tARN-hightmp tARN-station-milingimbi">33.2<br /><small>02:43pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tARN-station-ngayawili-elcho-island" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.95146.shtml">Ngayawili (Elcho Island)</a></th>
+  <td headers="tARN-datetime tARN-station-ngayawili-elcho-island">28/04:34pm</td>
+  <td headers="tARN-tmp tARN-station-ngayawili-elcho-island">30.5</td>
+  <td headers="tARN-apptmp tARN-station-ngayawili-elcho-island">-</td>
+  <td headers="tARN-dewpoint tARN-station-ngayawili-elcho-island">-</td>
+  <td headers="tARN-relhum tARN-station-ngayawili-elcho-island">-</td>
+  <td headers="tARN-delta-t tARN-station-ngayawili-elcho-island">-</td>
+  <td headers="tARN-wind tARN-wind-dir tARN-station-ngayawili-elcho-island">E</td>
+  <td headers="tARN-wind tARN-wind-spd-kmh tARN-station-ngayawili-elcho-island">24</td>
+  <td headers="tARN-wind tARN-wind-gust-kmh tARN-station-ngayawili-elcho-island">37</td>
+  <td headers="tARN-wind tARN-wind-spd_kts tARN-station-ngayawili-elcho-island">13</td>
+  <td headers="tARN-wind tARN-wind-gust_kts tARN-station-ngayawili-elcho-island">20</td>
+  <td headers="tARN-pressure tARN-station-ngayawili-elcho-island">1011.6</td>
+  <td headers="tARN-rainsince9am tARN-station-ngayawili-elcho-island">0.0</td>
+  <td headers="tARN-lowtmp tARN-station-ngayawili-elcho-island">18.7<br /><small>03:44am</small></td>
+  <td headers="tARN-hightmp tARN-station-ngayawili-elcho-island">33.3<br /><small>02:27pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tARN-station-northeastr-island" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94151.shtml">Northeast Island</a></th>
+  <td headers="tARN-datetime tARN-station-northeastr-island">28/04:30pm</td>
+  <td headers="tARN-tmp tARN-station-northeastr-island">25.4</td>
+  <td headers="tARN-apptmp tARN-station-northeastr-island">26.2</td>
+  <td headers="tARN-dewpoint tARN-station-northeastr-island">18.1</td>
+  <td headers="tARN-relhum tARN-station-northeastr-island">64</td>
+  <td headers="tARN-delta-t tARN-station-northeastr-island">4.6</td>
+  <td headers="tARN-wind tARN-wind-dir tARN-station-northeastr-island">SE</td>
+  <td headers="tARN-wind tARN-wind-spd-kmh tARN-station-northeastr-island">11</td>
+  <td headers="tARN-wind tARN-wind-gust-kmh tARN-station-northeastr-island">17</td>
+  <td headers="tARN-wind tARN-wind-spd_kts tARN-station-northeastr-island">6</td>
+  <td headers="tARN-wind tARN-wind-gust_kts tARN-station-northeastr-island">9</td>
+  <td headers="tARN-pressure tARN-station-northeastr-island">1013.3</td>
+  <td headers="tARN-rainsince9am tARN-station-northeastr-island">0.0</td>
+  <td headers="tARN-lowtmp tARN-station-northeastr-island">-</td>
+  <td headers="tARN-hightmp tARN-station-northeastr-island">-</td>
+</tr>
+<tr class="contrast">
+  <th id="tARN-station-oenpelli" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94138.shtml">Oenpelli</a></th>
+  <td headers="tARN-datetime tARN-station-oenpelli">28/06:00am</td>
+  <td headers="tARN-tmp tARN-station-oenpelli">19.1</td>
+  <td headers="tARN-apptmp tARN-station-oenpelli">19.5</td>
+  <td headers="tARN-dewpoint tARN-station-oenpelli">11.3</td>
+  <td headers="tARN-relhum tARN-station-oenpelli">60</td>
+  <td headers="tARN-delta-t tARN-station-oenpelli">4.3</td>
+  <td headers="tARN-wind tARN-wind-dir tARN-station-oenpelli">CALM</td>
+  <td headers="tARN-wind tARN-wind-spd-kmh tARN-station-oenpelli">0</td>
+  <td headers="tARN-wind tARN-wind-gust-kmh tARN-station-oenpelli">-</td>
+  <td headers="tARN-wind tARN-wind-spd_kts tARN-station-oenpelli">0</td>
+  <td headers="tARN-wind tARN-wind-gust_kts tARN-station-oenpelli">-</td>
+  <td headers="tARN-pressure tARN-station-oenpelli">1013.4</td>
+  <td headers="tARN-rainsince9am tARN-station-oenpelli">-</td>
+  <td headers="tARN-lowtmp tARN-station-oenpelli">-</td>
+  <td headers="tARN-hightmp tARN-station-oenpelli">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tARN-station-warruwi" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94139.shtml">Warruwi</a></th>
+  <td headers="tARN-datetime tARN-station-warruwi">28/04:35pm</td>
+  <td headers="tARN-tmp tARN-station-warruwi">28.8</td>
+  <td headers="tARN-apptmp tARN-station-warruwi">29.0</td>
+  <td headers="tARN-dewpoint tARN-station-warruwi">16.7</td>
+  <td headers="tARN-relhum tARN-station-warruwi">48</td>
+  <td headers="tARN-delta-t tARN-station-warruwi">7.6</td>
+  <td headers="tARN-wind tARN-wind-dir tARN-station-warruwi">NE</td>
+  <td headers="tARN-wind tARN-wind-spd-kmh tARN-station-warruwi">11</td>
+  <td headers="tARN-wind tARN-wind-gust-kmh tARN-station-warruwi">13</td>
+  <td headers="tARN-wind tARN-wind-spd_kts tARN-station-warruwi">6</td>
+  <td headers="tARN-wind tARN-wind-gust_kts tARN-station-warruwi">7</td>
+  <td headers="tARN-pressure tARN-station-warruwi">-</td>
+  <td headers="tARN-rainsince9am tARN-station-warruwi">0.0</td>
+  <td headers="tARN-lowtmp tARN-station-warruwi">21.6<br /><small>06:34am</small></td>
+  <td headers="tARN-hightmp tARN-station-warruwi">31.0<br /><small>02:46pm</small></td>
+</tr>
+</tbody> <!-- abcd close product tbody for this division -->
+</table> <!-- ABCD close product table for this division -->
+
+<h2 id="RM">ROPER-MCARTHUR</h2>
+<table id="tRM" border="1" cellspacing="0" class="tabledata obs_table" summary="Observations for RM including temperature, wind, rain and other weather elements"> <!-- ABCD open product division table before col headings -->
+<colgroup>
+<col class="col_station" />
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+  <th id="tRM-station" rowspan="2" class="rowleftcolumn"></th>
+  <th id="tRM-datetime" rowspan="2">Date/Time<br /><acronym title="Central Standard Time">CST</acronym></th>
+  <th id="tRM-tmp" rowspan="2"><abbr title="Temperature degrees Celsius">Tmp<br /><br />&deg;C</abbr></th>
+  <th id="tRM-apptmp" rowspan="2"><abbr title="Apparent Temperature degrees Celsius">App<br />Tmp<br />&deg;C</abbr></th>
+  <th id="tRM-dewpoint" rowspan="2"><abbr title="Dew Point Temperature degrees Celsius">Dew<br />Point<br />&deg;C</abbr></th>
+  <th id="tRM-relhum" rowspan="2"><abbr title="Relative Humidity Percentage">Rel<br />Hum<br />%</abbr></th>
+  <th id="tRM-delta-t" rowspan="2"><abbr title="Wet Bulb Depression degrees Celsius">Delta-T<br /><br />&deg;C</abbr></th>
+  <th id="tRM-wind" colspan="5">Wind</th>
+  <th id="tRM-pressure" rowspan="2"><abbr title="Pressure hectopascals">Press<br />hPa</abbr></th>
+  <th id="tRM-rainsince9am" rowspan="2">Rain<br />since<br />9&nbsp;am<br /><abbr title="millimetres">mm</abbr></th>
+  <!-- extremes -->
+  <th id="tRM-lowtmp" rowspan="2" class="bgcolor1"><abbr title="Lowest Temperature, degrees Celsius, from 6pm to 9am">Low<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+  <th id="tRM-hightmp" rowspan="2" class="bgcolor1"><abbr title="Highest Temperature, degrees Celsius, from 6am to 9pm">High<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+</tr>
+
+<tr>
+  <th headers="tRM-wind" id="tRM-wind-dir"><abbr title="Direction the wind comes from">Dir</abbr><br />&nbsp;</th>
+  <th headers="tRM-wind" id="tRM-wind-spd-kmh"><abbr title="Wind speed, kilometres per hour, 10-minute average from the standard height of 10 metres">Spd<br />km/h</abbr></th>
+  <th headers="tRM-wind" id="tRM-wind-gust-kmh"><abbr title="Wind gust, kilometres per hour,  is measured over 3 seconds from the standard height of 10 metres">Gust<br />km/h</abbr></th>
+  <th headers="tRM-wind" id="tRM-wind-wind-spd-kts"><abbr title="Wind speed, knots, 10-minute average from the standard height of 10 metres">Spd<br />kts</abbr></th>
+  <th headers="tRM-wind" id="tRM-wind-gust-kts"><abbr title="Wind gust, knots, is measured over 3 seconds from the standard height of 10 metres">Gust<br />kts</abbr></th>
+</tr>
+
+</thead>
+
+<tbody> <!-- abcd open product tbody -->
+<tr class="rowleftcolumn">
+  <th id="tRM-station-borroloola" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94152.shtml">Borroloola</a></th>
+  <td headers="tRM-datetime tRM-station-borroloola">28/04:35pm</td>
+  <td headers="tRM-tmp tRM-station-borroloola">31.9</td>
+  <td headers="tRM-apptmp tRM-station-borroloola">26.9</td>
+  <td headers="tRM-dewpoint tRM-station-borroloola">-1.0</td>
+  <td headers="tRM-relhum tRM-station-borroloola">12</td>
+  <td headers="tRM-delta-t tRM-station-borroloola">15.7</td>
+  <td headers="tRM-wind tRM-wind-dir tRM-station-borroloola">NE</td>
+  <td headers="tRM-wind tRM-wind-spd-kmh tRM-station-borroloola">15</td>
+  <td headers="tRM-wind tRM-wind-gust-kmh tRM-station-borroloola">20</td>
+  <td headers="tRM-wind tRM-wind-spd_kts tRM-station-borroloola">8</td>
+  <td headers="tRM-wind tRM-wind-gust_kts tRM-station-borroloola">11</td>
+  <td headers="tRM-pressure tRM-station-borroloola">1012.6</td>
+  <td headers="tRM-rainsince9am tRM-station-borroloola">0.0</td>
+  <td headers="tRM-lowtmp tRM-station-borroloola">10.8<br /><small>06:42am</small></td>
+  <td headers="tRM-hightmp tRM-station-borroloola">33.5<br /><small>03:07pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tRM-station-bulman" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94143.shtml">Bulman</a></th>
+  <td headers="tRM-datetime tRM-station-bulman">28/04:30pm</td>
+  <td headers="tRM-tmp tRM-station-bulman">34.0</td>
+  <td headers="tRM-apptmp tRM-station-bulman">30.0</td>
+  <td headers="tRM-dewpoint tRM-station-bulman">0.6</td>
+  <td headers="tRM-relhum tRM-station-bulman">12</td>
+  <td headers="tRM-delta-t tRM-station-bulman">16.6</td>
+  <td headers="tRM-wind tRM-wind-dir tRM-station-bulman">ESE</td>
+  <td headers="tRM-wind tRM-wind-spd-kmh tRM-station-bulman">11</td>
+  <td headers="tRM-wind tRM-wind-gust-kmh tRM-station-bulman">17</td>
+  <td headers="tRM-wind tRM-wind-spd_kts tRM-station-bulman">6</td>
+  <td headers="tRM-wind tRM-wind-gust_kts tRM-station-bulman">9</td>
+  <td headers="tRM-pressure tRM-station-bulman">1011.5</td>
+  <td headers="tRM-rainsince9am tRM-station-bulman">0.0</td>
+  <td headers="tRM-lowtmp tRM-station-bulman">-</td>
+  <td headers="tRM-hightmp tRM-station-bulman">-</td>
+</tr>
+<tr class="contrast">
+  <th id="tRM-station-centre-island" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94248.shtml">Centre Island</a></th>
+  <td headers="tRM-datetime tRM-station-centre-island">28/03:00pm</td>
+  <td headers="tRM-tmp tRM-station-centre-island">29.3</td>
+  <td headers="tRM-apptmp tRM-station-centre-island">27.7</td>
+  <td headers="tRM-dewpoint tRM-station-centre-island">13.9</td>
+  <td headers="tRM-relhum tRM-station-centre-island">39</td>
+  <td headers="tRM-delta-t tRM-station-centre-island">9.2</td>
+  <td headers="tRM-wind tRM-wind-dir tRM-station-centre-island">E</td>
+  <td headers="tRM-wind tRM-wind-spd-kmh tRM-station-centre-island">15</td>
+  <td headers="tRM-wind tRM-wind-gust-kmh tRM-station-centre-island">-</td>
+  <td headers="tRM-wind tRM-wind-spd_kts tRM-station-centre-island">8</td>
+  <td headers="tRM-wind tRM-wind-gust_kts tRM-station-centre-island">-</td>
+  <td headers="tRM-pressure tRM-station-centre-island">1013.3</td>
+  <td headers="tRM-rainsince9am tRM-station-centre-island">0.0</td>
+  <td headers="tRM-lowtmp tRM-station-centre-island">-</td>
+  <td headers="tRM-hightmp tRM-station-centre-island">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tRM-station-daly-waters" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94234.shtml">Daly Waters</a></th>
+  <td headers="tRM-datetime tRM-station-daly-waters">28/04:35pm</td>
+  <td headers="tRM-tmp tRM-station-daly-waters">33.3</td>
+  <td headers="tRM-apptmp tRM-station-daly-waters">29.1</td>
+  <td headers="tRM-dewpoint tRM-station-daly-waters">-3.9</td>
+  <td headers="tRM-relhum tRM-station-daly-waters">9</td>
+  <td headers="tRM-delta-t tRM-station-daly-waters">17.2</td>
+  <td headers="tRM-wind tRM-wind-dir tRM-station-daly-waters">SE</td>
+  <td headers="tRM-wind tRM-wind-spd-kmh tRM-station-daly-waters">9</td>
+  <td headers="tRM-wind tRM-wind-gust-kmh tRM-station-daly-waters">13</td>
+  <td headers="tRM-wind tRM-wind-spd_kts tRM-station-daly-waters">5</td>
+  <td headers="tRM-wind tRM-wind-gust_kts tRM-station-daly-waters">7</td>
+  <td headers="tRM-pressure tRM-station-daly-waters">-</td>
+  <td headers="tRM-rainsince9am tRM-station-daly-waters">0.0</td>
+  <td headers="tRM-lowtmp tRM-station-daly-waters">8.4<br /><small>06:48am</small></td>
+  <td headers="tRM-hightmp tRM-station-daly-waters">34.0<br /><small>02:53pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tRM-station-mcarthur-river-mine" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94239.shtml">McArthur River Mine</a></th>
+  <td headers="tRM-datetime tRM-station-mcarthur-river-mine">28/04:35pm</td>
+  <td headers="tRM-tmp tRM-station-mcarthur-river-mine">32.6</td>
+  <td headers="tRM-apptmp tRM-station-mcarthur-river-mine">29.0</td>
+  <td headers="tRM-dewpoint tRM-station-mcarthur-river-mine">-7.6</td>
+  <td headers="tRM-relhum tRM-station-mcarthur-river-mine">7</td>
+  <td headers="tRM-delta-t tRM-station-mcarthur-river-mine">17.2</td>
+  <td headers="tRM-wind tRM-wind-dir tRM-station-mcarthur-river-mine">W</td>
+  <td headers="tRM-wind tRM-wind-spd-kmh tRM-station-mcarthur-river-mine">4</td>
+  <td headers="tRM-wind tRM-wind-gust-kmh tRM-station-mcarthur-river-mine">6</td>
+  <td headers="tRM-wind tRM-wind-spd_kts tRM-station-mcarthur-river-mine">2</td>
+  <td headers="tRM-wind tRM-wind-gust_kts tRM-station-mcarthur-river-mine">3</td>
+  <td headers="tRM-pressure tRM-station-mcarthur-river-mine">1012.7</td>
+  <td headers="tRM-rainsince9am tRM-station-mcarthur-river-mine">0.0</td>
+  <td headers="tRM-lowtmp tRM-station-mcarthur-river-mine">9.8<br /><small>06:29am</small></td>
+  <td headers="tRM-hightmp tRM-station-mcarthur-river-mine">33.9<br /><small>03:09pm</small></td>
+</tr>
+<tr class="contrast">
+  <th id="tRM-station-wollogorang" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94258.shtml">Wollogorang</a></th>
+  <td headers="tRM-datetime tRM-station-wollogorang">28/03:00pm</td>
+  <td headers="tRM-tmp tRM-station-wollogorang">33.0</td>
+  <td headers="tRM-apptmp tRM-station-wollogorang">33.2</td>
+  <td headers="tRM-dewpoint tRM-station-wollogorang">14.3</td>
+  <td headers="tRM-relhum tRM-station-wollogorang">32</td>
+  <td headers="tRM-delta-t tRM-station-wollogorang">11.5</td>
+  <td headers="tRM-wind tRM-wind-dir tRM-station-wollogorang">NE</td>
+  <td headers="tRM-wind tRM-wind-spd-kmh tRM-station-wollogorang">6</td>
+  <td headers="tRM-wind tRM-wind-gust-kmh tRM-station-wollogorang">-</td>
+  <td headers="tRM-wind tRM-wind-spd_kts tRM-station-wollogorang">3</td>
+  <td headers="tRM-wind tRM-wind-gust_kts tRM-station-wollogorang">-</td>
+  <td headers="tRM-pressure tRM-station-wollogorang">1012.7</td>
+  <td headers="tRM-rainsince9am tRM-station-wollogorang">0.0</td>
+  <td headers="tRM-lowtmp tRM-station-wollogorang">-</td>
+  <td headers="tRM-hightmp tRM-station-wollogorang">-</td>
+</tr>
+</tbody> <!-- abcd close product tbody for this division -->
+</table> <!-- ABCD close product table for this division -->
+
+<h2 id="VR">VICTORIA RIVER</h2>
+<table id="tVR" border="1" cellspacing="0" class="tabledata obs_table" summary="Observations for VR including temperature, wind, rain and other weather elements"> <!-- ABCD open product division table before col headings -->
+<colgroup>
+<col class="col_station" />
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+  <th id="tVR-station" rowspan="2" class="rowleftcolumn"></th>
+  <th id="tVR-datetime" rowspan="2">Date/Time<br /><acronym title="Central Standard Time">CST</acronym></th>
+  <th id="tVR-tmp" rowspan="2"><abbr title="Temperature degrees Celsius">Tmp<br /><br />&deg;C</abbr></th>
+  <th id="tVR-apptmp" rowspan="2"><abbr title="Apparent Temperature degrees Celsius">App<br />Tmp<br />&deg;C</abbr></th>
+  <th id="tVR-dewpoint" rowspan="2"><abbr title="Dew Point Temperature degrees Celsius">Dew<br />Point<br />&deg;C</abbr></th>
+  <th id="tVR-relhum" rowspan="2"><abbr title="Relative Humidity Percentage">Rel<br />Hum<br />%</abbr></th>
+  <th id="tVR-delta-t" rowspan="2"><abbr title="Wet Bulb Depression degrees Celsius">Delta-T<br /><br />&deg;C</abbr></th>
+  <th id="tVR-wind" colspan="5">Wind</th>
+  <th id="tVR-pressure" rowspan="2"><abbr title="Pressure hectopascals">Press<br />hPa</abbr></th>
+  <th id="tVR-rainsince9am" rowspan="2">Rain<br />since<br />9&nbsp;am<br /><abbr title="millimetres">mm</abbr></th>
+  <!-- extremes -->
+  <th id="tVR-lowtmp" rowspan="2" class="bgcolor1"><abbr title="Lowest Temperature, degrees Celsius, from 6pm to 9am">Low<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+  <th id="tVR-hightmp" rowspan="2" class="bgcolor1"><abbr title="Highest Temperature, degrees Celsius, from 6am to 9pm">High<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+</tr>
+
+<tr>
+  <th headers="tVR-wind" id="tVR-wind-dir"><abbr title="Direction the wind comes from">Dir</abbr><br />&nbsp;</th>
+  <th headers="tVR-wind" id="tVR-wind-spd-kmh"><abbr title="Wind speed, kilometres per hour, 10-minute average from the standard height of 10 metres">Spd<br />km/h</abbr></th>
+  <th headers="tVR-wind" id="tVR-wind-gust-kmh"><abbr title="Wind gust, kilometres per hour,  is measured over 3 seconds from the standard height of 10 metres">Gust<br />km/h</abbr></th>
+  <th headers="tVR-wind" id="tVR-wind-wind-spd-kts"><abbr title="Wind speed, knots, 10-minute average from the standard height of 10 metres">Spd<br />kts</abbr></th>
+  <th headers="tVR-wind" id="tVR-wind-gust-kts"><abbr title="Wind gust, knots, is measured over 3 seconds from the standard height of 10 metres">Gust<br />kts</abbr></th>
+</tr>
+
+</thead>
+
+<tbody> <!-- abcd open product tbody -->
+<tr class="rowleftcolumn">
+  <th id="tVR-station-argyle" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94217.shtml">Argyle</a></th>
+  <td headers="tVR-datetime tVR-station-argyle">28/04:35pm</td>
+  <td headers="tVR-tmp tVR-station-argyle">34.1</td>
+  <td headers="tVR-apptmp tVR-station-argyle">31.0</td>
+  <td headers="tVR-dewpoint tVR-station-argyle">-0.1</td>
+  <td headers="tVR-relhum tVR-station-argyle">11</td>
+  <td headers="tVR-delta-t tVR-station-argyle">16.9</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-argyle">N</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-argyle">6</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-argyle">7</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-argyle">3</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-argyle">4</td>
+  <td headers="tVR-pressure tVR-station-argyle">1013.3</td>
+  <td headers="tVR-rainsince9am tVR-station-argyle">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-argyle">19.4<br /><small>03:44am</small></td>
+  <td headers="tVR-hightmp tVR-station-argyle">35.3<br /><small>02:25pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tVR-station-halls-creek" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94212.shtml">Halls Creek</a></th>
+  <td headers="tVR-datetime tVR-station-halls-creek">28/04:35pm</td>
+  <td headers="tVR-tmp tVR-station-halls-creek">32.9</td>
+  <td headers="tVR-apptmp tVR-station-halls-creek">30.6</td>
+  <td headers="tVR-dewpoint tVR-station-halls-creek">2.6</td>
+  <td headers="tVR-relhum tVR-station-halls-creek">14</td>
+  <td headers="tVR-delta-t tVR-station-halls-creek">15.7</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-halls-creek">ESE</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-halls-creek">4</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-halls-creek">6</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-halls-creek">2</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-halls-creek">3</td>
+  <td headers="tVR-pressure tVR-station-halls-creek">1014.1</td>
+  <td headers="tVR-rainsince9am tVR-station-halls-creek">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-halls-creek">16.8<br /><small>05:56am</small></td>
+  <td headers="tVR-hightmp tVR-station-halls-creek">33.8<br /><small>02:05pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tVR-station-kalumburu" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94100.shtml">Kalumburu</a></th>
+  <td headers="tVR-datetime tVR-station-kalumburu">28/04:30pm</td>
+  <td headers="tVR-tmp tVR-station-kalumburu">31.8</td>
+  <td headers="tVR-apptmp tVR-station-kalumburu">29.9</td>
+  <td headers="tVR-dewpoint tVR-station-kalumburu">15.7</td>
+  <td headers="tVR-relhum tVR-station-kalumburu">37</td>
+  <td headers="tVR-delta-t tVR-station-kalumburu">10.0</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-kalumburu">N</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-kalumburu">20</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-kalumburu">28</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-kalumburu">11</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-kalumburu">15</td>
+  <td headers="tVR-pressure tVR-station-kalumburu">1011.3</td>
+  <td headers="tVR-rainsince9am tVR-station-kalumburu">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-kalumburu">-</td>
+  <td headers="tVR-hightmp tVR-station-kalumburu">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tVR-station-kununurra-airport" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94216.shtml">Kununurra Airport</a></th>
+  <td headers="tVR-datetime tVR-station-kununurra-airport">28/04:35pm</td>
+  <td headers="tVR-tmp tVR-station-kununurra-airport">35.8</td>
+  <td headers="tVR-apptmp tVR-station-kununurra-airport">31.2</td>
+  <td headers="tVR-dewpoint tVR-station-kununurra-airport">1.4</td>
+  <td headers="tVR-relhum tVR-station-kununurra-airport">11</td>
+  <td headers="tVR-delta-t tVR-station-kununurra-airport">17.5</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-kununurra-airport">S</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-kununurra-airport">15</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-kununurra-airport">19</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-kununurra-airport">8</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-kununurra-airport">10</td>
+  <td headers="tVR-pressure tVR-station-kununurra-airport">1011.5</td>
+  <td headers="tVR-rainsince9am tVR-station-kununurra-airport">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-kununurra-airport">15.2<br /><small>04:56am</small></td>
+  <td headers="tVR-hightmp tVR-station-kununurra-airport">36.4<br /><small>12:12pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tVR-station-lajamanu" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94231.shtml">Lajamanu</a></th>
+  <td headers="tVR-datetime tVR-station-lajamanu">28/04:34pm</td>
+  <td headers="tVR-tmp tVR-station-lajamanu">31.2</td>
+  <td headers="tVR-apptmp tVR-station-lajamanu">27.1</td>
+  <td headers="tVR-dewpoint tVR-station-lajamanu">-2.7</td>
+  <td headers="tVR-relhum tVR-station-lajamanu">11</td>
+  <td headers="tVR-delta-t tVR-station-lajamanu">15.8</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-lajamanu">S</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-lajamanu">9</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-lajamanu">11</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-lajamanu">5</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-lajamanu">6</td>
+  <td headers="tVR-pressure tVR-station-lajamanu">1014.6</td>
+  <td headers="tVR-rainsince9am tVR-station-lajamanu">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-lajamanu">11.0<br /><small>05:53am</small></td>
+  <td headers="tVR-hightmp tVR-station-lajamanu">32.5<br /><small>02:40pm</small></td>
+</tr>
+<tr class="contrast">
+  <th id="tVR-station-timber-creek" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94220.shtml">Timber Creek</a></th>
+  <td headers="tVR-datetime tVR-station-timber-creek">28/03:00pm</td>
+  <td headers="tVR-tmp tVR-station-timber-creek">34.7</td>
+  <td headers="tVR-apptmp tVR-station-timber-creek">33.0</td>
+  <td headers="tVR-dewpoint tVR-station-timber-creek">5.9</td>
+  <td headers="tVR-relhum tVR-station-timber-creek">16</td>
+  <td headers="tVR-delta-t tVR-station-timber-creek">15.6</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-timber-creek">SSW</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-timber-creek">4</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-timber-creek">-</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-timber-creek">2</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-timber-creek">-</td>
+  <td headers="tVR-pressure tVR-station-timber-creek">1012.0</td>
+  <td headers="tVR-rainsince9am tVR-station-timber-creek">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-timber-creek">-</td>
+  <td headers="tVR-hightmp tVR-station-timber-creek">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tVR-station-troughton-island" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94102.shtml">Troughton Island</a></th>
+  <td headers="tVR-datetime tVR-station-troughton-island">28/04:30pm</td>
+  <td headers="tVR-tmp tVR-station-troughton-island">27.9</td>
+  <td headers="tVR-apptmp tVR-station-troughton-island">29.8</td>
+  <td headers="tVR-dewpoint tVR-station-troughton-island">23.7</td>
+  <td headers="tVR-relhum tVR-station-troughton-island">78</td>
+  <td headers="tVR-delta-t tVR-station-troughton-island">2.9</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-troughton-island">NW</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-troughton-island">20</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-troughton-island">24</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-troughton-island">11</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-troughton-island">13</td>
+  <td headers="tVR-pressure tVR-station-troughton-island">1012.4</td>
+  <td headers="tVR-rainsince9am tVR-station-troughton-island">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-troughton-island">-</td>
+  <td headers="tVR-hightmp tVR-station-troughton-island">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tVR-station-truscott" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.95101.shtml">Truscott</a></th>
+  <td headers="tVR-datetime tVR-station-truscott">28/04:30pm</td>
+  <td headers="tVR-tmp tVR-station-truscott">28.5</td>
+  <td headers="tVR-apptmp tVR-station-truscott">28.3</td>
+  <td headers="tVR-dewpoint tVR-station-truscott">19.4</td>
+  <td headers="tVR-relhum tVR-station-truscott">57</td>
+  <td headers="tVR-delta-t tVR-station-truscott">5.9</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-truscott">NNW</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-truscott">19</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-truscott">26</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-truscott">10</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-truscott">14</td>
+  <td headers="tVR-pressure tVR-station-truscott">1011.6</td>
+  <td headers="tVR-rainsince9am tVR-station-truscott">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-truscott">-</td>
+  <td headers="tVR-hightmp tVR-station-truscott">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tVR-station-victoria-river-downs" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94232.shtml">Victoria River Downs</a></th>
+  <td headers="tVR-datetime tVR-station-victoria-river-downs">28/04:30pm</td>
+  <td headers="tVR-tmp tVR-station-victoria-river-downs">34.1</td>
+  <td headers="tVR-apptmp tVR-station-victoria-river-downs">30.7</td>
+  <td headers="tVR-dewpoint tVR-station-victoria-river-downs">-1.8</td>
+  <td headers="tVR-relhum tVR-station-victoria-river-downs">10</td>
+  <td headers="tVR-delta-t tVR-station-victoria-river-downs">17.2</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-victoria-river-downs">SSE</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-victoria-river-downs">6</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-victoria-river-downs">11</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-victoria-river-downs">3</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-victoria-river-downs">6</td>
+  <td headers="tVR-pressure tVR-station-victoria-river-downs">1012.4</td>
+  <td headers="tVR-rainsince9am tVR-station-victoria-river-downs">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-victoria-river-downs">-</td>
+  <td headers="tVR-hightmp tVR-station-victoria-river-downs">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tVR-station-wyndham-airport" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.95214.shtml">Wyndham Airport</a></th>
+  <td headers="tVR-datetime tVR-station-wyndham-airport">28/04:35pm</td>
+  <td headers="tVR-tmp tVR-station-wyndham-airport">34.7</td>
+  <td headers="tVR-apptmp tVR-station-wyndham-airport">30.9</td>
+  <td headers="tVR-dewpoint tVR-station-wyndham-airport">11.2</td>
+  <td headers="tVR-relhum tVR-station-wyndham-airport">24</td>
+  <td headers="tVR-delta-t tVR-station-wyndham-airport">13.8</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-wyndham-airport">N</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-wyndham-airport">22</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-wyndham-airport">28</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-wyndham-airport">12</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-wyndham-airport">15</td>
+  <td headers="tVR-pressure tVR-station-wyndham-airport">1010.9</td>
+  <td headers="tVR-rainsince9am tVR-station-wyndham-airport">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-wyndham-airport">18.9<br /><small>05:26am</small></td>
+  <td headers="tVR-hightmp tVR-station-wyndham-airport">37.1<br /><small>01:22pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tVR-station-wyndham" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94214.shtml">Wyndham</a></th>
+  <td headers="tVR-datetime tVR-station-wyndham">28/04:30pm</td>
+  <td headers="tVR-tmp tVR-station-wyndham">34.4</td>
+  <td headers="tVR-apptmp tVR-station-wyndham">35.2</td>
+  <td headers="tVR-dewpoint tVR-station-wyndham">17.4</td>
+  <td headers="tVR-relhum tVR-station-wyndham">36</td>
+  <td headers="tVR-delta-t tVR-station-wyndham">10.9</td>
+  <td headers="tVR-wind tVR-wind-dir tVR-station-wyndham">NNW</td>
+  <td headers="tVR-wind tVR-wind-spd-kmh tVR-station-wyndham">9</td>
+  <td headers="tVR-wind tVR-wind-gust-kmh tVR-station-wyndham">-</td>
+  <td headers="tVR-wind tVR-wind-spd_kts tVR-station-wyndham">5</td>
+  <td headers="tVR-wind tVR-wind-gust_kts tVR-station-wyndham">-</td>
+  <td headers="tVR-pressure tVR-station-wyndham">1011.4</td>
+  <td headers="tVR-rainsince9am tVR-station-wyndham">0.0</td>
+  <td headers="tVR-lowtmp tVR-station-wyndham">-</td>
+  <td headers="tVR-hightmp tVR-station-wyndham">-</td>
+</tr>
+</tbody> <!-- abcd close product tbody for this division -->
+</table> <!-- ABCD close product table for this division -->
+
+<h2 id="BAR">BARKLY</h2>
+<table id="tBAR" border="1" cellspacing="0" class="tabledata obs_table" summary="Observations for BAR including temperature, wind, rain and other weather elements"> <!-- ABCD open product division table before col headings -->
+<colgroup>
+<col class="col_station" />
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+  <th id="tBAR-station" rowspan="2" class="rowleftcolumn"></th>
+  <th id="tBAR-datetime" rowspan="2">Date/Time<br /><acronym title="Central Standard Time">CST</acronym></th>
+  <th id="tBAR-tmp" rowspan="2"><abbr title="Temperature degrees Celsius">Tmp<br /><br />&deg;C</abbr></th>
+  <th id="tBAR-apptmp" rowspan="2"><abbr title="Apparent Temperature degrees Celsius">App<br />Tmp<br />&deg;C</abbr></th>
+  <th id="tBAR-dewpoint" rowspan="2"><abbr title="Dew Point Temperature degrees Celsius">Dew<br />Point<br />&deg;C</abbr></th>
+  <th id="tBAR-relhum" rowspan="2"><abbr title="Relative Humidity Percentage">Rel<br />Hum<br />%</abbr></th>
+  <th id="tBAR-delta-t" rowspan="2"><abbr title="Wet Bulb Depression degrees Celsius">Delta-T<br /><br />&deg;C</abbr></th>
+  <th id="tBAR-wind" colspan="5">Wind</th>
+  <th id="tBAR-pressure" rowspan="2"><abbr title="Pressure hectopascals">Press<br />hPa</abbr></th>
+  <th id="tBAR-rainsince9am" rowspan="2">Rain<br />since<br />9&nbsp;am<br /><abbr title="millimetres">mm</abbr></th>
+  <!-- extremes -->
+  <th id="tBAR-lowtmp" rowspan="2" class="bgcolor1"><abbr title="Lowest Temperature, degrees Celsius, from 6pm to 9am">Low<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+  <th id="tBAR-hightmp" rowspan="2" class="bgcolor1"><abbr title="Highest Temperature, degrees Celsius, from 6am to 9pm">High<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+</tr>
+
+<tr>
+  <th headers="tBAR-wind" id="tBAR-wind-dir"><abbr title="Direction the wind comes from">Dir</abbr><br />&nbsp;</th>
+  <th headers="tBAR-wind" id="tBAR-wind-spd-kmh"><abbr title="Wind speed, kilometres per hour, 10-minute average from the standard height of 10 metres">Spd<br />km/h</abbr></th>
+  <th headers="tBAR-wind" id="tBAR-wind-gust-kmh"><abbr title="Wind gust, kilometres per hour,  is measured over 3 seconds from the standard height of 10 metres">Gust<br />km/h</abbr></th>
+  <th headers="tBAR-wind" id="tBAR-wind-wind-spd-kts"><abbr title="Wind speed, knots, 10-minute average from the standard height of 10 metres">Spd<br />kts</abbr></th>
+  <th headers="tBAR-wind" id="tBAR-wind-gust-kts"><abbr title="Wind gust, knots, is measured over 3 seconds from the standard height of 10 metres">Gust<br />kts</abbr></th>
+</tr>
+
+</thead>
+
+<tbody> <!-- abcd open product tbody -->
+<tr class="contrast">
+  <th id="tBAR-station-elliott" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94236.shtml">Elliott</a></th>
+  <td headers="tBAR-datetime tBAR-station-elliott">28/03:00pm</td>
+  <td headers="tBAR-tmp tBAR-station-elliott">32.0</td>
+  <td headers="tBAR-apptmp tBAR-station-elliott">27.1</td>
+  <td headers="tBAR-dewpoint tBAR-station-elliott">-3.5</td>
+  <td headers="tBAR-relhum tBAR-station-elliott">10</td>
+  <td headers="tBAR-delta-t tBAR-station-elliott">16.4</td>
+  <td headers="tBAR-wind tBAR-wind-dir tBAR-station-elliott">S</td>
+  <td headers="tBAR-wind tBAR-wind-spd-kmh tBAR-station-elliott">13</td>
+  <td headers="tBAR-wind tBAR-wind-gust-kmh tBAR-station-elliott">-</td>
+  <td headers="tBAR-wind tBAR-wind-spd_kts tBAR-station-elliott">7</td>
+  <td headers="tBAR-wind tBAR-wind-gust_kts tBAR-station-elliott">-</td>
+  <td headers="tBAR-pressure tBAR-station-elliott">1013.5</td>
+  <td headers="tBAR-rainsince9am tBAR-station-elliott">0.0</td>
+  <td headers="tBAR-lowtmp tBAR-station-elliott">-</td>
+  <td headers="tBAR-hightmp tBAR-station-elliott">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tBAR-station-tennant-creek" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94238.shtml">Tennant Creek</a></th>
+  <td headers="tBAR-datetime tBAR-station-tennant-creek">28/04:35pm</td>
+  <td headers="tBAR-tmp tBAR-station-tennant-creek">29.3</td>
+  <td headers="tBAR-apptmp tBAR-station-tennant-creek">24.0</td>
+  <td headers="tBAR-dewpoint tBAR-station-tennant-creek">-12.0</td>
+  <td headers="tBAR-relhum tBAR-station-tennant-creek">6</td>
+  <td headers="tBAR-delta-t tBAR-station-tennant-creek">16.2</td>
+  <td headers="tBAR-wind tBAR-wind-dir tBAR-station-tennant-creek">SSE</td>
+  <td headers="tBAR-wind tBAR-wind-spd-kmh tBAR-station-tennant-creek">11</td>
+  <td headers="tBAR-wind tBAR-wind-gust-kmh tBAR-station-tennant-creek">15</td>
+  <td headers="tBAR-wind tBAR-wind-spd_kts tBAR-station-tennant-creek">6</td>
+  <td headers="tBAR-wind tBAR-wind-gust_kts tBAR-station-tennant-creek">8</td>
+  <td headers="tBAR-pressure tBAR-station-tennant-creek">1015.6</td>
+  <td headers="tBAR-rainsince9am tBAR-station-tennant-creek">0.0</td>
+  <td headers="tBAR-lowtmp tBAR-station-tennant-creek">13.4<br /><small>06:46am</small></td>
+  <td headers="tBAR-hightmp tBAR-station-tennant-creek">30.3<br /><small>02:31pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tBAR-station-camooweal" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94255.shtml">Camooweal</a></th>
+  <td headers="tBAR-datetime tBAR-station-camooweal">28/04:35pm</td>
+  <td headers="tBAR-tmp tBAR-station-camooweal">30.5</td>
+  <td headers="tBAR-apptmp tBAR-station-camooweal">25.0</td>
+  <td headers="tBAR-dewpoint tBAR-station-camooweal">-9.1</td>
+  <td headers="tBAR-relhum tBAR-station-camooweal">7</td>
+  <td headers="tBAR-delta-t tBAR-station-camooweal">16.4</td>
+  <td headers="tBAR-wind tBAR-wind-dir tBAR-station-camooweal">S</td>
+  <td headers="tBAR-wind tBAR-wind-spd-kmh tBAR-station-camooweal">13</td>
+  <td headers="tBAR-wind tBAR-wind-gust-kmh tBAR-station-camooweal">15</td>
+  <td headers="tBAR-wind tBAR-wind-spd_kts tBAR-station-camooweal">7</td>
+  <td headers="tBAR-wind tBAR-wind-gust_kts tBAR-station-camooweal">8</td>
+  <td headers="tBAR-pressure tBAR-station-camooweal">1014.1</td>
+  <td headers="tBAR-rainsince9am tBAR-station-camooweal">0.0</td>
+  <td headers="tBAR-lowtmp tBAR-station-camooweal">6.1<br /><small>07:06am</small></td>
+  <td headers="tBAR-hightmp tBAR-station-camooweal">31.2<br /><small>03:35pm</small></td>
+</tr>
+</tbody> <!-- abcd close product tbody for this division -->
+</table> <!-- ABCD close product table for this division -->
+
+<h2 id="AS">ALICE SPRINGS</h2>
+<table id="tAS" border="1" cellspacing="0" class="tabledata obs_table" summary="Observations for AS including temperature, wind, rain and other weather elements"> <!-- ABCD open product division table before col headings -->
+<colgroup>
+<col class="col_station" />
+<col />
+<col />
+<col />
+<col />
+<col />
+<col />
+</colgroup>
+
+<thead>
+<tr>
+  <th id="tAS-station" rowspan="2" class="rowleftcolumn"></th>
+  <th id="tAS-datetime" rowspan="2">Date/Time<br /><acronym title="Central Standard Time">CST</acronym></th>
+  <th id="tAS-tmp" rowspan="2"><abbr title="Temperature degrees Celsius">Tmp<br /><br />&deg;C</abbr></th>
+  <th id="tAS-apptmp" rowspan="2"><abbr title="Apparent Temperature degrees Celsius">App<br />Tmp<br />&deg;C</abbr></th>
+  <th id="tAS-dewpoint" rowspan="2"><abbr title="Dew Point Temperature degrees Celsius">Dew<br />Point<br />&deg;C</abbr></th>
+  <th id="tAS-relhum" rowspan="2"><abbr title="Relative Humidity Percentage">Rel<br />Hum<br />%</abbr></th>
+  <th id="tAS-delta-t" rowspan="2"><abbr title="Wet Bulb Depression degrees Celsius">Delta-T<br /><br />&deg;C</abbr></th>
+  <th id="tAS-wind" colspan="5">Wind</th>
+  <th id="tAS-pressure" rowspan="2"><abbr title="Pressure hectopascals">Press<br />hPa</abbr></th>
+  <th id="tAS-rainsince9am" rowspan="2">Rain<br />since<br />9&nbsp;am<br /><abbr title="millimetres">mm</abbr></th>
+  <!-- extremes -->
+  <th id="tAS-lowtmp" rowspan="2" class="bgcolor1"><abbr title="Lowest Temperature, degrees Celsius, from 6pm to 9am">Low<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+  <th id="tAS-hightmp" rowspan="2" class="bgcolor1"><abbr title="Highest Temperature, degrees Celsius, from 6am to 9pm">High<br />Tmp<br />&deg;C</abbr><br /><small>time</small></th>
+</tr>
+
+<tr>
+  <th headers="tAS-wind" id="tAS-wind-dir"><abbr title="Direction the wind comes from">Dir</abbr><br />&nbsp;</th>
+  <th headers="tAS-wind" id="tAS-wind-spd-kmh"><abbr title="Wind speed, kilometres per hour, 10-minute average from the standard height of 10 metres">Spd<br />km/h</abbr></th>
+  <th headers="tAS-wind" id="tAS-wind-gust-kmh"><abbr title="Wind gust, kilometres per hour,  is measured over 3 seconds from the standard height of 10 metres">Gust<br />km/h</abbr></th>
+  <th headers="tAS-wind" id="tAS-wind-wind-spd-kts"><abbr title="Wind speed, knots, 10-minute average from the standard height of 10 metres">Spd<br />kts</abbr></th>
+  <th headers="tAS-wind" id="tAS-wind-gust-kts"><abbr title="Wind gust, knots, is measured over 3 seconds from the standard height of 10 metres">Gust<br />kts</abbr></th>
+</tr>
+
+</thead>
+
+<tbody> <!-- abcd open product tbody -->
+<tr class="rowleftcolumn">
+  <th id="tAS-station-alice-springs-airport" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94326.shtml">Alice Springs Airport</a></th>
+  <td headers="tAS-datetime tAS-station-alice-springs-airport">28/04:35pm</td>
+  <td headers="tAS-tmp tAS-station-alice-springs-airport">28.6</td>
+  <td headers="tAS-apptmp tAS-station-alice-springs-airport">22.4</td>
+  <td headers="tAS-dewpoint tAS-station-alice-springs-airport">-9.2</td>
+  <td headers="tAS-relhum tAS-station-alice-springs-airport">8</td>
+  <td headers="tAS-delta-t tAS-station-alice-springs-airport">15.6</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-alice-springs-airport">WNW</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-alice-springs-airport">17</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-alice-springs-airport">19</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-alice-springs-airport">9</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-alice-springs-airport">10</td>
+  <td headers="tAS-pressure tAS-station-alice-springs-airport">1015.4</td>
+  <td headers="tAS-rainsince9am tAS-station-alice-springs-airport">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-alice-springs-airport">5.8<br /><small>06:49am</small></td>
+  <td headers="tAS-hightmp tAS-station-alice-springs-airport">29.9<br /><small>03:35pm</small></td>
+</tr>
+<tr class="contrast">
+  <th id="tAS-station-arltunga" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.95323.shtml">Arltunga</a></th>
+  <td headers="tAS-datetime tAS-station-arltunga">28/03:00pm</td>
+  <td headers="tAS-tmp tAS-station-arltunga">27.0</td>
+  <td headers="tAS-apptmp tAS-station-arltunga">23.2</td>
+  <td headers="tAS-dewpoint tAS-station-arltunga">-6.0</td>
+  <td headers="tAS-relhum tAS-station-arltunga">11</td>
+  <td headers="tAS-delta-t tAS-station-arltunga">14.3</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-arltunga">ESE</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-arltunga">6</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-arltunga">-</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-arltunga">3</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-arltunga">-</td>
+  <td headers="tAS-pressure tAS-station-arltunga">1017.0</td>
+  <td headers="tAS-rainsince9am tAS-station-arltunga">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-arltunga">-</td>
+  <td headers="tAS-hightmp tAS-station-arltunga">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tAS-station-warburton" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94457.shtml">Warburton</a></th>
+  <td headers="tAS-datetime tAS-station-warburton">28/04:35pm</td>
+  <td headers="tAS-tmp tAS-station-warburton">32.1</td>
+  <td headers="tAS-apptmp tAS-station-warburton">23.4</td>
+  <td headers="tAS-dewpoint tAS-station-warburton">-3.3</td>
+  <td headers="tAS-relhum tAS-station-warburton">10</td>
+  <td headers="tAS-delta-t tAS-station-warburton">16.6</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-warburton">W</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-warburton">33</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-warburton">44</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-warburton">18</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-warburton">24</td>
+  <td headers="tAS-pressure tAS-station-warburton">1012.4</td>
+  <td headers="tAS-rainsince9am tAS-station-warburton">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-warburton">14.4<br /><small>04:10am</small></td>
+  <td headers="tAS-hightmp tAS-station-warburton">33.8<br /><small>01:50pm</small></td>
+</tr>
+<tr class="contrast">
+  <th id="tAS-station-curtin-springs" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94463.shtml">Curtin Springs</a></th>
+  <td headers="tAS-datetime tAS-station-curtin-springs">28/03:00pm</td>
+  <td headers="tAS-tmp tAS-station-curtin-springs">32.0</td>
+  <td headers="tAS-apptmp tAS-station-curtin-springs">31.5</td>
+  <td headers="tAS-dewpoint tAS-station-curtin-springs">22.1</td>
+  <td headers="tAS-relhum tAS-station-curtin-springs">55</td>
+  <td headers="tAS-delta-t tAS-station-curtin-springs">6.9</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-curtin-springs">W</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-curtin-springs">28</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-curtin-springs">-</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-curtin-springs">15</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-curtin-springs">-</td>
+  <td headers="tAS-pressure tAS-station-curtin-springs">1012.8</td>
+  <td headers="tAS-rainsince9am tAS-station-curtin-springs">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-curtin-springs">-</td>
+  <td headers="tAS-hightmp tAS-station-curtin-springs">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tAS-station-jervois" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94327.shtml">Jervois</a></th>
+  <td headers="tAS-datetime tAS-station-jervois">28/04:30pm</td>
+  <td headers="tAS-tmp tAS-station-jervois">28.8</td>
+  <td headers="tAS-apptmp tAS-station-jervois">24.6</td>
+  <td headers="tAS-dewpoint tAS-station-jervois">-7.6</td>
+  <td headers="tAS-relhum tAS-station-jervois">9</td>
+  <td headers="tAS-delta-t tAS-station-jervois">15.3</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-jervois">E</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-jervois">7</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-jervois">11</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-jervois">4</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-jervois">6</td>
+  <td headers="tAS-pressure tAS-station-jervois">1015.5</td>
+  <td headers="tAS-rainsince9am tAS-station-jervois">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-jervois">-</td>
+  <td headers="tAS-hightmp tAS-station-jervois">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tAS-station-wulungurru-kintore" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94321.shtml">Wulungurru (Kintore)</a></th>
+  <td headers="tAS-datetime tAS-station-wulungurru-kintore">28/04:30pm</td>
+  <td headers="tAS-tmp tAS-station-wulungurru-kintore">31.9</td>
+  <td headers="tAS-apptmp tAS-station-wulungurru-kintore">25.1</td>
+  <td headers="tAS-dewpoint tAS-station-wulungurru-kintore">-4.8</td>
+  <td headers="tAS-relhum tAS-station-wulungurru-kintore">9</td>
+  <td headers="tAS-delta-t tAS-station-wulungurru-kintore">16.7</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-wulungurru-kintore">NW</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-wulungurru-kintore">22</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-wulungurru-kintore">33</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-wulungurru-kintore">12</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-wulungurru-kintore">18</td>
+  <td headers="tAS-pressure tAS-station-wulungurru-kintore">1014.3</td>
+  <td headers="tAS-rainsince9am tAS-station-wulungurru-kintore">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-wulungurru-kintore">-</td>
+  <td headers="tAS-hightmp tAS-station-wulungurru-kintore">-</td>
+</tr>
+<tr class="contrast">
+  <th id="tAS-station-kulgera" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94466.shtml">Kulgera</a></th>
+  <td headers="tAS-datetime tAS-station-kulgera">28/03:00pm</td>
+  <td headers="tAS-tmp tAS-station-kulgera">30.8</td>
+  <td headers="tAS-apptmp tAS-station-kulgera">32.0</td>
+  <td headers="tAS-dewpoint tAS-station-kulgera">17.3</td>
+  <td headers="tAS-relhum tAS-station-kulgera">44</td>
+  <td headers="tAS-delta-t tAS-station-kulgera">8.7</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-kulgera">W</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-kulgera">7</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-kulgera">-</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-kulgera">4</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-kulgera">-</td>
+  <td headers="tAS-pressure tAS-station-kulgera">1012.2</td>
+  <td headers="tAS-rainsince9am tAS-station-kulgera">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-kulgera">-</td>
+  <td headers="tAS-hightmp tAS-station-kulgera">-</td>
+</tr>
+<tr class="contrast">
+  <th id="tAS-station-rabbit-flat" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.95322.shtml">Rabbit Flat</a></th>
+  <td headers="tAS-datetime tAS-station-rabbit-flat">28/03:00pm</td>
+  <td headers="tAS-tmp tAS-station-rabbit-flat">32.0</td>
+  <td headers="tAS-apptmp tAS-station-rabbit-flat">26.1</td>
+  <td headers="tAS-dewpoint tAS-station-rabbit-flat">-5.4</td>
+  <td headers="tAS-relhum tAS-station-rabbit-flat">8</td>
+  <td headers="tAS-delta-t tAS-station-rabbit-flat">16.8</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-rabbit-flat">E</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-rabbit-flat">17</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-rabbit-flat">-</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-rabbit-flat">9</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-rabbit-flat">-</td>
+  <td headers="tAS-pressure tAS-station-rabbit-flat">1013.9</td>
+  <td headers="tAS-rainsince9am tAS-station-rabbit-flat">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-rabbit-flat">-</td>
+  <td headers="tAS-hightmp tAS-station-rabbit-flat">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tAS-station-territory-grape-farm" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94328.shtml">Territory Grape Farm</a></th>
+  <td headers="tAS-datetime tAS-station-territory-grape-farm">28/04:35pm</td>
+  <td headers="tAS-tmp tAS-station-territory-grape-farm">28.7</td>
+  <td headers="tAS-apptmp tAS-station-territory-grape-farm">25.6</td>
+  <td headers="tAS-dewpoint tAS-station-territory-grape-farm">-5.9</td>
+  <td headers="tAS-relhum tAS-station-territory-grape-farm">10</td>
+  <td headers="tAS-delta-t tAS-station-territory-grape-farm">15.2</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-territory-grape-farm">NNW</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-territory-grape-farm">2</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-territory-grape-farm">2</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-territory-grape-farm">1</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-territory-grape-farm">1</td>
+  <td headers="tAS-pressure tAS-station-territory-grape-farm">-</td>
+  <td headers="tAS-rainsince9am tAS-station-territory-grape-farm">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-territory-grape-farm">6.9<br /><small>06:25am</small></td>
+  <td headers="tAS-hightmp tAS-station-territory-grape-farm">29.3<br /><small>03:52pm</small></td>
+</tr>
+<tr class="contrast">
+  <th id="tAS-station-yuendumu" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94324.shtml">Yuendumu</a></th>
+  <td headers="tAS-datetime tAS-station-yuendumu">28/03:00pm</td>
+  <td headers="tAS-tmp tAS-station-yuendumu">29.6</td>
+  <td headers="tAS-apptmp tAS-station-yuendumu">31.3</td>
+  <td headers="tAS-dewpoint tAS-station-yuendumu">15.3</td>
+  <td headers="tAS-relhum tAS-station-yuendumu">41</td>
+  <td headers="tAS-delta-t tAS-station-yuendumu">9.0</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-yuendumu">CALM</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-yuendumu">0</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-yuendumu">-</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-yuendumu">0</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-yuendumu">-</td>
+  <td headers="tAS-pressure tAS-station-yuendumu">1014.6</td>
+  <td headers="tAS-rainsince9am tAS-station-yuendumu">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-yuendumu">-</td>
+  <td headers="tAS-hightmp tAS-station-yuendumu">-</td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tAS-station-yulara" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94462.shtml">Yulara</a></th>
+  <td headers="tAS-datetime tAS-station-yulara">28/04:35pm</td>
+  <td headers="tAS-tmp tAS-station-yulara">31.7</td>
+  <td headers="tAS-apptmp tAS-station-yulara">24.0</td>
+  <td headers="tAS-dewpoint tAS-station-yulara">-6.6</td>
+  <td headers="tAS-relhum tAS-station-yulara">8</td>
+  <td headers="tAS-delta-t tAS-station-yulara">16.9</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-yulara">NW</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-yulara">26</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-yulara">33</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-yulara">14</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-yulara">18</td>
+  <td headers="tAS-pressure tAS-station-yulara">1013.1</td>
+  <td headers="tAS-rainsince9am tAS-station-yulara">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-yulara">4.6<br /><small>07:19am</small></td>
+  <td headers="tAS-hightmp tAS-station-yulara">33.0<br /><small>03:50pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tAS-station-giles" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94461.shtml">Giles*</a></th>
+  <td headers="tAS-datetime tAS-station-giles">28/04:34pm</td>
+  <td headers="tAS-tmp tAS-station-giles">31.6</td>
+  <td headers="tAS-apptmp tAS-station-giles">23.8</td>
+  <td headers="tAS-dewpoint tAS-station-giles">-12.9</td>
+  <td headers="tAS-relhum tAS-station-giles">5</td>
+  <td headers="tAS-delta-t tAS-station-giles">17.8</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-giles">W</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-giles">24</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-giles">33</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-giles">13</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-giles">18</td>
+  <td headers="tAS-pressure tAS-station-giles">1013.7</td>
+  <td headers="tAS-rainsince9am tAS-station-giles">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-giles">18.1<br /><small>01:42am</small></td>
+  <td headers="tAS-hightmp tAS-station-giles">32.5<br /><small>03:24pm</small></td>
+</tr>
+<tr class="rowleftcolumn">
+  <th id="tAS-station-ernaballa" class="rowleftcolumn"><a href="/products/IDD60801/IDD60801.94474.shtml">Ernaballa</a></th>
+  <td headers="tAS-datetime tAS-station-ernaballa">28/04:34pm</td>
+  <td headers="tAS-tmp tAS-station-ernaballa">29.9</td>
+  <td headers="tAS-apptmp tAS-station-ernaballa">23.4</td>
+  <td headers="tAS-dewpoint tAS-station-ernaballa">-7.9</td>
+  <td headers="tAS-relhum tAS-station-ernaballa">8</td>
+  <td headers="tAS-delta-t tAS-station-ernaballa">16.3</td>
+  <td headers="tAS-wind tAS-wind-dir tAS-station-ernaballa">NW</td>
+  <td headers="tAS-wind tAS-wind-spd-kmh tAS-station-ernaballa">19</td>
+  <td headers="tAS-wind tAS-wind-gust-kmh tAS-station-ernaballa">22</td>
+  <td headers="tAS-wind tAS-wind-spd_kts tAS-station-ernaballa">10</td>
+  <td headers="tAS-wind tAS-wind-gust_kts tAS-station-ernaballa">12</td>
+  <td headers="tAS-pressure tAS-station-ernaballa">1013.6</td>
+  <td headers="tAS-rainsince9am tAS-station-ernaballa">0.0</td>
+  <td headers="tAS-lowtmp tAS-station-ernaballa">9.1<br /><small>11:42pm</small></td>
+  <td headers="tAS-hightmp tAS-station-ernaballa">30.4<br /><small>03:25pm</small></td>
+</tr>
+</tbody> <!-- abcd close product tbody for this division -->
+</table> <!-- ABCD close product table for this division -->
+<!-- station information for state/territory output -->
+<div class="noPrint">
+        <!-- <div class="box1"><span class="noPrint"> -->
+<h2>Weather station information</h2>
+<ul>
+<li>* Giles observations are collected in the South Australia time zone, which includes daylight saving in the summer period. Therefore, Rain since 9am, Low Tmp and High Tmp values are in South Australia local time.</li>
+</ul>
+
+
+</div>
+
+      </div>
+<!-- End: Content -->
+    </div>
+<!-- End: Container -->
+<!-- Begin: Left Column -->
+    <div id="left-column"></div>
+<!-- End: Left Column -->
+
+<div class="clr"><!-- clear columns --></div>
+</div>
+<!-- End: Columns -->
+</div>
+<!-- End: pagewrap -->
+<!-- Start: Footer -->
+<div id="footer">
+	<div id="footer-columns">
+		<ul id="fc-one">
+			<li class="icon-link border-bottom uppercase"><a href="/australia/warnings/?ref=ftr" id="icon-link-warnings"><span>Warnings</span></a></li>
+			<li class="row-link-first uppercase"><a href="/water/?ref=ftr">Water</a></li>
+			<li class="row-link uppercase"><a href="/climate/?ref=ftr">Climate</a></li>
+			<li class="row-link uppercase"><a href="/environment/?ref=ftr">Environment</a></li>
+			<li class="border-top"><a href="/cyclone/?ref=ftr">Tropical Cyclones</a></li>
+			<li><a href="/tsunami/?ref=ftr">Tsunami Warning Centre</a></li>
+			<li><a href="/watl/?ref=ftr">Agriculture - Water and the Land</a></li>
+			<li><a href="/marine/?ref=ftr">Marine &amp; Ocean</a></li>
+			<li><a href="/uv/?ref=ftr">UV &amp; Sun Protection</a></li>
+			<li><a href="/australia/flood/?ref=ftr">Rainfall &amp; River Conditions</a></li>
+		</ul>
+		<ul id="fc-two">
+			<li class="imagebox-links">
+				<h3 class="hidden">Graphical Views</h3> 
+				<ul>
+					<li class="first"><a href="/australia/radar/?ref=ftr" id="imagebox-link-radar">Radar</a></li>
+					<li><a href="/australia/satellite/?ref=ftr" id="imagebox-link-sat">Sat</a></li>
+					<li><a href="/australia/charts/?ref=ftr" id="imagebox-link-maps">Maps</a></li>
+				</ul>
+			</li>
+			<li><a href="/jsp/watl/rainfall/pme.jsp?ref=ftr">Rainfall Forecasts</a></li>
+			<li><a href="/climate/ahead/?ref=ftr">Seasonal Outlooks</a></li>
+			<li><a href="/climate/change/?ref=ftr">Climate Variability &amp; Change</a></li>
+			<li><a href="/climate/data/?ref=ftr">Climate Data Online</a></li>
+			<li><a href="/water/ssf/?ref=ftr">Seasonal Streamflow Forecasts</a></li>
+			<li><a href="http://water.bom.gov.au/waterstorage/awris/?ref=ftr">Water Storage</a></li>
+		</ul>
+		<ul id="fc-three">
+			<li class="icon-link border-bottom"><a href="/australia/?ref=ftr#aus-forecast-explorer" id="icon-link-fe"><span>Forecast Explorer&trade;</span></a></li>
+			<li><a href="/weather-services/?ref=ftr">National Weather Services</a></li>
+			<li><a href="/aviation/?ref=ftr">Aviation Weather Services</a></li>
+			<li><a href="/defence/?ref=ftr">Defence Services</a></li>
+			<li><a href="http://www.ips.gov.au/?ref=ftr">Space Weather Services</a></li>
+			<li><a href="/reguser/?ref=ftr">Registered User Services</a></li>
+			<li><a href="/cws/?ref=ftr">Commercial Weather Services</a></li>
+		</ul>
+		<ul id="fc-four">
+	    <li class="icon-link border-bottom"><a href="/rss/?ref=ftr" id="icon-link-rss"><span>RSS</span></a></li>
+			<li class="row-link-first"><a href="/careers/?ref=ftr">Careers</a></li>
+			<li class="row-link"><a href="/site-map/?ref=ftr">Sitemap</a></li>
+			<li class="row-link"><a href="/other/feedback/?ref=ftr">Feedback</a></li>
+			<li class="border-top"><a href="/foi/?ref=ftr">Freedom of Information</a></li>
+			<li><a href="/iwk/?ref=ftr">Indigenous Weather Knowledge</a></li>
+			<li><a href="/lam/glossary/?ref=ftr">Glossary</a></li>
+		</ul>
+		<p id="timestamp">This page was created at <strong>07:26 on Tuesday 28 August 2012 (GMT)</strong></p>
+		<p id="copyright">&#169; <a href="/other/copyright.shtml?ref=ftr">Copyright</a> Commonwealth of Australia 2012, Bureau of Meteorology (ABN 92 637 533 532) | <a href="/other/disclaimer.shtml?ref=ftr">Disclaimer</a> | <a href="/other/privacy.shtml?ref=ftr">Privacy</a> | <a href="/other/accessibility.shtml?ref=ftr">Accessibility</a></p>
+	</div>
+</div>
+<!-- End: Footer -->
+</div>
+<!-- End: PageHeight -->
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+var hostname = window.location.hostname;
+var host = hostname.split(".");
+if (host[0] == "reg")
+{
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-20386085-1']);
+	_gaq.push(['_trackPageview']);
+}
+else if (host[0] == "www")
+{
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-3816559-1']);
+	_gaq.push(['_trackPageview']);
+}
+else if (host[0] == "wdev")
+{
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-21709175-1']);
+	_gaq.push(['_trackPageview']);
+}
+(function() {
+	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+  </body>
+</html>

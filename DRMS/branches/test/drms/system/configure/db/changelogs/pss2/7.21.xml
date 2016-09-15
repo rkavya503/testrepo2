@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	
+	<changeSet id="1" author="liu">
+        <comment>
+               DRMS-8481 EiRegistration
+        </comment>
+		<sql>	
+			CREATE TABLE openadr2_endpoint_mapping( `uuid` VARCHAR(32) NOT NULL , `creationTime` DATETIME ,`venID` VARCHAR(32) , 
+			`participantName` VARCHAR(256) , `fingerprint` VARCHAR(256) ,  PRIMARY KEY (`uuid`)  );
+			
+			CREATE TABLE openadr2_endpoint( `uuid` VARCHAR(32) NOT NULL , `creationTime` DATETIME ,`venID` VARCHAR(32) , 
+			`registrationID` VARCHAR(256) , `oadrProfileName` VARCHAR(256) ,`oadrTransportName` VARCHAR(256) ,`oadrTransportAddress` VARCHAR(256) ,`oadrVenName` VARCHAR(256) ,`oadrReportOnly` tinyint(1) ,`oadrXmlSignature` tinyint(1) ,`oadrHttpPullModel` tinyint(1) ,  PRIMARY KEY (`uuid`)  );
+		</sql>
+    </changeSet>
+
+	<changeSet id="2" author="liu">
+        <comment>
+               DRMS-8488 Participant enhancement
+        </comment>
+		<sql>	
+				alter table participant add programOption INT(5); 
+				alter table participant add substation VARCHAR(256);
+				alter table participant add blockNumber VARCHAR(256);
+		</sql>
+    </changeSet>
+	<changeSet id="3" author="liu">
+        <comment>
+               DRMS-8494 update event table to support large number of locations and null end time
+        </comment>
+		<sql>	
+				alter table event CHANGE `locationInfo` `locationInfo` LONGTEXT NULL; 
+        alter table event CHANGE `endTime` `endTime` DATETIME NULL; 
+		</sql>
+    </changeSet>
+	<changeSet id="4" author="liu">
+        <comment>
+               DRMS-8492	Program Auto Dispatch
+        </comment>
+		<sql>	
+				update participant set programOption = 0 where programOption is null;
+				update event set shedAmount = 0 where shedAmount is null;
+		</sql>
+    </changeSet>	
+	<changeSet id="5" author="Ram">
+        <comment>
+               DRMS-8492	Drop previously created EiRegistration Table
+        </comment>
+		<sql>	
+				drop table openadr2_endpoint_mapping;
+				drop table openadr2_endpoint;
+		</sql>
+    </changeSet>
+	<changeSet id="6" author="MR">
+        <comment>
+               DRMS-8481 EiRegistration endpoint mapping table
+        </comment>
+		<sql>	
+			CREATE  TABLE openadr2_endpoint_mapping (
+			  UUID VARCHAR(250) NOT NULL ,
+			  creationTime TIMESTAMP,
+			  creator VARCHAR(45),
+			  modifiedTime TIMESTAMP,
+			  modifier VARCHAR(45),
+			  version INT,
+			  linkexpiry TIMESTAMP,
+			  linkactive boolean DEFAULT false,
+			  linkactivateddate TIMESTAMP NULL ,
+			  linkdeactivateddate TIMESTAMP NULL ,
+			  venId VARCHAR(250),
+			  participantName VARCHAR(250),
+			  endpoint_uuid VARCHAR(250) NOT NULL ,
+			  participant_uuid VARCHAR(250) NOT NULL ,
+			  PRIMARY KEY (UUID));
+	   </sql>
+    </changeSet>
+	
+	<changeSet id="7" author="MR">
+        <comment>
+				DRMS-8481 EiRegistration Endpoint table
+		</comment>
+		<sql>	
+			CREATE  TABLE  openadr2_endpoint(
+			  UUID VARCHAR(250) NOT NULL ,
+			  creationTime TIMESTAMP,
+			  creator VARCHAR(45),
+			  modifiedTime TIMESTAMP,
+			  modifier VARCHAR(45),
+			  version INT,
+			  commStatus VARCHAR(255),
+			  commStatusTimeStamp TIMESTAMP,
+			  maxRetries BIGINT,
+			  delayBetweenRetries BIGINT,
+			  schemaVersion VARCHAR(255),
+			  fingerprint VARCHAR(255),
+			  certCommonName VARCHAR(255),
+			  profileName VARCHAR(255),
+			  transport VARCHAR(255),
+			  transportAddress VARCHAR(255),
+			  reportOnly boolean DEFAULT false ,
+			  xmlSignature boolean DEFAULT false,
+			  httpPullMode boolean DEFAULT false ,
+			  venName VARCHAR(255),
+			  venId VARCHAR(255),
+			  registrationId VARCHAR(255),
+			  canceled boolean DEFAULT false ,			  
+			  PRIMARY KEY (UUID), 
+			  UNIQUE INDEX venId_UNIQUE (venId ASC));				
+		</sql>
+    </changeSet>
+	
+	<changeSet id="8" author="MR">
+        <comment>
+				DRMS-8481 Participant mapping with the end point
+		</comment>
+		<sql>
+			ALTER TABLE openadr2_endpoint_mapping 
+			ADD CONSTRAINT endpoint_uuid  FOREIGN KEY (endpoint_uuid)
+			REFERENCES openadr2_endpoint (uuid)
+			ON DELETE NO ACTION	ON UPDATE NO ACTION, 
+			ADD CONSTRAINT participant_uuid FOREIGN KEY (participant_uuid)
+			REFERENCES participant (uuid) ON DELETE NO ACTION ON UPDATE NO ACTION, 
+			ADD INDEX endpoint_uuid_idx (endpoint_uuid ASC),
+			ADD INDEX participant_uuid_idx (participant_uuid ASC);						
+		</sql>
+    </changeSet>
+	
+	<changeSet id="9" author="MR">
+        <comment>
+				DRMS-8481 oadrpollstate
+		</comment>
+		<sql>
+			  CREATE  TABLE oadrpollstate (
+			  UUID VARCHAR(250) NOT NULL ,
+			  creationTime TIMESTAMP NULL ,
+			  creator VARCHAR(255) NULL ,
+			  modifiedTime TIMESTAMP NULL ,
+			  modifier VARCHAR(255) NULL ,
+			  version INT NULL ,
+			  venId VARCHAR(255) NULL ,
+			  sendReregisterVen boolean DEFAULT false ,
+			  reregisterVenSent boolean DEFAULT false ,
+			  sendCancelVenRegistration boolean DEFAULT false ,
+			  cancelVenRegistrationSent boolean DEFAULT false ,
+			  sendRegisterReport boolean DEFAULT false ,
+			  registerReportSent boolean DEFAULT false ,
+			  sendCreateReport boolean DEFAULT false ,
+			  createReportSent boolean DEFAULT false ,
+			  sendCancelReport boolean DEFAULT false ,
+			  cancelReportSent boolean DEFAULT false ,	
+			  sendDistributeEvent boolean DEFAULT false,			  
+			  distributeEventSent boolean DEFAULT false ,			  
+			  sendResponse boolean DEFAULT false ,
+			  responseSent boolean DEFAULT false ,
+			  PRIMARY KEY (UUID) );					
+		</sql>
+    </changeSet>
+	<changeSet id="10" author="MR">
+        <comment>
+				DRMS-8482 optrequest 
+		</comment>
+		<sql>
+			CREATE  TABLE optrequest (
+			  UUID VARCHAR(45) NOT NULL ,
+			  creationTime TIMESTAMP,
+			  creator VARCHAR(45),
+			  modifiedTime TIMESTAMP,
+			  modifier VARCHAR(45),
+			  version INT,			  
+			  optID VARCHAR(45) NOT NULL ,
+			  optType VARCHAR(45) NOT NULL,
+			  venId VARCHAR(45) NOT NULL,
+			  requestId VARCHAR(45) NOT NULL,
+			  optReason VARCHAR(45),
+			  requestTime TIMESTAMP,
+			  cancelled boolean DEFAULT false,
+			  PRIMARY KEY (UUID),
+			  UNIQUE INDEX optID_UNIQUE (optID ASC) ,
+			  UNIQUE INDEX requestId_UNIQUE (requestId ASC));
+		</sql>
+    </changeSet>
+	
+	<changeSet id="11" author="MR">
+        <comment>
+				DRMS-8482 optresource
+		</comment>
+		<sql>
+			CREATE  TABLE optresource (
+			  UUID VARCHAR(250) NOT NULL,
+			  creationTime TIMESTAMP,
+			  creator VARCHAR(45),
+			  modifiedTime TIMESTAMP,
+			  modifier VARCHAR(45),
+			  version INT,			  
+			  optrequestuuid VARCHAR(250) NOT NULL ,
+			  resourceId VARCHAR(250) NOT NULL ,
+			  PRIMARY KEY (UUID) ,
+			  INDEX optrequestuuid_idx (optrequestuuid ASC) ,
+			  CONSTRAINT optrequestuuid
+				FOREIGN KEY (optrequestuuid )
+				REFERENCES optrequest (UUID)
+				ON DELETE NO ACTION
+				ON UPDATE NO ACTION);
+		</sql>
+    </changeSet>
+	
+	<changeSet id="12" author="MR">
+        <comment>
+				DRMS-8482 optavailability
+		</comment>
+		<sql>
+			CREATE  TABLE optavailability (
+			  UUID VARCHAR(250) NOT NULL,
+			  creationTime TIMESTAMP,
+			  creator VARCHAR(45),
+			  modifiedTime TIMESTAMP,
+			  modifier VARCHAR(45),
+			  version INT,
+			  optrequestuuid VARCHAR(250) NOT NULL ,
+			  startTime TIMESTAMP,
+			  duration BIGINT,
+			  PRIMARY KEY (UUID) ,
+			  INDEX optrequestuuid_idx (optrequestuuid ASC),
+			  CONSTRAINT optresource_optrequestuuid
+				FOREIGN KEY (optrequestuuid)
+				REFERENCES optrequest (UUID)
+				ON DELETE NO ACTION
+				ON UPDATE NO ACTION);
+		</sql>
+    </changeSet>
+	
+	<changeSet id="13" author="MR">
+        <comment>
+				DRMS-8482 opttarget
+		</comment>
+		<sql>
+			CREATE  TABLE opttarget (
+			  UUID VARCHAR(250) NOT NULL ,
+			  creationTime TIMESTAMP ,	
+			  creator VARCHAR(45),
+			  modifiedTime TIMESTAMP,
+			  modifier VARCHAR(45),
+			  version INT,			  
+			  optrequestuuid VARCHAR(250) NOT NULL ,
+			  targetType VARCHAR(250) ,
+			  targetValue VARCHAR(250),
+			  PRIMARY KEY (UUID) ,
+			  INDEX optrequestuuid_idx (optrequestuuid ASC) ,
+			  CONSTRAINT optrequestuuid_fk
+				FOREIGN KEY (optrequestuuid )
+				REFERENCES optrequest (UUID )
+				ON DELETE NO ACTION
+				ON UPDATE NO ACTION);
+		</sql>
+    </changeSet>
+	<changeSet id="14" author="Ram">
+        <comment>
+				DRMS-8481 eventrequest
+		</comment>
+		<sql>
+			  CREATE  TABLE eventrequest (
+			  uuid VARCHAR(250) NOT NULL ,
+			  creationtime TIMESTAMP NULL ,
+			  creator VARCHAR(255) NULL ,
+			  modifiedtime TIMESTAMP NULL ,
+			  modifier VARCHAR(255) NULL ,
+			  version INT NULL ,
+			  venid VARCHAR(255) NULL ,
+			  requestid VARCHAR(255) NOT NULL ,
+			  eventid VARCHAR(255)  NULL ,
+			  clientid VARCHAR(255) NOT NULL ,
+			  eventmodificationnumber BIGINT NULL,
+			  clientuuid  VARCHAR(255)  NULL ,	
+			  eventstatus VARCHAR(255)  NULL ,
+			  clientoperationmodevalue VARCHAR(255)  NULL ,
+			  PRIMARY KEY (uuid) );					
+		</sql>
+    </changeSet>	
+	<changeSet id="15" author="Ram">
+        <comment>
+				DRMS-8481 drop unique constraints from optrequest table
+		</comment>
+		<sql>
+				ALTER TABLE optrequest DROP INDEX optID_UNIQUE;
+				ALTER TABLE optrequest DROP INDEX requestId_UNIQUE;				
+		</sql>
+    </changeSet>	
+	<changeSet id="16" author="Ram">
+        <comment>
+				Create apx aggregator table
+		</comment>
+		<sql>
+			  CREATE  TABLE apxaggregator (
+			  uuid VARCHAR(250) NOT NULL ,
+			  creationtime TIMESTAMP NULL ,
+			  creator VARCHAR(255) NULL ,
+			  modifiedtime TIMESTAMP NULL ,
+			  modifier VARCHAR(255) NULL ,
+			  version INT NULL ,
+			  aggregatorname VARCHAR(255) NULL ,
+			  aggregatoraccountNumber VARCHAR(255) NOT NULL ,
+			  aggregatorclientidmappedwithendpoint VARCHAR(255) NOT NULL ,
+			  apxeventid VARCHAR(255) NOT NULL ,
+			  apxeventstarttime TIMESTAMP NULL ,
+			  apxeventendtime TIMESTAMP NULL ,
+			  apxeventissuetime TIMESTAMP NULL ,
+			  aggregatorresources VARCHAR(255) NULL ,
+			  PRIMARY KEY (uuid) );					
+		</sql>
+    </changeSet>
+	<changeSet id="17" author="Ram">
+        <comment>
+				alter apx aggregator table
+		</comment>
+		<sql>
+				ALTER TABLE apxaggregator ADD COLUMN apxeventuuid VARCHAR(250) NOT NULL;
+				ALTER TABLE apxaggregator ADD CONSTRAINT apxeventuuid_fk  FOREIGN KEY (apxeventuuid) REFERENCES event (UUID) ON DELETE CASCADE ON UPDATE CASCADE ;
+		</sql>
+    </changeSet>	
+	
+	<changeSet id="18" author="MR">
+        <comment>
+				Add application ID to Participant table for DBP program
+		</comment>
+		<sql>
+				ALTER TABLE participant ADD COLUMN applicationId VARCHAR(128) NULL, ADD UNIQUE INDEX applicationId_UNIQUE (applicationId ASC);
+		</sql>
+    </changeSet>	
+</databaseChangeLog>

@@ -1,0 +1,7 @@
+java -jar ~/.m2/repository/org/liquibase/liquibase-core/2.0.1/liquibase-core-2.0.1.jar \
+    --driver=com.mysql.jdbc.Driver \
+    --classpath=/Users/brian/lib/mysql-connector-java-5.1.8.jar:/Users/brian/src/akuacom/drms/trunk/drms/system/configure \
+    --changeLogFile=db/changelogs/pss2/changelogs.xml \
+    --url="jdbc:mysql://localhost/pss2" \
+    --username=root \
+    update

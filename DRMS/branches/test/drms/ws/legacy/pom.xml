@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>ws-parent</artifactId>
+		<groupId>com.akuacom.drms.ws</groupId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+	<groupId>com.akuacom.drms.ws</groupId>
+	<artifactId>legacy</artifactId>
+	<version>7.26-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>legacy</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.akuacom.drms.lib</groupId>
+			<artifactId>drms-util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.common</groupId>
+			<artifactId>util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.core</groupId>
+			<artifactId>drms-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.core</groupId>
+			<artifactId>drms-core-ejb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml</groupId>
+			<artifactId>jaxrpc-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.common</groupId>
+			<artifactId>drms-logger</artifactId>
+		</dependency>
+	</dependencies>
+</project>

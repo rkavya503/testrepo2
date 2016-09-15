@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>drms-parent</artifactId>
+        <groupId>com.akuacom.drms</groupId>
+        <version>7.26-SNAPSHOT</version>
+    </parent>
+    <groupId>com.akuacom.drms.system</groupId>
+    <artifactId>system-parent</artifactId>
+    <version>7.26-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>system-parent</name>
+    <modules>
+        <module>configure</module>
+        <module>ear</module>
+        <module>it</module>
+    </modules>
+    <properties>
+        <clusterEnabled>false</clusterEnabled>
+        <jbossServerConfig>${jbossHome}/server/${drmsEnv}</jbossServerConfig>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>configureAll</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <clusterEnabled>true</clusterEnabled>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>jbossStop</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.1</version>
+                        <executions>
+                            <execution>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <executable>/sbin/service</executable>
+                            <arguments>
+                                <argument>jboss</argument>
+                                <argument>stop</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

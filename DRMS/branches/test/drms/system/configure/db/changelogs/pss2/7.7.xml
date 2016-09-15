@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	
+	<changeSet id="1" author="Daoping">
+        <comment>
+           DRMS-7608 feature switch - Multiple RTP Event creation for LAAFB
+        </comment>
+		<sql>
+		        insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.multipleRTPEvents',
+                null, false, null, null, 'Boolean', 'script', null, now(),
+                null);
+		</sql>
+    </changeSet>
+	<changeSet id="2" author="Liu">
+		<preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from program;
+				</sqlCheck>
+            </not>
+        </preConditions>
+        <comment>
+          DRMS-7612 SCE - SPD Program into DR Website
+        </comment>
+		<sql>
+		       insert  into `program`
+			   (`uuid`,`version`,`priority`,`name`,`beginEffectiveTime`,`endEffectiveTime`,`minIssueToStartM`,`mustIssueBDBE`,
+			   `maxIssueTimeH`,`minStartTimeH`,`maxStartTimeH`,`minEndTimeH`,`maxEndTimeH`,`maxIssueTimeM`,`minStartTimeM`,
+			   `maxStartTimeM`,`minEndTimeM`,`maxEndTimeM`,`minDurationM`,`maxDurationM`,`pendingTimeDBEH`,`pendingTimeDBEM`,
+			   `notificationParam1`,`creator`,`modifier`,`creationTime`,`modifiedTime`,`manualCreatable`,`utilityProgramName`,
+			   `className`,`state`,`validatorClass`,`validatorConfigFile`,`uiConfigureProgramString`,`uiConfigureEventString`,
+			   `uiScheduleEventString`,`description`,`autoRepeatTimeOfDay`,`lastErrorOpContact`,`autoAccept`,`programType`,
+			   `longProgramName`,`programClass`,`testProgram`) 
+				values 
+				('8aceb83438eb998d0138eb9b6a228888',0,50,'SPD',NULL,NULL,0,true,23,14,14,18,18,59,0,0,0,0,360,360,21,0,'',
+				'anonymous',NULL,'2012-08-03 16:30:27',NULL,true,'SPD','com.akuacom.pss2.program.cpp.CPPProgramEJB',1,
+				'com.akuacom.pss2.program.cpp.CPPValidator','cpp_vcd.validator.config','','','CPPSchedulePage',NULL,NULL,
+				NULL,'\0','CPPProgram','SPD','SPD',NULL);
+		</sql>
+    </changeSet>
+	<changeSet id="3" author="Liu">
+        
+
+		<preConditions onFail="MARK_RAN">
+                <sqlCheck expectedResult="1">
+                    SELECT COUNT(*) FROM program p WHERE p.name='SPD';
+				</sqlCheck>
+        </preConditions>
+		<comment>
+         DRMS-7653 SCE SPD: Remove SPD program from other utilities
+        </comment>
+		<sql>
+		       DELETE FROM program_signal USING program_signal,program WHERE program_signal.program_uuid=program.uuid AND program.name='SPD';
+			   DELETE FROM program WHERE NAME='SPD';
+		</sql>
+    </changeSet>
+</databaseChangeLog>

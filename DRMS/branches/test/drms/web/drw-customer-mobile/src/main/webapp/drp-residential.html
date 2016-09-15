@@ -1,0 +1,425 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>SCE Demand Response Event Status</title> 
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.3.0.css" />
+    
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.3.0.js"></script>
+	<script src="js/eventsPage.js"></script>
+	<script type='text/javascript' src='js/knockout-2.3.0.js'></script>
+   
+<script type="text/javascript">
+function createCookie(name, value) {
+	   var date = new Date();
+	   date.setTime(date.getTime()+(4*60*60*1000));// 4 hours
+	   var expires = "; expires="+date.toGMTString();
+
+	   document.cookie = name+"="+value+expires+"; path=/";
+	}
+/* function to show and hide schedule events*/
+function showSDPScheduledEvents(){
+	$('.viewScheduledEventsSDP').css("display", "none");
+	$('.hideScheduledEventsSDP').css("display", "block");
+	$('#res-sdp-scheduled').css("display", "block");
+	}
+function hideSDPScheduledEvents(){
+	$('.viewScheduledEventsSDP').css("display", "block");
+	$('.hideScheduledEventsSDP').css("display", "none");
+	$('#res-sdp-scheduled').css("display", "none");
+	}	
+	
+function showSPDScheduledEvents(){
+	$('.viewScheduledEventsSPD').css("display", "none");
+	$('.hideScheduledEventsSPD').css("display", "block");
+	$('#res-spd-scheduled').css("display", "block");
+	}
+function hideSPDScheduledEvents(){
+	$('.viewScheduledEventsSPD').css("display", "block");
+	$('.hideScheduledEventsSPD').css("display", "none");
+	$('#res-spd-scheduled').css("display", "none");
+	}	
+
+function showSAIScheduledEvents(){
+	$('.viewScheduledEventsSAI').css("display", "none");
+	$('.hideScheduledEventsSAI').css("display", "block");
+	$('#res-sai-scheduled').css("display", "block");
+	}
+function hideSAIScheduledEvents(){
+	$('.viewScheduledEventsSAI').css("display", "block");
+	$('.hideScheduledEventsSAI').css("display", "none");
+	$('#res-sai-scheduled').css("display", "none");
+	}
+
+
+</script>    
+    
+</head> 
+<body> 
+
+<div data-role="page"  id="drp-residential" data-cache="never">
+	
+	<div data-role="header" data-theme="c">
+		<div class="logoHolder"><img src="images/sce-logo.png" width="127" height="39"/></div>
+        <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal" style="margin-top:15px;">
+     <a href="#" data-rel="back" ><img src="images/back-btn.jpg" width="24" height="19"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="index.html"  data-ajax="false" rel="external"><img src="images/home-btn.png" width="23" height="24"/></a>
+    </div>
+       
+	</div><!-- /header -->
+
+		
+		  <div data-role="content" style="clear:both">
+          	<div class="main-page-title"><span class="title" style="font-size:17px !important;">Demand Response Event Status</span><br /><br />
+            Welcome to the SCE DR Event Website. It is recommended that you reload or refresh this site often to ensure you are viewing the most recent available information. This website is not intended as a substitute for receiving SCE event notifications. </div>
+          <div data-role="navbar">
+            <ul>
+                <li><a id="currentTab" class="ui-btn-active" href="drp-residential.html" data-theme="b"  data-ajax="false">Residential</a></li>
+                <li><a href="drp-commercial.html" data-theme="b"  data-ajax="false">Commercial</a></li>
+                <li><a href="drp-event-history.html" data-theme="b" style="width:100% !important;"  data-ajax="false">Event History</a></li>
+            </ul>
+          </div><!-- /navbar -->
+          </div>
+          
+          <div data-role="content">
+          	
+          	<div>
+            <div class="res-lastUpdate">Updated <span data-bind="text: systemUpdateTime"></span></div>
+           
+            
+            <!-- begin of spd content -->
+			<div class="collapseHeader" data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="c" id = "sdpP" >
+                <h4>Summer Discount Plan (SDP)<br><span style="font-size:12px;">(Residential Air Conditioning Plan)</span><br> 
+				<span style="float:left;margin-top:10px;" class="ui-btn-up-c  ui-btn-corner-all cnt" data-bind="visible: sdpActiveEvts().length>0"><span data-bind="text: sdpActiveEvts().length"></span> Event(s) in Progress</span></h4>
+                
+                <div class="res-tab-content-sdp">
+                	
+                    <div class="event-warning" data-bind="visible: sdpActiveEvts().length>0"><span class="event-warning-title">Air Conditioners Are Being Cycled-Off</span><br>
+					Click on "Map View or List View" below to see if your area is impacted.<br><br></div>
+                    <div class="active-title" data-bind="visible: sdpActiveEvts().length>0">Active Events<br></div>
+					<div id="res-sdp-active" data-bind="visible: sdpActiveEvts().length==0">
+						No Events in Progress
+						<hr>
+                    </div>
+
+                    <div id="res-sdp-active" data-bind="foreach: sdpActiveEvts">
+                    <table>
+                        <tr class="res-result-alt">
+                          <th width="30%">Start Date</th>
+                          <td width="30%"><label data-bind="text: startDate"></label></td>
+                        </tr> 
+                        <tr>
+                          <th>End Date</th>
+                          <td><label data-bind="text: endDate"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">  
+                          <th>Start Time</th>
+                          <td><label data-bind="text: startTime"></label></td>
+                        </tr> 
+                        <tr>  
+                          <th>Estimated End Time</th>
+                          <td><label data-bind="text: endTime"></label></td>
+                        </tr>						
+                        <tr class="res-result-alt"> 
+							<td width="50%"> <a data-bind="attr:{name:eventKey}"  target="_blank" data-role="button" data-theme="d" onclick="accessViewPage(this,false,true);">Map View</a></td>
+							<td width="50%"> <a data-bind="attr:{name:eventKey}"  target="_blank" data-role="button" data-theme="d" onclick="accessViewPage(this,true,true);">List View</a></td>
+                        </tr> 
+                    </table>
+                   	<hr>              
+                    </div>
+                </div>
+                <!-- ko if:sdpScheduleEvts().length>0 -->
+                <div class="viewScheduledEventsSDP"><a href="#" onClick="showSDPScheduledEvents()"><img src="images/leftGreenArrow.png" width="18" height="19" align="texttop" border="0"/> View Scheduled Events</a></div>
+                <div class="hideScheduledEventsSDP"><a href="#" onClick="hideSDPScheduledEvents()"><img src="images/downGreenArrow.png" width="18" height="19" align="texttop" border="0"/> Hide Scheduled Events</a></div>
+				<!-- /ko -->
+				<!-- start of sdp schedule events -->
+				<input type = "hidden" data-bind="value: expandProgram(sdpScheduleEvts().length, 'sdpP')" />
+                <div id="res-sdp-scheduled" data-bind="foreach: sdpScheduleEvts">
+                	
+                    <table>
+  
+                        <tr class="res-result-alt">
+                          <th width="30%">Start Date</th>
+                          <td width="30%"><label data-bind="text: startDate"></label></td>
+                        </tr> 
+                        <tr>
+                          <th>End Date</th>
+                          <td><label data-bind="text: endDate"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">  
+                          <th>Start Time</th>
+                          <td><label data-bind="text: startTime"></label></td>
+                        </tr> 
+                        <tr>  
+                          <th>Estimated End Time</th>
+                          <td><label data-bind="text: endTime"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">  
+							<td width="50%"> <a data-bind="attr:{name:eventKey}"  target="_blank" data-role="button" data-theme="d" onclick="accessViewPage(this,false,false);">Map View</a></td>
+							<td width="50%"> <a data-bind="attr:{name:eventKey}"  target="_blank" data-role="button" data-theme="d" onclick="accessViewPage(this,true,false);">List View</a></td>
+                        </tr> 
+                       
+                    </table>
+                   	<hr>                   
+                    
+                </div>
+                <!-- end of start of sdp scheduled -->
+                <div class="res-legal">
+					<div data-bind="visible: !((sdpScheduleEvts().length==0)&&(sdpActiveEvts().length==0))">		
+					End times shown for SDP Residential events are estimates only and subject to change without notice. SCE may not be able to estimate end times for all SDP Residential events. 
+					</div>
+					<br>
+					For event information, please call 1-800-497-2813.
+                </div>
+            </div>
+			<br>
+            <div class="collapseHeader" data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="c" id = "spdP">
+                <h4>Save Power Day (SPD) <br><span style="float:left;margin-top:10px;" class="ui-btn-up-c  ui-btn-corner-all cnt" data-bind="visible: spdActiveEvts().length>0"><span data-bind="text: spdActiveEvts().length"></span>  Event(s) in Progress</span></h4>
+                
+                <div class="res-tab-content-spd">
+                    <div class="active-title" data-bind="visible: spdActiveEvts().length>0">Active Events<br></div>
+					<div id="com-cbp-active" data-bind="visible: spdActiveEvts().length==0">
+                   	No Events in Progress
+                    <hr>
+                    </div>
+                    <div id="res-spd-active" data-bind="foreach: spdActiveEvts">
+                    <table>
+  						<tr class="res-result-alt">
+                          <th width="30%">Product</th>
+                          <td width="30%"><label data-bind="text: product"></label></td>
+                        </tr> 
+                        <tr>
+                          <th width="30%">Start Date</th>
+                          <td width="30%"><label data-bind="text: startDate"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">
+                          <th>End Date</th>
+                          <td><label data-bind="text: endDate"></label></td>
+                        </tr> 
+                        <tr>  
+                          <th>Start Time</th>
+                          <td><label data-bind="text: startTime"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">  
+                          <th>End Time</th>
+                          <td><label data-bind="text: endTime"></label></td>
+                        </tr>                                           
+                    </table>
+                    <hr>
+                    </div>
+                </div>
+                <!-- ko if:spdScheduleEvts().length>0 -->
+                <div class="viewScheduledEventsSPD"><a href="#" onClick="showSPDScheduledEvents()"><img src="images/leftGreenArrow.png" width="18" height="19" align="texttop" border="0"/> View Scheduled Events</a></div>
+                <div class="hideScheduledEventsSPD"><a href="#" onClick="hideSPDScheduledEvents()"><img src="images/downGreenArrow.png" width="18" height="19" align="texttop" border="0"/> Hide Scheduled Events</a></div>
+                <!-- /ko -->
+                <div id="res-spd-schedule-none" data-bind="visible: spdScheduleEvts().length==0">
+                   	 No events are currently scheduled for this program
+                    <hr>
+                </div>
+				<!-- start of spd schedule events -->
+				<input type = "hidden" data-bind="value: expandProgram(spdScheduleEvts().length, 'spdP')" />
+                <div id="res-spd-scheduled" data-bind="foreach: spdScheduleEvts">
+                    <table>
+  						<tr class="res-result-alt">
+                          <th width="30%">Product</th>
+                          <td width="30%"><label data-bind="text: product"></label></td>
+                        </tr> 
+                        <tr>
+                          <th width="30%">Start Date</th>
+                          <td width="30%"><label data-bind="text: startDate"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">
+                          <th>End Date</th>
+                          <td><label data-bind="text: endDate"></label></td>
+                        </tr> 
+                        <tr>  
+                          <th>Start Time</th>
+                          <td><label data-bind="text: startTime"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">  
+                          <th>End Time</th>
+                          <td><label data-bind="text: endTime"></label></td>
+                        </tr>                                                
+                    </table>
+                    <hr>
+                    
+                </div>
+                <!-- end of start of spd scheduled -->
+                <div class="res-legal">
+                		
+                For event information, please call 1-800-930-1245.
+
+                </div>
+            </div>
+            <!-- end of spd content -->
+            <br>
+            <!-- begin of sai content -->
+            <div class="collapseHeader" data-role="collapsible" data-inset="false" data-iconpos="right" data-theme="c" id ="saiP">
+                <h4>Summer Advantage Incentive (SAI)<br><span style="font-size:12px;">(Also known as Critical Peak Pricing)</span><br>  
+				<span style="float:left;margin-top:10px;" class="ui-btn-up-c  ui-btn-corner-all cnt" data-bind="visible: saiActiveEvts().length>0"><span data-bind="text: saiActiveEvts().length"></span> Event(s) in Progress</span></h4>
+                
+                <div class="res-tab-content-sai">
+                    <div class="active-title" data-bind="visible: saiActiveEvts().length>0">Active Events<br></div>
+					<div id="com-cbp-active" data-bind="visible: saiActiveEvts().length==0">
+                   	No Events in Progress
+                    <hr>
+                    </div>
+                    <div id="res-sai-active" data-bind="foreach: saiActiveEvts">
+                    <table>
+  						<tr class="res-result-alt">
+                          <th width="30%">Product</th>
+                          <td width="30%"><label data-bind="text: product"></label></td>
+                        </tr> 
+                        <tr>
+                          <th width="30%">Start Date</th>
+                          <td width="30%"><label data-bind="text: startDate"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">
+                          <th>End Date</th>
+                          <td><label data-bind="text: endDate"></label></td>
+                        </tr> 
+                        <tr>  
+                          <th>Start Time</th>
+                          <td><label data-bind="text: startTime"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">  
+                          <th>End Time</th>
+                          <td><label data-bind="text: endTime"></label></td>
+                        </tr>                                                
+                    </table>
+                    <hr>
+                    </div>
+                </div>
+                <!-- ko if:saiScheduleEvts().length>0 -->
+                <div class="viewScheduledEventsSAI"><a href="#" onClick="showSAIScheduledEvents()"><img src="images/leftGreenArrow.png" width="18" height="19" align="texttop" border="0"/> View Scheduled Events</a></div>
+                <div class="hideScheduledEventsSAI"><a href="#" onClick="hideSAIScheduledEvents()"><img src="images/downGreenArrow.png" width="18" height="19" align="texttop" border="0"/> Hide Scheduled Events</a></div>
+                <!-- /ko -->
+                <div id="res-sai-schedule-none" data-bind="visible: saiScheduleEvts().length==0">
+                   	 No events are currently scheduled for this program
+                    <hr>
+                </div>
+
+				<!-- start of sai schedule events -->
+				<input type = "hidden" data-bind="value: expandProgram(saiScheduleEvts().length, 'saiP')" />
+                <div id="res-sai-scheduled" data-bind="foreach: saiScheduleEvts">                	                    
+                    <table>
+  						<tr class="res-result-alt">
+                          <th width="30%">Product</th>
+                          <td width="30%"><label data-bind="text: product"></label></td>
+                        </tr> 
+                        <tr>
+                          <th width="30%">Start Date</th>
+                          <td width="30%"><label data-bind="text: startDate"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">
+                          <th>End Date</th>
+                          <td><label data-bind="text: endDate"></label></td>
+                        </tr> 
+                        <tr>  
+                          <th>Start Time</th>
+                          <td><label data-bind="text: startTime"></label></td>
+                        </tr> 
+                        <tr class="res-result-alt">  
+                          <th>End Time</th>
+                          <td><label data-bind="text: endTime"></label></td>
+                        </tr> 
+                        
+                       
+                    </table>
+                    <hr>
+                    
+                </div>
+                <!-- end of start of sai scheduled -->
+                <div class="res-legal">
+                		
+                For event information, please call: 1-800-655-4555.
+
+                </div>
+            </div>
+            <!-- end of sai content -->
+            
+             
+            <!-- end of sdp content -->
+          	</div>
+            
+          </div>
+
+	<div class="footerLinks" style="text-align:center;font-size:11px;padding:10px;padding-top:20px; font-weight:normal;color:#666 !important;"><a href="https://www.sce.com/wps/portal/home/about-us" target="_blank">About</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.sce.com/wps/portal/home/mysce/sitemap" target="_blank">Site Map</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.sce.com/wps/portal/home/privacy" target="_blank">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.sce.com/wps/portal/home/regulatory" target="_blank">Regulatory</a>&nbsp;&nbsp;|<br>&nbsp;&nbsp;<a href="http://www.edison.com/" target="_blank">Edison International</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="../dr.website/scepr-event-status.jsf" onclick="createCookie('FULL_SITE_ON_MOBILE','TRUE');" target="_blank">Desktop Site</a>
+        <br>Copyright &copy; 2013 Southern California Edison. <br>All Rights Reserved
+</div>
+<br><br><br>
+	<div data-role="footer" data-position="fixed" data-fullscreen="true">
+    	<div class="footerWrapper">
+		<div class="footerNavLeft"><a href="#relative-link-page" data-rel="dialog" style="color:#FFF; text-decoration:none;">Related Links</a></div>
+        <div class="footerNavRight"><a href="#relative-link-page" data-rel="dialog"><img src="images/dot.png" width="27" height="7" border="0"/></a></div>
+        </div>
+	</div>
+    
+</div><!-- /page -->
+<!-- relative links page -->
+<div data-role="dialog"  id="relative-link-page">
+	
+    <div data-role="content" data-theme="c">
+          
+          <div>
+           <table style="width:100%">
+              	<tr><td>
+          	<ul data-role="listview" data-inset="false" data-filter="false">
+                <li data-icon="false"><a href="https://www.sce.com/wps/portal/home/business/savings-incentives/demand-response/?from=adr_demand" target="blank">SCE Demand Response Programs</a></li>
+                <li data-icon="false"><a href="https://www.sce.com/wps/portal/home/outage-center/rotating-outages/?from=adr_outage" target="blank">SCE Rotating Outage Status</a></li>
+                <li data-icon="false"><a href="https://www.sce.com/wps/portal/home/regulatory/tariff-books" target="blank">SCE Tariff Book</a></li>
+                <li data-icon="false"><a href="http://www.caiso.com/Pages/TodaysOutlook.aspx" target="blank">California ISO - Today's Outlook</a></li>
+                <li data-icon="false"><a href="drp-blockview.jsp" target="_blank">SCE Block view</a></li>
+				<li data-icon="false"><a href="../dr.website/scepr-event-status.jsf" target="blank" onclick="createCookie('FULL_SITE_ON_MOBILE','TRUE');" >Desktop Version</a></li>
+                <li data-theme="e" data-icon="back"><a href="#" data-rel="back"  data-ajax="false" >Return to Home</a>
+                </li>
+            </ul>
+		</td></tr></table>
+          </div>
+          </div>
+       
+</div>
+
+
+<script>
+$(document).ready(function(){
+
+var myMap = {"SPD_RESIDENTIAL_ACTIVE": "spdActiveEvts", "SPD_RESIDENTIAL_SCHEDULED": "spdScheduleEvts", "SAI_RESIDENTIAL_ACTIVE": "saiActiveEvts","SAI_RESIDENTIAL_SCHEDULED": "saiScheduleEvts", "SDP_RESIDENTIAL_ACTIVE": "sdpActiveEvts", "SDP_RESIDENTIAL_SCHEDULED": "sdpScheduleEvts"};
+
+hon.eventstatus(myMap,false);
+
+});
+function accessViewPage(obj,isListView,isActive){
+		if(obj){
+			window.open("drp-view.jsp?eventKey="+obj["name"]+"&isListView="+isListView+"&isActive="+isActive);
+		}
+	}
+	window.onunload = function(){
+		$("#currentTab").attr("class","ui-btn-active ui-btn ui-btn-inline ui-btn-up-b");
+	};
+	
+var cssRefresh = setInterval(function() {
+	var tmp = $("#currentTab").attr("class");
+	if(tmp.indexOf("ui-btn-active")==-1){
+		$("#currentTab").attr("class","ui-btn-active ui-btn ui-btn-inline ui-btn-up-b");
+	}
+},1000);	
+
+function expandProgram(scheduledEventLength, prgm){
+	if(scheduledEventLength=='0'){
+		if(prgm=='sdpP') $("#sdpP").trigger('collapse');
+		if(prgm=='spdP') $("#spdP").trigger('collapse');
+		if(prgm=='saiP') $("#saiP").trigger('collapse');
+	}else{
+		if(prgm=='sdpP') $("#sdpP").trigger('expand');
+		if(prgm=='spdP') $("#spdP").trigger('expand');
+		if(prgm=='saiP') $("#saiP").trigger('expand');
+	}
+	return scheduledEventLength; 
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>ws-stub-parent</artifactId>
+		<groupId>com.akuacom.drms.ws</groupId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+	<groupId>com.akuacom.drms.ws</groupId>
+	<artifactId>util-op-stub</artifactId>
+	<version>7.26-SNAPSHOT</version>
+	<name>util-op-stub</name>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>java.net-1</id>
+			<url>http://download.java.net/maven/1/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>com.akuacom.drms.lib</groupId>
+			<artifactId>drms-util</artifactId>
+		</dependency>
+		
+		<dependency>
+				<groupId>com.sun.xml.bind</groupId>
+				<artifactId>jaxb-impl</artifactId>
+		</dependency>
+	</dependencies>
+	<!-- For now using already generated old stubs. Eventually we want to generate the stubs automatically. 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>1.12</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+					</execution>
+				</executions>
+
+
+			</plugin>
+
+		</plugins>
+	</build>
+ 	-->
+ 	<profiles>
+		<profile>
+			<id>coverage</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.atlassian.maven.plugins</groupId>
+						<artifactId>maven-clover2-plugin</artifactId>
+						<configuration>
+							<excludes>
+								<exclude>**/*.java</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

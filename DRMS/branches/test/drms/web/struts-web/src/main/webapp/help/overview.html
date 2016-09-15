@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+		  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Overview: DRAS Automation Server</title>
+<title>DRAS Automation Server Users Guide</title>
+<link href="../pss2-core-style.css" rel="stylesheet" type="text/css"/>
+<style type="text/css" media="screen">
+ 	@import "../pss2-core-nav.css";
+</style>
+</head>
+<body id="standard">
+	<div id="page_wrapper">
+		<div id="header">
+		<a href="./index.html" target="_self" >
+		<h1>DRAS Automation Server Users' Guide</h1>
+		</a>
+		</div>
+		<div class="nav_right">
+			<a href="/pss2.website.struts/help/DRAS_Desc_2006.pdf" target="_self">
+				Download PDF
+			</a>
+		</div>
+		<div id="content_wrapper" >
+			<div class="tablestyle" >
+				<table cellspacing="0" >
+					<tr>
+						<th><a href="./overview.html" target="_self"> Overview </a></th>
+						<th><a href="./quick-start.html" target="_self"> Quick Start </a></th>
+						<th><a href="./tab-guide.html" target="_self">Tab Guide</a></th>
+						<th><a href="./faq.html" target="_self"> FAQ </a></th>
+					</tr>
+				</table>
+			</div>
+			<div class="nav_right">
+				<a href="/pss2.website/help/DRAS_Desc_2006.pdf" target="_self">
+					Download PDF
+				</a>
+			</div>
+			<h3>Description</h3>
+			<p>
+			The LBNL DR Automation Server (DRAS) (previously called price server) is at the heart of 
+			the controls and communications architecture for Automated Demand Response tests conducted 
+			by the Lawrence Berkeley National Lab in 2003, 04, 05 and 06.
+			</p>
+			<p>
+			The DRAS enables utilities, grid system operators and other entities to remotely initiate 
+			preplanned automated sheds of electric loads in commercial and industrial facilities.  The 
+			automated sheds can be initiated based on economic or contingency based grid conditions.   The 
+			DR signals are transmitted using the existing public Internet and private wide area 
+			networks (WANs).  Facilities can be connected to the DRAS using either software or hardware 
+			based gateways or other interface devices.
+			</p>
+			<p>
+ 			Once a shed event is initiated by the appropriate decision-makers, the DRAS automatically manages 
+ 			all communications, time buffering, and on-site connections to enable demand reductions for the 
+ 			pre-planned duration using pre-planned strategies.  Unless a facility manager &quot;opts-out&quot; using 
+ 			their personalized website, sheds will occur without human intervention.
+			</p>
+			<div style="text-align: center;" >
+				<img border="0" src="http://drrc.lbl.gov/images/auto_dr_geographic.gif" width="614" height="253" /><br>
+				<b> Figure 1. Geographic Location of Pilot Sites and Other Locations </b>
+			</div>
+			<hr/>
+			<p>
+			Version 1.0 was designed and used as a research tool in 2003 and 2004.&nbsp; 
+			Version 2.0 was pilot production tool designed and used as the automation "engine" of 
+			PG &amp; E&apos;s Auto-CPP program in 2005.&nbsp; 
+			</p>
+			<p>
+			Version 2.0 was built from scratch to meet the high standards required for financial 
+			transactions using Internet technology.  The version 2.0 server successfully met the 
+			requirements for the 2005 tests including:
+ 			</p>
+ 			<ol>
+ 				<li>
+ 				Flexibility - The system was customized to interface with PG&amp;E&quot;s existing 
+ 				CPP processes and Itron&quot;s Interact system. 
+	 			</li>
+	 			<li>
+	 			High availability/reliability - The system successfully processed every PG&amp;E initiated 
+	 			Auto-CPP event.  Since coming online, DRAS has maintained it&quot;s availability target 
+	 			of 99.99%. (four nines)
+	 			</li>
+	 			<li>   
+	 			Scalability - Tests show that the 2.0 framework was more than adequate for the ~ 20 sites 
+	 			in the 2005 pilot.  Scalability tests indicate that the current system could support 
+	 			approximately 30,000 "sites" per server with an end-to-end latency averaging less than ½ 
+	 			second.  Modular software is designed to enable support of millions of sites by simply 
+	 			adding servers and other standard IT equipment.
+	 			</li>
+	 			<li>   
+	 			Security - The DRAS architecture was designed so as to be secure enough to meet current 
+	 			industry standards for financially binding transactions.   It is of utmost importance 
+	 			that Auto-DR tests are secure.   A security breech could become a major public relationship 
+	 			setback to the industry.  
+	 			</li>  
+			</ol>
+			<p>
+			&nbsp;<b>Figure 2</b> shows the control and communication architecture used by the 
+			DRAS in 2006.&nbsp; Communications occur in the following sequence: 
+			</p>
+			<ol>
+			    <li>
+			    	Utility defines the start time and duration of the Auto-DR event&nbsp;
+			    </li>
+			    <li>
+			    	Auto-DR event info published on DR Automation Server&nbsp;
+			    </li>
+			    <li>
+			    	Polling clients check event status and signal EMCS when to enter shed mode(s)&nbsp;
+			    </li>
+			    <li>
+			    	EMCS carries out pre-determined shed strategies
+			    </li>
+			</ol>
+			<div style="text-align: center;" >
+				<img border="0" src="http://drrc.lbl.gov/images/acpp-2006.gif" 
+					 width="343" height="450" /><br>
+				<b>Figure 2. Control and Communication Archittecture</b>
+			</div>
+			<br>
+			<div class="tablestyle" >
+				<table cellspacing="0">
+					<caption>Table 1. Existing Barriers and Solutions to DR </caption>
+					<tr>
+						<th width="30%">Barrier to DR</th>
+						<th width="*">Cost Effective Solution</th>
+					</tr>
+					<tr>
+						<td>
+							HVAC strategies complicated and ineffective
+						</td>
+						<td>
+							Global Temperature Adjustment (GTA) strategy.&nbsp; Proven to 
+					        be simple, effective and minimally objectionable to occupants.&nbsp;&nbsp; GTA 
+					        software feature is in process of being added to Title 24 for 2008.&nbsp; 
+					        This effort is led by the DRRC.&nbsp; The GTA feature will enable DR in 
+					        commercial building at no additional cost.&nbsp; 
+						</td>
+					<tr>
+					<tr>
+						<td>
+						Too labor intensive
+						</td>
+						<td>
+						Automated DR with pre-planned strategies
+						</td>
+					<tr>
+					<tr>
+						<td>
+						Auto-DR signal transmission infrastructure too expensive.
+						</td>
+						<td>
+						DRAS leverages existing Internet and WAN connections in commercial buildings.&nbsp; 
+						</td>
+					<tr>
+					<tr>
+						<td>
+						Internet signals not standardized
+						</td>
+						<td>
+						DRRC is working with NIST and BACnet toward signal standardization in the DRRC DR Automation Server (DRAS).
+						</td>
+					<tr>
+					<tr>
+						<td>
+						Internet signals and protocols too complicated to transfer into existing EMCS
+						</td>
+						<td>
+						Internet relays are easily read by all existing EMCS.&nbsp; 
+						Can be used for direct load control as well. 
+						</td>
+					<tr>
+					<tr>
+						<td>
+						Internet relays are difficult to configure and are inherently insecure.
+						</td>
+						<td>
+						DRRC developed self configuring, secure Internet relay device; CLIR Box 
+						(Client, Logic, w/ Integrated Relay).&nbsp; CLIR box prototyped in 2005, 
+						pilot production in 2006.
+						</td>
+					<tr>
+					<tr>
+						<td>
+						Lighting has huge potential for DR, yet remains largely unavailable due to 
+						lack of centralized control systems.&nbsp; 
+						</td>
+						<td>
+						Further research required.&nbsp; Leveraging existing title 24 mandated bi-level 
+						switching, wireless controls and other concepts in research.
+						</td>
+					<tr>
+					<tr>
+						<td>
+						Leased office space owners unable to participate.
+						</td>
+						<td>
+						Further research required.&nbsp;&nbsp; Working with BOMA to revise lease 
+						language so as to allow temperature devastations based on CAISO alert levels 
+						under consideration.
+						</td>
+					<tr>
+				</table>
+				</div>
+				<hr />
+				<h3>DR Automation Server 2006</h3>
+				<p>
+					LBNL is currently working to enhance 
+					the DRAS based on feedback from utilities, installation contractors and other 
+					stakeholders.&nbsp; The overall Auto-DR project for 2006 has several major themes.&nbsp; 
+					These themes, along with technical lessons learned from previous years will 
+					drive many of the features and other enhancements of the DR Automation Server 
+					for 2006:
+				 </p>
+			<ol>
+			    <li>
+			  Process turnover.&nbsp; Researchers at LBNL plan to further define and 
+			  document DR processes and turn over more tasks to others (utilities and other 
+			  3rd parties).
+			    </li>
+			    <li>
+			  Provision of secure, reliable, customized interfaces to multiple 
+			  utility partners.
+			    </li>
+			    <li>
+			  Sharing of real-time, system-level, non-sensitive DR information 
+			  with the CEC, CAISO and other parties.
+			    </li>
+			    <li>
+			  Continued enhancements in performance and usability.
+			    </li>
+			    <li>
+			  Cost optimization.
+			    </li>
+			  </ol>
+			  The aforementioned overall project themes and 
+			  lessons learned from previous years drive the need for the following 
+			  categories of enhancements to the DR Automation Server for 2006:
+			  <ol>
+			    <li>
+			  Support for event "trigger" signals from multiple sources (e.g., 
+			  from different utility systems).
+			    </li>
+			    <li>
+			  Support for additional password protected user types.&nbsp; (e.g., users 
+			  of the system with various roles have access to various parts of the system).
+			    </li>
+			    <li>
+			  Enhanced the design and manufacturing process for the hardware 
+			  interface devices to each participating site.&nbsp; Client Logic w/ Integrated 
+			  Relay (CLIR) Box.&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			    </li>
+			    <li>
+			  Enhance reliability and reduce maintenance requirements.
+			    </li>
+			    <li>
+			  Enable the DR Automation Server for 2006 to be hosted at the LBNL managed hosting co-lo or 
+			  at a utilities network operations center or both.
+			    </li>
+			    <li>
+			  Improved operator tools for status display and log visualization.
+			    </li>
+			    <li>
+			  Continued attention to security and scalability.&nbsp;
+			    </li>
+			  </ol>
+			  Input from utilities and CAISO will be 
+			  encouraged during the development phase of the DR Automation Server 2006.&nbsp; In 
+			  addition, their involvement with this project will hopefully help them in the 
+			  future to create their own systems and/or help in the design of future 
+			  revisions of the LBNL DR Automation Server.
+			</div>
+		</div>
+	</div>
+</body>
+</html>

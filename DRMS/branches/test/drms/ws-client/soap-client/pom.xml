@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>ws-client-parent</artifactId>
+    <groupId>com.akuacom.drms.ws-client</groupId>
+    <version>7.26-SNAPSHOT</version>
+  </parent>
+  <groupId>com.akuacom.drms.ws-client</groupId>
+  <artifactId>soap-client</artifactId>
+  <version>7.26-SNAPSHOT</version>
+  <name>soap-client</name>
+  <dependencies>
+	<dependency>
+	  <groupId>com.akuacom.drms.ws</groupId>
+	  <artifactId>util-op-stub</artifactId>
+	</dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>com.akuacom.pss2.clientws.soap.client.SOAPWSClient2</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+</project>

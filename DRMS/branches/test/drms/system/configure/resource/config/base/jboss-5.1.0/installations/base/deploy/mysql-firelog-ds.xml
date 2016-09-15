@@ -1,0 +1,24 @@
+<datasources>
+    <xa-datasource>
+        <jndi-name>mysql-firelog-ds</jndi-name>
+        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+        <xa-datasource-property name="URL">jdbc:mysql://@HOST@:@PORT@/@NAME@?user=@USERNAME@&amp;password=@PASSWORD@</xa-datasource-property>
+
+        <track-connection-by-tx>true</track-connection-by-tx>
+        <no-tx-separate-pools>false</no-tx-separate-pools>
+
+		 <!--pooling parameters-->
+	    <min-pool-size>10</min-pool-size>
+	    <max-pool-size>80</max-pool-size>
+		
+        <exception-sorter-class-name>
+            org.jboss.resource.adapter.jdbc.vendor.MySQLExceptionSorter
+        </exception-sorter-class-name>
+        <valid-connection-checker-class-name>
+            org.jboss.resource.adapter.jdbc.vendor.MySQLValidConnectionChecker
+        </valid-connection-checker-class-name>
+        <metadata>
+            <type-mapping>mySQL</type-mapping>
+        </metadata>
+    </xa-datasource>
+</datasources>

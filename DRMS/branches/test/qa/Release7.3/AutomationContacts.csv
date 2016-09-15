@@ -1,0 +1,25 @@
+Client,Name,Contact,Type ,Comms,EventNotification,OffSeason,OnSeason,Threshold
+testcpp.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcpp.c2,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcpp1.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcpp2.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcbpdo.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcbpdo.c2,test,gloria@akuacom.com,Email,x,All Notifications,0.05,0.05,10
+testcbpdo.c3,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcbpda.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcbpda.c2,test,gloria@akuacom.com,Email,,No Notifications,8,1,10
+testcbpda.c3,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcegda.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcegda.c2,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcegda.c3,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcegdo.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcegdo.c2,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testcegdo.c3,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testdbp.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+clonecpp.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+clonecbpda.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+clonecbpdo.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+clonedrcda.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+clonedrcdo.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+testAggregator.c1,test,gloria@akuacom.com,Email,,All Notifications,8,1,10
+

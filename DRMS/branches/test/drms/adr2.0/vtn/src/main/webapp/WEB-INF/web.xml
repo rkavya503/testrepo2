@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>vtn</display-name>
+	<servlet>
+		<display-name>EiEvent</display-name>
+		<servlet-name>EiEvent</servlet-name>
+		<servlet-class>com.honeywell.dras.vtn.web.VTNServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<display-name>EiEventClient</display-name>
+		<servlet-name>EiEventClient</servlet-name>
+		<servlet-class>com.honeywell.dras.vtn.web.VENServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EiEvent</servlet-name>
+		<url-pattern>/OpenADR2/Simple/EiEvent</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EiEventClient</servlet-name>
+		<url-pattern>/OpenADR2/Simple/EiEventClient</url-pattern>
+	</servlet-mapping>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>ADR2CLIENTS</web-resource-name>
+			<url-pattern>/OpenADR2/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>PSS2WS</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>PSS2WS</realm-name>
+	</login-config>
+	<security-role>
+		<description>PSS2WS</description>
+		<role-name>PSS2WS</role-name>
+	</security-role>
+</web-app>

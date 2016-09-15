@@ -1,0 +1,518 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="readme_files/filelist.xml">
+<title>DRAS Client REST Web Service</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="City"/>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="place"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>dan</o:Author>
+  <o:LastAuthor>dan</o:LastAuthor>
+  <o:Revision>30</o:Revision>
+  <o:TotalTime>1870</o:TotalTime>
+  <o:Created>2008-05-03T05:37:00Z</o:Created>
+  <o:LastSaved>2010-01-06T23:07:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>812</o:Words>
+  <o:Characters>4629</o:Characters>
+  <o:Company>.</o:Company>
+  <o:Lines>38</o:Lines>
+  <o:Paragraphs>10</o:Paragraphs>
+  <o:CharactersWithSpaces>5431</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:1627421319 -2147483648 8 0 66047 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-font-kerning:16.0pt;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-font-kerning:14.0pt;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:594285217;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-765132814 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:39.0pt;
+	mso-level-number-position:left;
+	margin-left:39.0pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="7170"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoTitle>Akuacom DRAS OpenADR Client </p>
+
+<p class=MsoTitle>REST Web Service</p>
+
+<p class=MsoNormal align=center style='text-align:center'>Release 1.4</p>
+
+<p class=MsoNormal align=center style='text-align:center'>17 December 2009</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h1>Introduction</h1>
+
+<p class=MsoNormal>This package contains documentation and sample java code for
+accessing the Akuacom OpenADR DRAS client REST web service (<span class=SpellE>RestWS</span>).
+Complete documentation for the OpenADR client interfaces can be found at <a
+href="http://www.openadr.org/docs.html">http://www.openadr.org/docs.html</a>. </p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The <span class=SpellE>RestWS</span> provides DRAS clients with
+a simple method for retrieving DRAS event information over the Internet. Making
+a single HTTP GET method call on the DRAS will return all the event information
+for the client in XML. Akuacom recommends making the HTTP GET method call once
+per minute.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The web service is available on the Client Developer Server
+in SSL and non SSL versions. </p>
+
+<p class=MsoNormal style='margin-left:39.0pt;text-indent:-.25in;mso-list:l0 level1 lfo2;
+tab-stops:list 39.0pt'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>non SSL endpoint: <a
+href="http://cdp.openadr.com/RestClientWS/nossl/rest2">http://cdp.openadr.com/RestClientWS/nossl/rest2</a></p>
+
+<p class=MsoNormal style='margin-left:39.0pt;text-indent:-.25in;mso-list:l0 level1 lfo2;
+tab-stops:list 39.0pt'><![if !supportLists]><span style='font-family:Symbol;
+mso-fareast-font-family:Symbol;mso-bidi-font-family:Symbol'><span
+style='mso-list:Ignore'>·<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]>SSL endpoint: <a
+href="https://cdp.openadr.com/RestClientWS/rest2">https://cdp.openadr.com/RestClientWS/rest2</a></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>On production servers, only the SSL versions are available.</p>
+
+<h1>Contents</h1>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>This package includes the following files:</p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+class=SpellE><span style='font-size:10.0pt;font-family:"Courier New"'>build.xml</span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'><span
+style='mso-spacerun:yes'>           </span>- ant build file for java example<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+class=GramE><span style='font-size:10.0pt;font-family:"Courier New"'>classes</span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'>/**<span
+style='mso-spacerun:yes'>          </span>- java example class file<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+class=SpellE><span style='font-size:10.0pt;font-family:"Courier New"'>EventState.xml</span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'><span
+style='mso-spacerun:yes'>      </span>- example returned XML<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+class=SpellE><span style='font-size:10.0pt;font-family:"Courier New"'>Confirmation.xml</span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'><span
+style='mso-spacerun:yes'>    </span>- example confirmation XML<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+style='font-size:10.0pt;font-family:"Courier New"'>readme.html<span
+style='mso-spacerun:yes'>      </span><span
+style='mso-spacerun:yes'>   </span>- this file <o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+class=SpellE><span style='font-size:10.0pt;font-family:"Courier New"'>run.bat</span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'><span
+style='mso-spacerun:yes'>             </span>- dos batch file to run java
+example<o:p></o:p></span></p>
+
+<p class=MsoNormal style='mso-layout-grid-align:none;text-autospace:none'><span
+class=SpellE><span class=GramE><span style='font-size:10.0pt;font-family:"Courier New"'>src</span></span></span><span
+style='font-size:10.0pt;font-family:"Courier New"'>/**<span
+style='mso-spacerun:yes'>              </span>- java example source file<o:p></o:p></span></p>
+
+<h1>Release Notes</h1>
+
+<p class=MsoNormal>Version 1.4: </p>
+
+<p class=MsoNormal>- Created a new endpoint (rest2) that supports multiple
+events by wrapping the <span class=SpellE>eventStates</span> in a <span
+class=SpellE>listOfEventStates</span> element</p>
+
+<p class=MsoNormal>- Added an <span class=SpellE>instanceof</span> test for
+Text before casting</p>
+
+<p class=MsoNormal>- Changed the default hostname to cdp.openadr.com<span
+style='mso-spacerun:yes'>   </span></p>
+
+<h1>Schema</h1>
+
+<p class=MsoNormal>The <span class=SpellE>EventState.xsd</span> schema is
+available on the OpenADR archive site at <a
+href="http://openadr.lbl.gov/src/1/EventState.xsd">http://openadr.lbl.gov/src/1/EventState.xsd</a>.
+</p>
+
+<h1>Simple DRAS Client</h1>
+
+<p class=MsoNormal>A typical simple DRAS client only needs to parse the <span
+class=SpellE>EventStatus</span> and <span class=SpellE>OperationModeValue</span>
+elements of the <span class=SpellE>simpleDRModeData</span> complex type and
+translate the values into a shed strategy. </p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The <span class=SpellE>OperationModeValue</span> value is
+used to indicate the current shed level for the facility: <st1:City w:st="on"><st1:place
+ w:st="on">NORMAL</st1:place></st1:City>, MODERATE, or HIGH. A value of <st1:City
+w:st="on"><st1:place w:st="on">NORMAL</st1:place></st1:City> indicates that no
+shed is being requested. MODERATE and HIGH are relative shed levels, HIGH
+requesting the maximum shed the facility is programmed for, and MODERATE being
+somewhere between HIGH and <st1:City w:st="on"><st1:place w:st="on">NORMAL</st1:place></st1:City>.
+Exactly how these levels control the facility is left up the controls vendor
+and facility owner depending on desired DR performance and facility comfort.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The <span class=SpellE>EventStatus</span> value is used to
+indicate where in the event cycle the client is. FAR and NEAR are relative
+indications that an event has been issued and the start time is approaching.
+These values could be used to prepare a facility for the upcoming event by
+triggering behaviors such as pre-cooling. ACTIVE indicates that the client is
+between the start and end times of the event. When the <span class=SpellE>EventStatus</span>
+is ACTIVE, the <span class=SpellE>OperationModeValue</span> should be inspected
+to see what shed level is being indicated.</p>
+
+<h1>Simple DRAS Gateway</h1>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>A simple DRAS client acting as a gateway to the facility
+energy management and control system might turn the <span class=SpellE>OperationModeValue</span>
+and <span class=SpellE>EventStatus</span> values into relay outputs. The
+particular mapping of values to relay outputs described below was chosen to be
+compatible with the Akuacom CLIR legacy DRAS client.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Using two relays for <span class=SpellE>OperationModeValue</span>,
+<st1:City w:st="on"><st1:place w:st="on">NORMAL</st1:place></st1:City> would
+turn off both relays, MODERATE would turn on relay 1 and turn off relay 2, and
+HIGH would turn on both relays. </p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>--------------------------------<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>| <span
+class=GramE>value</span><span style='mso-spacerun:yes'>    </span>| relay 1 |
+relay 2 |<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|----------|---------|---------|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|
+NORMAL<span style='mso-spacerun:yes'>   </span>|<span
+style='mso-spacerun:yes'>   </span>OFF<span style='mso-spacerun:yes'>  
+</span>|<span style='mso-spacerun:yes'>   </span>OFF<span
+style='mso-spacerun:yes'>   </span>|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|----------|---------|---------|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|
+MODERATE |<span style='mso-spacerun:yes'>   </span>ON<span
+style='mso-spacerun:yes'>    </span>|<span style='mso-spacerun:yes'>  
+</span>OFF<span style='mso-spacerun:yes'>   </span>|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|----------|---------|---------|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|
+HIGH<span style='mso-spacerun:yes'>     </span>|<span
+style='mso-spacerun:yes'>   </span>ON<span style='mso-spacerun:yes'>   
+</span>|<span style='mso-spacerun:yes'>   </span>ON<span
+style='mso-spacerun:yes'>    </span>|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>--------------------------------<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal>Using two relays for <span class=SpellE>EventStatus</span>,
+FAR would turn off relay 3 and turn on relay 4, NEAR would turn on both relays,
+and ACTIVE would turn on relay 3 and turn off relay 4. If only three relays are
+available, NEAR and ACTIVE would turn on relay 3 and FAR would be ignored. </p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>------------------------------<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>| <span
+class=GramE>value<span style='mso-spacerun:yes'>  </span>|</span> relay 3 |
+relay 4 |<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|--------|---------|---------|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|
+FAR<span style='mso-spacerun:yes'>    </span>|<span style='mso-spacerun:yes'>  
+</span>OFF<span style='mso-spacerun:yes'>   </span>|<span
+style='mso-spacerun:yes'>   </span>ON<span style='mso-spacerun:yes'>   
+</span>|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|--------|---------|---------|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|
+NEAR<span style='mso-spacerun:yes'>   </span>|<span style='mso-spacerun:yes'>  
+</span>ON<span style='mso-spacerun:yes'>    </span>|<span
+style='mso-spacerun:yes'>   </span>ON<span style='mso-spacerun:yes'>   
+</span>|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|--------|---------|---------|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>|
+ACTIVE |<span style='mso-spacerun:yes'>   </span>ON<span
+style='mso-spacerun:yes'>    </span>|<span style='mso-spacerun:yes'>  
+</span>OFF<span style='mso-spacerun:yes'>   </span>|<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Courier New"'>------------------------------<o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>If the returned XML was empty, all relays would be turned
+off.</p>
+
+<h1>Example Java Client</h1>
+
+<p class=MsoNormal>The example java client, RESTWSClient2, does a single GET on
+the web service URL, prints the returned XML, and parses out the <span
+class=SpellE>EventStatus</span> and <span class=SpellE>OperationModeValue</span>.
+The example consists of a single source file in the <span class=SpellE>src</span>
+directory, RESTWSClient2.java.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The example comes precompiled in the release package (the
+class file is in the <span class=GramE>classes</span> folder). To run it,
+double click on the <span class=SpellE>run.bat</span> file. An ant build file
+is also supplied to rebuild the example. Note that the following warning may
+appear during the build and can be safely ignored:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman"'><span
+style='mso-spacerun:yes'>    </span>[<span class=SpellE><span class=GramE>javac</span></span>]
+C:\temp\dras-clients\RESTWSClient-1.4\RESTWSClient-1.4\src\com\akuacom\pss2\clientws\rest\client\RESTWSClient2.java:38:
+warning: sun.misc.BASE64Encoder is Sun proprietary API and may be removed in a
+future release<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman"'><span
+style='mso-spacerun:yes'>    </span>[<span class=SpellE><span class=GramE>javac</span></span>]
+String <span class=SpellE>enocoded</span> = new <span class=GramE>sun.misc.BASE64Encoder(</span>).encode(<span
+class=SpellE>plain.getBytes</span>());<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman"'><span
+style='mso-spacerun:yes'>    </span>[<span class=SpellE><span class=GramE>javac</span></span>]<span
+style='mso-spacerun:yes'>                                           </span>^<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:8.0pt;mso-bidi-font-size:12.0pt;
+font-family:"Courier New";mso-bidi-font-family:"Times New Roman"'><span
+style='mso-spacerun:yes'>    </span>[<span class=SpellE><span class=GramE>javac</span></span>]
+1 warning<o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

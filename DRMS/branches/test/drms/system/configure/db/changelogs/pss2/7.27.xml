@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	
+	<changeSet id="1" author="Amit">
+        <update tableName="core_property">
+            <column name="doubleValue" value="900"  />
+            <where>propertyName='openadr.granularity'</where>
+        </update>
+    </changeSet>
+	 <changeSet id="2" author="Amit">
+        <update tableName="core_property">
+            <column name="doubleValue" value="900"  />
+            <where>propertyName='openadr.reportbackduration'</where>
+        </update>
+    </changeSet>    
+	 <changeSet id="3" author="Bindu">
+        <comment>
+              Alter table Event, to add new Column AggregatorUpdated
+        </comment>
+		 <sql>	
+			ALTER TABLE event ADD aggregatorUpdated TINYINT(1) NOT NULL DEFAULT 0;
+	   </sql>
+	  </changeSet> 
+	<changeSet id="4" author="Rajesh">
+        <comment>
+              Alter table message, changed datatype of content from text to longtexgt
+		</comment>
+		<sql>	
+			ALTER TABLE `message` CHANGE COLUMN `content` `content` LONGTEXT NULL DEFAULT NULL ;
+	   </sql>
+	  </changeSet> 	  
+	<changeSet id="5" author="Rajesh">
+        <comment>
+              Alter table message, changed datatype of content from text to longtexgt
+		</comment>
+		<sql>	
+			ALTER TABLE programaggregator ADD COLUMN childrenaccounts LONGTEXT NULL;
+	   </sql>
+	</changeSet> 
+ <changeSet id="6" author="Rajesh">
+        <comment>
+              create view all_participant_client
+        </comment>
+		  <sql>
+				CREATE 
+					ALGORITHM = UNDEFINED 
+					DEFINER = `root`@`localhost` 
+					SQL SECURITY DEFINER
+				VIEW `all_participant_client` AS
+					SELECT DISTINCT
+						`p`.`participantName` AS `parentName`,
+						`p`.`account` AS `parentAccount`,
+						`p`.`applicationId` AS `parentApplicationID`,
+						`c`.`participantName` AS `clientName`
+					FROM
+						(`participant` `p`
+						JOIN `participant` `c`)
+					WHERE
+						(`p`.`participantName` = `c`.`parent`)
+		</sql>		
+	  </changeSet> 
+	<changeSet id="7" author="Rajesh">
+        <comment>
+              create procedure get_accounts_for_aggregator
+        </comment>
+		  <sqlFile
+			splitStatements="false"
+			path="db/changelogs/pss2/get_accounts_for_aggregator.sql"/>
+	  </changeSet> 	  
+	<changeSet id="8" author="Rajesh">
+        <comment>
+              create procedure add_program_apex_data
+        </comment>
+		  <sqlFile
+			splitStatements="false"
+			path="db/changelogs/pss2/add_program_apex_data.sql"/>
+	  </changeSet> 
+	<changeSet id="9" author="Rajesh">
+        <comment>
+              drop procedure add_program_apex_data
+        </comment>
+		  <sqlFile
+			splitStatements="false"
+			path="db/changelogs/pss2/drop_add_program_apex_data.sql"/>
+	  </changeSet> 
+	<changeSet id="10" author="Rajesh">
+        <comment>
+              create procedure add_program_apex_data_v1
+        </comment>
+		  <sqlFile
+			splitStatements="false"
+			path="db/changelogs/pss2/add_program_apex_data_v1.sql"/>
+	  </changeSet> 
+	<changeSet id="11" author="Bindu">
+        <comment>
+              Modify column type for LongText
+        </comment>
+		   <sql>
+		   alter table apxaggregator modify aggregatorresources LONGTEXT;
+		   </sql>
+	  </changeSet>  
+</databaseChangeLog>

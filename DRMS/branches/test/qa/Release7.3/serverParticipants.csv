@@ -1,0 +1,21 @@
+7.5.3.0,,,,,,,,
+http://qa2.openadr.com,,,,,,,,
+admin,,,,,,,,
+Test_1234,,,,,,,,
+test@akuacom.com,,,,,,,,
+testcpp,testcpp1,testcpp2,testcbpdo,testcbpda,testcegda,testcegdo,testdbp,testAggregator
+CBP 1-4 DO:CPP,CPP,CPP,CBP 1-4 DO:CBP 2-6 DO,CBP 1-4 DA:CBP 2-6 DA,DRC-CEGDA:DRC-CEGDO,DRC-CEGDA:DRC-CEGDO,DBP DA,DBP DA:CBP 1-4 DO
+2,1,1,3,3,3,3,1,1
+None,No,No,CBP 1-4 DO:None,CBP 2-6 DA:None,DRC-CEGDA:None,DRC-CEGDO:None,No,No
+
+
+Line 1 = release.
+Line 2 = server.
+Line 3 = username for login to server as admin.
+Line 4 = password for login to server.
+Line 5 = email address for client contacts.
+No spaces in the comma-delimited lists.
+Line 6 = comma-deliminted list of participant names.No spaces!
+Line 7 = comma-delimited list of programs for each participant. If the participant is in more than one program, the programs are separated by a ":".
+Line 8 = number of clients per participant.
+Line 9 = programs client is enrolled in. If there is only one client, the client is enrolled in those programs. In that case, there is only a placeholder in the list for that client (No). If there is more than one client, the second client is enrolled in the program that is listed. If more than one, client is enrolled in that program or programs or "None". The third client is never enrolled in any programs.

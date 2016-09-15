@@ -1,0 +1,84 @@
+<project name="configure"
+         default="verify.env"
+         basedir="."
+         xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+    <!-- *********************************
+         Includes
+         ********************************* -->
+    <!-- normally would use configureDir as defined in project, but
+         maven doesn't play well :( -->
+    <property name="configureDir" value="${basedir}" />
+    <import file="${configureDir}/common.xml" />
+    <import file="${configureDir}/server/build.xml" />
+    <import file="${configureDir}/db/build.xml" />
+    <import file="${configureDir}/jboss/build.xml" />
+    <import file="${configureDir}/test-data/build.xml" />
+    <property file="${configureDir}/db/db.conf" />
+
+    <!-- *********************************
+         targets
+         ********************************* -->
+    <!-- =================================
+          target: backup.all
+         ================================= -->
+    <target name="configure:backup"
+            description="backup server configuration, static content, and databases"
+            depends="db:backup, server:backup">
+    </target>
+
+    <!-- create.all does not includ cache config to speed development-->
+    <target name="configure:install"
+            description="create complete jboss configuration for development including databases, and jbossnative, but no caching"
+            depends="verify.all, db:reset, server:install">
+    </target>
+
+    <!-- create.all.cache includes cache config for upper environments and production data environments -->
+    <target name="configure:install:cache"
+            description="create complete jboss configuration including databases"
+            depends="verify.all, db:reset, server:install:cache">
+    </target>
+
+    <!-- create.all.min includes bare minimum config for fastest jboss startup possible -->
+    <target name="configure:install:min"
+            description="create bare minimum jboss configuration including databases"
+            depends="verify.all, db:reset, server:install:min">
+    </target>
+
+    <!-- create.all.all includes ALL config for production deployment and advanced developers, enables caching clustiner etc. -->
+    <target name="configure:install:all"
+            description="create complete jboss  configuration based on ALL server instance including databases."
+            depends="verify.all, db:reset, server:install:all">
+    </target>
+
+    <!-- Create.all.autoGen creates empty database with Jboss non cache config with hibernate auto schema generation Development purposes only -->
+    <target name="configure:install:autoGen"
+            description="create complete jboss configuration including databases"
+            depends="verify.all, db:reset, server:install:autoGen">
+    </target>
+
+    <!-- delete.all -->
+    <target name="configure:remove"
+            description="delete an existing jboss configuration including databases"
+            depends="db:backup, db:drop, server:remove">
+    </target>
+
+</project>
+
+<!--
+
+# Easy way to install standard environment. Could be used for developers and/or production machine.
+env:initialize             #Initialize env variables, set them for you???
+env:install                #install everything
+env:install:appServer      #install jboss
+env:install:maven          #install maven to #MAVEN_HOME
+
+# for deploying remotly
+# use -Dtarget=configure:install:all (default)
+# use -Dhost=hostname
+remote                     #
+remote:maintenanceNotice:on  #
+remote:maintenanceNotice:off #
+remote:cluster:sync        #
+
+-->

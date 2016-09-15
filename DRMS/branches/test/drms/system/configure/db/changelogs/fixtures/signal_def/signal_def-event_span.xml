@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <property name="signal_event_span" value="event_span" />
+
+    <!--signal_def -->
+    <changeSet id="1" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                signal_def where signalname='${signal_event_span}';
+            </sqlCheck>
+        </preConditions>
+        <comment>Create Signal ${signal_event_span} DRMS-5739</comment>
+        <insert tableName="signal_def">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="type" value="LOAD_AMOUNT" />
+            <column name="signalName" value="${signal_event_span}" />
+            <column name="levelSignal" valueBoolean="false" />
+            <column name="inputSignal" valueBoolean="true" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <!--signal_level_defs -->
+    <changeSet id="2" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                signal_level_def where signal_def_uuid=(select uuid from signal_def where signalname='${signal_event_span}') and stringValue=0;
+            </sqlCheck>
+        </preConditions>
+        <comment>Create signal_level_def for ${signal_event_span} DRMS-5739</comment>
+        <insert tableName="signal_level_def">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="signal_def_uuid" valueNumeric=" (select uuid from signal_def where signalname='${signal_event_span}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="stringValue" value="10" />
+            <column name="defaultValue" valueBoolean="true" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

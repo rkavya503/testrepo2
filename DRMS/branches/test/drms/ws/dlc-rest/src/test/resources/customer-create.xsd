@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="customers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="customer"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="customer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="serviceId"/>
+                <xs:element ref="participantName"/>
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="participantPassword"/>
+                    <xs:element ref="clientName"/>
+                    <xs:element ref="clientPassword"/>
+                </xs:sequence>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="serviceId" type="xs:NCName"/>
+    <xs:element name="participantName" type="xs:NCName"/>
+    <xs:element name="participantPassword" type="xs:NCName"/>
+    <xs:element name="clientName" type="xs:NCName"/>
+    <xs:element name="clientPassword" type="xs:NCName"/>
+</xs:schema>

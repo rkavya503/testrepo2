@@ -1,0 +1,17 @@
+<datasources>
+    <xa-datasource>
+        <jndi-name>mysql-pss2-ds</jndi-name>
+        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+        <xa-datasource-property name="URL">jdbc:mysql://localhost:3306/pss2?user=pss2&amp;password=AKUAlogin</xa-datasource-property>
+
+        <track-connection-by-tx>true</track-connection-by-tx>
+        <no-tx-separate-pools>false</no-tx-separate-pools>
+
+        <exception-sorter-class-name>
+            org.jboss.resource.adapter.jdbc.vendor.MySQLExceptionSorter
+        </exception-sorter-class-name>
+        <valid-connection-checker-class-name>
+            org.jboss.resource.adapter.jdbc.vendor.MySQLValidConnectionChecker
+        </valid-connection-checker-class-name>
+    </xa-datasource>
+</datasources>

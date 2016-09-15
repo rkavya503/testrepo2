@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:listOfEventState
+	xsi:schemaLocation="http://openadr.lbl.gov/src/1/EventState.xsd"
+	xmlns:p="http://www.openadr.org/DRAS/EventState"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<p:eventState offLine="false" testEvent="false"
+		drasName="Akuacom 5.0" schemaVersion="1.0" eventStateID="843451309"
+		drasClientID="DRC-245" eventIdentifier="" eventModNumber="0"
+		programName="CPP">
+		<p:simpleDRModeData>
+			<p:EventStatus>ACTIVE</p:EventStatus>
+			<p:OperationModeValue>MODERATE</p:OperationModeValue>
+			<p:currentTime>30.5</p:currentTime>
+			<p:operationModeSchedule>
+				<p:modeSlot>
+					<p:OperationModeValue>MODERATE</p:OperationModeValue>
+					<p:modeTimeSlot>0</p:modeTimeSlot>
+				</p:modeSlot>
+				<p:modeSlot>
+					<p:OperationModeValue>HIGH</p:OperationModeValue>
+					<p:modeTimeSlot>60</p:modeTimeSlot>
+				</p:modeSlot>
+			</p:operationModeSchedule>
+		</p:simpleDRModeData>
+		<p:drEventData>
+			<p:notificationTime>
+				2008-03-06T11:59:00.00
+			</p:notificationTime>
+			<p:startTime>2008-03-06T12:00:00.00</p:startTime>
+			<p:endTime>2008-03-06T12:02:00.00</p:endTime>
+			<p:eventInfoInstances>
+				<p:eventInfoTypeID>PRICE_MULTIPLE</p:eventInfoTypeID>
+				<p:eventInfoName>price multiplier</p:eventInfoName>
+				<p:eventInfoValues>
+					<p:value>3.0</p:value>
+					<p:timeOffset>0</p:timeOffset>
+				</p:eventInfoValues>
+				<p:eventInfoValues>
+					<p:value>5.0</p:value>
+					<p:timeOffset>60</p:timeOffset>
+				</p:eventInfoValues>
+			</p:eventInfoInstances>
+		</p:drEventData>
+	</p:eventState>
+</p:listOfEventState>

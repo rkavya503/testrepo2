@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>core-parent</artifactId>
+        <groupId>com.akuacom.drms.core</groupId>
+        <version>7.26-SNAPSHOT</version>
+    </parent>
+    <groupId>com.akuacom.drms.report</groupId>
+    <artifactId>report-ejb</artifactId>
+    <version>7.26-SNAPSHOT</version>
+    <packaging>ejb</packaging>
+    <name>${project.artifactId}</name>
+    <dependencies>
+    <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.akuacom.drms.core</groupId>
+            <artifactId>drms-core</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.core</groupId>
+			<artifactId>drms-core-ejb</artifactId>
+			<scope>compile</scope>
+		</dependency>
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jboss-javaee</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.ws</groupId>
+            <artifactId>jbossws-spi</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.akuacom.common</groupId>
+            <artifactId>util</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.akuacom.common</groupId>
+            <artifactId>util-ejb</artifactId>
+            <type>test-jar</type>
+        </dependency>
+        <dependency>
+                <groupId>com.akuacom.common</groupId>
+                <artifactId>util-ejb</artifactId>
+        </dependency>
+    </dependencies>
+   
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+</project>

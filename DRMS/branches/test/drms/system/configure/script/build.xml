@@ -1,0 +1,8 @@
+<project name="downloadMobile" default="sceMobile" basedir=".">
+  <target name="sceMobile">
+   <mkdir dir="lib" />
+   <get src="http://nexus.openadr.com/content/groups/public/com/honeywell/dras/sce/mobile-messenger-ear/${releaseNumber}/mobile-messenger-ear-${releaseNumber}.ear" dest="./current" username="temporary" password="openAdr" />
+
+
+  </target>
+</project>

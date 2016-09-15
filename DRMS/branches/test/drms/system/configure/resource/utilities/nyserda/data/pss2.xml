@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <changeSet id="1" author="lin">
+        <comment>DRMS-4452 TEST</comment>
+    </changeSet>
+
+    <changeSet id="2" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="nyserda" />
+            <where>propertyName='utilityName'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="3" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="NYSERDA" />
+            <where>propertyName='utilityDisplayName'</where>
+        </update>
+    </changeSet>
+    <changeSet id="4" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="http://www.nyserda.ny.gov/" />
+            <where>propertyName='contactURLLink'</where>
+        </update>
+    </changeSet>
+    <changeSet id="5" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="http://nyserda.openadr.com" />
+            <where>propertyName='serverHost'</where>
+        </update>
+    </changeSet>
+    <changeSet id="6" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="01/02/2012,01/26/2012,04/6/2012,04/07/2012,04/09/2012,04/25/2012,05/07/2012,06/11/2012,12/25/2012,12/26/2012" />
+            <where>propertyName='holidays'</where>
+        </update>
+    </changeSet>
+    <changeSet id="7" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="YY" />
+            <where>propertyName='simple.dashboard.usage'</where>
+        </update>
+    </changeSet>
+    <changeSet id="8" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="FiveTen" />
+            <where>propertyName='baseline.model'</where>
+        </update>
+    </changeSet>
+    <changeSet id="9" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="false" />
+            <where>propertyName='enableValidateUsageData'</where>
+        </update>
+    </changeSet>
+    <changeSet id="10" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="Dynamic Pricing Program" />
+            <where>propertyName='excludedProgramsForEventLine'</where>
+        </update>
+    </changeSet>
+    <changeSet id="12" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="false"  />
+            <where>propertyName='enableInterruptiblePrograms'</where>
+        </update>
+    </changeSet>
+    <changeSet id="13" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='enableScorecard'</where>
+        </update>
+    </changeSet>
+    <changeSet id="14" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="false"  />
+            <where>propertyName='feature.clientInfo.enable'</where>
+        </update>
+    </changeSet>
+    <changeSet id="15" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='feature.shedInfo'</where>
+        </update>
+    </changeSet>
+    <changeSet id="16" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='feature.usage'</where>
+        </update>
+    </changeSet>
+    <changeSet id="17" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="false"  />
+            <where>propertyName='sce.participant.customer.test.event'</where>
+        </update>
+    </changeSet>
+    <changeSet id="18" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='feature.specialModeEnabled'</where>
+        </update>
+    </changeSet>
+    <changeSet id="19" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='feature.telemetry.tomorrowEnable'</where>
+        </update>
+    </changeSet>
+    <changeSet id="20" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="10048" />
+            <where>propertyName='simple.dashboard.default.zipcode'</where>
+        </update>
+    </changeSet>
+    <changeSet id="21" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="1:00:00" />
+            <where>propertyName='baseline.calculate.timepoint'</where>
+        </update>
+    </changeSet>
+    <changeSet id="22" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="ops@akuacom.com" />
+            <where>propertyName='contactEMail'</where>
+        </update>
+    </changeSet>
+	<changeSet id="23" author="Linda">
+        <update tableName="core_property">
+            <column name="stringValue" value="nyserda.jpg" />
+            <where>propertyName='logo'</where>
+        </update>
+    </changeSet>
+    <changeSet id="24" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='feature.demandLimiting'</where>
+        </update>
+    </changeSet>
+    <changeSet id="25" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="false"  />
+            <where>propertyName='feature.entireDayShedLine.enable'</where>
+        </update>
+    </changeSet>
+    <changeSet id="26" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="false"  />
+            <where>propertyName='feature.eventPeriodShedLine.enable'</where>
+        </update>
+    </changeSet>
+    <changeSet id="27" author="lin">
+        <update tableName="core_property">
+            <column name="stringValue" value="MHP Program"  />
+            <where>propertyName='excludedProgramsForEventLine'</where>
+        </update>
+    </changeSet>
+    <changeSet id="28" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='enableAggregation'</where>
+        </update>
+    </changeSet>
+    <changeSet id="29" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='feature.weather'</where>
+        </update>    
+    </changeSet>
+    <changeSet id="30" author="lin">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="false"  />
+            <where>propertyName='feature.programMatrixCheck'</where>
+        </update>
+    </changeSet>
+   
+</databaseChangeLog>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	
+	<changeSet id="1" author="liu">
+        <comment>
+               	DRMS-7957 SCE 2013:Communications emails report
+        </comment>
+		<sql>	
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'feature.enableCommunicationEmail',
+				null, false, null, null, 'Boolean', 'script', null, now(),
+				null);
+		</sql>
+    </changeSet>	
+	<changeSet id="2" author="Linda">
+        <comment>
+               DRMS-7959 program auto dispatch
+        </comment>
+		<sql>	
+			insert into core_property(uuid, version, propertyName,
+			stringValue, booleanValue, doubleValue, textValue, type,
+			creator, modifier, creationTime, modifiedTime) values
+			(REPLACE(uuid(), '-', ''), 0, 'feature.programAutoDispatch',
+			null, false, null, null, 'Boolean', 'script', null, now(),
+			null);
+		</sql>
+    </changeSet>	
+	<changeSet id="3" author="Linda">
+        <comment>
+           DRMS-7959 program auto dispatch
+        </comment>
+        <addColumn tableName="sce_ftp_config">
+            <column name="sourcePath" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="sce_ftp_config">
+            <column name="appendixPath" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="sce_ftp_config">
+            <column name="appendix" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="4" author="Linda">
+        <comment>DRMS-7959 program auto dispatch configuration</comment>
+        <sql>insert into sce_ftp_config(uuid, configName, scanStartTime,
+            scanEndTime, scanInterval, filenameTemplate,
+            creationTime, timerManagerClass) 
+			values (REPLACE(uuid(), '-', ''), 'SCE_PROG_AUTO_DISP',
+            '00:00', '00:00', '10', 'YYYYMMDDHHmmSS_PRG_PRD_LTP_LOC_ActionVerb.txt', now(), 
+			'com.akuacom.pss2.program.sceftp.progAutoDisp.ProgAutoDispManager');
+		</sql>
+    </changeSet>
+	<changeSet id="5" author="Liu">
+        <comment>
+           DRMS-7959 program auto dispatch
+        </comment>
+		<sql>
+			alter table sce_ftp_config add delayInterval int(11);
+			update sce_ftp_config set delayInterval = 7 where configName = 'SCE_PROG_AUTO_DISP';
+		</sql>
+        
+    </changeSet>
+</databaseChangeLog>

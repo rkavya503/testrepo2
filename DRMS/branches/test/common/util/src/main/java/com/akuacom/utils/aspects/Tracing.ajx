@@ -1,0 +1,104 @@
+package com.akuacom.utils.aspects;
+
+import com.akuacom.annotations.Trace;
+import com.akuacom.utils.lang.Dbg;
+import com.akuacom.utils.config.RuntimeSwitches;
+
+import org.aspectj.lang.Signature;
+import org.aspectj.lang.reflect.MethodSignature;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.AnnotatedElement;
+import javax.annotation.processing.AbstractProcessor;
+
+
+/**
+ * This aspect traces thread execution
+ * 
+ * com.akuacom.utils.aspects.Tracing.aj - Copyright(c)1994 to 2010 by Akuacom .
+ * All rights reserved. Redistribution and use in source and binary forms, with
+ * or without modification, is prohibited.
+ */
+public aspect Tracing extends Common {
+    declare precedence: Tracing;
+
+    pointcut trace() :
+        akuacomScope()
+        && !within(com.akuacom.utils.ACUUIDGenerator)
+        && !within(com.akuacom.ejb.processor.EaoFromEntityProcessor)
+        && !within(com.akuacom.drms.performance..*)
+        && !within(com.akuacom.utils.ACEncryptor)
+        && !within(com.akuacom.ejb.BaseEntity)
+        && !within( com.akuacom.ejb.client.EJB3Factory)
+        && !within( com.akuacom.pss2.event..*)
+        && !within( com.akuacom.pss2.web.tabs.TabVO)
+        && !within( com.akuacom.pss2.web.commdev..*)
+        && !within( com.akuacom.pss2.web.filter..*)
+        && !within( com.akuacom.pss2.richsite.JSFProgram)
+        && !within( com.akuacom.pss2.richsite.Footer)
+        && !within( com.akuacom.pss2.web.aggregation..*)
+        && !within( com.akuacom.pss2.data.PDataEntryEAOBean)
+        && !execution(* *.timeoutHandler(..))
+        && !within(com.akuacom.pss2.system.property..*)
+        && !within(com.akuacom.pss2.weatherInfo..*)
+        && execution(public * com.akuacom..*.*(..))
+        && !execution( * Object.*(..))
+        && !within(AbstractProcessor+);
+
+    
+    pointcut traceAnno() :
+        if(!RuntimeSwitches.TRACE_EVERYTHING && RuntimeSwitches.TRACE_ANNOS)
+        && akuacomScopeWithAspects()
+        && ( execution(@Trace * *.*(..) ) || ( @within(Trace) && execution(* *.*(..))));
+
+    declare warning : @within(Trace) && staticinitialization( com.akuacom..* ) : "found a @Trace-d class";
+
+    before() : traceAnno() {
+        Signature sig = thisJoinPointStaticPart.getSignature();
+        AnnotatedElement declaringTypeAnnotationInfo = sig.getDeclaringType();
+        if (sig instanceof MethodSignature) {
+            MethodSignature msig = (MethodSignature) sig;
+            Method method = msig.getMethod();
+            Trace trace = method.getAnnotation(Trace.class);
+            if (trace != null && trace.value()) {
+                System.out.println(Thread.currentThread().toString() + " entering "
+                        + msig.toString());
+            } else {
+                System.out.println("tr-enter "
+                        + msig.toString());
+            }
+            System.out.flush();
+        }
+    }
+
+    before() : if(RuntimeSwitches.TRACE_EVERYTHING ) && trace() {
+        System.out.println("TR enter->" + thisJoinPointStaticPart.getSignature().toString());
+    }
+    after() : if(RuntimeSwitches.TRACE_EVERYTHING ) && trace() {
+        System.out.println("TR exit->" + thisJoinPointStaticPart.getSignature().toString());
+    }
+    
+    after() : traceAnno() {
+        try {
+            Signature sig = thisJoinPointStaticPart.getSignature();
+            AnnotatedElement declaringTypeAnnotationInfo = sig.getDeclaringType();
+            if (sig instanceof MethodSignature) {
+                MethodSignature msig = (MethodSignature) sig;
+                Method method = msig.getMethod();
+                Trace trace = method.getAnnotation(Trace.class);
+                if (trace != null && trace.value()) {
+                    System.out.println(Thread.currentThread().toString() + " leaving "
+                            + msig.toString());
+                } else {
+                    System.out.println("tr-exit "
+                            + msig.toString());
+                }
+            }
+            System.out.flush();
+        }catch(NullPointerException npe) {
+           System.out.println(npe + "in Tracing after:traceAnno"); 
+        }
+    }
+        
+
+}

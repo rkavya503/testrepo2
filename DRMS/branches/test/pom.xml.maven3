@@ -1,0 +1,1600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.akuacom</groupId>
+    <artifactId>akuacom-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>7.0-SNAPSHOT</version>
+    <name>akuacom-parent</name>
+    <url>https://akuacom.jira.com/builds/browse/${bamboo.buildKey}-${bamboo.buildNumber}
+	</url>
+    <properties>
+        <nexusBaseUrl>http://nexus.openadr.com/content
+        </nexusBaseUrl>
+        <nexusUrl>${nexusBaseUrl}/groups/public</nexusUrl>
+        <nexusDistributionUrl>${nexusBaseUrl}/repositories
+        </nexusDistributionUrl>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdkVersion>1.6</jdkVersion>
+        <developerConnection>${project.scm.connection}</developerConnection>
+
+        <!-- RUNTIME ENVIRONMENT VARIABLES -->
+        <!-- These are overridden by the values in settings.xml They are 
+            here as backups in case settings.xml isn't setup correctly. -->
+        <jbossJavaOpts>${env.JAVA_OPTS}</jbossJavaOpts>
+        <pss2OpEmails>${env.PSS2_OP_EMAILS}</pss2OpEmails>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>${nexusUrl}</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <!-- build with mvn -U if you want to update your snapshots 
+                    also, M2Eclipse plugin offers Maven -> Update Dependencies menu -->
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    <distributionManagement>
+        <!-- use the following if you're not using a snapshot version. -->
+        <repository>
+            <id>central</id>
+            <name>Releases</name>
+            <url>${nexusDistributionUrl}/releases/</url>
+        </repository>
+        <!-- use the following if you ARE using a snapshot version. -->
+        <snapshotRepository>
+            <id>central</id>
+            <name>Snapshots</name>
+            <url>${nexusDistributionUrl}/snapshots/</url>
+        </snapshotRepository>
+        <site>
+            <id>drms-site</id>
+            <name>DRMS</name>
+            <url>site</url>
+        </site>
+    </distributionManagement>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>${nexusUrl}</url>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencyManagement>
+        <!-- this is where you declare versions and scope so all declarations 
+            later do not ensuring they all use the same version. NOTE: Please alphabetize 
+            these by groupId and artifactId for easy reference. -->
+        <dependencies>
+            <dependency>
+                <groupId>axis</groupId>
+                <artifactId>axis</artifactId>
+                <version>1.4</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.jasperreports</groupId>
+                <artifactId>jasperreports</artifactId>
+                <version>4.0.1</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>eclipse</groupId>
+                        <artifactId>jdtcore</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>xml-apis</groupId>
+                        <artifactId>xml-apis</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.jasperreports</groupId>
+                <artifactId>jasperreports-fonts</artifactId>
+                <version>4.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.axis2</groupId>
+                <artifactId>axis2-adb</artifactId>
+                <version>1.5.4</version>
+                <exclusions>
+                    <exclusion>  <!-- This conflicts with javax.activation -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-activation_1.1_spec</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.axis2</groupId>
+                <artifactId>axis2-kernel</artifactId>
+                <version>1.5.4</version>
+                <exclusions>
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>org.apache.woden</groupId>
+                        <artifactId>woden-impl-dom</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>org.apache.woden</groupId>
+                        <artifactId>woden-api</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with jta provided jboss -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-jta_1.1_spec</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with jws provided jboss -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with jws provided jboss -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-ws-metadata_2.0_spec</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with javax.mail -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-stax-api_1.0_spec</artifactId>
+                    </exclusion>
+
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>org.apache.ws.commons.axiom</groupId>
+                        <artifactId>axiom-dom</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.axis2</groupId>
+                <artifactId>axis2-transport-http</artifactId>
+                <version>1.5.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.axis2</groupId>
+                <artifactId>axis2-transport-local</artifactId>
+                <version>1.5.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.ws.commons.axiom</groupId>
+                <artifactId>axiom-api</artifactId>
+                <version>1.2.10</version>
+                <exclusions>
+                    <exclusion>  <!-- This conflicts with javax.mail -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-stax-api_1.0_spec</artifactId>
+                    </exclusion>
+
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-activation_1.1_spec</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>jaxen</groupId>
+                        <artifactId>jaxen</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.ws.commons.axiom</groupId>
+                <artifactId>axiom-impl</artifactId>
+                <version>1.2.10</version>
+                <exclusions>
+                    <exclusion>  <!-- This conflicts with javax.mail -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-javamail_1.4_spec</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-stax-api_1.0_spec</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>org.codehaus.woodstox</groupId>
+                        <artifactId>wstx-asl</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>org.apache.geronimo.specs</groupId>
+                        <artifactId>geronimo-activation_1.1_spec</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>jakarta-httpcore</artifactId>
+                <version>4.0-alpha4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.neethi</groupId>
+                <artifactId>neethi</artifactId>
+                <version>2.0.4</version>
+                <exclusions>
+                    <exclusion>  <!-- This conflicts with javax.mail -->
+                        <groupId>org.codehaus.woodstox</groupId>
+                        <artifactId>wstx-asl</artifactId>
+                    </exclusion>
+                    <exclusion>  <!-- This conflicts with javax.mail -->
+                        <groupId>wsdl4j</groupId>
+                        <artifactId>wsdl4j</artifactId>
+                    </exclusion>
+
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.ws.commons.schema</groupId>
+                <artifactId>XmlSchema</artifactId>
+                <version>1.4.3</version>
+            </dependency>
+            <dependency>
+                <groupId>xerces</groupId>
+                <artifactId>xercesImpl</artifactId>
+                <version>2.8.1</version>
+                <scope>provided</scope>
+            </dependency>
+
+
+            <!-- =============== Akuacom =============== -->
+            <dependency>
+                <groupId>com.akuacom.accmgr</groupId>
+                <artifactId>wsclient</artifactId>
+                <version>4.8</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.accmgr</groupId>
+                <artifactId>wsstubs</artifactId>
+                <version>4.8</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.common</groupId>
+                <artifactId>util</artifactId>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.common</groupId>
+                <artifactId>util</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <scope>test</scope>
+                <type>test-jar</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.common</groupId>
+                <artifactId>util-ejb</artifactId>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.web</groupId>
+                <artifactId>util-web</artifactId>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.common</groupId>
+                <artifactId>util-ejb</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+            <!-- ================ Akuacom DRMS ============== -->
+            <dependency>
+                <groupId>com.akuacom.drms.ear</groupId>
+                <artifactId>pss2-destinations-service</artifactId>
+                <type>sar</type>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ear</groupId>
+                <artifactId>pss2-singleton-service</artifactId>
+                <type>sar</type>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ear</groupId>
+                <artifactId>drms-ear-test-src</artifactId>
+                <version>6.9-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ear</groupId>
+                <artifactId>drms-ear</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>ear</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.core</groupId>
+                <artifactId>drms-core</artifactId>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.core</groupId>
+                <artifactId>drms-core-ejb</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>ejb</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.report</groupId>
+                <artifactId>report-ejb</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>ejb</type>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- need both ejb and jar type since subproject can depend on 
+                either -->
+            <dependency>
+                <groupId>com.akuacom.drms.core</groupId>
+                <artifactId>drms-core-ejb</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>jar</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.report</groupId>
+                <artifactId>report-ejb</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>jar</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.core</groupId>
+                <artifactId>drms-core</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.core</groupId>
+                <artifactId>drms-core-ejb</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.system.configure</groupId>
+                <artifactId>pss2-configure</artifactId>
+                <version>6.8-SNAPSHOT</version>
+                <type>pom</type>
+            </dependency>
+            <!-- ================ Akuacom DRMS Lib ============== -->
+            <dependency>
+                <groupId>com.akuacom.drms.lib</groupId>
+                <artifactId>drms-util</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.lib</groupId>
+                <artifactId>drms-util</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.lib</groupId>
+                <artifactId>jsf-lib</artifactId>
+                <type>jar</type>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.lib</groupId>
+                <artifactId>util-op-common</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- ============== DRMS Test ============= -->
+            <dependency>
+                <groupId>com.akuacom.drms.test</groupId>
+                <artifactId>event-validator</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.test</groupId>
+                <artifactId>performance-tool</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- ============== DRMS WEB ============== -->
+            <dependency>
+                <groupId>com.akuacom.drms.web</groupId>
+                <artifactId>common-web</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.web</groupId>
+                <artifactId>facility-web</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.web</groupId>
+                <artifactId>dr-web</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.web</groupId>
+                <artifactId>report-web</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.web</groupId>
+                <artifactId>struts-web</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.web</groupId>
+                <artifactId>rich-web</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.web</groupId>
+                <artifactId>opt-report</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <!-- ============== DRMS WS ============== -->
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>adx-sdg-cbp</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>akua-util-op</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>bacnet</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>itron-pge-dbp-in</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>legacy</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>obix-rest</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>part-op</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>rest</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>rest-util-op</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>soap</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>util-op</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>apx-rest</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <type>war</type>
+            </dependency>
+
+            <!-- ============== DRMS WS Stub ============== -->
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>ads-stub</artifactId>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>itron-stub</artifactId>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>bacnet-stub</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws</groupId>
+                <artifactId>util-op-stub</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- ================= WS Client ============= -->
+            <dependency>
+                <groupId>com.akuacom.drms.ws-client</groupId>
+                <artifactId>ads-client</artifactId>
+                <version>7.0-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws-client</groupId>
+                <artifactId>itron-client</artifactId>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws-client</groupId>
+                <artifactId>oasis-client</artifactId>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.akuacom.drms.ws-client</groupId>
+                <artifactId>ieso-client</artifactId>
+                <version>7.0-SNAPSHOT</version>
+            </dependency>
+
+            <!-- ========= Akuacom Firelog ============== -->
+
+
+            <dependency>
+                <groupId>com.kanaeki.firelog.core</groupId>
+                <artifactId>firelog-ejb</artifactId>
+                <version>4.0.1.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.kanaeki.firelog.lib</groupId>
+                <artifactId>firelog-util</artifactId>
+                <version>4.0.1.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- =========== SUN ================ -->
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+                <version>2.1.12</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.xml.rpc</groupId>
+                <artifactId>jaxrpc-impl</artifactId>
+                <version>1.1.3_01</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.xml.messaging.saaj</groupId>
+                <artifactId>saaj-impl</artifactId>
+                <version>1.3</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- ========== COMMONS ============ -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.8.0</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>3.2</version>
+            </dependency>
+            <!-- for jasper reports, requires this version -->
+            <dependency>
+                <groupId>commons-digester</groupId>
+                <artifactId>commons-digester</artifactId>
+                <version>1.8</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.3</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>1.1.1</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>commons-chain</groupId>
+                <artifactId>commons-chain</artifactId>
+                <version>1.2</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.3</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.0.3</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>displaytag</groupId>
+                <artifactId>displaytag</artifactId>
+                <version>1.1.1</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.easymock</groupId>
+                <artifactId>easymock</artifactId>
+                <version>2.0</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>1.7.5</version>
+            </dependency>
+            <!-- ============ JavaX ================ -->
+            <dependency>
+                <groupId>javax.ejb</groupId>
+                <artifactId>ejb-api</artifactId>
+                <version>3.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>1.4</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>1.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.1</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.xml</groupId>
+                <artifactId>jaxrpc-api</artifactId>
+                <version>1.1</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>2.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>jfree</groupId>
+                <artifactId>jcommon</artifactId>
+                <version>1.0.14</version>
+                <exclusions>
+                    <exclusion>  <!-- This conflicts with xerces (provided by Java), and results in the namespace 
+                            issue in Log4j -->
+                        <groupId>gnujaxp</groupId>
+                        <artifactId>gnujaxp</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>jfree</groupId>
+                <artifactId>jfreechart</artifactId>
+                <version>1.0.13</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.7</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.15</version>
+                <scope>provided</scope>
+                <exclusions>
+                    <exclusion> <!-- this javax.jms conflicts with the jms provided by jboss-javaee -->
+                        <groupId>javax.jms</groupId>
+                        <artifactId>jms</artifactId>
+                    </exclusion>
+                </exclusions>
+
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.16</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.sourceforge.obix</groupId>
+                <artifactId>obix</artifactId>
+                <version>1.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.el</groupId>
+                <artifactId>el-api</artifactId>
+                <version>1.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- ============== ORG ================ -->
+            <dependency>
+                <groupId>org.apache.tiles</groupId>
+                <artifactId>tiles-api</artifactId>
+                <version>2.1.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tiles</groupId>
+                <artifactId>tiles-core</artifactId>
+                <version>2.1.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tiles</groupId>
+                <artifactId>tiles-jsp</artifactId>
+                <version>2.1.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tiles</groupId>
+                <artifactId>tiles-servlet</artifactId>
+                <version>2.1.3</version>
+            </dependency>
+            <!-- <dependency> -->
+            <!-- <groupId>org.j2ee</groupId> -->
+            <!-- <artifactId>j2ee-j2ee</artifactId> -->
+            <!-- <version>1.4_03</version> -->
+            <!-- <scope>runtime</scope> -->
+            <!-- </dependency> -->
+            <!-- <dependency> -->
+            <!-- <groupId>org.j2ee</groupId> -->
+            <!-- <artifactId>j2ee</artifactId> -->
+            <!-- <version>1.0</version> -->
+            <!-- <scope>provided</scope> -->
+            <!-- </dependency> -->
+
+            <!-- ============== JBoss =============== -->
+
+            <!-- <dependency> -->
+            <!-- <groupId>jboss</groupId> -->
+            <!-- <artifactId>jbossall-client</artifactId> -->
+            <!-- <version>3.2.3</version> -->
+            <!-- <scope>provided</scope> -->
+            <!-- </dependency> -->
+            <dependency>
+                <groupId>org.jboss.cache</groupId>
+                <artifactId>jboss-cache-JbossCache</artifactId>
+                <version>1.4.1.SP8</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.naming</groupId>
+                <artifactId>jnp-client</artifactId>
+                <version>5.0.3.GA</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.security</groupId>
+                <artifactId>jbosssx-client</artifactId>
+                <version>2.0.3.SP1</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.security</groupId>
+                <artifactId>jboss-security-spi-bare</artifactId>
+                <version>2.0.3.SP1</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging-log4j</artifactId>
+                <version>2.1.0.GA</version>
+                <scope>compile</scope>
+            </dependency>
+            <!-- Jboss5 ships with version 2.5 of remoting, but 2.4 is the 
+                only version available in a maven repo without custom deploy -->
+            <dependency>
+                <groupId>jboss.remoting</groupId>
+                <artifactId>jboss-remoting</artifactId>
+                <version>2.4.0.CR1</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.ws.native</groupId>
+                <artifactId>jbossws-native-client</artifactId>
+                <version>3.2.0.GA</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.ws</groupId>
+                <artifactId>jbossws-spi</artifactId>
+                <version>1.2.0.GA</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.ejb3</groupId>
+                <artifactId>jboss-ejb3-ext-api</artifactId>
+                <version>1.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- =======Custom deployed libraries ========== -->
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jbosssx-as-client</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-remoting</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-aop-client</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-aspect-jdk50-client</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>concurrent</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-javaee</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-integration</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-ejb3-security-client</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-ejb3-proxy-spi-client</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-ejb3-proxy-impl-client</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-ejb3-core-client</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss</groupId>
+                <artifactId>jboss-ejb3-common-client</artifactId>
+                <version>5.1.0.AX</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- ============== Hibernate ================ -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>ejb3-persistence</artifactId>
+                <version>3.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- hib annotations 3.4.0.GA is what is provided by jboss5 -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-annotations</artifactId>
+                <version>3.4.0.GA</version>
+                <scope>provided</scope>
+
+                <exclusions>
+                    <exclusion>  <!-- This conflicts with javax.xml -->
+                        <groupId>xml-apis</groupId>
+                        <artifactId>xml-apis</artifactId>
+                    </exclusion>
+                </exclusions>
+
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>3.3.1.GA</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- ================ JSF ================ -->
+            <dependency>
+                <groupId>javax.faces</groupId>
+                <artifactId>jsf-api</artifactId>
+                <version>1.2_13</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.faces</groupId>
+                <artifactId>jsf-impl</artifactId>
+                <version>1.2_13</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.richfaces.framework</groupId>
+                <artifactId>richfaces-api</artifactId>
+                <version>3.3.2.SR1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.richfaces.framework</groupId>
+                <artifactId>richfaces-impl</artifactId>
+                <version>3.3.2.SR1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.richfaces.ui</groupId>
+                <artifactId>richfaces-ui</artifactId>
+                <version>3.3.2.SR1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts-tiles</artifactId>
+                <version>1.3.10</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts-core</artifactId>
+                <version>1.3.10</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts-taglib</artifactId>
+                <version>1.3.10</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.struts</groupId>
+                <artifactId>struts-extras</artifactId>
+                <version>1.3.10</version>
+            </dependency>
+
+            <!-- ================ Struts ================ -->
+
+            <dependency>
+                <groupId>wss4j</groupId>
+                <artifactId>wss4j</artifactId>
+                <version>1.5.1</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>sshtools</groupId>
+                <artifactId>j2ssh-core</artifactId>
+                <version>0.2.9</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>2.8.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>1.6.10</version>
+                <scope>compile</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+    <!-- these dependencies will be included in every project. less is more 
+        at this level -->
+    <dependencies>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging-log4j</artifactId>
+            <version>2.1.0.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- TestNG should belong here, but for some reason it is inhibiting 
+            most integration tests from running. Be mindful when adding back to the reactor. 
+            <dependency> <groupId>org.testng</groupId> <artifactId>testng</artifactId> 
+            </dependency> -->
+        <dependency>
+            <groupId>com.kanaeki.firelog.lib</groupId>
+            <artifactId>firelog-util</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <scm>
+        <connection>scm:svn:https://akuacom.jira.com/svn/DRMS/trunk
+		</connection>
+        <developerConnection>scm:svn:https://akuacom.jira.com/svn/DRMS/trunk
+		</developerConnection>
+        <url>https://akuacom.jira.com/source/browse/DRMS/trunk</url>
+    </scm>
+    <issueManagement>
+        <system>JIRA</system>
+        <url>https://akuacom.jira.com/browse/DRMS</url>
+    </issueManagement>
+    <ciManagement>
+        <system>bamboo</system>
+        <url>https://akuacom.jira.com/builds/browse/DRMS</url>
+    </ciManagement>
+    <organization>
+        <name>Akuacom</name>
+        <url>http://www.akuacom.com</url>
+    </organization>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>net.sf.maven-sar</groupId>
+                    <artifactId>maven-sar-plugin</artifactId>
+                    <version>0.9</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.sun.tools.xjc.maven2</groupId>
+                    <artifactId>maven-jaxb-plugin</artifactId>
+                    <version>1.1.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.atlassian.maven.plugins</groupId>
+                    <artifactId>maven-clover2-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>1.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.0.2</version>
+                    <configuration>
+                        <source>${jdkVersion}</source>
+                        <target>${jdkVersion}</target>
+                        <compilerArgument>-verbose</compilerArgument>
+                        <compilerArgument>-deprecation</compilerArgument>
+                        <compilerArgument>-g</compilerArgument>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>1.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.2.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>2.2.1</version>
+                    <configuration>
+                        <ejbVersion>3.0</ejbVersion>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>2.3.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.0-beta-3</version>
+                    <configuration>
+                        <siteDirectory>${project.parent.basedir}/src/site</siteDirectory>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>2.1.1</version>
+                    <configuration>
+                        <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.8</version>
+                    <configuration>
+                        <excludes>
+                            <exclude>**/*GenEAO*Test.java</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>2.4.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ear-plugin</artifactId>
+                    <version>2.4.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.bsc.maven</groupId>
+                    <artifactId>maven-processor-plugin</artifactId>
+                    <version>1.3.7</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.cargo</groupId>
+                    <artifactId>cargo-maven2-plugin</artifactId>
+                    <version>1.0.6</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cassandra-maven-plugin</artifactId>
+                    <version>0.8.0-1</version>
+                    <!-- <configuration> <rpcPort>19160</rpcPort> <jmxPort>17199</jmxPort> 
+                        <storagePort>17000</storagePort> <stopPort>18081</stopPort> </configuration> -->
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cobertura-maven-plugin</artifactId>
+                    <version>2.4</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>1.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>aspectj-maven-plugin</artifactId>
+                    <version>1.3.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>buildnumber-maven-plugin</artifactId>
+                    <version>1.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.google.code.maven-replacer-plugin</groupId>
+                    <artifactId>maven-replacer-plugin</artifactId>
+                    <version>1.3.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jvnet.jaxb2.maven2</groupId>
+                    <artifactId>maven-jaxb2-plugin</artifactId>
+                    <version>0.7.5</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enforce-dev-env</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>2.2.1</version>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>1.6</version>
+                                </requireJavaVersion>
+                                <requireProperty>
+                                    <property>jbossHome</property>
+                                    <message>jbossHome must be set in
+                                        settings.xml or as JBOSS_HOME
+                                        env variable)</message>
+                                </requireProperty>
+                                <requireProperty>
+                                    <property>drmsEnv</property>
+                                    <message>drmsEnv must be set in
+                                        settings.xml or DRMS_ENV env
+                                        variable (default is
+                                        development)</message>
+                                </requireProperty>
+                                <requireProperty>
+                                    <property>akuaEmailOnly</property>
+                                    <message>akuaEmailOnly must be set
+                                        in settings.xml or set as
+                                        akuaEmailOnly in the env
+                                        (default is true)</message>
+                                </requireProperty>
+                                <requireProperty>
+                                    <property>mysqlPassword</property>
+                                    <message>mysqlPassword must be set
+                                        in settings.xml or set as
+                                        akuaEmailOnly in the env
+                                        (default is an empty string)</message>
+                                </requireProperty>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>build-helper-maven-plugin</artifactId> 
+                <version>1.1</version> <executions> <execution> <id>add-source</id> <phase>generate-sources</phase> 
+                <goals> <goal>add-source</goal> </goals> <configuration> <sources> <source>target/generated-sources/apt</source> 
+                </sources> </configuration> </execution> </executions> </plugin> -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <configuration>
+                    <!-- <privateScope>true</privateScope> -->
+                    <verbose>true</verbose>
+                    <complianceLevel>1.6</complianceLevel>
+                    <!-- <showWeaveInfo>true</showWeaveInfo> -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <source>1.6</source>
+                            <target>1.6</target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!-- needed to generate jar-test files to be 
+                                shared with others -->
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <inherited>false</inherited>
+                <configuration>
+                    <siteDirectory>${project.basedir}/src/site</siteDirectory>
+                    <reportPlugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-jxr-plugin</artifactId>
+                            <version>2.2</version>
+                            <configuration>
+                                <aggregate>true</aggregate>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-javadoc-plugin</artifactId>
+                            <version>2.7</version>
+                            <inherited>false</inherited>
+                            <configuration>
+                                <maxmemory>512m</maxmemory>
+                                <minmemory>128m</minmemory>
+                                <show>private</show>
+                                <nohelp>true</nohelp>
+                                <excludePackageNames>com.akuacom.ejb</excludePackageNames>
+                                <reports>
+                                    <report>
+                                        <id>non-aggregate</id>
+                                        <configuration>
+
+                                        </configuration>
+                                        <reports>
+                                            <report>javadoc</report>
+                                        </reports>
+                                    </report>
+                                    <report>
+                                        <id>aggregate</id>
+                                        <configuration>
+
+                                        </configuration>
+                                        <reports>
+                                            <report>aggregate</report>
+                                        </reports>
+                                    </report>
+                                </reports>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-pmd-plugin</artifactId>
+                            <version>2.5</version>
+                            <configuration>
+                                <linkXref>true</linkXref>
+                                <targetJdk>${jdkVersion}</targetJdk>
+                                <aggregate>true</aggregate>
+                            </configuration>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-project-info-reports-plugin</artifactId>
+                            <version>2.3.1</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>findbugs-maven-plugin</artifactId>
+                            <version>2.3.2</version>
+                        </plugin>
+                        <!-- <plugin> <groupId>org.codehaus.mojo</groupId> 
+                            <artifactId>cobertura-maven-plugin</artifactId> <version>2.4</version> </plugin> -->
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>jdepend-maven-plugin</artifactId>
+                            <version>2.0-beta-2</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>taglist-maven-plugin</artifactId>
+                            <version>2.4</version>
+                        </plugin>
+                    </reportPlugins>
+                </configuration>
+            </plugin>
+            <!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-project-info-reports-plugin</artifactId> 
+                </plugin> <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>cobertura-maven-plugin</artifactId> 
+                </plugin> -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.0</version>
+                <configuration>
+                    <!-- Needed to install instead of just compiling the 
+                        newly changed libraries. -->
+                    <preparationGoals>clean install</preparationGoals>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <!-- In version 2.1-alpha-1, this was incorrectly named 
+                        warSourceExcludes -->
+                    <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>					<!--<packagingIncludes>WEB-INF/lib/struts*.jar,WEB-INF/lib/richfaces*.jar,,**/*.xml,**/*.properties,**/*.class,**/*.png,**/*.css,**/*.js,**/*.jsp</packagingIncludes> -->
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib</classpathPrefix>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <!-- Used to generate source jars on demand. Mostly used by Bamboo 
+                to deploy source jars in Nexus. -->
+            <id>source-jar</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>2.1.2</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                    <goal>test-jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>2.7</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                    <goal>test-jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <show>private</show>
+                            <nohelp>true</nohelp>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>cleanRepo</id>
+            <!-- used to ensure the local repository is clean for our projects -->
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>${settings.localRepository}/com/akuacom</directory>
+                                    <followSymlinks>false</followSymlinks>
+                                    <includes>
+                                        <include>*</include>
+                                    </includes>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <configuration>
+                            <!-- In version 2.1-alpha-1, this was incorrectly 
+                                named warSourceExcludes -->
+                            <packagingExcludes>WEB-INF/lib/*.jar</packagingExcludes>					<!--<packagingIncludes>WEB-INF/lib/struts*.jar,WEB-INF/lib/richfaces*.jar,,**/*.xml,**/*.properties,**/*.class,**/*.png,**/*.css,**/*.js,**/*.jsp</packagingIncludes> -->
+                            <archive>
+                                <manifest>
+                                    <addClasspath>true</addClasspath>
+                                    <classpathPrefix />
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </plugin>
+
+
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>coverage</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.atlassian.maven.plugins</groupId>
+                        <artifactId>maven-clover2-plugin</artifactId>
+                        <version>3.0.2</version>
+                        <configuration>
+                            <generateHistorical>true</generateHistorical>
+                            <historyDir>${user.home}/history/${artifactId}</historyDir>
+                            <license><![CDATA[
+mmrRWaeMoAAiMhOGSjSnoOAxmQndrEJlvAgogWQxloVapRM
+mj2KRw<tRg1GFFprQcX95zna2L0M2Ymxan5w1Kdywe78yVd
+PRmQxVppoQNOqomMQqoVVmPnMopqRqmqqoxTWutttuTVuMn
+mnmUUnoupusummmmmmUUnoupusummmmmmUU1hrXZljUUn]]></license>
+
+                            <includes>
+                                <include>**/com/akuacom/**</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- Used during a mvn site to generate the appropriate docs. -->
+            <id>docs</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>common</module>
+            </modules>
+        </profile>
+    </profiles>
+    <modules>
+        <module>common</module>
+        <module>drms</module>
+    </modules>
+</project>

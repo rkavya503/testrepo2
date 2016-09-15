@@ -1,0 +1,23 @@
+
+body { color: #000000; text-align: center; margin:0px; font-family: verdana, arial, sans-serif; font-size:small; background-color: #FFFFFF; }
+#page_wrapper { margin-left: auto; margin-right: auto; padding-bottom: 0; margin-bottom:0; width: 100%; text-align: left; min-width: 820px; }
+#header { float:left; width:100%; font-size:70%; line-height:normal; }
+#standard #header { background:#DAE0D2 url("images/header_background-wide.jpg") no-repeat left bottom; }
+h1 { margin: 0; padding-top:20px; padding-left:25px; font-size:2.5em; font-weight: bold; color: #ffffff; }
+h2 { margin: 0; padding-left:25px; font-size:1.2em; font-weight: bold; letter-spacing: 2px; color: #eec48b; }
+#content_wrapper { width:50%; padding-top:2em ; clear:both; margin: 5px 20px; padding-bottom: 20px; }
+#page_footer { background-color: #fff; clear: both; border-top: solid #5d819d 1px; margin: 10px 10px 20px 10px; }
+#page_footer .akua { padding-top:5px; padding-bottom:10px; margin-bottom:0px; text-align: right; font-size: 0.9em; color: #93abbe; letter-spacing:1px; }
+
+table { position: relative; top: -4px; left: -4px; width: 100%; border: solid 1px #2b4e82; background: #ffffff; }
+table caption { color: #000; font-size: 1.1em; font-weight: bold; margin: 0; padding: 8px 20px; text-align: left; background: #d4e0e6; border-top: 1px solid #000; border-right: 1px solid #000000; border-left: 1px solid #000; border-bottom-style: none; border-bottom-width: medium; }
+table th { margin: 0; padding: 2px 5px 2px 20px; text-align: left; border-bottom: 1px solid #b5b5b5; color: #fff; font-size: 0.8em; background-color: #2bb0ff; border-right: 1px dotted #ffffff; }
+table th img { text-align: right; float: right; }
+table th a { display: block; }
+table th a:link, table th a:visited { color: #ffffff; }
+table th a:hover { color: #2b4e82; text-decoration: none; }
+table td img { float: right; margin-left: 0; border-width: 0; }
+table td { margin: 0; padding: 8px 20px; text-align: left; border-bottom: 1px solid #b5b5b5; }
+table tr { background: #fbfcfc; }
+table tr.alt { background: #f1f1f1; }
+.tablestyle { background: #919191; }

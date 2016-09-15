@@ -1,0 +1,1499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="UtilityOperatorWSService" targetNamespace="http://www.openadr.org/DRAS/UtilityOperator/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns9="http://www.openadr.org/DRAS/Feedback" xmlns:ns5="http://www.openadr.org/DRAS/ParticipantAccount" xmlns:ns6="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:ns10="http://www.openadr.org/DRAS/EventState" xmlns:ns7="http://www.openadr.org/DRAS/Bid" xmlns:ns8="http://www.openadr.org/DRAS/Logs" xmlns:ns2="http://www.openadr.org/DRAS/DRASClient" xmlns:ns1="http://www.openadr.org/DRAS/UtilityDREvent" xmlns:ns4="http://www.openadr.org/DRAS/UtilityProgram" xmlns:ns3="http://www.openadr.org/DRAS/EventInfo" xmlns:tns="http://www.openadr.org/DRAS/UtilityOperator/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+    <xs:schema targetNamespace="http://www.openadr.org/DRAS/UtilityOperator/" version="1.0" xmlns:ns1="http://www.openadr.org/DRAS/UtilityDREvent" xmlns:ns2="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:ns3="http://www.openadr.org/DRAS/UtilityProgram" xmlns:ns4="http://www.openadr.org/DRAS/ParticipantAccount" xmlns:ns5="http://www.openadr.org/DRAS/Bid" xmlns:ns6="http://www.openadr.org/DRAS/DRASClient" xmlns:ns7="http://www.openadr.org/DRAS/Logs" xmlns:ns8="http://www.openadr.org/DRAS/Feedback" xmlns:ns9="http://www.openadr.org/DRAS/EventState" xmlns:tns="http://www.openadr.org/DRAS/UtilityOperator/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:import namespace="http://www.openadr.org/DRAS/UtilityDREvent" schemaLocation="UtilityDREvent.xsd"/>
+            <xs:import namespace="http://www.openadr.org/DRAS/ProgramConstraint" schemaLocation="ProgramConstraint.xsd"/>
+            <xs:import namespace="http://www.openadr.org/DRAS/UtilityProgram" schemaLocation="UtilityProgram.xsd"/>
+            <xs:import namespace="http://www.openadr.org/DRAS/ParticipantAccount" schemaLocation="ParticipantAccount.xsd"/>
+            <xs:import namespace="http://www.openadr.org/DRAS/Bid" schemaLocation="Bid.xsd"/>
+            <xs:import namespace="http://www.openadr.org/DRAS/DRASClient" schemaLocation="DRASClient.xsd"/>
+            <xs:import namespace="http://www.openadr.org/DRAS/Logs" schemaLocation="Logs.xsd"/>
+            <xs:import namespace="http://www.openadr.org/DRAS/Feedback" schemaLocation="FeedBack.xsd"/>
+      <xs:import namespace="http://www.openadr.org/DRAS/EventState" schemaLocation="EventState.xsd"/>
+   <xs:element name="AdjustDREventParticipants" nillable="true" type="tns:AdjustDREventParticipants"/>
+   <xs:element name="AdjustDREventParticipantsResponse" nillable="true" type="tns:AdjustDREventParticipantsResponse"/>
+   <xs:element name="AdjustProgramParticipants" nillable="true" type="tns:AdjustProgramParticipants"/>
+   <xs:element name="AdjustProgramParticipantsResponse" nillable="true" type="tns:AdjustProgramParticipantsResponse"/>
+   <xs:element name="CloseBidding" nillable="true" type="tns:CloseBidding"/>
+   <xs:element name="CloseBiddingResponse" nillable="true" type="tns:CloseBiddingResponse"/>
+   <xs:element name="CreateParticipantAccounts" nillable="true" type="tns:CreateParticipantAccounts"/>
+   <xs:element name="CreateParticipantAccountsResponse" nillable="true" type="tns:CreateParticipantAccountsResponse"/>
+   <xs:element name="CreateProgram" nillable="true" type="tns:CreateProgram"/>
+   <xs:element name="CreateProgramResponse" nillable="true" type="tns:CreateProgramResponse"/>
+   <xs:element name="DeleteParticipantAccounts" nillable="true" type="tns:DeleteParticipantAccounts"/>
+   <xs:element name="DeleteParticipantAccountsResponse" nillable="true" type="tns:DeleteParticipantAccountsResponse"/>
+   <xs:element name="DeleteProgram" nillable="true" type="tns:DeleteProgram"/>
+   <xs:element name="DeleteProgramResponse" nillable="true" type="tns:DeleteProgramResponse"/>
+   <xs:element name="GetCurrentBids" nillable="true" type="tns:GetCurrentBids"/>
+   <xs:element name="GetCurrentBidsResponse" nillable="true" type="tns:GetCurrentBidsResponse"/>
+   <xs:element name="GetDRASClientAlarms" nillable="true" type="tns:GetDRASClientAlarms"/>
+   <xs:element name="GetDRASClientAlarmsResponse" nillable="true" type="tns:GetDRASClientAlarmsResponse"/>
+   <xs:element name="GetDRASClientCommsStatus" nillable="true" type="tns:GetDRASClientCommsStatus"/>
+   <xs:element name="GetDRASClientCommsStatusResponse" nillable="true" type="tns:GetDRASClientCommsStatusResponse"/>
+   <xs:element name="GetDRASEventStates" nillable="true" type="tns:GetDRASEventStates"/>
+   <xs:element name="GetDRASEventStatesResponse" nillable="true" type="tns:GetDRASEventStatesResponse"/>
+   <xs:element name="GetDRASTransactions" nillable="true" type="tns:GetDRASTransactions"/>
+   <xs:element name="GetDRASTransactionsResponse" nillable="true" type="tns:GetDRASTransactionsResponse"/>
+   <xs:element name="GetDREventInformation" nillable="true" type="tns:GetDREventInformation"/>
+   <xs:element name="GetDREventInformationResponse" nillable="true" type="tns:GetDREventInformationResponse"/>
+   <xs:element name="GetEventConstraint" nillable="true" type="tns:GetEventConstraint"/>
+   <xs:element name="GetEventConstraintResponse" nillable="true" type="tns:GetEventConstraintResponse"/>
+   <xs:element name="GetGroups" nillable="true" type="tns:GetGroups"/>
+   <xs:element name="GetGroupsResponse" nillable="true" type="tns:GetGroupsResponse"/>
+   <xs:element name="GetParticipantAccounts" nillable="true" type="tns:GetParticipantAccounts"/>
+   <xs:element name="GetParticipantAccountsResponse" nillable="true" type="tns:GetParticipantAccountsResponse"/>
+   <xs:element name="GetParticipantFeedback" nillable="true" type="tns:GetParticipantFeedback"/>
+   <xs:element name="GetParticipantFeedbackResponse" nillable="true" type="tns:GetParticipantFeedbackResponse"/>
+   <xs:element name="GetPrograms" nillable="true" type="tns:GetPrograms"/>
+   <xs:element name="GetProgramsResponse" nillable="true" type="tns:GetProgramsResponse"/>
+   <xs:element name="InitiateDREvent" nillable="true" type="tns:InitiateDREvent"/>
+   <xs:element name="InitiateDREventResponse" nillable="true" type="tns:InitiateDREventResponse"/>
+   <xs:element name="ModifyDREvent" nillable="true" type="tns:ModifyDREvent"/>
+   <xs:element name="ModifyDREventResponse" nillable="true" type="tns:ModifyDREventResponse"/>
+   <xs:element name="ModifyParticipantAccounts" nillable="true" type="tns:ModifyParticipantAccounts"/>
+   <xs:element name="ModifyParticipantAccountsResponse" nillable="true" type="tns:ModifyParticipantAccountsResponse"/>
+   <xs:element name="ModifyProgram" nillable="true" type="tns:ModifyProgram"/>
+   <xs:element name="ModifyProgramResponse" nillable="true" type="tns:ModifyProgramResponse"/>
+   <xs:element name="SetBidStatus" nillable="true" type="tns:SetBidStatus"/>
+   <xs:element name="SetBidStatusResponse" nillable="true" type="tns:SetBidStatusResponse"/>
+   <xs:element name="SetEventConstraint" nillable="true" type="tns:SetEventConstraint"/>
+   <xs:element name="SetEventConstraintResponse" nillable="true" type="tns:SetEventConstraintResponse"/>
+   <xs:complexType name="InitiateDREvent">
+    <xs:sequence>
+     <xs:element name="DR_Event" type="ns1:UtilityDREvent"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="InitiateDREventResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+     <xs:element name="constraintValue" type="ns2:ConstraintFilter"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ModifyDREvent">
+    <xs:sequence>
+     <xs:element name="eventID" type="xs:string"/>
+     <xs:element name="modificationType" type="xs:string"/>
+     <xs:element name="DR_Event" type="ns1:UtilityDREvent"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ModifyDREventResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+     <xs:element name="constraintValue" type="ns2:ConstraintFilter"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AdjustDREventParticipants">
+    <xs:sequence>
+     <xs:element name="eventID" type="xs:string"/>
+     <xs:element name="addParticipants" type="xs:boolean"/>
+     <xs:element name="participantList" type="ns3:ParticipantList"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AdjustDREventParticipantsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDREventInformation">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="eventID" nillable="true" type="ns1:ListOfEventIDs"/>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns3:ListOfProgramNames"/>
+     <xs:element minOccurs="0" name="participants" nillable="true" type="ns3:ParticipantList"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDREventInformationResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DREvents" nillable="true" type="ns1:ListOfUtilityDREvents"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateParticipantAccounts">
+    <xs:sequence>
+     <xs:element name="participantAccounts" type="ns4:ListOfParticipantAccounts"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateParticipantAccountsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ModifyParticipantAccounts">
+    <xs:sequence>
+     <xs:element name="participantAccounts" type="ns4:ListOfParticipantAccounts"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ModifyParticipantAccountsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteParticipantAccounts">
+    <xs:sequence>
+     <xs:element name="participantAccountIDs" type="ns4:ListOfParticipantAccountIDs"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteParticipantAccountsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetParticipantAccounts">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="participants" nillable="true" type="ns3:ParticipantList"/>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetParticipantAccountsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="participantAccounts" nillable="true" type="ns4:ListOfParticipantAccounts"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateProgram">
+    <xs:sequence>
+     <xs:element name="program" type="ns3:UtilityProgram"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateProgramResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ModifyProgram">
+    <xs:sequence>
+     <xs:element name="program" type="ns3:UtilityProgram"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ModifyProgramResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteProgram">
+    <xs:sequence>
+     <xs:element name="programName" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DeleteProgramResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetPrograms">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns3:ListOfProgramNames"/>
+     <xs:element minOccurs="0" name="participants" nillable="true" type="ns3:ParticipantList"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetProgramsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programList" nillable="true" type="ns3:ListOfPrograms"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AdjustProgramParticipants">
+    <xs:sequence>
+     <xs:element name="programName" type="xs:string"/>
+     <xs:element name="addParticipants" type="xs:boolean"/>
+     <xs:element name="participantList" type="ns3:ParticipantList"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AdjustProgramParticipantsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetCurrentBids">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="eventID" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetCurrentBidsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="bids" nillable="true" type="ns5:ListOfBids"/>
+     <xs:element name="biddingOpen" type="xs:boolean"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CloseBidding">
+    <xs:sequence>
+     <xs:element name="eventID" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CloseBiddingResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetBidStatus">
+    <xs:sequence>
+     <xs:element name="eventID" type="xs:string"/>
+     <xs:element minOccurs="0" name="acceptedBids" nillable="true" type="ns1:ListOfUtilityDREvents"/>
+     <xs:element minOccurs="0" name="rejectedBids" nillable="true" type="ns4:ListOfParticipantAccountIDs"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetBidStatusResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientCommsStatus">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="participants" nillable="true" type="ns3:ParticipantList"/>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns3:ListOfProgramNames"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientCommsStatusResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DRASClientStatus" nillable="true" type="ns6:ListOfCommsStatus"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASTransactions">
+    <xs:sequence>
+     <xs:element name="userNames" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="DRASClientIDs" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="participantIDs" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="methodName" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="timeInterval" nillable="true" type="ns2:DateTimeWindow"/>
+     <xs:element minOccurs="0" name="resultCode" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASTransactionsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="transactions" nillable="true" type="ns7:ListOfTransactionLogs"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientAlarms">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DRASClientIDs" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="participantIDs" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="timeInterval" nillable="true" type="ns2:DateTimeWindow"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientAlarmsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="alarms" nillable="true" type="ns7:ListOfDRASClientAlarms"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetParticipantFeedback">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DRASClientIDs" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="participantIDs" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element minOccurs="0" name="timeInterval" nillable="true" type="ns2:DateTimeWindow"/>
+     <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetParticipantFeedbackResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="feedback" nillable="true" type="ns8:ListOfFeedback"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetGroups">
+    <xs:sequence>
+     <xs:element name="empty" type="xs:anyType"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetGroupsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="groups" nillable="true" type="ns3:ListOfIDs"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetEventConstraint">
+    <xs:sequence>
+     <xs:element name="eventID" type="xs:string"/>
+     <xs:element name="constraint" type="ns2:ProgramConstraint"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SetEventConstraintResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetEventConstraint">
+    <xs:sequence>
+     <xs:element name="eventID" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetEventConstraintResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="constraint" type="ns2:ProgramConstraint"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASEventStates">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="eventIDs" nillable="true" type="ns1:ListOfEventIDs"/>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns3:ListOfProgramNames"/>
+     <xs:element minOccurs="0" name="participants" nillable="true" type="ns3:ParticipantList"/>
+     <xs:element minOccurs="0" name="drasClients" nillable="true" type="ns3:ListOfIDs"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASEventStatesResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="eventStates" nillable="true" type="ns9:ListOfEventStates"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/ParticipantAccount" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/ParticipantAccount" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfParticipantAccounts">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="participantAccount" nillable="true" type="tns:ParticipantAccount"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ParticipantAccount">
+    <xs:sequence>
+     <xs:element name="participantName" type="xs:string"/>
+     <xs:element name="userName" type="xs:string"/>
+     <xs:element minOccurs="0" name="userGroups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="programs" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="program" nillable="true" type="ns1:ProgramInfo" xmlns:ns1="http://www.openadr.org/DRAS/UtilityProgram"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="utilityGroups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="participantGroups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="DRASClients" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="clientID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="contactInformation" nillable="true" type="tns:ContactInformation"/>
+     <xs:element minOccurs="0" name="standingBids" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="bid" nillable="true" type="ns2:Bid" xmlns:ns2="http://www.openadr.org/DRAS/Bid"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="accountID" type="xs:string" use="required"/>
+   </xs:complexType>
+   <xs:complexType name="ContactInformation">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="emailAddresses" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="address" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="voiceNumbers" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="number" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="pagerNumbers" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="number" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="faxNumbers" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="number" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfParticipantAccountIDs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="participantAccountID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/UtilityProgram" version="1.0" xmlns:ns1="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:tns="http://www.openadr.org/DRAS/UtilityProgram" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:import namespace="http://www.openadr.org/DRAS/ProgramConstraint"/>
+   <xs:complexType name="ParticipantList">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="accounts" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="participantID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="groups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="locations" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="location" nillable="true" type="ns2:Location" xmlns:ns2="http://www.openadr.org/DRAS/DRASClient"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfProgramNames">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="programID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ProgramInfo">
+    <xs:sequence>
+     <xs:element name="programName" type="xs:string"/>
+     <xs:element minOccurs="0" name="programConstraints" type="ns1:ProgramConstraint"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UtilityProgram">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programConstraints" type="ns1:ProgramConstraint"/>
+     <xs:element minOccurs="0" name="biddingConfiguration">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="submitImmediate" type="xs:boolean"/>
+        <xs:element name="submitTime" type="xs:double"/>
+        <xs:element name="fixedPrice" type="xs:boolean"/>
+        <xs:element name="fixedSchedule" type="xs:boolean"/>
+        <xs:element name="fixedLoad" type="xs:boolean"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="eventInfoTypes" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="eventInfoType" nillable="true" type="ns3:EventInfoType" xmlns:ns3="http://www.openadr.org/DRAS/EventInfo"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="participants" nillable="true" type="tns:ParticipantList"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="priority" type="xs:integer"/>
+   </xs:complexType>
+   <xs:complexType name="ListOfPrograms">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="program" nillable="true" type="tns:UtilityProgram"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfIDs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="identifier" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/Logs" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/Logs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfTransactionLogs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="transactionLog" nillable="true" type="tns:TransactionLog"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="TransactionLog">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="userName" type="xs:string"/>
+     <xs:element minOccurs="0" name="role" type="xs:string"/>
+     <xs:element minOccurs="0" name="timeStamp" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="transactionName" type="xs:string"/>
+     <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="result" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="ListOfDRASClientAlarms">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="drasClientAlarm" nillable="true" type="tns:DRASClientAlarm"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DRASClientAlarm">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DRASClientID" type="xs:string"/>
+     <xs:element minOccurs="0" name="timeStamp" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="description" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="status" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/DRASClient" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/DRASClient" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="Location">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="gridLocation" type="xs:string"/>
+     <xs:element minOccurs="0" name="address" type="xs:string"/>
+     <xs:element minOccurs="0" name="coordinate" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="latitude" type="xs:double"/>
+        <xs:element name="longitude" type="xs:double"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfCommsStatus">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="status" nillable="true" type="tns:CommsStatus"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CommsStatus">
+    <xs:sequence>
+     <xs:element name="DRASClientID" type="xs:string"/>
+     <xs:element name="status" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/EventInfo" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/EventInfo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="EventInfoInstance">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="values" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="value" nillable="true" type="tns:EventInfoValue"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="participants" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="accountID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="groups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="endTime" type="xs:double"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="eventInfoTypeName" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="EventInfoValue">
+    <xs:sequence>
+     <xs:element name="value" type="xs:double"/>
+     <xs:element minOccurs="0" name="startTime" type="xs:double"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="EventInfoType">
+    <xs:sequence>
+     <xs:element name="scheduleType" type="xs:string"/>
+     <xs:element minOccurs="0" name="schedule">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="timeSlot" type="xs:double"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="enumerations" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="value" nillable="true" type="xs:double"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="minValue" type="xs:double"/>
+     <xs:element minOccurs="0" name="maxValue" type="xs:double"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="typeID" type="tns:EventInfoTypeID" use="required"/>
+   </xs:complexType>
+   <xs:simpleType name="EventInfoTypeID">
+    <xs:restriction base="xs:string">
+     <xs:enumeration value="PRICE_ABSOLUTE"/>
+     <xs:enumeration value="PRICE_RELATIVE"/>
+     <xs:enumeration value="PRICE_MULTIPLE"/>
+     <xs:enumeration value="LOAD_LEVEL"/>
+     <xs:enumeration value="LOAD_AMOUNT"/>
+     <xs:enumeration value="LOAD_PERCENTAGE"/>
+     <xs:enumeration value="GRID_RELIABILITY"/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/Feedback" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/Feedback" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfFeedback">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="feedback" nillable="true" type="tns:FeedBack"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="FeedBack">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="participantID" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="DRASClientID" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="eventID" nillable="true" type="xs:string"/>
+     <xs:element name="feedback">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="value" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element name="timeStamp" type="xs:dateTime"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/Bid" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/Bid" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="Bid">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="bidBlocks">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="block" nillable="true" type="tns:BidBlock"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="participantAccount" type="xs:string" use="required"/>
+    <xs:attribute name="programName" type="xs:string"/>
+    <xs:attribute name="eventID" type="xs:string"/>
+    <xs:attribute name="options" type="xs:string"/>
+    <xs:attribute name="signature" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="BidBlock">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="load" type="xs:double"/>
+     <xs:element minOccurs="0" name="price" type="xs:double"/>
+     <xs:element minOccurs="0" name="duration" type="xs:double"/>
+     <xs:element minOccurs="0" name="timePeriod">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="startTime" type="xs:dateTime"/>
+        <xs:element name="endTime" type="xs:dateTime"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfBids">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="bids" nillable="true" type="tns:Bid"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/ProgramConstraint" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ProgramConstraint">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="eventWindow" nillable="true" type="tns:EventWindow"/>
+     <xs:element minOccurs="0" name="eventWindowFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="maxEventDuration" nillable="true" type="xs:double"/>
+     <xs:element minOccurs="0" name="maxEventDurationFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="notificationWindow" nillable="true" type="tns:NotificationWindow"/>
+     <xs:element minOccurs="0" name="notificationFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="blackOutDateTimes" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="dateTimeWindow" nillable="true" type="tns:DateTimeWindow"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="blackOutDateTimeFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="validDateTimes" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="dateTimeWindow" nillable="true" type="tns:DateTimeWindow"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="maxConsecutiveDays" nillable="true" type="xs:unsignedLong"/>
+     <xs:element minOccurs="0" name="maxConsecutiveDaysFilter" nillable="true" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="constraintID" type="xs:string" use="required"/>
+    <xs:attribute name="programName" type="xs:string" use="required"/>
+    <xs:attribute name="participantID" type="xs:string"/>
+    <xs:attribute name="DRASClientID" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="EventWindow">
+    <xs:sequence>
+     <xs:element name="startTime" type="xs:time"/>
+     <xs:element name="endTime" type="xs:time"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="NotificationWindow">
+    <xs:sequence>
+     <xs:element name="minimumTime" type="xs:unsignedLong"/>
+     <xs:element name="maximumTime" type="xs:unsignedLong"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DateTimeWindow">
+    <xs:sequence>
+     <xs:element name="startDateTime" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="endDateTime" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="ConstraintFilter">
+    <xs:restriction base="xs:string">
+     <xs:enumeration value="ACCEPT"/>
+     <xs:enumeration value="REJECT"/>
+     <xs:enumeration value="FORCE"/>
+     <xs:enumeration value="RESTRICT"/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/UtilityDREvent" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/UtilityDREvent" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="UtilityDREvent">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="destinations" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element minOccurs="0" name="participants" nillable="true">
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="participantID" nillable="true" type="xs:string"/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="groups" nillable="true">
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="locations" nillable="true">
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element name="location" nillable="true" type="ns1:Location" xmlns:ns1="http://www.openadr.org/DRAS/DRASClient"/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="drasClients" nillable="true">
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element name="drasClientID" nillable="true" type="xs:string"/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element name="eventTiming">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="notificationTime" type="xs:dateTime"/>
+        <xs:element name="startTime" type="xs:dateTime"/>
+        <xs:element name="endTime" type="xs:dateTime"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="biddingInformation" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="openingTime" type="xs:dateTime"/>
+        <xs:element name="closingTime" type="xs:dateTime"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="eventInformation" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="eventInfoInstance" nillable="true" type="ns2:EventInfoInstance" xmlns:ns2="http://www.openadr.org/DRAS/EventInfo"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="eventIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="eventModNumber" type="xs:unsignedInt" use="required"/>
+    <xs:attribute name="programName" type="xs:string" use="required"/>
+    <xs:attribute name="utilityITName" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="ListOfEventIDs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="eventID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfUtilityDREvents">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="DREvent" nillable="true" type="tns:UtilityDREvent"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/EventState" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/EventState" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfEventStates">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="eventStates" nillable="true" type="tns:EventState"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="EventState">
+    <xs:sequence>
+     <xs:element name="simpleDRModeData" type="tns:SimpleClientEventData"/>
+     <xs:element minOccurs="0" name="drEventData" nillable="true" type="tns:SmartClientDREventData"/>
+     <xs:element minOccurs="0" name="customData" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="generalInfoInstances" nillable="true" type="tns:GeneralInfoInstance"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="programName" type="xs:string" use="required"/>
+    <xs:attribute name="eventModNumber" type="xs:unsignedInt" use="required"/>
+    <xs:attribute name="eventIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="drasClientID" type="xs:string" use="required"/>
+    <xs:attribute name="eventStateID" type="xs:unsignedInt" use="required"/>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="drasName" type="xs:string" use="required"/>
+    <xs:attribute name="testEvent" type="xs:boolean"/>
+    <xs:attribute name="offLine" type="xs:boolean"/>
+   </xs:complexType>
+   <xs:complexType name="SimpleClientEventData">
+    <xs:sequence>
+     <xs:element name="EventStatus" type="xs:string"/>
+     <xs:element name="OperationModeValue" type="xs:string"/>
+     <xs:element name="currentTime" type="xs:decimal"/>
+     <xs:element minOccurs="0" name="operationModeSchedule" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="modeSlot" nillable="true" type="tns:OperationState"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="OperationState">
+    <xs:sequence>
+     <xs:element name="OperationModeValue" type="xs:string"/>
+     <xs:element name="modeTimeSlot" type="xs:nonNegativeInteger"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SmartClientDREventData">
+    <xs:sequence>
+     <xs:element name="notificationTime" type="xs:dateTime"/>
+     <xs:element name="startTime" type="xs:dateTime"/>
+     <xs:element name="endTime" type="xs:dateTime"/>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="eventInfoInstances" nillable="true" type="tns:EventInfoInstance"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="EventInfoInstance">
+    <xs:sequence>
+     <xs:element name="eventInfoTypeID" type="tns:EventInfoTypeID"/>
+     <xs:element name="eventInfoName" type="xs:string"/>
+     <xs:element maxOccurs="unbounded" name="eventInfoValues" type="tns:EventInfoValue"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="EventInfoTypeID">
+    <xs:restriction base="xs:string"/>
+   </xs:simpleType>
+   <xs:complexType name="EventInfoValue">
+    <xs:sequence>
+     <xs:element name="value" type="xs:decimal"/>
+     <xs:element name="timeOffset" type="xs:unsignedInt"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GeneralInfoInstance">
+    <xs:sequence>
+     <xs:element name="infoName" type="xs:string"/>
+     <xs:element name="infoType" type="xs:string"/>
+     <xs:element maxOccurs="unbounded" name="infoValues" type="tns:GeneralInfoValue"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GeneralInfoValue">
+    <xs:sequence>
+     <xs:element name="value" type="xs:string"/>
+     <xs:element name="timeOffset" type="xs:unsignedInt"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+  </types>
+  <message name="UtilityOperator_DeleteProgramResponse">
+    <part name="DeleteProgramResponse" element="tns:DeleteProgramResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_SetBidStatus">
+    <part name="SetBidStatus" element="tns:SetBidStatus">
+    </part>
+  </message>
+  <message name="UtilityOperator_ModifyDREventResponse">
+    <part name="ModifyDREventResponse" element="tns:ModifyDREventResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetGroups">
+    <part name="GetGroups" element="tns:GetGroups">
+    </part>
+  </message>
+  <message name="UtilityOperator_InitiateDREventResponse">
+    <part name="InitiateDREventResponse" element="tns:InitiateDREventResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_ModifyProgramResponse">
+    <part name="ModifyProgramResponse" element="tns:ModifyProgramResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_CreateProgram">
+    <part name="CreateProgram" element="tns:CreateProgram">
+    </part>
+  </message>
+  <message name="UtilityOperator_CloseBiddingResponse">
+    <part name="CloseBiddingResponse" element="tns:CloseBiddingResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetDREventInformationResponse">
+    <part name="GetDREventInformationResponse" element="tns:GetDREventInformationResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_ModifyProgram">
+    <part name="ModifyProgram" element="tns:ModifyProgram">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetCurrentBidsResponse">
+    <part name="GetCurrentBidsResponse" element="tns:GetCurrentBidsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetGroupsResponse">
+    <part name="GetGroupsResponse" element="tns:GetGroupsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetDRASTransactionsResponse">
+    <part name="GetDRASTransactionsResponse" element="tns:GetDRASTransactionsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetParticipantFeedbackResponse">
+    <part name="GetParticipantFeedbackResponse" element="tns:GetParticipantFeedbackResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_CloseBidding">
+    <part name="CloseBidding" element="tns:CloseBidding">
+    </part>
+  </message>
+  <message name="UtilityOperator_CreateParticipantAccountsResponse">
+    <part name="CreateParticipantAccountsResponse" element="tns:CreateParticipantAccountsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetParticipantFeedback">
+    <part name="GetParticipantFeedback" element="tns:GetParticipantFeedback">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetParticipantAccounts">
+    <part name="GetParticipantAccounts" element="tns:GetParticipantAccounts">
+    </part>
+  </message>
+  <message name="UtilityOperator_DeleteProgram">
+    <part name="DeleteProgram" element="tns:DeleteProgram">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetPrograms">
+    <part name="GetPrograms" element="tns:GetPrograms">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetParticipantAccountsResponse">
+    <part name="GetParticipantAccountsResponse" element="tns:GetParticipantAccountsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_AdjustProgramParticipants">
+    <part name="AdjustProgramParticipants" element="tns:AdjustProgramParticipants">
+    </part>
+  </message>
+  <message name="UtilityOperator_AdjustDREventParticipants">
+    <part name="AdjustDREventParticipants" element="tns:AdjustDREventParticipants">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetDRASEventStates">
+    <part name="GetDRASEventStates" element="tns:GetDRASEventStates">
+    </part>
+  </message>
+  <message name="UtilityOperator_SetEventConstraintResponse">
+    <part name="SetEventConstraintResponse" element="tns:SetEventConstraintResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_AdjustDREventParticipantsResponse">
+    <part name="AdjustDREventParticipantsResponse" element="tns:AdjustDREventParticipantsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_ModifyParticipantAccountsResponse">
+    <part name="ModifyParticipantAccountsResponse" element="tns:ModifyParticipantAccountsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_CreateProgramResponse">
+    <part name="CreateProgramResponse" element="tns:CreateProgramResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_ModifyDREvent">
+    <part name="ModifyDREvent" element="tns:ModifyDREvent">
+    </part>
+  </message>
+  <message name="UtilityOperator_SetEventConstraint">
+    <part name="SetEventConstraint" element="tns:SetEventConstraint">
+    </part>
+  </message>
+  <message name="UtilityOperator_InitiateDREvent">
+    <part name="InitiateDREvent" element="tns:InitiateDREvent">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetProgramsResponse">
+    <part name="GetProgramsResponse" element="tns:GetProgramsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetDREventInformation">
+    <part name="GetDREventInformation" element="tns:GetDREventInformation">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetEventConstraintResponse">
+    <part name="GetEventConstraintResponse" element="tns:GetEventConstraintResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetCurrentBids">
+    <part name="GetCurrentBids" element="tns:GetCurrentBids">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetDRASTransactions">
+    <part name="GetDRASTransactions" element="tns:GetDRASTransactions">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetEventConstraint">
+    <part name="GetEventConstraint" element="tns:GetEventConstraint">
+    </part>
+  </message>
+  <message name="UtilityOperator_SetBidStatusResponse">
+    <part name="SetBidStatusResponse" element="tns:SetBidStatusResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetDRASClientAlarms">
+    <part name="GetDRASClientAlarms" element="tns:GetDRASClientAlarms">
+    </part>
+  </message>
+  <message name="UtilityOperator_DeleteParticipantAccounts">
+    <part name="DeleteParticipantAccounts" element="tns:DeleteParticipantAccounts">
+    </part>
+  </message>
+  <message name="UtilityOperator_ModifyParticipantAccounts">
+    <part name="ModifyParticipantAccounts" element="tns:ModifyParticipantAccounts">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetDRASClientAlarmsResponse">
+    <part name="GetDRASClientAlarmsResponse" element="tns:GetDRASClientAlarmsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_DeleteParticipantAccountsResponse">
+    <part name="DeleteParticipantAccountsResponse" element="tns:DeleteParticipantAccountsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_CreateParticipantAccounts">
+    <part name="CreateParticipantAccounts" element="tns:CreateParticipantAccounts">
+    </part>
+  </message>
+  <message name="UtilityOperator_AdjustProgramParticipantsResponse">
+    <part name="AdjustProgramParticipantsResponse" element="tns:AdjustProgramParticipantsResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetDRASEventStatesResponse">
+    <part name="GetDRASEventStatesResponse" element="tns:GetDRASEventStatesResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetDRASClientCommsStatusResponse">
+    <part name="GetDRASClientCommsStatusResponse" element="tns:GetDRASClientCommsStatusResponse">
+    </part>
+  </message>
+  <message name="UtilityOperator_GetDRASClientCommsStatus">
+    <part name="GetDRASClientCommsStatus" element="tns:GetDRASClientCommsStatus">
+    </part>
+  </message>
+  <portType name="UtilityOperator">
+    <operation name="AdjustDREventParticipants" parameterOrder="AdjustDREventParticipants">
+      <input message="tns:UtilityOperator_AdjustDREventParticipants">
+    </input>
+      <output message="tns:UtilityOperator_AdjustDREventParticipantsResponse">
+    </output>
+    </operation>
+    <operation name="AdjustProgramParticipants" parameterOrder="AdjustProgramParticipants">
+      <input message="tns:UtilityOperator_AdjustProgramParticipants">
+    </input>
+      <output message="tns:UtilityOperator_AdjustProgramParticipantsResponse">
+    </output>
+    </operation>
+    <operation name="CloseBidding" parameterOrder="CloseBidding">
+      <input message="tns:UtilityOperator_CloseBidding">
+    </input>
+      <output message="tns:UtilityOperator_CloseBiddingResponse">
+    </output>
+    </operation>
+    <operation name="CreateParticipantAccounts" parameterOrder="CreateParticipantAccounts">
+      <input message="tns:UtilityOperator_CreateParticipantAccounts">
+    </input>
+      <output message="tns:UtilityOperator_CreateParticipantAccountsResponse">
+    </output>
+    </operation>
+    <operation name="CreateProgram" parameterOrder="CreateProgram">
+      <input message="tns:UtilityOperator_CreateProgram">
+    </input>
+      <output message="tns:UtilityOperator_CreateProgramResponse">
+    </output>
+    </operation>
+    <operation name="DeleteParticipantAccounts" parameterOrder="DeleteParticipantAccounts">
+      <input message="tns:UtilityOperator_DeleteParticipantAccounts">
+    </input>
+      <output message="tns:UtilityOperator_DeleteParticipantAccountsResponse">
+    </output>
+    </operation>
+    <operation name="DeleteProgram" parameterOrder="DeleteProgram">
+      <input message="tns:UtilityOperator_DeleteProgram">
+    </input>
+      <output message="tns:UtilityOperator_DeleteProgramResponse">
+    </output>
+    </operation>
+    <operation name="GetCurrentBids" parameterOrder="GetCurrentBids">
+      <input message="tns:UtilityOperator_GetCurrentBids">
+    </input>
+      <output message="tns:UtilityOperator_GetCurrentBidsResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASClientAlarms" parameterOrder="GetDRASClientAlarms">
+      <input message="tns:UtilityOperator_GetDRASClientAlarms">
+    </input>
+      <output message="tns:UtilityOperator_GetDRASClientAlarmsResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASClientCommsStatus" parameterOrder="GetDRASClientCommsStatus">
+      <input message="tns:UtilityOperator_GetDRASClientCommsStatus">
+    </input>
+      <output message="tns:UtilityOperator_GetDRASClientCommsStatusResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASEventStates" parameterOrder="GetDRASEventStates">
+      <input message="tns:UtilityOperator_GetDRASEventStates">
+    </input>
+      <output message="tns:UtilityOperator_GetDRASEventStatesResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASTransactions" parameterOrder="GetDRASTransactions">
+      <input message="tns:UtilityOperator_GetDRASTransactions">
+    </input>
+      <output message="tns:UtilityOperator_GetDRASTransactionsResponse">
+    </output>
+    </operation>
+    <operation name="GetDREventInformation" parameterOrder="GetDREventInformation">
+      <input message="tns:UtilityOperator_GetDREventInformation">
+    </input>
+      <output message="tns:UtilityOperator_GetDREventInformationResponse">
+    </output>
+    </operation>
+    <operation name="GetEventConstraint" parameterOrder="GetEventConstraint">
+      <input message="tns:UtilityOperator_GetEventConstraint">
+    </input>
+      <output message="tns:UtilityOperator_GetEventConstraintResponse">
+    </output>
+    </operation>
+    <operation name="GetGroups" parameterOrder="GetGroups">
+      <input message="tns:UtilityOperator_GetGroups">
+    </input>
+      <output message="tns:UtilityOperator_GetGroupsResponse">
+    </output>
+    </operation>
+    <operation name="GetParticipantAccounts" parameterOrder="GetParticipantAccounts">
+      <input message="tns:UtilityOperator_GetParticipantAccounts">
+    </input>
+      <output message="tns:UtilityOperator_GetParticipantAccountsResponse">
+    </output>
+    </operation>
+    <operation name="GetParticipantFeedback" parameterOrder="GetParticipantFeedback">
+      <input message="tns:UtilityOperator_GetParticipantFeedback">
+    </input>
+      <output message="tns:UtilityOperator_GetParticipantFeedbackResponse">
+    </output>
+    </operation>
+    <operation name="GetPrograms" parameterOrder="GetPrograms">
+      <input message="tns:UtilityOperator_GetPrograms">
+    </input>
+      <output message="tns:UtilityOperator_GetProgramsResponse">
+    </output>
+    </operation>
+    <operation name="InitiateDREvent" parameterOrder="InitiateDREvent">
+      <input message="tns:UtilityOperator_InitiateDREvent">
+    </input>
+      <output message="tns:UtilityOperator_InitiateDREventResponse">
+    </output>
+    </operation>
+    <operation name="ModifyDREvent" parameterOrder="ModifyDREvent">
+      <input message="tns:UtilityOperator_ModifyDREvent">
+    </input>
+      <output message="tns:UtilityOperator_ModifyDREventResponse">
+    </output>
+    </operation>
+    <operation name="ModifyParticipantAccounts" parameterOrder="ModifyParticipantAccounts">
+      <input message="tns:UtilityOperator_ModifyParticipantAccounts">
+    </input>
+      <output message="tns:UtilityOperator_ModifyParticipantAccountsResponse">
+    </output>
+    </operation>
+    <operation name="ModifyProgram" parameterOrder="ModifyProgram">
+      <input message="tns:UtilityOperator_ModifyProgram">
+    </input>
+      <output message="tns:UtilityOperator_ModifyProgramResponse">
+    </output>
+    </operation>
+    <operation name="SetBidStatus" parameterOrder="SetBidStatus">
+      <input message="tns:UtilityOperator_SetBidStatus">
+    </input>
+      <output message="tns:UtilityOperator_SetBidStatusResponse">
+    </output>
+    </operation>
+    <operation name="SetEventConstraint" parameterOrder="SetEventConstraint">
+      <input message="tns:UtilityOperator_SetEventConstraint">
+    </input>
+      <output message="tns:UtilityOperator_SetEventConstraintResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="UtilityOperatorBinding" type="tns:UtilityOperator">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="AdjustDREventParticipants">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/AdjustDREventParticipants"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="AdjustProgramParticipants">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/AdjustProgramParticipants"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CloseBidding">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/CloseBidding"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateParticipantAccounts">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/CreateParticipantAccounts"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateProgram">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/CreateProgram"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteParticipantAccounts">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/DeleteParticipantAccounts"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="DeleteProgram">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/DeleteProgram"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetCurrentBids">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetCurrentBids"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASClientAlarms">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetDRASClientAlarms"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASClientCommsStatus">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetDRASClientCommsStatus"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASEventStates">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetDRASEventStates"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASTransactions">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetDRASTransactions"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDREventInformation">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetDREventInformation"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetEventConstraint">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetEventConstraint"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetGroups">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetGroups"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetParticipantAccounts">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetParticipantAccounts"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetParticipantFeedback">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetParticipantFeedback"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetPrograms">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/GetPrograms"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="InitiateDREvent">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/InitiateDREvent"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ModifyDREvent">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/ModifyDREvent"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ModifyParticipantAccounts">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/ModifyParticipantAccounts"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="ModifyProgram">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/ModifyProgram"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SetBidStatus">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/SetBidStatus"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SetEventConstraint">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/UtilityOperator/SetEventConstraint"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="UtilityOperatorWSService">
+    <port name="UtilityOperatorPort" binding="tns:UtilityOperatorBinding">
+      <soap:address location="http://127.0.0.1:8080/UtilityOperatorWS/UtilityOperatorWS"/>
+    </port>
+  </service>
+</definitions>

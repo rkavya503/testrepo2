@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	
+	<changeSet id="1" author="Daoping">
+        <comment>
+			DRMS-6728
+        </comment>
+        <sql>
+		DROP TABLE IF EXISTS `routine_status`;
+
+		CREATE TABLE `pss2`.`routine_status`(
+			`uuid`   VARCHAR(32) NOT NULL ,     
+			`name`   VARCHAR(32) NOT NULL,      
+			`status` TINYINT(1) DEFAULT '0',			
+			`date` DATE    NOT NULL,
+			`creationTime` DATETIME DEFAULT NULL,
+			 PRIMARY KEY (`uuid`) ,
+			 UNIQUE `idx_routine_status` (`name`, `date`)		 
+		)ENGINE=MYISAM DEFAULT CHARSET=latin1;
+        </sql>
+    </changeSet>
+	
+	<changeSet id="2" author="Frank">
+        <comment>
+           DRMS-6729
+        </comment>
+        <sql>
+		DROP TABLE IF EXISTS `history_baseline_dataentry_temp`;
+		DROP TABLE IF EXISTS `baseline_dataentry_temp`;
+
+		CREATE TABLE `baseline_dataentry_temp` (
+		  `uuid` VARCHAR(32) NOT NULL,
+		  `dataset_uuid` VARCHAR(32) NOT NULL,
+		  `datasource_uuid` VARCHAR(32) NOT NULL,
+		  `time` DATETIME NOT NULL,
+		  `value` DOUBLE DEFAULT NULL,
+		  `creationTime` DATETIME DEFAULT NULL,
+		  `stringValue` VARCHAR(128) DEFAULT NULL,
+		  `valueType` VARCHAR(255) NOT NULL,
+		  `actual` TINYINT(1) DEFAULT '1',
+		  PRIMARY KEY (`uuid`),
+		  KEY `FK_historydataset` (`dataset_uuid`),
+		  KEY `FK_historydatasource` (`datasource_uuid`),
+		  KEY `history_baseline_time` (`time`)
+		) ENGINE=MYISAM DEFAULT CHARSET=latin1;
+        </sql>
+    </changeSet>
+
+     <changeSet id="3" author="Ahmed">
+        <comment>
+               DRMS-6768 Add a disclaimer to the test event for SCE
+        </comment>
+        <sql>
+		        insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'testEventDisclimar',
+                'This DRAS System Test function is a way for you to prepare your Auto-DR system for the official load shed test for technology incentive payments. Depending on your system configuration, DRAS signals generated during the System Test will trigger actual load shedding activities if your Auto-DR system is set to reduce load based on a DRAS signal. By proceeding with the creation and execution of a System Test, you hereby waive all claims against SCE arising from the use of this function.', null, null, null, 'String', 'script', null, now(),
+                null);
+        </sql>
+    </changeSet>
+     <changeSet id="4" author="Linda">
+        <comment>
+               DRMS-6427 Add a CSV file for the Customer Info Exception report
+        </comment>
+		<addColumn tableName="message">
+            <column name="attachFilename" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="message">
+		<column name="attachFileContent" type="text">
+			<constraints nullable="true" />
+		</column>
+        </addColumn>
+    </changeSet>
+	 <changeSet id="5" author="Daoping">
+        <comment>
+               DRMS-6775
+        </comment>
+		<sql>
+			ALTER TABLE `pss2`.`baseline_dataentry_temp` ADD UNIQUE `uq_temp_baseline` (`dataset_uuid`, `datasource_uuid`, `time`);
+			ALTER TABLE `pss2`.`history_baseline_dataentry` ADD UNIQUE `uq_baseline` (`dataset_uuid`, `datasource_uuid`, `time`);
+			ALTER TABLE `pss2`.`dataentry_temp` ADD INDEX `idx_dataentry_time` (`time`);
+		</sql>
+    </changeSet>
+
+	<changeSet id="7" author="Daoping">
+        <comment>
+               DRMS-6775
+        </comment>
+		<sql>
+			
+			INSERT INTO pss2.dataentry_temp(UUID,dataset_uuid,datasource_uuid,time,value,creationTime,stringValue,valueType,actual)
+			SELECT REPLACE(UUID(), '-', '') AS UUID, 
+			dataset_uuid,datasource_uuid,time,value, creationTime, stringValue,valueType,actual
+			FROM pss2.dataentry d WHERE DATE(time) =(SELECT CURDATE())
+			ON DUPLICATE KEY UPDATE value = d.value;
+			
+			INSERT INTO pss2.baseline_dataentry_temp(UUID,dataset_uuid,datasource_uuid,time,value,creationTime,stringValue,valueType,actual)
+			SELECT REPLACE(UUID(), '-', '') AS UUID, 
+			dataset_uuid,datasource_uuid,time,value, creationTime, stringValue,valueType,actual
+			FROM pss2.history_baseline_dataentry b WHERE DATE(time)=(SELECT CURDATE())
+			ON DUPLICATE  KEY UPDATE value = b.value;
+		</sql>
+    </changeSet>
+
+		<changeSet id="8" author="Linda">
+        <comment>
+               DRMS-6753 report event data migration for history usage data
+        </comment>
+		<sql>
+		INSERT INTO history_event (UUID, program_uuid, programName, eventName, startTime, endTime, scheduledStartTime,
+		scheduledEndTime, cancelled, creationTime) SELECT REPLACE(UUID(), '-', ''), p.uuid, r.programName, r.eventName, 
+		IF(r.cancelled, NULL, r.startTime), IF(r.cancelled, NULL, r.endTime), r.startTime, r.endTime, r.cancelled, NOW() 
+		FROM report_event r, program p WHERE r.programName=p.name;
+
+		INSERT INTO history_event_participant(UUID, history_event_uuid, eventName, participant_uuid, participantName, 
+		CLIENT, participation, percentage, startTime, endTime, offlinePerEvent,creationTime) 
+		SELECT REPLACE(UUID(), '-', ''), e.uuid, ep.eventName, p.uuid, ep.participantName, p.client, 
+		0, 100, e.startTime, e.endTime, 0, NOW()
+		FROM report_event_participation ep, history_event e, participant p
+		WHERE ep.eventName=e.eventName AND p.participantName=ep.participantName AND ep.eventName != '' AND ep.reason != 'NOT CALLED'
+		AND ep.reason != 'MANUAL' AND reason != 'OFFLINE' AND reason != 'Manual';
+
+		INSERT INTO history_event_participant(UUID, history_event_uuid, eventName, participant_uuid, participantName, 
+		CLIENT, participation, percentage, startTime, endTime, offlinePerEvent,creationTime) 
+		SELECT REPLACE(UUID(), '-', ''), e.uuid, ep.eventName, p.uuid, ep.participantName, p.client, 
+		0, 100, e.startTime, e.endTime, 0, NOW()
+		FROM report_event_signal ep, history_event e, participant p
+		WHERE ep.eventName=e.eventName AND p.participantName=ep.participantName AND ep.eventName !='' 
+		AND ep.participantName NOT IN (SELECT participantName FROM history_event_participant WHERE eventName=ep.eventName);
+		</sql>
+    </changeSet>
+	
+	<changeSet id="9" author="Frank">
+        <comment>
+               DRMS-6753 report event data migration for history usage data
+        </comment>
+		<sql>
+		DROP TABLE IF EXISTS `history_event_participant_temp`;
+		
+		CREATE TABLE history_event_participant_temp (SELECT * FROM history_event_participant); 
+		
+		TRUNCATE history_event_participant;
+		
+		CREATE UNIQUE INDEX UNIQUE_INDEX ON history_event_participant (eventName,participantName,client);
+		
+		INSERT INTO history_event_participant(UUID, history_event_uuid, eventName, participant_uuid, participantName,
+		client, participation, percentage, startTime, endTime,
+		averageShed, totalShed, creationTime, offlinePerEvent, registeredShed, parent)
+		SELECT UUID, history_event_uuid, eventName, participant_uuid, participantName,
+		client, participation, percentage, startTime, endTime, 
+		averageShed, totalShed, creationTime, offlinePerEvent, registeredShed, parent 
+		FROM history_event_participant_temp
+		GROUP BY eventName,participantName,client;
+		
+		UPDATE history_event_participant SET parent=
+	    (SELECT parent FROM participant WHERE client=1 AND participantName= history_event_participant.participantName) 
+		WHERE client=true AND parent IS NULL;
+		
+		TRUNCATE history_event_participant_temp;
+		
+		INSERT INTO history_event_participant_temp(UUID, history_event_uuid, eventName, participantName, participant_uuid,
+		client, participation, percentage, startTime, endTime,
+		averageShed, totalShed, creationTime, offlinePerEvent, registeredShed, parent)
+		SELECT UUID, history_event_uuid, eventName, history_event_participant.parent,(SELECT UUID FROM participant WHERE participantName=history_event_participant.parent and client=false), 
+		false, participation, percentage, startTime, endTime, 
+		averageShed, totalShed, creationTime, offlinePerEvent, registeredShed, parent 
+		FROM history_event_participant
+		WHERE client=true;
+ 
+		INSERT INTO history_event_participant(UUID, history_event_uuid, eventName, participant_uuid, participantName,
+		client, participation, percentage, startTime, endTime,
+		averageShed, totalShed, creationTime, offlinePerEvent, registeredShed, parent)
+		SELECT REPLACE(UUID(), '-', ''), history_event_uuid, eventName, participant_uuid, participantName,
+		client, participation, percentage, startTime, endTime, averageShed, totalShed, creationTime, offlinePerEvent, registeredShed, NULL
+		FROM history_event_participant_temp
+		GROUP BY eventName,participantName,client
+		ON DUPLICATE KEY UPDATE client= 0;
+ 
+		DROP TABLE IF EXISTS `history_event_participant_temp`;
+		</sql>
+    </changeSet>
+
+</databaseChangeLog>

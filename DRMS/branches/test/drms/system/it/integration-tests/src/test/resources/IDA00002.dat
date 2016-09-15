@@ -1,0 +1,69 @@
+loc_id#location#state#forecast_date#issue_date#issue_time#min_0#max_0#min_1#max_1#min_2#max_2#min_3#max_3#min_4#max_4#min_5#max_5#min_6#max_6#min_7#max_7#forecast_0#forecast_1#forecast_2#forecast_3#forecast_4#forecast_5#forecast_6#forecast_7#
+068241#Albion Park#NSW#20120823#20120823#035105##25#9#19#8#19#7#19#6#19#7#22#10#24###Shower or two developing. Windy.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Partly cloudy.#Partly cloudy.##
+056037#Armidale#NSW#20120823#20120823#035105##23#6#16#1#15#-1#15#-2#16#-2#18#2#21###Rain developing.#Early shower or two.#Sunny.#Mostly sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+058198#Ballina#NSW#20120823#20120823#035105##25#13#25#9#22#8#22#8#21#8#23#10#23###Sunny day. Possible late shower.#Possible early shower.#Sunny.#Mostly sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+069134#Batemans Bay#NSW#20120823#20120823#035105##23#5#18#4#19#4#18#2#19#3#22#5#22###Chance shower. Windy.#Mostly sunny.#Sunny.#Partly cloudy.#Partly cloudy.#Partly cloudy.#Partly cloudy.##
+063005#Bathurst#NSW#20120823#20120823#035105##20#0#13#0#13#-1#13#-2#15#-1#17#3#20###Rain at times. Chance storm. Windy.#Partly cloudy.#Partly cloudy.#Mostly sunny.#Mostly sunny.#Possible shower developing.#Partly cloudy.##
+069139#Bega#NSW#20120823#20120823#035105##23#5#18#4#19#3#18#2#19#2#22#4#20###Chance shower. Windy.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.#Partly cloudy.#Possible shower.##
+066112#Bondi#NSW#20120823#20120823#091755##25#14#20#12#19#12#20#11#19#10#22#13#23###Possible thunderstorm. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+048013#Bourke#NSW#20120823#20120823#035105##28#4#22#3#22#4#23#2#23#4#28#10#30###A little rain.#Sunny.#Sunny.#Mostly sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+068102#Bowral#NSW#20120823#20120823#035105##20#6#12#5#12#4#13#3#13#4#17#7#19###Showers developing. Windy.#Mostly sunny.#Mostly sunny.#Wind easing. Mostly sunny.#Mostly sunny.#Partly cloudy.#Partly cloudy.##
+047007#Broken Hill#NSW#20120823#20120823#035105##18#7#18#6#18#7#19#5#22#12#25#10#22###Morning rain. Windy.#Wind easing. Partly cloudy.#Becoming cloudy.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+072161#Cabramurra#NSW#20120823#20120823#035105##6#-1#0#-1#1#-1#2#-2#4#0#7#3#8###Rain. Late snow.#A few snow showers. Windy.#A few snow showers.#A few snow showers.#Partly cloudy.#Partly cloudy.#Possible shower.##
+068160#Campbelltown#NSW#20120823#20120823#091755##27#6#20#5#19#4#20#3#20#3#23#6#25###Possible thunderstorm. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+070014#Canberra#NSW#20120823#20120823#091755##16#0#12#1#12#0#12#-1#14#1#17#3#19###Rain at times.#Possible shower clearing.#Partly cloudy.#Partly cloudy.#Partly cloudy.#Partly cloudy.#Partly cloudy.##
+058009#Cape Byron#NSW#20120823#20120823#035105##22#17#23#13#20#13#21#13#20#14#21#15#21###Sunny day. Possible late shower.#Chance of an early storm.#Sunny.#Mostly sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+048027#Cobar#NSW#20120823#20120823#035105##23#6#19#5#19#6#20#3#21#7#25#11#26###A little rain.#Sunny.#Partly cloudy.#Sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+059040#Coffs Harbour#NSW#20120823#20120823#035105##27#14#25#9#22#8#22#8#21#7#24#9#25###Possible late shower.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+070278#Cooma#NSW#20120823#20120823#035105##16#-2#10#-1#12#-1#11#-3#14#-1#16#1#17###Rain at times. Windy.#Possible shower clearing.#Partly cloudy.#Partly cloudy.#Partly cloudy.#Partly cloudy.#Possible shower.##
+074128#Deniliquin#NSW#20120823#20120823#035105##17#4#14#4#15#6#15#2#17#7#19#5#20###Rain at times. Chance of a storm.#Shower or two clearing.#Cloudy.#Partly cloudy.#Partly cloudy.#Possible shower.#Possible shower.##
+065012#Dubbo#NSW#20120823#20120823#035105##24#4#18#3#17#2#18#1#18#2#22#7#25###Rain at times. Chance storm. Windy.#Sunny.#Mostly sunny.#Sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+060013#Forster#NSW#20120823#20120823#035105##25#12#21#8#20#7#21#7#19#7#22#10#24###Chance of a storm developing.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+056011#Glen Innes#NSW#20120823#20120823#035105##23#8#17#3#16#1#15#0#16#0#19#2#21###Rain developing.#Early shower or two.#Sunny.#Mostly sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+061087#Gosford#NSW#20120823#20120823#035105##27#9#20#7#20#6#20#5#20#5#23#9#25###Showers/storms developing. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+070263#Goulburn#NSW#20120823#20120823#035105##18#3#11#4#12#3#12#2#13#4#17#6#19###Rain at times. Windy.#Windy. Partly cloudy.#Partly cloudy.#Windy. Partly cloudy.#Partly cloudy.#Partly cloudy.#Partly cloudy.##
+058130#Grafton#NSW#20120823#20120823#035105##31#15#29#8#25#8#25#7#25#7#27#8#28###Sunny day. Late shower or two.#Possible early shower.#Sunny.#Mostly sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+075041#Griffith#NSW#20120823#20120823#035105##18#4#15#3#16#4#16#2#17#6#20#8#21###Rain and chance of a storm.#Possible morning shower.#Becoming cloudy.#Partly cloudy.#Mostly sunny.#Partly cloudy.#Partly cloudy.##
+075031#Hay#NSW#20120823#20120823#035105##18#5#16#5#16#6#16#2#19#8#21#7#20###Rain at times. Chance of a storm.#Morning shower or two.#Partly cloudy.#Partly cloudy.#Mostly sunny.#Possible shower.#Partly cloudy.##
+056017#Inverell#NSW#20120823#20120823#035105##26#7#19#2#19#2#18#0#19#0#21#4#24###Rain developing, chance of a storm.#Early shower or two.#Sunny.#Mostly sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+049019#Ivanhoe#NSW#20120823#20120823#035105##20#4#18#4#18#5#19#1#21#7#25#8#22###Rain clearing. Becoming windy.#Partly cloudy.#Becoming cloudy.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+071071#Jindabyne#NSW#20120823#20120823#035105##14#0#7#1#9#0#9#-1#10#0#13#3#15###Rain at times.#Snow shower two.#Shower or two. Windy.#Shower or two. Wind easing.#Partly cloudy.#Partly cloudy.#Possible shower.##
+063039#Katoomba#NSW#20120823#20120823#035105##19#6#12#5#12#4#12#3#13#4#16#7#19###A little rain. Chance storm. Windy.#Windy. Sunny.#Mostly sunny.#Wind easing. Sunny.#Mostly sunny.#Partly cloudy.#Partly cloudy.##
+059017#Kempsey#NSW#20120823#20120823#035105##28#13#24#7#22#7#22#6#21#5#23#8#25###Possible late shower.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+058221#Lismore#NSW#20120823#20120823#035105##27#15#27#11#23#10#23#10#23#10#24#12#25###Sunny day. Possible late shower.#Possible early shower.#Sunny.#Mostly sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+063226#Lithgow#NSW#20120823#20120823#035105##19#3#11#3#11#2#11#1#12#2#15#5#18###A little rain. Chance storm. Windy.#Mostly sunny.#Mostly sunny.#Wind easing. Sunny.#Mostly sunny.#Partly cloudy.#Partly cloudy.##
+067020#Liverpool#NSW#20120823#20120823#091755##27#7#20#5#20#5#20#4#20#3#23#7#25###Possible thunderstorm. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+200839#Lord Howe Island#NSW#20120823#20120823#115107##20#16#20#14#19#14#19#14#18#######Mostly sunny.#Rain developing.#Rain periods easing.#Chance shower.#Chance light shower.####
+061388#Maitland and Cessnock#NSW#20120823#20120823#035105##30#11#21#7#20#6#21#5#21#5#24#8#27###Showers/storms developing. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+069147#Merimbula#NSW#20120823#20120823#035105##22#6#18#5#18#5#17#4#17#4#20#6#18###Chance shower.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.#Partly cloudy.#Possible shower.##
+053048#Moree#NSW#20120823#20120823#035105##28#8#20#4#20#4#21#3#20#3#24#9#27###Rain and chance of a storm.#Sunny.#Sunny.#Mostly sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+062021#Mudgee#NSW#20120823#20120823#035105##23#1#16#0#16#-1#16#-2#17#-2#20#3#23###Rain and chance of a storm.#Sunny.#Mostly sunny.#Sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+054038#Narrabri#NSW#20120823#20120823#035105##27#7#20#4#20#4#20#2#20#3#23#8#26###Rain and chance of a storm.#Sunny.#Sunny.#Mostly sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+061390#Newcastle#NSW#20120823#20120823#035105##27#13#20#10#19#10#20#9#19#9#22#11#25###Showers/storms developing. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+200288#Norfolk Island#NSW#20120823#20120823#115841##18#13#18#14#19#14#20#14#19#######Partly cloudy.#Chance of a shower.#Partly cloudy.#A shower or two.#A shower or two.####
+068076#Nowra#NSW#20120823#20120823#035105##25#8#17#7#18#6#18#5#19#6#22#9#24###Showers developing. Windy.#Mostly sunny.#Sunny.#Mostly sunny.#Mostly sunny.#Partly cloudy.#Partly cloudy.##
+063303#Orange#NSW#20120823#20120823#035105##16#2#10#2#9#1#10#0#11#1#14#5#16###Rain at times, chance storm. Windy.#Partly cloudy.#Partly cloudy.#Mostly sunny.#Mostly sunny.#Mostly sunny.#Partly cloudy.##
+065026#Parkes#NSW#20120823#20120823#035105##21#2#15#1#15#0#16#-1#16#2#20#5#21###Rain at times. Chance storm.#Partly cloudy.#Partly cloudy.#Mostly sunny.#Mostly sunny.#Mostly sunny.#Partly cloudy.##
+066124#Parramatta#NSW#20120823#20120823#091755##27#10#20#8#19#7#20#6#20#5#23#10#25###Possible thunderstorm. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+067113#Penrith#NSW#20120823#20120823#091755##27#9#20#7#20#6#20#5#21#5#24#9#26###Possible thunderstorm. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+071072#Perisher Valley#NSW#20120823#20120823#035105##6#-4#0#-4#1#-4#1#-5#3#-4#6#-1#7###Rain. Late snow.#A few snow showers. Windy.#Snow showers. Very windy.#Snow shower or two. Windy.#Partly cloudy.#Partly cloudy.#Possible shower.##
+060026#Port Macquarie#NSW#20120823#20120823#035105##25#11#22#7#20#7#21#6#19#6#21#8#22###Possible late shower.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+067105#Richmond#NSW#20120823#20120823#091755##27#7#20#5#20#4#21#2#21#3#24#7#26###Possible thunderstorm. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+061069#Scone#NSW#20120823#20120823#035105##28#8#20#5#19#4#19#3#19#4#23#7#26###Rain and chance of a storm.#Sunny.#Sunny.#Mostly sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+061397#Singleton#NSW#20120823#20120823#035105##30#9#21#5#20#4#21#3#21#4#24#7#27###Showers/storms developing. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+063077#Springwood#NSW#20120823#20120823#035105##25#10#18#8#18#7#18#6#19#6#22#10#24###A little rain. Windy.#Sunny.#Mostly sunny.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+066062#Sydney#NSW#20120823#20120823#091755##27#11#20#10#20#9#20#8#20#8#23#11#24###Possible thunderstorm. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+055054#Tamworth#NSW#20120823#20120823#035105##27#6#19#2#19#1#19#0#19#0#22#4#25###Rain at times. Chance of a storm.#Sunny.#Sunny.#Mostly sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+060141#Taree#NSW#20120823#20120823#035105##28#12#22#8#21#7#21#7#20#6#23#9#25###Chance of a storm developing.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+066059#Terrey Hills#NSW#20120823#20120823#091755##25#11#18#9#18#8#18#7#18#7#21#10#23###Possible thunderstorm. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+061074#The Entrance#NSW#20120823#20120823#035105##25#12#19#10#18#10#19#9#18#9#21#12#23###Showers/storms developing. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+071032#Thredbo#NSW#20120823#20120823#035105##2#-5#-4#-5#-3#-5#-2#-6#0#-4#2#-2#4###Rain. Late snow. Windy.#A few snow showers. Windy.#Snow showers. Very windy.#A few snow showers. Windy.#Partly cloudy.#Partly cloudy.#Possible shower.##
+046037#Tibooburra#NSW#20120823#20120823#035105##23#7#21#6#21#8#23#5#23#10#30#13#28###A little morning rain.#Sunny.#Mostly sunny.#Partly cloudy.#Sunny.#Mostly sunny.#Possible shower.##
+061322#Toronto#NSW#20120823#20120823#035105##29#10#22#7#21#6#22#5#21#5#24#8#26###Showers/storms developing. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+070339#Tuggeranong#NSW#20120823#20120823#091755##16#0#11#1#12#1#12#-1#14#1#17#3#18###Rain at times.#Possible shower clearing.#Partly cloudy.#Partly cloudy.#Partly cloudy.#Partly cloudy.#Partly cloudy.##
+058056#Tweed Heads#NSW#20120823#20120823#035105##24#15#24#12#22#11#22#11#21#11#22#12#23###Sunny day. Possible late shower.#Possible morning shower.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Partly cloudy.##
+072150#Wagga Wagga#NSW#20120823#20120823#035105##16#3#13#3#13#4#14#1#15#3#18#6#19###Rain and chance of a storm.#Shower or two clearing.#Shower or two.#Shower or two, clearing.#Partly cloudy.#Partly cloudy.#Possible shower.##
+561112#Wallsend#NSW#20120823#20120823#035105##29#10#21#7#21#6#22#6#21#6#24#8#26###Showers/storms developing. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Mostly sunny.#Mostly sunny.##
+068228#Wollongong#NSW#20120823#20120823#035105##24#12#18#11#18#11#18#10#18#10#21#13#22###Shower or two developing. Windy.#Sunny.#Sunny.#Sunny.#Sunny.#Partly cloudy.#Partly cloudy.##
+070091#Yass#NSW#20120823#20120823#035105##16#3#11#4#12#3#12#2#13#2#17#6#17###Rain at times. Chance storm.#Shower or two clearing.#Partly cloudy.#Possible shower.#Partly cloudy.#Partly cloudy.#Partly cloudy.##
+073138#Young#NSW#20120823#20120823#035105##17#0#13#1#13#0#13#-2#14#0#18#4#19###Rain. Chance storm. Windy.#Shower or two clearing.#Possible shower.#Possible shower.#Partly cloudy.#Possible shower.#Partly cloudy.##

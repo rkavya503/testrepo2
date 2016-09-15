@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<project name="test-data"
+         default="load.data"
+         basedir="."
+         xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+    <!-- *********************************
+         Properties
+         ********************************* -->
+    <!-- normally would use configureDir as defined in project, but
+         maven doesn't play well :( -->
+    <property name="configureDir" value="${basedir}/.." />
+    <property name="lib.dir" value="${configureDir}/lib" />
+    <import file="${configureDir}/common.xml" />
+    <import file="${configureDir}/db/build.xml" />
+
+    <!-- *********************************
+         Properties
+         ********************************* -->
+    <property name="run.sql.cmd" value="${mysqlBin}mysql" />
+    <property name="data.accounts" value="accounts.sql" />
+    <property name="data.pss2" value="pss2.sql" />
+    <property name="testDataTargetDir"
+              value="${configureDir}/target/test-data" />
+	<property name="drwebsiteTargetDir"
+              value="${configureDir}/target/test-data/drwebsite" />
+	<property name="drwebsiteBaselineDir"
+              value="${configureDir}/target/baseline/drwebsite" />
+    <if>
+        <or>
+            <equals arg1="${mysqlPassword}" arg2="" />
+            <not>
+                <isset property="${mysqlPassword}" />
+            </not>
+        </or>
+        <then>
+            <property name="mysqlPasswordArg" value="" />
+        </then>
+        <else>
+            <property name="mysqlPasswordArg"
+                      value="--password=${mysqlPassword}" />
+        </else>
+    </if>
+
+    <!-- *********************************
+         MacroDefs
+         ********************************* -->
+    <!-- Artifact from nexus. Repository Akuacom -->
+    <!-- Version is the drms version the database is at -->
+    <!-- Classifier is in this format: "utility"-"drms version of origional data"-"Date snapshot data taken from production machine" -->
+    <macrodef name="getTestData">
+        <attribute name="groupId" />
+        <attribute name="artifactId" />
+        <attribute name="classifier" />
+        <attribute name="version" />
+        <attribute name="type" default="zip" />
+        <attribute name="repository" default="akuacom.nexus" />
+        <sequential>
+            <delete dir="${testDataTargetDir}" />
+            <artifact:dependencies pathId="@{artifactId}">
+                <dependency groupId="@{groupId}"
+                            artifactId="@{artifactId}"
+                            classifier="@{classifier}"
+                            version="@{version}"
+                            type="@{type}" />
+                <remoteRepository refid="@{repository}" />
+            </artifact:dependencies>
+
+            <unzip src="${@{groupId}:@{artifactId}:@{type}:@{classifier}}"
+                   dest="${testDataTargetDir}" />
+        </sequential>
+    </macrodef>
+	 <macrodef name="getBaselineData">
+        <attribute name="groupId" />
+        <attribute name="artifactId" />
+        <attribute name="classifier" />
+        <attribute name="version" />
+        <attribute name="type" default="zip" />
+        <attribute name="repository" default="akuacom.nexus" />
+        <sequential>
+            <delete dir="${drwebsiteBaselineDir}" />
+            <artifact:dependencies pathId="@{artifactId}">
+                <dependency groupId="@{groupId}"
+                            artifactId="@{artifactId}"
+                            classifier="@{classifier}"
+                            version="@{version}"
+                            type="@{type}" />
+                <remoteRepository refid="@{repository}" />
+            </artifact:dependencies>
+
+            <unzip src="${@{groupId}:@{artifactId}:@{type}:@{classifier}}"
+                   dest="${drwebsiteBaselineDir}" />
+        </sequential>
+    </macrodef>
+
+    <!-- *********************************
+         Targets
+         ********************************* -->
+    <target name="load.data" description="Load default test data">
+        <fail>load.data is depreciated, use target db:load:testData. run ant -p for more information</fail>
+    </target>
+
+    <target name="db:load:testData"
+            description="Load default test data"
+            depends="db:load:testData:sce" />
+
+    <target name="db:load:testData:sce"
+            description="Load a copy of Production Data into Database">
+
+        <getTestData groupId="com.akuacom.drms.system.configure"
+                     artifactId="test-data"
+                     classifier="sce-7.15.6.3-20130531-1"
+                     version="7.16.2.0" />
+
+        <property name="utilityToLoad" value="sce" />
+
+        <antcall target="db:load:testData:commonTasks" />
+    </target>
+
+    <target name="db:load:testData:pge"
+            description="Load a copy of Production Data into Database">
+
+        <getTestData groupId="com.akuacom.drms.system.configure"
+                     artifactId="test-data"
+                     classifier="pge-7.5.6.6-20130129-1"
+                     version="7.13.4.1" />
+
+        <property name="utilityToLoad" value="pge" />
+
+        <antcall target="db:load:testData:commonTasks" />
+    </target>
+	
+	<target name="db:get:drwebsite:zipCodeData"
+            description="Loads zipcode data from nexus ">
+	
+		
+        <getBaselineData groupId="com.akuacom.drms.system.configure"
+                     artifactId="drwebsite-zipcode-data"
+                     classifier="sce-7.5.6.4-20120531-1"
+                     version="7.5.0.0" />
+					 
+		<antcall target="db:load:drwebsite:zipCodeData" />
+	 </target>
+	 
+	<target name="db:get:drwebsite:kml"
+            description="Load a kml default data">
+			
+		 <getTestData groupId="com.akuacom.drms.system.configure"
+                     artifactId="import_location_kml"
+                     classifier="sce-7.5.6.4-20120531-1"
+                     version="7.5.0.0" />
+					 
+		 <antcall target="db:loadKMLData" />
+		
+    </target>
+
+    <target name="db:load:testData:fl"
+            description="Load a copy of Production Data into Database">
+
+        <getTestData groupId="com.akuacom.drms.system.configure"
+                     artifactId="test-data"
+                     classifier="FL-6.6.1.0-20110509"
+                     version="6.8.0.0" />
+
+        <property name="utilityToLoad" value="fl" />
+
+        <antcall target="db:load:testData:commonTasks" />
+    </target>
+	
+	<target name="db:load:singleDatabase">
+	
+	</target>
+
+    <target name="db:load:testData:commonTasks">
+        <antcall target="db:drop" />
+        <antcall target="db:create" />
+        <antcall target="db:load:testData:fromTarget" />
+        <antcall target="db:update" />
+        <antcall target="db:setAdminPass" />
+        <antcall target="db:load:testData:postLoadScript" />
+    </target>
+
+    <target name="db:load:testData:fromTarget">
+        <echo>Loading test data</echo>
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     file="${testDataTargetDir}"
+                                     antcall.target="db:load:fromDump:singleDatabase" />
+            </sequential>
+        </for>
+    </target>
+
+    <target name="db:setAdminPass"
+            description="set the admin pass to admin/Test_1234">
+        <antcallWithDbParams db="accounts"
+                             file="${configureDir}/db/scripts/set_test_user_accounts.sql"
+                             antcall.target="db:load:sqlFile" />
+    </target>
+
+    <target name="db:load:testData:postLoadScript">
+        <antcallWithDbParams db="pss2"
+                             file="${configureDir}/db/scripts/load-data-post-load-script.sql"
+                             antcall.target="db:load:sqlFile" />
+    </target>
+	
+	<target name="db:load:drwebsite:zipCodeData"
+            description="Loads the default drwebsite baseline data for sce ">
+        <antcallWithDbParams db="drwebsite"
+                             file="${configureDir}/target/baseline/drwebsite/drwebsite-zipcode-data.sql"
+                             antcall.target="db:load:sqlFile" />
+    </target>
+	
+	<target name="db:loadKMLData"
+            description="Loads the default KML data for SCE drwebsite ">
+        <antcallWithDbParams db="drwebsite"
+                             file="${configureDir}/target/test-data/import_location_kml.sql"
+                             antcall.target="db:load:sqlFile" />
+    </target>
+
+</project>

@@ -1,0 +1,3597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://www.openadr.org/DRAS/ParticipantOperator/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    name="ParticipantOperator"
+    targetNamespace="http://www.openadr.org/DRAS/ParticipantOperator/"
+    xmlns:xsd1="http://www.openadr.org/DRAS/ParticipantAccount" xmlns:xsd2="http://www.openadr.org/DRAS/DRASClient"
+    xmlns:xsd3="http://www.openadr.org/DRAS/UtilityProgram" xmlns:xsd4="http://www.openadr.org/DRAS/ProgramConstraint"
+    xmlns:xsd5="http://www.openadr.org/DRAS/EventInfo" xmlns:xsd6="http://www.openadr.org/DRAS/ResponseSchedule"
+    xmlns:xsd7="http://www.openadr.org/DRAS/OptOutState" xmlns:xsd8="http://www.openadr.org/DRAS/Feedback"
+    xmlns:xsd9="http://www.openadr.org/DRAS/Bid" xmlns:xsd10="http://www.openadr.org/DRAS/Logs"
+    xmlns:xsd11="http://www.openadr.org/DRAS/EventState" xmlns:xsd12="http://www.openadr.org/DRAS/UtilityDREvent">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                targetNamespace="http://www.openadr.org/DRAS/ParticipantOperator/">
+            <xsd:import namespace="http://www.openadr.org/DRAS/ParticipantAccount"
+                schemaLocation="ParticipantAccount.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/DRASClient"
+                schemaLocation="DRASClient.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/UtilityProgram"
+                schemaLocation="UtilityProgram.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/ProgramConstraint"
+                schemaLocation="ProgramConstraint.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/EventInfo"
+                schemaLocation="EventInfo.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/ResponseSchedule"
+                schemaLocation="ResponseSchedule.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/OptOutState"
+                schemaLocation="OptOutState.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/Feedback"
+                schemaLocation="FeedBack.xsd">
+            </xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/Bid" schemaLocation="Bid.xsd"></xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/Logs" schemaLocation="Logs.xsd"></xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/EventState"
+				schemaLocation="EventState.xsd">
+			</xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/UtilityDREvent"
+				schemaLocation="UtilityDREvent.xsd">
+			</xsd:import>
+            
+            <xsd:element name="GetParticipantAccounts" type="tns:GetParticipantAccounts"/>
+			<xsd:element name="GetParticipantAccountsResponse" type="tns:GetParticipantAccountsResponse"/>
+            <xsd:complexType name="GetParticipantAccounts">
+                <xsd:sequence>
+                    <xsd:element name="participantIDs" minOccurs="0" nillable="true" type="xsd1:ListOfParticipantAccountIDs">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of Participant Account ID's to fetch. Note
+                                that if the role of the user accessing this method is a
+                                Participant Manager then the user credentials of the
+                                Participant Manager must match the user credentials on
+                                the Participant Accounts that are being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantGroup" minOccurs="0" nillable="true" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the identifier of a participant group and will
+                                specify that all Participant Accounts that are members of
+                                that group are to be returned. Note that if the role of
+                                the user accessing this method is a Participant Manager
+                                then the user credentials of the Participant Manager
+                                must match the user credentials on the Participant
+                                Accounts that are being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetParticipantAccountsResponse">
+				<xsd:sequence>
+					<xsd:element name="participantAccounts" minOccurs="0" nillable="true" type="xsd1:ListOfParticipantAccounts">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of ParticipantAccount objects matching the query.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="ModifyParticipantAccounts" type="tns:ModifyParticipantAccounts"/>
+			<xsd:element name="ModifyParticipantAccountsResponse" type="tns:ModifyParticipantAccountsResponse"/>
+            <xsd:complexType name="ModifyParticipantAccounts">
+                <xsd:sequence>
+                    <xsd:element name="participantIDs" type="xsd1:ListOfParticipantAccountIDs">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of Participant Account ID's to fetch.
+
+                                For security reasons if the role of the user accessing
+                                this method is a Participant Manager then the user
+                                credentials of the Participant Manager must match the
+                                user credentials on the Participant Accounts that are
+                                being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantGroup" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the identifier of a participant group and will
+                                specify that all Participant Accounts that are members of
+                                that group are to be returned. Note that if the role of
+                                the user accessing this method is a Participant Manager
+                                then the user credentials of the Participant Manager
+                                must match the user credentials on the Participant
+                                Accounts that are being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantAccount" type="xsd1:ParticipantAccount">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the ParticipantAccount object that is used to
+                                modify existing fields. Fields which are not specified
+                                will not be modified. Also note that certain fields may
+                                not be modified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ModifyParticipantAccountsResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="CreateDRASClient" type="tns:CreateDRASClient"/>
+			<xsd:element name="CreateDRASClientResponse" type="tns:CreateDRASClientResponse"/>
+            <xsd:complexType name="CreateDRASClient">
+                <xsd:sequence>
+                    <xsd:element name="DRASClient" type="xsd2:DRASClient">               
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the DRASClient object that is being created.
+                                Note that the ParticipantAccount ID that is specified in
+                                this object must match a ParticipantAccount object that
+                                the user accessing this method has permission to access.
+                                That mean that if the security role of the user
+                                accessing this method is a Participant Manager then his
+                                user credentials must match the user credentials of
+                                the ParticipantAccount that the DRASClient is associated
+                                with.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="CreateDRASClientResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">                
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="ModifyDRASClient" type="tns:ModifyDRASClient"/>
+			<xsd:element name="ModifyDRASClientResponse" type="tns:ModifyDRASClientResponse"/>
+            <xsd:complexType name="ModifyDRASClient">
+                <xsd:sequence>
+                    <xsd:element name="DRASClient" type="xsd2:DRASClient">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the DRASClient object to modify. Note that
+                                fields that are not specified are not modified in the
+                                exiting DRASClient object.
+
+                                For security purposes the ParticipantAccount ID that is
+                                specified in the DRASClient object must match a
+                                ParticipantAccount object that the user accessing this
+                                method has permission to access. That mean that if the
+                                security role of the user accessing this method is a
+                                Participant Manager then his user credentials must
+                                match the user credentials of the ParticipantAccount
+                                that the DRASClient is associated with.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="ModifyDRASClientResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">              
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="DeleteDRASClient" type="tns:DeleteDRASClient"/>
+			<xsd:element name="DeleteDRASClientResponse" type="tns:DeleteDRASClientResponse"/>
+            <xsd:complexType name="DeleteDRASClient">
+                <xsd:sequence>
+                    <xsd:element name="DRASClientID" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the identifier of the DRAS Client to delete. For
+                            security purposes the ParticipantAccount ID that is
+                            specified in the DRASClient object must match a
+                            ParticipantAccount object that the user accessing this
+                            method has permission to access. That mean that if the
+                            security role of the user accessing this method is a
+                            Participant Manager then his user credentials must
+                            match the user credentials of the ParticipantAccount
+                            that the DRASClient is associated with.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DeleteDRASClientResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="GetDRASClientInfo" type="tns:GetDRASClientInfo"/>
+			<xsd:element name="GetDRASClientInfoResponse" type="tns:GetDRASClientInfoResponse"/>
+            <xsd:complexType name="GetDRASClientInfo">
+                <xsd:sequence>
+                    <xsd:element name="DRASClientIDs" minOccurs="0" nillable="true" type="xsd3:ListOfIDs">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the identifesr of the DRASClient objects that
+                                are being accessed.
+
+                                For security purposes the ParticipantAccount ID that is
+                                specified in the DRASClient object must match a
+                                ParticipantAccount object that the user accessing this
+                                method has permission to access. That mean that if the
+                                security role of the user accessing this method is a
+                                Participant Manager then his user credentials must
+                                match the user credentials of the ParticipantAccount
+                                that the DRASClient is associated with.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantIDs" minOccurs="0" nillable="true" type="xsd1:ListOfParticipantAccountIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of identifers of the Participant account
+                                IDs. For each ParticipantAccount specified all the
+                                DRASClient objects associated with that account are
+                                returned.
+
+                                For security purposes the ParticipantAccount ID that is
+                                passed in or specified in the DRASClient object must
+                                match a ParticipantAccount object that the user accessing
+                                this method has permission to access. That mean that if
+                                the security role of the user accessing this method is a
+                                Participant Manager then his user credentials must
+                                match the user credentials of the ParticipantAccount
+                                that the DRASClient is associated with.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantGroup" minOccurs="0" nillable="true" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is an optional specification of a participnt group
+                                whose DRASClient objects should be returned.
+
+                                If the security role of the user accessing this method
+                                is a Participant Manager then his user credentials must
+                                match the user credentials of the ParticipantAccounts
+                                that belong to the participant Group that is specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetDRASClientInfoResponse">
+				<xsd:sequence>
+					<xsd:element name="DRASClients" minOccurs="0" nillable="true" type="xsd2:ListOfDRASClients">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                List of DRAS Clients satisfying the request parameters
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="GetParticipantProgramConstraints" type="tns:GetParticipantProgramConstraints"/>
+			<xsd:element name="GetParticipantProgramConstraintsResponse" type="tns:GetParticipantProgramConstraintsResponse"/>
+            <xsd:complexType name="GetParticipantProgramConstraints">
+                <xsd:sequence>
+                    <xsd:element name="participantIDs" minOccurs="0" nillable="true" type="xsd1:ListOfParticipantAccountIDs">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                These are the identifiers of the Participant whose
+                                Program constraints are being requested.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programName" minOccurs="0" nillable="true" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the name of the Program which is associated with
+                                the Programonstraints. If unspecified then it returns
+                                all the program constraints associated with all
+                                programs.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantGroup" minOccurs="0" nillable="true" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is an optional specification of a participnt group
+                                whose ProgramConstraint objects should be returned.
+
+                                If the security role of the user accessing this method
+                                is a Participant Manager then his user credentials must
+                                match the user credentials of the ParticipantAccoun
+                                that belong to the participant Group that is specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetParticipantProgramConstraintsResponse">
+				<xsd:sequence>
+					<xsd:element name="programConstraints" minOccurs="0" nillable="true" type="xsd4:ListOfProgramConstraints">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                The ProgramConstaint object associated with the
+                                Participant and Program speficied.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+            <xsd:element name="SetParticipantProgramConstraints" type="tns:SetParticipantProgramConstraints"/>
+			<xsd:element name="SetParticipantProgramConstraintsResponse" type="tns:SetParticipantProgramConstraintsResponse"/>
+            <xsd:complexType name="SetParticipantProgramConstraints">
+                <xsd:sequence>
+                    <xsd:element name="participantIDs" type="xsd1:ListOfParticipantAccountIDs">                
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list or ProgramAccount identifers that the
+                                ProgramConstraints should be set for.
+
+                                For security reasons if the role of the user accessing
+                                this method is a Participant Manager then the user
+                                credentials of the Participant Manager must match the
+                                user credentials on the Participant Accounts that are
+                                being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantGroup" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is an optional specification of a participant group
+                                that theProgramConstraints should be set for.
+
+                                If the security role of the user accessing this method
+                                is a Participant Manager then his user credentials must
+                                match the user credentials of the ParticipantAccounts
+                                that belong to the participant Group that is specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programConstraint" type="xsd4:ProgramConstraint">            
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the ProgramConstraint object that is being set
+                            for the ParticipantAccounts.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SetParticipantProgramConstraintsResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">    
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+            <xsd:element name="DeleteParticipantProgramConstraints" type="tns:DeleteParticipantProgramConstraints"/>
+			<xsd:element name="DeleteParticipantProgramConstraintsResponse" type="tns:DeleteParticipantProgramConstraintsResponse"/>
+            <xsd:complexType name="DeleteParticipantProgramConstraints">
+                <xsd:sequence>
+                    <xsd:element name="participantIDs" type="xsd1:ListOfParticipantAccountIDs">           
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the ParticipantAccount ID's for which to delete
+                the ProgramConstraints.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantGroup" minOccurs="0" nillable="true" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional specification of a participant group
+                that theProgramConstraints should be deletedfor.
+
+                If the security role of the user accessing this method
+                is a Participant Manager then his user credentials must
+                match the user credentials of the ParticipantAccounts
+                that belong to the participant Group that is specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programName" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the name of the Program for which the Program
+                Constraints should be deleted for.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DeleteParticipantProgramConstraintsResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">              
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="GetDRASClientProgramConstraints" type="tns:GetDRASClientProgramConstraints"/>
+			<xsd:element name="GetDRASClientProgramConstraintsResponse" type="tns:GetDRASClientProgramConstraintsResponse"/>
+            <xsd:complexType name="GetDRASClientProgramConstraints">
+                <xsd:sequence>
+                    <xsd:element name="drasClientIDs" type="xsd3:ListOfIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is a list of DRASClient identifiers for which the
+                program constraints should be fetched.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the DRASClient objects being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantIDs" type="xsd1:ListOfParticipantAccountIDs">                
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is a list of ParticipantAccounts whose DRASClient
+                ProgramConstraints are to be fetched.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantGroup" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional specification of a participant group
+                that the DRAClient ProgramConstraints should be fetched.
+
+                If the security role of the user accessing this method
+                is a Participant Manager then his user credentials must
+                match the user credentials of the ParticipantAccounts
+                that belong to the participant Group that is specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetDRASClientProgramConstraintsResponse">
+				<xsd:sequence>
+					<xsd:element name="programConstraints" minOccurs="0" nillable="true"
+            type="xsd4:ListOfProgramConstraints">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of DRASClient ProgramConstraints that
+                satisfy the search critera.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="SetDRASClientProgramConstraints" type="tns:SetDRASClientProgramConstraints"/>
+			<xsd:element name="SetDRASClientProgramConstraintsResponse" type="tns:SetDRASClientProgramConstraintsResponse"/>
+            <xsd:complexType name="SetDRASClientProgramConstraints">
+                <xsd:sequence>
+                    <xsd:element name="drasClientIDs" type="xsd3:ListOfIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is a list of DRASClient identifiers for which the
+                program constraints should be set.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the DRASClient objects being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantIDs"
+            type="xsd1:ListOfParticipantAccountIDs">        
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is a list of ParticipantAccounts whose DRASClient
+                ProgramConstraints are to be set.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantGroup" minOccurs="0" nillable="true" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional specification of a participant group
+                that the DRAClient ProgramConstraints should be set.
+
+                If the security role of the user accessing this method
+                is a Participant Manager then his user credentials must
+                match the user credentials of the ParticipantAccounts
+                that belong to the participant Group that is specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programConstraint"
+            type="xsd4:ProgramConstraint">
+                        <xsd:annotation>
+                            <xsd:documentation>
+
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SetDRASClientProgramConstraintsResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">  
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="DeleteDRASClientProgramConstraints" type="tns:DeleteDRASClientProgramConstraints"/>
+			<xsd:element name="DeleteDRASClientProgramConstraintsResponse" type="tns:DeleteDRASClientProgramConstraintsResponse"/>
+            <xsd:complexType name="DeleteDRASClientProgramConstraints">
+                <xsd:sequence>
+                    <xsd:element name="drasClientIDs" type="xsd3:ListOfIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is a list of DRASClient identifiers for which the
+                program constraints should be delete.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the DRASClient objects being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantIDs"
+            type="xsd1:ListOfParticipantAccountIDs">
+
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is a list of ParticipantAccounts whose DRASClient
+                ProgramConstraints are to be deleted.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantGroup" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional specification of a participant group
+                that the DRAClient ProgramConstraints should be set.
+
+                If the security role of the user accessing this method
+                is a Participant Manager then his user credentials must
+                match the user credentials of the ParticipantAccounts
+                that belong to the participant Group that is specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programName" type="xsd:string">
+             
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the name of the Program for which the
+                ProgramConstraints are being deleted.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DeleteDRASClientProgramConstraintsResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+            <xsd:element name="GetProgramInformation" type="tns:GetProgramInformation"/>
+			<xsd:element name="GetProgramInformationResponse" type="tns:GetProgramInformationResponse"/>
+            <xsd:complexType name="GetProgramInformation">
+                <xsd:sequence>
+                    <xsd:element name="programName" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the name of the Program for which the
+                information is being requested.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="drasClientID" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the identifier of the DRASClient for which the
+                information is being requested.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the DRASClient objects being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetProgramInformationResponse">
+				<xsd:sequence>
+					<xsd:element name="programConstraints"  minOccurs="0" 
+            type="xsd4:ProgramConstraint">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Consolidated Program Constraints for the Program and
+                DRAS Client specified. This is a consolidation of all
+                the ProgramConstraints at the Program,
+                ParticipantAccount, and DRASClient level.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="eventInfo" minOccurs="0" nillable="true" type="xsd5:ListOfEventInfoType">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of all the EventInfoTypes that may be
+                assiciated with the Program. This is used to create the
+                table of rules necessary to translate the EventInfo into
+                the operation states of the ResponseSchedule of the DRAS
+                Client.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="CreateResponseSchedule" type="tns:CreateResponseSchedule"/>
+			<xsd:element name="CreateResponseScheduleResponse" type="tns:CreateResponseScheduleResponse"/>
+            <xsd:complexType name="CreateResponseSchedule">
+                <xsd:sequence>
+                    <xsd:element name="responseSchedule"
+            type="xsd6:ResponseSchedule">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This a ResponseSchedule object that is being created.
+                Note that the ResponseSchedule object contains
+                identifiers for the Program and DRASClient that it
+                corresponds to.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the DRASClient object specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="CreateResponseScheduleResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="DeleteResponseSchedule" type="tns:DeleteResponseSchedule"/>
+			<xsd:element name="DeleteResponseScheduleResponse" type="tns:DeleteResponseScheduleResponse"/>
+            <xsd:complexType name="DeleteResponseSchedule">
+                <xsd:sequence>
+                    <xsd:element name="programName" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the name of the Program for which the
+                ResponseSchedule was defined.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="drasClientID" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the identifier of the DRASClient for which the
+                ResponseSchedule was defined.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the DRASClient objects being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DeleteResponseScheduleResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+              
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="GetResponseSchedule" type="tns:GetResponseSchedule"/>
+			<xsd:element name="GetResponseScheduleResponse" type="tns:GetResponseScheduleResponse"/>
+            <xsd:complexType name="GetResponseSchedule">
+                <xsd:sequence>
+                    <xsd:element name="programName" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the name of the Program for which the
+                ResponseSchedule was defined.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="drasClientID" type="xsd:string">    
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the identifier of the DRASClient for which the
+                ResponseSchedule was defined.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the DRASClient objects being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetResponseScheduleResponse">
+				<xsd:sequence>
+					<xsd:element name="responseSchedule" minOccurs="0"
+            type="xsd6:ResponseSchedule">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the ResponseSchedule corresponding to the
+                Program and DRASClient specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="SetDREventFeedback" type="tns:SetDREventFeedback"/>
+			<xsd:element name="SetDREventFeedbackResponse" type="tns:SetDREventFeedbackResponse"/>
+            <xsd:complexType name="SetDREventFeedback">
+                <xsd:sequence>
+                    <xsd:element name="feedBack" type="xsd8:FeedBack">  
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the FeedBack object that is being set
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the Feedback object.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SetDREventFeedbackResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="SubmitStandingBid" type="tns:SubmitStandingBid"/>
+			<xsd:element name="SubmitStandingBidResponse" type="tns:SubmitStandingBidResponse"/>
+            <xsd:complexType name="SubmitStandingBid">
+                <xsd:sequence>
+                    <xsd:element name="bid" type="xsd9:Bid">
+               
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the standing bid for the Program specified
+                within the Bid schema.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccount that is
+                specified in the bid.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SubmitStandingBidResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+            
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="GetStandingBid" type="tns:GetStandingBid"/>
+			<xsd:element name="GetStandingBidResponse" type="tns:GetStandingBidResponse"/>
+            <xsd:complexType name="GetStandingBid">
+                <xsd:sequence>
+                    <xsd:element name="participantID" type="xsd:string">
+               
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the identifer of the ParticipantAccount to fetch
+                the standing bid for.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccount that is
+                specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programName" type="xsd:string">
+                
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the identifier of the Program to fetch the
+                standing bid for.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetStandingBidResponse">
+				<xsd:sequence>
+					<xsd:element name="bid" minOccurs="0" type="xsd9:Bid">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the standing bid corresponding to the Program
+                and ParticipantAccount specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="DeleteStandingBid" type="tns:DeleteStandingBid"/>
+			<xsd:element name="DeleteStandingBidResponse" type="tns:DeleteStandingBidResponse"/>
+            <xsd:complexType name="DeleteStandingBid">
+                <xsd:sequence>
+                    <xsd:element name="participantID" type="xsd:string">
+                
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the identifer of the ParticipantAccount to fetch
+                the standing bid for.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccount that is
+                specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programName" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the identifier of the Program to fetch the
+                standing bid for.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DeleteStandingBidResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="SubmitBid" type="tns:SubmitBid"/>
+			<xsd:element name="SubmitBidResponse" type="tns:SubmitBidResponse"/>
+            <xsd:complexType name="SubmitBid">
+                <xsd:sequence>
+                    <xsd:element name="bid" type="xsd9:Bid">
+ 
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the standing bid for the DR Event specified
+                within the Bid schema.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccount that is
+                specified in the bid.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SubmitBidResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="GetBid" type="tns:GetBid"/>
+			<xsd:element name="GetBidResponse" type="tns:GetBidResponse"/>
+            <xsd:complexType name="GetBid">
+                <xsd:sequence>
+                    <xsd:element name="eventID" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the idnetifier of the DR Event that the bid is
+                being fetched for.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantID" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the identifer of the ParticipantAccount to fetch
+                the standing bid for.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccount that is
+                specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetBidResponse">
+				<xsd:sequence>
+					<xsd:element name="bid" minOccurs="0" type="xsd9:Bid">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the Bid object for the event ID and
+                ParticipantAccount specified.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="CreateOptOutState" type="tns:CreateOptOutState"/>
+			<xsd:element name="CreateOptOutStateResponse" type="tns:CreateOptOutStateResponse"/>
+            <xsd:complexType name="CreateOptOutState">
+                <xsd:sequence>
+                    <xsd:element name="optOutState" type="xsd7:OptOutState">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the OptOutState being created.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="CreateOptOutStateResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="DeleteOptOutState" type="tns:DeleteOptOutState"/>
+			<xsd:element name="DeleteOptOutStateResponse" type="tns:DeleteOptOutStateResponse"/>
+            <xsd:complexType name="DeleteOptOutState">
+                <xsd:sequence>
+                    <xsd:element name="optOutStateID" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the identifier that was assigned by the DRAS
+                when the Opt-out state was created. It is the same id
+                that is returned when the Create Opt-out State function
+                is invoked.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the OptOutState being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="DeleteOptOutStateResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="GetOptOutStates" type="tns:GetOptOutStates"/>
+			<xsd:element name="GetOptOutStatesResponse" type="tns:GetOptOutStatesResponse"/>
+            <xsd:complexType name="GetOptOutStates">
+                <xsd:sequence>
+                    <xsd:element name="participantID" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional identifier that specifies the
+                Participant associated with the OptOutStates being
+                accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programName" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional identifier that specifies the
+                Program nameassociated with the OptOutStates being
+                accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="drasClientID" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional identifier that specifies the
+                DRASClient associated with the OptOutStates being
+                accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="optOutID" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional identifier that specifies a specific
+                instance of an OptOutState that was previously created.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="eventID" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional identifier that specifies a DR Event
+                associated with the OptOutStates being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetOptOutStatesResponse">
+				<xsd:sequence>
+					<xsd:element name="optOutStates" minOccurs="0" nillable="true" type="xsd7:ListOfOptOutStates">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of OptOutStates that satisfy the search
+                criteria
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="GetDRASClientCommsStatus" type="tns:GetDRASClientCommsStatus"/>
+			<xsd:element name="GetDRASClientCommsStatusResponse" type="tns:GetDRASClientCommsStatusResponse"/>
+            <xsd:complexType name="GetDRASClientCommsStatus">
+                <xsd:sequence>
+                    <xsd:element name="participants" minOccurs="0" nillable="true" type="xsd3:ParticipantList">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            List of participants to help narrow search of DRAS Client
+                comms status to be return. It can be specified using
+                Participant Account ID's, Utility Group names, or
+                locations.
+
+                If not specified then the DRAS Clients comms status of
+                all the Programs specified by the programNames
+                parametert are returned.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programNames" minOccurs="0" nillable="true" type="xsd3:ListOfProgramNames">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            List of Programs names that are used to help narrow the
+                list of DRAS Client comms status that are returned. Only
+                DRAS Clients that belong to one of the Programs in this
+                list will be returned. If this is not specified then all
+                Programs are valid.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetDRASClientCommsStatusResponse">
+				<xsd:sequence>
+					<xsd:element name="DRASClientStatus" minOccurs="0" nillable="true" type="xsd2:ListOfCommsStatus">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of the comms status for all the DRAS
+                Clients specified.
+
+                This list consists of the DRAS Client identifier along
+                with the status for that DARS Client. Valid return
+                values for the status include:
+
+                OK - All commuications
+
+                OK OFFLINE - DRAS Client is off line and not
+                communicatiing.
+
+                ERRORS - DRAS Client is still communicating, but with
+                some errors.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="GetDRASTransactions" type="tns:GetDRASTransactions"/>
+			<xsd:element name="GetDRASTransactionsResponse" type="tns:GetDRASTransactionsResponse"/>
+            <xsd:complexType name="GetDRASTransactions">
+                <xsd:sequence>
+                    <xsd:element name="userNames" type="xsd3:ListOfIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the user name associated with the transaction
+                being fetched
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="DRASClientIDs" minOccurs="0" nillable="true"  type="xsd3:ListOfIDs">
+
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional parameter that is the identifier for
+                the DRAS Client whose transactions are being retrieved.
+                In essence this provides a convenient way to fetch the
+                communications log for a DRAS Client.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantIDs" type="xsd3:ListOfIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the identifier of a ParticppantAccount that was
+                invloved with the transaction. All users including DRAS
+                Clients that are associated with that Participant are
+                used as the serach criteria.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="methodName" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            this is the name of the function that was invoked to
+                create the transaction. In essence this is the type of
+                transaction. If not specified then all transactions are
+                returned.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="timeInterval" type="xsd4:DateTimeWindow">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the date/time interval that the transactions are
+                being retrieved for.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="resultCode" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                this optional parameter allows transactions to be
+                retrieved based upon whether they were SUCCESSFUL or
+                FAILED.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetDRASTransactionsResponse">
+				<xsd:sequence>
+					<xsd:element name="transactions"  minOccurs="0" nillable="true"
+            type="xsd10:ListOfTransactionLogs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of transactions that satisfy the search
+                criteria
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="GetDRASEventStates" type="tns:GetDRASEventStates"/>
+			<xsd:element name="GetDRASEventStatesResponse" type="tns:GetDRASEventStatesResponse"/>
+            <xsd:complexType name="GetDRASEventStates">
+				<xsd:sequence>
+                    <xsd:element name="eventIDs" minOccurs="0" nillable="true" type="xsd12:ListOfEventIDs">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is an optional parameter that is the identifiers for
+                                the Events whose event states are being retrieved.
+                                In essence this provides a convenient way to fetch the
+                                event states for a list of Events.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programNames" minOccurs="0" nillable="true" type="xsd3:ListOfProgramNames">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is an optional parameter that is the names for
+                                the programs whose event states are being retrieved.
+                                In essence this provides a convenient way to fetch the
+                                event states for a list of programs.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participants" minOccurs="0" nillable="true" type="xsd3:ParticipantList">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is an optional parameter that is the identifiers for
+                                the participants whose event states are being retrieved.
+                                In essence this provides a convenient way to fetch the
+                                event states for a list of participants.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="drasClients" minOccurs="0" nillable="true" type="xsd3:ListOfIDs">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is an optional parameter that is the identifiers for
+                                the DRAS Clients whose event states are being retrieved.
+                                In essence this provides a convenient way to fetch the
+                                event states for a list of DRAS Clients.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetDRASEventStatesResponse">
+				<xsd:sequence>
+					<xsd:element name="eventStates" minOccurs="0" nillable="true" type="xsd11:ListOfEventStates">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of Event States that satisfy the search
+                                criteria.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+
+            <xsd:element name="GetDRASClientAlarms" type="tns:GetDRASClientAlarms"/>
+			<xsd:element name="GetDRASClientAlarmsResponse" type="tns:GetDRASClientAlarmsResponse"/>
+            <xsd:complexType name="GetDRASClientAlarms">
+                <xsd:sequence>
+                    <xsd:element name="DRASClientIDs" type="xsd3:ListOfIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is an optional parameter that is the identifier for
+                the DRAS Client whose transactions are being retrieved.
+                In essence this provides a convenient way to fetch the
+                communications log for a DRAS Client.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantIDs" minOccurs="0" nillable="true" type="xsd3:ListOfIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This isan optional parameter that specifies the
+                identifier of a ParticppantAccount that was associated
+                with the DRAS Client(s) that generated the Alarm. All
+                DRAS Clients associated with the specified
+                ParticipantAccount are returned.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="timeInterval" minOccurs="0" nillable="true" type="xsd4:DateTimeWindow">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the optional date/time period for which the DRAS
+                Client Alarms are returned.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetDRASClientAlarmsResponse">
+				<xsd:sequence>
+					<xsd:element name="alarms" minOccurs="0" nillable="true" type="xsd10:ListOfDRASClientAlarms">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of DRASClientAlarms that satisfy the
+                search criteria.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+            
+            <xsd:element name="GetDREventFeedback" type="tns:GetDREventFeedback"/>
+			<xsd:element name="GetDREventFeedbackResponse" type="tns:GetDREventFeedbackResponse"/>
+            <xsd:complexType name="GetDREventFeedback">
+                <xsd:sequence>
+                    <xsd:element name="DRASClientIDs" minOccurs="0" type="xsd3:ListOfIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This optonal parameter specifies that only those
+                Feedback objects associated with the DRASClient
+                identifiers in this list should be returned.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="participantIDs" minOccurs="0" nillable="true" type="xsd3:ListOfIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This optonal parameter specifies that only those
+                Feedback objects associated with the
+                ParticipantAccountidentifiers in this list should be
+                returned.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="programNames" minOccurs="0" nillable="true" type="xsd3:ListOfIDs">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This optonal parameter specifies that only those
+                Feedback objects associated with the Programidentifiers
+                in this list should be returned.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="timeInterval" minOccurs="0" nillable="true" type="xsd4:DateTimeWindow">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This optional parameter specifies that only those
+                Feedback objects that were logged within the specified
+                date/time interval should be returned.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="name" minOccurs="0" nillable="true" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This optional parameter specifies that only those
+                Feedback objects with the specified name parameter
+                should be returned.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetDREventFeedbackResponse">
+				<xsd:sequence>
+					<xsd:element name="feedback" minOccurs="0" nillable="true" type="xsd8:ListOfFeedback">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of Feedback objects that satisfy the
+                search criteria
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="SetTestMode" type="tns:SetTestMode"/>
+			<xsd:element name="SetTestModeResponse" type="tns:SetTestModeResponse"/>
+            <xsd:complexType name="SetTestMode">
+                <xsd:sequence>
+                    <xsd:element name="drasClientID" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                           This is the identifier of the DRASClient that is being
+                accessed.
+
+                If the security role of the user accessing this method
+                is a Participant Manager then his user credentials must
+                match the user credentials of the ParticipantAccounts
+                that are associated with the DRASClient being accessed.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="mode" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is aboolean flag, if set to TRUE then the DRAS
+                Client will go into test mode of operation, and if set
+                to FALSE then the DRAS Client will operate normally.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SetTestModeResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="SetTestModeState" type="tns:SetTestModeState"/>
+			<xsd:element name="SetTestModeStateResponse" type="tns:SetTestModeStateResponse"/>
+            <xsd:complexType name="SetTestModeState">
+                <xsd:sequence>
+                    <xsd:element name="drasClientID" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                           This is the identifier of the DRASClient that is being
+                accessed.
+
+                If the security role of the user accessing this method
+                is a Participant Manager then his user credentials must
+                match the user credentials of the ParticipantAccounts
+                that are associated with the DRASClient being accessedd.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="opertaionModeValue" type="xsd:string">
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                            This is the operation mode value (NORMAL, MEDIUM, HIGH,
+                SPECIAL) that the DRAS Client will be set to.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="eventStatus" type="xsd:string">
+
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the value (NONE, FAR, NEAR ACTIVE) that the event status of DRAS Client will be set to.
+                            
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SetTestModeStateResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                the string value is SUCCESS then the operation was
+                successful. If the value is not SUCCESS then this
+                signifies FAILURE and there may be additional free form
+                text which can be used to further elaborate on the
+                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="GetTestModeState" type="tns:GetTestModeState"/>
+			<xsd:element name="GetTestModeStateResponse" type="tns:GetTestModeStateResponse"/>
+            <xsd:complexType name="GetTestModeState">
+                <xsd:sequence>
+                    <xsd:element name="drasClientID" type="xsd:string">
+
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                           This is the identifier of the DRASClient that is being
+                accessed.
+
+                If the security role of the user accessing this method
+                is a Participant Manager then his user credentials must
+                match the user credentials of the ParticipantAccounts
+                that are associated with the DRASClient being accessedd.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetTestModeStateResponse">
+				<xsd:sequence>
+					<xsd:element name="GetTestModeStateResponse" type="xsd:string">
+
+
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                FAILURE if DRAS Client is not in manual mode. If this is
+                a Simple DRAS Client then the operation mode value
+                (NORMAL, MEDIUM, HIGH, SPECIAL) that the Simple
+                DRASClient is in is returned. If this is a Smart
+                DRASClient then UNKNOWN is returned.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="GetParticipantAccountsRequest">
+        <wsdl:part name="GetParticipantAccounts" element="tns:GetParticipantAccounts">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetParticipantAccountsResponse">
+        <wsdl:part name="GetParticipantAccountsResponse" element="tns:GetParticipantAccountsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ModifyParticipantAccountsRequest">
+        <wsdl:part name="ModifyParticipantAccounts" element="tns:ModifyParticipantAccounts">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ModifyParticipantAccountsResponse">
+        <wsdl:part name="ModifyParticipantAccountsResponse" element="tns:ModifyParticipantAccountsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CreateDRASClientRequest">
+        <wsdl:part name="CreateDRASClient" element="tns:CreateDRASClient">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CreateDRASClientResponse">
+        <wsdl:part name="CreateDRASClientResponse" element="tns:CreateDRASClientResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ModifyDRASClientRequest">
+        <wsdl:part name="ModifyDRASClient" element="tns:ModifyDRASClient">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ModifyDRASClientResponse">
+        <wsdl:part name="ModifyDRASClientResponse" element="tns:ModifyDRASClientResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteDRASClientRequest">
+        <wsdl:part name="DeleteDRASClient" element="tns:DeleteDRASClient">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteDRASClientResponse">
+        <wsdl:part name="DeleteDRASClientResponse" element="tns:DeleteDRASClientResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDRASClientInfoRequest">
+        <wsdl:part name="GetDRASClientInfo" element="tns:GetDRASClientInfo">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDRASClientInfoResponse">
+        <wsdl:part name="GetDRASClientInfoResponse" element="tns:GetDRASClientInfoResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetParticipantProgramConstraintsRequest">
+        <wsdl:part name="GetParticipantProgramConstraints" element="tns:GetParticipantProgramConstraints">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetParticipantProgramConstraintsResponse">
+        <wsdl:part name="GetParticipantProgramConstraintsResponse" element="tns:GetParticipantProgramConstraintsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SetParticipantProgramConstraintsRequest">
+        <wsdl:part name="SetParticipantProgramConstraints" element="tns:SetParticipantProgramConstraints">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SetParticipantProgramConstraintsResponse">
+        <wsdl:part name="SetParticipantProgramConstraintsResponse" element="tns:SetParticipantProgramConstraintsResponse">
+        </wsdl:part>
+    </wsdl:message>
+     <wsdl:message name="DeleteParticipantProgramConstraintsRequest">
+        <wsdl:part name="DeleteParticipantProgramConstraints" element="tns:DeleteParticipantProgramConstraints">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteParticipantProgramConstraintsResponse">
+        <wsdl:part name="DeleteParticipantProgramConstraintsResponse" element="tns:DeleteParticipantProgramConstraintsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDRASClientProgramConstraintsRequest">
+        <wsdl:part name="GetDRASClientProgramConstraints" element="tns:GetDRASClientProgramConstraints">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDRASClientProgramConstraintsResponse">
+        <wsdl:part name="GetDRASClientProgramConstraintsResponse" element="tns:GetDRASClientProgramConstraintsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SetDRASClientProgramConstraintsRequest">
+        <wsdl:part name="SetDRASClientProgramConstraints" element="tns:SetDRASClientProgramConstraints">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SetDRASClientProgramConstraintsResponse">
+        <wsdl:part name="SetDRASClientProgramConstraintsResponse" element="tns:SetDRASClientProgramConstraintsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteDRASClientProgramConstraintsRequest">
+        <wsdl:part name="DeleteDRASClientProgramConstraints" element="tns:DeleteDRASClientProgramConstraints">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteDRASClientProgramConstraintsResponse">
+        <wsdl:part name="DeleteDRASClientProgramConstraintsResponse" element="tns:DeleteDRASClientProgramConstraintsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetProgramInformationRequest">
+        <wsdl:part name="GetProgramInformation" element="tns:GetProgramInformation">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetProgramInformationResponse">
+        <wsdl:part name="GetProgramInformationResponse" element="tns:GetProgramInformationResponse">
+        </wsdl:part>
+    </wsdl:message>
+    
+    <wsdl:message name="CreateResponseScheduleRequest">
+        <wsdl:part name="CreateResponseSchedule" element="tns:CreateResponseSchedule">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CreateResponseScheduleResponse">
+        <wsdl:part name="CreateResponseScheduleResponse" element="tns:CreateResponseScheduleResponse">
+        </wsdl:part>
+    </wsdl:message>
+    
+    <wsdl:message name="DeleteResponseScheduleRequest">
+        <wsdl:part name="DeleteResponseSchedule" element="tns:DeleteResponseSchedule">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteResponseScheduleResponse">
+        <wsdl:part name="DeleteResponseScheduleResponse" element="tns:DeleteResponseScheduleResponse">
+        </wsdl:part>
+    </wsdl:message>
+    
+    <wsdl:message name="GetResponseScheduleRequest">
+        <wsdl:part name="GetResponseSchedule" element="tns:GetResponseSchedule">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetResponseScheduleResponse">
+        <wsdl:part name="GetResponseScheduleResponse" element="tns:GetResponseScheduleResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+     <wsdl:message name="SetDREventFeedbackRequest">
+        <wsdl:part name="SetDREventFeedback" element="tns:SetDREventFeedback">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SetDREventFeedbackResponse">
+        <wsdl:part name="SetDREventFeedbackResponse" element="tns:SetDREventFeedbackResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="SubmitStandingBidRequest">
+        <wsdl:part name="SubmitStandingBid" element="tns:SubmitStandingBid">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SubmitStandingBidResponse">
+        <wsdl:part name="SubmitStandingBidResponse" element="tns:SubmitStandingBidResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetStandingBidRequest">
+        <wsdl:part name="GetStandingBid" element="tns:GetStandingBid">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetStandingBidResponse">
+        <wsdl:part name="GetStandingBidResponse" element="tns:GetStandingBidResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteStandingBidRequest">
+        <wsdl:part name="DeleteStandingBid" element="tns:DeleteStandingBid">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteStandingBidResponse">
+        <wsdl:part name="DeleteStandingBidResponse" element="tns:DeleteStandingBidResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="SubmitBidRequest">
+        <wsdl:part name="SubmitBid" element="tns:SubmitBid">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SubmitBidResponse">
+        <wsdl:part name="SubmitBidResponse" element="tns:SubmitBidResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetBidRequest">
+        <wsdl:part name="GetBid" element="tns:GetBid">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetBidResponse">
+        <wsdl:part name="GetBidResponse" element="tns:GetBidResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="CreateOptOutStateRequest">
+        <wsdl:part name="CreateOptOutState" element="tns:CreateOptOutState">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CreateOptOutStateResponse">
+        <wsdl:part name="CreateOptOutStateResponse" element="tns:CreateOptOutStateResponse">
+        </wsdl:part>
+    </wsdl:message>
+    
+    <wsdl:message name="DeleteOptOutStateRequest">
+        <wsdl:part name="DeleteOptOutState" element="tns:DeleteOptOutState">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeleteOptOutStateResponse">
+        <wsdl:part name="DeleteOptOutStateResponse" element="tns:DeleteOptOutStateResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetOptOutStatesRequest">
+        <wsdl:part name="GetOptOutStates" element="tns:GetOptOutStates">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetOptOutStatesResponse">
+        <wsdl:part name="GetOptOutStatesResponse" element="tns:GetOptOutStatesResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetDRASClientCommsStatusRequest">
+        <wsdl:part name="GetDRASClientCommsStatus" element="tns:GetDRASClientCommsStatus">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDRASClientCommsStatusResponse">
+        <wsdl:part name="GetDRASClientCommsStatusResponse" element="tns:GetDRASClientCommsStatusResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetDRASTransactionsRequest">
+        <wsdl:part name="GetDRASTransactions" element="tns:GetDRASTransactions">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDRASTransactionsResponse">
+        <wsdl:part name="GetDRASTransactionsResponse" element="tns:GetDRASTransactionsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDRASEventStatesRequest">
+        <wsdl:part name="GetDRASEventStates" element="tns:GetDRASEventStates"/>
+    </wsdl:message>
+    <wsdl:message name="GetDRASEventStatesResponse">
+        <wsdl:part name="GetDRASEventStatesResponse" element="tns:GetDRASEventStatesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetDRASClientAlarmsRequest">
+        <wsdl:part name="GetDRASClientAlarms" element="tns:GetDRASClientAlarms">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDRASClientAlarmsResponse">
+        <wsdl:part name="GetDRASClientAlarmsResponse" element="tns:GetDRASClientAlarmsResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetDREventFeedbackRequest">
+        <wsdl:part name="GetDREventFeedback" element="tns:GetDREventFeedback">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDREventFeedbackResponse">
+        <wsdl:part name="GetDREventFeedbackResponse" element="tns:GetDREventFeedbackResponse">
+        </wsdl:part>
+    </wsdl:message>
+    
+    <wsdl:message name="SetTestModeRequest">
+        <wsdl:part name="SetTestMode" element="tns:SetTestMode">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SetTestModeResponse">
+        <wsdl:part name="SetTestModeResponse" element="tns:SetTestModeResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+     <wsdl:message name="SetTestModeStateRequest">
+        <wsdl:part name="SetTestModeState" element="tns:SetTestModeState">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SetTestModeStateResponse">
+        <wsdl:part name="SetTestModeStateResponse" element="tns:SetTestModeStateResponse">
+        </wsdl:part>
+    </wsdl:message>
+    
+     <wsdl:message name="GetTestModeStateRequest">
+        <wsdl:part name="GetTestModeState" element="tns:GetTestModeState">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetTestModeStateResponse">
+        <wsdl:part name="GetTestModeStateResponse" element="tns:GetTestModeStateResponse">
+        </wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="ParticipantOperator">
+        <wsdl:operation name="GetParticipantAccounts">
+            <wsdl:documentation>
+                This function is used to get the Participants account
+                information. The ParticipantAccounts to fetchcan be
+                specified either as a list of ParticipantAccount
+                identifiers or as a participantGroup identifier.
+
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the return values.
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetParticipantAccountsRequest" />
+            <wsdl:output message="tns:GetParticipantAccountsResponse" />
+        </wsdl:operation>
+        <wsdl:operation name="ModifyParticipantAccounts">
+            <wsdl:documentation>
+                This function is used to modify existing Participant
+                Accounts. While certain fields of the Participant
+                Account may be viewed by a Participant Manager they may
+                not be modified. These fields include the following:
+
+                - Participant uid
+
+                - Participant name
+
+                - User name
+
+                -Program names
+
+                This method may be used to modify more than one
+                ParticipantAccount. The ParticipantAccounts to modify can
+                be specified either as a list of ParticipantAccount
+                identifiers or as a participantGroup identifier.
+
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                that are being accessed.
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:ModifyParticipantAccountsRequest"></wsdl:input>
+            <wsdl:output
+                message="tns:ModifyParticipantAccountsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateDRASClient">
+            <wsdl:documentation>
+                Description This function is used to create a DRAS
+                Client. Note that Program constraints and Response
+                schedules may be created through a separate set of
+                functions and need not be created using this function.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the DRAS Client.
+
+
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:CreateDRASClientRequest"></wsdl:input>
+            <wsdl:output message="tns:CreateDRASClientResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ModifyDRASClient">
+            <wsdl:documentation>
+                This function is used to modify an existing DRASClient
+                object.
+
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the DRAS Client.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:ModifyDRASClientRequest"></wsdl:input>
+            <wsdl:output message="tns:ModifyDRASClientResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteDRASClient">
+            <wsdl:documentation>
+                This function is used to delete an existing DRAS Client.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the DRAS Client.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:DeleteDRASClientRequest"></wsdl:input>
+            <wsdl:output message="tns:DeleteDRASClientResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDRASClientInfo">
+            <wsdl:documentation>
+
+This function is used to fetch DRAS Client
+                information associated with Participant. They may be
+                fetched by specifying either DRASClient identifiers or
+                ParticipantAccount identifiers.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the DRAS Client.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetDRASClientInfoRequest"></wsdl:input>
+            <wsdl:output message="tns:GetDRASClientInfoResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetParticipantProgramConstraints">
+            <wsdl:documentation>
+                This function is used to fetch the ProgramCconstraints
+                object associated with the Participant as a whole. The
+                specification for which ParticipantAccounts to access
+                can me made using either a list of ParticipantAccount
+                identifers of the DRASClients, or a Participant Group
+                identifier.
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input
+                message="tns:GetParticipantProgramConstraintsRequest">
+            </wsdl:input>
+            <wsdl:output
+                message="tns:GetParticipantProgramConstraintsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SetParticipantProgramConstraints">
+            <wsdl:documentation>
+
+                This function is used to set the program constraints
+                associated with a Participant as a whole. If program
+                constraints already exist for the program specified then
+                they are superseded by the constraints passed into this
+                function. The specification for which
+                ParticipantAccounts to access can me made using either a
+                list of ParticipantAccount identifers of the DRASClients,
+                or a Participant Group identifier.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                that are being accessed.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input
+                message="tns:SetParticipantProgramConstraintsRequest">
+            </wsdl:input>
+            <wsdl:output
+                message="tns:SetParticipantProgramConstraintsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteParticipantProgramConstraints">
+            <wsdl:documentation>
+                This function is used to delete the ProgramConstraints
+                associated with a program. The specification for which
+                ParticipantAccounts to access can me made using either a
+                list of ParticipantAccount identifers of the DRASClients,
+                or a Participant Group identifier.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                that are being accessed.
+
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input
+                message="tns:DeleteParticipantProgramConstraintsRequest">
+            </wsdl:input>
+            <wsdl:output
+                message="tns:DeleteParticipantProgramConstraintsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDRASClientProgramConstraints">
+            <wsdl:documentation>
+                This function is used to fetch the program constraints
+                associated with the DRAS Client. The specification for
+                which DRASClients to access can me made using either a
+                list of DRAClient identifiers, the ParticipantAccount
+                identifers of the DRASClients, or a Participant Group
+                identifier.
+
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the DRAS Client.
+
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input
+                message="tns:GetDRASClientProgramConstraintsRequest">
+            </wsdl:input>
+            <wsdl:output
+                message="tns:GetDRASClientProgramConstraintsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SetDRASClientProgramConstraints">
+            <wsdl:documentation>
+                This function is used to set the program constraints
+                associated with a DRASClient. If program constraints
+                already exist for the program specified then they are
+                superseded by the constraints passed into this function.
+                The specification for which DRASClients to access can me
+                made using either a list of DRAClient identifiers, the
+                ParticipantAccount identifers of the DRASClients, or a
+                Participant Group identifier.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the DRAS Client.
+
+
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input
+                message="tns:SetDRASClientProgramConstraintsRequest">
+            </wsdl:input>
+            <wsdl:output
+                message="tns:SetDRASClientProgramConstraintsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteDRASClientProgramConstraints">
+            <wsdl:documentation>
+                This function is used to delete the DRASClient
+                onstraints associated with a program. The specification
+                for which DRASClients to access can me made using either
+                a list of DRAClient identifiers, the ParticipantAccount
+                identifers of the DRASClients, or a Participant Group
+                identifier.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the DRAS Client.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input
+                message="tns:DeleteDRASClientProgramConstraintsRequest">
+            </wsdl:input>
+            <wsdl:output
+                message="tns:DeleteDRASClientProgramConstraintsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetProgramInformation">
+            <wsdl:documentation>
+                This function is used to retrieve the information
+                necessary to help an operator edit and specify a
+                Response Schedule and its Operating States.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                that are being accessed.
+
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetProgramInformationRequest"></wsdl:input>
+            <wsdl:output message="tns:GetProgramInformationResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateResponseSchedule">
+            <wsdl:documentation>
+                This function is used to create a response schedule for
+                a specific Simple DRAS Client and program. If the
+                response schedule for the DRAS Client and program
+                already exists then it is superseded by the new Response
+                Schedule passed into this function.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the DRAS Client.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:CreateResponseScheduleRequest"></wsdl:input>
+            <wsdl:output message="tns:CreateResponseScheduleResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteResponseSchedule">
+            <wsdl:documentation>
+                This function is used to delete an existing
+                Responsechedule assiciated with a Simple DRAS Client.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the DRAS Client.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:DeleteResponseScheduleRequest"></wsdl:input>
+            <wsdl:output message="tns:DeleteResponseScheduleResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetResponseSchedule">
+            <wsdl:documentation>
+                This function is used to fetch a specific
+                ResponseSchedule corresponding to a Program and a
+                DRASClient.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the DRAS Client.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetResponseScheduleRequest"></wsdl:input>
+            <wsdl:output message="tns:GetResponseScheduleResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SetDREventFeedback">
+            <wsdl:documentation>
+                This function is used to send information to the DRAS
+                concerning the state of the facility and how the
+                Participant/DRAS Client reacted to the DR Event being
+                issued.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the return values.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - DRAS Client associated with the Participant ID
+
+                - Participant Manager associated with the Participant ID
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:SetDREventFeedbackRequest"></wsdl:input>
+            <wsdl:output message="tns:SetDREventFeedbackResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SubmitStandingBid">
+            <wsdl:documentation>
+                This function is used to set a Participant’s standing
+                bid for a program. If a standing bid for the program
+                already exists then this function can be used to modify
+                it.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the Bid being accessed.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:SubmitStandingBidRequest"></wsdl:input>
+            <wsdl:output message="tns:SubmitStandingBidResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetStandingBid">
+            <wsdl:documentation>
+                This function returns a Participant’s standing bid for a
+                particular program.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the Bid being accessed.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetStandingBidRequest"></wsdl:input>
+            <wsdl:output message="tns:GetStandingBidResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteStandingBid">
+            <wsdl:documentation>
+                This function is used to delete a standing bid.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the Bid being accessed.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:DeleteStandingBidRequest"></wsdl:input>
+            <wsdl:output message="tns:DeleteStandingBidResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SubmitBid">
+            <wsdl:documentation>
+                This function is used to submit a Participant’s
+                real-time bid for a program. If a real-time bid for the
+                program already exists then this function can be used to
+                modify it.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the Bid being accessed.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:SubmitBidRequest"></wsdl:input>
+            <wsdl:output message="tns:SubmitBidResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetBid">
+            <wsdl:documentation>
+                This function returns a Participant’s real-time bid for
+                a DR event.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the Bid being accessed.
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetBidRequest"></wsdl:input>
+            <wsdl:output message="tns:GetBidResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateOptOutState">
+            <wsdl:documentation>
+                This function is used to create an Opt-out state for a
+                Participant.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the OptOutState being accessed.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:CreateOptOutStateRequest"></wsdl:input>
+            <wsdl:output message="tns:CreateOptOutStateResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteOptOutState">
+            <wsdl:documentation>
+                This function is used to delete an existing Opt-out
+                state.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the OptOutState being accessed.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:DeleteOptOutStateRequest"></wsdl:input>
+            <wsdl:output message="tns:DeleteOptOutStateResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetOptOutStates">
+            <wsdl:documentation>
+                This function is used to fetch the Opt-out states
+                associated with a Participant. There are a number of
+                optional search parameters that can be used to fetch the
+                OptOut states for a Participant.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the ParticipantAccounts that
+                correspond to the OptOutState being accessed.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetOptOutStatesRequest"></wsdl:input>
+            <wsdl:output message="tns:GetOptOutStatesResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDRASClientCommsStatus">
+            <wsdl:documentation>
+                This function is for retrieving a DRAS Client’s current
+                communication state. The states can be fetched based
+                upon aa ParticipantAccount identifier, or a Program
+                name. If none of those parameters are specified then the
+                states of all DRAS Clients are returned
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the return values.
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetDRASClientCommsStatusRequest"></wsdl:input>
+            <wsdl:output
+                message="tns:GetDRASClientCommsStatusResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDRASTransactions">
+            <wsdl:documentation>
+                This function is used to retrieve any of the transaction
+                logs associated with the DRAS. A number of search keys
+                can be used to specify whcih transactions are retrieved
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the return values.
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetDRASTransactionsRequest"></wsdl:input>
+            <wsdl:output message="tns:GetDRASTransactionsResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDRASEventStates">
+            <wsdl:documentation>
+                This function is used to retrieve DRAS Event States
+                                that have been created within the DRAS.
+
+                                Authorized Users
+
+                                - All DRAS Operators
+
+                                - All Utility/ISO Operators
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetDRASEventStatesRequest"></wsdl:input>
+            <wsdl:output message="tns:GetDRASEventStatesResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDRASClientAlarms">
+            <wsdl:documentation>
+                This function is used to retrieve DRAS Client Alarms
+                that have been logged within the DRAS.
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the return values. 
+Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetDRASClientAlarmsRequest"></wsdl:input>
+            <wsdl:output message="tns:GetDRASClientAlarmsResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDREventFeedback">
+            <wsdl:documentation>
+                This function is used to fetch a list of Feedback
+                objects based upon a set of search criteria
+
+                For security reasons if the role of the user accessing
+                this method is a Participant Manager then the user
+                credentials of the Participant Manager must match the
+                user credentials on the Participant Accounts that are
+                associated with the return values.
+
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetDREventFeedbackRequest"></wsdl:input>
+            <wsdl:output message="tns:GetDREventFeedbackResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetTestMode">
+            <wsdl:documentation>
+                This function puts a DRAS Client into or out of test
+                mode. If a DRAS Client is in test mode then it is
+                essentially off line and will not receive any automated
+                DR signals.
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+                - DRAS Client Installers
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:SetTestModeRequest"></wsdl:input>
+            <wsdl:output message="tns:SetTestModeResponse"></wsdl:output>
+        </wsdl:operation>
+       
+        <wsdl:operation name="SetTestModeState">
+            <wsdl:documentation>
+                This function sends a manual test message to a DRAS Client and
+                if it is a Simple DRAS Client then it can be used to set
+                the operation mode value and the event status variables. The DRAS Client must be in
+                test mode for this method to work.
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+                - DRAS Client Installers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:SetTestModeStateRequest"></wsdl:input>
+            <wsdl:output message="tns:SetTestModeStateResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetTestModeState">
+            <wsdl:documentation>
+                This function is used to get the current operation state
+                of the DRAS Client if it is in test mode.
+
+                Authorized Users
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+                - All Participant Managers
+
+                - DRAS Client Installers
+
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetTestModeStateRequest"></wsdl:input>
+            <wsdl:output message="tns:GetTestModeStateResponse"></wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:portType>
+    <wsdl:binding name="ParticipantOperatorSOAP"
+        type="tns:ParticipantOperator">
+        <soap:binding style="document"
+            transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="GetParticipantAccounts">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/NewOperation" />
+            <wsdl:input>
+                <soap:body
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ModifyParticipantAccounts">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/ModifyParticipantAccounts" />
+            <wsdl:input>
+                <soap:body
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateDRASClient">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/CreateDRASClient" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ModifyDRASClient">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/ModifyDRASClient" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteDRASClient">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteDRASClient" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDRASClientInfo">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASClientInfo" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        
+        <wsdl:operation name="GetParticipantProgramConstraints">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetParticipantProgramConstraints" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetParticipantProgramConstraints">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SetParticipantProgramConstraints" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteParticipantProgramConstraints">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteParticipantProgramConstraints" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+         <wsdl:operation name="GetDRASClientProgramConstraints">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASClientProgramConstraints" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetDRASClientProgramConstraints">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SetDRASClientProgramConstraints" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteDRASClientProgramConstraints">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteDRASClientProgramConstraints" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetProgramInformation">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetProgramInformation" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateResponseSchedule">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/CreateResponseSchedule" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteResponseSchedule">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteResponseSchedule" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetResponseSchedule">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetResponseSchedule" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+         <wsdl:operation name="SetDREventFeedback">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SetDREventFeedback" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SubmitStandingBid">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SubmitStandingBid" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetStandingBid">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetStandingBid" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteStandingBid">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteStandingBid" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SubmitBid">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SubmitBid" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetBid">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetBid" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateOptOutState">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/CreateOptOutState" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeleteOptOutState">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/DeleteOptOutState" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetOptOutStates">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetOptOutStates" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDRASClientCommsStatus">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASClientCommsStatus" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDRASTransactions">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASTransactions" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDRASEventStates">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASEventStates" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+        <wsdl:operation name="GetDRASClientAlarms">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDRASClientAlarms" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDREventFeedback">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetDREventFeedback" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetTestMode">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SetTestMode" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="SetTestModeState">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/SetTestModeState" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+        
+        <wsdl:operation name="GetTestModeState">
+            <soap:operation
+                soapAction="http://www.openadr.org/DRAS/ParticipantOperator/GetTestModeState" />
+            <wsdl:input>
+                <soap:body
+
+                    use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body
+                    
+                    use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+
+    </wsdl:binding>
+    <wsdl:service name="ParticipantOperator">
+        <wsdl:port binding="tns:ParticipantOperatorSOAP"
+            name="ParticipantOperatorPort">
+            <soap:address location="http://www.openadr.org/DRAS/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

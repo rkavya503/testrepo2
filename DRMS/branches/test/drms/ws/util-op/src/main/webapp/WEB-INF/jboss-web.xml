@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+    <!-- Use the JaasSecurityMgr accmgr security domain for authentication
+      and authorization of secured web content.
+     -->
+    <security-domain>java:/jaas/other</security-domain>
+</jboss-web>

@@ -1,0 +1,54 @@
+.treeTableText SPAN {
+	font-family:Arial,Verdana,sans-serif;
+	font-size:11px;
+}
+
+.treetable-indent {
+    text-align: center;
+    width: 16px;
+}
+
+.treetable-rowhidden{
+	display:none;
+}
+
+.rich-scrollable-table-border{
+    border-bottom: 1px solid #C0C0C0;
+    border-right:  1px solid #C0C0C0;
+}
+
+.rich-scrollable-table-border .rich-table-subheadercell{
+    border-bottom: 1px solid #C0C0C0
+}
+
+.scroll-body-table TR.row-Selected {
+
+	background:#3399FF;
+
+}
+
+.scroll-body-table TR.row-Selected TD {
+ color:white;
+}
+
+.rich-table-sortable-header {
+    font-family: Arial,Verdana,sans-serif;
+    font-size: 11px;
+    text-align: center;
+    white-space: nowrap;
+    font-weight:bold;
+}
+
+.scroll-body-table TR INPUT.checkforsel, .scroll-body-table TR INPUT.checknotsel,INPUT.check-select-all {
+   margin:0px;
+}
+
+.treetable-container-div {
+   position:relative;
+}
+
+.treetable-cover {
+   position:absolute;
+   z-index:10001;
+   background:white;
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="1" author="Suresh" >
+	  <comment>
+          Dropping tables to reset database
+      </comment>
+      <sql>
+			DROP TABLE IF EXISTS AggregatorenrollmentData ;
+			DROP TABLE IF EXISTS DrasLoginInformation ;
+			DROP TABLE IF EXISTS LeadAccountInformation ;
+			DROP TABLE IF EXISTS AggregatorEnrollmentRequest ;
+			DROP TABLE IF EXISTS CustomerEnrollmentData ;
+			DROP TABLE IF EXISTS DeviceInformation ;
+			DROP TABLE IF EXISTS TechnicalContact ;
+			DROP TABLE IF EXISTS CustomerEnrollmentRequest ;
+			DROP TABLE IF EXISTS ParticipantPrograms ;
+	  </sql>
+    </changeSet>
+</databaseChangeLog>

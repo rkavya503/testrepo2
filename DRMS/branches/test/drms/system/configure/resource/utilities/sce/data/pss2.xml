@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <changeSet id="1" author="brian">
+        <comment>DRMS-4452 TEST</comment>
+    </changeSet>
+
+    <changeSet id="2" author="brian">
+        <update tableName="core_property">
+            <column name="stringValue" value="sce" />
+            <where>propertyName='utilityName'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="3" author="brian">
+        <update tableName="core_property">
+            <column name="stringValue" value="SCE" />
+            <where>propertyName='utilityDisplayName'</where>
+        </update>
+    </changeSet>
+    <changeSet id="4" author="brian">
+        <update tableName="core_property">
+            <column name="stringValue" value="TenTen" />
+            <where>propertyName='baseline.model'</where>
+        </update>
+    </changeSet>
+    <changeSet id="5" author="brian">
+        <update tableName="dataset">
+            <column name="period" value="300" />
+        </update>
+    </changeSet>
+    <changeSet id="6" author="brian">
+        <update tableName="core_property">
+            <column name="stringValue" value="&lt;p&gt;DRAS Login disclaimer:&lt;/p&gt;&lt;p&gt;By logging in to the SCE Demand Response Automation Server website, the customer acknowledges and agrees that the customer&#39;s account(s) is/are Auto Demand Response enabled and the customer understands this account(s) will automatically participate in the events for enrolled demand response (DR) programs, unless the customer invokes an Auto DR opt-out option. The customer also understands that he/she is responsible for making sure his/her system responds to the DRAS signal, for the correct configuration to the DR program(s) in which the customer is enrolled, and for any programmed load reduction sequence. The customer understands that irrespective of a signal from the DRAS, he/she is responsible for participation in DR events.&lt;/p&gt;&lt;p&gt;The customer acknowledges and agrees that SCE is not liable, and hereby waives any and all claims against SCE for any claims, demands, losses, damages, costs, expenses, or liability arising out of the initiation and performance of Auto DR Equipment enablement, however caused, whether active or passive.&lt;/p&gt;" />
+            <where>propertyName='loginMessage'</where>
+        </update>
+    </changeSet>
+    <changeSet id="7" author="veera">
+        <update tableName="program">
+            <column name="mustIssueBDBE" valueBoolean="true"  />
+            <where>name like 'RTP%'</where>
+        </update>
+    </changeSet>
+    <changeSet id="8" author="veera">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='feature.participantNotes'</where>
+        </update>
+    </changeSet>
+    <changeSet id="9" author="veera">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='feature.participantInfo'</where>
+        </update>
+    </changeSet>
+    <changeSet id="10" author="veera">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='feature.participantsUpload'</where>
+        </update>
+    </changeSet>
+	<changeSet id="11" author="nicole">
+        <update tableName="dataset">
+            <column name="period" value="900"  />
+        </update>
+    </changeSet>
+	 <changeSet id='12' author="Dichen">
+        
+        <comment>DRMS-7190: Change SCE program CPP to SAI</comment>
+
+        <sql>
+            update event set programName = 'SAI' where programName = 'CPP';
+            update bid_level_mapping set programName = 'SAI' where programName = 'CPP';
+            update client_conversation_state set programName = 'SAI' where programName = 'CPP';
+            update contacts_offline_error set programName = 'SAI' where programName = 'CPP';
+            update event_template set programName = 'SAI' where programName = 'CPP';
+            update history_event set programName = 'SAI' where programName = 'CPP';
+            update message set programName = 'SAI' where programName = 'CPP';
+            update peakchoice_message set programName = 'SAI' where programName = 'CPP';
+            update rtp_remote_price set programName = 'SAI' where programName = 'CPP';
+            update program_participant set programName = 'SAI' where programName = 'CPP';
+            update report_event set programName = 'SAI' where programName = 'CPP';
+            update report_event_participation set programName = 'SAI' where programName = 'CPP';
+            update report_event_signal set programName = 'SAI' where programName = 'CPP';
+            update program set name = 'SAI', longProgramName = 'SAI', utilityProgramName = 'SAI', programClass = 'SAI' where name = 'CPP';
+        </sql>
+    </changeSet>
+        <changeSet id="13" author="Linda">
+        <update tableName="core_property">
+            <column name="stringValue" value="sce_logo.gif" />
+            <where>propertyName='logo'</where>
+        </update>
+    </changeSet>
+
+	
+	<changeSet id="14" author="Liu">
+        
+		<preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from program;
+				</sqlCheck>
+            </not>
+        </preConditions>
+		<comment>
+         DRMS-7653 SCE SPD: Remove SPD program from other utilities
+        </comment>	
+		<sql>
+		       insert  into `program`
+			   (`uuid`,`version`,`priority`,`name`,`beginEffectiveTime`,`endEffectiveTime`,`minIssueToStartM`,`mustIssueBDBE`,
+			   `maxIssueTimeH`,`minStartTimeH`,`maxStartTimeH`,`minEndTimeH`,`maxEndTimeH`,`maxIssueTimeM`,`minStartTimeM`,
+			   `maxStartTimeM`,`minEndTimeM`,`maxEndTimeM`,`minDurationM`,`maxDurationM`,`pendingTimeDBEH`,`pendingTimeDBEM`,
+			   `notificationParam1`,`creator`,`modifier`,`creationTime`,`modifiedTime`,`manualCreatable`,`utilityProgramName`,
+			   `className`,`state`,`validatorClass`,`validatorConfigFile`,`uiConfigureProgramString`,`uiConfigureEventString`,
+			   `uiScheduleEventString`,`description`,`autoRepeatTimeOfDay`,`lastErrorOpContact`,`autoAccept`,`programType`,
+			   `longProgramName`,`programClass`,`testProgram`) 
+				values 
+				('8aceb83438eb998d0138eb9b6a228888',0,50,'SPD',NULL,NULL,0,true,23,14,14,18,18,59,0,0,0,0,360,360,21,0,'',
+				'anonymous',NULL,'2012-08-03 16:30:27',NULL,true,'SPD','com.akuacom.pss2.program.cpp.CPPProgramEJB',1,
+				'com.akuacom.pss2.program.cpp.CPPValidator','cpp_vcd.validator.config','','','CPPSchedulePage',NULL,NULL,
+				NULL,'\0','CPPProgram','SPD','SPD',NULL);
+		</sql>
+    </changeSet>
+	    <changeSet id="15" author="Linda">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="true"  />
+            <where>propertyName='feature.forcastEnable'</where>
+        </update>
+    </changeSet>	
+	
+	
+	<changeSet id="16" author="Frank">
+       <comment>
+               DRMS-8020 SCE 2013 RTP: RTP programs consolidation
+        </comment>
+		<sql>DROP PROCEDURE IF EXISTS migrationParticipantShedStrategy;</sql>
+
+     	<sql splitStatements="false" stripComments="false">
+     	    <![CDATA[
+			 CREATE PROCEDURE migrationParticipantShedStrategy ()
+     	
+     		BEGIN
+     		
+     		  DECLARE no_row_fetched INT DEFAULT 0; 
+			  DECLARE temp_uuid VARCHAR(64); 
+			  DECLARE row_fetched INT DEFAULT 0; 
+			  DECLARE strategyCounts INT DEFAULT 0;
+			  DECLARE strategy_name VARCHAR(64);   
+			  DECLARE prog_part_uuid VARCHAR(64); 			  
+
+			  DECLARE strategyNames_csr CURSOR FOR
+				  SELECT NAME  FROM `program_rtp_config` WHERE program_uuid=(SELECT UUID FROM program WHERE NAME='RTP');
+
+			  DECLARE part_csr CURSOR FOR
+				  SELECT participant.uuid
+				  FROM program_participant INNER JOIN participant
+				  ON program_participant.participant_uuid = participant.uuid
+				  WHERE participant.client=1
+				  AND programName LIKE '%RTP%' ORDER BY participantName;
+			  DECLARE CONTINUE HANDLER FOR NOT FOUND SET no_row_fetched=1;  
+
+			  OPEN part_csr; part_loop: LOOP -- Loop through events                                
+			  FETCH part_csr INTO temp_uuid;
+			  IF no_row_fetched=1 THEN LEAVE part_loop; 
+			  ELSE SET row_fetched = row_fetched+1;                             
+			-- ************************************************
+				  SELECT UUID INTO prog_part_uuid FROM program_participant WHERE programName='RTP' AND participant_uuid=temp_uuid;
+				  SELECT COUNT(*) INTO strategyCounts FROM participant_rtp_strategy  WHERE program_participant_uuid=prog_part_uuid;
+				  IF strategyCounts =0 THEN
+			  
+					OPEN strategyNames_csr; strategyNames_loop: LOOP -- Loop through participant in event_participant by event.
+					FETCH strategyNames_csr INTO strategy_name; 
+					IF no_row_fetched=1 THEN LEAVE strategyNames_loop; 
+					ELSE 
+					INSERT INTO participant_rtp_strategy (UUID, program_participant_uuid, NAME, creationTime) VALUES (REPLACE(UUID(), '-', ''),prog_part_uuid, strategy_name,  NOW());
+			  
+					END IF;  -- no_row_fetched=1 THEN LEAVE strategyNames_loop; 
+					END LOOP strategyNames_loop;
+					CLOSE strategyNames_csr;  SET no_row_fetched=0; 
+
+				  END IF; -- end of IF strategyCounts =0
+
+			-- ****************************************************                                 
+			  END IF;  -- IF no_row_fetched=1 THEN LEAVE part_loop; 
+			  END LOOP part_loop;-- End of Loop through events
+			  CLOSE part_csr;
+			  SELECT row_fetched;
+			END;
+			]]>
+     	</sql>
+		
+		
+	</changeSet>
+	
+	
+	<changeSet id="17" author="Frank">
+       <comment>
+             DRMS-8020 SCE 2013 RTP: RTP programs consolidation
+        </comment>
+		<sql>DROP PROCEDURE IF EXISTS insertRTPProgram;</sql>
+
+     	<sql splitStatements="false" stripComments="false">
+     	    <![CDATA[
+			 CREATE PROCEDURE insertRTPProgram ()
+     	
+     		BEGIN     		     		  
+			    DECLARE next_priority VARCHAR(64); 
+				
+				SELECT MAX(priority)+1 into next_priority FROM program;
+			 			  
+				INSERT INTO program
+				(`uuid`,`version`,`name`,`beginEffectiveTime`,`endEffectiveTime`,`minIssueToStartM`,`mustIssueBDBE`,`maxIssueTimeH`,`minStartTimeH`,`maxStartTimeH`,`minEndTimeH`,`maxEndTimeH`,`maxIssueTimeM`,`minStartTimeM`,`maxStartTimeM`,`minEndTimeM`,`maxEndTimeM`,`minDurationM`,`maxDurationM`,`pendingTimeDBEH`,`pendingTimeDBEM`,`notificationParam1`,`creator`,`modifier`,`manualCreatable`,`priority`,`creationTime`,`modifiedTime`,`utilityProgramName`,`className`,`state`,`validatorClass`,`validatorConfigFile`,`uiConfigureProgramString`,`uiConfigureEventString`,`uiScheduleEventString`,`description`,`autoRepeatTimeOfDay`,`lastErrorOpContact`,`autoAccept`,`programType`,`longProgramName`,`programClass`,`testProgram`) 
+				VALUES 
+				( REPLACE(UUID(), '-', ''), '1','RTP',NULL,NULL,'0',1,'23','0','23','0','23','59','0','59','0','59','1','1440','21','0','','system','admin',1,next_priority,now(),now(),'RTP','com.akuacom.pss2.program.scertp2013.SCERTPProgramEJB2013','1','com.akuacom.pss2.program.scertp2013.SCERTPValidator2013','','',NULL,'SCERTPSchedulePage',NULL,'17:00:24','2011-02-04 23:06:20','\0','SCERTPProgram','RTP','RTP','0');		       	
+			END;
+			]]>
+     	</sql>
+		
+		
+	</changeSet>
+	
+	<changeSet id="18" author="Frank">
+		<preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from program;
+				</sqlCheck>
+            </not>
+        </preConditions>		
+       <comment>
+               DRMS-8020 SCE 2013 RTP: RTP programs consolidation
+        </comment>
+		<sql>		
+			 <![CDATA[		
+				UPDATE program set state=0, autoRepeatTimeOfDay=null where name in ('RTP Agricultural','RTP <2KV','RTP 2KV-50KV','RTP >50KV');			
+			 ]]>			
+			 
+			Delete from program where name = 'RTP';								
+			CALL insertRTPProgram();
+			DROP PROCEDURE IF EXISTS `insertRTPProgram`;
+						
+			INSERT INTO program_rtp_config
+			(
+			UUID,VERSION, NAME,startTemperature,endTemperature,startTime, endTime ,
+			rate,unit,creationTime,modifiedTime,creator,MODIFIER,program_uuid ,seasonName 
+			)
+			SELECT REPLACE(UUID(), '-', ''),0, NAME,startTemperature,endTemperature,'00:00:00', '00:00:00' ,
+			0,unit,NOW(),modifiedTime,creator,MODIFIER,(SELECT UUID FROM program WHERE NAME='RTP') ,seasonName  
+			FROM program_rtp_config
+			WHERE program_uuid = (SELECT UUID FROM program WHERE NAME='RTP Agricultural')
+			GROUP BY  NAME;
+
+			INSERT INTO season_config
+			(
+			UUID,VERSION,NAME,startDate,endDate,creator, MODIFIER,creationTime,modifiedTime,program_uuid
+			)
+			SELECT REPLACE(UUID(), '-', ''),0,
+			NAME,startDate,endDate,'system', MODIFIER,creationTime,modifiedTime,(SELECT UUID FROM program WHERE NAME='RTP') FROM season_config
+			WHERE program_uuid = (SELECT UUID FROM program WHERE NAME='RTP Agricultural');
+
+			DROP TABLE IF EXISTS `program_participant_back`;
+			CREATE TABLE program_participant_back LIKE program_participant;
+			INSERT INTO program_participant_back
+			(UUID,VERSION,programName,creator,MODIFIER,creationTime,modifiedTime,program_uuid,state,participant_uuid,clientConfig,optStatus,NAME,VALUE,ancestry,parent_uuid,uisActive)
+			 SELECT REPLACE(UUID(), '-', ''), 
+			 VERSION,'RTP',creator,MODIFIER,creationTime,modifiedTime,(SELECT UUID FROM program WHERE NAME='RTP') ,state,participant_uuid,clientConfig,optStatus,NAME,VALUE,ancestry,parent_uuid,uisActive
+			 FROM program_participant WHERE programName LIKE '%RTP%';
+ 			DELETE FROM program_participant WHERE programName LIKE '%RTP%';
+ 			INSERT INTO program_participant
+			(UUID,VERSION,programName,creator,MODIFIER,creationTime,modifiedTime,program_uuid,state,participant_uuid,clientConfig,optStatus,NAME,VALUE,ancestry,parent_uuid,uisActive)			 
+			SELECT REPLACE(UUID(), '-', ''), 
+			VERSION,programName,creator,MODIFIER,creationTime,modifiedTime,program_uuid,state,participant_uuid,clientConfig,optStatus,NAME,VALUE,ancestry,parent_uuid,uisActive
+			FROM program_participant_back GROUP BY participant_uuid;
+  			DROP TABLE IF EXISTS `program_participant_back`;  			
+  			
+			CALL migrationParticipantShedStrategy();
+			DROP PROCEDURE IF EXISTS `migrationParticipantShedStrategy`;
+			
+			DELETE FROM `program_signal` WHERE program_uuid =(SELECT UUID FROM program WHERE NAME='RTP');
+			INSERT INTO program_signal (UUID,VERSION,creator,MODIFIER,creationTime,modifiedTime,program_uuid,signal_def_uuid)
+			VALUES(
+			REPLACE(UUID(), '-', ''),0,'system',NULL,NOW(),NULL,(SELECT UUID FROM program WHERE NAME='RTP'),(SELECT UUID FROM signal_def WHERE signalName='pending' )
+			);
+			INSERT INTO program_signal (UUID,VERSION,creator,MODIFIER,creationTime,modifiedTime,program_uuid,signal_def_uuid)
+			VALUES(
+			REPLACE(UUID(), '-', ''),0,'system',NULL,NOW(),NULL,(SELECT UUID FROM program WHERE NAME='RTP'),(SELECT UUID FROM signal_def WHERE signalName='mode' )
+			);
+	</sql>
+    </changeSet>
+	<changeSet id="19" author="Linda">
+        <comment>
+               DRMS-8041 CBP APX event dispatch update 
+        </comment>
+		<sql>		    
+			update program set className='com.akuacom.pss2.program.cbp.CBPProgramEJB' where programClass='CBP';
+		</sql>
+    </changeSet>
+	<changeSet id="20" author="Linda">
+        <comment>
+               DRMS-8040 manually CBP event creation via update file  
+        </comment>
+		<sql>		    
+			update program set validatorClass='com.akuacom.pss2.program.cbp.CBPValidator' where programClass='CBP';
+		</sql>
+    </changeSet>
+	<changeSet id="21" author="Liu">
+        <comment>
+               DRMS-7958 CBP Consolidation update programGroup 
+        </comment>
+		<sql>		    
+			update program p
+			set p.programGroup = 'CBP'
+			where p.name in('CBP 1-4 DO','CBP 2-6 DO','CBP 4-8 DO','CBP 1-4 DA','CBP 2-6 DA','CBP 4-8 DA');
+		</sql>
+    </changeSet>
+	
+	<changeSet id="22" author="liu">
+       <comment>
+             DRMS-8488 Participant enhancement
+        </comment>
+		<sql>DROP PROCEDURE IF EXISTS insertBIPProgram;</sql>
+
+     	<sql splitStatements="false" stripComments="false">
+     	    <![CDATA[
+			 CREATE PROCEDURE insertBIPProgram ()
+     	
+     		BEGIN     		     		  
+			    DECLARE next_priority VARCHAR(64); 
+				
+				SELECT MAX(priority)+1 into next_priority FROM program;
+			 			  
+				INSERT INTO program
+				(`uuid`,`version`,`name`,`beginEffectiveTime`,`endEffectiveTime`,`minIssueToStartM`,`mustIssueBDBE`,`maxIssueTimeH`,`minStartTimeH`,`maxStartTimeH`,`minEndTimeH`,`maxEndTimeH`,`maxIssueTimeM`,`minStartTimeM`,`maxStartTimeM`,`minEndTimeM`,`maxEndTimeM`,`minDurationM`,`maxDurationM`,`pendingTimeDBEH`,`pendingTimeDBEM`,`notificationParam1`,`creator`,`modifier`,`manualCreatable`,`priority`,`creationTime`,`modifiedTime`,`utilityProgramName`,`className`,`state`,`validatorClass`,`validatorConfigFile`,`uiConfigureProgramString`,`uiConfigureEventString`,`uiScheduleEventString`,`description`,`autoRepeatTimeOfDay`,`lastErrorOpContact`,`autoAccept`,`programType`,`longProgramName`,`programClass`,`testProgram`) 
+				VALUES 
+				( REPLACE(UUID(), '-', ''), '1','BIP',NULL,NULL,'0',0,'23','0','23','0','23','59','0','59','0','59','1','1440','21','0','','system','admin',1,next_priority,now(),now(),'BIP','com.akuacom.pss2.program.bip.BIPProgramEJB','1','com.akuacom.pss2.program.bip.BIPValidator','cpp_vcd.validator.config','',NULL,'LocationSchedulePage',NULL,'17:00:24','2011-02-04 23:06:20','\0','CPPProgram','BIP','BIP','0');		       	
+			END;
+			]]>
+     	</sql>		
+	</changeSet>
+	<changeSet id="23" author="liu">
+		<preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from program;
+				</sqlCheck>
+            </not>
+        </preConditions>		
+       <comment>
+               DRMS-8488 Participant enhancement
+        </comment>
+		<sql>		
+			
+			<![CDATA[		
+				UPDATE program set state=0, autoRepeatTimeOfDay=null where name in ('BIP');			
+			 ]]>
+			 
+			DELETE FROM `program_signal` WHERE program_uuid =(SELECT UUID FROM program WHERE NAME='BIP');
+			Delete from program where name = 'BIP';	
+										
+			CALL insertBIPProgram();
+			DROP PROCEDURE IF EXISTS `insertBIPProgram`;
+			
+			INSERT INTO program_signal (UUID,VERSION,creator,MODIFIER,creationTime,modifiedTime,program_uuid,signal_def_uuid)
+			VALUES(
+			REPLACE(UUID(), '-', ''),0,'system',NULL,NOW(),NULL,(SELECT UUID FROM program WHERE NAME='BIP'),(SELECT UUID FROM signal_def WHERE signalName='pending' )
+			);
+			INSERT INTO program_signal (UUID,VERSION,creator,MODIFIER,creationTime,modifiedTime,program_uuid,signal_def_uuid)
+			VALUES(
+			REPLACE(UUID(), '-', ''),0,'system',NULL,NOW(),NULL,(SELECT UUID FROM program WHERE NAME='BIP'),(SELECT UUID FROM signal_def WHERE signalName='mode' )
+			);
+		</sql>
+    </changeSet>
+	<changeSet id="24" author="liu">
+        <comment>
+               DRMS-8514	BIP program:In "Main Program Properties" tab, system shouldn't show value in "Repeat Event Time".
+        </comment>
+		<sql>	
+				UPDATE program SET autoRepeatTimeOfDay = NULL WHERE NAME = 'BIP';
+		</sql>
+    </changeSet>
+</databaseChangeLog>

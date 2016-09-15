@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <changeSet id="1" author="brian">
+        <comment>DRMS-4452 TEST</comment>
+    </changeSet>
+	
+	 <changeSet id="2" author="nicole">
+        <comment>
+         Adding new users and roles 
+        </comment>	
+		<sql>
+		       INSERT INTO `roles` SET rolename = 'Readonly';
+			   INSERT INTO `users` (`id`,`domainname`,`username`,`password`,`email`,`status`) VALUES (2,'PSS2','Readonly','92eb5ffee6ae2fec3ad71c777531578f','readonly',1);
+			   INSERT INTO `userrole` (`user_id`,`rolename`) VALUES (2,'Readonly');
+			   INSERT INTO `userrole` (`user_id`,`rolename`) VALUES (2,'website');
+			   INSERT INTO `roles` SET rolename = 'Dispatcher';
+			   INSERT INTO `users` (`id`,`domainname`,`username`,`password`,`email`,`status`) VALUES (3,'PSS2','Dispatcher','92eb5ffee6ae2fec3ad71c777531578f','dispatcher',1);
+			   INSERT INTO `userrole` (`user_id`,`rolename`) VALUES (3,'Dispatcher');
+			   INSERT INTO `accounts`.`userrole` (`user_id`,`rolename`) VALUES (3,'website');
+		</sql>
+    </changeSet>
+
+
+</databaseChangeLog>

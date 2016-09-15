@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="pss2.configure" default="move.ejb" basedir=".">
+
+	<target name="move.ejb">
+		<!-- CORE - MAIN -->
+		<move todir="drms-core-ejb/src/main/java">
+			<fileset dir="drms-core/src/main/java">
+				<include name="**/*EAO*.java" />
+				<include name="**/*Manager*.java" />
+				<include name="**/*EJB*.java" />
+				<include name="**/*MDB*.java" />
+				<include name="**/*Bean*.java" />
+				<include name="**/*MessageDispatcher*.java" />
+				<!-- program validator should be a POJO, but references a manager twice.. -->
+				<!-- All "validators" extend from ProgramValidator so move them all -->
+				<include name="**/*Validator.java" />
+				<!-- Utils seem to be right there with Validator...not much needs to be removed to be a POJO -->
+				<include name="**/*Utils.java" />
+				<include name="**/ValidatorFactory.java" />
+
+				<!-- =================== data package =============== -->
+				
+				<include name="**/BaselineStore.java" />
+				<include name="**/ImplFactory.java" />
+				<!-- =================== email package =============== -->
+				<!-- Mail Util should be  Pojo, but talks directly to MailEnvoy in "test" mode.  F@#$@! -->
+				<include name="**/MailUtil.java" />
+				<!-- Mail Util should be  Pojo, but talks directly to MailEnvoy in "test" mode.  F@#$@! -->
+				<include name="**/EventEmailFormatter.java" />
+				<!-- Not A real EJB manager -->
+				<exclude name="**/DummyTrustManager.java" />
+
+				<!-- =================== package =============== -->
+				<include name="**/PeakChoiceUtil.java" />
+
+
+			</fileset>
+		</move>
+		<!-- CORE - TEST -->
+		<move todir="drms-core-ejb/src/test/java">
+			<fileset dir="drms-core/src/test/java">
+				<include name="**/*EAO*.java" />
+				<include name="**/*DAO*.java" />
+				<include name="**/*Manager*.java" />
+				<include name="**/*EJB*.java" />
+				<include name="**/*MDB*.java" />
+				<include name="**/*Bean*.java" />
+				<include name="**/ProgramValidatorTest.java" />
+				<include name="**/CPPUtilsTest.java" />
+
+			</fileset>
+		</move>
+		<!-- Main Resources -->
+		<move todir="drms-core-ejb/src/main/resources">
+			<fileset dir="drms-core/src/main/resources">
+				<include name="META-INF/**" />
+			</fileset>
+		</move>
+		<!-- Test Resources -->
+		<move todir="drms-core-ejb/src/test/resources">
+			<fileset dir="drms-core/src/test/resources">
+				<!-- needed for envoy test -  WTF?  Does anyone consider specific naming for clarity? -->
+				<include name="test.xml" />
+			</fileset>
+		</move>
+		<!-- duplicate copy for testing not used -->
+		<delete>
+			<fileset dir="drms-core/src/main/resources">
+				<include name="META-INF/persistence.xml" />
+			</fileset>
+		</delete>
+
+	</target>
+	<target name="move.itron">
+		<!-- =================== itron package =============== -->
+		<!-- A bunch WS Client Technology found here -->
+		<!-- TODO: Must remove reference to SystemManager from itron-client -->
+		<move todir="../ws-client/itron-client/src/main/java">
+			<fileset dir="drms-core/src/main/java">
+				<include name="**/itron/webservices/*" />
+				<include name="**/itron/wsclient/*" />
+			</fileset>
+		</move>
+		<move todir="../ws-stub/itron-stub/src/main/java">
+			<fileset dir="drms-core/src/main/java">
+				<include name="**/itron/request/*" />
+			</fileset>
+		</move>
+		<move todir="../ws-stub/itron-stub/src/main/resources">
+			<!-- wsdl and xml files must live in resources, but these aren't used anyway -->
+			<fileset dir="drms-core/src/main/java/com/akuacom/pss2/itron">
+				<include name="**/*.xml" />
+				<include name="**/*.wsdl" />
+			</fileset>
+		</move>
+	</target>
+</project>

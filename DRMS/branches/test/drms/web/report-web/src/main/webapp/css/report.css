@@ -1,0 +1,125 @@
+#nav  .active-tab {
+    background-image: url("../images/layout/left_on.gif");
+}
+
+#nav .active-tab a {
+	background-image: url("../images/layout/right_on.gif");
+	color: #27577D;
+	padding-bottom: 3px;
+	font-size:13px; 
+}
+
+.form-input .form-field {
+	font-size:11px;
+}
+
+ TABLE.form-input td{
+	padding-left:18px;
+}
+
+.dialogDiv {
+	background:#F0F0F0;
+	position:absolute; 
+	z-index:100;
+}
+
+.dialog-body-panel{
+	background:#F0F0F0;
+}
+input.lighting-button{
+   	border: 1px solid rgb(43, 176, 255);
+	cursor:pointer;
+}
+
+INPUT.dlg-button {
+	width:100px;
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-left:10px;
+}
+
+SPAN.hightlight-txt,SPAN.hightlight-txt A{
+    font-family: verdana,arial,sans-serif;
+    font-size: 13px;
+    font-weight:bold;
+	color: #3C78B5;
+}
+
+SPAN.hightlight-txt A{
+	color:#0072BC;
+	text-decoration: underline;
+}
+
+SPAN.hightlight-txt A:hover {
+	color: red;	
+}
+
+div.panel-container, div.panel-container div.rich-panel-body{
+	border:  0 ;
+	padding: 0;
+}
+
+.rich-table-cell A {
+	text-decoration: underline
+}
+
+.rich-table-cell A:hover {
+	color: red
+}
+
+FORM {
+	margin:0px;
+	padding:0px;
+}
+.not-found-msg {
+    color:blue;
+    margin-left:20px;
+
+}
+
+h2.heading-level2{
+  font-size:11px;
+  font-weight:normal;
+}
+
+h2.heading-level2{
+  font-size:11px;
+  font-weight:normal;
+}
+
+h3.heading-level3{
+  font-size:11px;
+  font-weight:normal;
+}
+
+h4.heading-level4{
+  font-size:11px;
+  font-weight:normal;
+}
+.mod-header{
+	background: url("../images/mod_header_bg.png") repeat-x scroll 0 14px #FFFFFF;
+    padding: 4px 0 0
+}
+
+.mod-header span.toggle-title {
+	background-color: #FFFFFF;
+    color: #3C78B5;
+    display: inline;
+    font-weight: bold;
+    margin-left: 0;
+    padding-right: 0.25em;
+}
+ .toggle-title {
+	background: url("../images/icon_blockexpanded.png") no-repeat scroll 0 6px #FFFFFF;
+    padding-left: 14px;
+	font-size: 14px;
+    font-weight:bold;
+}
+
+.collapsed .toggle-body  {
+	display:none;		
+}
+
+.collapsed  .toggle-title {
+	background: url("../images/icon_blockcollapsed.png") no-repeat scroll 3px 2px #FFFFFF;
+}

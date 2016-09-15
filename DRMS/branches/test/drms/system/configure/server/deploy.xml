@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<project name="pss2.deploy" basedir=".">
+
+    <target name="init">
+
+        <property environment="env" />
+        <property file="configure.conf" />
+        <property name="instance.local" value="${jboss.config}"/>
+        <property name="instance.remote" value="${utility.name}"/>
+
+        <property name="local.instance.dir" value="${jbossHome}/server/${instance.local}"/>
+
+        <property name="db.host" value="localhost" />
+        <property name="db.port" value="3306" />
+        <property name="db.username" value="pss2" />
+        <property name="db.password" value="AKUAlogin" />
+
+        <property name="remote.address" value="192.168.149.48"/>
+        <input addproperty="remote.user" message="Remote user id:"/>
+        <input addproperty="remote.password" message="Password for remote user ${remote.user}:"/>
+
+        <property name="remote.instance.dir"
+            value="${remote.user}:${remote.password}@${remote.address}:/usr/jboss/server/${instance.remote}"/>
+
+    </target>
+
+    <!-- This target creates a new instance on cheetah where the instance name is
+    defined by instance.remote variable. -->
+    <target name="remote.create" depends="init"
+        description="create a new jboss instance on remote server">
+
+        <echo message="${local.instance.dir}"/>
+        <scp todir="${remote.instance.dir}" trust="true" sftp="true">
+            <fileset dir="${local.instance.dir}">
+                <include name="conf/**"/>
+                <include name="deploy/**"/>
+                <include name="lib/**"/>
+            </fileset>
+        </scp>
+
+        <property name="pss2.resource.dir" value="../resource" />
+
+        <copy file="${pss2.resource.dir}/accmgr/mysql-accmgr-ds.xml"
+              toDir="build"
+              overwrite="true">
+            <filterchain>
+                <replacetokens>
+                    <token key="HOST" value="${db.host}" />
+                    <token key="PORT" value="${db.port}" />
+                    <token key="NAME" value="${db.account.name}" />
+                    <token key="USERNAME" value="${db.username}" />
+                    <token key="PASSWORD" value="${db.password}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+
+        <copy file="${pss2.resource.dir}/firelog/mysql-firelog-ds.xml"
+                      toDir="build"
+                      overwrite="true">
+            <filterchain>
+                <replacetokens>
+                    <token key="HOST" value="${db.host}" />
+                    <token key="PORT" value="${db.port}" />
+                    <token key="NAME" value="${db.firelog.name}" />
+                    <token key="USERNAME" value="${db.username}" />
+                    <token key="PASSWORD" value="${db.password}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+
+        <scp file="build/mysql-accmgr-ds.xml"
+              toDir="${remote.instance.dir}/deploy" trust="true">
+        </scp>
+
+        <scp file="build/mysql-firelog-ds.xml"
+            toDir="${remote.instance.dir}/deploy" trust="true">
+        </scp>
+    </target>
+</project>

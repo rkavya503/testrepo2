@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>drweb</display-name>
+
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.SKIN</param-name>
+		<param-value>blueSky</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.CONTROL_SKINNING</param-name>
+		<param-value>enable</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.CONTROL_SKINNING_CLASSES</param-name>
+		<param-value>enable</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.ajax4jsf.handleViewExpiredOnClient</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<filter>
+		<display-name>RichFaces Filter</display-name>
+		<filter-name>richfaces</filter-name>
+		<filter-class>org.ajax4jsf.Filter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>richfaces</filter-name>
+
+		<servlet-name>Faces Servlet</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>
+			com.sun.faces.config.ConfigureListener
+		</listener-class>
+	</listener>
+	
+	<listener>
+	   <listener-class>com.akuacom.pss2.drw.cache.RunTimerListener</listener-class>
+	</listener>
+
+	<!-- Faces Servlet -->
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<!-- RetrieveMapData Servlet -->
+    <servlet>
+        <servlet-name>RetriveMapData Servlet</servlet-name>
+        <servlet-class>com.akuacom.pss2.drw.ajax.RetriveMapData</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>CacheMonitor Servlet</servlet-name>
+        <servlet-class>com.akuacom.pss2.drw.ajax.CacheMonitor</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    
+     <servlet>
+        <servlet-name>LegendCacheMonitor Servlet</servlet-name>
+        <servlet-class>com.akuacom.pss2.drw.ajax.LegendCacheMonitor</servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    
+    
+
+	<!-- Faces Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	
+    <servlet-mapping>
+        <servlet-name>RetriveMapData Servlet</servlet-name>
+        <url-pattern>*.ajax</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>CacheMonitor Servlet</servlet-name>
+        <url-pattern>*.cachemonitor</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>LegendCacheMonitor Servlet</servlet-name>
+        <url-pattern>*.legendmonitor</url-pattern>
+    </servlet-mapping>
+
+	<!-- Tiles Servlet 
+	<servlet>
+	    <servlet-name>tiles</servlet-name>
+	    <servlet-class>org.apache.tiles.web.startup.TilesServlet</servlet-class>
+	    <init-param>
+	        <param-name>
+	          org.apache.tiles.definition.DefinitionsFactory.DEFINITIONS_CONFIG
+	        </param-name>
+	        <param-value>
+	          /WEB-INF/tiles-defs.xml,/org/apache/tiles/classpath-defs.xml
+	        </param-value>
+	    </init-param>
+	    <load-on-startup>2</load-on-startup>
+	</servlet> -->
+	<error-page>
+		<error-code>500</error-code>  
+		<location>/error.jsf</location>
+	</error-page>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+   <welcome-file-list>
+      <welcome-file>index.html</welcome-file>
+   </welcome-file-list>
+	
+</web-app>
+

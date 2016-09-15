@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<Request version="EXAPI 2.0">
+    <Job>
+        <Message>
+            <Subject>
+                <![CDATA[Voluntary Curtailment Notification]]>
+            </Subject>
+            <MessageArg>
+                <Name>SENDER</Name>
+                <Value>
+                    <![CDATA[Curtailment Admin]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>ProgramType</Name>
+                <Value>
+                    <![CDATA[AutoDBP dayAhead]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>EventID</Name>
+                <Value>
+                    <![CDATA[101]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>ProgramName</Name>
+                <Value>
+                    <![CDATA[DBP]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>StartDate</Name>
+                <Value>
+                   <![CDATA[03/10/2007 12:00 PDT]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>EndDate</Name>
+                <Value>
+                    <![CDATA[03/10/2007 20:00 PDT]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>RespondBy</Name>
+                <Value>
+                    <![CDATA[03/09/2007 17:00 PDT]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>RFBIssueBy</Name>
+                <Value>
+                    <![CDATA[03/09/2007 09:00 PDT]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>EventType</Name>
+                <Value>
+                    <![CDATA[Voluntary]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>Settlement</Name>
+                <Value>
+                    <![CDATA[Baseline-Actual]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>MinimumBidInKWHr)</Name>
+                <Value>
+                    <![CDATA[50]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>OperatorMessage</Name>
+                <Value>
+                    <![CDATA[LBL cpp test 5:48PM]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>PriceIncentive</Name>
+                <Value>
+                    <![CDATA[0.50]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>Facility</Name>
+                <Value>
+                    <![CDATA[pacific]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>Facility</Name>
+                <Value>
+                    <![CDATA[cal-mart]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>Facility</Name>
+                <Value>
+                    <![CDATA[baytron]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>Facility</Name>
+                <Value>
+                    <![CDATA[SDCounty]]>
+                </Value>
+            </MessageArg>
+        </Message>
+    </Job>
+</Request>

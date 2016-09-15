@@ -1,0 +1,2688 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <changeSet author="brian (generated)" id="1296580754580-1">
+        <createTable tableName="usage_summary">
+            <column name="uuid" type="VARCHAR(32)">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="creationTime" type="DATETIME">
+                <constraints nullable="false" />
+            </column>
+            <column name="creator" type="VARCHAR(255)" />
+            <column name="modifiedTime" type="DATETIME" />
+            <column name="modifier" type="VARCHAR(255)" />
+            <column name="version" type="INT" />
+            <column name="average" type="DOUBLE">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="VARCHAR(255)" />
+            <column name="total" type="DOUBLE">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-2">
+        <addColumn tableName="bid_level_mapping">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-3">
+        <addColumn tableName="bid_level_mapping">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-4">
+        <addColumn tableName="bid_level_mapping">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-5">
+        <addColumn tableName="bid_level_mapping">
+            <column name="program_participant_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian" id="201002011026">
+        <sql>
+            update bid_level_mapping as blm set
+            program_participant_uuid=(select
+            pp.uuid from
+            program_participant as
+            pp
+            where
+            pp.participant_uuid=blm.participant_uuid and
+            pp.programName=blm.programName);
+           </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-6">
+        <addColumn tableName="bid_level_mapping">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-7">
+        <addColumn tableName="contact">
+            <column name="DTYPE" type="VARCHAR(31)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-8">
+        <renameColumn tableName="contact" oldColumnName="state"
+            newColumnName="contactState"
+            columnDataType="INT" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-9">
+        <renameColumn tableName="contact" newColumnName="contactType"
+            oldColumnName="type"
+            columnDataType="VARCHAR(255)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-10">
+        <renameColumn tableName="contact" newColumnName="externalContact"
+            oldColumnName="external"
+            columnDataType="BIT" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-11">
+        <addColumn tableName="contact">
+            <column name="message_filter_setting_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+        <sql>
+            update contact set message_filter_setting_uuid=(select uuid
+            from
+            message_filter_setting limit 1);
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-12">
+        <addColumn tableName="contact">
+            <column name="offlineError" type="BIT" />
+        </addColumn>
+    </changeSet>
+
+    <!-- This should be a many to many between contacts - participantcontacts
+        - participant <changeSet author="brian (generated)" id="1296580754580-13">
+        <addColumn tableName="contact"> <column name="participant_uuid" type="VARCHAR(32)">
+        <constraints nullable="false" /> </column> </addColumn> </changeSet> -->
+
+    <changeSet author="brian (generated)" id="1296580754580-14">
+        <addColumn tableName="contact">
+            <column name="program_uuid" type="VARCHAR(32)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="201102011453">
+        <sql>
+            update contact set program_uuid=ownerID;
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian(generated)" id="dfkdsskfjsd1">
+        <addColumn tableName="contacts_offline_error">
+            <column name="contact_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="201102011454">
+        <sql>
+            update contacts_offline_error set
+            contact_uuid=contactsUuid;
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-16">
+        <addColumn tableName="contacts_offline_error">
+            <column name="participantUuid" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-17">
+        <addColumn tableName="contacts_offline_error">
+            <column name="program_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="201102011454.2">
+        <sql>
+            update contacts_offline_error as coe set
+            program_uuid=(select program_uuid from contact where
+            contact.uuid=coe.contactsUuid);
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-18">
+        <renameColumn tableName="custom_rule"
+            newColumnName="endDateTime" oldColumnName="end"
+            columnDataType="DATETIME"  />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-19">
+        <renameColumn tableName="custom_rule"
+            newColumnName="startDateTime" oldColumnName="start"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-20">
+        <renameColumn tableName="custom_rule"
+            newColumnName="variableName" oldColumnName="variable"
+            columnDataType="VARCHAR(60)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-21">
+        <renameColumn tableName="custom_rule"
+            newColumnName="variableValue" oldColumnName="value"
+            columnDataType="DOUBLE" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-22">
+        <addColumn tableName="dataentry">
+            <column name="DTYPE" type="VARCHAR(31)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-23">
+        <addColumn tableName="dataentry">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-24">
+        <renameColumn tableName="dataentry" newColumnName="dataEntryValue"
+            oldColumnName="value"
+            columnDataType="DOUBLE" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-25">
+        <renameColumn tableName="dataentry" newColumnName="dataEntrytime"
+            oldColumnName="time"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-26">
+        <addColumn tableName="dataentry">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-27">
+        <addColumn tableName="dataentry">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-28">
+        <addColumn tableName="dataentry">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-29">
+        <renameColumn tableName="dataset" newColumnName="datasetPeriod"
+            oldColumnName="period"
+            columnDataType="BIGINT(20)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-30">
+        <addColumn tableName="datasource">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-31">
+        <addColumn tableName="datasource">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-32">
+        <addColumn tableName="datasource">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-33">
+        <addColumn tableName="datasource">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-34">
+        <addColumn tableName="db_version">
+            <column name="creationTime" type="DATETIME">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-35">
+        <addColumn tableName="db_version">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-36">
+        <addColumn tableName="db_version">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-37">
+        <addColumn tableName="db_version">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-38">
+        <addColumn tableName="db_version">
+            <column name="uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+        <sql>
+            update db_version set uuid=id;
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-39">
+        <addColumn tableName="db_version">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-40">
+        <addColumn tableName="event">
+            <column name="DTYPE" type="VARCHAR(31)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-41">
+        <addColumn tableName="event">
+            <column name="amended" type="BIT">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-42">
+        <addColumn tableName="event">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-43">
+        <addColumn tableName="event">
+            <column name="highTemperature" type="DOUBLE" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-44">
+        <addColumn tableName="event">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-45">
+        <addColumn tableName="event">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-46">
+        <addColumn tableName="event">
+            <column name="program_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian" id="201102021143">
+        <sql>
+            update event set program_uuid=(select uuid from program
+            where
+            programName=event.programName);
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-47">
+        <addColumn tableName="event">
+            <column name="reportingWeatherStation" type="VARCHAR(8)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-48">
+        <addColumn tableName="event">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-49">
+        <addColumn tableName="event_bid_block">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-50">
+        <addColumn tableName="event_bid_block">
+            <column name="event_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian" id="201102021143.2">
+        <sql>
+            update event_bid_block set event_uuid=(select uuid from
+            event where
+            eventName=event_bid_block.eventName);
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-51">
+        <addColumn tableName="event_bid_block">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-52">
+        <addColumn tableName="event_bid_block">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-53">
+        <addColumn tableName="event_bid_block">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-54">
+        <addColumn tableName="event_participant_bid_entry">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-55">
+        <addColumn tableName="event_participant_bid_entry">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-56">
+        <addColumn tableName="event_participant_bid_entry">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-57">
+        <addColumn tableName="event_participant_bid_entry">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-58">
+        <renameColumn tableName="event_participant_rule"
+            newColumnName="endDateTime" oldColumnName="end"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-59">
+        <renameColumn tableName="event_participant_rule"
+            newColumnName="startDateTime" oldColumnName="start"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-60">
+        <renameColumn tableName="event_participant_rule"
+            newColumnName="variableName" oldColumnName="variable"
+            columnDataType="VARCHAR(60)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-61">
+        <renameColumn tableName="event_participant_rule"
+            newColumnName="variableValue" oldColumnName="value"
+            columnDataType="DOUBLE" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-62">
+        <renameColumn tableName="event_participant_signal_entry"
+            newColumnName="entryTime" oldColumnName="time"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+    <changeSet author="brian" id="201002021352">
+        <dropDefaultValue tableName="event_participant_signal_entry"
+            columnName="entryTime" />
+    </changeSet>
+
+<!--  moved here because the rename fails with the foreign key present. -->
+    <changeSet author="brian (generated)" id="1296580754580-286">
+        <dropForeignKeyConstraint
+            baseTableName="event_participant_signal_entry"
+            baseTableSchemaName="pss2" constraintName="FK1_event_participant_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-63">
+        <renameColumn tableName="event_participant_signal_entry"
+            newColumnName="event_participant_signal_uuid" oldColumnName="eventParticipantSignalUuid"
+            columnDataType="VARCHAR(32)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-64">
+        <renameColumn tableName="event_signal_entry"
+            newColumnName="entryTime" oldColumnName="time"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+<!--  moved here because the rename fails with the foreign key present. -->
+    <changeSet author="brian (generated)" id="1296580754580-287">
+        <dropForeignKeyConstraint
+            baseTableName="event_signal_entry" baseTableSchemaName="pss2"
+            constraintName="FK1_event_signal_entry_eventSignalUuid" />
+    </changeSet>
+
+    <changeSet author="brian" id="201002021321">
+        <dropDefaultValue tableName="event_signal_entry"
+            columnName="entryTime" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-65">
+        <renameColumn tableName="event_signal_entry"
+            newColumnName="event_signal_uuid" oldColumnName="eventSignalUuid"
+            columnDataType="VARCHAR(32)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-66">
+        <addColumn tableName="event_state">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-67">
+        <addColumn tableName="event_state">
+            <column name="event_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-68">
+        <addColumn tableName="event_state">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-69">
+        <addColumn tableName="event_state">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-70">
+        <addColumn tableName="event_state">
+            <column name="participant_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-71">
+        <addColumn tableName="event_state">
+            <column name="program_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-72">
+        <addColumn tableName="event_state">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="201102031552" author="Brian">
+        <sql>
+            update event_state set program_uuid=(select uuid from
+            program
+            where
+            programName=event_state.programName);
+        </sql>
+    </changeSet>
+
+    <changeSet id="201102031503" author="Brian">
+        <sql>
+            update event_state set event_uuid=(select uuid from event
+            where
+            eventName=event_state.eventIdentifier);
+        </sql>
+    </changeSet>
+
+    <changeSet id="201102031503.2" author="Brian">
+        <sql>
+            update event_state set participant_uuid=(select uuid from
+            participant where
+            account=event_state.drasClientId);
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-73">
+        <addColumn tableName="event_template">
+            <column name="program_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="201102071507.3" author="Brian">
+        <sql>
+            update event_template set program_uuid=(select uuid from
+            program
+            where
+            program.name=event_template.programName);
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-74">
+        <renameColumn tableName="event_template_signalentry"
+            newColumnName="entryValue" oldColumnName="value"
+            columnDataType="VARCHAR(45)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-75">
+        <addColumn tableName="event_template_signalentry">
+            <column name="event_template_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="201102071507.2" author="Brian">
+        <sql>
+            update event_template_signalentry set
+            event_template_uuid=owner_id;
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-76">
+        <addColumn tableName="event_timeblock">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-77">
+        <addColumn tableName="event_timeblock">
+            <column name="event_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-78">
+        <addColumn tableName="event_timeblock">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="201102071507" author="Brian">
+        <sql>
+            update event_timeblock set event_uuid=
+            (select uuid from
+            event
+            where event.eventName=event_timeblock.eventName);
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-79">
+        <addColumn tableName="event_timeblock">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-80">
+        <addColumn tableName="event_timeblock">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <!-- removing from changelog due to impossible fk constraints on existing
+        data, it also does not look like the refactor is complete with this entity
+        <changeSet author="brian (generated)" id="1296580754580-81"> <addColumn tableName="message">
+        <column name="DTYPE" type="VARCHAR(31)"> <constraints nullable="false" />
+        </column> </addColumn> </changeSet> <changeSet author="brian (generated)"
+        id="1296580754580-82"> <addColumn tableName="message"> <column name="contact_uuid"
+        type="VARCHAR(32)"> <constraints nullable="false" /> </column> </addColumn>
+        </changeSet> <changeSet author="brian (generated)" id="1296580754580-83">
+        <addColumn tableName="message"> <column name="creator" type="VARCHAR(255)"
+        /> </addColumn> </changeSet> <changeSet author="brian (generated)" id="1296580754580-84">
+        <addColumn tableName="message"> <column name="event_uuid" type="VARCHAR(32)">
+        <constraints nullable="false" /> </column> </addColumn> </changeSet> <changeSet
+        author="brian (generated)" id="1296580754580-85"> <addColumn tableName="message">
+        <column name="fromEmailAddress" type="LONGTEXT" /> </addColumn> </changeSet>
+        <changeSet author="brian (generated)" id="1296580754580-86"> <addColumn tableName="message">
+        <column name="messageType" type="VARCHAR(45)" /> </addColumn> </changeSet>
+        <changeSet author="brian (generated)" id="1296580754580-87"> <addColumn tableName="message">
+        <column name="modifiedTime" type="DATETIME" /> </addColumn> </changeSet>
+        <changeSet author="brian (generated)" id="1296580754580-88"> <addColumn tableName="message">
+        <column name="modifier" type="VARCHAR(255)" /> </addColumn> </changeSet>
+        <changeSet author="brian (generated)" id="1296580754580-89"> <addColumn tableName="message">
+        <column name="program_uuid" type="VARCHAR(32)"> <constraints nullable="false"
+        /> </column> </addColumn> </changeSet> <changeSet author="brian (generated)"
+        id="1296580754580-90"> <addColumn tableName="message"> <column name="toEmailAddress"
+        type="LONGTEXT" /> </addColumn> </changeSet> <changeSet author="brian (generated)"
+        id="1296580754580-91"> <addColumn tableName="message"> <column name="version"
+        type="INT" /> </addColumn> </changeSet> -->
+
+    <changeSet author="brian (generated)" id="1296580754580-92">
+        <addColumn tableName="message_filter_setting">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-93">
+        <addColumn tableName="message_filter_setting">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-94">
+        <addColumn tableName="message_filter_setting">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-95">
+        <addColumn tableName="message_filter_setting">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-96">
+        <renameColumn tableName="noaa_weather"
+            newColumnName="forecastDate" oldColumnName="date"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-97">
+        <addColumn tableName="participant_manualsignal">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-98">
+        <addColumn tableName="participant_manualsignal">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-99">
+        <addColumn tableName="participant_manualsignal">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-100">
+        <renameColumn tableName="participant_manualsignal"
+            newColumnName="signalValue" oldColumnName="value"
+            columnDataType="VARCHAR(64)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-101">
+        <addColumn tableName="participant_manualsignal">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <!-- This will fail! existing data does not follow not-null constraint -->
+    <changeSet author="brian (generated)" id="1296580754580-102">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program where
+                uuid not in (select program_uuid from
+                bid_config);
+            </sqlCheck>
+        </preConditions>
+        <addColumn tableName="program">
+            <column name="bid_config_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+        <sql>
+            update program set program.bid_config_uuid =
+            (select
+            bid_config.uuid from bid_config where
+            bid_config.program_uuid =
+            program.uuid);
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-103">
+        <renameColumn tableName="program" oldColumnName="state"
+            newColumnName="programState"
+            columnDataType="INT" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-104">
+        <renameColumn tableName="program_participant"
+            newColumnName="programParticipantState" oldColumnName="state"
+            columnDataType="INT" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-105">
+        <addColumn tableName="program_participant">
+            <column name="program_participant_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+<!--  moved here because the rename fails with the foreign key present. -->
+    <changeSet author="brian (generated)" id="1296580754580-288">
+        <dropForeignKeyConstraint
+            baseTableName="program_participant_bid_level_map"
+            baseTableSchemaName="pss2" constraintName="FK1954F3589D6F284" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-106">
+        <renameColumn tableName="program_participant_bid_level_map"
+            newColumnName="signal_level_def_uuid" oldColumnName="signal_level_uuid"
+            columnDataType="VARCHAR(32)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-107">
+        <renameColumn tableName="program_participant_rule"
+            newColumnName="endDateTime" oldColumnName="end"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-108">
+        <renameColumn tableName="program_participant_rule"
+            newColumnName="startDateTime" oldColumnName="start"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-109">
+        <renameColumn tableName="program_participant_rule"
+            newColumnName="variableName" oldColumnName="variable"
+            columnDataType="VARCHAR(60)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-110">
+        <renameColumn tableName="program_participant_rule"
+            newColumnName="variableValue" oldColumnName="value"
+            columnDataType="DOUBLE" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-111">
+        <renameColumn tableName="program_rule"
+            newColumnName="endDateTime" oldColumnName="end"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-112">
+        <renameColumn tableName="program_rule"
+            newColumnName="startDateTime" oldColumnName="start"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-113">
+        <renameColumn tableName="program_rule"
+            newColumnName="variableName" oldColumnName="variable"
+            columnDataType="VARCHAR(60)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-114">
+        <renameColumn tableName="program_rule"
+            newColumnName="variableValue" oldColumnName="value"
+            columnDataType="DOUBLE" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-115">
+        <renameColumn tableName="program_signal_entry"
+            newColumnName="entryTime" oldColumnName="time"
+            columnDataType="DATETIME" />
+    </changeSet>
+
+<!--  moved here because the rename fails with the foreign key present. -->
+    <changeSet author="brian (generated)" id="1296580754580-290">
+        <dropForeignKeyConstraint
+            baseTableName="program_signal_entry" baseTableSchemaName="pss2"
+            constraintName="FK_program_signalentry_prog_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-116">
+        <renameColumn tableName="program_signal_entry"
+            newColumnName="program_signal_uuid" oldColumnName="programSignalUuid"
+            columnDataType="VARCHAR(32)" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-117">
+        <addColumn tableName="report_event">
+            <column name="creationTime" type="DATETIME">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-118">
+        <addColumn tableName="report_event">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-119">
+        <addColumn tableName="report_event">
+            <column name="event_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian" id="201102081308">
+        <sql>
+            update report_event set event_uuid=(select uuid from event
+            where
+            event.eventName=report_event.eventName);
+		</sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-120">
+        <addColumn tableName="report_event">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-121">
+        <addColumn tableName="report_event">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-122">
+        <addColumn tableName="report_event">
+            <column name="program_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian" id="201102081308.2">
+        <sql>
+            update report_event set program_uuid=(select uuid from
+            program where
+            program.name=report_event.programName);
+		</sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-123">
+        <addColumn tableName="report_event">
+            <column name="uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+        <sql>
+            update report_event set uuid=id;
+		</sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-124">
+        <addColumn tableName="report_event">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-125">
+        <addColumn tableName="report_event_participation">
+            <column name="creationTime" type="DATETIME">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-126">
+        <addColumn tableName="report_event_participation">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-127">
+        <addColumn tableName="report_event_participation">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-128">
+        <addColumn tableName="report_event_participation">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-129">
+        <addColumn tableName="report_event_participation">
+            <column name="report_event_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian" id="201102081319">
+        <sql>
+            update report_event_participation as rep set
+            report_event_uuid=(select id
+            from report_event as re where
+            re.programName=rep.programName
+            and
+            re.eventName=rep.eventName);
+		</sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-130">
+        <addColumn tableName="report_event_participation">
+            <column name="uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+        <sql>
+            update report_event_participation set uuid=id;
+		</sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-131">
+        <addColumn tableName="report_event_participation">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-132">
+        <addColumn tableName="report_event_signal">
+            <column name="creationTime" type="DATETIME">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-133">
+        <addColumn tableName="report_event_signal">
+            <column name="creator" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-134">
+        <addColumn tableName="report_event_signal">
+            <column name="modifiedTime" type="DATETIME" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-135">
+        <addColumn tableName="report_event_signal">
+            <column name="modifier" type="VARCHAR(255)" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-136">
+        <addColumn tableName="report_event_signal">
+            <column name="report_event_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian" id="201102081424">
+        <sql>
+            update report_event_signal as res set
+            report_event_uuid=(select id from
+            report_event as re where
+            re.programName=res.programName and
+            re.eventName=res.eventName);
+		</sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-137">
+        <addColumn tableName="report_event_signal">
+            <column name="uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+        <sql>
+            update report_event_signal set uuid=id;
+		</sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-138">
+        <addColumn tableName="report_event_signal">
+            <column name="version" type="INT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-139">
+        <addColumn tableName="rtp_remote_price">
+            <column name="program_uuid" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="brian" id="201102081424.2">
+        <sql>
+            update rtp_remote_price set program_uuid=(select uuid from
+            program where
+            program.name=rtp_remote_price.programName);
+        </sql>
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-140">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                baseline_config where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="baseline_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-141">
+        <modifyDataType columnName="description"
+            newDataType="LONGTEXT" tableName="baseline_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-142">
+        <modifyDataType columnName="excludeAbnormalDayImplClass"
+            newDataType="LONGTEXT" tableName="baseline_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-143">
+        <modifyDataType columnName="excludeHoliday"
+            newDataType="BIT" tableName="baseline_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-144">
+        <modifyDataType columnName="excludeHolidayFromCalc"
+            newDataType="BIT" tableName="baseline_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-145">
+        <modifyDataType columnName="name" newDataType="LONGTEXT"
+            tableName="baseline_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-146">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="baseline_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-147">
+        <modifyDataType columnName="calcImplClass"
+            newDataType="LONGTEXT" tableName="baseline_model" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-148">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                baseline_model where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="baseline_model" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-149">
+        <modifyDataType columnName="dayPickerImplClass"
+            newDataType="LONGTEXT" tableName="baseline_model" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-150">
+        <modifyDataType columnName="description"
+            newDataType="LONGTEXT" tableName="baseline_model" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-151">
+        <modifyDataType columnName="implClass"
+            newDataType="LONGTEXT" tableName="baseline_model" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-152">
+        <modifyDataType columnName="name" newDataType="LONGTEXT"
+            tableName="baseline_model" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-153">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="baseline_model" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-154">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                bid_block where bid_config_uuid is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="bid_config_uuid" tableName="bid_block" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-155">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                bid_block where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="bid_block" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-156">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="bid_block" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-157">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                bid_config where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="bid_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-158">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="bid_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-159">
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="bid_level_mapping" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-160">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                constraint_invalid_date where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="constraint_invalid_date" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-161">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                constraint_invalid_date where
+                program_participant_constraint_uuid is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="program_participant_constraint_uuid" tableName="constraint_invalid_date" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-162">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="constraint_invalid_date" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-163">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                contact where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="contact" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-164">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="contact" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-165">
+        <modifyDataType columnName="contactsUuid"
+            newDataType="VARCHAR(255)" tableName="contacts_offline_error" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-166">
+        <dropNotNullConstraint columnDataType="VARCHAR(255)"
+            columnName="contactsUuid" tableName="contacts_offline_error" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-167">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                contacts_offline_error where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="contacts_offline_error" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-168">
+        <modifyDataType columnName="offlineError"
+            newDataType="BIT" tableName="contacts_offline_error" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-169">
+        <dropNotNullConstraint columnDataType="VARCHAR(255)"
+            columnName="programName" tableName="contacts_offline_error" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-170">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                custom_rule
+                where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="custom_rule" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-171">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                custom_rule
+                where program_participant_uuid is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="program_participant_uuid" tableName="custom_rule" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-172">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="custom_rule" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-173">
+        <modifyDataType columnName="actual" newDataType="BIT"
+            tableName="dataentry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-174">
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="dataentry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-175">
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="dataset" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-176">
+        <modifyDataType columnName="sync" newDataType="BIT"
+            tableName="dataset" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-177">
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="datasource" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-178">
+        <modifyDataType columnName="enabled" newDataType="BIT"
+            tableName="datasource" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-179">
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-180">
+        <modifyDataType columnName="manual" newDataType="BIT"
+            tableName="event" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-181">
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="nearTime" tableName="event" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-182">
+        <modifyDataType columnName="UUID" newDataType="VARCHAR(32)"
+            tableName="event_bid_block" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-183">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_bid_block
+                where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_bid_block" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-184">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_participant
+                where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-185">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="event_participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-186">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_participant_rule
+                where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_participant_rule" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-187">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="event_participant_rule" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-188">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_participant_signal
+                where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_participant_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-189">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="event_participant_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-190">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_participant_signal_entry
+                where creationTime is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_participant_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-191">
+        <modifyDataType columnName="expired" newDataType="BIT"
+            tableName="event_participant_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-192">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_participant_signal_entry
+                where creationTime is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(45)"
+            columnName="stringValue" tableName="event_participant_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-193">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="event_participant_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-194">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_signal
+                where creationTime is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-195">
+        <modifyDataType columnName="event_uuid"
+            newDataType="VARCHAR(32)" tableName="event_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-196">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="event_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-197">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_signal_entry
+                where creationTime is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-198">
+        <modifyDataType columnName="expired" newDataType="BIT"
+            tableName="event_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-199">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_signal_entry
+                where stringValue is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(45)"
+            columnName="stringValue" tableName="event_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-200">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="event_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-201">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_state
+                where creationTime is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_state" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-202">
+        <modifyDataType columnName="drasClientId"
+            newDataType="VARCHAR(255)" tableName="event_state" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-203">
+        <dropNotNullConstraint columnDataType="VARCHAR(255)"
+            columnName="programName" tableName="event_state" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-204">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_template
+                where creationTime is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_template" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-205">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="event_template" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-206">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_template_signalentry
+                where creationTime is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_template_signalentry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-207">
+        <modifyDataType columnName="relativeStartTime"
+            newDataType="BIGINT" tableName="event_template_signalentry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-208">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="event_template_signalentry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-209">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                event_timeblock
+                where creationTime is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="event_timeblock" />
+    </changeSet>
+
+    <!-- TODO: message entity did not look complete -->
+    <!-- <changeSet author="brian (generated)" id="1296580754580-210"> <modifyDataType
+        columnName="contactId" newDataType="VARCHAR(255)" tableName="message" />
+        </changeSet> <changeSet author="brian (generated)" id="1296580754580-211">
+        <modifyDataType columnName="content" newDataType="LONGTEXT" tableName="message"
+        /> </changeSet> <changeSet author="brian (generated)" id="1296580754580-212">
+        <modifyDataType columnName="eventName" newDataType="VARCHAR(255)" tableName="message"
+        /> </changeSet> <changeSet author="brian (generated)" id="1296580754580-213">
+        <modifyDataType columnName="subject" newDataType="LONGTEXT" tableName="message"
+        /> </changeSet> -->
+
+    <changeSet author="brian (generated)" id="1296580754580-214">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                noaa_weather
+                where creationTime is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="noaa_weather" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-215">
+        <modifyDataType columnName="isFinal" newDataType="BIT"
+            tableName="noaa_weather" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-216">
+        <modifyDataType columnName="activated"
+            newDataType="BIT" tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-217">
+        <modifyDataType columnName="client" newDataType="BIT"
+            tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-218">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                participant
+                where creationTime is
+                null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-219">
+        <modifyDataType columnName="dataEnabler"
+            newDataType="BIT" tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-220">
+        <modifyDataType columnName="feedback"
+            newDataType="BIT" tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-221">
+        <modifyDataType columnName="hostAddress"
+            newDataType="LONGTEXT" tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-222">
+        <modifyDataType columnName="manualControl"
+            newDataType="BIT" tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-223">
+        <modifyDataType columnName="offlineWarning"
+            newDataType="BIT" tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-224">
+        <modifyDataType columnName="status" newDataType="SMALLINT"
+            tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-225">
+        <modifyDataType columnName="testAccount"
+            newDataType="BIT" tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-226">
+        <modifyDataType columnName="type" newDataType="TINYINT"
+            tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-227">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-228">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                participant_manualsignal where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="participant_manualsignal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-229">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program where
+                creationTime is null;
+			</sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-230">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program where
+                programType is null;
+			</sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(64)"
+            columnName="programType" tableName="program" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-231">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="program" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-232">
+        <modifyDataType columnName="coexist" newDataType="BIT"
+            tableName="program_matrix" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-233">
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program_matrix" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-234">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_matrix where
+                program1UUID is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="program1UUID" tableName="program_matrix" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-235">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_matrix where
+                program2UUID is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="program2UUID" tableName="program_matrix" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-236">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_participant where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program_participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-237">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_participant where program_uuid is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="program_uuid" tableName="program_participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-238">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="program_participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-239">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_participant_bid_entry where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program_participant_bid_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-240">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_participant_bid_entry where program_participant_uuid is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="program_participant_uuid" tableName="program_participant_bid_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-241">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="program_participant_bid_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-242">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_participant_bid_level_map where creationTime is
+                null;
+			</sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program_participant_bid_level_map" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-243">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_participant_bid_level_map where
+                program_participant_bid_entry_uuid is null;
+			</sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="program_participant_bid_entry_uuid" tableName="program_participant_bid_level_map" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-244">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="program_participant_bid_level_map" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-245">
+            <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_participant_constraint where
+                creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program_participant_constraint" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-246">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="program_participant_constraint" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-247">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_participant_rule where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program_participant_rule" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-248">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_participant_rule where program_participant_uuid
+                is null;
+		</sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="program_participant_uuid" tableName="program_participant_rule" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-249">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="program_participant_rule" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-250">
+            <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from program_rtp_config where creationTime is null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program_rtp_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-251">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_rule
+                where creationTime is null;
+		</sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program_rule" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-252">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="program_rule" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-253">
+            <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal
+                where creationTime is null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-254">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="program_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-255">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal_entry where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="program_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-256">
+        <modifyDataType columnName="expired" newDataType="BIT"
+            tableName="program_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-257">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="program_signal_entry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-258">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                rtp_remote_price where creationTime is null;
+		</sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="rtp_remote_price" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-259">
+        <dropNotNullConstraint columnDataType="VARCHAR(255)"
+            columnName="programName" tableName="rtp_remote_price" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-260">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="rtp_remote_price" />
+    </changeSet>
+
+
+    <changeSet author="brian (generated)" id="1296580754580-261">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                season_config where creationTime is null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="season_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-262">
+            <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                season_config where program_uuid is null;
+        </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="program_uuid" tableName="season_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-263">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                signal_def where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="signal_def" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-264">
+        <modifyDataType columnName="inputSignal"
+            newDataType="BIT" tableName="signal_def" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-265">
+        <modifyDataType columnName="levelSignal"
+            newDataType="BIT" tableName="signal_def" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-266">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="signal_def" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-267">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                signal_level_def where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="signal_level_def" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-268">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                signal_level_def where signal_def_uuid is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="VARCHAR(32)"
+            columnName="signal_def_uuid" tableName="signal_level_def" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-269">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="signal_level_def" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-270">
+        <modifyDataType columnName="comment" newDataType="LONGTEXT"
+            tableName="sub_account" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-271">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                sub_account where creationTime is null;
+            </sqlCheck>
+        </preConditions>
+        <addNotNullConstraint columnDataType="DATETIME"
+            columnName="creationTime" tableName="sub_account" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-272">
+        <modifyDataType columnName="premiseNumber"
+            newDataType="LONGTEXT" tableName="sub_account" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-273">
+        <modifyDataType columnName="subAccountId"
+            newDataType="LONGTEXT" tableName="sub_account" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-274">
+        <modifyDataType columnName="uuid" newDataType="VARCHAR(32)"
+            tableName="sub_account" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-275">
+        <dropNotNullConstraint columnDataType="INT"
+            columnName="version" tableName="sub_account" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-391">
+        <dropColumn columnName="id" tableName="report_event" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="201103101249">
+        <addPrimaryKey columnNames="uuid" tableName="report_event" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-394">
+        <dropColumn columnName="id" tableName="report_event_participation" />
+    </changeSet>
+<!-- 
+    <changeSet author="brian (generated)" id="1296580754580-282">
+        <dropPrimaryKey tableName="report_event_participation" />
+    </changeSet>
+ -->
+    <changeSet author="brian (generated)" id="1296580754580-278">
+        <addPrimaryKey columnNames="uuid"
+            tableName="report_event_participation" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-398">
+        <dropColumn columnName="id" tableName="report_event_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-279">
+        <addPrimaryKey columnNames="uuid" tableName="report_event_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-350">
+        <dropColumn columnName="id" tableName="db_version" />
+    </changeSet>
+<!-- 
+    <changeSet author="brian (generated)" id="1296580754580-280">
+        <dropPrimaryKey tableName="db_version" />
+    </changeSet>
+ -->
+<!-- 
+    <changeSet author="brian (generated)" id="1296580754580-283">
+        <dropPrimaryKey tableName="report_event_signal" />
+    </changeSet>
+ -->
+<!-- bookmark -->
+    <changeSet author="brian (generated)" id="1296580754580-284">
+        <dropForeignKeyConstraint
+            baseTableName="dataentry_temp" baseTableSchemaName="pss2"
+            constraintName="FK_dataset_temp" />
+    </changeSet>
+    <changeSet author="brian (generated)" id="1296580754580-285">
+        <dropForeignKeyConstraint
+            baseTableName="dataentry_temp" baseTableSchemaName="pss2"
+            constraintName="FK_datasource_temp" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-289">
+        <dropForeignKeyConstraint
+            baseTableName="program_participant_constraint"
+            constraintName="FKPPC_TO_PP" />
+    </changeSet>
+
+    <!-- removed from auto-diff in 1296580754580-291 baseTableSchemaName="pss2_6_4_snapshot"
+        referencedTableSchemaName="pss2_6_4_snapshot" referencesUniqueColumn="false" -->
+    <changeSet author="brian (generated)" id="1296580754580-291">
+        <addForeignKeyConstraint
+            baseColumnNames="program_participant_uuid" baseTableName="bid_level_mapping"
+            constraintName="FK46F9E751EB5C502A" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="program_participant" />
+    </changeSet>
+
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-292">
+        <addForeignKeyConstraint
+            baseColumnNames="message_filter_setting_uuid" baseTableName="contact"
+            constraintName="FK38B724203DE6DA1E" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="message_filter_setting"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" 
+        disabled due to incompatable migration on participant-uuid
+    <changeSet author="brian (generated)" id="1296580754580-293">
+        <addForeignKeyConstraint
+            baseColumnNames="participant_uuid" baseTableName="contact"
+            constraintName="FK38B724203DE22BD0" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="participant"
+            referencesUniqueColumn="false" />
+    </changeSet>
+-->
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-294">
+        <addForeignKeyConstraint
+            baseColumnNames="program_uuid" baseTableName="contact"
+            constraintName="FK38B72420A5F74041" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="program"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-295">
+        <addForeignKeyConstraint
+            baseColumnNames="contact_uuid" baseTableName="contacts_offline_error"
+            constraintName="FK1DF2B1C03C0C52F0" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="contact"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-296">
+        <addForeignKeyConstraint
+            baseColumnNames="participant_uuid" baseTableName="contacts_offline_error"
+            constraintName="FK1DF2B1C03DE22BD0" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="participant"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-297">
+        <addForeignKeyConstraint
+            baseColumnNames="program_uuid" baseTableName="contacts_offline_error"
+            constraintName="FK1DF2B1C0A5F74041" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="program"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-298">
+        <addForeignKeyConstraint
+            baseColumnNames="program_uuid" baseTableName="event"
+            constraintName="FK5C6729AA5F74041" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="program"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-299">
+        <addForeignKeyConstraint
+            baseColumnNames="event_uuid" baseTableName="event_bid_block"
+            constraintName="FKC5E5A766CF46EF97" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="event"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-300">
+        <addForeignKeyConstraint
+            baseColumnNames="participant_uuid" baseTableName="event_participant"
+            constraintName="FK6927A90E3DE22BD0" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="participant"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-301">
+        <addForeignKeyConstraint
+            baseColumnNames="event_participant_uuid" baseTableName="event_participant_bid_entry"
+            constraintName="FKD987A0BFFA2301A8" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="event_participant"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-302">
+        <addForeignKeyConstraint
+            baseColumnNames="event_participant_signal_uuid"
+            baseTableName="event_participant_signal_entry"
+            constraintName="FKFF4A3AC6F9B7465" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="event_participant_signal"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-303">
+        <addForeignKeyConstraint
+            baseColumnNames="event_signal_uuid" baseTableName="event_signal_entry"
+            constraintName="FKCAEBDA0710BC3AC" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="event_signal"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-304">
+        <addForeignKeyConstraint
+            baseColumnNames="event_uuid" baseTableName="event_state"
+            constraintName="FK1ACFBEACCF46EF97" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="event"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-305">
+        <addForeignKeyConstraint
+            baseColumnNames="participant_uuid" baseTableName="event_state"
+            constraintName="FK1ACFBEAC3DE22BD0" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="participant"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-306">
+        <addForeignKeyConstraint
+            baseColumnNames="program_uuid" baseTableName="event_state"
+            constraintName="FK1ACFBEACA5F74041" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="program"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-307">
+        <addForeignKeyConstraint
+            baseColumnNames="program_uuid" baseTableName="event_template"
+            constraintName="FK7827D87FA5F74041" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="program"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-308">
+        <addForeignKeyConstraint
+            baseColumnNames="event_template_uuid" baseTableName="event_template_signalentry"
+            constraintName="FK5980F30A54245A6C" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="event_template"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-309">
+        <addForeignKeyConstraint
+            baseColumnNames="event_uuid" baseTableName="event_timeblock"
+            constraintName="FK190A9E7BCF46EF97" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="event"
+            referencesUniqueColumn="false" />
+    </changeSet>
+    <!-- <changeSet author="brian (generated)" id="1296580754580-310"> <addForeignKeyConstraint
+        baseColumnNames="contact_uuid" baseTableName="message" baseTableSchemaName="pss2_6_4_snapshot"
+        constraintName="FK38EB00073C0C52F0" deferrable="false" initiallyDeferred="false"
+        onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="uuid" referencedTableName="contact"
+        referencedTableSchemaName="pss2_6_4_snapshot" referencesUniqueColumn="false"
+        /> </changeSet> <changeSet author="brian (generated)" id="1296580754580-311">
+        <addForeignKeyConstraint baseColumnNames="event_uuid" baseTableName="message"
+        baseTableSchemaName="pss2_6_4_snapshot" constraintName="FK38EB0007CF46EF97"
+        deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO
+        ACTION" referencedColumnNames="uuid" referencedTableName="event" referencedTableSchemaName="pss2_6_4_snapshot"
+        referencesUniqueColumn="false" /> </changeSet> <changeSet author="brian (generated)"
+        id="1296580754580-312"> <addForeignKeyConstraint baseColumnNames="program_uuid"
+        baseTableName="message" baseTableSchemaName="pss2_6_4_snapshot" constraintName="FK38EB0007A5F74041"
+        deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO
+        ACTION" referencedColumnNames="uuid" referencedTableName="program" referencedTableSchemaName="pss2_6_4_snapshot"
+        referencesUniqueColumn="false" /> </changeSet> -->
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-313">
+        <preConditions>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                participant_manualsignal where participant_uuid not in
+                (select uuid
+                from participant);
+			</sqlCheck>
+        </preConditions>
+        <addForeignKeyConstraint
+            baseColumnNames="participant_uuid" baseTableName="participant_manualsignal"
+            constraintName="FK4235EF7A3DE22BD0" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="participant"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-314">
+        <addForeignKeyConstraint
+            baseColumnNames="bid_config_uuid" baseTableName="program"
+            constraintName="FKED8F1E84E97E185C" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="bid_config"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-315">
+        <addForeignKeyConstraint
+            baseColumnNames="participant_uuid" baseTableName="program_participant"
+            constraintName="FK6E0BC5F83DE22BD0" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="participant"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-316">
+        <addForeignKeyConstraint
+            baseColumnNames="program_participant_uuid" baseTableName="program_participant"
+            constraintName="FK6E0BC5F82BE2B827" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="program_participant_constraint"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-317">
+        <addForeignKeyConstraint
+            baseColumnNames="signal_level_def_uuid" baseTableName="program_participant_bid_level_map"
+            constraintName="FK1954F358B2BB5713" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="signal_level_def"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-318">
+        <addForeignKeyConstraint
+            baseColumnNames="program_signal_uuid" baseTableName="program_signal_entry"
+            constraintName="FKA44E3DF6FEF7EBEA" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="program_signal"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-319">
+        <addForeignKeyConstraint
+            baseColumnNames="event_uuid" baseTableName="report_event"
+            constraintName="FK379F73CFCF46EF97" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="event"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-320">
+        <addForeignKeyConstraint
+            baseColumnNames="program_uuid" baseTableName="report_event"
+            constraintName="FK379F73CFA5F74041" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="program"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-321">
+        <addForeignKeyConstraint
+            baseColumnNames="report_event_uuid" baseTableName="report_event_participation"
+            constraintName="FKB5D47CD112BEADC6" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="report_event"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-322">
+        <addForeignKeyConstraint
+            baseColumnNames="report_event_uuid" baseTableName="report_event_signal"
+            constraintName="FK5961E11812BEADC6" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="report_event"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-323">
+        <addForeignKeyConstraint
+            baseColumnNames="program_uuid" baseTableName="rtp_remote_price"
+            constraintName="FK8FA9D241A5F74041" deferrable="false"
+            initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION"
+            referencedColumnNames="uuid" referencedTableName="program"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-324">
+        <addForeignKeyConstraint
+            baseColumnNames="program_uuid" baseTableName="season_config"
+            constraintName="FK92B4A01EA5F74041"
+            deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+            onUpdate="NO ACTION" referencedColumnNames="uuid"
+            referencedTableName="program"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <!-- removed from auto-diff baseTableSchemaName="pss2_6_4_snapshot" referencedTableSchemaName="pss2_6_4_snapshot" -->
+    <changeSet author="brian (generated)" id="1296580754580-325">
+        <addForeignKeyConstraint
+            baseColumnNames="participant_uuid" baseTableName="sub_account"
+            constraintName="FK90E2AF2E3DE22BD0"
+            deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+            onUpdate="NO ACTION" referencedColumnNames="uuid"
+            referencedTableName="participant"
+            referencesUniqueColumn="false" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-326">
+        <dropIndex indexName="FK16D1B63CFEA63EE0" tableName="contact" />
+    </changeSet>
+    
+    <changeSet author="brian (generated)" id="1296580754580-327">
+        <dropIndex indexName="propertyName_UNIQUE" tableName="core_property" />
+    </changeSet>
+<!-- 
+    <changeSet author="brian (generated)" id="1296580754580-328">
+        <dropIndex indexName="noDupRecKey" tableName="dataentry" />
+    </changeSet>
+ -->
+    <changeSet author="brian (generated)" id="1296580754580-329">
+        <dropIndex indexName="evtUnqName" tableName="event" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-330">
+        <dropIndex indexName="weatherDateInx" tableName="noaa_weather" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-331">
+        <dropIndex indexName="programNameInx" tableName="program_participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-332">
+        <dropIndex indexName="stateInx" tableName="program_participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-333">
+        <dropIndex indexName="IndexReportEvent_eventName"
+            tableName="report_event" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-334">
+        <dropIndex indexName="IndexReportEventParticipant_eventName"
+            tableName="report_event_participation" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-335">
+        <dropIndex indexName="IndexReportEventParticipant_partName"
+            tableName="report_event_participation" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-336">
+        <dropColumn columnName="program_uuid" tableName="bid_config" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-337">
+        <dropColumn columnName="participant_uuid" tableName="bid_level_mapping" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-338">
+        <dropColumn columnName="programName" tableName="bid_level_mapping" />
+    </changeSet>
+    
+    <changeSet author="brian (generated)" id="1296580754580-351">
+        <dropColumn columnName="programName" tableName="event" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-352">
+        <dropColumn columnName="eventName" tableName="event_bid_block" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-361">
+        <dropColumn columnName="eventIdentifier" tableName="event_state" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-362">
+        <dropColumn columnName="programName" tableName="event_template" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-363">
+        <dropColumn columnName="owner_id" tableName="event_template_signalentry" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-365">
+        <dropColumn columnName="eventName" tableName="event_timeblock" />
+    </changeSet>
+
+    <!-- <changeSet author="brian (generated)" id="1296580754580-366"> <dropColumn
+        columnName="from" tableName="message" /> </changeSet> <changeSet author="brian
+        (generated)" id="1296580754580-367"> <dropColumn columnName="to" tableName="message"
+        /> </changeSet> <changeSet author="brian (generated)" id="1296580754580-368">
+        <dropColumn columnName="type" tableName="message" /> </changeSet> -->
+
+    <changeSet author="brian (generated)" id="1296580754580-376">
+        <dropColumn columnName="programName" tableName="program_participant" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-379">
+        <dropColumn columnName="program_participant_uuid"
+            tableName="program_participant_constraint" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-390">
+        <dropColumn columnName="eventName" tableName="report_event" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-392">
+        <dropColumn columnName="programName" tableName="report_event" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-393">
+        <dropColumn columnName="eventName" tableName="report_event_participation" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-395">
+        <dropColumn columnName="participantName" tableName="report_event_participation" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-396">
+        <dropColumn columnName="programName" tableName="report_event_participation" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-397">
+        <dropColumn columnName="eventName" tableName="report_event_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-399">
+        <dropColumn columnName="participantName" tableName="report_event_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-400">
+        <dropColumn columnName="programName" tableName="report_event_signal" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-401">
+        <dropColumn columnName="eventName" tableName="rtp_remote_price" />
+    </changeSet>
+
+    <changeSet author="brian (generated)" id="1296580754580-402">
+        <dropTable tableName="core_property" />
+    </changeSet>
+    <changeSet author="brian (generated)" id="1296580754580-403">
+        <dropTable tableName="dataentry_temp" />
+    </changeSet>
+    <changeSet author="brian (generated)" id="1296580754580-404">
+        <dropTable tableName="dbp_event_creation" />
+    </changeSet>
+    <changeSet author="brian (generated)" id="1296580754580-405">
+        <dropTable tableName="dbpevent" />
+    </changeSet>
+    <changeSet author="brian (generated)" id="1296580754580-406">
+        <dropTable tableName="participant_contact" />
+    </changeSet>
+    <changeSet author="brian (generated)" id="1296580754580-407">
+        <dropTable tableName="peakchoice_message" />
+    </changeSet>
+    <changeSet author="brian (generated)" id="1296580754580-408">
+        <dropTable tableName="scertp_event" />
+    </changeSet>
+</databaseChangeLog>

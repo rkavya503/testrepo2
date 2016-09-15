@@ -1,0 +1,115 @@
+/* .mobileApp{
+	clear: both;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#0B7527;
+	padding-bottom:10px;
+}
+ */
+/* .trackAndManage
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	color:#101712;
+	margin-bottom:20px;
+} */
+
+.mobileLogoDiv{
+	width:100px; height:50px; float:left;
+}
+
+.downloadHeader
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#000000;
+	font-weight:bold;
+	padding-bottom:10px;
+}
+.downloadHeader a
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#000000;
+	font-weight:bold;
+	padding-bottom:10px;
+	text-decoration: underline;
+}
+.MobileEventSideLink
+{
+	padding-top:15px;
+	font-weight:normal;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#333;
+	word-spacing:0.1em;
+	text-align:center;
+	width: 100%;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+
+#sceDRAlerts{
+	width:150px;
+	height:auto;
+	_margin-left:-3px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+
+.mobileApp{
+	height:19px;
+	clear: both;
+	padding-top:7px;!important padding-top:3px;
+	font-weight:normal;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#0B7527;
+	word-spacing:0.1em;
+	text-align:center;
+	background-image: url(../images/backgrounds/tempDatetimeBg.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	width: 100%;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	font-size: 15px;
+}
+
+.trackAndManage{
+	height:auto;
+	padding-top:5px;
+	color:#333;
+	padding-left: 5px;
+	padding-bottom:0px;
+	font-size:12px;
+	border-left:solid 1px #5a8425;
+	border-right:solid 1px #75b446;
+	position: relative;
+	line-height: 1.2em;
+	background: #ffffff url(../images/backgrounds/tempDatetimeMiddle.jpg) left bottom repeat-x;
+}
+
+.mobileAppBottomBg{
+	font-weight:normal;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#333;
+	background: url(../images/backgrounds/tempDatetimeBottomBg.jpg) left top no-repeat;
+	height: 6px;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.tempHeader
+{
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#000000;
+	font-weight:bold;
+	padding-bottom:10px;
+}
+
+
+

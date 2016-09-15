@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>drms-parent</artifactId>
+		<groupId>com.akuacom.drms</groupId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+	<groupId>com.akuacom.drms.ws</groupId>
+	<artifactId>ws-parent</artifactId>
+	<version>7.26-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<dependencies>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<scope>provided</scope>
+		</dependency>
+	    <dependency>
+		    <groupId>org.scala-lang</groupId>
+		    <artifactId>scala-library</artifactId>
+			<scope>provided</scope>
+	    </dependency>
+	</dependencies>
+	<name>ws-parent</name>
+    <modules>
+		<module>adx-sdg-cbp</module>
+		<module>akua-util-op</module>
+		<module>bacnet</module>
+		<module>itron-pge-dbp-in</module>
+		<module>legacy</module>
+		<module>obix-rest</module>
+		<module>part-op</module>
+		<module>rest</module>
+		<module>rest-util-op</module>
+		<module>soap</module>
+		<module>util-op</module>
+		<module>apx-rest</module>
+        <module>dlc-rest</module>
+		<module>soap-ge</module>
+		<module>soap-2b</module>
+	</modules>
+</project>

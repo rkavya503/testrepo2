@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	
+	<changeSet id="1" author="Navya">
+        <comment>
+               DRMS-8816 SCE DR Website - 2 text changes
+        </comment>
+		<sql>	
+				update drwebsite_property set textValue ='For event information, if you are a business customer with an Edison SmartConnect meter, please call: &lt;br&gt; 1-800-990-7788. &lt;br&gt; Business customers with other types of meters, please call: 1-866-334-7827.' where propertyName ='contact_info_sai_com';
+		</sql>
+    </changeSet>
+	<changeSet id="2" author="Navya">
+        <comment>
+               DRMS-8816 SCE DR Website - 2 text changes
+        </comment>
+		<sql>	
+				update drwebsite_property set textValue = 'For event information, please call: 1-800-655-4555.' where propertyName = 'contact_info_sai_resi';
+		</sql>
+    </changeSet>	
+</databaseChangeLog>

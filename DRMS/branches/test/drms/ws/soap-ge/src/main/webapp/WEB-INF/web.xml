@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress WebProperties -->
+<web-app version="2.5"   
+    xmlns="http://java.sun.com/xml/ns/javaee"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>soap-ge</display-name>
+    <servlet>
+        <display-name>soap4GE</display-name>
+        <servlet-name>soap4GE</servlet-name>
+        <servlet-class>com.honeywell.dras.ge.EventSOAPWS4GEImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>soap4GE</servlet-name>
+        <url-pattern>/soap4GE</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>soap4GE</servlet-name>
+        <url-pattern>/nossl/soap4GE</url-pattern>
+    </servlet-mapping>
+    <!--<security-constraint>
+        <web-resource-collection>
+            <web-resource-name>soap</web-resource-name>
+            <url-pattern>/nossl/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>PSS2WS</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>soap</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>PSS2WS</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <login-config>
+         <auth-method>BASIC</auth-method>
+        <realm-name>PSS2WS</realm-name>
+    </login-config>
+    <security-role>
+        <description>PSS2WS</description>
+        <role-name>PSS2WS</role-name>
+    </security-role>-->
+</web-app>

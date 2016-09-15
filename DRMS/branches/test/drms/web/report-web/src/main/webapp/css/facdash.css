@@ -1,0 +1,749 @@
+body {
+	font-family: verdana, arial, sans-serif;
+	margin:0px;
+	font-size: 100.01%
+}
+
+a:link {
+	text-decoration: none
+}
+
+a:visited {
+	color: darkblue;
+	text-decoration: none
+}
+
+a:active {
+	color: black;
+	text-decoration: none
+}
+
+a:hover {
+	color: #FF7300;
+	text-decoration: underline
+}
+
+a.tabHeader:active,a.tabHeader:hover {
+	text-decoration: none
+}
+#page_wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	width: 100%;
+	text-align: left;
+	min-width: 820px;
+}
+
+#frame {
+	width: /*850px*/100%;
+	margin: 0 auto;	
+}
+
+ul#nav {
+	margin: 0;
+	padding: 5px 20px 0;
+	list-style: none;
+}
+
+#nav li {
+	float: left;
+	background: url("../images/layout/left.gif") no-repeat left top;
+	margin: 0;
+	padding: 0 0 0 9px;
+	font-weight: bold;
+}
+
+#nav a {
+	float: left;
+	display: block;
+	background: url("../images/layout/right.gif") no-repeat right top;
+	padding: 5px 20px 2px 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+	font-size: 13px;
+
+}
+
+.rich-tabhdr-side-cell  a {
+	color:black;
+}
+
+/* Commented Backslash Hack
+   hides rule from IE5-Mac \*/
+#nav a {
+	float: none;
+}
+
+/* End IE5-Mac hack */
+
+#nav a:hover {
+	color: #2bb0ff;
+}
+
+#nav #current {
+	background-image: url("../images/layout/left_on.gif");
+}
+
+#nav #current a {
+	background-image: url("../images/layout/right_on.gif");
+	color: #27577D;
+	padding-bottom: 3px;
+	font-size:13px; 
+}
+
+pre {
+    overflow: auto;
+    width: 750px; 
+    padding-bottom:20px;
+}
+#navrightDiv{width:600px; height:24px; top:0px; right:0px;position: absolute;}
+
+#navright {
+	padding-left: 0px;
+	padding-bottom: 0;
+	padding-right: 0px;
+	padding-top: 0px;
+	top: 4px;
+	right:20px;
+	position:absolute;
+	margin: 0;
+	list-style: none;
+}
+
+#navright li {
+	float: right;
+	margin: 0;
+	padding: 0 12px 0 12px;
+	border-right: solid #000000 1px;
+}
+
+
+#navright li.last {
+	border-right: none;
+	padding: 0 0px 0 15px;
+	color: #000000
+}
+
+#navright a,.topright{
+	float: right;
+	display: block;
+	text-decoration: none;
+	font-weight: bold;
+	color: #000000;
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 11px;
+}
+
+#navright a,.topleft{
+	float: left;
+	display: block;
+	text-decoration: none;
+	font-weight: bold;
+	color: #000000;
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 11px;
+}
+
+/* Commented Backslash Hack
+   hides rule from IE5-Mac \*/
+#navright a {
+	float: none;
+}
+
+#header {
+	float: left;
+	width: 100%;
+	font-size: .8em;
+	line-height: normal;
+	overflow: auto;
+	margin: 0 0 8px 0;
+	background: #DAE0D2 url("../images/layout/header_background-wide.jpg")
+		repeat-x center bottom;
+}
+
+#header h1 {
+	margin: 0;
+	padding-top: 10px;
+	padding-left: 25px;
+	font-size: 2em;
+	font-weight: bold;
+	color: #000000;
+	font-family: verdana, arial, sans-serif;
+}
+
+#page_footer {
+	text-align: right;
+	font-size: 0.7em;
+	letter-spacing: 1px;
+}
+
+#page_footer a img {
+	border-width: 0;
+}
+
+#fm-submit {
+	margin-left: 10px;
+	clear: both;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+#fm-submit input {
+	padding-left: 0.4em;
+	padding-bottom: 1px;
+	padding-right: 0.4em;
+	padding-top: 1px;
+	border: 1px solid #2bb0ff;
+	font-size: 1em;
+	font-weight:500;
+	font-family: verdana, arial, sans-serif;
+}
+
+#fm-submit-no-panel input {
+	padding-left: 0.4em;
+	padding-bottom: 1px;
+	padding-right: 0.4em;
+	padding-top: 1px;
+	border: 1px solid #2bb0ff;
+	background: #16557f;
+	color: #fff;
+	font-size: 0.7em;
+	font-family: verdana, arial, sans-serif;
+}
+
+.radio-buttons {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+.panel-style {
+	font-size: 1em;
+}
+
+.about-panel-style {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.about-content-panel {
+	margin-top: -8px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: -10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align: center
+}
+
+.tab-titles {
+	font-weight: bold;
+}
+
+.client-name {
+	font-weight: bold;
+}
+
+.content-panel {
+	margin-top: -8px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: -10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.clientPollRegion {
+	display:none;
+}
+.internal-panel-narrow {
+	margin-bottom: 10px;
+	margin-left: 5px;
+	width: 390px;
+}
+
+.content-table {
+	margin-bottom: 10px;
+	margin-left: 10px;
+	width: 800px;
+}
+
+.content-table-narrow {
+}
+
+.content-tab {
+	margin-bottom: 10px;
+	margin-left: 10px;
+	width: 800px;
+}
+
+.content-tab-table {
+	margin-bottom: 10px;
+	margin-left: 20px;
+	margin-right: 10px;
+}
+
+.content-client-table {
+	margin-bottom: 20px;
+	margin-left: 10px;
+	width: 800px;
+}
+
+.message-error {
+	color: red;
+}
+
+.message-fatal {
+	color: red;
+}
+
+.message-warn {
+	color: orange;
+}
+
+.message-info {
+	color: green;
+}
+
+.global-message-error {
+	font-size: 0.7em;
+	color: red;
+}
+
+.global-message-fatal {
+	font-size: 0.7em;
+	color: red;
+}
+
+.global-message-warn {
+	font-size: 0.7em;
+	color: orange;
+}
+
+.global-message-info {
+	font-size: 0.7em;
+	color: green;
+}
+
+.form-field-required {
+	color: red;
+	margin-right: 5px;
+}
+
+.form-field {
+	font-weight: bold;
+}
+/*Added by Harlin on Oct.27*/
+.rich-datascr-button-dsbld  {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 9px;
+	color: #17253E;
+	text-decoration: none;
+	background-color: #BAC7CF;
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+	border: 1px solid #487882;
+	text-align: center;
+	width: 15px;
+	font-weight: 500;
+}
+.rich-datascr-button {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	font-weight: 500;
+	background-color: #16557F;
+	text-align: center;
+	width: 15px;
+	
+	border: 1px solid #2BB0FF;
+	padding-top: 2px;
+	padding-right: 4px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+	font-weight: normal;
+	cursor:pointer;
+}
+
+.rich-datascr-button a, .rich-datascr-button a:visited, .rich-datascr-button a:active  {
+	color:white;
+}
+ 
+.rich-datascr-button  a:hover {
+	text-decoration: none;
+	color:white;
+ }
+ 
+.rich-datascr-button-dsbld{
+	color:gray;
+} 
+
+.rich-datascr-act {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	background-color: #F1F5FA;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #f60;
+	width: 20px;
+	text-align: center;
+}
+.rich-datascr-inact{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 10px;
+	background-color: #F1F5FA;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: #036;
+	width: 20px;
+	text-align: center;
+	color: #0B3E5B;
+}
+.rich-table{
+	width:96%;	
+}
+.rich-table-cell a:link{
+	color: #0072BC;
+}
+/*added by Harlin on Nov.3*/
+.rich-tabpanel {
+width: 96%;
+
+}
+
+.content-tab {
+margin-bottom: 10px;
+margin-left: 10px;
+margin-right:10px;
+}
+.rich-tabpanel-content-position {
+height: 100%;
+position: relative;
+
+}
+.rich-tabpanel-content {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-right-width: 1px;
+	vertical-align:top;
+}
+.tab-titles {
+font-weight: normal;
+}
+.rich-table-subheadercell{
+
+	font-size:11px;
+}
+.rich-table-footer{
+	background-color:#E0E0E0;
+}
+
+#fm-submit button {
+background: #16557F;
+border: 1px solid #2BB0FF;
+color: white;
+font-size: 100%;
+}	
+
+input.fm-submit  {
+background: #16557F;
+border: 1px solid #2BB0FF;
+color: white;
+font-size: 100%;
+}	
+ 
+a h2{
+   font-family: Arial, Verdana, sans-serif;
+   font-size: 11px;
+   font-weight: bold;
+} 
+ 
+h2 {
+display: block;
+font-size: 13px;
+font-weight: bold;
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+margin-left: 0px;
+}
+
+h3 {
+display: block;
+font-size: 11px;
+font-weight: normal;
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+margin-left: 0px;
+}
+
+h4 {
+display: block;
+font-size: 12px;
+font-weight: 500;
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+margin-left: 0px;
+}
+
+h5 {
+display: block;
+font-size: 11px;
+font-weight: normal;
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+margin-left: 0px;
+}
+
+.time-input input, input.time-input {
+	width:50px;
+}
+
+#DemoEventsPane  .rich-table-subheadercell {
+	white-space:normal;
+}
+
+.numInput {
+ width: 100%;
+ height: 100%;
+}
+
+.grid-input .rich-table-cell{
+	/*background: lightgray;*/
+}
+
+
+.rich-calendar-input {
+	width:75px;
+}
+
+.btn-div {
+	position:relative;
+}
+
+.grid-input .rich-table-cell .btn-grid{
+	display:block;
+	position:absolute;
+	background-repeat:no-repeat;
+	background-color:transparent;
+	width:40px;
+	top:-11px;
+	border:1px;
+}
+
+.grid-input .rich-table-cell input.btn-add {
+	background-image: url(../images/layout/add_device.gif); 
+	left:10px;
+}
+
+.grid-input .rich-table-cell input.btn-remove  {
+	left: 40px;
+	background-image: url(../images/layout/delete_device.gif); 
+}
+
+#fm-submit div input {
+	margin-right:15px;
+}
+.right-column{
+	text-align:right;
+}
+.center-column{
+	text-align:center;
+}
+
+
+.productionServerFacilityOperator .header {
+	float: left;
+	width: 100%;
+	font-size: .8em;
+	line-height: normal;
+	overflow: auto;
+	margin: 0 0 8px 0;
+	background: #DAE0D2 url("../images/layout/header_background-wide.jpg")
+		repeat-x center bottom;
+}
+
+.productionServerUtilityOperator .header {
+	float: left;
+	width: 100%;
+	font-size: .8em;
+	line-height: normal;
+	overflow: auto;
+	margin: 0 0 8px 0;
+	background: #DAE0D2 url("../images/layout/header_background-grn.jpg") no-repeat left top;
+}
+
+.testServerFacilityOperator .header {
+	float: left;
+	width: 100%;
+	font-size: .8em;
+	line-height: normal;
+	overflow: auto;
+	background-color:#afebf8;
+	margin: 0 0 8px 0;
+	background: #DAE0D2 url("../images/layout/header_background-blu.jpg")
+		no-repeat left top;
+}
+
+.testServerUtilityOperator .header {
+	float: left;
+	width: 100%;
+	font-size: .8em;
+	line-height: normal;
+	overflow: auto;
+	background-color:#afebf8;
+	margin: 0 0 8px 0;
+	background: #DAE0D2 url("../images/layout/header_background-yelw.jpg")
+		no-repeat left top;
+}
+
+.header h1 {
+	margin: 0;
+	padding-top: 10px;
+	padding-left: 25px;
+	font-size: 2em;
+	font-weight: bold;
+	color: #000000;
+	font-family: verdana, arial, sans-serif;
+}
+
+.productionServerFacilityOperator .nav li {
+	float: left;
+	background: url("../images/layout/left.gif") no-repeat left top;
+	margin: 0;
+	padding: 0 0 0 9px;
+	font-weight: bold;
+}
+
+.productionServerFacilityOperator .nav a {
+	float: left;
+	display: block;
+	background: url("../images/layout/right.gif") no-repeat right top;
+	padding: 5px 20px 2px 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+	font-size: 13px;
+
+}
+
+.productionServerUtilityOperator .nav li {
+	float: left;
+	background: url("../images/layout/left-grn.gif") no-repeat left top;
+	margin: 0;
+	padding: 0 0 0 9px;
+	font-weight: bold;
+}
+
+.productionServerUtilityOperator .nav a {
+	float: left;
+	display: block;
+	background: url("../images/layout/right-grn.gif") no-repeat right top;
+	padding: 5px 20px 2px 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+	font-size: 13px;
+
+}
+
+.testServerFacilityOperator .nav li {
+	float: left;
+	background: url("../images/layout/left-blue.gif") no-repeat left top;
+	margin: 0;
+	padding: 0 0 0 9px;
+	font-weight: bold;
+}
+
+.testServerFacilityOperator .nav a {
+	float: left;
+	display: block;
+	background: url("../images/layout/right-blue.gif") no-repeat right top;
+	padding: 5px 20px 2px 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+	font-size: 13px;
+
+}
+
+.testServerUtilityOperator .nav li {
+	float: left;
+	background: url("../images/layout/left-yelw.gif") no-repeat left top;
+	margin: 0;
+	padding: 0 0 0 9px;
+	font-weight: bold;
+}
+
+.testServerUtilityOperator .nav a {
+	float: left;
+	display: block;
+	background: url("../images/layout/right-yelw.gif") no-repeat right top;
+	padding: 5px 20px 2px 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+	font-size: 13px;
+
+}
+
+
+.productionServerUtilityOperator .nav   li.current{
+	background-image: url("../images/layout/left_on-grn.gif");
+}
+
+.productionServerUtilityOperator .nav .current a{
+	background-image: url("../images/layout/right_on-grn.gif");
+	color: #27577D;
+	padding-bottom: 3px;
+	font-size:13px; 
+}
+
+.testServerFacilityOperator .nav  li.current {
+	background-image: url("../images/layout/left_on.gif");
+}
+
+.testServerFacilityOperator .nav .current a  {
+	background-image: url("../images/layout/right_on.gif");
+	color: #27577D;
+	padding-bottom: 3px;
+	font-size:13px; 
+}
+ul.nav {
+	margin: 0;
+	padding: 5px 20px 0;
+	list-style: none;
+}
+
+
+
+.productionServerFacilityOperator .nav   li.current{
+	background-image: url("../images/layout/left_on.gif");
+}
+
+.productionServerFacilityOperator .nav .current a  {
+	background-image: url("../images/layout/right_on.gif");
+	color: #27577D;
+	padding-bottom: 3px;
+	font-size:13px; 
+}
+
+.testServerUtilityOperator .nav  li.current {
+	background-image: url("../images/layout/left_on-yelw.gif");
+}
+
+.testServerUtilityOperator .nav  .current a  {
+	background-image: url("../images/layout/right_on-yelw.gif");
+	color: #27577D;
+	padding-bottom: 3px;
+	font-size:13px; 
+}

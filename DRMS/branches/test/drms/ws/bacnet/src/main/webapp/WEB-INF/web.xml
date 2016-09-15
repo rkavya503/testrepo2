@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress WebProperties -->
+<web-app version="2.5"   
+    xmlns="http://java.sun.com/xml/ns/javaee"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>bacnet</display-name>
+    <servlet>
+        <display-name>bacnet</display-name>
+        <servlet-name>bacnet</servlet-name>
+        <servlet-class>com.akuacom.pss2.clientws.bacnet.BACnetClientWS</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bacnet</servlet-name>
+        <url-pattern>/bacnet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>bacnet</servlet-name>
+        <url-pattern>/nossl/bacnet</url-pattern>
+    </servlet-mapping>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>bacnet</web-resource-name>
+            <url-pattern>/nossl/bacnet</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>PSS2WS</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>bacnet</web-resource-name>
+            <url-pattern>/bacnet</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>PSS2WS</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <login-config>
+         <auth-method>BASIC</auth-method>
+        <realm-name>PSS2WS</realm-name>
+    </login-config>
+    <security-role>
+        <description>PSS2WS</description>
+        <role-name>PSS2WS</role-name>
+    </security-role>
+
+</web-app>

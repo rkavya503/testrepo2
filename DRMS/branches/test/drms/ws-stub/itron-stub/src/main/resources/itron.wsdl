@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:s="http://www.w3.org/2001/XMLSchema"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:tns="http://itron.com/webservices/"
+	xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+	targetNamespace="http://itron.com/webservices/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<wsdl:types>
+		<s:schema elementFormDefault="qualified"
+			targetNamespace="http://itron.com/webservices/">
+			<s:element name="RespondToEventNotices">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="ResponseList" type="tns:EventNoticeResponseList" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="EventNoticeResponseList">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1"
+						name="TransactionID" type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1"
+						name="EventNoticeResponses" type="tns:ArrayOfEventNoticeResponse" />
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="ArrayOfEventNoticeResponse">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="unbounded"
+						name="EventNoticeResponse" type="tns:EventNoticeResponse" />
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="EventNoticeResponse">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1"
+						default="-2147483648" name="CurtailmentEventID" type="s:int" />
+					<s:element minOccurs="0" maxOccurs="1"
+						name="AccountID" type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1"
+						name="ServicePointID" type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1"
+						default="Undefined" name="ResponseAction"
+						type="tns:ResponseAction" />
+					<s:element minOccurs="0" maxOccurs="1"
+						default="false" name="UseDefaultReductionForAllBlocks"
+						type="s:boolean" />
+					<s:element minOccurs="0" maxOccurs="1"
+						name="ResponseBlocks" type="tns:ArrayOfEventNoticeResponseBlock" />
+				</s:sequence>
+			</s:complexType>
+			<s:simpleType name="ResponseAction">
+				<s:restriction base="s:string">
+					<s:enumeration value="Accept" />
+					<s:enumeration value="Acknowledge" />
+					<s:enumeration value="BuyThrough" />
+					<s:enumeration value="Curtail" />
+					<s:enumeration value="Decline" />
+					<s:enumeration value="SubmitBid" />
+					<s:enumeration value="Undefined" />
+				</s:restriction>
+			</s:simpleType>
+			<s:complexType name="ArrayOfEventNoticeResponseBlock">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="unbounded"
+						name="ResponseBlock" type="tns:EventNoticeResponseBlock" />
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="EventNoticeResponseBlock">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1" default="0"
+						name="BlockNumber" type="s:int" />
+					<s:element minOccurs="0" maxOccurs="1"
+						default="-2147483648" name="Hour" type="s:int" />
+					<s:element minOccurs="0" maxOccurs="1"
+						default="true" name="BlockAccepted" type="s:boolean" />
+					<s:element minOccurs="0" maxOccurs="1"
+						default="-1.7976931348623157E+308" name="CommittedReduction"
+						type="s:double" />
+					<s:element minOccurs="0" maxOccurs="1"
+						default="-3.40282347E+38" name="BidPrice" type="s:float" />
+				</s:sequence>
+			</s:complexType>
+			<s:element name="RespondToEventNoticesResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1"
+							name="RespondToEventNoticesResult"
+							type="tns:RespondToEventNoticesResult" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:complexType name="RespondToEventNoticesResult">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1"
+						name="TransactionID" type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1"
+						default="Undefined" name="ResultCode" type="tns:ResultCode" />
+					<s:element minOccurs="0" maxOccurs="1"
+						name="Messages" type="tns:ArrayOfMessage" />
+				</s:sequence>
+			</s:complexType>
+			<s:simpleType name="ResultCode">
+				<s:restriction base="s:string">
+					<s:enumeration value="Undefined" />
+					<s:enumeration value="Success" />
+					<s:enumeration value="Warning" />
+					<s:enumeration value="Error" />
+					<s:enumeration value="Failed" />
+					<s:enumeration value="Canceled" />
+				</s:restriction>
+			</s:simpleType>
+			<s:complexType name="ArrayOfMessage">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="unbounded"
+						name="Message" type="tns:Message" />
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="Message">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1"
+						default="Trace" name="Severity" type="tns:EventSeverity" />
+					<s:element minOccurs="0" maxOccurs="1" name="Text"
+						type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="ID"
+						type="s:string" />
+					<s:element minOccurs="1" maxOccurs="1"
+						name="MessageTime" type="s:dateTime" />
+					<s:element minOccurs="0" maxOccurs="1"
+						name="MessageData" type="tns:ArrayOfMessageDataItem" />
+				</s:sequence>
+			</s:complexType>
+			<s:simpleType name="EventSeverity">
+				<s:restriction base="s:string">
+					<s:enumeration value="CriticalError" />
+					<s:enumeration value="Error" />
+					<s:enumeration value="Warning" />
+					<s:enumeration value="Information" />
+					<s:enumeration value="Trace" />
+					<s:enumeration value="Debug" />
+				</s:restriction>
+			</s:simpleType>
+			<s:complexType name="ArrayOfMessageDataItem">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="unbounded"
+						name="MessageDataItem" nillable="true" type="tns:MessageDataItem" />
+				</s:sequence>
+			</s:complexType>
+			<s:complexType name="MessageDataItem">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1" name="Name"
+						type="s:string" />
+					<s:element minOccurs="0" maxOccurs="1" name="Value"
+						type="s:string" />
+				</s:sequence>
+			</s:complexType>
+		</s:schema>
+	</wsdl:types>
+	<wsdl:message name="RespondToEventNoticesSoapIn">
+		<wsdl:part name="parameters"
+			element="tns:RespondToEventNotices" />
+	</wsdl:message>
+	<wsdl:message name="RespondToEventNoticesSoapOut">
+		<wsdl:part name="parameters"
+			element="tns:RespondToEventNoticesResponse" />
+	</wsdl:message>
+	<wsdl:portType name="CurtailmentOperationsSoap">
+		<wsdl:operation name="RespondToEventNotices">
+			<wsdl:input message="tns:RespondToEventNoticesSoapIn" />
+			<wsdl:output message="tns:RespondToEventNoticesSoapOut" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="CurtailmentOperationsSoap"
+		type="tns:CurtailmentOperationsSoap">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+			style="document" />
+		<wsdl:operation name="RespondToEventNotices">
+			<soap:operation
+				soapAction="http://itron.com/webservices/RespondToEventNotices"
+				style="document" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CurtailmentOperations">
+		<documentation xmlns="http://schemas.xmlsoap.org/wsdl/">
+			Curtailment Operations
+		</documentation>
+		<wsdl:port name="CurtailmentOperationsSoap"
+			binding="tns:CurtailmentOperationsSoap">
+			<soap:address
+				location="https://inter-act.pge.com/IEEwebservices/WebServices/CurtailmentOperations.asmx" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

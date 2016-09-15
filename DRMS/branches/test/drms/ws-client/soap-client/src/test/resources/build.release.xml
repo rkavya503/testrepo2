@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project name="BACnetWSClient" default="build" basedir=".">
+
+    <path id="classpath">
+        <pathelement location="lib/jboss-jaxrpc-jboss-4.2.2GA.jar"/>
+        <pathelement location="lib/jbosssx-jboss-4.2.2GA.jar"/>
+        <pathelement location="lib/j2ee-j2ee-1.4_03.jar"/>
+        <pathelement location="lib/jboss-jaxws-jboss-4.2.2GA.jar"/>
+        <pathelement location="lib/pss2.clientws.soap.stubs.jar"/>
+        <pathelement location="lib/org.openadr.dras.eventstate.stubs.jar"/>
+    </path>
+
+    <target name="build">
+        <mkdir dir="classes"/>
+        <depend srcdir="src"
+                destdir="classes"
+                closure="yes"
+                classpathref="classpath">
+            <exclude name="**/*_Stub.class, **/*_Impl.class"/>
+        </depend>
+        <javac destdir="classes" classpathref="classpath"
+               debug="on" nowarn="on" deprecation="on" encoding="Cp1252" 
+               source="1.5" target="1.5">
+            <src path="src"/>
+        </javac>
+    </target>
+
+	<target name="clean">
+        <delete includeemptydirs="true" quiet="true">
+		<fileset dir="classes" includes="**/*"/>
+    	</delete>
+    </target>
+</project>

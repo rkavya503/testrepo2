@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.akuacom.drms.system.configure</groupId>
+        <artifactId>configure</artifactId>
+        <version>6.8-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.akuacom.drms.system.configure.test-data</groupId>
+    <artifactId>test-data</artifactId>
+    <version>6.8-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>test-data</name>
+
+    <profiles>
+        <profile>
+            <id>loadData</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>pre-integration-test</phase>
+                                <configuration>
+                                    <target>
+                                        <property name="drmsVersion" value="${project.version}" />
+                                        <ant antfile="${basedir}/build.xml">
+                                            <target name="load.pge" />
+                                        </ant>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
+
+
+</project>

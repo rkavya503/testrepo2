@@ -1,0 +1,813 @@
+<?xml version="1.0"?>
+<project name="db"
+         default="db:update"
+         basedir="."
+         xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+    <!-- *********************************
+         Includes 
+         ********************************* -->
+    <!-- normally would use configureDir as defined in project, but
+         maven doesn't play well :( -->
+    <property name="configureDir" value="${basedir}/.." />
+    <import file="${configureDir}/common.xml" />
+	
+	<!-- utility specific db conf will override global db configuration -->
+	<property file="${drmsUtilConfig}/db.conf" />
+	
+    <property file="${drmsConfig}/db.conf" />
+    <property file="${drmsBaseConfig}/db.conf" />
+	<property name="loadKMLData" value="false" />
+	
+    <property name="dumpDir" value="target/${DSTAMP}-${TSTAMP}" />
+    <property name="diffOutputFile"
+              value="target/changelog-hibernate-diff-${DSTAMP}-${TSTAMP}.xml" />
+    <property name="hibernateCoreCfgFile"
+              value="drms/core/drms-core-ejb/src/main/resources/META-INF/persistence.xml" />
+
+    <!-- *********************************
+         Properties 
+         ********************************* -->
+    <property name="db.url"
+              value="jdbc:mysql://${db.host}:${db.port}/${db.name}" />
+    <property name="db.driver.name" value="com.mysql.jdbc.Driver" />
+    <property name="baselineDir" value="${configureDir}/db/baseline" />
+    <property name="changelogsDir" value="${configureDir}/db/changelogs" />
+
+    <!-- *********************************
+         Task defs 
+         ********************************* -->
+    <artifact:dependencies pathId="hibernate">
+        <dependency groupId="org.hibernate"
+                    artifactId="hibernate-core"
+                    version="3.3.1.GA"
+                    type="jar" />
+        <dependency groupId="org.hibernate"
+                    artifactId="hibernate-annotations"
+                    version="3.4.0.GA"
+                    type="jar" />
+        <dependency groupId="org.hibernate"
+                    artifactId="hibernate-commons-annotations"
+                    version="3.3.0.ga"
+                    type="jar" />
+        <dependency groupId="dom4j"
+                    artifactId="dom4j"
+                    version="1.6.1"
+                    type="jar" />
+        <dependency groupId="mysql"
+                    artifactId="mysql-connector-java"
+                    version="${mysqlConnectorVersion}"
+                    type="jar" />
+        <dependency groupId="org.liquibase"
+                    artifactId="liquibase-core"
+                    version="2.0.1"
+                    type="jar" />
+        <dependency groupId="org.liquibase.ext"
+                    artifactId="liquibase-hibernate"
+                    version="2.0.0"
+                    type="jar" />
+        <remoteRepository refid="akuacom.nexus" />
+    </artifact:dependencies>
+
+    <path id="classpath">
+        <pathelement path="${mysql:mysql-connector-java:jar}" />
+        <pathelement path="${org.liquibase:liquibase-core:jar}" />
+        <pathelement path="${org.liquibase.ext:liquibase-hibernate:jar}" />
+        <pathelement path="${org.hibernate:hibernate-core:jar}" />
+        <pathelement path="${org.hibernate:hibernate-annotations:jar}" />
+        <pathelement path="${org.hibernate:hibernate-common-annotations:jar}" />
+        <pathelement path="${dom4j:dom4j:jar}" />
+        <pathelement path="${configureDir}" />
+    </path>
+
+    <taskdef resource="liquibasetasks.properties">
+        <classpath refid="classpath" />
+    </taskdef>
+
+    <!-- *********************************
+         Macros 
+         ********************************* -->
+    <macrodef name="antcallWithDbParams">
+        <attribute name="db" />
+        <attribute name="antcall.target" />
+        <attribute name="file" default="" />
+        <element name="db-elements" optional="yes" />
+        <sequential>
+             <antcall target="@{antcall.target}">
+                <param name="db" value="@{db}" />
+                <param name="db.name" value="${db.@{db}.name}" />
+                <param name="db.host" value="${db.@{db}.host}" />
+                <param name="db.port" value="${db.@{db}.port}" />
+                <param name="db.adminuser" value="${db.@{db}.adminuser}" />
+                <param name="db.dbuser" value="${db.@{db}.dbuser}" />
+                <param name="db.dbpass" value="${db.@{db}.dbpass}" />
+                <param name="db.adminpass" value="${mysqlPassword}" />
+                <param name="file" value="@{file}" />
+                <db-elements />
+            </antcall>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="runSql">
+        <attribute name="db" />
+        <attribute name="onerror" default="abort" />
+        <attribute name="dbname" />
+        <attribute name="delimiter" default=";" />
+        <element name="sql-statements" optional="yes" />
+        <sequential>
+            <sql driver="${db.driver.name}"
+                 url="jdbc:mysql://${db.host}:${db.port}/@{dbname}"
+                 userid="${db.adminuser}"
+                 password="${db.adminpass}"
+                 classpathref="classpath"
+                 onerror="@{onerror}"
+                 errorproperty="sql.status"
+                 rowcountproperty="sql.rows"
+                 delimiter="@{delimiter}">
+                <sql-statements />
+            </sql>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="runSqlFile">
+        <attribute name="db" />
+        <attribute name="onerror" default="abort" />
+        <attribute name="dbname" />
+        <attribute name="sqlFile" />
+        <attribute name="delimiter" default=";" />
+        <sequential>
+            <sql driver="${db.driver.name}"
+                 url="jdbc:mysql://${db.host}:${db.port}/@{dbname}"
+                 userid="${db.adminuser}"
+                 password="${db.adminpass}"
+                 classpathref="classpath"
+                 onerror="@{onerror}"
+                 errorproperty="sql.status"
+                 rowcountproperty="sql.rows"
+                 delimiter="@{delimiter}"
+                 src="@{sqlFile}" />
+        </sequential>
+    </macrodef>
+
+    <!-- *********************************
+         Targets 
+         ********************************* -->
+    <!-- db:backup -->
+    <target name="db:backup"
+            description="backup all databases (alias for db:dump)"
+            depends="db:dump">
+    </target>
+
+    <!-- db:create -->
+    <target name="db:create"
+            depends="verify.database.env"
+            description="Creates all databases (loads schema only)">
+        <echo>${ant.project.name}: Creating all databases</echo>
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="db:create:singleDatabase" />
+            </sequential>
+        </for>
+    </target>
+
+    <!-- db:create:singleDatabase -->
+    <target name="db:create:singleDatabase">
+        <echo>${ant.project.name}: Creating database (${db.name})</echo>
+        <runSql db="@{db}" dbname="mysql">
+            <sql-statements>
+                CREATE DATABASE IF NOT EXISTS ${db.name};
+                GRANT ALL PRIVILEGES ON ${db.name}.* TO
+                  '${db.dbuser}'@'%'
+                  IDENTIFIED BY '${db.dbpass}';
+                GRANT ALL PRIVILEGES ON ${db.name}.* TO
+                  '${db.dbuser}'@'localhost'
+                  IDENTIFIED BY '${db.dbpass}';
+                    </sql-statements>
+        </runSql>
+    </target>
+
+    <!-- db:drop -->
+    <target name="db:drop" 
+            description="Drop all databases" 
+            depends="verify.database.env">
+        <echo>${ant.project.name}: Deleting all databases!</echo>
+
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="db:drop:singleDatabase" />
+            </sequential>
+        </for>
+    </target>
+
+    <!-- db:drop:singleDatabase -->
+    <target name="db:drop:singleDatabase">
+        <echo>${ant.project.name}: Dropping database (${db.name})</echo>
+        <if>
+            <equals arg1="${drmsEnv}" arg2="production" />
+            <then>
+                <input message="delete ${db.name} database (y/n)?"
+                       validargs="y,n"
+                       addproperty="do.delete" />
+                <condition property="do.abort">
+                    <equals arg1="n" arg2="${do.delete}" />
+                </condition>
+                <fail if="do.abort">Build aborted by user.</fail>
+            </then>
+        </if>
+        <runSql db="@{db}" onerror="continue" dbname="mysql">
+            <sql-statements>
+                    DROP DATABASE ${db.name};
+                    </sql-statements>
+        </runSql>
+    </target>
+
+    <!-- ================================= 
+         target: db:dump
+         ================================= -->
+    <target name="db:dump"
+            depends="verify.database.env"
+            description="Dumps all databases">
+        <echo>${ant.project.name}: Dumping all Databases</echo>
+        <for list="${databases}" param="db">
+            <sequential>
+                <if>
+                    <equals arg1="@{db}" arg2="firelog" trim="true" />
+                    <then>
+                        <echo>!!!!!!firelog not backuped up!!!!!!!!</echo>
+                    </then>
+                    <else>
+                        <antcallWithDbParams db="@{db}"
+                                             antcall.target="db:dump:singleDatabase" />
+                    </else>
+                </if>
+            </sequential>
+        </for>
+    </target>
+
+    <!-- ================================= 
+         target: db:dump:singleDatabase
+         ================================= -->
+    <target name="db:dump:singleDatabase">
+        <echo>${ant.project.name}: Dumping database (${db.name})</echo>
+        <mkdir dir="${dumpDir}" />
+        <exec executable="mysqldump" output="${dumpDir}/${db}.sql">
+            <arg line="-u ${db.adminuser} --password=${db.adminpass} --host ${db.host} -R --add-drop-database --add-drop-table ${db.name}" />
+        </exec>
+    </target>
+
+    <!-- ================================= 
+         target: db:dump:all
+         ================================= -->
+    <target name="db:dump:all"
+            depends="db:dump:schema,db:dump:data,db:dump:routines"
+            description="Dumps all databases (schema, data, and routines)">
+    </target>
+
+    <!-- ================================= 
+         target: db:dump:baseline
+         ================================= -->
+    <target name="db:dump:baseline"
+            description="Resets the database, then Dumps baseline data and copies it to baseline directory"
+            depends="db:reset,db:dump:all">
+        <echo>Dumping baseline data to ${baselineDir})</echo>
+        <delete includeemptydirs="true">
+            <fileset dir="${baselineDir}" includes="**/*" />
+        </delete>
+        <copy todir="${baselineDir}">
+            <fileset dir="${dumpDir}" includes="*.sql" />
+        </copy>
+    </target>
+
+    <!-- ================================= 
+         target: db:dump:data             
+         ================================= -->
+    <target name="db:dump:data"
+            depends="verify.database.env"
+            description="Dump data for all databases">
+        <echo>${ant.project.name}: Dumping all Database data</echo>
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="db:dump:data:singleDatabase" />
+            </sequential>
+        </for>
+    </target>
+
+    <!-- ================================= 
+         target: db:dump:data:singleDatabase
+         ================================= -->
+    <target name="db:dump:data:singleDatabase">
+        <echo>${ant.project.name}: Dumping database data (${db.name})</echo>
+        <mkdir dir="${dumpDir}" />
+        <if>
+            <equals arg1="${db}" arg2="firelog" trim="true" />
+            <then>
+                <echo>!!!!!!firelog data not dumped !!!!!!!!</echo>
+                <property name="tables"
+                          value="DATABASECHANGELOG DATABASECHANGELOGLOCK" />
+            </then>
+            <else>
+                <property name="tables" value="" />
+            </else>
+        </if>
+        <exec executable="mysqldump" output="${dumpDir}/${db}-data.sql">
+            <arg line="-u ${db.adminuser} --password=${db.adminpass}  --host ${db.host} --complete-insert --no-create-info ${db.name} ${tables}" />
+        </exec>
+    </target>
+
+    <!-- ================================= 
+             target: db:dump:routines             
+             ================================= -->
+    <target name="db:dump:routines"
+            depends="verify.database.env"
+            description="Dump routines (procedures, functions, and triggers) for all databases">
+        <echo>${ant.project.name}: Dumping all database routines</echo>
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="db:dump:routines:singleDatabase" />
+            </sequential>
+        </for>
+    </target>
+
+    <!-- ================================= 
+         target: db:dump:routines:singleDatabase
+         ================================= -->
+    <target name="db:dump:routines:singleDatabase">
+        <echo>${ant.project.name}: Dumping database routines (${db.name})</echo>
+        <mkdir dir="${dumpDir}" />
+        <exec executable="mysqldump" output="${dumpDir}/${db}-routines.sql">
+            <arg line="-u ${db.adminuser} --password=${db.adminpass}  --host ${db.host} --compact --complete-insert --no-create-info --where=&quot;db='${db.name}'&quot; mysql proc" />
+        </exec>
+    </target>
+
+    <!-- ================================= 
+         target: db:dump:schema              
+         ================================= -->
+    <target name="db:dump:schema"
+            depends="verify.database.env"
+            description="Dump all database schemas">
+        <echo>${ant.project.name}: Dumping all Database schemas</echo>
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="db:dump:schema:singleDatabase" />
+            </sequential>
+        </for>
+    </target>
+
+    <!-- ================================= 
+         target: db:dump:schema:singleDatabase
+         ================================= -->
+    <target name="db:dump:schema:singleDatabase">
+        <echo>${ant.project.name}: Dumping database schema (${db.name})</echo>
+        <mkdir dir="${dumpDir}" />
+        <exec executable="mysqldump" output="${dumpDir}/${db}-schema.sql">
+            <arg line="-u ${db.adminuser} --password=${db.adminpass}  --host ${db.host} --add-drop-database --add-drop-table --no-data ${db.name}" />
+        </exec>
+    </target>
+
+    <!-- ================================= 
+          target: db:load:baseline             
+         ================================= -->
+    <target name="db:load:baseline"
+            depends="verify.database.env, db:drop, db:create">
+        <echo>Loading baseline data</echo>
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     file="${baselineDir}"
+                                     antcall.target="db:load:fromDump:singleDatabase" />
+            </sequential>
+        </for>
+		
+		<if>
+			<equals arg1="${loadDRWebsiteZipCode}" arg2="true" />
+				<then>
+					<runtarget target="db:get:drwebsite:zipCodeData" />
+				</then>
+		</if>
+    </target>
+
+    <!-- ================================= 
+          target: db:load:fromDump    
+         ================================= -->
+    <target name="db:load:fromDump"
+            description="loads from a previous db:dump:all. Pass -DloadFrom=%dump_loction%" >
+<echo>**************** ${loadFrom} ********************</echo>
+        <available property="loadFromPathIsAvailable"
+                   file="${loadFrom}"
+                   type="dir" />
+        <if>
+	    <not>
+                <istrue value="${loadFromPathIsAvailable}" />
+            </not>
+            <then>
+                <fail>Must supply variable loadFrom</fail>
+            </then>
+        </if>
+
+        <runtarget target="verify.database.env" />
+        <runtarget target="db:drop" />
+        <runtarget target="db:create" />
+
+        <echo>Loading data from ${loadFrom}</echo>
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     file="${loadFrom}"
+                                     antcall.target="db:load:fromDump:singleDatabase" />
+            </sequential>
+        </for>
+    </target>
+
+    <!-- ================================= 
+    target: db:load:fromDump:singleDatabase             
+   ================================= -->
+    <target name="db:load:fromDump:singleDatabase">
+        <echo>Loading data for (${db.name})</echo>
+        <runSqlFile db="@{db}"
+                    dbname="${db.name}"
+                    sqlFile="${file}/${db}-schema.sql" />
+        <runSqlFile db="@{db}"
+                    dbname="${db.name}"
+                    sqlFile="${file}/${db}-data.sql" />
+        <runSqlFile db="@{db}"
+                    dbname="mysql"
+                    sqlFile="${file}/${db}-routines.sql" />
+    </target>
+
+    <!-- ================================= 
+          target: db:load:utilityData              
+         ================================= -->
+    <target name="db:load:utilityData"
+            depends="verify.database.env"
+            description="Loads utility data into databases">
+
+        <!-- allow to override utilityToLoad by other targets -->
+        <property name="utilityToLoad" value="${utilityName}" />
+
+        <echo>Loading data for utility ${drmsUtilConfig}</echo>
+        <for list="${databases}" param="db">
+            <sequential>
+                <sequential>
+				    <if>
+						<equals arg1="@{db}" arg2="firelog" trim="true" />
+						<then>
+							<echo>!!!!!!firelog not used for load UTILITY!!!!!!!!</echo>
+						</then>
+						<else>
+						<antcallWithDbParams db="@{db}"
+											 file="resource/utilities/${utilityToLoad}/data/@{db}.xml"
+											 antcall.target="db:update:singleDatabase" />
+						 </else>
+					</if>
+                </sequential>
+            </sequential>
+        </for>
+    </target>
+
+    <!-- ================================= 
+         target: db:load:sqlFile
+         ================================= -->
+    <target name="db:load:sqlFile">
+        <echo>Loading script ${file} into mysql</echo>
+        <runSqlFile db="@{db}" dbname="${db.name}" sqlFile="${file}" />
+    </target>
+
+
+    <!-- ================================= 
+         target: db:reset
+         ================================= -->
+    <target name="db:reset"
+            description="drops and recreates the database including + utility data + updates"
+            depends="db:drop,db:create,db:load:baseline,db:update">
+    </target>
+
+
+    <!-- ================================= 
+         target: db:update
+         ================================= -->
+    <target name="db:update"
+            description="Update all databases to current version"
+            depends="verify.database.env, verify.databases.exist">
+        <echo>${ant.project.name}: Updating all databases to current version including updating utility data</echo>
+		<echo>Config files are:  </echo>
+		<echo> 1. ${drmsUtilConfig}/db.conf and  </echo>
+		<echo> 2. ${drmsConfig}/db.conf and </echo>
+		<echo> 3.  ${drmsBaseConfig}/db.conf </echo>
+		<echo>  </echo>
+		
+        <for list="${databases}" param="db">
+            <sequential>
+			    <if>
+                    <equals arg1="@{db}" arg2="firelog" trim="true" />
+                    <then>
+                        <echo>DB is Firelog </echo>
+						<echo>!!!!!!firelog should not be updated!!!!!!!!</echo>
+						<echo>  </echo>
+                    </then>
+                    <else>
+                <antcallWithDbParams db="@{db}"
+                                     file="db/changelogs/@{db}/changelogs.xml"
+                                     antcall.target="db:update:singleDatabase" />
+				    </else>
+                </if>
+            </sequential>
+        </for>
+        <runtarget target="db:load:utilityData" />
+		<runtarget target="version:update" />
+		<if>
+			<equals arg1="${loadKMLData}" arg2="true" />
+				<then>
+					<runtarget target="db:get:drwebsite:kml" />
+				</then>
+		</if>
+    </target>
+
+    <!-- ================================= 
+         target: db:update:singleDatabase
+         ================================= -->
+    <target name="db:update:singleDatabase">
+        <echo>${ant.project.name}: Update database (${db.name}) to current version</echo>
+        <updateDatabase changeLogFile="${file}"
+                        driver="${db.driver.name}"
+                        url="jdbc:mysql://${db.host}:${db.port}/${db.name}"
+                        username="${db.adminuser}"
+                        password="${db.adminpass}"
+                        promptOnNonLocalDatabase="false"
+                        classpathref="classpath">
+        </updateDatabase>
+    </target>
+
+    <!-- db:rollback -->
+    <target name="db:rollback" description="Rollback all databases">
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="do.rollback.database">
+                </antcallWithDbParams>
+            </sequential>
+        </for>
+    </target>
+
+    <!-- db:rollback:singleDatabase -->
+    <target name="db:rollback:singleDatabase" description="Rollback a database">
+        <antcallWithDbParams db="${db}" antcall.target="do.rollback.database">
+        </antcallWithDbParams>
+    </target>
+
+    <presetdef name="lb.rollback">
+        <rollbackDatabase changeLogFile="src/main/resources/${db}/changelogs.xml"
+                          driver="${db.driver.name}"
+                          url="jdbc:mysql://${db.host}:${db.port}/${db.name}"
+                          username="${db.adminuser}"
+                          password="${db.adminpass}"
+                          classpathref="classpath" />
+    </presetdef>
+
+    <!-- do.rollback.database -->
+    <target name="do.rollback.database"
+            depends="verify.database.env, verify.database.exists">
+        <echo>${ant.project.name}: Rollback database. See https://akuacom.jira.com/wiki/display/DRMS/Database+Versioning+(Liquibase,+proposal) for more information</echo>
+        <runtarget target="verify.database.exists" />
+
+        <property name="check.rollback.count" value="$${rollback.count}" />
+        <property name="check.rollback.date" value="$${rollback.date}" />
+        <property name="check.rollback.tag" value="$${rollback.tag}" />
+
+
+        <if>
+            <not>
+                <equals arg1="${rollback.count}"
+                        arg2="${check.rollback.count}" />
+            </not>
+            <then>
+                <lb.rollback rollbackCount="${rollback.count}" />
+            </then>
+            <elseif>
+                <not>
+                    <equals arg1="${rollback.date}"
+                            arg2="${check.rollback.date}" />
+                </not>
+                <then>
+                    <lb.rollback rollbackDate="${rollback.date}" />
+                </then>
+            </elseif>
+            <elseif>
+                <not>
+                    <equals arg1="${rollback.tag}"
+                            arg2="${check.rollback.tag}" />
+                </not>
+                <then>
+                    <lb.rollback rollbackTag="${rollback.tag}" />
+                </then>
+            </elseif>
+            <else>
+                <echo>Must include a rollback type (-Drollback.count=num, -Drollback.date=date, -Drollback.tag=tag)</echo>
+            </else>
+        </if>
+    </target>
+
+    <!-- db:tag -->
+    <target name="db:tag" description="Tag Database">
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="do.tag.database">
+                </antcallWithDbParams>
+            </sequential>
+        </for>
+    </target>
+
+    <!-- db:tag:singleDatabase -->
+    <target name="db:tag:singleDatabase" description="Tag a database">
+        <antcallWithDbParams db="${db}" antcall.target="do.tag.database">
+        </antcallWithDbParams>
+    </target>
+
+    <!-- do.tag.database -->
+    <target name="do.tag.database"
+            depends="verify.database.env, verify.database.exists">
+        <echo>${ant.project.name}: Tag database. See https://akuacom.jira.com/wiki/display/DRMS/Database+Versioning+(Liquibase,+proposal) for more information</echo>
+        <runtarget target="verify.database.exists" />
+
+        <property name="check.tag" value="$${tag}" />
+
+        <if>
+            <not>
+                <equals arg1="${tag}" arg2="${check.tag}" />
+            </not>
+            <then>
+                <tagDatabase driver="${db.driver.name}"
+                             url="jdbc:mysql://${db.host}:${db.port}/${db.name}"
+                             username="${db.adminuser}"
+                             password="${db.adminpass}"
+                             classpathref="classpath"
+                             tag="${tag}">
+                </tagDatabase>
+            </then>
+            <else>
+                <fail>You must suppy a tag parameter (-Dtag=yourtag)</fail>
+            </else>
+        </if>
+    </target>
+
+    <!-- db:generate:changelog -->
+    <target name="db:generate:changelog"
+            description="Create a changelog file from the existing databases">
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="db:generate:changelogs:singleDatabase">
+                </antcallWithDbParams>
+            </sequential>
+        </for>
+    </target>
+
+    <!-- db:generate:changelogs:singleDatabase -->
+    <target name="db:generate:changelogs:singleDatabase"
+            depends="verify.database.env, verify.database.exists">
+        <echo>${ant.project.name}: Generate changelog file from database (${db.name}) to current version</echo>
+        <generateChangeLog outputFile="changelog-${db.name}-${DSTAMP}-${TSTAMP}.xml"
+                           driver="${db.driver.name}"
+                           url="jdbc:mysql://${db.host}:${db.port}/${db.name}"
+                           username="${db.adminuser}"
+                           password="${db.adminpass}"
+                           classpathref="classpath" />
+    </target>
+
+    <!-- verify.database.env -->
+    <target name="verify.database.env">
+        <fail unless="mysqlPassword"
+              message="environment variable MYSQL_PWD doesn't exist" />
+    </target>
+
+    <!-- verify.databases.exist -->
+    <target name="verify.databases.exist" depends="verify.database.env">
+        <for list="${databases}" param="db">
+            <sequential>
+			    <if>
+                    <equals arg1="@{db}" arg2="firelog" trim="true" />
+                    <then>
+						<echo>DB is Firelog </echo>
+						 <echo>!!!!!!firelog NOT USED ANYMORE !!!!!!!!</echo>
+						<echo>  </echo>  
+                    </then>
+                    <else>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="verify.database.exists" />
+				  </else>
+                </if>
+            </sequential>
+        </for>
+    </target>
+
+    <!-- verify.database.exists -->
+    <target name="verify.database.exists" depends="verify.database.env">
+	<echo>Verifying data exists  ${db.name} : ${db.host} : ${db.port}: ${db.dbuser} : ${db.adminuser} : ${db.adminpass}</echo>
+        <runSql db="${db}" dbname="mysql">
+            <sql-statements>
+               USE ${db.name};
+            </sql-statements>
+        </runSql>
+    </target>
+
+    <!-- verify.databases.dont.exist -->
+    <target name="verify.databases.dont.exist" depends="verify.database.env">
+        <for list="${databases}" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="verify.database.doesnt.exist" />
+            </sequential>
+        </for>
+    </target>
+
+    <!-- verify.database.doesnt.exist -->
+    <target name="verify.database.doesnt.exist" depends="verify.database.env">
+        <runSql db="@{db}" dbname="mysql">
+            <sql-statements>
+                select count(*) from (SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA) as db where SCHEMA_NAME in ('${db.name}');
+                </sql-statements>
+        </runSql>
+        <if>
+            <equals arg1="0" arg2="${sql.rows}" />
+            <then>
+                <echo>Database ${db.name} exists</echo>
+            </then>
+            <else>
+                <fail>Database ${db.name} exists but was expected to not exist. Please delete the database first (delete.datbases)</fail>
+            </else>
+        </if>
+    </target>
+
+    <!-- ================================= 
+         target: db:diff
+         ================================= -->
+    <target name="db:diff"
+            description="Diff current database to hibernate mapped objects. 
+                         Creates a changelog file in target/hibernate-changelog-DATE-TIME.xml. 
+                         This file must be manually inspected before added to the db/changelogs files."
+            depends="verify.database.env, verify.databases.exist">
+
+        <!-- TODO: Add support for accmgr and firelogger -->
+        <for list="pss2" param="db">
+            <sequential>
+                <antcallWithDbParams db="@{db}"
+                                     antcall.target="db:diff:singleDatabase" />
+            </sequential>
+        </for>
+
+        <diffDatabaseToChangeLog driver="${db.driver.name}"
+                                 url="jdbc:mysql://${db.host}:${db.port}/@{dbname}"
+                                 username="${database.username}"
+                                 password="${database.password}"
+                                 baseUrl="hibernate:YOUR_HIBERNATE.CFG.XML"
+                                 outputFile="path/to/changelog.xml"
+                                 classpathref="classpath">
+        </diffDatabaseToChangeLog>
+    </target>
+
+    <!-- ================================= 
+             target: db:update:singleDatabase
+             ================================= -->
+    <target name="db:diff:singleDatabase">
+        <echo>Diff (${db.name}) to current hibernate object mappings</echo>
+        <diffDatabaseToChangeLog driver="${db.driver.name}"
+                                 url="jdbc:mysql://${db.host}:${db.port}/${db.name}"
+                                 username="${db.adminuser}"
+                                 password="${db.adminpass}"
+                                 referenceUrl="hibernate:hibernateCoreCfgFile"
+                                 outputFile="${diffOutputFile}"
+                                 classpathref="classpath">
+        </diffDatabaseToChangeLog>
+    </target>
+	<target name="version:update"
+            description="update core properties to the current version">
+        <echo>Updating current version to ${drmsVersion}</echo>
+		<if>
+            <equals arg1="${drmsVersion}" arg2="${pom.version}" />
+            <then>
+				<echo>DRMS VERSION not set: value is ${drmsVersion} Unable to update Version</echo>
+			</then>
+			<else>
+			<antcallWithDbParams db="pss2"
+                                     antcall.target="db:version:update" />
+				
+			</else>
+        </if>
+		 
+    </target>
+	<target name="db:version:update"
+		description="called from version:update to update current db verion in core propery">
+		<runSql db="pss2" dbname="mysql">
+					<sql-statements>
+					   update pss2.core_property set stringValue='${drmsVersion}' where propertyName='version';
+					</sql-statements>
+		</runSql>
+	</target>
+	
+	
+</project>

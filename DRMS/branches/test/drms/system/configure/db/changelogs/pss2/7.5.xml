@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	
+	<changeSet id="1" author="Liu">
+        <comment>
+            DRMS-7004 Telemetry: Sanity Check improvement lacks core property and logging of bad data.
+        </comment>
+		<sql>
+		        insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'enableValidateUsageData',
+                null, true, null, null, 'Boolean', 'script', null, now(),
+                null);
+		</sql>
+    </changeSet>
+
+	<changeSet id="2" author="Linda">
+        <comment>
+            DRMS-7067: remove test program related records from program_participant table 
+        </comment>
+		<delete tableName="program_participant">
+			<where>programName='Test Program' OR programName='Client Test'</where>
+		</delete>
+    </changeSet>
+
+	<changeSet id="3" author="Linda">
+        <comment>
+            DRMS-7067: replace 'Test Program' to 'Client Test' for report event data
+        </comment>
+		<sql>
+			UPDATE report_event SET programName='Client Test', eventName=REPLACE(eventName, 'Test Program', 'Client Test')
+			 WHERE programName='Test Program';
+			UPDATE report_event_participation SET programName='Client Test', eventName=REPLACE(eventName, 'Test Program', 'Client Test')
+			 WHERE eventName LIKE 'Test Program%';
+			UPDATE report_event_signal SET programName='Client Test', eventName=REPLACE(eventName, 'Test Program', 'Client Test')
+			 WHERE eventName LIKE 'Test Program%';
+		</sql>
+    </changeSet>
+	
+	<changeSet id="4" author="Linda">
+        <comment>
+            DRMS-7067: replace utility name from 'Test Program' to 'Client Test' for existing program data
+        </comment>
+		<update tableName="program">
+			<column name="utilityProgramName" value="Client Test"/>
+			<where>name='Client Test'</where>
+		</update>
+    </changeSet>
+	
+	<changeSet id="5" author="Linda">
+        <comment>
+            DRMS-7067: remove test program related records from history event table 
+        </comment>
+		<delete tableName="history_event_participant_signal">
+			<where>eventName LIKE 'Test Program%' OR eventName LIKE 'Client Test%'</where>
+		</delete>
+		<delete tableName="history_event_participant">
+			<where>eventName LIKE 'Test Program%' OR eventName LIKE 'Client Test%'</where>
+		</delete>
+		<delete tableName="history_event">
+			<where>programName='Test Program' OR programName='Client Test'</where>
+		</delete>
+    </changeSet>	
+	
+	<changeSet id="6" author="Linda">
+        <comment>
+            DRMS-6873: telemetry tab disclimar
+        </comment>
+		<insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="telemetryDisclimar" />
+            <column name="stringValue" value="This data is provided for informational purposes only and actual billed usage may vary." />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+		</insert>
+    </changeSet>
+	<changeSet id="7" author="Nicole">
+		<preConditions onFail="MARK_RAN">
+			<sqlCheck expectedResult="0">
+				select count(*) from
+				core_property where propertyName = 'clientConfirmationLevel';
+                </sqlCheck>
+		</preConditions>
+		<comment>DRMS-7031 clientConfirmationLevel missing from core_property table on utility with migrated data</comment>
+
+		<sql>
+			insert into
+			`core_property`(`uuid`, `propertyName`, `stringValue`, `booleanValue`, `doubleValue`, `textValue`, `type`, `creator`, `modifier`, `creationTime`, `modifiedTime`, `version`)
+			values (REPLACE(uuid(), '-',
+			''),'clientConfirmationLevel','MEDIUM',NULL,NULL,NULL,'String','script',NULL,'2010-12-13 09:31:37',NULL,0);
+		</sql>
+	</changeSet>
+	<changeSet id="8" author="Nicole">
+		<preConditions onFail="MARK_RAN">
+			<sqlCheck expectedResult="0">
+				select count(*) from
+				core_property where propertyName = 'feature.peakchoice';
+                </sqlCheck>
+		</preConditions>
+		<comment>DRMS-7031 clientConfirmationLevel missing from core_property table on utility with migrated data</comment>
+
+		<sql>
+			insert into
+			`core_property`(`uuid`, `propertyName`, `stringValue`, `booleanValue`, `doubleValue`, `textValue`, `type`, `creator`, `modifier`, `creationTime`, `modifiedTime`, `version`)
+			values (REPLACE(uuid(), '-',
+			''),'feature.peakchoice',NULL,NULL,NULL,NULL,'Boolean','script',NULL,'2010-12-13 09:31:37',NULL,0);
+		</sql>
+	</changeSet>
+	<changeSet id="9" author="Nicole">
+		<preConditions onFail="MARK_RAN">
+			<sqlCheck expectedResult="0">
+				select count(*) from
+				core_property where propertyName = 'itronWSHostName';
+                </sqlCheck>
+		</preConditions>
+		<comment>DRMS-7031 clientConfirmationLevel missing from core_property table on utility with migrated data</comment>
+
+		<sql>
+			insert into
+			`core_property`(`uuid`, `propertyName`, `stringValue`, `booleanValue`, `doubleValue`, `textValue`, `type`, `creator`, `modifier`, `creationTime`, `modifiedTime`, `version`)
+			values (REPLACE(uuid(), '-',
+			''),'itronWSHostName',NULL,NULL,NULL,NULL,'String','script',NULL,'2010-12-13 09:31:37',NULL,0);
+		</sql>
+	</changeSet>
+	<changeSet id="10" author="Nicole">
+		<preConditions onFail="MARK_RAN">
+			<sqlCheck expectedResult="1">
+				select count(*) from 
+				core_property where propertyName = 'feature.peakchoice' and BooleanValue is NULL;
+            </sqlCheck>
+		</preConditions>
+		<comment>DRMS-7031 clientConfirmationLevel missing from core_property table on utility with migrated data</comment>
+
+		<sql>
+			update core_property set BooleanValue = 0 where propertyName = 'feature.peakchoice'
+		</sql>
+	</changeSet>
+
+	<changeSet id='11' author="Daoping">
+		<comment>
+			DMRS-7120 persist asyn tasks in db rather than memo cache which may cause dead lock
+		</comment>
+	   <sql> 
+			CREATE TABLE `asyn_task`(
+			`id` VARCHAR(100) NOT NULL ,     
+			`priority` INT DEFAULT '1',
+			`creationTime` DATETIME NOT NULL ,     
+			`lastUpdate` DATETIME NOT NULL ,     
+			`minHold` BIGINT NOT NULL DEFAULT '100' ,     
+			`maxHold` BIGINT NOT NULL DEFAULT '1000' , 
+			`status` VARCHAR(20) NOT NULL DEFAULT 'PENDDING',
+			`runnable` BLOB , 
+			`bool1` BOOLEAN ,
+			`bool2` BOOLEAN,
+			`str1` VARCHAR(100),
+			`str2` VARCHAR(100),
+	    	 PRIMARY KEY (`id`)  
+			);
+		</sql>
+	</changeSet>
+
+    <changeSet id='12' author="Dichen">
+        <comment>
+            DRMS-7280: update HECO Fast DR programClass field.
+        </comment>
+        <sql>
+            update program set programClass = 'Fast DR' where name like 'Fast DR%';
+        </sql>
+    </changeSet>
+
+    <changeSet id='13' author="Dichen">
+        <comment>
+            DRMS-7236: update HECO Fast DR Notification className
+        </comment>
+        <sql>
+            update program set className = 'com.akuacom.pss2.program.fastdr.FastDRNProgramEJB' where name = 'Fast DR Notification';
+        </sql>
+    </changeSet>
+	
+	<changeSet id="14" author="Frank">		
+		<comment>DRMS-7140 - Load Geographic Dispatch Boundaries Files from SCE</comment>
+
+		<insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="client.debug.enable" />
+            <column name="stringValue" value="0" />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+		</insert>		
+	</changeSet>
+	<changeSet id="15" author="Frank">		
+		<comment>DRMS-7140 - Load Geographic Dispatch Boundaries Files from SCE</comment>
+
+		<insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="gmap.load.url" />
+            <column name="stringValue" value="https://maps.googleapis.com/maps/api/js" />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+		</insert>		
+	</changeSet>
+	<changeSet id="16" author="Frank">		
+		<comment>DRMS-7337 Google map and the DR-Website map differ </comment>
+
+		<insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="gmap.drawinghole.enable" />
+            <column name="stringValue" value="0" />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+		</insert>		
+	</changeSet>
+	
+	<changeSet id="17" author="Frank">		
+		<comment>DRMS-7380:Dr cache refresh interval </comment>
+
+		<insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="dr.cache.interval" />
+            <column name="stringValue" value="10000" />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+		</insert>		
+	</changeSet>
+
+  <changeSet id="18" author="Dichen">
+ 		<comment>DRMS-7485: Viridity rest content type</comment>
+
+ 		<insert tableName="core_property">
+             <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+             <column name="version" valueNumeric="0" />
+             <column name="propertyName" value="feature.dlc.contentType" />
+             <column name="stringValue" value="application/xml" />
+             <column name="type" value="String" />
+             <column name="creator" value="script" />
+             <column name="creationTime" valueNumeric="now() " />
+ 		</insert>
+ 	</changeSet>
+
+	
+</databaseChangeLog>

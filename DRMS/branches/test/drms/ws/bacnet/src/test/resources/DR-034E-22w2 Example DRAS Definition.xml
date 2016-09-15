@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:DR-034A-22w Schema.xsd"
+    defaultLocale="en">
+
+    <!-- 
+        This is the DRAS information represented as a CSML type definition.
+        This definition would likely be in a standard file somewhere, not usually transmitted across BACnet/WS. 
+        See file DR-034F-??.xml for example instances of these structures.      
+    -->
+
+    <!-- first, define the supporting data structures -->
+    <Definitions>
+
+        <Enumerated name="0-DRAS-EventStatus-2008-1">
+            <Documentation locale="en">These are the enumeration of values that can be used to describe the status of
+                the DR event that is described by the EventState message that contains this status. They may take on the
+                following values: <ul>
+                    <li>NONE - There is no DR events pending or active.</li>
+                    <li>FAR - The DR event described by the EventState message is pending and it is "FAR" into the
+                        future.</li>
+                    <li>NEAR - The DR event described by the EventState message is pending and it is "NEAR" into the
+                        future.</li>
+                    <li>ACTIVE - The DR event described by the EventState message is currently active.</li>
+                </ul> Note that the difference between NEAR and FAR is configured when the program parameters are
+                configured within the DRAS. Depending upon how the NEAR and FAR transition times are configured, the
+                status for a DR Event may transition in the following manner over the lifetime of a DR Event:<ul>
+                    <li>NONE - FAR - NEAR - ACTIVE - NONE </li>
+                    <li>NONE - NEAR - ACTIVE - NONE</li>
+                    <li>NONE - FAR - ACTIVE - NONE</li>
+                </ul>
+            </Documentation>
+            <NamedValues>
+                <Unsigned name="NONE"/>
+                <Unsigned name="FAR"/>
+                <Unsigned name="NEAR"/>
+                <Unsigned name="ACTIVE"/>
+                <Unsigned name="CANCELED"/>
+            </NamedValues>
+        </Enumerated>
+
+        <Enumerated name="0-DRAS-OperationModeValue-2008-1">
+            <Documentation locale="en">These are the enumerations of the values that may exist as part of the operation
+                mode schedules. The values are determined by a set of rules in the DRAS that take into consideratrion
+                the EventInfoInstance values and how they are to be mapped into these values. The possible values are
+                the following:<ul>
+                    <li>NORMAL - This is the value that is set whenever the DR event status is not ACTIVE.</li>
+                    <li>MODERATE - This is typicaly used to signify a moderate level shed. How the facility reacts to
+                        this value is user defined.</li>
+                    <li>HIGH - This is typicaly used to signify a high level shed. How the facility reacts to this
+                        value is user defined.</li>
+                    <li>SPECIAL- This is typicaly used to signify a special circumstance. How the facility reacts to
+                        this value is user defined.</li>
+                </ul> See the documentation of the ResponseSchedules for more discussion on how these are set up and
+                mapped within the DRAS.</Documentation>
+            <NamedValues>
+                <Unsigned name="NORMAL"/>
+                <Unsigned name="MODERATE"/>
+                <Unsigned name="HIGH"/>
+                <Unsigned name="SPECIAL"/>
+            </NamedValues>
+        </Enumerated>
+
+        <Sequence name="0-DRAS-OperationState-2008-1">
+            <Documentation>This represents a single state within a Simple DRAS Clients operation mode schedule. Each
+                state is represented by an operation mode value and a time parameter that is use to specify the time
+                slot of this state during the period when the DR event is active. A sequence of these states defines an
+                entire response schedule.</Documentation>
+            <Enumerated name="OperationModeValue" type="0-DRAS-OperationModeValue-2008-1">
+                <Documentation>This is simply the Operation mode value for this time slot.</Documentation>
+            </Enumerated>
+            <Unsigned name="modeTimeSlot" units="seconds">
+                <Documentation>This is a single number with the units of seconds that defines the relative time offset
+                    from the beginning of the DR event period that this time slot begins at. Note that since this is a
+                    single number then the end of this time slot is defined by the starting time of the next time slot.
+                    This helps to insure that there are no time gaps or overlapping slots in the Operation mode
+                    schedule.</Documentation>
+            </Unsigned>
+        </Sequence>
+
+        <Sequence name="0-DRAS-SimpleClientEventData-2008-1">
+            <Documentation>This represents a simple representation of the DR Event information. The information
+                represented here was translated from complete DR Event information represented in the
+                SmartClientDREventData into a sequence of simple operation modes and states so that it can more easily
+                be used by Simple DRAS Clients.</Documentation>
+            <Enumerated name="EventStatus" type="0-DRAS-EventStatus-2008-1">
+                <Documentation>This is the DR event status that is valid at the time specified by the currentTime
+                field.</Documentation>
+            </Enumerated>
+            <Enumerated name="OperationModeValue" type="0-DRAS-OperationModeValue-2008-1">
+                <Documentation>This is the operation mode value that is valid at the time specified by the currentTime
+                    field.</Documentation>
+            </Enumerated>
+            <Real name="currentTime" units="seconds">
+                <Documentation>This is the relative time in seconds from the beginning of the DR event window that this
+                    particular instance of the EventState is valid for. If the EventStatus field is NONE indicating that
+                    there is no pending or active DR event then this field is not applicable.</Documentation>
+            </Real>
+            <Array name="operationModeSchedule" optional="true" memberType="0-DRAS-OperationState-2008-1">
+                <Documentation>This is the entire schedule of operation mode values and spans the entire DR event period
+                    that was configured by the participant for this DRAS client. The schedule is represented as an array
+                    in which each element of the array corresponds to a time slot.</Documentation>
+            </Array>
+        </Sequence>
+
+        <Sequence name="0-DRAS-EventInfoValue-2008-1">
+            <Documentation>This is an instance of a value for the information that is associated with a DR event when it 
+				is issued by the Utility.  This instance includes a number value for the information and a time parameter 
+				that defines a time slot within the DR events active period for when this value is valid.  By putting 
+				together sequences of these types there can be a schedule of values that are valid across the entire 
+				active period of the DR event.</Documentation>
+            <Real name="value">
+                <Documentation>The value of the event information</Documentation>
+            </Real>
+            <Unsigned name="timeOffset">
+                <Documentation>Relative offset from the beginning of the DR event period in seconds. This time signifies
+                    when the time slot for this value begins. For example the third time slot value specifies the
+                    beginnning of the time slot for the third DR event information in the value field.</Documentation>
+            </Unsigned>
+        </Sequence>
+
+        <Enumerated name="0-DRAS-EventInfoTypeID-2008-1">
+            <Documentation>This identifies the data type of an EventInfoType definition and may take on any of the
+                following values: <ul>
+                    <li>PRICE_ABSOLUTE - Price number, i.e. $0.25</li>
+                    <li>PRICE_RELATIVE - Change in price, i.e. -$0.05</li>
+                    <li>PRICE_MULTIPLE - Multiple of current price, i.e. 1.5</li>
+                    <li>LOAD_LEVEL - Amount of load based on an enumeration, i.e. moderate, high, etc</li>
+                    <li>LOAD_AMOUNT - Fixed amount of load to shed, i.e. 5 MW</li>
+                    <li>LOAD_PERCENTAGE - Percentage of load to shed, i.e. 10%</li>
+                    <li>GRID_RELIABILITY - Number signifying the reliability of the grid</li>
+                </ul></Documentation>
+            <NamedValues>
+                <Unsigned name="PRICE_ABSOLUTE"/>
+                <Unsigned name="PRICE_RELATIVE"/>
+                <Unsigned name="PRICE_MULTIPLE"/>
+                <Unsigned name="LOAD_LEVEL"/>
+                <Unsigned name="LOAD_AMOUNT"/>
+                <Unsigned name="LOAD_PERCENTAGE"/>
+                <Unsigned name="GRID_RELIABILITY"/>
+            </NamedValues>
+        </Enumerated>
+
+        <Sequence name="0-DRAS-EventInfoInstance-2008-1">
+            <Documentation>This represents an instance of information that is associated with a DR event. An instance of
+                such information represents a specific type of information that was defiend to exist for DR events when
+                the program was first set up. For example a DR program my have bben set up to use real-time pricing as
+                the values that are sent when DR events are issued. Furthermore each EventInfoInstance may have a
+                schedule of values that are valid across the entire period for then the DR event is active. Therefore a
+                single EventInfoInstance may have multiple values each or which are valid during a different time
+                period.</Documentation>
+            <Enumerated name="eventInfoTypeID" type="0-DRAS-EventInfoTypeID-2008-1">
+                <Documentation>Identifier for the Event information type that was created when the DR program was
+                    established and configured. It is analogous to a variable type.</Documentation>
+            </Enumerated>
+            <String name="eventInfoName">
+                <Documentation>This is the name for the Event Info Type that was given by the Utility when the DR
+                    program was first established. It is analogous to a variable name. By having a name it allows
+                    multiple instances of the same type (i.e. PRICE_ABSOLUTE) to be sent in the Event Instance.</Documentation>
+            </String>
+            <Array name="eventInfoValues" memberType="0-DRAS-EventInfoValue-2008-1">
+                <Documentation>List of one or more event info values that are time sequenced. If more than one then the
+                    time slots field specifies when the various values are valid.</Documentation>
+            </Array>
+        </Sequence>
+
+        <Sequence name="0-DRAS-SmartClientDREventData-2008-1">
+            <DateTime name="notificationTime">
+                <Documentation>This is used to represent all the information associated with a DR Event. It can be used
+                    by Smart DRAS Clients.</Documentation>
+            </DateTime>
+            <DateTime name="startTime">
+                <Documentation>Date and time for when the DR event begins</Documentation>
+            </DateTime>
+            <DateTime name="endTime">
+                <Documentation>Date and time for when the DR event ends.</Documentation>
+            </DateTime>
+            <Array name="eventInfoInstances" optional="true" memberType="0-DRAS-EventInfoInstance-2008-1">
+                <Documentation>List of zero or more instances of DR event information.</Documentation>
+            </Array>
+        </Sequence>
+
+        <Sequence name="0-DRAS-GeneralInfoInstance-2008-1">
+            <Documentation>This is an instance of the general information that is reserved for use outside the scope of
+                the normal EventState information.</Documentation>
+            <String name="infoName">
+                <Documentation>This is the name given for the name-value pairs for this instance of general information.</Documentation>
+            </String>
+            <String name="infoType">
+                <Documentation>This may be used to specify the type of the information and is user defined.</Documentation>
+            </String>
+            <Array name="infoValues" memberType="0-DRAS-GeneralInfoValue-2008-1">
+                <Documentation>These values represent the value part of the name-value pair.  Note that instead of being a 
+					single entity it may be a time sequenced list of values.</Documentation>
+            </Array>
+        </Sequence>
+
+        <Sequence name="0-DRAS-GeneralInfoValue-2008-1">
+            <Documentation>This is the value part of in the name-value pair of an instance of GeneralInfoInstance.  It 
+				consists of a value field and an optional time field which can be used to specify the time slot of a 
+				schedule for when this value is valid.</Documentation>
+            <String name="value">
+                <Documentation>The value of the GeneralInfoValue instance.  Note that it is a string which allows the 
+				value field to take on any sort of type.</Documentation>
+            </String>
+            <Unsigned name="timeOffset">
+                <Documentation>Relative offset from the beginning of the DR event period in seconds. This time signifies
+                    when the time slot for this value ends and when the time slot for the next value begins. For example
+                    the third time slot value specifies the end of the time slot for the third genearl event information
+                    in the value field.</Documentation>
+            </Unsigned>
+        </Sequence>
+
+
+        <!-- now we can define the two main structures -->
+
+        <Sequence name="0-DRAS-EventState-2008-1">
+            <Documentation>This represents the state of a single DR Event.  There will be one of these senT for each DR 
+				Event that is either pending or active.  If there are no DR Events pending or active then there will be 
+				one of these sent with the EventStatus field of the simpleDRModeData set to 'NONE'.  Note that when the 
+				EventStatus is set to NONE then some of the elements and attributes of this entity are not applicable.  
+				See the documentation for each element and attribute to see which are not applicable when the EventStatus 
+				is set to NONE.</Documentation>
+            <String name="programName">
+                <Documentation>Identifier of the program that this DR event was issued for. If the EventStatus field is NONE
+                    indicating that there is no pending or active DR event then this field is not
+                	applicable.</Documentation>
+            </String>
+            <Unsigned name="eventModNumber">
+                <Documentation>Modification number of the DR event. Used to indicate if the DR Event has been modified
+                    by the Utility. Each time it is modified this number is incremented. If the EventStatus field is
+                    NONE indicating that there is no pending or active DR event then this field is not
+                	applicable.</Documentation>
+            </Unsigned>
+            <String name="eventIdentifier">
+                <Documentation>Identifier for the DR event that was created when the DR event was first issued. If the
+                    EventStatus field is NONE indicating that there is no pending or active DR event then this field is
+                    not applicable.</Documentation>
+            </String>
+            <String name="drasClientID">
+                <Documentation>Identifier of the DRAS client that this EventState is being sent to.</Documentation>
+            </String>
+            <Unsigned name="eventStateID">
+                <Documentation>This is a transaction ID that is guaranteed to be unique for each instance of the
+                    EventState that is generated and sent to the DRAS Client. It is used by the DRAS Client to confirm
+                    reception of the EventState from the DRAS.</Documentation>
+            </Unsigned>
+            <String name="schemaVersion" variability="constant" value="20080509">
+                <Documentation>This is the version number for the Event State schema itself.</Documentation>
+            </String>
+            <String name="drasName">
+                <Documentation>Optional field that is the name and/or version of the DRAS that is sending the EventState
+                    mesage. The contents of this field are implementation specific and can be blank if not
+                	needed.</Documentation>
+            </String>
+            <Boolean name="testEvent">
+                <Documentation>This attribute signifies whether this is a test event or not. Test events may be issued
+                    by the Utility/ISO like other DR Events.</Documentation>
+            </Boolean>
+            <Boolean name="offLine">
+                <Documentation>This field signifiies whether from the DRAS point of view the DRAS Client is off line. If
+                    this field is TRUE then the DRAS Client is off line and if it is FALSE then the DRAS Client is on
+                    line. If the DRAS Client is off line then it will not receive any DR Events that have been issued by
+                    the Utility/ISO. If this mode is set true the values of the EventStatus and OperationModeValue can
+                    still change if they are explictely set using the SetTestModeState method. This may done in order to
+                    explictely set the values to manually test the state transitions of the DRAS Client, typically right
+                    after it has been installed to insure it is working properly.</Documentation>
+            </Boolean>
+            <Sequence name="simpleDRModeData" type="0-DRAS-SimpleClientEventData-2008-1">
+                <Documentation>Simple event data associated with the DR event.</Documentation>
+            </Sequence>
+            <Sequence name="drEventData" optional="true" type="0-DRAS-SmartClientDREventData-2008-1">
+                <Documentation>Complete DR event data. If the EventStatus field is NONE indicating that there is no
+                    pending or active DR event then this field is not applicable.</Documentation>
+            </Sequence>
+            <Array name="customData" optional="true" memberType="0-DRAS-GeneralInfoInstance-2008-1">
+                <Documentation>This is a placeholder for information that may be sent to the DRAS Client in order to
+                    perform functions or send information that is not normally within the scope of the EventState of a
+                    DR event. Having this placeholder allows the standard EventState message to be used for systems that
+                    may need to communicate messages to the facility while still using the standard EventState
+                    mechanisms and schemas.</Documentation>
+            </Array>
+        </Sequence>
+
+        <Sequence name="0-DRAS-EventStateConfirmation-2008-1">
+            <Documentation>This represents the message that is sent from the DRAS Client to the DRAS upon receiving an
+                EventState message.</Documentation>
+            <String name="programName">
+                <Documentation>Identifier of the program the DR event was issued for.</Documentation>
+            </String>
+            <Unsigned name="eventModNumber">
+                <Documentation>Modification number of the DR event. Used to indicate if the DR Event has been modified
+                    by the Utility. Each time it is modified this number is incremented.</Documentation>
+            </Unsigned>
+            <String name="eventIdentifier">
+                <Documentation>Identifier for the DR event that was created when the DR event was first
+                issued.</Documentation>
+            </String>
+            <String name="drasClientID">
+                <Documentation>Identifier of the DRAS client that this DR event confirmation is being sent
+                from.</Documentation>
+            </String>
+            <Unsigned name="eventStateID">
+                <Documentation>This is a transaction ID that is guaranteed to be unique for each instance of the
+                    EventState that is generated and sent to the DRAS Client. It is used by the DRAS Client to confirm
+                    reception of the EventState from the DRAS.</Documentation>
+            </Unsigned>
+            <String name="schemaVersion" variability="constant" value="20080509">
+                <Documentation>This is the version number for the Event State Confirmation schema itself</Documentation>
+            </String>
+            <Enumerated name="operationModeValue" optional="true" type="0-DRAS-OperationModeValue-2008-1">
+                <Documentation>If this the confirmation is coming from a Simple DRAS Client then this attribute
+                    specifies the current state of the DRAS Client.</Documentation>
+            </Enumerated>
+            <Boolean name="optInStatus" optional="true">
+                <Documentation>This specifies whether the DRAS Client is opting in or out of the DR Event. If this
+                    attribute is missing then the opt-in state is unkown.</Documentation>
+            </Boolean>
+            <Real name="currentTime" units="seconds">
+                <Documentation>This is the relative time in seconds from the beginning of the DR event window that this
+                    particualr instance of the confirmation message was generated for.</Documentation>
+            </Real>
+            <String name="signature" optional="true">
+                <Documentation>This is an optional signature string that can be used for the purposes of non-repudiation.
+				It is meant to hold an electronic signature that uniquely identifies the DRAS Client for 
+				the purposes of non-repudiation of the fact that the DRAS Client received the DR Event signal.</Documentation>
+            </String>
+            <String name="drasName">
+                <Documentation>This is the name and/or version of the DRAS that sent the EventState message.</Documentation>
+            </String>
+        </Sequence>
+    </Definitions>
+
+</CSML>

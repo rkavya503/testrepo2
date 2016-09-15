@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	
+	<changeSet id="1" author="suresh" >
+	  <comment>
+          Create table AggregatorEnrollmentData
+      </comment>
+      <sql>
+		CREATE TABLE IF NOT EXISTS AggregatorEnrollmentData (
+		  data LONGBLOB NULL DEFAULT NULL,
+		  uuid VARCHAR(250) NOT NULL,
+		  creationtime DATETIME NULL DEFAULT NULL,
+		  creator VARCHAR(250) NULL DEFAULT NULL,
+		  modifiedtime DATETIME NULL DEFAULT NULL,
+		  modifier VARCHAR(250) NULL DEFAULT NULL,
+		  version INT(11) NULL DEFAULT NULL,
+		  PRIMARY KEY (uuid)) 
+		  ENGINE = InnoDB
+		DEFAULT CHARACTER SET = latin1;
+	   </sql>
+    </changeSet>	
+	
+	<changeSet id="2" author="suresh" >
+	  <comment>
+          Create table DrasLoginInformation
+      </comment>
+      <sql>
+		CREATE TABLE IF NOT EXISTS DrasLoginInformation (
+		  drasusername VARCHAR(250) NULL DEFAULT NULL,
+		  draspassword VARCHAR(250) NULL DEFAULT NULL,
+		  uuid VARCHAR(250) NOT NULL,
+		  creationtime DATETIME NULL DEFAULT NULL,
+		  creator VARCHAR(250) NULL DEFAULT NULL,
+		  modifiedtime DATETIME NULL DEFAULT NULL,
+		  modifier VARCHAR(250) NULL DEFAULT NULL,
+		  version INT(11) NULL DEFAULT NULL,
+		  PRIMARY KEY (uuid))	 
+		  ENGINE = InnoDB
+		  DEFAULT CHARACTER SET = latin1;		  
+	   </sql>
+    </changeSet>
+	
+	<changeSet id="3" author="suresh" >
+	  <comment>
+          Create table LeadAccountInformation
+      </comment>
+      <sql>
+		CREATE TABLE IF NOT EXISTS LeadAccountInformation (
+		  leadaccountname VARCHAR(250) NULL DEFAULT NULL,
+		  leadaccountemail VARCHAR(250) NULL DEFAULT NULL,
+		  leadaccountphonenumber VARCHAR(250) NULL DEFAULT NULL,
+		  leadaccountnumber VARCHAR(250) NULL DEFAULT NULL,
+		  uuid VARCHAR(250) NOT NULL,
+		  creationtime DATETIME NULL DEFAULT NULL,
+		  creator VARCHAR(250) NULL DEFAULT NULL,
+		  modifiedtime DATETIME NULL DEFAULT NULL,
+		  modifier VARCHAR(250) NULL DEFAULT NULL,
+		  version INT(11) NULL DEFAULT NULL,
+		  description VARCHAR(250) NULL DEFAULT NULL,
+		  PRIMARY KEY (uuid))
+		  ENGINE = InnoDB
+		DEFAULT CHARACTER SET = latin1;
+	   </sql>
+    </changeSet>
+	
+	<changeSet id="4" author="suresh" >
+	  <comment>
+          Create table AggregatorEnrollmentRequest
+      </comment>
+      <sql>
+			CREATE TABLE IF NOT EXISTS AggregatorEnrollmentRequest (
+			  isexistingaggregator TINYINT(1) NOT NULL,
+			  requestId VARCHAR(250) NULL DEFAULT NULL,
+			  leadaccountinformation_uuid VARCHAR(250) NOT NULL,
+			  draslogininfo_uuid VARCHAR(250) NOT NULL,
+			  aggregatorenrollmentdata_uuid VARCHAR(250) NOT NULL,
+			  uuid VARCHAR(250) NOT NULL,
+			  creationtime DATETIME NULL DEFAULT NULL,
+			  creator VARCHAR(250) NULL DEFAULT NULL,
+			  modifiedtime DATETIME NULL DEFAULT NULL,
+			  modifier VARCHAR(250) NULL DEFAULT NULL,
+			  version INT(11) NULL DEFAULT NULL,
+			  status VARCHAR(45) NULL DEFAULT NULL,
+			  operatorid VARCHAR(45) NULL DEFAULT NULL,
+			  operatoremailid VARCHAR(45) NULL DEFAULT NULL,
+			  operatorrole VARCHAR(45) NULL DEFAULT NULL,
+			  apistatus VARCHAR(45) NULL DEFAULT NULL,
+			  PRIMARY KEY (uuid),
+			  INDEX fk_aggregatorenrollmentrequest_aggregatorenrollmentdata_id (aggregatorenrollmentdata_uuid ASC),
+			  INDEX fk_aggregatorenrollmentrequest_leadaccountinfo_id (leadaccountinformation_uuid ASC),
+			  INDEX fk_aggregatorenrollmentrequest_draslogininfo_id (draslogininfo_uuid ASC),
+			  CONSTRAINT fk_aggregatorenrollmentrequest_aggregatorenrollmentdata_id
+				FOREIGN KEY (aggregatorenrollmentdata_uuid)
+				REFERENCES AggregatorEnrollmentData (uuid)
+				ON DELETE CASCADE
+				ON UPDATE CASCADE,
+			  CONSTRAINT fk_aggregatorenrollmentrequest_draslogininfo_id
+				FOREIGN KEY (draslogininfo_uuid)
+				REFERENCES DrasLoginInformation (uuid)
+				ON DELETE CASCADE
+				ON UPDATE CASCADE,
+			  CONSTRAINT fk_aggregatorenrollmentrequest_leadaccountinfo_id
+				FOREIGN KEY (leadaccountinformation_uuid)
+				REFERENCES LeadAccountInformation (uuid)
+				ON DELETE CASCADE
+				ON UPDATE CASCADE)
+				ENGINE = InnoDB
+				DEFAULT CHARACTER SET = latin1
+				COMMENT = '	';
+	  </sql>
+    </changeSet>
+	
+	<changeSet id="5" author="suresh" >
+	  <comment>
+          Create table CustomerEnrollmentData
+      </comment>
+      <sql>
+			CREATE TABLE IF NOT EXISTS CustomerEnrollmentData (
+			  uuid VARCHAR(250) NOT NULL,
+			  customername VARCHAR(250) NULL DEFAULT NULL,
+			  customeremail VARCHAR(250) NULL DEFAULT NULL,
+			  customerphonenumber VARCHAR(250) NULL DEFAULT NULL,
+			  customeraddress VARCHAR(250) NULL DEFAULT NULL,
+			  customerserviceacc VARCHAR(250) NULL DEFAULT NULL,
+			  customercontactname1 VARCHAR(250) NULL DEFAULT NULL,
+			  customercontactemail1 VARCHAR(250) NULL DEFAULT NULL,
+			  customercontactphone1 VARCHAR(250) NULL DEFAULT NULL,
+			  customercontactname2 VARCHAR(250) NULL DEFAULT NULL,
+			  customercontactemail2 VARCHAR(250) NULL DEFAULT NULL,
+			  customercontactphone2 VARCHAR(250) NULL DEFAULT NULL,
+			  creationtime DATETIME NULL DEFAULT NULL,
+			  creator VARCHAR(250) NULL DEFAULT NULL,
+			  modifiedtime DATETIME NULL DEFAULT NULL,
+			  modifier VARCHAR(250) NULL DEFAULT NULL,
+			  version INT(11) NULL DEFAULT NULL,
+			  PRIMARY KEY (uuid))
+				ENGINE = InnoDB
+				DEFAULT CHARACTER SET = latin1;
+			  
+	  </sql>
+    </changeSet>
+	
+	<changeSet id="6" author="suresh" >
+	  <comment>
+          Create table DeviceInformation
+      </comment>
+	  <sql>
+		CREATE TABLE IF NOT EXISTS DeviceInformation (
+		  uuid VARCHAR(250) NOT NULL,
+		  deviceinfoclientmanufacturer VARCHAR(250) NULL DEFAULT NULL,
+		  deviceinfodvcmodelversion VARCHAR(250) NULL DEFAULT NULL,
+		  deviceinfooadrversion VARCHAR(250) NULL DEFAULT NULL,
+		  deviceinfoclientpassword VARCHAR(250) NULL DEFAULT NULL,
+		  deviceinfopendingsignalused TINYINT(1) NOT NULL,
+		  creationtime DATETIME NULL DEFAULT NULL,
+		  creator VARCHAR(250) NULL DEFAULT NULL,
+		  modifiedtime DATETIME NULL DEFAULT NULL,
+		  modifier VARCHAR(250) NULL DEFAULT NULL,
+		  version INT(11) NULL DEFAULT NULL,
+		  deviceInfoProgramType VARCHAR(250) NULL DEFAULT NULL,
+		  PRIMARY KEY (uuid))
+		ENGINE = InnoDB
+		DEFAULT CHARACTER SET = latin1;
+
+      </sql>
+    </changeSet>
+	
+	<changeSet id="7" author="suresh" >
+	  <comment>
+          Create table TechnicalContact
+      </comment>
+      <sql>
+		CREATE TABLE IF NOT EXISTS TechnicalContact (
+		  uuid VARCHAR(250) NOT NULL,
+		  technicalcontactcompany VARCHAR(250) NULL DEFAULT NULL,
+		  technicalcontactname VARCHAR(250) NULL DEFAULT NULL,
+		  technicalcontactemail VARCHAR(250) NULL DEFAULT NULL,
+		  technicalcontactphonenumber VARCHAR(250) NULL DEFAULT NULL,
+		  technicalcontactdescription VARCHAR(500) NULL DEFAULT NULL,
+		  creationtime DATETIME NULL DEFAULT NULL,
+		  creator VARCHAR(250) NULL DEFAULT NULL,
+		  modifiedtime DATETIME NULL DEFAULT NULL,
+		  modifier VARCHAR(250) NULL DEFAULT NULL,
+		  version INT(11) NULL DEFAULT NULL,
+		  PRIMARY KEY (uuid))
+		 ENGINE = InnoDB
+		DEFAULT CHARACTER SET = latin1;		  
+	  </sql>
+    </changeSet>
+	
+	<changeSet id="8" author="suresh" >
+	  <comment>
+          Create table customerenrollmentrequest
+      </comment>
+      <sql>
+		CREATE TABLE IF NOT EXISTS CustomerEnrollmentRequest (
+		  uuid VARCHAR(250) NOT NULL,
+		  creationtime DATETIME NULL DEFAULT NULL,
+		  creator VARCHAR(250) NULL DEFAULT NULL,
+		  modifiedtime DATETIME NULL DEFAULT NULL,
+		  modifier VARCHAR(250) NULL DEFAULT NULL,
+		  version INT(11) NULL DEFAULT NULL,
+		  requestid VARCHAR(250) NULL DEFAULT NULL,
+		  deviceinformation_uuid VARCHAR(250) NOT NULL,
+		  draslogin_uuid VARCHAR(250) NOT NULL,
+		  technicalcontact_uuid VARCHAR(250) NOT NULL,
+		  customerenrollmendata_uuid VARCHAR(250) NOT NULL,
+		  status VARCHAR(45) NULL DEFAULT NULL,
+		  operatorid VARCHAR(45) NULL DEFAULT NULL,
+		  operatoremailid VARCHAR(45) NULL DEFAULT NULL,
+		  operatorrole VARCHAR(45) NULL DEFAULT NULL,
+		  PRIMARY KEY (uuid),
+		  INDEX fk_customer_deviceinformation_id (deviceinformation_uuid ASC),
+		  INDEX fk_customer_draslogin_id (draslogin_uuid ASC),
+		  INDEX fk_customer_technicalcontact_id (technicalcontact_uuid ASC),
+		  INDEX fk_customer_customerenrollmentdata_id (customerenrollmendata_uuid ASC),
+		  CONSTRAINT fk_customer_customerenrollmentdata_id
+			FOREIGN KEY (customerenrollmendata_uuid)
+			REFERENCES CustomerEnrollmentData (uuid)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE,
+		  CONSTRAINT fk_customer_deviceinformation_id
+			FOREIGN KEY (deviceinformation_uuid)
+			REFERENCES DeviceInformation (uuid)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE,
+		  CONSTRAINT fk_customer_draslogin_id
+			FOREIGN KEY (draslogin_uuid)
+			REFERENCES DrasLoginInformation (uuid)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE,
+		  CONSTRAINT fk_customer_technicalcontact_id
+			FOREIGN KEY (technicalcontact_uuid)
+			REFERENCES TechnicalContact (uuid)
+			ON DELETE CASCADE
+			ON UPDATE CASCADE)
+			ENGINE = InnoDB
+			DEFAULT CHARACTER SET = latin1
+			COMMENT = '	';			
+	  </sql>
+    </changeSet>
+	
+	<changeSet id="9" author="suresh" >
+	  <comment>
+          Create table ParticipantPrograms
+      </comment>
+      <sql>
+		CREATE TABLE IF NOT EXISTS ParticipantPrograms (
+		  uuid VARCHAR(128) NOT NULL,
+		  customerid VARCHAR(128) NULL DEFAULT NULL,
+		  programName VARCHAR(128) NULL DEFAULT NULL,
+		  creationtime DATETIME NULL DEFAULT NULL,
+		  creator VARCHAR(128) NULL DEFAULT NULL,
+		  modifiedtime DATETIME NULL DEFAULT NULL,
+		  modifier VARCHAR(128) NULL DEFAULT NULL,
+		  version INT(11) NULL DEFAULT NULL,
+		  PRIMARY KEY (uuid))
+		ENGINE = InnoDB
+		DEFAULT CHARACTER SET = latin1;		  
+	  </sql>
+    </changeSet>
+    
+</databaseChangeLog>

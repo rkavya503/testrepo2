@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<project name="apache.configure" default="configure" basedir=".">
+    <property name="apache.root" value="/etc/httpd"/>
+    <property name="apache.conf" value="${apache.root}/conf"/>
+    <property name="apache.doc" value="/var/www/html"/>
+    <!-- NOTE: this is legacy ip.-->
+    <property name="server.ip.1" value="192.168.149.59"/>
+    <property name="server.name.1" value="earth2"/>
+    <!-- NOTE: this is the new ip.-->
+    <property name="server.ip.2" value="192.168.149.57"/>
+    <!-- NOTE: you'll need a server.name.2.crt and server.name.2.key file-->
+    <property name="server.name.2" value="earth"/>
+    <!-- Pick only the neccessary cre/key pairs to the server-->
+    <property name="cert.name" value="pge"/>
+
+    <target name="configure">
+        <copy todir="${apache.conf}" overwrite="true">
+            <fileset dir="${basedir}">
+                <include name="**/httpd.conf"/>
+                <include name="**/ssl.conf"/>
+                <include name="**/mime.types"/>
+                <include name="**/*.properties"/>
+            </fileset>
+            <filterset>
+                <filter token="SERVER.IP.1" value="${server.ip.1}"/>
+                <filter token="SERVER.NAME.1" value="${server.name.1}"/>
+                <filter token="SERVER.IP.2" value="${server.ip.2}"/>
+                <filter token="SERVER.NAME.2" value="${server.name.2}"/>
+                <filter token="ROOT" value="${apache.root}"/>
+                <filter token="DOCROOT" value="${apache.doc}"/>
+                <filter token="LOGROOT" value="${apache.root}/logs"/>
+                <filter token="CONFROOT" value="${apache.conf}"/>
+            </filterset>
+        </copy>
+        <copy todir="${apache.conf}" overwrite="true">
+            <fileset dir="${basedir}/cert">
+                <include name="cheetah.crt"/>
+                <include name="cheetah.key"/>
+                <include name="localhost.crt"/>
+                <include name="localhost.key"/>
+                <include name="gd_intermediate_bundle.crt"/>
+                <include name="**/*${cert.name}*.crt"/>
+                <include name="**/*${cert.name}*.key"/>
+            </fileset>
+        </copy>
+    </target>
+</project>

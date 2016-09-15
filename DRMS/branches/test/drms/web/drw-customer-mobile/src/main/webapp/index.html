@@ -1,0 +1,85 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>SCE Demand Response Event Status</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="css/themes/default/jquery.mobile-1.3.0.css" />
+    
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.3.0.js"></script>
+	<script>
+		function createCookie(name, value) {
+		   var date = new Date();
+		   date.setTime(date.getTime()+(4*60*60*1000));// 4 hours
+		   var expires = "; expires="+date.toGMTString();
+
+		   document.cookie = name+"="+value+expires+"; path=/";
+		}
+	</script>
+   
+    
+
+    
+</head> 
+<body> 
+
+<div data-role="page"  id="home">
+
+	<div data-role="header" data-theme="c">
+		<div class="logoHolder"><img src="images/sce-logo.png" width="127" height="39"/></div>
+	</div><!-- /header -->
+
+		
+		  <div data-role="content" style="clear:both">
+          	<div class="main-page-title"><span class="title">Welcome to the SCE Demand Response Program Website</span><br /><br />
+            It is recommended that you reload or refresh this site often to ensure you are viewing the most recent available information. This website is not intended as a substitute for receiving SCE event notifications.</div>
+          </div>
+          
+          <div>
+          	<ul data-role="listview" data-inset="false" data-filter="false">
+                <li><a href="drp-residential.html" rel="external">Residential</a></li>
+                <li><a href="drp-commercial.html" rel="external">Commercial</a></li>
+                <li><a href="drp-event-history.html" rel="external">Event History</a></li>
+            </ul>
+
+          </div>
+         <div class="footerLinks" style="text-align:center;font-size:11px;padding:10px;padding-top:20px; font-weight:normal;color:#666 !important;"><a href="https://www.sce.com/wps/portal/home/about-us" target="_blank">About</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.sce.com/wps/portal/home/mysce/sitemap" target="_blank">Site Map</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.sce.com/wps/portal/home/privacy" target="_blank">Privacy</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.sce.com/wps/portal/home/regulatory" target="_blank">Regulatory</a>&nbsp;&nbsp;|<br>&nbsp;&nbsp;<a href="http://www.edison.com/" target="_blank">Edison International</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="../dr.website/scepr-event-status.jsf" onclick="createCookie('FULL_SITE_ON_MOBILE','TRUE');" target="_blank">Desktop Site</a>
+        <br>Copyright &copy; 2013 Southern California Edison. <br>All Rights Reserved
+</div>
+<br><br><br>
+           
+	
+	<div data-role="footer" data-position="fixed" data-fullscreen="true">
+    	<div class="footerWrapper">
+		<div class="footerNavLeft"><a href="#relative-link-page" data-rel="dialog" style="color:#FFF; text-decoration:none;">Related Links</a></div>
+        <div class="footerNavRight"><a href="#relative-link-page" data-rel="dialog"><img src="images/dot.png" width="27" height="7" border="0"/></a></div>
+        </div>
+	</div>
+</div><!-- /page -->
+<!-- relative links page -->
+<div data-role="dialog"  id="relative-link-page">
+	
+    <div data-role="content" data-theme="c">
+          
+          <div>
+           <table style="width:100%">
+              	<tr><td>
+          	<ul data-role="listview" data-inset="false" data-filter="false">
+                <li data-icon="false"><a href="https://www.sce.com/wps/portal/home/business/savings-incentives/demand-response/?from=adr_demand" target="blank">SCE Demand Response Programs</a></li>
+                <li data-icon="false"><a href="https://www.sce.com/wps/portal/home/outage-center/rotating-outages/?from=adr_outage" target="blank">SCE Rotating Outage Status</a></li>
+                <li data-icon="false"><a href="https://www.sce.com/wps/portal/home/regulatory/tariff-books" target="blank">SCE Tariff Book</a></li>
+                <li data-icon="false"><a href="http://www.caiso.com/Pages/TodaysOutlook.aspx" target="blank">California ISO - Today's Outlook</a></li>
+                <li data-icon="false"><a href="drp-blockview.jsp" target="_blank">SCE Block view</a></li>				
+				<li data-icon="false"><a href="../dr.website/scepr-event-status.jsf" target="blank" onclick="createCookie('FULL_SITE_ON_MOBILE','TRUE');" >Desktop Version</a></li>
+                <li data-theme="e" data-icon="back"><a href="#" data-rel="back" data-ajax="false">Return to Home</a>
+                </li>
+            </ul>
+			</td></tr></table>
+          </div>
+          </div>
+       
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<Locations>
+	<Location id="3066" latitude="57.6494" longitude="-3.5606" name="Kinloss"/>
+	<Location id="3080" latitude="57.077" longitude="-2.836" name="Aboyne"/>
+	<Location id="3091" latitude="57.206" longitude="-2.202" name="Aberdeen Dyce"/>
+	<Location id="3134" latitude="55.907" longitude="-4.533" name="Glasgow/Bishopton"/>
+	<Location id="3136" latitude="55.515" longitude="-4.585" name="Prestwick Rnas"/>
+	<Location id="3144" latitude="56.326" longitude="-3.729" name="Strathallan"/>
+	<Location id="3162" latitude="55.311" longitude="-3.206" name="Eskdalemuir"/>
+	<Location id="3212" latitude="54.614" longitude="-3.157" name="Keswick"/>
+	<Location id="3265" latitude="54.204" longitude="-1.39" name="Topcliffe"/>
+	<Location id="3281" latitude="54.362" longitude="-0.673" name="Fylingdales"/>
+	<Location id="3292" latitude="54.094" longitude="-0.174" name="Bridlington Mrsc"/>
+	<Location id="3302" latitude="53.252" longitude="-4.537" name="Valley"/>
+	<Location id="3344" latitude="53.811" longitude="-1.865" name="Bingley Samos"/>
+	<Location id="3355" latitude="53.836" longitude="-1.197" name="Church Fenton"/>
+	<Location id="3469" latitude="52.873" longitude="0.141" name="Holbeach"/>
+	<Location id="3502" latitude="52.139" longitude="-4.571" name="Aberporth"/>
+	<Location id="3560" latitude="52.225" longitude="-0.464" name="Bedford"/>
+	<Location id="3609" latitude="51.565" longitude="-3.981" name="Mumbles Head"/>
+	<Location id="3649" latitude="51.758" longitude="-1.576" name="Brize Norton"/>
+	<Location id="3660" latitude="51.68" longitude="-0.802" name="High Wycombe"/>
+	<Location id="3672" latitude="51.548" longitude="-0.415" name="Northolt"/>
+	<Location id="3707" latitude="51.089" longitude="-4.149" name="Chivenor"/>
+	<Location id="3716" latitude="51.405" longitude="-3.44" name="St-Athan"/>
+	<Location id="3743" latitude="51.201" longitude="-1.805" name="Larkhill"/>
+	<Location id="3772" latitude="51.479" longitude="-0.449" name="Heathrow"/>
+	<Location id="3797" latitude="51.3422" longitude="1.3461" name="Manston"/>
+	<Location id="3823" latitude="50.502" longitude="-4.667" name="Cardinham"/>
+	<Location id="3827" latitude="50.354" longitude="-4.121" name="Mount Batten"/>
+	<Location id="3840" latitude="50.86" longitude="-3.239" name="Dunkeswell Aerodrome"/>
+	<Location id="3853" latitude="51.006" longitude="-2.64" name="Yeovilton"/>
+	<Location id="3872" latitude="50.815" longitude="-0.923" name="Thorney Island"/>
+	<Location id="3923" latitude="54.237" longitude="-6.502" name="Glenanne"/>
+	<Location id="3839" latitude="50.737" longitude="-3.405" name="Exeter Airport"/>
+	<Location id="3158" latitude="55.709" longitude="-2.383" name="Charterhall"/>
+	<Location id="3166" latitude="55.928" longitude="-3.343" name="Edinburgh/Gogarbank"/>
+	<Location id="3204" latitude="54.0849" longitude="-4.6321" name="Ronaldsway"/>
+	<Location id="3266" latitude="54.045" longitude="-1.25" name="Linton On Ouse"/>
+	<Location id="3321" latitude="53.174" longitude="-2.986" name="Hawarden"/>
+	<Location id="3382" latitude="53.867" longitude="-0.433" name="Leconfield Sar"/>
+	<Location id="3503" latitude="52.344" longitude="-3.947" name="Trawsgoed"/>
+	<Location id="3529" latitude="52.148" longitude="-2.04" name="Pershore"/>
+	<Location id="3658" latitude="51.62" longitude="-1.097" name="Benson"/>
+	<Location id="3710" latitude="51.087" longitude="-3.608" name="Liscombe"/>
+	<Location id="3746" latitude="51.161" longitude="-1.754" name="Boscombe Down"/>
+	<Location id="3808" latitude="50.218" longitude="-5.33" name="Camborne"/>
+	<Location id="3809" latitude="50.085" longitude="-5.257" name="Culdrose"/>
+	<Location id="3857" latitude="50.522" longitude="-2.454" name="Isle Of Portland"/>
+	<Location id="3876" latitude="50.836" longitude="-0.292" name="Shoreham"/>
+	<Location id="3063" latitude="57.206" longitude="-3.827" name="Aviemore"/>
+	<Location id="3068" latitude="57.712" longitude="-3.322" name="Lossiemouth"/>
+	<Location id="3075" latitude="58.454" longitude="-3.089" name="Wick Airport"/>
+	<Location id="3094" latitude="57.698" longitude="-2.121" name="Rosehearty Samos"/>
+	<Location id="3100" latitude="56.497" longitude="-6.887" name="Tiree"/>
+	<Location id="3105" latitude="55.681" longitude="-6.256" name="Islay/Port Ellen"/>
+	<Location id="3111" latitude="55.441" longitude="-5.699" name="Machrihanish"/>
+	<Location id="3220" latitude="54.933" longitude="-2.963" name="Carlisle"/>
+	<Location id="3257" latitude="54.296" longitude="-1.53" name="Leeming"/>
+	<Location id="3354" latitude="53.005" longitude="-1.25" name="Watnall"/>
+	<Location id="3373" latitude="53.307" longitude="-0.546" name="Scampton"/>
+	<Location id="3391" latitude="53.094" longitude="-0.171" name="Coningsby"/>
+	<Location id="3392" latitude="53.088" longitude="0.274" name="Wainfleet"/>
+	<Location id="3026" latitude="58.214" longitude="-6.325" name="Stornoway"/>
+	<Location id="3044" latitude="58.288" longitude="-4.442" name="Altnaharra Saws"/>
+	<Location id="3414" latitude="52.794" longitude="-2.663" name="Shawbury"/>
+	<Location id="3453" latitude="52.727" longitude="-0.654" name="Cottesmore"/>
+	<Location id="3462" latitude="52.611" longitude="-0.459" name="Wittering"/>
+	<Location id="3522" latitude="52.083" longitude="-2.8" name="Hereford"/>
+	<Location id="3590" latitude="52.123" longitude="0.961" name="Wattisham"/>
+	<Location id="3605" latitude="51.713" longitude="-4.368" name="Pembrey Sands Samos"/>
+	<Location id="3647" latitude="51.86" longitude="-1.692" name="Little Rissington (Esaws)"/>
+	<Location id="3740" latitude="51.5031" longitude="-1.9924" name="Lyneham"/>
+	<Location id="3768" latitude="51.279" longitude="-0.772" name="Farnborough"/>
+	<Location id="3862" latitude="50.779" longitude="-1.835" name="Hurn"/>
+	<Location id="3874" latitude="50.807" longitude="-1.208" name="Solent Mrsc"/>
+	<Location id="3903" latitude="54.4" longitude="-7.65" name="St Angelo"/>
+	<Location id="3908" latitude="55.057" longitude="-7.008" name="Ballykelly Samos"/>
+	<Location id="3148" latitude="56.423" longitude="-4.32" name="Glen Ogle"/>
+	<Location id="3153" latitude="54.803" longitude="-4.008" name="Dundrennan"/>
+	<Location id="3210" latitude="54.518" longitude="-3.615" name="St. Bees Head"/>
+	<Location id="3224" latitude="55.05" longitude="-2.553" name="Spadeadam"/>
+	<Location id="3225" latitude="54.501" longitude="-2.684" name="Shap"/>
+	<Location id="3238" latitude="55.02" longitude="-1.88" name="Albemarle"/>
+	<Location id="3261" latitude="54.134" longitude="-1.414" name="Dishforth Airfield"/>
+	<Location id="3313" latitude="53.259" longitude="-3.509" name="Rhyl"/>
+	<Location id="3316" latitude="53.497" longitude="-3.056" name="Crosby"/>
+	<Location id="3377" latitude="53.175" longitude="-0.521" name="Waddington"/>
+	<Location id="3017" latitude="58.954" longitude="-2.9" name="Kirkwall"/>
+	<Location id="3488" latitude="52.949" longitude="1.127" name="Weybourne"/>
+	<Location id="3520" latitude="52.242" longitude="-2.885" name="Shobdon Saws"/>
+	<Location id="3535" latitude="52.48" longitude="-1.689" name="Coleshill"/>
+	<Location id="3693" latitude="51.554" longitude="0.83" name="Shoeburyness"/>
+	<Location id="3769" latitude="51.15" longitude="-0.2333" name="Charlwood"/>
+	<Location id="3882" latitude="50.89" longitude="0.319" name="Herstmonceux West End"/>
+	<Location id="3132" latitude="54.859" longitude="-4.936" name="West Freugh (Esaws)"/>
+	<Location id="3155" latitude="55.627" longitude="-3.735" name="Drumalbin"/>
+	<Location id="3171" latitude="56.377" longitude="-2.862" name="Leuchars"/>
+	<Location id="3214" latitude="54.125" longitude="-3.257" name="Walney Island"/>
+	<Location id="3240" latitude="55.421" longitude="-1.6" name="Boulmer"/>
+	<Location id="3305" latitude="53.093" longitude="-3.941" name="Capel Curig Saws"/>
+	<Location id="3330" latitude="53.133" longitude="-1.983" name="Leek"/>
+	<Location id="3002" latitude="60.749" longitude="-0.854" name="Baltasound"/>
+	<Location id="3005" latitude="60.139" longitude="-1.183" name="Lerwick (S. Screen)"/>
+	<Location id="3023" latitude="57.358" longitude="-7.397" name="South Uist Range"/>
+	<Location id="3031" latitude="57.725" longitude="-4.896" name="Loch Glacarnoch Saws"/>
+	<Location id="3034" latitude="57.859" longitude="-5.636" name="Aultbea"/>
+	<Location id="3037" latitude="57.257" longitude="-5.809" name="Skye/Lusa (Samos)"/>
+	<Location id="3047" latitude="56.867" longitude="-4.708" name="Tulloch Bridge"/>
+	<Location id="3405" latitude="52.789" longitude="-4.742" name="Aberdaron"/>
+	<Location id="3410" latitude="52.757" longitude="-3.464" name="Lake Vyrnwy Saws"/>
+	<Location id="3482" latitude="52.651" longitude="0.569" name="Marham"/>
+	<Location id="3507" latitude="52.063" longitude="-3.614" name="Sennybridge"/>
+	<Location id="3544" latitude="52.358" longitude="-1.33" name="Church Lawford"/>
+	<Location id="3604" latitude="51.708" longitude="-5.055" name="Milford Haven C.B."/>
+	<Location id="3628" latitude="51.521" longitude="-2.576" name="Filton"/>
+	<Location id="3684" latitude="51.896" longitude="0.453" name="Andrews Field"/>
+	<Location id="3761" latitude="51.238" longitude="-0.944" name="Odiham"/>
+	<Location id="3781" latitude="51.303" longitude="-0.09" name="Kenley"/>
+	<Location id="3784" latitude="51.464" longitude="0.314" name="Gravesend-Broadness"/>
+	<Location id="3796" latitude="51.133" longitude="1.348" name="Langdon Bay"/>
+	<Location id="3803" latitude="49.913" longitude="-6.301" name="Scilly St Marys"/>
+	<Location id="3866" latitude="50.577" longitude="-1.297" name="St Catherines Pt."/>
+	<Location id="3904" latitude="54.707" longitude="-7.577" name="Castlederg"/>
+	<Location id="3916" latitude="55.181" longitude="-6.153" name="Ballypatrick Forest"/>
+	<Location id="3917" latitude="54.664" longitude="-6.224" name="Aldergrove"/>
+</Locations>

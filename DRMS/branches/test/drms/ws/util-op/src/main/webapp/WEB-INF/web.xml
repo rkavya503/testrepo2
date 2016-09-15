@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress WebProperties -->
+<web-app version="2.5"   
+    xmlns="http://java.sun.com/xml/ns/javaee"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"> 
+    
+    <display-name>UtilityOperatorWS</display-name>
+    <servlet>
+        <display-name>UtilityOperatorWS</display-name>
+        <servlet-name>UtilityOperatorWS</servlet-name>
+        <servlet-class>com.akuacom.pss2.utilopws.UtilityOperatorWS</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UtilityOperatorWS</servlet-name>
+        <url-pattern>/UtilityOperatorWS</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UtilityOperatorWS</servlet-name>
+        <url-pattern>/nossl/UtilityOperatorWS</url-pattern>
+    </servlet-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>UtilityOperatorWS</web-resource-name>
+            <url-pattern>/UtilityOperatorWS</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>website</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee> 
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>UtilityOperatorWS</web-resource-name>
+            <url-pattern>/nossl/UtilityOperatorWS</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>website</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <login-config>
+         <auth-method>BASIC</auth-method>
+    </login-config>
+    <security-role>
+        <description>website</description>
+        <role-name>website</role-name>
+    </security-role>
+</web-app>

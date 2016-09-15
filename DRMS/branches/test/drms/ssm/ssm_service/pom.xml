@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>ssm-parent</artifactId>
+		<groupId>com.akuacom.drms.ssm</groupId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+	<groupId>com.akuacom.drms.ssm</groupId>
+	<artifactId>ssm_service</artifactId>
+	<version>7.26-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>ssm_service</name>
+	  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>	  
+	<dependencies>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.ws</groupId>
+			<artifactId>util-op-stub</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.core</groupId>
+			<artifactId>drms-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.core</groupId>
+			<artifactId>drms-core-ejb</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.lib</groupId>
+			<artifactId>drms-util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.lib</groupId>
+			<artifactId>util-op-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.common</groupId>
+			<artifactId>util</artifactId>
+		</dependency>
+
+		<!-- <dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>ejb-api</artifactId>
+		</dependency> -->
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.ssm</groupId>
+			<artifactId>ssm_api</artifactId>
+			<version>7.26-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+            <groupId>com.akuacom.common</groupId>
+            <artifactId>util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jboss-javaee</artifactId>
+            <scope>compile</scope>
+        </dependency>
+		
+	</dependencies>
+</project>

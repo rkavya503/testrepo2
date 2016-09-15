@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>akuacom-parent</artifactId>
+    <groupId>com.akuacom</groupId>
+    <version>7.26-SNAPSHOT</version>
+  </parent>
+  <groupId>com.akuacom.drms</groupId>
+  <artifactId>drms-parent</artifactId>
+  <version>7.26-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>drms-parent</name>
+  
+  <build>
+  <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <configuration>
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>com.akuacom.common</groupId>
+                            <artifactId>util</artifactId>
+                        </aspectLibrary>
+                        <aspectLibrary>
+                            <groupId>com.akuacom.common</groupId>
+                            <artifactId>util-ejb</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+
+                </configuration>
+            </plugin>
+            </plugins>
+    </build>
+  
+  <dependencies>
+  		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<scope>compile</scope>
+		</dependency>
+ 		<dependency>
+			<groupId>com.akuacom.common</groupId>
+			<artifactId>util</artifactId>
+			<scope>compile</scope>
+		</dependency>
+  </dependencies>
+  <modules>
+    <module>core</module>
+    <module>lib</module>
+    <module>ws-client</module>
+    <module>ws</module>
+    <module>web</module>
+    <module>test</module>
+    <module>ws-stub</module>
+    <module>system</module>
+	<module>adr2.0</module>
+	<module>ssm</module>
+  </modules>
+</project>

@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>opt.report</display-name>
+	
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.SKIN</param-name>
+		<param-value>blueSky</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.CONTROL_SKINNING</param-name>
+		<param-value>enable</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>org.richfaces.CONTROL_SKINNING_CLASSES</param-name>
+		<param-value>enable</param-value>
+	</context-param>
+
+	<filter>
+		<display-name>RichFaces Filter</display-name>
+		<filter-name>richfaces</filter-name>
+		<filter-class>org.ajax4jsf.Filter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>richfaces</filter-name>
+
+		<servlet-name>Faces Servlet</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>
+			com.sun.faces.config.ConfigureListener
+		</listener-class>
+	</listener>
+
+	<!-- Faces Servlet -->
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+    <servlet>
+	  <servlet-name>Jaser Report Servlet</servlet-name>
+	  <servlet-class>com.akuacom.pss2.opt.report.JasperReportServlet</servlet-class>
+	  <load-on-startup>1</load-on-startup>
+	 </servlet>
+	<!-- Faces Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+	  <servlet-name>Jaser Report Servlet</servlet-name>
+	  <url-pattern>/jasperReport</url-pattern>
+	 </servlet-mapping>
+
+	<!--DRMS-5423: Enforce and verify uniform user session timeout of 30 minutes across DRAS (richsite, struts, facdash, and op reports) -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config> 
+	
+   <welcome-file-list>
+      <welcome-file>index.html</welcome-file>
+   </welcome-file-list>
+
+	<error-page>
+	 <error-code>500</error-code>
+	 <location>/jsp/error.jsf</location>
+	</error-page>
+	<!-- Security Settings -->
+	<security-constraint>
+	 <web-resource-collection>
+	  <web-resource-name>website</web-resource-name>
+	  <url-pattern>/jsp/*</url-pattern>
+	  <url-pattern>/jasperReport</url-pattern>
+	 </web-resource-collection>
+	 <auth-constraint>
+	  <role-name>website</role-name>
+	 </auth-constraint>
+	 <user-data-constraint>
+	  <transport-guarantee>NONE</transport-guarantee>
+	 </user-data-constraint>
+	</security-constraint>
+	<login-config>
+	 <auth-method>FORM</auth-method>
+	 <form-login-config>
+	  <form-login-page>/jsp/error.jsf</form-login-page>
+	  <form-error-page>/jsp/error.jsf</form-error-page>
+	 </form-login-config>
+	</login-config>
+	<security-role>
+	 <description>website</description>
+	 <role-name>website</role-name>
+	</security-role>	
+
+</web-app>
+

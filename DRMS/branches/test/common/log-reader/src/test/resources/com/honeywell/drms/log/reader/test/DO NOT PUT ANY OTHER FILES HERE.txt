@@ -1,0 +1,1 @@
+This is folder for log testing, don't put any other log files here which will cause unit test failure 

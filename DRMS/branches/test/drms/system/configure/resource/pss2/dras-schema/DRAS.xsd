@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio 1.0.8.0 (http://www.liquid-technologies.com) -->
+<xs:schema xmlns:ns0="http://www.openadr.org/DRAS/Bid"
+           xmlns:ns1="http://www.openadr.org/DRAS/DRASClient"
+           xmlns:ns9="http://www.openadr.org/DRAS/UtilityDREvent" 
+           xmlns:ns8="http://www.openadr.org/DRAS/ResponseSchedule"
+           xmlns:ns10="http://www.openadr.org/DRAS/UtilityProgram"
+           xmlns:ns7="http://www.openadr.org/DRAS/ProgramConstraint"
+           xmlns:ns2="http://www.openadr.org/DRAS/EventInfo"
+           xmlns:ns5="http://www.openadr.org/DRAS/OptOutState"
+           xmlns:ns4="http://www.openadr.org/DRAS/Logs"
+           xmlns:ns3="http://www.openadr.org/DRAS/Feedback"
+           xmlns:ns6="http://www.openadr.org/DRAS/ParticipantAccount" elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/DRAS" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="Bid.xsd" namespace="http://www.openadr.org/DRAS/Bid" />
+  <xs:import schemaLocation="DRASClient.xsd" namespace="http://www.openadr.org/DRAS/DRASClient" />
+  <xs:import schemaLocation="EventInfo.xsd" namespace="http://www.openadr.org/DRAS/EventInfo" />
+  <xs:import schemaLocation="FeedBack.xsd" namespace="http://www.openadr.org/DRAS/Feedback" />
+  <xs:import schemaLocation="Logs.xsd" namespace="http://www.openadr.org/DRAS/Logs" />
+  <xs:import schemaLocation="OptOutState.xsd" namespace="http://www.openadr.org/DRAS/OptOutState" />
+  <xs:import schemaLocation="ParticipantAccount.xsd" namespace="http://www.openadr.org/DRAS/ParticipantAccount" />
+  <xs:import schemaLocation="ProgramConstraint.xsd" namespace="http://www.openadr.org/DRAS/ProgramConstraint" />
+  <xs:import schemaLocation="ResponseSchedule.xsd" namespace="http://www.openadr.org/DRAS/ResponseSchedule" />
+  <xs:import schemaLocation="UtilityDREvent.xsd" namespace="http://www.openadr.org/DRAS/UtilityDREvent" />
+  <xs:import schemaLocation="UtilityProgram.xsd" namespace="http://www.openadr.org/DRAS/UtilityProgram">
+    <xs:annotation>
+      <xs:documentation>This is the data entity that defines a DR program.</xs:documentation>
+    </xs:annotation>
+  </xs:import>
+  
+</xs:schema>

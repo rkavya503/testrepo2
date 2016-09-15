@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<artifactId>ws-client-parent</artifactId>
+		<groupId>com.akuacom.drms.ws-client</groupId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.akuacom.drms.ws-client</groupId>
+	<artifactId>ieso-client</artifactId>
+	<version>7.26-SNAPSHOT</version>
+	<name>ieso-client</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.akuacom.drms.lib</groupId>
+			<artifactId>drms-util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.core</groupId>
+			<artifactId>drms-core</artifactId>
+		</dependency>  		
+		<dependency>
+			<groupId>com.akuacom.drms.core</groupId>
+			<artifactId>drms-core-ejb</artifactId>
+		</dependency>  		
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<extension>true</extension>
+					<schemaExcludes>
+						<schemaExclude>Document_r1.xsd</schemaExclude>
+					</schemaExcludes>
+					<strict>false</strict>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

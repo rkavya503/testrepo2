@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <property name="program_demand_limiting" value="Demand Limiting Program" />
+    <property name="signal_mode" value="mode" />    
+    <include file="db/changelogs/fixtures/signal_def/signal_def-warning.xml" />
+    <include file="db/changelogs/fixtures/signal_def/signal_def-threshold_percentage.xml" />
+    <include file="db/changelogs/fixtures/signal_def/signal_def-threshold.xml" />
+    <include file="db/changelogs/fixtures/signal_def/signal_def-tariff_limit.xml" />
+    <include file="db/changelogs/fixtures/signal_def/signal_def-interval_load.xml" />
+    <include file="db/changelogs/fixtures/signal_def/signal_def-meter_interval.xml" />
+    <include file="db/changelogs/fixtures/signal_def/signal_def-rate_interval.xml" />
+    <include file="db/changelogs/fixtures/signal_def/signal_def-event_span.xml" />
+    <include file="db/changelogs/fixtures/signal_def/signal_def-meter_timestamp.xml" />
+
+
+
+    <changeSet id="1" author="veera">
+        <preConditions onFail="MARK_RAN">
+          	    
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from
+                    program;
+                </sqlCheck>
+            </not>
+        	
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+            </sqlCheck>
+        </preConditions>
+        <comment>Create Program ${program_demand_limiting} DRMS-5739</comment>
+        <!-- Brian is using the <sql> tag here instead of <insert> because he needs 
+            the variable set first. -->
+        <sql>
+            set @new_max_priority = IFNULL((select MAX(priority)+1 from
+            program),0);
+            insert into program set uuid=(select
+            REPLACE(uuid(), '-',
+            '')),
+            version=0,
+            name='${program_demand_limiting}',
+            utilityProgramName='${program_demand_limiting}',
+            priority=(select @new_max_priority),
+            className='com.akuacom.pss2.program.dl.DemandLimitingProgramEJB',
+            validatorClass='com.akuacom.pss2.program.dl.DemandLimitingValidator',
+            validatorConfigFile='',
+            uiScheduleEventString='',
+            minIssueToStartM=0,
+            maxIssueTimeH=23,
+            maxIssueTimeM=59,
+            minStartTimeH=0,
+            minStartTimeM=0,
+            maxStartTimeH=23,
+            maxStartTimeM=59,
+            minEndTimeH=0,
+            minEndTimeM=0,
+            maxEndTimeH=23,
+            maxEndTimeM=59,
+            minDurationM=1,
+            maxDurationM=1440,
+            pendingTimeDBEH=21,
+            pendingTimeDBEM=0,
+            mustIssueBDBE=false,
+            state=1,
+            creator='script',
+            creationTime=(SELECT NOW()),
+            manualCreatable=false,
+            programType='DemandLimitingProgram',
+			longProgramName='${program_demand_limiting}',
+			programClass='${program_demand_limiting}';
+        </sql>
+    </changeSet>
+
+    <!--program_signals -->
+
+    <changeSet id="2" author="veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_mode}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demand_limiting} and signal ${signal_mode}</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_mode}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="3" author="veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_warning}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demand_limiting} and signal ${signal_warning}</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_warning}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="4" author="veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_threshold_percentage}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demand_limiting} and signal ${signal_threshold_percentage}</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_threshold_percentage}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="5" author="veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_threshold}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demand_limiting} and signal ${signal_threshold}</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_threshold}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="6" author="veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_tariff_limit}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demand_limiting} and signal ${signal_tariff_limit}</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_tariff_limit}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="7" author="veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_interval_load}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demand_limiting} and signal ${signal_interval_load}</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_interval_load}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="8" author="veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_meter_interval}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demand_limiting} and signal ${signal_meter_interval}</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_meter_interval}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="9" author="veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_rate_interval}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demand_limiting} and signal ${signal_rate_interval}</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_rate_interval}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="10" author="veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_event_span}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demand_limiting} and signal ${signal_event_span}</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_event_span}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="11" author="veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_meter_timestamp}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_demand_limiting} and signal ${signal_meter_timestamp}</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_meter_timestamp}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+    
+    
+    <changeSet id="12" author="Veera">
+       <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_demand_limiting}';
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_rule where program_uuid=(select uuid from
+                program where name='${program_demand_limiting}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_rule for program ${program_demand_limiting}</comment>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="SPECIAL" />
+            <column name="variable" value="tariff_limit" />
+            <column name="operator" value="EQUAL" />
+            <column name="value" valueNumeric="0" />
+            <column name="source" value="Demand Limiting Participant" />
+            <column name="sortOrder" valueNumeric="0" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="NA" />
+            <column name="notifyAction" valueBoolean="false" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="SPECIAL" />
+            <column name="variable" value="rate_interval" />
+            <column name="operator" value="EQUAL" />
+            <column name="value" valueNumeric="15" />
+            <column name="source" value="Demand Limiting" />
+            <column name="sortOrder" valueNumeric="1" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="NA" />
+            <column name="notifyAction" valueBoolean="false" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="SPECIAL" />
+            <column name="variable" value="meter_interval" />
+            <column name="operator" value="EQUAL" />
+            <column name="value" valueNumeric="5" />
+            <column name="source" value="Demand Limiting" />
+            <column name="sortOrder" valueNumeric="2" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="NA" />
+            <column name="notifyAction" valueBoolean="false" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="SPECIAL" />
+            <column name="variable" value="event_span" />
+            <column name="operator" value="EQUAL" />
+            <column name="value" valueNumeric="10" />
+            <column name="source" value="Demand Limiting" />
+            <column name="sortOrder" valueNumeric="3" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="NA" />
+            <column name="notifyAction" valueBoolean="false" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="SPECIAL" />
+            <column name="variable" value="interval_load" />
+            <column name="operator" value="EQUAL" />
+            <column name="value" valueNumeric="0" />
+            <column name="source" value="Telemetry" />
+            <column name="sortOrder" valueNumeric="4" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="NA" />
+            <column name="notifyAction" valueBoolean="false" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="SPECIAL" />
+            <column name="variable" value="meter_timestamp" />
+            <column name="operator" value="EQUAL" />
+            <column name="value" valueNumeric="0" />
+            <column name="source" value="Telemetry" />
+            <column name="sortOrder" valueNumeric="5" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="NA" />
+            <column name="notifyAction" valueBoolean="false" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="SPECIAL" />
+            <column name="variable" value="threshold_percentage" />
+            <column name="operator" value="EQUAL" />
+            <column name="value" valueNumeric="0" />
+            <column name="source" value="Telemetry" />
+            <column name="sortOrder" valueNumeric="6" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="NA" />
+            <column name="notifyAction" valueBoolean="false" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="SPECIAL" />
+            <column name="variable" value="warning" />
+            <column name="operator" value="EQUAL" />
+            <column name="value" valueNumeric="0" />
+            <column name="source" value="Telemetry" />
+            <column name="sortOrder" valueNumeric="7" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="NA" />
+            <column name="notifyAction" valueBoolean="false" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="NORMAL" />
+            <column name="variable" value="threshold_percentage" />
+            <column name="operator" value="LESS_THAN" />
+            <column name="value" valueNumeric="75" />
+            <column name="source" value="Demand Limiting Percentage" />
+            <column name="sortOrder" valueNumeric="8" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="normal" />
+            <column name="notifyAction" valueBoolean="false" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+       <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="NORMAL" />
+            <column name="variable" value="threshold_percentage" />
+            <column name="operator" value="GREATER_THAN_OR_EQUAL" />
+            <column name="value" valueNumeric="75" />
+            <column name="source" value="Demand Limiting Percentage" />
+            <column name="sortOrder" valueNumeric="9" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="warning" />
+            <column name="notifyAction" valueBoolean="true" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+       <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="MODERATE" />
+            <column name="variable" value="threshold_percentage" />
+            <column name="operator" value="GREATER_THAN_OR_EQUAL" />
+            <column name="value" valueNumeric="80" />
+            <column name="source" value="Demand Limiting Percentage" />
+            <column name="sortOrder" valueNumeric="10" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="moderate" />
+            <column name="notifyAction" valueBoolean="true" />
+            <column name="signalAction" valueBoolean="true" />
+        </insert>
+       <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="HIGH" />
+            <column name="variable" value="threshold_percentage" />
+            <column name="operator" value="GREATER_THAN_OR_EQUAL" />
+            <column name="value" valueNumeric="95" />
+            <column name="source" value="Demand Limiting Percentage" />
+            <column name="sortOrder" valueNumeric="11" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="high" />
+            <column name="notifyAction" valueBoolean="true" />
+            <column name="signalAction" valueBoolean="true" />
+        </insert>
+       <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="HIGH" />
+            <column name="variable" value="threshold_percentage" />
+            <column name="operator" value="GREATER_THAN_OR_EQUAL" />
+            <column name="value" valueNumeric="100" />
+            <column name="source" value="Demand Limiting Percentage" />
+            <column name="sortOrder" valueNumeric="12" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="exceeded" />
+            <column name="notifyAction" valueBoolean="true" />
+            <column name="signalAction" valueBoolean="true" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="NORMAL" />
+            <column name="variable" value="interval_load" />
+            <column name="operator" value="LESS_THAN" />
+            <column name="value" valueNumeric="0" />
+            <column name="source" value="Demand Limiting Load" />
+            <column name="sortOrder" valueNumeric="13" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="normal" />
+            <column name="notifyAction" valueBoolean="false" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="NORMAL" />
+            <column name="variable" value="interval_load" />
+            <column name="operator" value="GREATER_THAN_OR_EQUAL" />
+            <column name="value" valueNumeric="0" />
+            <column name="source" value="Demand Limiting Load" />
+            <column name="sortOrder" valueNumeric="14" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="warning" />
+            <column name="notifyAction" valueBoolean="true" />
+            <column name="signalAction" valueBoolean="false" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="MODERATE" />
+            <column name="variable" value="interval_load" />
+            <column name="operator" value="GREATER_THAN_OR_EQUAL" />
+            <column name="value" valueNumeric="0" />
+            <column name="source" value="Demand Limiting Load" />
+            <column name="sortOrder" valueNumeric="15" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="moderate" />
+            <column name="notifyAction" valueBoolean="true" />
+            <column name="signalAction" valueBoolean="true" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="HIGH" />
+            <column name="variable" value="interval_load" />
+            <column name="operator" value="GREATER_THAN_OR_EQUAL" />
+            <column name="value" valueNumeric="0" />
+            <column name="source" value="Demand Limiting Load" />
+            <column name="sortOrder" valueNumeric="16" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="high" />
+            <column name="notifyAction" valueBoolean="true" />
+            <column name="signalAction" valueBoolean="true" />
+        </insert>
+        <insert tableName="program_rule">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="start" valueDate=" now() " />
+            <column name="mode" value="HIGH" />
+            <column name="variable" value="interval_load" />
+            <column name="operator" value="GREATER_THAN_OR_EQUAL" />
+            <column name="value" valueNumeric="0" />
+            <column name="source" value="Demand Limiting Load" />
+            <column name="sortOrder" valueNumeric="17" />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_demand_limiting}') " />
+            <column name="threshold" value="exceeded" />
+            <column name="notifyAction" valueBoolean="true" />
+            <column name="signalAction" valueBoolean="true" />
+        </insert>       
+	</changeSet>    
+    
+
+</databaseChangeLog>

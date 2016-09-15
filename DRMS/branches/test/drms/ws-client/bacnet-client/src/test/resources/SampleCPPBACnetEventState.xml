@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:DR-034A-17 Schema.xsd">
+    <DocumentProperties defaultXmlLang="en"/>
+    <!--
+        These are example instances the DRAS data structures definied in file DR-034E-??.xml
+
+        These are the XML that would be used as the actual contents of BACnet/WS messages,
+        today using setValue/getValue messages into a "String" node, and later
+        as the contents of the future setComplexValue/getComplexValue messages.
+    -->
+    <Sequence name="eventState" type="0-DRAS-EventState-2008-1">
+        <String name="programName" value="CPP"/>
+        <Unsigned name="eventModNumber" value="0"/>
+        <String name="eventIdentifier" value="35648"/>
+        <String name="drasClientID" value="DRC-245"/>
+        <Unsigned name="eventStateID" value="843451309"/>
+        <String name="schemaVersion" value="20080509"/>
+        <String name="drasName" value="Akuacom 4.3"/>
+        <Boolean name="schemaVersion" value="false"/>
+        <Boolean name="schemaVersion" value="false"/>        
+        <Sequence name="simpleDRModeData">
+            <Enumerated name="EventStatus" value="ACTIVE"/>
+            <Enumerated name="OperationModeValue" value="MODERATE"/>
+            <Real name="currentTime" value="30.5"/>
+            <Array name="operationModeSchedule">
+                <Sequence>
+                    <Enumerated name="OperationModeValue" value="MODERATE"/>
+                    <Unsigned name="modeTimeSlot" value="0"/>
+                </Sequence>
+                <Sequence>
+                    <Enumerated name="OperationModeValue" value="HIGH"/>
+                    <Unsigned name="modeTimeSlot" value="60"/>
+                </Sequence>
+            </Array>
+        </Sequence>
+        <Sequence name="drEventData">
+            <DateTime name="notificationTime" value="2008-03-06T11:59:00.00"/>
+            <DateTime name="startTime" value="2008-03-06T12:00:00.00"/>
+            <DateTime name="endTime" value="2008-03-06T12:02:00.00"/>
+            <Array name="eventInfoInstances">
+                <Sequence>
+                    <Enumerated name="eventInfoID" value="PRICE_MULTIPLE"/>
+                    <String name="eventInfoName" value="price multiplier"/>
+                    <Array name="eventInfoValues">
+                        <Sequence>
+                            <Real name="value" value="3.0"/>
+                            <Unsigned name="timeOffset" value="0"/>
+                        </Sequence>
+                        <Sequence>
+                            <Real name="value" value="5.0"/>
+                            <Unsigned name="timeOffset" value="60"/>
+                        </Sequence>
+                    </Array>
+                </Sequence>
+                <Sequence>
+                    <Enumerated name="eventInfoID" value="PRICE_MULTIPLE"/>
+                    <String name="eventInfoName" value="current price multiplier"/>
+                    <Array name="eventInfoValues">
+                        <Sequence>
+                            <Real name="value" value="3.0"/>
+                            <Unsigned name="timeOffset" value="30"/>
+                        </Sequence>
+                     </Array>
+                </Sequence>
+            </Array>
+        </Sequence>
+    </Sequence>
+</CSML>

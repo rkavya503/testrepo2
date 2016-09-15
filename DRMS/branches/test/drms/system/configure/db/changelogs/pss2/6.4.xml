@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <changeSet id="1" author="brian">
+        <comment>DRMS-3127 Add "push" flag and IP address to facdash
+            client
+            config screen for ICCP project</comment>
+        <addColumn tableName="participant">
+            <column name="push" type="int" defaultValueNumeric="0">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="2" author="brian">
+        <comment>DRMS-3127 Add "push" flag and IP address to facdash
+            client
+            config screen for ICCP project</comment>
+        <addColumn tableName="participant">
+            <column name="ip" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="3" author="brian">
+        <comment>DRMS-3127 Add "push" flag and IP address to facdash
+            client
+            config screen for ICCP project</comment>
+        <addColumn tableName="program_participant">
+            <column name="optStatus" type="INT"
+                defaultValueNumeric="0">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="4" author="brian">
+        <comment>
+            DRMS-2407 set version to empty string, default comes
+            from
+            build.
+			</comment>
+        <update tableName="core_property">
+            <column name="stringValue" value="" />
+            <where>propertyName='version'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="5" author="brian">
+        <comment>
+            DRMS-2406 The usagedataWS.contextRoot is now auto
+            generated.
+            </comment>
+        <delete tableName="core_property">
+            <where>propertyName='usagedataWS.contextRoot'</where>
+        </delete>
+    </changeSet>
+
+    <changeSet id="6" author="brian">
+        <comment>DRMS-2980 Add participant opt-out flag</comment>
+        <addColumn tableName="participant">
+            <column name="optOut" type="tinyint(1)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="7" author="brian">
+        <comment>DRMS-2979 Develop UI</comment>
+        <insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="simple.dashboard.pending.message" />
+            <column name="stringValue"
+                value="Event starts in {0} hour(s), {1} min(s)" />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="8" author="brian">
+        <comment>DRMS-2979 Develop UI</comment>
+        <insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="simple.dashboard.noevent.message" />
+            <column name="stringValue" value="No active or pending events" />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="9" author="brian">
+        <comment>DRMS-2979 Develop UI</comment>
+        <insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="simple.dashboard.active.message" />
+            <column name="stringValue"
+                value="Active Event. Time remaining {0} hour(s), {1} min(s)" />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="10" author="brian">
+        <comment>DRMS-2979 Develop UI</comment>
+        <insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="simple.dashboard.link2" />
+            <column name="stringValue" value="test" />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="11" author="brian">
+        <comment>DRMS-2979 Develop UI</comment>
+        <insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="simple.dashboard.link1" />
+            <column name="stringValue" value="test" />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="12" author="brian">
+        <comment>DRMS-2979 Develop UI</comment>
+        <insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="simple.dashboard.usage" />
+            <column name="stringValue" value="YY" />
+            <column name="type" value="String" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="13" author="brian">
+        <comment>DRMS-2979 Develop UI</comment>
+        <insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="simple.dashboard.akualogo" />
+            <column name="booleanValue" valueBoolean="false" />
+            <column name="type" value="Boolean" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="14" author="brian">
+        <comment>DRMS-2979 Develop UI</comment>
+        <insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="simple.dashboard.rssfeed" />
+            <column name="booleanValue" valueBoolean="false" />
+            <column name="type" value="Boolean" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="15" author="brian">
+        <comment>DRMS-2979 Develop UI</comment>
+        <insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="simple.dashboard.optout" />
+            <column name="booleanValue" valueBoolean="false" />
+            <column name="type" value="Boolean" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="16" author="brian">
+        <comment>DRMS-2979 Develop UI</comment>
+        <insert tableName="core_property">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="version" valueNumeric="0" />
+            <column name="propertyName" value="simple.dashboard.refreshinterval" />
+            <column name="doubleValue" valueNumeric="10000" />
+            <column name="type" value="Number" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric="now() " />
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

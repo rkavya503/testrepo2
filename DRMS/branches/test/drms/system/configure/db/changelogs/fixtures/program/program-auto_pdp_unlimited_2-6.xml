@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <property name="program_test_program" value="Test Program" />
+
+    <!-- include signals first -->
+    <include
+        file="db/changelogs/fixtures/signal_def/signal_def-cpp_price.xml" />
+    <include
+        file="db/changelogs/fixtures/signal_def/signal_def-mode.xml" />
+    <include
+        file="db/changelogs/fixtures/signal_def/signal_def-pending.xml" />
+        
+    <changeSet id="1" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program where name='${program_test_program}';
+            </sqlCheck>
+        </preConditions>
+        <comment>Create Program ${program_test_program} DRMS-5358</comment>
+        <!-- using the <sql> tag here instead of <insert> because I need the variable set first. -->
+        <sql>
+             set @new_max_priority = IFNULL((select MAX(priority)+1 from program),0);
+             insert into program set uuid=(select REPLACE(uuid(), '-', '')),
+                                     version=0,
+                                     name='${program_test_program}',
+                                     utilityProgramName='Test Program',
+                                     priority=(select @new_max_priority),
+                                     className='com.akuacom.pss2.program.testProgram.TestProgramEJB',
+                                     validatorClass='com.akuacom.pss2.program.testProgram.TestValidator',
+                                     validatorConfigFile='cpp.validator.config',
+                                     uiScheduleEventString='DemoSchedulePage',
+                                     minIssueToStartM=0,
+                                     maxIssueTimeH=23,
+                                     maxIssueTimeM=59,
+                                     minStartTimeH=0,
+                                     minStartTimeM=0,
+                                     maxStartTimeH=23,
+                                     maxStartTimeM=59,
+                                     minEndTimeH=0,
+                                     minEndTimeM=0,
+                                     maxEndTimeH=23,
+                                     maxEndTimeM=59,
+                                     minDurationM=1,
+                                     maxDurationM=1440,
+                                     pendingTimeDBEH=21,
+                                     pendingTimeDBEM=0,
+                                     mustIssueBDBE=false,
+                                     programType='TestProgram',
+                                     state=1,
+                                     creator='script',
+                                     creationTime=(SELECT NOW()),
+                                     manualCreatable=true ;
+        </sql>
+    </changeSet>
+
+    <!--program_signals -->
+    <changeSet id="2" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_test_program}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_pending}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_test_program} and signal ${signal_pending} DRMS-5358</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_test_program}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_pending}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="3" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_test_program}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_mode}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_test_program} and signal ${signal_mode} DRMS-5358</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_test_program}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_mode}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="6" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                program_signal where program_uuid=(select uuid from
+                program where name='${program_test_program}') and
+                signal_def_uuid=(select uuid from signal_def where
+                signalName='${signal_cpp_price}');
+            </sqlCheck>
+        </preConditions>
+        <comment>Create program_signal for program ${program_test_program} and signal ${signal_cpp_price} DRMS-5358</comment>
+        <insert tableName="program_signal">
+            <column name="uuid" valueNumeric="REPLACE(uuid(), '-', '') " />
+            <column name="program_uuid"
+                valueNumeric=" (select uuid from program where name='${program_test_program}') " />
+            <column name="signal_def_uuid"
+                valueNumeric=" (select uuid from signal_def where signalname='${signal_cpp_price}') " />
+            <column name="version" valueNumeric="0" />
+            <column name="creator" value="script" />
+            <column name="creationTime" valueNumeric=" now() " />
+        </insert>
+    </changeSet>
+
+    <changeSet id="7" author="brian">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+            select COUNT(*) from program_participant where program_uuid = (select uuid from program where name="${program_test_program}");
+            </sqlCheck>
+        </preConditions>
+        <comment>Add program to all participants. DRMS-5358</comment>
+        <sql>
+        insert into program_participant (uuid,participant_uuid,program_uuid,programName,version,creator,creationTime,state,value,name) 
+        (select REPLACE(uuid(), '-', '') as uuid, par.uuid as participant_uuid, p.uuid as program_uuid, p.name as programName, 0 as version,
+                "script" as creator,NOW() as creationTime, 1 as state, "" as value, "" as name
+                from participant as par, program as p where p.name="${program_test_program}");
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,672 @@
+<project name="server"
+         default="verify.env"
+         basedir="."
+         xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+    <!-- *********************************
+         Includes 
+         ********************************* -->
+    <!-- normally would use configureDir as defined in project, but
+         maven doesn't play well :( -->
+    <property name="configureDir" value="${basedir}/.." />
+    <import file="${configureDir}/common.xml" />
+    <import file="${configureDir}/db/build.xml" />
+    <import file="${configureDir}/server/properties.xml" />
+
+    <!-- *********************************
+         Properties
+         ********************************* -->
+
+    <property name="drmsVersion" value="${pom.version}" />
+
+    <property name="jboss.default.dir" value="${jbossHome}/server/default" />
+    <property name="jboss.all.dir" value="${jbossHome}/server/all" />
+    <property name="jboss.config.dir" value="${jbossHome}/server/${drmsEnv}" />
+
+    <property name="installRemoteEar" value="false" />
+	<property name="installItronEar" value="false" />
+	<property name="installDrwebsiteEar" value="false" />
+	<property name="installDrwebsiteEarFromNexus" value="false" />
+
+    <!-- *********************************
+         Macro Definitions 
+         ********************************* -->
+    <macrodef name="deployFromNexus">
+        <attribute name="groupId" />
+        <attribute name="artifactId" />
+        <attribute name="version" />
+        <attribute name="type" />
+        <attribute name="artifactPath" />
+        <attribute name="destPath" />
+        <attribute name="artifactName" />
+        <sequential>
+            <artifact:dependencies pathId="@{groupId}-@{artifactId}-artifact">
+                <dependency groupId="@{groupId}"
+                            artifactId="@{artifactId}"
+                            version="@{version}"
+                            type="@{type}" />
+                <remoteRepository refid="akuacom.nexus" />
+            </artifact:dependencies>
+            <copy file="@{artifactPath}"
+                  tofile="@{destPath}/@{artifactName}.@{type}" />
+        </sequential>
+    </macrodef>
+
+    <macrodef name="copyDataSource">
+        <attribute name="db" />
+        <attribute name="sourceFile" />
+        <sequential>
+            <replace file="@{sourceFile}">
+                <replacefilter token="@HOST@" value="${db.@{db}.host}" />
+                <replacefilter token="@PORT@" value="${db.@{db}.port}" />
+                <replacefilter token="@NAME@" value="${db.@{db}.name}" />
+                <replacefilter token="@USERNAME@" value="${db.@{db}.dbuser}" />
+                <replacefilter token="@PASSWORD@" value="${db.@{db}.dbpass}" />
+            </replace>
+        </sequential>
+    </macrodef>
+
+    <!-- *********************************
+         Targets 
+         ********************************* -->
+    <!-- backup.files -->
+    <target name="server:backup"
+            description="backup existing jboss configuration">
+        <echo>${ant.project.name}: backup.files</echo>
+        <delete dir="${jboss.config.dir}.bak" />
+        <copy todir="${jboss.config.dir}.bak" failonerror="false">
+            <fileset dir="${jboss.config.dir}" />
+        </copy>
+    </target>
+
+    <target name="server:install:cloudCluster"
+            description="create jboss configuration based on ALL config with cloud cluster specific config">
+
+        <!-- apply base config value ALL to get ALL server instance -->
+        <property name="baseConfig" value="all" />
+
+        <!-- overlay Akucom specific cache config -->
+        <antcall target="server:install:cache" />
+
+        <!-- Overlay Cloud specific cluster config to use TCP -->
+        <!-- This isn't done the standard way due to the fact that we install the server
+             as cache installationType first. There is no way to install two installationTypes (currently -->
+        <copy tofile="${jboss.config.dir}/deploy/cluster/jgroups-channelfactory.sar/META-INF/jgroups-channelfactory-stacks.xml"
+              overwrite="true"
+              file="${jbossBaseInstallationsDir}/cloudCluster/deploy/cluster/jgroups-channelfactory.sar/META-INF/jgroups-channelfactory-stacks.xml" />
+    </target>
+
+    <target name="server:install:all"
+            description="Create JBoss server based on JBoss ALL config">
+        <property name="baseConfig" value="all" />
+        <echo>${ant.project.name}: Cache libraries provided, but not enabling query or entity caching, enable it yourself if you wish in jpa-deployers-jboss-beans.xml!</echo>
+
+        <antcall target="server:install">
+            <param name="installationType" value="all" />
+        </antcall>
+
+        <!-- remove default hypersonic database configuration for jms -->
+        <delete file="${jboss.config.dir}/deploy/messaging/hsqldb-persistence-service.xml" />
+        <!-- remove default hdscanning DRMS-5119 -->
+        <delete file="${jboss.config.dir}/deploy/hdscanner-jboss-beans.xml" />
+    </target>
+
+    <target name="server:install:cache"
+            description="create jboss configuration with cache enabled">
+        <property name="baseConfig" value="all" />
+        <antcall target="server:install">
+            <param name="installationType" value="cache" />
+        </antcall>
+
+        <!-- In case these files exist clean them, but don't fail -->
+<!--
+        <delete file="${jboss.config.dir}/lib/hibernate-jbosscache2.jar" />
+        <delete file="${jboss.config.dir}/lib/jbosscache-core.jar" />
+        <delete file="${jboss.config.dir}/lib/jbosscache-pojo.jar" />
+        <delete file="${jboss.config.dir}/lib/jgroups.jar" />
+-->
+        <!--Get Versioned artifacts to be more explicit -->
+<!--        <artifact:dependencies pathId="artifacts">
+            <dependency groupId="org.hibernate"
+                        artifactId="hibernate-jbosscache2"
+                        version="3.3.2.GA"
+                        type="jar" />
+            <dependency groupId="org.jboss.cache"
+                        artifactId="jbosscache-core"
+                        version="3.1.0.GA"
+                        type="jar" />
+            <dependency groupId="org.jboss.cache"
+                        artifactId="jbosscache-pojo"
+                        version="3.0.0.GA"
+                        type="jar" />
+            <dependency groupId="jgroups"
+                        artifactId="jgroups"
+                        version="2.6.10.GA"
+                        type="jar" />
+            <remoteRepository refid="akuacom.nexus" />
+        </artifact:dependencies>
+        <copy todir="${jboss.config.dir}/lib"
+              file="${org.hibernate:hibernate-jbosscache2:jar}"
+              overwrite="true" />
+
+        <copy todir="${jboss.config.dir}/lib"
+              file="${org.jboss.cache:jbosscache-core:jar}"
+              overwrite="true" />
+
+        <copy todir="${jboss.config.dir}/lib"
+              file="${org.jboss.cache:jbosscache-pojo:jar}"
+              overwrite="true" />
+
+        <copy todir="${jboss.config.dir}/lib"
+              file="${jgroups:jgroups:jar}"
+              overwrite="true" />
+-->
+    </target>
+
+    <!-- Creates files for Jboss web native -->
+    <target name="server:install:native"
+            description="adds jboss native libraries for linux, mac, windows to Jboss Home/bin. Does not setup jboss server. Please do that first.">
+
+        <deployFromNexus groupid="org.jboss"
+                         artifactId="jbossnative"
+                         version="2.0.9-AXNOSSL"
+                         type="zip"
+                         artifactPath="${org.jboss:jbossnative:zip}"
+                         destPath="./target"
+                         artifactName="jbossnative-2.0.9-AXNOSSL" />
+
+        <unzip src="./target/jbossnative-2.0.9-AXNOSSL.zip"
+               dest="${jbossHome}/bin" />
+    </target>
+
+    <target name="server:install:autoGen"
+            description="Create JBoss server with hibernate schema generation enabled (no cache)">
+
+        <antcall target="server:install">
+            <param name="installationType" value="auto_gen" />
+        </antcall>
+    </target>
+
+    <target name="server:install:min"
+            description="create jboss configuration with minimum services">
+
+        <antcall target="server:install">
+            <param name="installationType" value="min" />
+        </antcall>
+
+        <!-- In case these files exist clean them, but don't fail -->
+        <delete includeEmptyDirs="true">
+            <fileset file="${jboss.config.dir}/deploy/ejb2-container-jboss-beans.xml" />
+            <fileset dir="${jboss.config.dir}/deploy/uuid-key-generator.sar" />
+            <fileset file="${jboss.config.dir}/deploy/schedule-manager-service.xml" />
+            <fileset file="${jboss.config.dir}/deploy/scheduler-service.xml" />
+            <fileset dir="${jboss.config.dir}/deployers/bsh.deployer" />
+            <fileset file="${jboss.config.dir}/deploy/hdscanner-jboss-beans.xml" />
+            <fileset dir="${jboss.config.dir}/deploy/xnio-provider.jar" />
+            <fileset file="${jboss.config.dir}/deploy/jmx-invoker-service.xml" />
+            <fileset dir="${jboss.config.dir}/deploy/jmx-remoting.sar" />
+            <fileset file="${jboss.config.dir}/deployers/hibernate-deployer-jboss-beans.xml" />
+            <fileset dir="${jboss.config.dir}/deploy/profileservice-secured.jar" />
+            <fileset file="${jboss.config.dir}/deploy/profileservice-jboss-beans.xml" />
+            <fileset file="${jboss.config.dir}/deploy/sqlexception-service.xml" />
+            <fileset dir="${jboss.config.dir}/deploy/jmx-console.war" />
+            <fileset dir="${jboss.config.dir}/deploy/http-invoker.sar" />
+            <fileset dir="${jboss.config.dir}/deploy/management" />
+            <fileset dir="${jboss.config.dir}/deploy/admin-console.war" />
+            <fileset file="${jboss.config.dir}/deploy/cache-invalidation-service.xml" />
+            <fileset file="${jboss.config.dir}/deploy/monitoring-service.xml" />
+            <fileset file="${jboss.config.dir}/deploy/properties-service.xml" />
+            <fileset file="${jboss.config.dir}/deploy/legacy-invokers-service.xml" />
+        </delete>
+    </target>
+
+    <target name="server:install:base" depends="verify.env,verify.files">
+        <echo>${ant.project.name}: create.files with base config: ${baseConfig} and jboss server ${jboss.config.dir}</echo>
+
+        <if>
+            <equals arg1="${baseConfig}" arg2="all" />
+            <then>
+				 <echo>${ant.project.name}: copying files from ${jboss.all.dir} to  ${jboss.config.dir}</echo>
+                <copy todir="${jboss.config.dir}" overwrite="true">
+                    <fileset dir="${jboss.all.dir}" />
+                </copy>
+            </then>
+            <else>
+				<echo>${ant.project.name}: copying files from ${jboss.default.dir} to  ${jboss.config.dir}</echo>
+                <copy todir="${jboss.config.dir}" overwrite="true">
+                    <fileset dir="${jboss.default.dir}" />
+                </copy>
+            </else>
+        </if>
+    </target>
+
+    <target name="server:install"
+            description="create jboss configuration"
+            depends="server:backup,system:hostname,server:remove,server:install:base">
+
+        <!-- Copy static files -->
+        <antcall target="static:deploy:local" />
+
+        <!-- Copy server-wide libaries -->
+        <copy todir="${jboss.config.dir}/lib"
+              file="${lib.dir}/mysql-connector-java-5.1.7-bin.jar"
+              overwrite="true" />
+
+        <!-- cannot upgrade mysql-connector-java at this time
+     accmgr doesn't work with a new version of the lib
+-->
+        <!--        <deployFromNexus groupid="mysql"
+                                 artifactId="mysql-connector-java"
+                                 version="${mysqlConnectorVersion}"
+                                 type="jar"
+                                 artifactPath="${mysql:mysql-connector-java:jar}"
+                                 destPath="${jboss.config.dir}/lib"
+                                 artifactName="mysql-connector-java-${mysqlConnectorVersion}" />
+-->
+
+        <!-- Copy Base Installation Configuration Files -->
+		 <if>
+            <equals arg1="${installDrwebsiteEar}" arg2="true" />
+			<then>
+				 <copy todir="${jboss.config.dir}" overwrite="true">
+					<fileset dir="${jbossBaseInstallationsDir}/base"/>
+				</copy>
+				<copyDataSource db="drwebsite" sourceFile="${drwebsiteDsFile}" />
+				<copyDataSource db="mobimsg" sourceFile="${mobimsgDsFile}" />
+			</then>
+			<else>
+				<copy todir="${jboss.config.dir}" overwrite="true">
+					<fileset dir="${jbossBaseInstallationsDir}/base">	
+						<exclude name="**/mysql-drwebsite-ds.xml"/>
+						<exclude name="**/mysql-mobimsg-ds.xml"/>
+					</fileset>
+				</copy>
+			</else>
+		</if>
+        <!-- Copy Base Installation Configuration Files for ${installationType} -->
+        <if>
+            <isset property="installationType" />
+            <then>
+                <copy todir="${jboss.config.dir}" overwrite="true">
+                    <fileset dir="${jbossBaseInstallationsDir}/${installationType}" />
+                </copy>
+            </then>
+        </if>
+
+        <!-- Copy Base Current Environement's Configuration Files -->
+        <!-- failOnError=false because this directory isn't required to exist -->
+        <copy todir="${jboss.config.dir}" overwrite="true" failonerror="false">
+            <fileset dir="${jbossBaseEnvironmentsDir}/${drmsEnv}" />
+        </copy>
+
+        <!-- Copy Local Configuration Files -->
+        <!-- failOnError=false because this directory isn't required to exist -->
+        <copy todir="${jboss.config.dir}" overwrite="true" failonerror="false">
+            <fileset dir="${jbossConfDir}" />
+        </copy>
+
+	<echo>replacing port  ${jbossHttpPort} </echo>
+        <replace file="${jboss.config.dir}/deploy/jbossweb.sar/server.xml">
+            <replacefilter token="@jboss.http.port@" value="${jbossHttpPort}" />
+            <replacefilter token="@jboss.https.port@"
+                           value="${jbossHttpsPort}" />
+            <replacefilter token="@worker.name@" value="${systemHostname}" />
+        </replace>
+
+        <!-- Apply filter to data source files (already copied) -->
+        <copyDataSource db="accounts" sourceFile="${accmgrDsFile}" />
+        <copyDataSource db="pss2" sourceFile="${pss2DsFile}" />
+        <copyDataSource db="jms" sourceFile="${jmsDsFile}" />
+        <copyDataSource db="firelog" sourceFile="${firelogDsFile}" />
+		
+		
+		<!-- Set up cacerts -->
+		<copy tofile="${jboss.config.dir}/conf/cacerts.jks"
+              file="${cacerts}"
+              overwrite="true"
+              failonerror="false" />
+			  
+		<copy tofile="${jboss.config.dir}/deploy/properties-service.xml"
+              file="${propertiesService}"
+              overwrite="true"
+              failonerror="false" />
+
+        <!-- Setup Utility (base) -->
+        <copy tofile="${jboss.config.dir}/conf/pss2.programs.conf"
+              file="${pss2BaseProgramConfigFile}"
+              overwrite="true"
+              failonerror="false">
+            <filterchain>
+                <replacetokens>
+                    <token key="OP_EMAILS" value="${pss2OpEmails}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+        <copy tofile="${jboss.config.dir}/conf/pss2.signals.conf"
+              file="${pss2BaseSignalsConfigFile}"
+              overwrite="true"
+              failonerror="false" />
+
+        <!-- Setup Utility (user config) -->
+        <copy tofile="${jboss.config.dir}/conf/pss2.programs.conf"
+              file="${pss2ProgramConfigFile}"
+              overwrite="true"
+              failonerror="false">
+            <filterchain>
+                <replacetokens>
+                    <token key="OP_EMAILS" value="${pss2OpEmails}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+        <copy tofile="${jboss.config.dir}/conf/pss2.signals.conf"
+              file="${pss2SignalsConfigFile}"
+              overwrite="true"
+              failonerror="false" />
+
+        <copy tofile="${jboss.config.dir}/conf/varolii.conf"
+              file="${drmsUtilConfig}/varolii.conf"
+              overwrite="true"
+              failonerror="false" />
+
+        <!-- configure mail -->
+        <antcall target="deploy:mailConf" />
+
+        <!-- Deploy app -->
+        <antcall target="deploy:accmgr" />
+        <antcall target="deploy:pss2" />
+		<antcall target="deploy:pss2-destinations"/>
+        <antcall target="deploy:firelogger" />
+        <antcall target="deploy:operator-report" />
+        <antcall target="deploy:health" />
+		<antcall target="deploy:itron" />
+		<antcall target="deploy:drwebsite" />
+		<antcall target="deploy:operator-report" />
+
+    </target>
+
+    <!-- server:remove -->
+    <target name="server:remove"
+            description="delete an existing jboss server configuration">
+        <delete dir="${jboss.config.dir}" />
+        <!-- delete native dir if exists -->
+        <delete dir="${jbossHome}/bin/META-INF" />
+    </target>
+
+    <!-- deploy:mailConf -->
+    <target name="deploy:mailConf">
+        <copy tofile="${jboss.config.dir}/conf/mail.properties"
+              file="${pss2MailPropertiesFile}"
+              overwrite="true"
+              failonerror="true">
+            <filterchain>
+                <replacetokens>
+                    <token key="mail.smtp.username"
+                           value="${mailSmtpUsername}" />
+                    <token key="mail.smtp.password"
+                           value="${mailSmtpPassword}" />
+                    <token key="mail.smtp.host" value="${mailSmtpHost}" />
+                    <token key="mail.smtp.auth" value="${mailSmtpAuth}" />
+                    <token key="mail.imap.username"
+                           value="${mailImapUsername}" />
+                    <token key="mail.imap.password"
+                           value="${mailImapPassword}" />
+                    <token key="mail.imap.host" value="${mailImapHost}" />
+                    <token key="mail.imap.auth" value="${mailImapAuth}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+    </target>
+
+
+    <target name="deploy:accmgr">
+        <!-- Copy configuration files -->
+        <copy todir="${jboss.config.dir}/conf"
+              file="${resourceDir}/accmgr/ACCMGRClient.conf"
+              overwrite="true">
+            <filterchain>
+                <replacetokens>
+                    <token key="jboss.http.port" value="${jboss.http.port}" />
+                </replacetokens>
+            </filterchain>
+        </copy>
+
+        <copy todir="${jboss.config.dir}/conf"
+              file="${resourceDir}/accmgr/roles.properties"
+              overwrite="true" />
+        <copy todir="${jboss.config.dir}/conf"
+              file="${resourceDir}/accmgr/users.properties"
+              overwrite="true" />
+
+        <!-- Accmgr is needed for login services -->
+        <deployFromNexus groupid="com.akuacom"
+                         artifactId="accmgr"
+                         version="${accmgrVersion}"
+                         type="ear"
+                         artifactPath="${com.akuacom:accmgr:ear}"
+                         destPath="${jboss.config.dir}/deploy"
+                         artifactName="accmgr-${accmgrVersion}" />
+    </target>
+
+    <target name="deploy:pss2">
+        <echo>drmsEnv: ${drmsEnv}</echo>
+        <if>
+            <equals arg1="${installRemoteEar}" arg2="true" />
+            <then>
+                <echo>Install from remote nexus!</echo>
+                <deployFromNexus groupid="com.akuacom.drms.ear"
+                                 artifactId="drms-ear"
+                                 version="${drmsVersion}"
+                                 type="ear"
+                                 artifactPath="${com.akuacom.drms.ear:drms-ear:ear}"
+                                 destPath="${jboss.config.dir}/deploy"
+                                 artifactName="pss2" />
+            </then>
+            <else>
+                <echo>Install from remote nexus ignored!</echo>
+            </else>
+        </if>
+    </target>
+	
+	 <target name="deploy:pss2-destinations">
+        <echo>drmsEnv: ${drmsEnv}</echo>
+        <if>
+            <equals arg1="${installRemoteEar}" arg2="true" />
+            <then>
+                <echo>Install from remote nexus!</echo>
+                <deployFromNexus groupid="com.akuacom.drms.ear"
+                                 artifactId="pss2-destinations-service"
+                                 version="${drmsVersion}"
+                                 type="sar"
+                                 artifactPath="${com.akuacom.drms.ear:pss2-destinations-service:sar}"
+                                 destPath="${jboss.config.dir}/deploy"
+                                 artifactName="pss2-destinations-service-${drmsVersion}" />
+            </then>
+            <else>
+                <echo>Install from remote nexus ignored!</echo>
+            </else>
+        </if>
+    </target>
+	
+    <target name="deploy:operator-report">
+        <echo>drmsEnv: ${drmsEnv}</echo>
+       <!-- <if>
+            <equals arg1="${installRemoteEar}" arg2="true" />
+            <then>
+                <echo>Install from remote nexus!</echo>
+                <deployFromNexus groupid="com.akuacom.drms.ear"
+                                 artifactId="operator-report"
+                                 version="${drmsVersion}"
+                                 type="ear"
+                                 artifactPath="${com.akuacom.drms.ear:operator-report:ear}"
+                                 destPath="${jboss.config.dir}/deploy"
+                                 artifactName="operator-report-${drmsVersion}" />
+            </then>
+            <else>
+                <echo>Install from remote nexus ignored!</echo>
+            </else>
+        </if> -->
+    </target>
+
+	<!-- replaced firelogger with flat file logger - drms-logger -->
+    <target name="deploy:firelogger">
+        <echo>drmsEnv: ${drmsEnv}</echo>
+            <echo>Install from remote nexus!</echo>
+			<!-- copy firlog-util.jar ${jboss.config.dir}/lib -->
+			<deployFromNexus groupid="com.kanaeki.firelog.lib"
+                             artifactId="firelog-util"
+                             version="${firelogVersion}"
+                             type="jar"
+                             artifactPath="${com.kanaeki.firelog.lib:firelog-util:jar}"
+                             destPath="${jboss.config.dir}/lib"
+                             artifactName="firelog-util-${firelogVersion}"/>
+			<!-- copy drms-logger.jar to ${jbossHome}/common/lib -->
+            <deployFromNexus groupid="com.akuacom.common"
+                             artifactId="drms-logger"
+                             version="${drmsVersion}"
+                             type="jar"
+                             artifactPath="${com.akuacom.common:drms-logger:jar}"
+                             destPath="${jboss.config.dir}/lib"
+                             artifactName="drms-logger-${drmsVersion}" />
+    </target>
+
+    <target name="deploy:health">
+        <echo>drmsEnv: ${drmsEnv}</echo>
+        <deployFromNexus groupid="com.akuacom"
+                         artifactId="health"
+                         version="1.1"
+                         type="ear"
+                         artifactPath="${com.akuacom:health:ear}"
+                         destPath="${jboss.config.dir}/deploy"
+                         artifactName="health" />
+    </target>
+	
+	<target name="deploy:itron">
+        <echo>drmsEnv: ${drmsEnv}</echo>
+        <if>
+            <equals arg1="${installItronEar}" arg2="true" />
+            <then>
+                <echo>Install from remote nexus!</echo>
+                <deployFromNexus groupid="com.akuacom.drms.ear"
+                                 artifactId="itron-ear"
+								 version="${drmsVersion}"
+                                 type="ear"
+                                 artifactPath="${com.akuacom.drms.ear:itron-ear:ear}"
+                                 destPath="${jboss.config.dir}/deploy"
+                                 artifactName="itron" />
+            </then>
+            <else>
+                <echo>Install of Itron-Client from remote nexus ignored!</echo>
+            </else>
+        </if>
+    </target>
+	
+	<target name="deploy:drwebsite">
+        <echo>drmsEnv: ${drmsEnv}</echo>
+        <if>
+            <equals arg1="${installDrwebsiteEarFromNexus}" arg2="true" />
+            <then>
+                <echo>Install from remote nexus!</echo>
+                <deployFromNexus groupid="com.akuacom.drms.ear"
+                                 artifactId="drpro"
+                                 version="${drmsVersion}"
+                                 type="ear"
+                                 artifactPath="${com.akuacom.drms.ear:drpro:ear}"
+                                 destPath="${jboss.config.dir}/deploy"
+                                 artifactName="drpro" />
+            </then>
+            <else>
+                <echo>Install from remote nexus ignored!</echo>
+            </else>
+        </if>
+    </target>
+
+    <!-- static:deploy:local -->
+    <target name="static:deploy:local">
+        <!-- copy the static files to ROOT.war for access directly to JBOSS -->
+        <delete dir="${jboss.config.dir}/deploy/ROOT.war" />
+        <copy todir="${jboss.config.dir}/deploy/ROOT.war">
+            <fileset dir="${jboss.default.dir}/deploy/ROOT.war" />
+        </copy>
+        <copy todir="${jboss.config.dir}/deploy/ROOT.war" overwrite="true">
+            <fileset dir="${resourceDir}/static" />
+        </copy>
+    </target>
+
+    <!-- verify.files -->
+    <target name="verify.files">
+        <echo>${ant.project.name}: verify.files</echo>
+        <if>
+            <available file="${jboss.config.dir}" />
+            <then>
+                <echo message="WARNING: configuration ${jboss.config.dir} already exists, execute delete.files if you need it" />
+            </then>
+        </if>
+    </target>
+
+    <!-- verify.all -->
+    <target name="verify.all" depends="verify.env,verify.files">
+        <echo>${ant.project.name}: verify.all</echo>
+
+        <echo>${ant.project.name}: Checking default directory: ${jboss.default.dir}</echo>
+
+        <if>
+            <not>
+                <available file="${jbossHome}/lib/endorsed/jaxb-api.jar" />
+            </not>
+            <then>
+                <echo message="You have not installed the jdk6 compiled version of Jboss 5.1, missing ${jbossHome}/lib/endorsed/jaxb-api.jar" />
+                <!--<copy tofile="${jbossHome}/lib/endorsed/jaxb-api.jar" overwrite="true"
+                          file="${lib.dir}/jaxb-api-jboss-4.2.2GA.jar">
+                    </copy>-->
+            </then>
+        </if>
+        <if>
+            <not>
+                <available file="${jbossHome}/lib/endorsed/jbossws-native-jaxrpc.jar" />
+            </not>
+            <then>
+                <echo message="You have not installed the jdk6 compiled version of Jboss 5.1, missing ${jbossHome}/lib/endorsed/jbossws-native-jaxrpc.jar" />
+                <!--<copy tofile="${jbossHome}/lib/endorsed/jboss-jaxrpc.jar" overwrite="true"
+                          file="${lib.dir}/jboss-jaxrpc-jboss-4.2.2GA.jar">
+                    </copy>-->
+            </then>
+        </if>
+        <if>
+            <not>
+                <available file="${jbossHome}/lib/endorsed/jbossws-native-jaxws.jar" />
+            </not>
+            <then>
+                <echo message="You have not installed the jdk6 compiled version of Jboss 5.1, missing ${jbossHome}/lib/endorsed/jbossws-native-jaxws.jar" />
+                <!--<copy tofile="${jbossHome}/lib/endorsed/jboss-jaxws.jar" overwrite="true"
+                          file="${lib.dir}/jboss-jaxws-jboss-4.2.2GA.jar">
+                    </copy>-->
+            </then>
+        </if>
+        <if>
+            <not>
+                <available file="${jbossHome}/lib/endorsed/jbossws-native-saaj.jar" />
+            </not>
+            <then>
+                <echo message="You have not installed the jdk6 compiled version of Jboss 5.1, missing ${jbossHome}/lib/endorsed/jbossws-native-saaj.jar" />
+                <!--<copy tofile="${jbossHome}/lib/endorsed/jboss-saaj.jar" overwrite="true"
+                          file="${lib.dir}/jboss-saaj-jboss-4.2.2GA.jar">
+                    </copy>-->
+            </then>
+        </if>
+        <!-- make sure default exists -->
+        <if>
+            <and>
+                <not>
+                    <available file="${jboss.default.dir}" />
+                </not>
+                <available file="${jboss.default.dir}/log" />
+                <available file="${jboss.default.dir}/data" />
+                <available file="${jboss.default.dir}/work" />
+                <available file="${jboss.default.dir}/tmp" />
+            </and>
+            <then>
+                <fail message="default configuration ${jboss.default.dir} not found or not empty" />
+            </then>
+        </if>
+    </target>
+</project>

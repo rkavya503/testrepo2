@@ -1,0 +1,2105 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<taglib xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<display-name>RichFaces</display-name>
+	<tlib-version>3.3.2</tlib-version>
+	<short-name>rich</short-name>
+	<uri>http://akuacom.com/richext</uri>
+	<tag>
+		<description>A tab section within a tab panel</description>
+		<name>tab</name>
+		<tag-class>com.akuacom.jsf.taglib.TabTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+			<description>MethodBinding pointing at the application action to be invoked,
+            Request Values or Invoke Application phase of the request
+            processing lifecycle, depending on the value of the immediate
+            property</description>
+			<name>action</name>
+			<deferred-method>
+				<method-signature>java.lang.Object action()</method-signature>
+			</deferred-method>
+		</attribute>
+		<attribute>
+			<description>MethodBinding pointing at method accepting  an ActionEvent with return type void</description>
+			<name>actionListener</name>
+			<deferred-method>
+				<method-signature>void actionListener(javax.faces.event.ActionEvent)</method-signature>
+			</deferred-method>
+		</attribute>
+		<attribute>
+			<description>Limits JSF tree processing (decoding, conversion, validation and model updating) only to a component that sends the request. Boolean. Default value is "false".</description>
+			<name>ajaxSingle</name>
+			<deferred-value>
+				<type>boolean</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The attribute takes a value-binding expression for a component property of
+a backing bean</description>
+			<name>binding</name>
+			<deferred-value>
+				<type>javax.faces.component.UIComponent</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Serialized (on default with JSON) data passed on the client by a developer on AJAX request. It's accessible via "data.foo" syntax</description>
+			<name>data</name>
+			<deferred-value>
+				<type>java.lang.Object</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Disables a tab in a tab panel</description>
+			<name>disabled</name>
+			<deferred-value>
+				<type>boolean</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Name of requests queue to avoid send next request before complete other from same event. Can be used to reduce number of requests of frequently events (key press, mouse move etc.)</description>
+			<name>eventsQueue</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>ID of an element to set focus after request is completed on client side</description>
+			<name>focus</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Every component may have a unique id that is automatically created if omitted</description>
+			<name>id</name>
+			<rtexprvalue>false</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description>Attribute allows to ignore an Ajax Response produced by a request if the newest 'similar' request is
+in a queue already. ignoreDupResponses="true" does not cancel the request while it is processed on the server,
+but just allows to avoid unnecessary updates on the client side if the response isn't actual now</description>
+			<name>ignoreDupResponses</name>
+			<deferred-value>
+				<type>boolean</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>True means, that the default ActionListener should be executed
+            immediately (i.e. during Apply Request Values phase of the
+            request processing lifecycle), rather than waiting until the
+            Invoke Application phase</description>
+			<name>immediate</name>
+			<deferred-value>
+				<type>boolean</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Text for the actual "tab" in a tab section</description>
+			<name>label</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Length for the actual "tab" in a tab section defined in pixels. If it is not defined, the
+	    	length is calculated basing on a tab label text length</description>
+			<name>labelWidth</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>If "true", then of all AJAX-rendered on the page components only those will be updated, 
+		which ID's are passed to the "reRender" attribute of the describable component. 
+		"false"-the default value-means that all components with ajaxRendered="true" will be updated.</description>
+			<name>limitToList</name>
+			<deferred-value>
+				<type>boolean</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Attribute defines tab name. Default value is "getId()".</description>
+			<name>name</name>
+			<deferred-value>
+				<type>java.lang.Object</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called before DOM is updated</description>
+			<name>onbeforedomupdate</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when the element is clicked</description>
+			<name>onclick</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called after the request is completed</description>
+			<name>oncomplete</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when the element is double-clicked</description>
+			<name>ondblclick</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a key is pressed down over the element</description>
+			<name>onkeydown</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a key is pressed over the element and released</description>
+			<name>onkeypress</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a key is released</description>
+			<name>onkeyup</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a tab label is clicked</description>
+			<name>onlabelclick</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a tab label is double-clicked</description>
+			<name>onlabeldblclick</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a key is pressed  down together with the pointer hovered over a tab label</description>
+			<name>onlabelkeydown</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a key is pressed  and released together with the pointer hovered over a tab label</description>
+			<name>onlabelkeypress</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a key is released together with the pointer hovered over a tab label</description>
+			<name>onlabelkeyup</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a mouse button is pressed down over a tab label</description>
+			<name>onlabelmousedown</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a pointer is moved within a tab label</description>
+			<name>onlabelmousemove</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a mouse button is released over a tab label</description>
+			<name>onlabelmouseup</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a mouse button is pressed down over the element</description>
+			<name>onmousedown</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a pointer is moved within the element</description>
+			<name>onmousemove</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a pointer is moved away from the element</description>
+			<name>onmouseout</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a pointer is moved onto the element</description>
+			<name>onmouseover</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when a mouse button is released</description>
+			<name>onmouseup</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when the tab is switched</description>
+			<name>ontabenter</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>The client-side script method to be called when the tab is left</description>
+			<name>ontableave</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Id['s] (in format of call  UIComponent.findComponent()) of components, processed at the phases 2-5 in case of AjaxRequest  caused by this component. Can be single id, comma-separated list of Id's, or EL Expression  with array or Collection</description>
+			<name>process</name>
+			<deferred-value>
+				<type>java.lang.Object</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Id['s] (in format of call  UIComponent.findComponent()) of components, rendered in case of AjaxRequest  caused by this component. Can be single id, comma-separated list of Id's, or EL Expression  with array or Collection</description>
+			<name>reRender</name>
+			<deferred-value>
+				<type>java.lang.Object</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>If "false", this component is not rendered</description>
+			<name>rendered</name>
+			<deferred-value>
+				<type>boolean</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Attribute defines the time (in ms.) that the request will be wait in the queue before it is ready to send.
+When the delay time is over, the request will be sent to the server or removed if the newest 'similar' request is in a queue already</description>
+			<name>requestDelay</name>
+			<deferred-value>
+				<type>int</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>If there are any component requests with identical IDs then these requests will be grouped.</description>
+			<name>similarityGroupingId</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>ID (in format of call UIComponent.findComponent()) of Request status component</description>
+			<name>status</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>CSS style rules to be applied to the component</description>
+			<name>style</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Assigns one or more CSS class names to the component. Corresponds to the HTML "class" attribute.</description>
+			<name>styleClass</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Tabs switch mode. Possible values are  "client", "server", "ajax", "page".</description>
+			<name>switchType</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>Response waiting time on a particular request. If a response is not received during this time, the request is aborted</description>
+			<name>timeout</name>
+			<deferred-value>
+				<type>int</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>HTML: An advisory title for this element. Often displayed as a tooltip</description>
+			<name>title</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>accesskey</description>
+			<name>accesskey</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>headingLevel for tab header, Possible values are H1-H6 </description>
+			<name>headingLevel</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+	</tag>
+    <tag>
+        <description>
+        </description>
+        <name>
+            commandLink
+        </name>
+        <tag-class>
+            com.akuacom.jsf.taglib.CommandLinkTag
+        </tag-class>
+        <body-content>
+            JSP
+        </body-content>
+        <attribute>
+            <description>
+                <![CDATA[MethodExpression representing the application action to invoke
+                when this component is activated by the user.  The expression
+                must evaluate to a public method that takes no parameters, and
+                returns an Object (the toString() of which is called to derive
+                the logical outcome) which is passed to the NavigationHandler
+                for this application.]]>
+            </description>
+            <name>
+                action
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-method>
+                <method-signature>
+                    java.lang.Object action()
+                </method-signature>
+            </deferred-method>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[MethodExpression representing an action listener method that will be
+                notified when this component is activated by the user.  The
+                expression must evaluate to a public method that takes an
+                ActionEvent parameter, with a return type of void.]]>
+            </description>
+            <name>
+                actionListener
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-method>
+                <method-signature>
+                    void actionListener(javax.faces.event.ActionEvent)
+                </method-signature>
+            </deferred-method>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[The component identifier for this component.  This value must be
+                unique within the closest parent component that is a naming
+                container.]]>
+            </description>
+            <name>
+                id
+            </name>
+            <required>
+                false
+            </required>
+            <rtexprvalue>
+                true
+            </rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Flag indicating that, if this component is activated by the user,
+                notifications should be delivered to interested listeners and actions
+                immediately (that is, during Apply Request Values phase) rather than
+                waiting until Invoke Application phase.]]>
+            </description>
+            <name>
+                immediate
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    boolean
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Flag indicating whether or not this component should be rendered
+                (during Render Response Phase), or processed on any subsequent
+                form submit.  The default value for this property is true.]]>
+            </description>
+            <name>
+                rendered
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    boolean
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[The current value of this component.]]>
+            </description>
+            <name>
+                value
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.Object
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Access key that, when pressed, transfers focus
+                to this element.]]>
+            </description>
+            <name>
+                accesskey
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[The character encoding of the resource designated
+                by this hyperlink.]]>
+            </description>
+            <name>
+                charset
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[The position and shape of the hot spot on the screen
+                (for use in client-side image maps).]]>
+            </description>
+            <name>
+                coords
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Direction indication for text that does not inherit directionality.
+                Valid values are "LTR" (left-to-right) and "RTL" (right-to-left).]]>
+            </description>
+            <name>
+                dir
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Flag indicating that this element must never
+                receive focus or be included in a subsequent
+                submit.]]>
+            </description>
+            <name>
+                disabled
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    boolean
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[The language code of the resource designated
+                by this hyperlink.]]>
+            </description>
+            <name>
+                hreflang
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Code describing the language used in the generated markup
+                for this component.]]>
+            </description>
+            <name>
+                lang
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when this element loses focus.]]>
+            </description>
+            <name>
+                onblur
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when a pointer button is
+                clicked over this element.]]>
+            </description>
+            <name>
+                onclick
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when a pointer button is
+                double clicked over this element.]]>
+            </description>
+            <name>
+                ondblclick
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when this element receives focus.]]>
+            </description>
+            <name>
+                onfocus
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when a key is
+                pressed down over this element.]]>
+            </description>
+            <name>
+                onkeydown
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when a key is
+                pressed and released over this element.]]>
+            </description>
+            <name>
+                onkeypress
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when a key is
+                released over this element.]]>
+            </description>
+            <name>
+                onkeyup
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when a pointer button is
+                pressed down over this element.]]>
+            </description>
+            <name>
+                onmousedown
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when a pointer button is
+                moved within this element.]]>
+            </description>
+            <name>
+                onmousemove
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when a pointer button is
+                moved away from this element.]]>
+            </description>
+            <name>
+                onmouseout
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when a pointer button is
+                moved onto this element.]]>
+            </description>
+            <name>
+                onmouseover
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Javascript code executed when a pointer button is
+                released over this element.]]>
+            </description>
+            <name>
+                onmouseup
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[The relationship from the current document
+                to the anchor specified by this hyperlink.
+                The value of this attribute is a space-separated
+                list of link types.]]>
+            </description>
+            <name>
+                rel
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[A reverse link from the anchor specified
+                by this hyperlink to the current document.
+                The value of this attribute is a space-separated
+                list of link types.]]>
+            </description>
+            <name>
+                rev
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[The shape of the hot spot on the screen
+                (for use in client-side image maps).  Valid
+                values are:  default (entire region); rect
+                (rectangular region); circle (circular region);
+                and poly (polygonal region).]]>
+            </description>
+            <name>
+                shape
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[CSS style(s) to be applied when this component is rendered.]]>
+            </description>
+            <name>
+                style
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Space-separated list of CSS style class(es) to be applied when
+                this element is rendered.  This value must be passed through
+                as the "class" attribute on generated markup.]]>
+            </description>
+            <name>
+                styleClass
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Position of this element in the tabbing order
+                for the current document.  This value must be
+                an integer between 0 and 32767.]]>
+            </description>
+            <name>
+                tabindex
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Name of a frame where the resource
+                retrieved via this hyperlink is to
+                be displayed.]]>
+            </description>
+            <name>
+                target
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[Advisory title information about markup elements generated
+                for this component.]]>
+            </description>
+            <name>
+                title
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                <![CDATA[The content type of the resource designated
+                by this hyperlink.]]>
+            </description>
+            <name>
+                type
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    java.lang.String
+                </type>
+            </deferred-value>
+        </attribute>
+        <attribute>
+            <description>
+                The ValueExpression linking this component to a property in a backing bean
+            </description>
+            <name>
+                binding
+            </name>
+            <required>
+                false
+            </required>
+            <deferred-value>
+                <type>
+                    javax.faces.component.UIComponent
+                </type>
+            </deferred-value>
+        </attribute>
+		<attribute>
+			<description>headingLevel for command link, Possible values are H1-H6 </description>
+			<name>headingLevel</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+
+    </tag>
+    
+    <tag>
+	  	  <description>The &amp;lt;richext:treeTable&amp;gt; component for tables rendering that allows choosing data from a model and obtains built-in support of Ajax updates.</description>
+	  	  	  		  <name>treeTable</name>
+	  	  <tag-class>com.akuacom.jsf.taglib.TreeTableTag</tag-class>
+	  <body-content>JSP</body-content>
+	  
+	    		  <attribute>
+	   <description>This attribute defines row keys that are updated after an AJAX request</description>
+	   <name>ajaxKeys</name>
+	   	   	   					   	<deferred-value>
+					<type>java.util.Set</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Deprecated. This attribute specifies the position of the table with respect to the document. 
+            The possible values are "left", "center" and "right". The default value is "left".</description>
+	   <name>align</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Deprecated. This attribute sets the background color for the document body or table cells.
+            
+            This attribute sets the background color of the canvas for the document body (the BODY element) or for tables (the TABLE, TR, TH, and TD elements). Additional attributes for specifying text color can be used with the BODY element.
+            
+            This attribute has been deprecated in favor of style sheets for specifying background color information</description>
+	   <name>bgcolor</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The attribute takes a value-binding expression for a component property of
+a backing bean</description>
+	   <name>binding</name>
+	   	   	   					   	<deferred-value>
+					<type>javax.faces.component.UIComponent</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attributes specifies the width of the frame around a component. Default value is "0".</description>
+	   <name>border</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to the component caption</description>
+	   <name>captionClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>CSS style rules to be applied to the component caption</description>
+	   <name>captionStyle</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attribute specifies the amount of space between the border of the cell and its contents. Default value is "0".</description>
+	   <name>cellpadding</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attribute specifies the amount of space between the border of the cell and its contents.  The attribute also specifies the amount of space to leave between cells. Default value is "0".</description>
+	   <name>cellspacing</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to the columns of the table. If the CSS class names are comma-separated, 
+        each class will be assigned to a particular column in the order they follow in the attribute. If you have less class names than columns, 
+        the class will be applied to every n-fold column where n is the order in which the class is listed in the attribute. If there are more class names than columns, 
+        the overflow ones are ignored.</description>
+	   <name>columnClasses</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Specifies the number of columns</description>
+	   <name>columns</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Comma-separated list of width attribute for every column.
+			Specifies a default width for each column in the table. 
+			In addition to the standard pixel, percentage, and relative values, 
+			this attribute allows the special form "0*" (zero asterisk) which 
+			means that the width of the each column in the group should be the minimum width necessary 
+			to hold the column's contents. This implies that a column's entire contents must be known before its width may be correctly computed. Authors should be aware that specifying "0*" will prevent visual user agents from rendering a table incrementally</description>
+	   <name>columnsWidth</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>It defines EL-binding  for a component state for saving or redefinition</description>
+	   <name>componentState</name>
+	   	   	   					   	<deferred-value>
+					<type>org.ajax4jsf.model.DataComponentState</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Direction indication for text that does not inherit
+			directionality. Valid values are "LTR" (left-to-right)
+			and "RTL" (right-to-left)</description>
+	   <name>dir</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>A zero-relative row number of the first row to display</description>
+	   <name>first</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to the component footer</description>
+	   <name>footerClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attribute specifies which sides of the frame surrounding a table will be visible. Possible values:  "void", "above", "below", "hsides", "lhs", "rhs", "vsides", "box" and "border".
+        The default value is "void".</description>
+	   <name>frame</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to the component header</description>
+	   <name>headerClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Every component may have a unique id that is automatically created if omitted</description>
+	   <name>id</name>
+	   	   	   		<rtexprvalue>false</rtexprvalue>
+	   		<type>java.lang.String</type>
+	   	  </attribute>
+		  		  <attribute>
+	   <description>Code describing the language used in the generated markup for this component</description>
+	   <name>lang</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when the row is clicked</description>
+	   <name>onRowClick</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a right mouse button is clicked over the row.
+				Returning false prevents default browser context menu from being displayed.</description>
+	   <name>onRowContextMenu</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when the row is double-clicked</description>
+	   <name>onRowDblClick</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a mouse button is pressed down over the row</description>
+	   <name>onRowMouseDown</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved within the row</description>
+	   <name>onRowMouseMove</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved away from the row</description>
+	   <name>onRowMouseOut</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved onto the row</description>
+	   <name>onRowMouseOver</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a mouse button is released over the row</description>
+	   <name>onRowMouseUp</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when the element is clicked</description>
+	   <name>onclick</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when the element is double-clicked</description>
+	   <name>ondblclick</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a key is pressed down over the element</description>
+	   <name>onkeydown</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a key is pressed over the element and released</description>
+	   <name>onkeypress</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a key is released</description>
+	   <name>onkeyup</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a mouse button is pressed down over the element</description>
+	   <name>onmousedown</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved within the element</description>
+	   <name>onmousemove</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved away from the element</description>
+	   <name>onmouseout</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved onto the element</description>
+	   <name>onmouseover</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a mouse button is released</description>
+	   <name>onmouseup</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Id['s] (in format of call  UIComponent.findComponent()) of components, rendered in case of AjaxRequest caused by this component. Can be single id, comma-separated list of Id's, or EL Expression  with array or Collection</description>
+	   <name>reRender</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>If "false", this component is not rendered</description>
+	   <name>rendered</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to the rows of the table. If the CSS class names are comma-separated, 
+        each class will be assigned to a particular row in the order they follow in the attribute. If you have less class names than rows, 
+        the class will be applied to every n-fold row where n is the order in which the class is listed in the attribute. If there are more class names than rows, 
+        the overflow ones are ignored.</description>
+	   <name>rowClasses</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  	  	  	  		  <attribute>
+	   <description>Converter for a RowKey object.</description>
+	   <name>rowKeyConverter</name>
+	   	   	   					   	<deferred-value>
+					<type>javax.faces.convert.Converter</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The attribute provides access to a row key in a Request scope</description>
+	   <name>rowKeyVar</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>A number of rows to display, or zero for all remaining
+            rows in the table</description>
+	   <name>rows</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attribute specifies which rules will appear between cells within a table. The rendering of rules is user agent dependent. Possible values:
+            
+            * none: No rules. This is the default value.
+            * groups: Rules will appear between row groups (see THEAD, TFOOT, and TBODY) and column groups (see COLGROUP and COL) only.
+            * rows: Rules will appear between rows only.
+            * cols: Rules will appear between columns only.
+            * all: Rules will appear between all rows and columns</description>
+	   <name>rules</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines mode of sorting. Possible values are 'single' for sorting of one column and 'multi' for some.</description>
+	   <name>sortMode</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines a set of columns ids in the sorting order</description>
+	   <name>sortPriority</name>
+	   	   	   					   	<deferred-value>
+					<type>java.util.Collection</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The attribute  provides access to a component state on the client side</description>
+	   <name>stateVar</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>CSS style rules to be applied to the component</description>
+	   <name>style</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Assigns one or more CSS class names to the component. Corresponds to the HTML "class" attribute.</description>
+	   <name>styleClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Advisory title information about markup elements generated for this component</description>
+	   <name>title</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The current value for this component</description>
+	   <name>value</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>A request-scope attribute via which the data object for the
+            current row will be used when iterating</description>
+	   <name>var</name>
+	   	   	   		<rtexprvalue>false</rtexprvalue>
+	   		<type>java.lang.String</type>
+	   	  </attribute>
+		 <attribute>
+		   <description>This attribute specifies the desired width of the entire table and is intended for visual user agents. When the value is percentage value, the value is relative to the user agent's available horizontal space. In the absence of any width specification, table width is determined by the user agent</description>
+		   <name>width</name>
+										<deferred-value>
+						<type>java.lang.String</type>
+					</deferred-value>
+		</attribute>
+		<attribute>
+		   <description>This attribute specifies the desired height of the entire table and is intended for visual user agents. When the value is percentage value, the value is relative to the user agent's available horizontal space. In the absence of any width specification, table width is determined by the user agent</description>
+		   <name>height</name>
+			<deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+		<attribute>
+			<description>selection mode, one of single,multiple,none, default none</description>
+				 <name>selectionMode</name>
+			   <deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>  
+		<attribute>
+			<description>status</description>
+				 <name>status</name>
+			   <deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>  
+    	</tag>
+		
+		 <tag>
+	  	  <description>The &amp;lt;richext:dataTable&amp;gt; component for tables rendering that allows choosing data from a model and obtains built-in support of Ajax updates.</description>
+	  	  	  		  <name>dataTable</name>
+	  	  <tag-class>com.akuacom.jsf.taglib.DataTableTag</tag-class>
+	  <body-content>JSP</body-content>
+	  
+	    		  <attribute>
+	   <description>This attribute defines row keys that are updated after an AJAX request</description>
+	   <name>ajaxKeys</name>
+	   	   	   					   	<deferred-value>
+					<type>java.util.Set</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Deprecated. This attribute specifies the position of the table with respect to the document. 
+            The possible values are "left", "center" and "right". The default value is "left".</description>
+	   <name>align</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Deprecated. This attribute sets the background color for the document body or table cells.
+            
+            This attribute sets the background color of the canvas for the document body (the BODY element) or for tables (the TABLE, TR, TH, and TD elements). Additional attributes for specifying text color can be used with the BODY element.
+            
+            This attribute has been deprecated in favor of style sheets for specifying background color information</description>
+	   <name>bgcolor</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The attribute takes a value-binding expression for a component property of
+a backing bean</description>
+	   <name>binding</name>
+	   	   	   					   	<deferred-value>
+					<type>javax.faces.component.UIComponent</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attributes specifies the width of the frame around a component. Default value is "0".</description>
+	   <name>border</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to the component caption</description>
+	   <name>captionClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>CSS style rules to be applied to the component caption</description>
+	   <name>captionStyle</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attribute specifies the amount of space between the border of the cell and its contents. Default value is "0".</description>
+	   <name>cellpadding</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attribute specifies the amount of space between the border of the cell and its contents.  The attribute also specifies the amount of space to leave between cells. Default value is "0".</description>
+	   <name>cellspacing</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to the columns of the table. If the CSS class names are comma-separated, 
+        each class will be assigned to a particular column in the order they follow in the attribute. If you have less class names than columns, 
+        the class will be applied to every n-fold column where n is the order in which the class is listed in the attribute. If there are more class names than columns, 
+        the overflow ones are ignored.</description>
+	   <name>columnClasses</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Specifies the number of columns</description>
+	   <name>columns</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Comma-separated list of width attribute for every column.
+			Specifies a default width for each column in the table. 
+			In addition to the standard pixel, percentage, and relative values, 
+			this attribute allows the special form "0*" (zero asterisk) which 
+			means that the width of the each column in the group should be the minimum width necessary 
+			to hold the column's contents. This implies that a column's entire contents must be known before its width may be correctly computed. Authors should be aware that specifying "0*" will prevent visual user agents from rendering a table incrementally</description>
+	   <name>columnsWidth</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>It defines EL-binding  for a component state for saving or redefinition</description>
+	   <name>componentState</name>
+	   	   	   					   	<deferred-value>
+					<type>org.ajax4jsf.model.DataComponentState</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Direction indication for text that does not inherit
+			directionality. Valid values are "LTR" (left-to-right)
+			and "RTL" (right-to-left)</description>
+	   <name>dir</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>A zero-relative row number of the first row to display</description>
+	   <name>first</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to the component footer</description>
+	   <name>footerClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attribute specifies which sides of the frame surrounding a table will be visible. Possible values:  "void", "above", "below", "hsides", "lhs", "rhs", "vsides", "box" and "border".
+        The default value is "void".</description>
+	   <name>frame</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to the component header</description>
+	   <name>headerClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Every component may have a unique id that is automatically created if omitted</description>
+	   <name>id</name>
+	   	   	   		<rtexprvalue>false</rtexprvalue>
+	   		<type>java.lang.String</type>
+	   	  </attribute>
+		  		  <attribute>
+	   <description>Code describing the language used in the generated markup for this component</description>
+	   <name>lang</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when the row is clicked</description>
+	   <name>onRowClick</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a right mouse button is clicked over the row.
+				Returning false prevents default browser context menu from being displayed.</description>
+	   <name>onRowContextMenu</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when the row is double-clicked</description>
+	   <name>onRowDblClick</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a mouse button is pressed down over the row</description>
+	   <name>onRowMouseDown</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved within the row</description>
+	   <name>onRowMouseMove</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved away from the row</description>
+	   <name>onRowMouseOut</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved onto the row</description>
+	   <name>onRowMouseOver</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a mouse button is released over the row</description>
+	   <name>onRowMouseUp</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when the element is clicked</description>
+	   <name>onclick</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when the element is double-clicked</description>
+	   <name>ondblclick</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a key is pressed down over the element</description>
+	   <name>onkeydown</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a key is pressed over the element and released</description>
+	   <name>onkeypress</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a key is released</description>
+	   <name>onkeyup</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a mouse button is pressed down over the element</description>
+	   <name>onmousedown</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved within the element</description>
+	   <name>onmousemove</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved away from the element</description>
+	   <name>onmouseout</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a pointer is moved onto the element</description>
+	   <name>onmouseover</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The client-side script method to be called when a mouse button is released</description>
+	   <name>onmouseup</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Id['s] (in format of call  UIComponent.findComponent()) of components, rendered in case of AjaxRequest caused by this component. Can be single id, comma-separated list of Id's, or EL Expression  with array or Collection</description>
+	   <name>reRender</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>If "false", this component is not rendered</description>
+	   <name>rendered</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to the rows of the table. If the CSS class names are comma-separated, 
+        each class will be assigned to a particular row in the order they follow in the attribute. If you have less class names than rows, 
+        the class will be applied to every n-fold row where n is the order in which the class is listed in the attribute. If there are more class names than rows, 
+        the overflow ones are ignored.</description>
+	   <name>rowClasses</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  	  	  	  		  <attribute>
+	   <description>Converter for a RowKey object.</description>
+	   <name>rowKeyConverter</name>
+	   	   	   					   	<deferred-value>
+					<type>javax.faces.convert.Converter</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The attribute provides access to a row key in a Request scope</description>
+	   <name>rowKeyVar</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>A number of rows to display, or zero for all remaining
+            rows in the table</description>
+	   <name>rows</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attribute specifies which rules will appear between cells within a table. The rendering of rules is user agent dependent. Possible values:
+            
+            * none: No rules. This is the default value.
+            * groups: Rules will appear between row groups (see THEAD, TFOOT, and TBODY) and column groups (see COLGROUP and COL) only.
+            * rows: Rules will appear between rows only.
+            * cols: Rules will appear between columns only.
+            * all: Rules will appear between all rows and columns</description>
+	   <name>rules</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines mode of sorting. Possible values are 'single' for sorting of one column and 'multi' for some.</description>
+	   <name>sortMode</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines a set of columns ids in the sorting order</description>
+	   <name>sortPriority</name>
+	   	   	   					   	<deferred-value>
+					<type>java.util.Collection</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The attribute  provides access to a component state on the client side</description>
+	   <name>stateVar</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>CSS style rules to be applied to the component</description>
+	   <name>style</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Assigns one or more CSS class names to the component. Corresponds to the HTML "class" attribute.</description>
+	   <name>styleClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Advisory title information about markup elements generated for this component</description>
+	   <name>title</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The current value for this component</description>
+	   <name>value</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>A request-scope attribute via which the data object for the
+            current row will be used when iterating</description>
+	   <name>var</name>
+	   	   	   		<rtexprvalue>false</rtexprvalue>
+	   		<type>java.lang.String</type>
+	   	  </attribute>
+		  		  <attribute>
+	   <description>This attribute specifies the desired width of the entire table and is intended for visual user agents. When the value is percentage value, the value is relative to the user agent's available horizontal space. In the absence of any width specification, table width is determined by the user agent</description>
+	   <name>width</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>This attribute specifies the desired height of the entire table and is intended for visual user agents. When the value is percentage value, the value is relative to the user agent's available horizontal space. In the absence of any width specification, table width is determined by the user agent</description>
+	   <name>height</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		
+		<attribute>
+			<description>This attribute specifies the desired height of the entire table and is intended for visual user agents. When the value is percentage value, the value is relative to the user agent's available horizontal space. In the absence of any width specification, table width is determined by the user agent</description>
+			<name>height</name>
+					<deferred-value>
+					<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>
+					  
+		 <attribute>
+			<description>selection mode, one of single,multiple,none, default none</description>
+				 <name>selectionMode</name>
+			   <deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>  
+		 <attribute>
+			<description>status</description>
+				 <name>status</name>
+			   <deferred-value>
+				<type>java.lang.String</type>
+			</deferred-value>
+		</attribute>  
+    	</tag>
+    	
+    	<tag>
+	  	  <description>The &amp;lt;richext:treeColumn&amp;gt; component for row rendering for a UIData component.</description>
+	  	  	  		  <name>treeColumn</name>
+	  	  <tag-class>com.akuacom.jsf.taglib.TreeColumnTag</tag-class>
+	  <body-content>JSP</body-content>
+	  
+	    		  <attribute>
+	   <description>The attribute takes a value-binding expression for a component property of
+a backing bean</description>
+	   <name>binding</name>
+	   	   	   					   	<deferred-value>
+					<type>javax.faces.component.UIComponent</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>if "true" next column begins from the first row</description>
+	   <name>breakBefore</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Corresponds to the HTML colspan attribute</description>
+	   <name>colspan</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines value binding to the comparator that is used to compare the values</description>
+	   <name>comparator</name>
+	   	   	   					   	<deferred-value>
+					<type>java.util.Comparator</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Direction indication for text that does not inherit
+			directionality. Valid values are "LTR" (left-to-right)
+			and "RTL" (right-to-left)</description>
+	   <name>dir</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Defines iterable object property which is used when filtering performed.</description>
+	   <name>filterBy</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Event for filter input that forces the filtration (default value is "onchange")</description>
+	   <name>filterEvent</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Attribute defines a bean property which is used for filtering of a column</description>
+	   <name>filterExpression</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>This attribute is defined with method binding. This method accepts on Object parameter and return boolean value</description>
+	   <name>filterMethod</name>
+	   	   	   						<deferred-method>
+					<method-signature>boolean filterMethod(java.lang.Object)</method-signature>
+				</deferred-method>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines current filtering value</description>
+	   <name>filterValue</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to any footer generated for this component</description>
+	   <name>footerClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Assigns one or more space-separated CSS class names to any header generated for this component</description>
+	   <name>headerClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Every component may have a unique id that is automatically created if omitted</description>
+	   <name>id</name>
+	   	   	   		<rtexprvalue>false</rtexprvalue>
+	   		<type>java.lang.String</type>
+	   	  </attribute>
+		  		  <attribute>
+	   <description>Column label for drag indicator. Usable only for extendedDataTable component</description>
+	   <name>label</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Code describing the language used in the generated markup for this component</description>
+	   <name>lang</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>If "false", this component is not rendered</description>
+	   <name>rendered</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Corresponds to the HTML rowspan attribute</description>
+	   <name>rowspan</name>
+	   	   	   					   	<deferred-value>
+					<type>int</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Manages if the header of the column is clickable, icons rendered and sorting is fired after click on the header. You need to define this attribute inside &amp;lt;rich:dataTable&amp;gt; component.
+	Default value is "true"</description>
+	   <name>selfSorted</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines a bean property which is used for sorting of a column. This attribute used with &amp;lt;rich:dataTable&amp;gt;</description>
+	   <name>sortBy</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.Object</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines a bean property which is used for sorting of a column and used only with &amp;lt;rich:scrollableDataTable&amp;gt;.</description>
+	   <name>sortExpression</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  		  <attribute>
+	   <description>Defines sort icon. The value for the attribute is context related.</description>
+	   <name>sortIcon</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines sort icon for ascending order. The value for the attribute is context related.</description>
+	   <name>sortIconAscending</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Defines sort icon for descending order. The value for the attribute is context related.</description>
+	   <name>sortIconDescending</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>SortOrder is an enumeration of the possible sort orderings. Default value is "UNSORTED"</description>
+	   <name>sortOrder</name>
+	   	   	   					   	<deferred-value>
+					<type>org.richfaces.model.Ordering</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Boolean attribute. If "true" it's possible to sort the column content after click on the header.
+	Default value is "true"</description>
+	   <name>sortable</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>CSS style rules to be applied to the component</description>
+	   <name>style</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Assigns one or more CSS class names to the component. Corresponds to the HTML "class" attribute.</description>
+	   <name>styleClass</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Advisory title information about markup elements generated for this component</description>
+	   <name>title</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>The attribute is used to define whether the component is visible or not. The default value is "true".</description>
+	   <name>visible</name>
+	   	   	   					   	<deferred-value>
+					<type>boolean</type>
+				</deferred-value>
+				   	  </attribute>
+		  		  <attribute>
+	   <description>Attribute defines width of column.</description>
+	   <name>width</name>
+	   	   	   					   	<deferred-value>
+					<type>java.lang.String</type>
+				</deferred-value>
+				   	  </attribute>
+		  	  
+	</tag>
+</taglib>

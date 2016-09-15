@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>drms-parent</artifactId>
+		<groupId>com.akuacom.drms</groupId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+	<groupId>com.akuacom.drms.ws</groupId>
+	<artifactId>ws-stub-parent</artifactId>
+	<name>ws-stub-parent</name>
+	<version>7.26-SNAPSHOT</version>
+	<packaging>pom</packaging>
+     <build>
+  <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <configuration>
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>com.akuacom.common</groupId>
+                            <artifactId>util</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+
+                </configuration>
+            </plugin>
+            </plugins>
+    </build>
+
+	<dependencies>
+	<dependency>
+		<groupId>commons-lang</groupId>
+     	<artifactId>commons-lang</artifactId>
+		<scope>compile</scope>
+	</dependency>
+   <dependency>
+        <groupId>org.scala-lang</groupId>
+        <artifactId>scala-library</artifactId>
+ 	    <scope>compile</scope>
+    </dependency>
+	
+	</dependencies>
+	<modules>
+		<module>ads-stub</module>
+		<module>bacnet-stub</module>
+		<module>util-op-stub</module>
+    <module>event-state</module>
+    <module>itron-stub</module>
+  </modules>
+</project>

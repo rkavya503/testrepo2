@@ -1,0 +1,1111 @@
+2011-11-02 18:03:08,586 INFO  [org.jboss.web.WebService] (main) Using RMI server codebase: http://127.0.0.1:8083/
+2011-11-02 18:03:14,605 INFO  [org.jboss.wsf.stack.jbws.NativeServerConfig] (main) JBoss Web Services - Stack Native Core
+2011-11-02 18:03:14,605 INFO  [org.jboss.wsf.stack.jbws.NativeServerConfig] (main) 3.1.2.GA
+2011-11-02 18:03:15,308 INFO  [org.jboss.dependency.plugins.AttributeCallbackItem] (main) Owner callback not implemented.
+2011-11-02 18:03:16,312 INFO  [org.jboss.logbridge.LogNotificationListener] (main) Adding notification listener for logging mbean "jboss.system:service=Logging,type=Log4jService" to server org.jboss.mx.server.MBeanServerImpl@c4c7e10[ defaultDomain='jboss' ]
+2011-11-02 18:04:01,782 INFO  [org.jboss.web.WebService] (main) Using RMI server codebase: http://127.0.0.1:8083/
+2011-11-02 18:04:05,830 INFO  [org.jboss.wsf.stack.jbws.NativeServerConfig] (main) JBoss Web Services - Stack Native Core
+2011-11-02 18:04:05,830 INFO  [org.jboss.wsf.stack.jbws.NativeServerConfig] (main) 3.1.2.GA
+2011-11-02 18:04:06,512 INFO  [org.jboss.dependency.plugins.AttributeCallbackItem] (main) Owner callback not implemented.
+2011-11-02 18:04:07,232 INFO  [org.jboss.logbridge.LogNotificationListener] (main) Adding notification listener for logging mbean "jboss.system:service=Logging,type=Log4jService" to server org.jboss.mx.server.MBeanServerImpl@762d80ae[ defaultDomain='jboss' ]
+2011-11-02 18:04:41,731 WARN  [org.jboss.deployment.MappedReferenceMetaDataResolverDeployer] (main) Unresolved references exist in JBossWebMetaData:[opt-report-7.1-SNAPSHOT.war#web-app:AnnotatedEJBReferenceMetaData{name=com.akuacom.pss2.opt.report.OperatorReports/reportManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=operator-report/HistoryReportManager/local,resolved-jndi-name=null,beanInterface=interface com.akuacom.pss2.history.HistoryReportManager}, opt-report-7.1-SNAPSHOT.war#web-app:AnnotatedEJBReferenceMetaData{name=com.akuacom.pss2.opt.report.JasperReportServlet/hrm,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=operator-report/HistoryReportManager/local,resolved-jndi-name=null,beanInterface=interface com.akuacom.pss2.history.HistoryReportManager}]
+2011-11-02 18:04:41,731 WARN  [org.jboss.deployment.MappedReferenceMetaDataResolverDeployer] (main) Unresolved references exist in JBossWebMetaData:[report-web-7.1-SNAPSHOT.war#web-app:AnnotatedEJBReferenceMetaData{name=com.akuacom.pss2.customer.baseline.BaselineGen/reportManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=operator-report/HistoryReportManager/local,resolved-jndi-name=null,beanInterface=interface com.akuacom.pss2.history.HistoryReportManager}]
+2011-11-02 18:04:48,753 INFO  [org.jboss.deployment.dependency.ContainerDependencyMetaData] (main) addJndiDependency, JndiDependencyMetaData@6fbaf797{queue/participantIntervalMeterDataUpdate}
+2011-11-02 18:04:48,754 INFO  [org.jboss.deployment.dependency.ContainerDependencyMetaData] (main) addJndiDependency, JndiDependencyMetaData@5bd513cf{queue/participantIntervalMeterDataUpdate}
+2011-11-02 18:04:48,756 INFO  [org.jboss.deployment.dependency.ContainerDependencyMetaData] (main) addJndiDependency, JndiDependencyMetaData@207aa23{queue/participantIntervalMeterDataUpdate}
+2011-11-02 18:04:48,757 INFO  [org.jboss.deployment.dependency.ContainerDependencyMetaData] (main) addJndiDependency, JndiDependencyMetaData@4532e0df{queue/participantIntervalMeterDataUpdate}
+2011-11-02 18:04:52,173 INFO  [org.jboss.mx.remoting.service.JMXConnectorServerService] (main) JMX Connector server: service:jmx:rmi://127.0.0.1/jndi/rmi://127.0.0.1:1090/jmxconnector
+2011-11-02 18:04:52,390 INFO  [org.jboss.mail.MailService] (main) Mail Service bound to java:/Mail
+2011-11-02 18:04:56,844 WARN  [org.jboss.jms.server.jbosssx.JBossASSecurityMetadataStore] (main) WARNING! POTENTIAL SECURITY RISK. It has been detected that the MessageSucker component which sucks messages from one node to another has not had its password changed from the installation default. Please see the JBoss Messaging user guide for instructions on how to do this.
+2011-11-02 18:04:56,861 WARN  [org.jboss.annotation.factory.AnnotationCreator] (main) No ClassLoader provided, using TCCL: org.jboss.managed.api.annotation.ManagementComponent
+2011-11-02 18:04:56,961 WARN  [org.jboss.annotation.factory.AnnotationCreator] (main) No ClassLoader provided, using TCCL: org.jboss.managed.api.annotation.ManagementComponent
+2011-11-02 18:04:57,027 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) JBossTS Transaction Service (JTA version - tag:JBOSSTS_4_6_1_GA) - JBoss Inc.
+2011-11-02 18:04:57,027 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) Setting up property manager MBean and JMX layer
+2011-11-02 18:04:57,281 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) Initializing recovery manager
+2011-11-02 18:04:57,436 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) Recovery manager configured
+2011-11-02 18:04:57,436 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) Binding TransactionManager JNDI Reference
+2011-11-02 18:04:57,479 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) Starting transaction recovery manager
+2011-11-02 18:04:57,599 ERROR [org.jboss.kernel.plugins.dependency.AbstractKernelController] (main) Error installing to Start: name=jboss:service=invoker,type=pooled state=Create mode=Manual requiredState=Installed
+java.lang.Exception: Port 4445 is already in use
+	at org.jboss.invocation.pooled.server.PooledInvoker.startService(PooledInvoker.java:230)
+	at org.jboss.system.ServiceMBeanSupport.jbossInternalStart(ServiceMBeanSupport.java:376)
+	at org.jboss.system.ServiceMBeanSupport.jbossInternalLifecycle(ServiceMBeanSupport.java:322)
+	at sun.reflect.GeneratedMethodAccessor80.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.jboss.mx.interceptor.ReflectedDispatcher.invoke(ReflectedDispatcher.java:157)
+	at org.jboss.mx.server.Invocation.dispatch(Invocation.java:96)
+	at org.jboss.mx.server.Invocation.invoke(Invocation.java:88)
+	at org.jboss.mx.server.AbstractMBeanInvoker.invoke(AbstractMBeanInvoker.java:264)
+	at org.jboss.mx.server.MBeanServerImpl.invoke(MBeanServerImpl.java:668)
+	at org.jboss.system.microcontainer.ServiceProxy.invoke(ServiceProxy.java:189)
+	at $Proxy38.start(Unknown Source)
+	at org.jboss.system.microcontainer.StartStopLifecycleAction.installAction(StartStopLifecycleAction.java:42)
+	at org.jboss.system.microcontainer.StartStopLifecycleAction.installAction(StartStopLifecycleAction.java:37)
+	at org.jboss.dependency.plugins.action.SimpleControllerContextAction.simpleInstallAction(SimpleControllerContextAction.java:62)
+	at org.jboss.dependency.plugins.action.AccessControllerContextAction.install(AccessControllerContextAction.java:71)
+	at org.jboss.dependency.plugins.AbstractControllerContextActions.install(AbstractControllerContextActions.java:51)
+	at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+	at org.jboss.system.microcontainer.ServiceControllerContext.install(ServiceControllerContext.java:286)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1631)
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:934)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:774)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:540)
+	at org.jboss.system.ServiceController.doInstall(ServiceController.java:670)
+	at org.jboss.system.ServiceController.register(ServiceController.java:373)
+	at org.jboss.system.microcontainer.jmx.ServiceControllerRegistrationLifecycleCallback.install(ServiceControllerRegistrationLifecycleCallback.java:104)
+	at sun.reflect.GeneratedMethodAccessor273.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.jboss.reflect.plugins.introspection.ReflectionUtils.invoke(ReflectionUtils.java:59)
+	at org.jboss.reflect.plugins.introspection.ReflectMethodInfoImpl.invoke(ReflectMethodInfoImpl.java:150)
+	at org.jboss.joinpoint.plugins.BasicMethodJoinPoint.dispatch(BasicMethodJoinPoint.java:66)
+	at org.jboss.beans.info.plugins.AbstractBeanInfo.invoke(AbstractBeanInfo.java:300)
+	at org.jboss.kernel.plugins.dependency.AbstractKernelControllerContext.invoke(AbstractKernelControllerContext.java:286)
+	at org.jboss.dependency.plugins.AbstractLifecycleCallbackItem.install(AbstractLifecycleCallbackItem.java:87)
+	at org.jboss.dependency.plugins.AbstractController.handleLifecycleCallbacks(AbstractController.java:1568)
+	at org.jboss.dependency.plugins.AbstractController.handleInstallLifecycleCallbacks(AbstractController.java:1533)
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:943)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:822)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:553)
+	at org.jboss.system.ServiceController.doChange(ServiceController.java:688)
+	at org.jboss.system.ServiceController.start(ServiceController.java:460)
+	at org.jboss.system.microcontainer.jmx.ServiceControllerStartStopLifecycleCallback.install(ServiceControllerStartStopLifecycleCallback.java:44)
+	at sun.reflect.GeneratedMethodAccessor278.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.jboss.reflect.plugins.introspection.ReflectionUtils.invoke(ReflectionUtils.java:59)
+	at org.jboss.reflect.plugins.introspection.ReflectMethodInfoImpl.invoke(ReflectMethodInfoImpl.java:150)
+	at org.jboss.joinpoint.plugins.BasicMethodJoinPoint.dispatch(BasicMethodJoinPoint.java:66)
+	at org.jboss.beans.info.plugins.AbstractBeanInfo.invoke(AbstractBeanInfo.java:300)
+	at org.jboss.kernel.plugins.dependency.AbstractKernelControllerContext.invoke(AbstractKernelControllerContext.java:286)
+	at org.jboss.dependency.plugins.AbstractLifecycleCallbackItem.install(AbstractLifecycleCallbackItem.java:87)
+	at org.jboss.dependency.plugins.AbstractController.handleLifecycleCallbacks(AbstractController.java:1568)
+	at org.jboss.dependency.plugins.AbstractController.handleInstallLifecycleCallbacks(AbstractController.java:1533)
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:943)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:774)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:540)
+	at org.jboss.deployers.vfs.deployer.kernel.BeanMetaDataDeployer.deploy(BeanMetaDataDeployer.java:121)
+	at org.jboss.deployers.vfs.deployer.kernel.BeanMetaDataDeployer.deploy(BeanMetaDataDeployer.java:51)
+	at org.jboss.deployers.spi.deployer.helpers.AbstractSimpleRealDeployer.internalDeploy(AbstractSimpleRealDeployer.java:62)
+	at org.jboss.deployers.spi.deployer.helpers.AbstractRealDeployer.deploy(AbstractRealDeployer.java:50)
+	at org.jboss.deployers.plugins.deployers.DeployerWrapper.deploy(DeployerWrapper.java:171)
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doDeploy(DeployersImpl.java:1439)
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doInstallParentFirst(DeployersImpl.java:1157)
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doInstallParentFirst(DeployersImpl.java:1178)
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.install(DeployersImpl.java:1098)
+	at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1631)
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:934)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:822)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:553)
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.process(DeployersImpl.java:781)
+	at org.jboss.deployers.plugins.main.MainDeployerImpl.process(MainDeployerImpl.java:702)
+	at org.jboss.system.server.profileservice.repository.MainDeployerAdapter.process(MainDeployerAdapter.java:117)
+	at org.jboss.system.server.profileservice.repository.ProfileDeployAction.install(ProfileDeployAction.java:70)
+	at org.jboss.system.server.profileservice.repository.AbstractProfileAction.install(AbstractProfileAction.java:53)
+	at org.jboss.system.server.profileservice.repository.AbstractProfileService.install(AbstractProfileService.java:361)
+	at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1631)
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:934)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:822)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:553)
+	at org.jboss.system.server.profileservice.repository.AbstractProfileService.activateProfile(AbstractProfileService.java:306)
+	at org.jboss.system.server.profileservice.ProfileServiceBootstrap.start(ProfileServiceBootstrap.java:271)
+	at org.jboss.bootstrap.AbstractServerImpl.start(AbstractServerImpl.java:461)
+	at org.jboss.Main.boot(Main.java:221)
+	at org.jboss.Main$1.run(Main.java:556)
+	at java.lang.Thread.run(Thread.java:662)
+Caused by: java.net.BindException: Address already in use: JVM_Bind
+	at java.net.PlainSocketImpl.socketBind(Native Method)
+	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:383)
+	at java.net.ServerSocket.bind(ServerSocket.java:328)
+	at java.net.ServerSocket.<init>(ServerSocket.java:194)
+	at org.jboss.net.sockets.DefaultSocketFactory.createServerSocket(DefaultSocketFactory.java:124)
+	at org.jboss.invocation.pooled.server.PooledInvoker.startService(PooledInvoker.java:224)
+	... 98 more
+2011-11-02 18:04:58,200 INFO  [org.apache.catalina.core.AprLifecycleListener] (main) The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.6.0_24\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\SlikSvn\bin\;C:\Program Files\TortoiseSVN\bin;C:\apache-ant-1.7.1\bin;C:\apache-maven-2.2.1\bin;C:\Program Files\MySQL\MySQL Server 5.5\bin;C:\Program Files\Java\jdk1.6.0_24\bin;C:\bat
+2011-11-02 18:04:58,283 INFO  [org.apache.coyote.http11.Http11Protocol] (main) Initializing Coyote HTTP/1.1 on http-127.0.0.1-8080
+2011-11-02 18:04:58,285 INFO  [org.apache.coyote.ajp.AjpProtocol] (main) Initializing Coyote AJP/1.3 on ajp-127.0.0.1-9009
+2011-11-02 18:04:58,344 INFO  [org.apache.catalina.core.StandardService] (main) Starting service jboss.web
+2011-11-02 18:04:58,349 INFO  [org.apache.catalina.core.StandardEngine] (main) Starting Servlet Engine: JBoss Web/2.1.3.GA
+2011-11-02 18:04:58,420 INFO  [org.apache.catalina.startup.Catalina] (main) Server startup in 135 ms
+2011-11-02 18:04:58,454 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/jbossws
+2011-11-02 18:04:59,101 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/invoker
+2011-11-02 18:04:59,147 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/web-console
+2011-11-02 18:04:59,473 ERROR [STDERR] (AOPListner) Exception in thread "AOPListner" 
+2011-11-02 18:04:59,476 ERROR [STDERR] (AOPListner) java.util.ConcurrentModificationException
+2011-11-02 18:04:59,476 ERROR [STDERR] (AOPListner) 	at java.util.WeakHashMap$HashIterator.nextEntry(WeakHashMap.java:762)
+2011-11-02 18:04:59,476 ERROR [STDERR] (AOPListner) 	at java.util.WeakHashMap$KeyIterator.next(WeakHashMap.java:795)
+2011-11-02 18:04:59,476 ERROR [STDERR] (AOPListner) 	at org.jboss.aop.AspectManager.getAdvisors(AspectManager.java:537)
+2011-11-02 18:04:59,476 ERROR [STDERR] (AOPListner) 	at org.jboss.console.plugins.AOPLister$RefreshPoller.run(AOPLister.java:891)
+2011-11-02 18:04:59,537 INFO  [org.jboss.resource.deployers.RARDeployment] (main) Required license terms exist, view vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/jboss-local-jdbc.rar/META-INF/ra.xml
+2011-11-02 18:04:59,549 INFO  [org.jboss.resource.deployers.RARDeployment] (main) Required license terms exist, view vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/jboss-xa-jdbc.rar/META-INF/ra.xml
+2011-11-02 18:04:59,575 INFO  [org.jboss.resource.deployers.RARDeployment] (main) Required license terms exist, view vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/jms-ra.rar/META-INF/ra.xml
+2011-11-02 18:04:59,588 INFO  [org.jboss.resource.deployers.RARDeployment] (main) Required license terms exist, view vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/mail-ra.rar/META-INF/ra.xml
+2011-11-02 18:04:59,609 INFO  [org.jboss.resource.deployers.RARDeployment] (main) Required license terms exist, view vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/quartz-ra.rar/META-INF/ra.xml
+2011-11-02 18:04:59,698 INFO  [org.quartz.simpl.SimpleThreadPool] (main) Job execution threads will use class loader of thread: main
+2011-11-02 18:04:59,722 INFO  [org.quartz.core.QuartzScheduler] (main) Quartz Scheduler v.1.5.2 created.
+2011-11-02 18:04:59,724 INFO  [org.quartz.simpl.RAMJobStore] (main) RAMJobStore initialized.
+2011-11-02 18:04:59,724 INFO  [org.quartz.impl.StdSchedulerFactory] (main) Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2011-11-02 18:04:59,724 INFO  [org.quartz.impl.StdSchedulerFactory] (main) Quartz scheduler version: 1.5.2
+2011-11-02 18:04:59,725 INFO  [org.quartz.core.QuartzScheduler] (main) Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2011-11-02 18:05:00,245 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=DefaultDS' to JNDI name 'java:DefaultDS'
+2011-11-02 18:05:00,875 INFO  [org.jboss.jms.server.ServerPeer] (main) JBoss Messaging 1.4.3.GA server [0] started
+2011-11-02 18:05:01,009 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/ExpiryQueue] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:05:01,032 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactoryJNDIMapper] (main) supportsFailover attribute is true on connection factory: jboss.messaging.connectionfactory:service=ClusteredConnectionFactory but post office is non clustered. So connection factory will *not* support failover
+2011-11-02 18:05:01,033 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactoryJNDIMapper] (main) supportsLoadBalancing attribute is true on connection factory: jboss.messaging.connectionfactory:service=ClusteredConnectionFactory but post office is non clustered. So connection factory will *not* support load balancing
+2011-11-02 18:05:01,164 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) Connector bisocket://127.0.0.1:4457 has leasing enabled, lease period 10000 milliseconds
+2011-11-02 18:05:01,164 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) org.jboss.jms.server.connectionfactory.ConnectionFactory@48c5241f started
+2011-11-02 18:05:01,166 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) Connector bisocket://127.0.0.1:4457 has leasing enabled, lease period 10000 milliseconds
+2011-11-02 18:05:01,166 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) org.jboss.jms.server.connectionfactory.ConnectionFactory@12f04a60 started
+2011-11-02 18:05:01,176 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) Connector bisocket://127.0.0.1:4457 has leasing enabled, lease period 10000 milliseconds
+2011-11-02 18:05:01,176 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) org.jboss.jms.server.connectionfactory.ConnectionFactory@73cd8020 started
+2011-11-02 18:05:01,195 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/DLQ] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:05:01,294 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=ConnectionFactoryBinding,name=JmsXA' to JNDI name 'java:JmsXA'
+2011-11-02 18:05:01,347 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=mysql-accmgr-ds' to JNDI name 'java:mysql-accmgr-ds'
+2011-11-02 18:05:01,408 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=mysql-firelog-ds' to JNDI name 'java:mysql-firelog-ds'
+2011-11-02 18:05:01,453 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=mysql-jms-ds' to JNDI name 'java:mysql-jms-ds'
+2011-11-02 18:05:01,498 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=mysql-pss2-ds' to JNDI name 'java:mysql-pss2-ds'
+2011-11-02 18:05:02,740 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/admin-console
+2011-11-02 18:05:02,839 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/admin-console'
+2011-11-02 18:05:05,135 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/
+2011-11-02 18:05:05,215 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/jmx-console
+2011-11-02 18:05:05,378 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) installing bean: ejb/accmgr.ejb.jar#UserBean,uid1238185269
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   with dependencies:
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   and supplies:
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:local/UserBean@331871203
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:UserBean
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) installing bean: ejb/accmgr.ejb.jar#DomainBean,uid2088474110
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   with dependencies:
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   and supplies:
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:local/DomainBean@744277562
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:DomainBean
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) installing bean: ejb/accmgr.ejb.jar#AccMgrAccessBean,uid364156555
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   with dependencies:
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   and supplies:
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:AccMgrAccessBean
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) installing bean: ejb/accmgr.ejb.jar#RoleBean,uid50825935
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   with dependencies:
+2011-11-02 18:05:05,379 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   and supplies:
+2011-11-02 18:05:05,380 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:RoleBean
+2011-11-02 18:05:05,380 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:local/RoleBean@2128224406
+2011-11-02 18:05:05,380 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) installing bean: ejb/accmgr.ejb.jar#TagBean,uid1680481686
+2011-11-02 18:05:05,380 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   with dependencies:
+2011-11-02 18:05:05,380 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   and supplies:
+2011-11-02 18:05:05,380 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:local/TagBean@579967210
+2011-11-02 18:05:05,380 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:TagBean
+2011-11-02 18:05:05,527 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=AccMgrWS,endpoint=AccMgrWS
+2011-11-02 18:05:06,021 INFO  [org.jboss.ejb.EjbModule] (main) Deploying UserBean
+2011-11-02 18:05:06,096 WARN  [org.jboss.ejb.EjbModule] (main) EJB configured to bypass security. Please verify if this is intended. Bean=UserBean Deployment=vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/accmgr-4.7.ear/accmgr.ejb.jar/
+2011-11-02 18:05:06,213 INFO  [org.jboss.ejb.EjbModule] (main) Deploying DomainBean
+2011-11-02 18:05:06,215 WARN  [org.jboss.ejb.EjbModule] (main) EJB configured to bypass security. Please verify if this is intended. Bean=DomainBean Deployment=vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/accmgr-4.7.ear/accmgr.ejb.jar/
+2011-11-02 18:05:06,221 INFO  [org.jboss.ejb.EjbModule] (main) Deploying AccMgrAccessBean
+2011-11-02 18:05:06,226 WARN  [org.jboss.ejb.EjbModule] (main) EJB configured to bypass security. Please verify if this is intended. Bean=AccMgrAccessBean Deployment=vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/accmgr-4.7.ear/accmgr.ejb.jar/
+2011-11-02 18:05:06,236 INFO  [org.jboss.ejb.EjbModule] (main) Deploying RoleBean
+2011-11-02 18:05:06,238 WARN  [org.jboss.ejb.EjbModule] (main) EJB configured to bypass security. Please verify if this is intended. Bean=RoleBean Deployment=vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/accmgr-4.7.ear/accmgr.ejb.jar/
+2011-11-02 18:05:06,244 INFO  [org.jboss.ejb.EjbModule] (main) Deploying TagBean
+2011-11-02 18:05:06,246 WARN  [org.jboss.ejb.EjbModule] (main) EJB configured to bypass security. Please verify if this is intended. Bean=TagBean Deployment=vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/accmgr-4.7.ear/accmgr.ejb.jar/
+2011-11-02 18:05:07,848 INFO  [org.jboss.ejb.plugins.local.BaseLocalProxyFactory] (main) Bound EJB LocalHome 'UserBean' to jndi 'local/UserBean@331871203'
+2011-11-02 18:05:07,865 INFO  [org.jboss.ejb.plugins.local.BaseLocalProxyFactory] (main) Bound EJB LocalHome 'DomainBean' to jndi 'local/DomainBean@744277562'
+2011-11-02 18:05:07,893 INFO  [org.jboss.proxy.ejb.ProxyFactory] (main) Bound EJB Home 'AccMgrAccessBean' to jndi 'AccMgrAccessBean'
+2011-11-02 18:05:07,912 INFO  [org.jboss.ejb.plugins.local.BaseLocalProxyFactory] (main) Bound EJB LocalHome 'RoleBean' to jndi 'local/RoleBean@2128224406'
+2011-11-02 18:05:07,930 INFO  [org.jboss.ejb.plugins.local.BaseLocalProxyFactory] (main) Bound EJB LocalHome 'TagBean' to jndi 'local/TagBean@579967210'
+2011-11-02 18:05:07,934 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/accmgr.website
+2011-11-02 18:05:08,120 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/AccMgrWS
+2011-11-02 18:05:09,457 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/accmgr-4.7.ear/accmgr.ws.war/AccMgrWSService7811313763891495998.wsdl
+2011-11-02 18:05:09,727 INFO  [org.jboss.jpa.deployment.PersistenceUnitDeployment] (main) Starting persistence unit persistence.unit:unitName=firelog-ear-4.0.1.0.ear/firelog-ejb-4.0.1.0.jar#firelog.ejb
+2011-11-02 18:05:09,984 INFO  [org.hibernate.cfg.annotations.Version] (main) Hibernate Annotations 3.4.0.GA
+2011-11-02 18:05:10,016 INFO  [org.hibernate.cfg.Environment] (main) Hibernate 3.3.1.GA
+2011-11-02 18:05:10,026 INFO  [org.hibernate.cfg.Environment] (main) hibernate.properties not found
+2011-11-02 18:05:10,034 INFO  [org.hibernate.cfg.Environment] (main) Bytecode provider name : javassist
+2011-11-02 18:05:10,042 INFO  [org.hibernate.cfg.Environment] (main) using JDK 1.4 java.sql.Timestamp handling
+2011-11-02 18:05:10,171 INFO  [org.hibernate.annotations.common.Version] (main) Hibernate Commons Annotations 3.1.0.GA
+2011-11-02 18:05:10,175 INFO  [org.hibernate.ejb.Version] (main) Hibernate EntityManager 3.4.0.GA
+2011-11-02 18:05:10,208 INFO  [org.hibernate.ejb.Ejb3Configuration] (main) Processing PersistenceUnitInfo [
+	name: firelog.ejb
+	...]
+2011-11-02 18:05:10,232 WARN  [org.hibernate.ejb.Ejb3Configuration] (main) Persistence provider caller does not implement the EJB3 spec correctly. PersistenceUnitInfo.getNewTempClassLoader() is null.
+2011-11-02 18:05:10,572 INFO  [org.hibernate.validator.Version] (main) Hibernate Validator 3.1.0.GA
+2011-11-02 18:05:10,629 INFO  [org.hibernate.cfg.search.HibernateSearchEventListenerRegister] (main) Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2011-11-02 18:05:10,723 INFO  [org.hibernate.connection.ConnectionProviderFactory] (main) Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2011-11-02 18:05:10,729 INFO  [org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider] (main) Using provided datasource
+2011-11-02 18:05:10,852 INFO  [org.hibernate.dialect.Dialect] (main) Using dialect: org.hibernate.dialect.MySQLDialect
+2011-11-02 18:05:10,862 INFO  [org.hibernate.transaction.TransactionFactoryFactory] (main) Transaction strategy: org.hibernate.ejb.transaction.JoinableCMTTransactionFactory
+2011-11-02 18:05:10,867 INFO  [org.hibernate.transaction.TransactionManagerLookupFactory] (main) instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+2011-11-02 18:05:10,871 INFO  [org.hibernate.transaction.TransactionManagerLookupFactory] (main) instantiated TransactionManagerLookup
+2011-11-02 18:05:10,879 INFO  [org.hibernate.hql.ast.ASTQueryTranslatorFactory] (main) Using ASTQueryTranslatorFactory
+2011-11-02 18:05:10,990 INFO  [org.hibernate.impl.SessionFactoryImpl] (main) building session factory
+2011-11-02 18:05:11,288 INFO  [org.hibernate.impl.SessionFactoryObjectFactory] (main) Factory name: persistence.unit:unitName=firelog-ear-4.0.1.0.ear/firelog-ejb-4.0.1.0.jar#firelog.ejb
+2011-11-02 18:05:11,290 INFO  [org.hibernate.util.NamingHelper] (main) JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+2011-11-02 18:05:11,317 INFO  [org.hibernate.util.NamingHelper] (main) Creating subcontext: persistence.unit:unitName=firelog-ear-4.0.1.0.ear
+2011-11-02 18:05:11,330 INFO  [org.hibernate.impl.SessionFactoryObjectFactory] (main) Bound factory to JNDI name: persistence.unit:unitName=firelog-ear-4.0.1.0.ear/firelog-ejb-4.0.1.0.jar#firelog.ejb
+2011-11-02 18:05:11,330 WARN  [org.hibernate.impl.SessionFactoryObjectFactory] (main) InitialContext did not implement EventContext
+2011-11-02 18:05:11,334 INFO  [org.hibernate.util.NamingHelper] (main) JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+2011-11-02 18:05:11,794 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/firelog] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:05:11,851 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/firelog-loader
+2011-11-02 18:05:11,897 INFO  [com.kanaeki.firelog.listener.FirelogListener] (main) --------------------------------------------------
+2011-11-02 18:05:11,897 INFO  [com.kanaeki.firelog.listener.FirelogListener] (main)  Starting Firelog 
+2011-11-02 18:05:11,897 INFO  [com.kanaeki.firelog.listener.FirelogListener] (main) --------------------------------------------------
+2011-11-02 18:05:13,231 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/pss2.health
+2011-11-02 18:05:20,045 INFO  [org.jboss.ejb3.clientmodule.ClientENCInjectionContainer] (main) STARTED CLIENT ENC CONTAINER: itext-2.1.7
+2011-11-02 18:05:20,381 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=opt.report/ws,endpoint=OperatorReportUsageDataServicerBean
+2011-11-02 18:05:20,649 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/operator-report-7.1-SNAPSHOT.ear/report-ejb-7.1-SNAPSHOT.jar/OperatorReportUsageDataServicer1913425433583626443.wsdl
+2011-11-02 18:05:21,390 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/opt.report/ws
+2011-11-02 18:05:21,431 WARNING [javax.enterprise.resource.webcontainer.jsf.config] (main) Unable to process deployment descriptor for context '/opt.report/ws'
+2011-11-02 18:05:21,433 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/opt.report/ws'
+2011-11-02 18:05:22,534 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/opt.report
+2011-11-02 18:05:22,736 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/opt.report'
+2011-11-02 18:05:23,095 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/report
+2011-11-02 18:05:23,185 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/report'
+2011-11-02 18:05:31,257 WARN  [org.jboss.injection.EJBRemoteHandler] (main) EJBTHREE-1289: Using legacy EjbEncInjector, because mappedName for enc "env/com.akuacom.pss2.email.EmailManagerBean/eao", field "eao" is null (container.environmentRefGroup.annotatedEjbReferences = null)
+2011-11-02 18:05:31,259 WARN  [org.jboss.injection.EJBRemoteHandler] (main) EJBTHREE-1289: Using legacy EjbEncInjector, because mappedName for enc "env/com.akuacom.pss2.email.EmailManagerBean/notifier", field "notifier" is null (container.environmentRefGroup.annotatedEjbReferences = null)
+2011-11-02 18:05:39,762 INFO  [org.jboss.jpa.deployment.PersistenceUnitDeployment] (main) Starting persistence unit persistence.unit:unitName=pss2.ear/drms-core-ejb-7.1-SNAPSHOT.jar#core
+2011-11-02 18:05:39,769 INFO  [org.hibernate.ejb.Ejb3Configuration] (main) Processing PersistenceUnitInfo [
+	name: core
+	...]
+2011-11-02 18:05:39,963 WARN  [org.hibernate.ejb.Ejb3Configuration] (main) Persistence provider caller does not implement the EJB3 spec correctly. PersistenceUnitInfo.getNewTempClassLoader() is null.
+2011-11-02 18:05:40,549 INFO  [org.hibernate.cfg.search.HibernateSearchEventListenerRegister] (main) Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2011-11-02 18:05:40,671 INFO  [org.hibernate.connection.ConnectionProviderFactory] (main) Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2011-11-02 18:05:40,675 INFO  [org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider] (main) Using provided datasource
+2011-11-02 18:05:40,702 INFO  [org.hibernate.dialect.Dialect] (main) Using dialect: org.hibernate.dialect.MySQLDialect
+2011-11-02 18:05:40,707 INFO  [org.hibernate.transaction.TransactionFactoryFactory] (main) Transaction strategy: org.hibernate.ejb.transaction.JoinableCMTTransactionFactory
+2011-11-02 18:05:40,712 INFO  [org.hibernate.transaction.TransactionManagerLookupFactory] (main) instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+2011-11-02 18:05:40,716 INFO  [org.hibernate.transaction.TransactionManagerLookupFactory] (main) instantiated TransactionManagerLookup
+2011-11-02 18:05:40,719 INFO  [org.hibernate.hql.ast.ASTQueryTranslatorFactory] (main) Using ASTQueryTranslatorFactory
+2011-11-02 18:05:40,850 INFO  [org.hibernate.impl.SessionFactoryImpl] (main) building session factory
+2011-11-02 18:05:42,013 INFO  [org.hibernate.impl.SessionFactoryObjectFactory] (main) Factory name: persistence.unit:unitName=pss2.ear/drms-core-ejb-7.1-SNAPSHOT.jar#core
+2011-11-02 18:05:42,016 INFO  [org.hibernate.util.NamingHelper] (main) JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+2011-11-02 18:05:42,066 INFO  [org.hibernate.util.NamingHelper] (main) Creating subcontext: persistence.unit:unitName=pss2.ear
+2011-11-02 18:05:42,083 INFO  [org.hibernate.impl.SessionFactoryObjectFactory] (main) Bound factory to JNDI name: persistence.unit:unitName=pss2.ear/drms-core-ejb-7.1-SNAPSHOT.jar#core
+2011-11-02 18:05:42,085 WARN  [org.hibernate.impl.SessionFactoryObjectFactory] (main) InitialContext did not implement EventContext
+2011-11-02 18:05:42,098 INFO  [org.hibernate.tool.hbm2ddl.SchemaValidator] (main) Running schema validator
+2011-11-02 18:05:42,101 INFO  [org.hibernate.tool.hbm2ddl.SchemaValidator] (main) fetching database metadata
+2011-11-02 18:05:42,244 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.task
+2011-11-02 18:05:42,247 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [ancestry, startmillis, lasttrigger, type, stopmillis, period, version, creator, creationtime, modifier, name, parent_uuid, value, modifiedtime, uuid]
+2011-11-02 18:05:42,278 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.baseline_config
+2011-11-02 18:05:42,281 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [maxmarate, baseline_model_uuid, minmarate, excludeddaysofweekfromcalc, eventendtime, excludeabnormaldayimplclass, excludeholiday, creator, version, creationtime, modifier, maendtime, owner_uuid, excludeholidayfromcalc, description, name, excludeddaysofweek, eventstarttime, modifiedtime, mastarttime, excludeeventday, uuid]
+2011-11-02 18:05:42,301 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.baseline_model
+2011-11-02 18:05:42,303 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, calcimplclass, implclass, description, name, modifiedtime, daypickerimplclass, uuid, creator, version]
+2011-11-02 18:05:42,321 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.bid_block
+2011-11-02 18:05:42,323 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, endtimeh, starttimem, endtimem, starttimeh, bid_config_uuid, modifiedtime, uuid, creator, version]
+2011-11-02 18:05:42,346 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.bid_config
+2011-11-02 18:05:42,354 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [drasbidding, respondbytimem, defaultbidkw, program_uuid, minbidkw, version, minconsectutiveblocks, creator, modifier, creationtime, modifiedtime, accepttimeoutperiodm, uuid, respondbytimeh, drasrespondbyperiodm]
+2011-11-02 18:05:42,390 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.bid_level_mapping
+2011-11-02 18:05:42,393 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, timeblock, participant_uuid, normal, moderate, programname, high, uuid]
+2011-11-02 18:05:42,415 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.client_conversation_state
+2011-11-02 18:05:42,418 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [operationmodevalue, conversationstateid, creationtime, commtime, eventidentifier, drasclientid, eventmodnumber, eventstatus, programname, uuid, push]
+2011-11-02 18:05:42,495 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.client_status
+2011-11-02 18:05:42,497 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, endtime, duration, starttime, status, uuid, client_uuid, clientname]
+2011-11-02 18:05:42,539 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.constraint_invalid_date
+2011-11-02 18:05:42,542 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, invaliddate, program_participant_constraint_uuid, modifiedtime, uuid, creator, version]
+2011-11-02 18:05:42,576 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.contact
+2011-11-02 18:05:42,579 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [onseasonnotihours, external, commnotification, defaultmsgthreshold, state, lastname, firstname, ownerid, type, version, creator, modifier, creationtime, address, offseasonnotihours, priority, description, msgthreshold, modifiedtime, uuid, ownertype, supporttype, eventnotification]
+2011-11-02 18:05:42,611 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.contacts_offline_error
+2011-11-02 18:05:42,614 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, contactsuuid, participant_uuid, modifiedtime, programname, uuid, offlineerror, creator, version]
+2011-11-02 18:05:42,634 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.core_property
+2011-11-02 18:05:42,637 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, stringvalue, booleanvalue, doublevalue, textvalue, modifiedtime, propertyname, uuid, type, version, creator]
+2011-11-02 18:05:42,674 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.custom_rule
+2011-11-02 18:05:42,676 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [notifyaction, signalaction, operator, threshold, program_participant_uuid, mode, version, creator, modifier, creationtime, source, sortorder, start, value, modifiedtime, uuid, variable, end]
+2011-11-02 18:05:42,717 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.dataentry
+2011-11-02 18:05:42,720 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, valuetype, stringvalue, time, dataset_uuid, value, actual, uuid, datasource_uuid]
+2011-11-02 18:05:42,739 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.dataentry_temp
+2011-11-02 18:05:42,742 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, valuetype, stringvalue, time, dataset_uuid, value, actual, uuid, datasource_uuid]
+2011-11-02 18:05:42,765 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.dataset
+2011-11-02 18:05:42,767 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [interpolated, calcimplclass, calculationimplclass, enumtitles, graphtype, valueprecision, period, version, creator, modifier, creationtime, unit, sync, description, name, modifiedtime, datatype, uuid, colorhint]
+2011-11-02 18:05:42,819 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.datasource
+2011-11-02 18:05:42,822 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, enabled, name, uuid, ownertype, ownerid]
+2011-11-02 18:05:42,837 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.datasource_usage
+2011-11-02 18:05:42,840 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, baseline_state, uuid, date, lastactual, maxgap, datasource_uuid]
+2011-11-02 18:05:42,870 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.dbp_event_creation
+2011-11-02 18:05:42,873 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, status, description, filename, uuid, date, autocreation]
+2011-11-02 18:05:42,897 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.dbpevent
+2011-11-02 18:05:42,900 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [currentbidstate, drasrespondby, respondby, uuid]
+2011-11-02 18:05:42,913 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.drwebsite_property
+2011-11-02 18:05:42,917 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, stringvalue, textvalue, modifiedtime, propertyname, uuid, creator, version]
+2011-11-02 18:05:42,952 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event
+2011-11-02 18:05:42,954 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, manual, issuedtime, endtime, starttime, neartime, status, programname, uuid, receivedtime, eventname]
+2011-11-02 18:05:42,974 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_bid_block
+2011-11-02 18:05:42,977 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [endtime, creationtime, starttime, uuid, eventname]
+2011-11-02 18:05:43,000 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_participant
+2011-11-02 18:05:43,002 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [ancestry, participant_uuid, bidstate, version, creator, modifier, creationtime, event_uuid, eventmodnumber, name, parent_uuid, value, modifiedtime, uuid]
+2011-11-02 18:05:43,038 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_participant_bid_entry
+2011-11-02 18:05:43,040 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [event_participant_uuid, endtime, creationtime, pricelevel, starttime, reductionkw, active, uuid]
+2011-11-02 18:05:43,061 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_participant_rule
+2011-11-02 18:05:43,064 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [event_participant_uuid, notifyaction, signalaction, operator, threshold, mode, version, creator, modifier, creationtime, source, sortorder, start, value, modifiedtime, uuid, variable, end]
+2011-11-02 18:05:43,098 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_participant_signal
+2011-11-02 18:05:43,101 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [event_participant_uuid, creationtime, modifier, modifiedtime, signal_def_uuid, uuid, creator, version]
+2011-11-02 18:05:43,116 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_participant_signal_entry
+2011-11-02 18:05:43,119 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, stringvalue, time, expired, modifiedtime, eventparticipantsignaluuid, uuid, ruleid, numbervalue, creator, version]
+2011-11-02 18:05:43,141 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_signal
+2011-11-02 18:05:43,144 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, event_uuid, modifiedtime, signal_def_uuid, uuid, creator, version]
+2011-11-02 18:05:43,176 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_signal_entry
+2011-11-02 18:05:43,178 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, eventsignaluuid, stringvalue, time, expired, modifiedtime, uuid, numbervalue, creator, version]
+2011-11-02 18:05:43,189 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_template
+2011-11-02 18:05:43,191 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, name, modifiedtime, programname, uuid, creator, version]
+2011-11-02 18:05:43,226 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_template_signalentry
+2011-11-02 18:05:43,228 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, relativestarttime, name, owner_id, value, modifiedtime, signaltype, uuid, creator, version]
+2011-11-02 18:05:43,242 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.history_baseline_dataentry
+2011-11-02 18:05:43,246 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, valuetype, stringvalue, time, dataset_uuid, value, actual, uuid, datasource_uuid]
+2011-11-02 18:05:43,283 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.history_event
+2011-11-02 18:05:43,285 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [endtime, starttime, scheduledendtime, cancelled, registeredshed, program_uuid, issuetime, numprogramparticipants, numusageenabled, creationtime, programname, uuid, scheduledstarttime, registeredusageshed, eventname]
+2011-11-02 18:05:43,304 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.history_event_participant
+2011-11-02 18:05:43,306 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [endtime, starttime, averageshed, client, participantname, percentage, participant_uuid, totalshed, parent, registeredshed, creationtime, offlineperevent, participation, uuid, history_event_uuid, eventname]
+2011-11-02 18:05:43,329 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.history_event_participant_signal
+2011-11-02 18:05:43,331 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, participantname, participant_uuid, signalendtime, signalvalue, signaltime, signalname, uuid, eventname, history_event_participant_uuid]
+2011-11-02 18:05:43,349 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.message
+2011-11-02 18:05:43,351 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [to, status, subject, from, type, contenttype, contactid, content, creationtime, username, senttime, priority, programname, uuid, eventname]
+2011-11-02 18:05:43,393 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.message_filter_setting
+2011-11-02 18:05:43,396 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, cleanmsgminute, cleanmsghour, duration, msgthreshold, frequency, uuid, msgexpiretime, filterstatus]
+2011-11-02 18:05:43,408 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.noaa_weather
+2011-11-02 18:05:43,410 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [date, version, creator, creationtime, modifier, forecasthigh0, forecasthigh3, forecasthigh4, forecasthigh1, forecasthigh2, modifiedtime, forecasthigh5, uuid, high, reportingstation, isfinal]
+2011-11-02 18:05:43,438 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.participant
+2011-11-02 18:05:43,441 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [servicestreetaddress, clientcanfailconfirmation, optout, client, manualcontrolexpires, dataenabler, abank, manualcontrol, metername, type, feedback, testparticipant, longitude, commtime, notificationlevel, status, parent, hostaddress, directaccessparticipant, offlinewarning, operationmode, modifier, startdate, modifiedtime, installer, latitude, uuid, comment, enddate, demandlimiting, serviceplan, aggregator, meterid, eventstatus, lastname, servicecityname, premisenumber, push, noteslastupdate, version, creator, rateeffectivedate, lastprice, pnode, activated, shedperhourkw, gridlocation, uisactive, customername, zip, participantname, testaccount, usertype, firstname, clientallowedtooptout, ip, creationtime, slap, address, account, enrollmentdate, notesauthor, notes]
+2011-11-02 18:05:43,477 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.participant_contact
+2011-11-02 18:05:43,480 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [demandnormalnotificationlast, demandmoderatenotificationinterval, participant_uuid, external, commnotification, demandwarningnotificationlast, demandmoderatenotificationlast, type, description, msgthreshold, offlineerror, demandwarningnotificationinterval, eventnotification, onseasonnotihours, demandmoderatenotifications, demandlimitingnotifications, ratelimitexceedednotificationlast, defaultmsgthreshold, demandhighnotifications, creationtime, ratelimitexceedednotifications, offseasonnotihours, address, demandnormalnotifications, demandhighnotificationlast, ratelimitexceedednotificationinterval, demandhighnotificationinterval, demandnormalnotificationinterval, demandwarningnotifications, uuid]
+2011-11-02 18:05:43,519 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.participant_manualsignal
+2011-11-02 18:05:43,523 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, participant_uuid, name, value, uuid]
+2011-11-02 18:05:43,540 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.peakchoice_message
+2011-11-02 18:05:43,543 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, content, to, username, subject, programname, from, uuid, type, eventname]
+2011-11-02 18:05:43,566 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program
+2011-11-02 18:05:43,569 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [validatorclass, longprogramname, programtype, mustissuebdbe, minissuetostartm, state, programclass, maxstarttimem, maxdurationm, version, minstarttimem, creator, lasterroropcontact, testprogram, minstarttimeh, description, priority, pendingtimedbeh, name, pendingtimedbem, uischeduleeventstring, autoaccept, uiconfigureprogramstring, utilityprogramname, mindurationm, classname, begineffectivetime, validatorconfigfile, creationtime, modifier, maxendtimem, notificationparam1, endeffectivetime, maxissuetimeh, autorepeattimeofday, minendtimeh, manualcreatable, modifiedtime, maxstarttimeh, uuid, maxissuetimem, uiconfigureeventstring, maxendtimeh, minendtimem]
+2011-11-02 18:05:43,595 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_matrix
+2011-11-02 18:05:43,597 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [modifier, creationtime, program2uuid, modifiedtime, coexist, uuid, program1uuid, creator, version]
+2011-11-02 18:05:43,632 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_participant
+2011-11-02 18:05:43,634 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [ancestry, optstatus, clientconfig, participant_uuid, state, program_uuid, version, creator, modifier, creationtime, name, parent_uuid, value, modifiedtime, programname, uuid, uisactive]
+2011-11-02 18:05:43,662 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_participant_bid_entry
+2011-11-02 18:05:43,665 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, blockstart, pricelevel, reductionkw, modifiedtime, active, blockend, uuid, program_participant_uuid, creator, version]
+2011-11-02 18:05:43,712 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_participant_constraint
+2011-11-02 18:05:43,715 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [notifyaction, minduration, consecutiveaction, minactive, minnotify, maxactive, maxnotify, activeaction, program_participant_uuid, creator, version, creationtime, modifier, maxconsecutived, durationaction, modifiedtime, maxduration, uuid]
+2011-11-02 18:05:43,736 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_participant_rule
+2011-11-02 18:05:43,739 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [notifyaction, signalaction, operator, threshold, program_participant_uuid, mode, version, creator, modifier, creationtime, source, sortorder, start, value, modifiedtime, uuid, variable, end]
+2011-11-02 18:05:43,780 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_rtp_config
+2011-11-02 18:05:43,782 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [endtime, starttime, starttemperature, program_uuid, version, creator, creationtime, modifier, unit, rate, name, modifiedtime, endtemperature, uuid, seasonname]
+2011-11-02 18:05:43,802 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_rule
+2011-11-02 18:05:43,805 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [notifyaction, signalaction, program_uuid, operator, threshold, mode, version, creator, modifier, creationtime, source, sortorder, start, value, modifiedtime, uuid, variable, end]
+2011-11-02 18:05:43,817 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_signal
+2011-11-02 18:05:43,820 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, modifiedtime, signal_def_uuid, program_uuid, uuid, creator, version]
+2011-11-02 18:05:43,840 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_signal_entry
+2011-11-02 18:05:43,842 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, stringvalue, time, expired, modifiedtime, uuid, numbervalue, creator, version, programsignaluuid]
+2011-11-02 18:05:43,862 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.rtp_ftp_configuration
+2011-11-02 18:05:43,864 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [port, maxtemperature, scaninterval, lastprocesstime, mintemperature, password, url, scanendtime, scanstarttime, creationtime, username, sendnotification, path, filename, uuid, required]
+2011-11-02 18:05:43,885 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.rtp_remote_price
+2011-11-02 18:05:43,888 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, price, modifiedtime, programname, uuid, creator, version, eventname, intervaltime]
+2011-11-02 18:05:43,922 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.sce_ftp_config
+2011-11-02 18:05:43,924 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [port, backuppath, host, configname, scaninterval, available, password, scanendtime, upload, fixedfilename, scanstarttime, creationtime, username, filenametemplate, formattedfilename, timermanagerclass, uuid, required]
+2011-11-02 18:05:43,941 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.scertp_event
+2011-11-02 18:05:43,944 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [amended, reportingweatherstation, hightemperature, uuid, temp_range]
+2011-11-02 18:05:43,963 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.season_config
+2011-11-02 18:05:43,965 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, startdate, name, modifiedtime, program_uuid, uuid, enddate, creator, version]
+2011-11-02 18:05:43,981 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.signal_def
+2011-11-02 18:05:43,983 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, inputsignal, modifiedtime, signalname, levelsignal, uuid, type, creator, version]
+2011-11-02 18:05:44,000 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.signal_level_def
+2011-11-02 18:05:44,002 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, stringvalue, modifiedtime, signal_def_uuid, uuid, defaultvalue, creator, version]
+2011-11-02 18:05:44,017 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.sub_account
+2011-11-02 18:05:44,020 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [participant_uuid, premisenumber, version, creator, creationtime, modifier, startdate, modifiedtime, uuid, comment, enddate, enrollmentdate, subaccountid]
+2011-11-02 18:05:44,024 INFO  [org.hibernate.util.NamingHelper] (main) JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+2011-11-02 18:06:38,141 INFO  [org.jboss.ejb3.clientmodule.ClientENCInjectionContainer] (main) STARTED CLIENT ENC CONTAINER: itext-1.3
+2011-11-02 18:06:38,388 INFO  [org.jboss.ejb3.clientmodule.ClientENCInjectionContainer] (main) STARTED CLIENT ENC CONTAINER: obix-1.1.0
+2011-11-02 18:06:38,532 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=pss2-drms-core-ejb-7.1-SNAPSHOT,endpoint=UsageDataServicerBean
+2011-11-02 18:06:38,534 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=pss2-drms-core-ejb-7.1-SNAPSHOT,endpoint=QodServiceBean
+2011-11-02 18:06:38,537 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=pss2-drms-core-ejb-7.1-SNAPSHOT,endpoint=IRRUsageDataServicerBean
+2011-11-02 18:06:39,026 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/pss2.ear/drms-core-ejb-7.1-SNAPSHOT.jar/UsageDataServicer7254588472078463251.wsdl
+2011-11-02 18:06:39,031 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/pss2.ear/drms-core-ejb-7.1-SNAPSHOT.jar/QodServiceBeanService480293020180047000.wsdl
+2011-11-02 18:06:39,039 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/pss2.ear/drms-core-ejb-7.1-SNAPSHOT.jar/IRRUsageDataServicer7556664673281629894.wsdl
+2011-11-02 18:06:39,117 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=AkuaUtilityOperatorWS,endpoint=AkuaUtilityOperatorWS
+2011-11-02 18:06:39,127 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=DRASClientWS,endpoint=bacnet
+2011-11-02 18:06:39,174 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=PSS2WS,endpoint=PSS2WS
+2011-11-02 18:06:39,221 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=ParticipantOperatorWS,endpoint=ParticipantOperatorWS
+2011-11-02 18:06:39,234 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=SOAPClientWS,endpoint=soap
+2011-11-02 18:06:39,237 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=SOAPClientWS,endpoint=soap2
+2011-11-02 18:06:39,260 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=UtilityOperatorWS,endpoint=UtilityOperatorWS
+2011-11-02 18:06:46,144 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/pss2email] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:06:46,241 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/pss2envoy] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:06:46,413 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/pss2peakchoice] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:06:49,736 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/pss2push] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:06:49,795 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/participantIntervalMeterDataUpdate] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:06:49,830 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/pss2-drms-core-ejb-7.1-SNAPSHOT
+2011-11-02 18:06:49,870 WARNING [javax.enterprise.resource.webcontainer.jsf.config] (main) Unable to process deployment descriptor for context '/pss2-drms-core-ejb-7.1-SNAPSHOT'
+2011-11-02 18:06:49,872 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/pss2-drms-core-ejb-7.1-SNAPSHOT'
+2011-11-02 18:06:50,918 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/pss2.sdgecpp
+2011-11-02 18:06:50,972 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/AkuaUtilityOperatorWS
+2011-11-02 18:06:51,024 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/apxservice
+2011-11-02 18:06:51,121 WARN  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) Failed to setup clustering, clustering disabled. NoClassDefFoundError: org/jboss/cache/pojo/jmx/PojoCacheJmxWrapperMBean
+2011-11-02 18:06:51,127 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/DRASClientWS
+2011-11-02 18:06:51,170 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/dr.website
+2011-11-02 18:06:51,240 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/dr.website'
+2011-11-02 18:06:51,656 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/facdash
+2011-11-02 18:06:51,738 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/facdash'
+2011-11-02 18:06:51,964 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/pss2.program.autodbp
+2011-11-02 18:06:52,008 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/PSS2WS
+2011-11-02 18:06:52,053 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/obixserver
+2011-11-02 18:06:52,118 INFO  [com.akuacom.utils.lang.FieldUtil] (main) classLinealField  {}
+2011-11-02 18:06:52,143 INFO  [com.akuacom.utils.config.RuntimeSwitches] (main) 
+
+
+OUTPUT_PROFILING_INFO: false
+OUTPUT_PROFILE_AFTER_TEST: false
+TRACE_EVERYTHING: false
+TRACE_ANNOS: true
+CALLER_ANNOS: false
+EXTRA_UI: false
+CSV: false
+DISCOVERABLE_DATASOURCES: false
+ENABLE_QODS: false
+AGGRESSIVE_PRUNING: false
+
+
+
+2011-11-02 18:06:52,145 INFO  [com.akuacom.pss2.obix.servlet.DataServiceServlet] (main) Proxy to jboss.j2ee:ear=pss2.ear,jar=drms-core-ejb-7.1-SNAPSHOT.jar,name=ParticipantManagerBean,service=EJB3 implementing [interface com.akuacom.pss2.participant.ParticipantManager$L] has ifs
+com.akuacom.pss2.participant.ParticipantManager$L
+
+2011-11-02 18:06:52,157 INFO  [com.akuacom.pss2.obix.servlet.DataServiceServlet] (main) Proxy to jboss.j2ee:ear=pss2.ear,jar=drms-core-ejb-7.1-SNAPSHOT.jar,name=DataManagerBean,service=EJB3 implementing [interface com.akuacom.pss2.data.DataManager$L] has ifs
+com.akuacom.pss2.data.DataManager$L
+
+2011-11-02 18:06:52,180 WARN  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) Failed to setup clustering, clustering disabled. NoClassDefFoundError: org/jboss/cache/pojo/jmx/PojoCacheJmxWrapperMBean
+2011-11-02 18:06:52,199 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/ParticipantOperatorWS
+2011-11-02 18:06:52,250 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/RestClientWS
+2011-11-02 18:06:52,287 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/RESTAPIUtilOpWS
+2011-11-02 18:06:52,331 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/pss2.utility
+2011-11-02 18:06:52,417 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/pss2.utility'
+2011-11-02 18:06:52,610 INFO  [com.akuacom.pss2.richsite.LogWatcherServlet] (main) 
+
+
+new LogWatcherServlet
+2011-11-02 18:06:52,631 INFO  [com.akuacom.pss2.richsite.LogWatcherServlet] (main) 
+
+
+
+init logwatcher servlet
+
+
+
+
+2011-11-02 18:06:52,742 INFO  [com.akuacom.pss2.richsite.LogWatcherServlet] (main) headrooms {(C:\jboss-5.1.0.GA\bin,-1.0)}
+2011-11-02 18:06:52,836 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/SOAPClientWS
+2011-11-02 18:06:52,874 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/pss2.website
+2011-11-02 18:06:53,006 INFO  [com.akuacom.pss2.web.listener.ServletListener] (main) --------------------------------------------------
+2011-11-02 18:06:53,008 INFO  [com.akuacom.pss2.web.listener.ServletListener] (main)  Application build Time Stamp:  2011-10-26 14:01:37
+2011-11-02 18:06:53,009 INFO  [com.akuacom.pss2.web.listener.ServletListener] (main)  Application build Version:     7.0-SNAPSHOT
+2011-11-02 18:06:53,010 INFO  [com.akuacom.pss2.web.listener.ServletListener] (main)  Application build SVN Revision:14724
+2011-11-02 18:06:53,012 INFO  [com.akuacom.pss2.web.listener.ServletListener] (main)  Application build SVN Branch:  trunk
+2011-11-02 18:06:53,013 INFO  [com.akuacom.pss2.web.listener.ServletListener] (main) --------------------------------------------------
+2011-11-02 18:06:56,016 INFO  [com.akuacom.pss2.system.SystemManagerBean] (main) Creating timers with Master Statustrue
+2011-11-02 18:06:58,253 INFO  [org.displaytag.filter.ResponseOverrideFilter] (main) Filter initialized. Response buffering is enabled
+2011-11-02 18:06:58,311 INFO  [org.apache.struts.action.ActionServlet] (main) Loading chain catalog from vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/lib/struts-tiles-1.3.10.jar/org/apache/struts/tiles/chain-config.xml
+2011-11-02 18:06:58,738 INFO  [org.apache.struts.tiles.TilesPlugin] (main) Tiles definition factory loaded for module ''.
+2011-11-02 18:06:58,746 WARN  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) Failed to setup clustering, clustering disabled. NoClassDefFoundError: org/jboss/cache/pojo/jmx/PojoCacheJmxWrapperMBean
+2011-11-02 18:06:58,752 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/UtilityOperatorWS
+2011-11-02 18:06:59,210 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaProperty.xsd
+2011-11-02 18:06:59,219 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ParticipantAccount.xsd
+2011-11-02 18:06:59,232 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:06:59,239 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Bid.xsd
+2011-11-02 18:06:59,254 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:06:59,261 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:06:59,266 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:06:59,276 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:06:59,286 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:06:59,293 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:06:59,298 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaSignal.xsd
+2011-11-02 18:06:59,307 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaSeasonConfig.xsd
+2011-11-02 18:06:59,315 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaUtilityDREvent.xsd
+2011-11-02 18:06:59,323 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaEventInfo.xsd
+2011-11-02 18:06:59,331 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:06:59,341 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaDRASClientData.xsd
+2011-11-02 18:06:59,355 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaRTPConfig.xsd
+2011-11-02 18:06:59,365 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaUtilityProgram.xsd
+2011-11-02 18:06:59,372 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:06:59,375 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:06:59,380 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaContact.xsd
+2011-11-02 18:06:59,555 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount4011290759072808153.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns1:ProgramInfo'. It was detected that 'ns1:ProgramInfo' is in namespace 'http://www.openadr.org/DRAS/UtilityProgram', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount4011290759072808153.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns1:ProgramInfo' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount4011290759072808153.xsd'.
+2011-11-02 18:06:59,557 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount4011290759072808153.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Bid'. It was detected that 'ns2:Bid' is in namespace 'http://www.openadr.org/DRAS/Bid', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount4011290759072808153.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Bid' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount4011290759072808153.xsd'.
+2011-11-02 18:06:59,567 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:06:59,582 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) [domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns3:EventInfoType'. It was detected that 'ns3:EventInfoType' is in namespace 'http://www.openadr.org/DRAS/EventInfo', but components from this namespace are not referenceable from schema document 'null'. If this is the incorrect namespace, perhaps the prefix of 'ns3:EventInfoType' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'null'.
+2011-11-02 18:06:59,585 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) [domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Location'. It was detected that 'ns2:Location' is in namespace 'http://www.openadr.org/DRAS/DRASClient', but components from this namespace are not referenceable from schema document 'null'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Location' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'null'.
+2011-11-02 18:06:59,604 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_AkuaUtilityDREvent4828680828329451242.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Location'. It was detected that 'ns2:Location' is in namespace 'http://www.openadr.org/DRAS/DRASClient', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_AkuaUtilityDREvent4828680828329451242.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Location' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_AkuaUtilityDREvent4828680828329451242.xsd'.
+2011-11-02 18:06:59,743 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaProperty.xsd
+2011-11-02 18:06:59,749 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ParticipantAccount.xsd
+2011-11-02 18:06:59,756 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:06:59,762 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Bid.xsd
+2011-11-02 18:06:59,768 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:06:59,781 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:06:59,784 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:06:59,791 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:06:59,798 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:06:59,811 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:06:59,815 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaSignal.xsd
+2011-11-02 18:06:59,822 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaSeasonConfig.xsd
+2011-11-02 18:06:59,830 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaUtilityDREvent.xsd
+2011-11-02 18:06:59,838 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaEventInfo.xsd
+2011-11-02 18:06:59,846 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:06:59,858 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaDRASClientData.xsd
+2011-11-02 18:06:59,864 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaRTPConfig.xsd
+2011-11-02 18:06:59,873 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaUtilityProgram.xsd
+2011-11-02 18:06:59,881 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:06:59,885 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:06:59,890 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/AkuaContact.xsd
+2011-11-02 18:07:00,360 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount4311178950088495308.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns1:ProgramInfo'. It was detected that 'ns1:ProgramInfo' is in namespace 'http://www.openadr.org/DRAS/UtilityProgram', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount4311178950088495308.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns1:ProgramInfo' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount4311178950088495308.xsd'.
+2011-11-02 18:07:00,362 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount4311178950088495308.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Bid'. It was detected that 'ns2:Bid' is in namespace 'http://www.openadr.org/DRAS/Bid', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount4311178950088495308.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Bid' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount4311178950088495308.xsd'.
+2011-11-02 18:07:00,380 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:07:00,394 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) [domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns3:EventInfoType'. It was detected that 'ns3:EventInfoType' is in namespace 'http://www.openadr.org/DRAS/EventInfo', but components from this namespace are not referenceable from schema document 'null'. If this is the incorrect namespace, perhaps the prefix of 'ns3:EventInfoType' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'null'.
+2011-11-02 18:07:00,398 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) [domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Location'. It was detected that 'ns2:Location' is in namespace 'http://www.openadr.org/DRAS/DRASClient', but components from this namespace are not referenceable from schema document 'null'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Location' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'null'.
+2011-11-02 18:07:00,426 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_AkuaUtilityDREvent7869554077527694629.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Location'. It was detected that 'ns2:Location' is in namespace 'http://www.openadr.org/DRAS/DRASClient', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_AkuaUtilityDREvent7869554077527694629.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Location' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_AkuaUtilityDREvent7869554077527694629.xsd'.
+2011-11-02 18:07:00,546 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/pss2.ear/akua-util-op-7.1-SNAPSHOT.war/AkuaUtilityOperatorWSService.wsdl
+2011-11-02 18:07:00,884 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/pss2.ear/bacnet-7.1-SNAPSHOT.war/Bacnet955464134705579035.wsdl
+2011-11-02 18:07:00,936 WARN  [org.jboss.ws.tools.wsdl.WSDL11Reader] (main) Encoding style 'http://schemas.xmlsoap.org/soap/encoding/' not supported for: {http://pss2.lbl.gov}getPrice
+2011-11-02 18:07:00,938 WARN  [org.jboss.ws.tools.wsdl.WSDL11Reader] (main) Encoding style 'http://schemas.xmlsoap.org/soap/encoding/' not supported for: {http://pss2.lbl.gov}getPriceSchedule
+2011-11-02 18:07:00,939 WARN  [org.jboss.ws.tools.wsdl.WSDL11Reader] (main) Encoding style 'http://schemas.xmlsoap.org/soap/encoding/' not supported for: {http://pss2.lbl.gov}isAPEEventPending
+2011-11-02 18:07:01,038 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/pss2.ear/legacy-7.1-SNAPSHOT.war/PSS2WS.wsdl
+2011-11-02 18:07:01,457 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/FeedBack.xsd
+2011-11-02 18:07:01,464 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ParticipantAccount.xsd
+2011-11-02 18:07:01,470 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:01,477 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Bid.xsd
+2011-11-02 18:07:01,483 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:01,490 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:01,494 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:07:01,501 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:01,508 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:07:01,515 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:01,518 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:01,524 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityDREvent.xsd
+2011-11-02 18:07:01,532 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:07:01,535 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:01,538 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Bid.xsd
+2011-11-02 18:07:01,545 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Logs.xsd
+2011-11-02 18:07:01,555 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventState.xsd
+2011-11-02 18:07:01,566 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:07:01,572 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:07:01,576 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:01,580 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:01,585 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/OptOutState.xsd
+2011-11-02 18:07:01,710 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount946858071542672232.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns1:ProgramInfo'. It was detected that 'ns1:ProgramInfo' is in namespace 'http://www.openadr.org/DRAS/UtilityProgram', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount946858071542672232.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns1:ProgramInfo' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount946858071542672232.xsd'.
+2011-11-02 18:07:01,711 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount946858071542672232.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Bid'. It was detected that 'ns2:Bid' is in namespace 'http://www.openadr.org/DRAS/Bid', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount946858071542672232.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Bid' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount946858071542672232.xsd'.
+2011-11-02 18:07:01,747 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) UtilityProgram.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Location'. It was detected that 'ns2:Location' is in namespace 'http://www.openadr.org/DRAS/DRASClient', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Location' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'.
+2011-11-02 18:07:01,751 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) DRASClient.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns1:ProgramInfo'. It was detected that 'ns1:ProgramInfo' is in namespace 'http://www.openadr.org/DRAS/UtilityProgram', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/DRASClient.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns1:ProgramInfo' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/DRASClient.xsd'.
+2011-11-02 18:07:01,755 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) DRASClient.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:ResponseSchedule'. It was detected that 'ns2:ResponseSchedule' is in namespace 'http://www.openadr.org/DRAS/ResponseSchedule', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/DRASClient.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:ResponseSchedule' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/DRASClient.xsd'.
+2011-11-02 18:07:01,824 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/FeedBack.xsd
+2011-11-02 18:07:01,829 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ParticipantAccount.xsd
+2011-11-02 18:07:01,837 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:01,847 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Bid.xsd
+2011-11-02 18:07:01,853 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:01,863 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:01,866 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:07:01,873 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:01,879 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:07:01,885 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:01,889 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:01,894 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityDREvent.xsd
+2011-11-02 18:07:01,900 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:07:01,904 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:01,907 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Bid.xsd
+2011-11-02 18:07:01,910 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Logs.xsd
+2011-11-02 18:07:01,916 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventState.xsd
+2011-11-02 18:07:01,923 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:07:01,927 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:07:01,935 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:01,938 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:01,942 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/part-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/OptOutState.xsd
+2011-11-02 18:07:02,072 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount7292046659878907298.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns1:ProgramInfo'. It was detected that 'ns1:ProgramInfo' is in namespace 'http://www.openadr.org/DRAS/UtilityProgram', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount7292046659878907298.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns1:ProgramInfo' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount7292046659878907298.xsd'.
+2011-11-02 18:07:02,074 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount7292046659878907298.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Bid'. It was detected that 'ns2:Bid' is in namespace 'http://www.openadr.org/DRAS/Bid', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount7292046659878907298.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Bid' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount7292046659878907298.xsd'.
+2011-11-02 18:07:02,102 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) UtilityProgram.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Location'. It was detected that 'ns2:Location' is in namespace 'http://www.openadr.org/DRAS/DRASClient', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Location' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'.
+2011-11-02 18:07:02,105 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) DRASClient.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns1:ProgramInfo'. It was detected that 'ns1:ProgramInfo' is in namespace 'http://www.openadr.org/DRAS/UtilityProgram', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/DRASClient.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns1:ProgramInfo' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/DRASClient.xsd'.
+2011-11-02 18:07:02,108 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) DRASClient.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:ResponseSchedule'. It was detected that 'ns2:ResponseSchedule' is in namespace 'http://www.openadr.org/DRAS/ResponseSchedule', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/DRASClient.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:ResponseSchedule' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/DRASClient.xsd'.
+2011-11-02 18:07:02,377 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/pss2.ear/part-op-7.1-SNAPSHOT.war/ParticipantOperatorWSService.wsdl
+2011-11-02 18:07:02,868 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/pss2.ear/soap-7.1-SNAPSHOT.war/SOAPWSService8010863203780358982.wsdl
+2011-11-02 18:07:02,874 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/pss2.ear/soap-7.1-SNAPSHOT.war/SOAPWS2Service8370111121468139890.wsdl
+2011-11-02 18:07:03,271 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/FeedBack.xsd
+2011-11-02 18:07:03,275 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ParticipantAccount.xsd
+2011-11-02 18:07:03,282 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:03,292 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Bid.xsd
+2011-11-02 18:07:03,299 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:03,305 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:03,309 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:07:03,318 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:03,324 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:07:03,333 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:03,336 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:03,339 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Bid.xsd
+2011-11-02 18:07:03,343 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityDREvent.xsd
+2011-11-02 18:07:03,350 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:07:03,354 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:03,358 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Logs.xsd
+2011-11-02 18:07:03,419 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventState.xsd
+2011-11-02 18:07:03,427 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:03,431 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:03,522 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount3272883092441676880.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns1:ProgramInfo'. It was detected that 'ns1:ProgramInfo' is in namespace 'http://www.openadr.org/DRAS/UtilityProgram', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount3272883092441676880.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns1:ProgramInfo' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount3272883092441676880.xsd'.
+2011-11-02 18:07:03,524 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount3272883092441676880.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Bid'. It was detected that 'ns2:Bid' is in namespace 'http://www.openadr.org/DRAS/Bid', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount3272883092441676880.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Bid' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount3272883092441676880.xsd'.
+2011-11-02 18:07:03,544 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_UtilityDREvent7137370907774705017.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns1:Location'. It was detected that 'ns1:Location' is in namespace 'http://www.openadr.org/DRAS/DRASClient', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_UtilityDREvent7137370907774705017.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns1:Location' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_UtilityDREvent7137370907774705017.xsd'.
+2011-11-02 18:07:03,548 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_UtilityDREvent7137370907774705017.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:EventInfoInstance'. It was detected that 'ns2:EventInfoInstance' is in namespace 'http://www.openadr.org/DRAS/EventInfo', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_UtilityDREvent7137370907774705017.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:EventInfoInstance' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_UtilityDREvent7137370907774705017.xsd'.
+2011-11-02 18:07:03,575 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) UtilityProgram.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Location'. It was detected that 'ns2:Location' is in namespace 'http://www.openadr.org/DRAS/DRASClient', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Location' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'.
+2011-11-02 18:07:03,577 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) UtilityProgram.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns3:EventInfoType'. It was detected that 'ns3:EventInfoType' is in namespace 'http://www.openadr.org/DRAS/EventInfo', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns3:EventInfoType' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'.
+2011-11-02 18:07:03,580 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:07:03,623 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/FeedBack.xsd
+2011-11-02 18:07:03,628 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ParticipantAccount.xsd
+2011-11-02 18:07:03,633 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:03,638 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Bid.xsd
+2011-11-02 18:07:03,645 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:03,653 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:03,657 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:07:03,664 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:03,670 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:07:03,676 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:03,680 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ProgramConstraint.xsd
+2011-11-02 18:07:03,683 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Bid.xsd
+2011-11-02 18:07:03,688 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityDREvent.xsd
+2011-11-02 18:07:03,696 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventInfo.xsd
+2011-11-02 18:07:03,705 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:03,709 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/Logs.xsd
+2011-11-02 18:07:03,718 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/EventState.xsd
+2011-11-02 18:07:03,725 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/DRASClient.xsd
+2011-11-02 18:07:03,728 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/UtilityProgram.xsd
+2011-11-02 18:07:03,801 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount8150647470446448859.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns1:ProgramInfo'. It was detected that 'ns1:ProgramInfo' is in namespace 'http://www.openadr.org/DRAS/UtilityProgram', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount8150647470446448859.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns1:ProgramInfo' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount8150647470446448859.xsd'.
+2011-11-02 18:07:03,803 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_ParticipantAccount8150647470446448859.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Bid'. It was detected that 'ns2:Bid' is in namespace 'http://www.openadr.org/DRAS/Bid', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount8150647470446448859.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Bid' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_ParticipantAccount8150647470446448859.xsd'.
+2011-11-02 18:07:03,816 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_UtilityDREvent3197355523551150457.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns1:Location'. It was detected that 'ns1:Location' is in namespace 'http://www.openadr.org/DRAS/DRASClient', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_UtilityDREvent3197355523551150457.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns1:Location' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_UtilityDREvent3197355523551150457.xsd'.
+2011-11-02 18:07:03,818 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) JBossWS_www.openadr.org_DRAS_UtilityDREvent3197355523551150457.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:EventInfoInstance'. It was detected that 'ns2:EventInfoInstance' is in namespace 'http://www.openadr.org/DRAS/EventInfo', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_UtilityDREvent3197355523551150457.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:EventInfoInstance' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/JBossWS_www.openadr.org_DRAS_UtilityDREvent3197355523551150457.xsd'.
+2011-11-02 18:07:03,840 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) UtilityProgram.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns2:Location'. It was detected that 'ns2:Location' is in namespace 'http://www.openadr.org/DRAS/DRASClient', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns2:Location' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'.
+2011-11-02 18:07:03,844 ERROR [org.jboss.ws.metadata.wsdl.xmlschema.JBossXSErrorHandler] (main) UtilityProgram.xsd[domain:http://www.w3.org/TR/xml-schema-1]::[key=src-resolve.4.2]::Message=src-resolve.4.2: Error resolving component 'ns3:EventInfoType'. It was detected that 'ns3:EventInfoType' is in namespace 'http://www.openadr.org/DRAS/EventInfo', but components from this namespace are not referenceable from schema document 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'. If this is the incorrect namespace, perhaps the prefix of 'ns3:EventInfoType' needs to be changed. If this is the correct namespace, then an appropriate 'import' tag should be added to 'file:/C:/jboss-5.1.0.GA/server/pss2/tmp/jbossws/UtilityProgram.xsd'.
+2011-11-02 18:07:03,851 WARN  [org.jboss.util.xml.JBossEntityResolver] (main) Trying to resolve systemId as a non-file URL: vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/pss2.ear/util-op-7.1-SNAPSHOT.war/WEB-INF/wsdl/ResponseSchedule.xsd
+2011-11-02 18:07:03,920 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/pss2.ear/util-op-7.1-SNAPSHOT.war/UtilityOperatorWSService.wsdl
+2011-11-02 18:07:04,141 ERROR [org.jboss.system.server.profileservice.ProfileServiceBootstrap] (main) Failed to load profile: Summary of incomplete deployments (SEE PREVIOUS ERRORS FOR DETAILS):
+
+DEPLOYMENTS IN ERROR:
+  Deployment "jboss:service=invoker,type=pooled" is in error due to the following reason(s): java.net.BindException: Address already in use: JVM_Bind
+
+2011-11-02 18:07:04,156 INFO  [org.apache.coyote.http11.Http11Protocol] (main) Starting Coyote HTTP/1.1 on http-127.0.0.1-8080
+2011-11-02 18:07:04,189 INFO  [org.apache.coyote.ajp.AjpProtocol] (main) Starting Coyote AJP/1.3 on ajp-127.0.0.1-9009
+2011-11-02 18:07:04,206 INFO  [org.jboss.bootstrap.microcontainer.ServerImpl] (main) JBoss (Microcontainer) [5.1.0.GA (build: SVNTag=JBoss_5_1_0_GA date=200905221634)] Started in 3m:7s:304ms
+2011-11-02 18:08:34,911 INFO  [org.jboss.bootstrap.microcontainer.ServerImpl] (JBoss Shutdown Hook) Runtime shutdown hook called, forceHalt: true
+2011-11-02 18:08:34,915 INFO  [org.apache.coyote.http11.Http11Protocol] (JBoss Shutdown Hook) Pausing Coyote HTTP/1.1 on http-127.0.0.1-8080
+2011-11-02 18:08:34,924 INFO  [org.apache.coyote.http11.Http11Protocol] (JBoss Shutdown Hook) Stopping Coyote HTTP/1.1 on http-127.0.0.1-8080
+2011-11-02 18:08:34,940 INFO  [org.apache.coyote.ajp.AjpProtocol] (JBoss Shutdown Hook) Pausing Coyote AJP/1.3 on ajp-127.0.0.1-9009
+2011-11-02 18:08:34,946 INFO  [org.apache.coyote.ajp.AjpProtocol] (JBoss Shutdown Hook) Stopping Coyote AJP/1.3 on ajp-127.0.0.1-9009
+2011-11-02 18:08:34,980 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (JBoss Shutdown Hook) org.jboss.jms.server.connectionfactory.ConnectionFactory@12f04a60 undeployed
+2011-11-02 18:08:34,993 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (JBoss Shutdown Hook) org.jboss.jms.server.connectionfactory.ConnectionFactory@48c5241f undeployed
+2011-11-02 18:08:35,001 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (JBoss Shutdown Hook) org.jboss.jms.server.connectionfactory.ConnectionFactory@73cd8020 undeployed
+2011-11-02 18:08:35,011 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (JBoss Shutdown Hook) undeploy, ctxPath=/web-console
+2011-11-02 18:08:35,090 INFO  [org.jboss.jms.server.destination.QueueService] (JBoss Shutdown Hook) Queue[/queue/ExpiryQueue] stopped
+2011-11-02 18:08:35,096 INFO  [org.jboss.jms.server.destination.QueueService] (JBoss Shutdown Hook) Queue[/queue/DLQ] stopped
+2011-11-02 18:08:37,407 ERROR [com.akuacom.pss2.obix.servlet.DataServiceServlet] (oBIX DUP Thread) org.jboss.ejb3.common.registrar.spi.NotBoundException: Requested value bound at name "jboss.j2ee:ear=pss2.ear,jar=drms-core-ejb-7.1-SNAPSHOT.jar,name=PDataEntryEAOBean,service=EJB3" is not bound.
+2011-11-02 18:09:27,479 INFO  [org.jboss.web.WebService] (main) Using RMI server codebase: http://127.0.0.1:8083/
+2011-11-02 18:09:31,638 INFO  [org.jboss.wsf.stack.jbws.NativeServerConfig] (main) JBoss Web Services - Stack Native Core
+2011-11-02 18:09:31,639 INFO  [org.jboss.wsf.stack.jbws.NativeServerConfig] (main) 3.1.2.GA
+2011-11-02 18:09:32,282 INFO  [org.jboss.dependency.plugins.AttributeCallbackItem] (main) Owner callback not implemented.
+2011-11-02 18:09:33,291 INFO  [org.jboss.logbridge.LogNotificationListener] (main) Adding notification listener for logging mbean "jboss.system:service=Logging,type=Log4jService" to server org.jboss.mx.server.MBeanServerImpl@5492de02[ defaultDomain='jboss' ]
+2011-11-02 18:09:54,974 WARN  [org.jboss.deployment.MappedReferenceMetaDataResolverDeployer] (main) Unresolved references exist in JBossWebMetaData:[opt-report-7.1-SNAPSHOT.war#web-app:AnnotatedEJBReferenceMetaData{name=com.akuacom.pss2.opt.report.OperatorReports/reportManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=operator-report/HistoryReportManager/local,resolved-jndi-name=null,beanInterface=interface com.akuacom.pss2.history.HistoryReportManager}, opt-report-7.1-SNAPSHOT.war#web-app:AnnotatedEJBReferenceMetaData{name=com.akuacom.pss2.opt.report.JasperReportServlet/hrm,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=operator-report/HistoryReportManager/local,resolved-jndi-name=null,beanInterface=interface com.akuacom.pss2.history.HistoryReportManager}]
+2011-11-02 18:09:54,974 WARN  [org.jboss.deployment.MappedReferenceMetaDataResolverDeployer] (main) Unresolved references exist in JBossWebMetaData:[report-web-7.1-SNAPSHOT.war#web-app:AnnotatedEJBReferenceMetaData{name=com.akuacom.pss2.customer.baseline.BaselineGen/reportManager,ejb-ref-type=null,link=null,ignore-dependecy=false,mapped/jndi-name=operator-report/HistoryReportManager/local,resolved-jndi-name=null,beanInterface=interface com.akuacom.pss2.history.HistoryReportManager}]
+2011-11-02 18:10:02,071 INFO  [org.jboss.deployment.dependency.ContainerDependencyMetaData] (main) addJndiDependency, JndiDependencyMetaData@4a99eb16{queue/participantIntervalMeterDataUpdate}
+2011-11-02 18:10:02,074 INFO  [org.jboss.deployment.dependency.ContainerDependencyMetaData] (main) addJndiDependency, JndiDependencyMetaData@3f19179d{queue/participantIntervalMeterDataUpdate}
+2011-11-02 18:10:02,076 INFO  [org.jboss.deployment.dependency.ContainerDependencyMetaData] (main) addJndiDependency, JndiDependencyMetaData@85d64c8{queue/participantIntervalMeterDataUpdate}
+2011-11-02 18:10:02,079 INFO  [org.jboss.deployment.dependency.ContainerDependencyMetaData] (main) addJndiDependency, JndiDependencyMetaData@2b838ac2{queue/participantIntervalMeterDataUpdate}
+2011-11-02 18:10:04,830 INFO  [org.jboss.mx.remoting.service.JMXConnectorServerService] (main) JMX Connector server: service:jmx:rmi://127.0.0.1/jndi/rmi://127.0.0.1:1090/jmxconnector
+2011-11-02 18:10:04,955 INFO  [org.jboss.mail.MailService] (main) Mail Service bound to java:/Mail
+2011-11-02 18:10:09,950 WARN  [org.jboss.jms.server.jbosssx.JBossASSecurityMetadataStore] (main) WARNING! POTENTIAL SECURITY RISK. It has been detected that the MessageSucker component which sucks messages from one node to another has not had its password changed from the installation default. Please see the JBoss Messaging user guide for instructions on how to do this.
+2011-11-02 18:10:09,964 WARN  [org.jboss.annotation.factory.AnnotationCreator] (main) No ClassLoader provided, using TCCL: org.jboss.managed.api.annotation.ManagementComponent
+2011-11-02 18:10:10,030 WARN  [org.jboss.annotation.factory.AnnotationCreator] (main) No ClassLoader provided, using TCCL: org.jboss.managed.api.annotation.ManagementComponent
+2011-11-02 18:10:10,091 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) JBossTS Transaction Service (JTA version - tag:JBOSSTS_4_6_1_GA) - JBoss Inc.
+2011-11-02 18:10:10,092 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) Setting up property manager MBean and JMX layer
+2011-11-02 18:10:10,322 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) Initializing recovery manager
+2011-11-02 18:10:10,463 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) Recovery manager configured
+2011-11-02 18:10:10,463 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) Binding TransactionManager JNDI Reference
+2011-11-02 18:10:10,495 INFO  [com.arjuna.ats.jbossatx.jta.TransactionManagerService] (main) Starting transaction recovery manager
+2011-11-02 18:10:10,544 ERROR [org.jboss.kernel.plugins.dependency.AbstractKernelController] (main) Error installing to Start: name=jboss:service=invoker,type=pooled state=Create mode=Manual requiredState=Installed
+java.lang.Exception: Port 4445 is already in use
+	at org.jboss.invocation.pooled.server.PooledInvoker.startService(PooledInvoker.java:230)
+	at org.jboss.system.ServiceMBeanSupport.jbossInternalStart(ServiceMBeanSupport.java:376)
+	at org.jboss.system.ServiceMBeanSupport.jbossInternalLifecycle(ServiceMBeanSupport.java:322)
+	at sun.reflect.GeneratedMethodAccessor80.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.jboss.mx.interceptor.ReflectedDispatcher.invoke(ReflectedDispatcher.java:157)
+	at org.jboss.mx.server.Invocation.dispatch(Invocation.java:96)
+	at org.jboss.mx.server.Invocation.invoke(Invocation.java:88)
+	at org.jboss.mx.server.AbstractMBeanInvoker.invoke(AbstractMBeanInvoker.java:264)
+	at org.jboss.mx.server.MBeanServerImpl.invoke(MBeanServerImpl.java:668)
+	at org.jboss.system.microcontainer.ServiceProxy.invoke(ServiceProxy.java:189)
+	at $Proxy38.start(Unknown Source)
+	at org.jboss.system.microcontainer.StartStopLifecycleAction.installAction(StartStopLifecycleAction.java:42)
+	at org.jboss.system.microcontainer.StartStopLifecycleAction.installAction(StartStopLifecycleAction.java:37)
+	at org.jboss.dependency.plugins.action.SimpleControllerContextAction.simpleInstallAction(SimpleControllerContextAction.java:62)
+	at org.jboss.dependency.plugins.action.AccessControllerContextAction.install(AccessControllerContextAction.java:71)
+	at org.jboss.dependency.plugins.AbstractControllerContextActions.install(AbstractControllerContextActions.java:51)
+	at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+	at org.jboss.system.microcontainer.ServiceControllerContext.install(ServiceControllerContext.java:286)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1631)
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:934)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:774)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:540)
+	at org.jboss.system.ServiceController.doInstall(ServiceController.java:670)
+	at org.jboss.system.ServiceController.register(ServiceController.java:373)
+	at org.jboss.system.microcontainer.jmx.ServiceControllerRegistrationLifecycleCallback.install(ServiceControllerRegistrationLifecycleCallback.java:104)
+	at sun.reflect.GeneratedMethodAccessor269.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.jboss.reflect.plugins.introspection.ReflectionUtils.invoke(ReflectionUtils.java:59)
+	at org.jboss.reflect.plugins.introspection.ReflectMethodInfoImpl.invoke(ReflectMethodInfoImpl.java:150)
+	at org.jboss.joinpoint.plugins.BasicMethodJoinPoint.dispatch(BasicMethodJoinPoint.java:66)
+	at org.jboss.beans.info.plugins.AbstractBeanInfo.invoke(AbstractBeanInfo.java:300)
+	at org.jboss.kernel.plugins.dependency.AbstractKernelControllerContext.invoke(AbstractKernelControllerContext.java:286)
+	at org.jboss.dependency.plugins.AbstractLifecycleCallbackItem.install(AbstractLifecycleCallbackItem.java:87)
+	at org.jboss.dependency.plugins.AbstractController.handleLifecycleCallbacks(AbstractController.java:1568)
+	at org.jboss.dependency.plugins.AbstractController.handleInstallLifecycleCallbacks(AbstractController.java:1533)
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:943)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:822)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:553)
+	at org.jboss.system.ServiceController.doChange(ServiceController.java:688)
+	at org.jboss.system.ServiceController.start(ServiceController.java:460)
+	at org.jboss.system.microcontainer.jmx.ServiceControllerStartStopLifecycleCallback.install(ServiceControllerStartStopLifecycleCallback.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.jboss.reflect.plugins.introspection.ReflectionUtils.invoke(ReflectionUtils.java:59)
+	at org.jboss.reflect.plugins.introspection.ReflectMethodInfoImpl.invoke(ReflectMethodInfoImpl.java:150)
+	at org.jboss.joinpoint.plugins.BasicMethodJoinPoint.dispatch(BasicMethodJoinPoint.java:66)
+	at org.jboss.beans.info.plugins.AbstractBeanInfo.invoke(AbstractBeanInfo.java:300)
+	at org.jboss.kernel.plugins.dependency.AbstractKernelControllerContext.invoke(AbstractKernelControllerContext.java:286)
+	at org.jboss.dependency.plugins.AbstractLifecycleCallbackItem.install(AbstractLifecycleCallbackItem.java:87)
+	at org.jboss.dependency.plugins.AbstractController.handleLifecycleCallbacks(AbstractController.java:1568)
+	at org.jboss.dependency.plugins.AbstractController.handleInstallLifecycleCallbacks(AbstractController.java:1533)
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:943)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:774)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:540)
+	at org.jboss.deployers.vfs.deployer.kernel.BeanMetaDataDeployer.deploy(BeanMetaDataDeployer.java:121)
+	at org.jboss.deployers.vfs.deployer.kernel.BeanMetaDataDeployer.deploy(BeanMetaDataDeployer.java:51)
+	at org.jboss.deployers.spi.deployer.helpers.AbstractSimpleRealDeployer.internalDeploy(AbstractSimpleRealDeployer.java:62)
+	at org.jboss.deployers.spi.deployer.helpers.AbstractRealDeployer.deploy(AbstractRealDeployer.java:50)
+	at org.jboss.deployers.plugins.deployers.DeployerWrapper.deploy(DeployerWrapper.java:171)
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doDeploy(DeployersImpl.java:1439)
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doInstallParentFirst(DeployersImpl.java:1157)
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.doInstallParentFirst(DeployersImpl.java:1178)
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.install(DeployersImpl.java:1098)
+	at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1631)
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:934)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:822)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:553)
+	at org.jboss.deployers.plugins.deployers.DeployersImpl.process(DeployersImpl.java:781)
+	at org.jboss.deployers.plugins.main.MainDeployerImpl.process(MainDeployerImpl.java:702)
+	at org.jboss.system.server.profileservice.repository.MainDeployerAdapter.process(MainDeployerAdapter.java:117)
+	at org.jboss.system.server.profileservice.repository.ProfileDeployAction.install(ProfileDeployAction.java:70)
+	at org.jboss.system.server.profileservice.repository.AbstractProfileAction.install(AbstractProfileAction.java:53)
+	at org.jboss.system.server.profileservice.repository.AbstractProfileService.install(AbstractProfileService.java:361)
+	at org.jboss.dependency.plugins.AbstractControllerContext.install(AbstractControllerContext.java:348)
+	at org.jboss.dependency.plugins.AbstractController.install(AbstractController.java:1631)
+	at org.jboss.dependency.plugins.AbstractController.incrementState(AbstractController.java:934)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:1082)
+	at org.jboss.dependency.plugins.AbstractController.resolveContexts(AbstractController.java:984)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:822)
+	at org.jboss.dependency.plugins.AbstractController.change(AbstractController.java:553)
+	at org.jboss.system.server.profileservice.repository.AbstractProfileService.activateProfile(AbstractProfileService.java:306)
+	at org.jboss.system.server.profileservice.ProfileServiceBootstrap.start(ProfileServiceBootstrap.java:271)
+	at org.jboss.bootstrap.AbstractServerImpl.start(AbstractServerImpl.java:461)
+	at org.jboss.Main.boot(Main.java:221)
+	at org.jboss.Main$1.run(Main.java:556)
+	at java.lang.Thread.run(Thread.java:662)
+Caused by: java.net.BindException: Address already in use: JVM_Bind
+	at java.net.PlainSocketImpl.socketBind(Native Method)
+	at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:383)
+	at java.net.ServerSocket.bind(ServerSocket.java:328)
+	at java.net.ServerSocket.<init>(ServerSocket.java:194)
+	at org.jboss.net.sockets.DefaultSocketFactory.createServerSocket(DefaultSocketFactory.java:124)
+	at org.jboss.invocation.pooled.server.PooledInvoker.startService(PooledInvoker.java:224)
+	... 99 more
+2011-11-02 18:10:11,048 INFO  [org.apache.catalina.core.AprLifecycleListener] (main) The Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jdk1.6.0_24\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\SlikSvn\bin\;C:\Program Files\TortoiseSVN\bin;C:\apache-ant-1.7.1\bin;C:\apache-maven-2.2.1\bin;C:\Program Files\MySQL\MySQL Server 5.5\bin;C:\Program Files\Java\jdk1.6.0_24\bin;C:\bat
+2011-11-02 18:10:11,095 INFO  [org.apache.coyote.http11.Http11Protocol] (main) Initializing Coyote HTTP/1.1 on http-127.0.0.1-8080
+2011-11-02 18:10:11,096 INFO  [org.apache.coyote.ajp.AjpProtocol] (main) Initializing Coyote AJP/1.3 on ajp-127.0.0.1-9009
+2011-11-02 18:10:11,115 INFO  [org.apache.catalina.core.StandardService] (main) Starting service jboss.web
+2011-11-02 18:10:11,117 INFO  [org.apache.catalina.core.StandardEngine] (main) Starting Servlet Engine: JBoss Web/2.1.3.GA
+2011-11-02 18:10:11,170 INFO  [org.apache.catalina.startup.Catalina] (main) Server startup in 73 ms
+2011-11-02 18:10:11,189 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/jbossws
+2011-11-02 18:10:11,756 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/web-console
+2011-11-02 18:10:12,019 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/invoker
+2011-11-02 18:10:12,149 INFO  [org.jboss.resource.deployers.RARDeployment] (main) Required license terms exist, view vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/jboss-local-jdbc.rar/META-INF/ra.xml
+2011-11-02 18:10:12,162 INFO  [org.jboss.resource.deployers.RARDeployment] (main) Required license terms exist, view vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/jboss-xa-jdbc.rar/META-INF/ra.xml
+2011-11-02 18:10:12,198 INFO  [org.jboss.resource.deployers.RARDeployment] (main) Required license terms exist, view vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/jms-ra.rar/META-INF/ra.xml
+2011-11-02 18:10:12,211 INFO  [org.jboss.resource.deployers.RARDeployment] (main) Required license terms exist, view vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/mail-ra.rar/META-INF/ra.xml
+2011-11-02 18:10:12,243 INFO  [org.jboss.resource.deployers.RARDeployment] (main) Required license terms exist, view vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/quartz-ra.rar/META-INF/ra.xml
+2011-11-02 18:10:12,349 INFO  [org.quartz.simpl.SimpleThreadPool] (main) Job execution threads will use class loader of thread: main
+2011-11-02 18:10:12,393 INFO  [org.quartz.core.QuartzScheduler] (main) Quartz Scheduler v.1.5.2 created.
+2011-11-02 18:10:12,398 INFO  [org.quartz.simpl.RAMJobStore] (main) RAMJobStore initialized.
+2011-11-02 18:10:12,398 INFO  [org.quartz.impl.StdSchedulerFactory] (main) Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2011-11-02 18:10:12,398 INFO  [org.quartz.impl.StdSchedulerFactory] (main) Quartz scheduler version: 1.5.2
+2011-11-02 18:10:12,398 INFO  [org.quartz.core.QuartzScheduler] (main) Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2011-11-02 18:10:13,146 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=DefaultDS' to JNDI name 'java:DefaultDS'
+2011-11-02 18:10:13,597 INFO  [org.jboss.jms.server.ServerPeer] (main) JBoss Messaging 1.4.3.GA server [0] started
+2011-11-02 18:10:13,730 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) Connector bisocket://127.0.0.1:4457 has leasing enabled, lease period 10000 milliseconds
+2011-11-02 18:10:13,731 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) org.jboss.jms.server.connectionfactory.ConnectionFactory@624fdc8 started
+2011-11-02 18:10:13,762 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/DLQ] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:10:13,775 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) Connector bisocket://127.0.0.1:4457 has leasing enabled, lease period 10000 milliseconds
+2011-11-02 18:10:13,775 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) org.jboss.jms.server.connectionfactory.ConnectionFactory@480215a started
+2011-11-02 18:10:13,776 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactoryJNDIMapper] (main) supportsFailover attribute is true on connection factory: jboss.messaging.connectionfactory:service=ClusteredConnectionFactory but post office is non clustered. So connection factory will *not* support failover
+2011-11-02 18:10:13,776 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactoryJNDIMapper] (main) supportsLoadBalancing attribute is true on connection factory: jboss.messaging.connectionfactory:service=ClusteredConnectionFactory but post office is non clustered. So connection factory will *not* support load balancing
+2011-11-02 18:10:13,781 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) Connector bisocket://127.0.0.1:4457 has leasing enabled, lease period 10000 milliseconds
+2011-11-02 18:10:13,782 INFO  [org.jboss.jms.server.connectionfactory.ConnectionFactory] (main) org.jboss.jms.server.connectionfactory.ConnectionFactory@2bafd9f1 started
+2011-11-02 18:10:13,796 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/ExpiryQueue] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:10:13,912 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=ConnectionFactoryBinding,name=JmsXA' to JNDI name 'java:JmsXA'
+2011-11-02 18:10:13,972 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=mysql-accmgr-ds' to JNDI name 'java:mysql-accmgr-ds'
+2011-11-02 18:10:14,045 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=mysql-firelog-ds' to JNDI name 'java:mysql-firelog-ds'
+2011-11-02 18:10:14,105 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=mysql-jms-ds' to JNDI name 'java:mysql-jms-ds'
+2011-11-02 18:10:14,157 INFO  [org.jboss.resource.connectionmanager.ConnectionFactoryBindingService] (main) Bound ConnectionManager 'jboss.jca:service=DataSourceBinding,name=mysql-pss2-ds' to JNDI name 'java:mysql-pss2-ds'
+2011-11-02 18:10:15,302 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/admin-console
+2011-11-02 18:10:15,383 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/admin-console'
+2011-11-02 18:10:17,372 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/
+2011-11-02 18:10:17,438 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/jmx-console
+2011-11-02 18:10:17,593 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) installing bean: ejb/accmgr.ejb.jar#UserBean,uid506016637
+2011-11-02 18:10:17,595 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   with dependencies:
+2011-11-02 18:10:17,595 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   and supplies:
+2011-11-02 18:10:17,596 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:local/UserBean@1761850405
+2011-11-02 18:10:17,596 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:UserBean
+2011-11-02 18:10:17,596 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) installing bean: ejb/accmgr.ejb.jar#DomainBean,uid677552887
+2011-11-02 18:10:17,596 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   with dependencies:
+2011-11-02 18:10:17,596 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   and supplies:
+2011-11-02 18:10:17,596 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:DomainBean
+2011-11-02 18:10:17,596 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:local/DomainBean@1915231999
+2011-11-02 18:10:17,596 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) installing bean: ejb/accmgr.ejb.jar#AccMgrAccessBean,uid1673075415
+2011-11-02 18:10:17,596 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   with dependencies:
+2011-11-02 18:10:17,596 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   and supplies:
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:AccMgrAccessBean
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) installing bean: ejb/accmgr.ejb.jar#RoleBean,uid227626087
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   with dependencies:
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   and supplies:
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:RoleBean
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:local/RoleBean@671822310
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) installing bean: ejb/accmgr.ejb.jar#TagBean,uid1043268902
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   with dependencies:
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main)   and supplies:
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:local/TagBean@1996031891
+2011-11-02 18:10:17,597 INFO  [org.jboss.ejb.deployers.EjbDeployer] (main) 	jndi:TagBean
+2011-11-02 18:10:17,743 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=AccMgrWS,endpoint=AccMgrWS
+2011-11-02 18:10:18,075 INFO  [org.jboss.ejb.EjbModule] (main) Deploying UserBean
+2011-11-02 18:10:18,135 WARN  [org.jboss.ejb.EjbModule] (main) EJB configured to bypass security. Please verify if this is intended. Bean=UserBean Deployment=vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/accmgr-4.7.ear/accmgr.ejb.jar/
+2011-11-02 18:10:18,256 INFO  [org.jboss.ejb.EjbModule] (main) Deploying DomainBean
+2011-11-02 18:10:18,264 WARN  [org.jboss.ejb.EjbModule] (main) EJB configured to bypass security. Please verify if this is intended. Bean=DomainBean Deployment=vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/accmgr-4.7.ear/accmgr.ejb.jar/
+2011-11-02 18:10:18,273 INFO  [org.jboss.ejb.EjbModule] (main) Deploying AccMgrAccessBean
+2011-11-02 18:10:18,281 WARN  [org.jboss.ejb.EjbModule] (main) EJB configured to bypass security. Please verify if this is intended. Bean=AccMgrAccessBean Deployment=vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/accmgr-4.7.ear/accmgr.ejb.jar/
+2011-11-02 18:10:18,297 INFO  [org.jboss.ejb.EjbModule] (main) Deploying RoleBean
+2011-11-02 18:10:18,301 WARN  [org.jboss.ejb.EjbModule] (main) EJB configured to bypass security. Please verify if this is intended. Bean=RoleBean Deployment=vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/accmgr-4.7.ear/accmgr.ejb.jar/
+2011-11-02 18:10:18,309 INFO  [org.jboss.ejb.EjbModule] (main) Deploying TagBean
+2011-11-02 18:10:18,312 WARN  [org.jboss.ejb.EjbModule] (main) EJB configured to bypass security. Please verify if this is intended. Bean=TagBean Deployment=vfszip:/C:/jboss-5.1.0.GA/server/pss2/deploy/accmgr-4.7.ear/accmgr.ejb.jar/
+2011-11-02 18:10:19,798 INFO  [org.jboss.ejb.plugins.local.BaseLocalProxyFactory] (main) Bound EJB LocalHome 'UserBean' to jndi 'local/UserBean@1761850405'
+2011-11-02 18:10:19,816 INFO  [org.jboss.ejb.plugins.local.BaseLocalProxyFactory] (main) Bound EJB LocalHome 'DomainBean' to jndi 'local/DomainBean@1915231999'
+2011-11-02 18:10:19,843 INFO  [org.jboss.proxy.ejb.ProxyFactory] (main) Bound EJB Home 'AccMgrAccessBean' to jndi 'AccMgrAccessBean'
+2011-11-02 18:10:19,865 INFO  [org.jboss.ejb.plugins.local.BaseLocalProxyFactory] (main) Bound EJB LocalHome 'RoleBean' to jndi 'local/RoleBean@671822310'
+2011-11-02 18:10:19,886 INFO  [org.jboss.ejb.plugins.local.BaseLocalProxyFactory] (main) Bound EJB LocalHome 'TagBean' to jndi 'local/TagBean@1996031891'
+2011-11-02 18:10:19,894 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/accmgr.website
+2011-11-02 18:10:20,099 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/AccMgrWS
+2011-11-02 18:10:21,481 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/accmgr-4.7.ear/accmgr.ws.war/AccMgrWSService1142216847786679420.wsdl
+2011-11-02 18:10:21,638 INFO  [org.jboss.jpa.deployment.PersistenceUnitDeployment] (main) Starting persistence unit persistence.unit:unitName=firelog-ear-4.0.1.0.ear/firelog-ejb-4.0.1.0.jar#firelog.ejb
+2011-11-02 18:10:21,705 INFO  [org.hibernate.cfg.annotations.Version] (main) Hibernate Annotations 3.4.0.GA
+2011-11-02 18:10:21,723 INFO  [org.hibernate.cfg.Environment] (main) Hibernate 3.3.1.GA
+2011-11-02 18:10:21,729 INFO  [org.hibernate.cfg.Environment] (main) hibernate.properties not found
+2011-11-02 18:10:21,734 INFO  [org.hibernate.cfg.Environment] (main) Bytecode provider name : javassist
+2011-11-02 18:10:21,739 INFO  [org.hibernate.cfg.Environment] (main) using JDK 1.4 java.sql.Timestamp handling
+2011-11-02 18:10:21,849 INFO  [org.hibernate.annotations.common.Version] (main) Hibernate Commons Annotations 3.1.0.GA
+2011-11-02 18:10:21,856 INFO  [org.hibernate.ejb.Version] (main) Hibernate EntityManager 3.4.0.GA
+2011-11-02 18:10:21,900 INFO  [org.hibernate.ejb.Ejb3Configuration] (main) Processing PersistenceUnitInfo [
+	name: firelog.ejb
+	...]
+2011-11-02 18:10:21,927 WARN  [org.hibernate.ejb.Ejb3Configuration] (main) Persistence provider caller does not implement the EJB3 spec correctly. PersistenceUnitInfo.getNewTempClassLoader() is null.
+2011-11-02 18:10:22,140 INFO  [org.hibernate.validator.Version] (main) Hibernate Validator 3.1.0.GA
+2011-11-02 18:10:22,189 INFO  [org.hibernate.cfg.search.HibernateSearchEventListenerRegister] (main) Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2011-11-02 18:10:22,269 INFO  [org.hibernate.connection.ConnectionProviderFactory] (main) Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2011-11-02 18:10:22,272 INFO  [org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider] (main) Using provided datasource
+2011-11-02 18:10:22,335 INFO  [org.hibernate.dialect.Dialect] (main) Using dialect: org.hibernate.dialect.MySQLDialect
+2011-11-02 18:10:22,342 INFO  [org.hibernate.transaction.TransactionFactoryFactory] (main) Transaction strategy: org.hibernate.ejb.transaction.JoinableCMTTransactionFactory
+2011-11-02 18:10:22,345 INFO  [org.hibernate.transaction.TransactionManagerLookupFactory] (main) instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+2011-11-02 18:10:22,348 INFO  [org.hibernate.transaction.TransactionManagerLookupFactory] (main) instantiated TransactionManagerLookup
+2011-11-02 18:10:22,354 INFO  [org.hibernate.hql.ast.ASTQueryTranslatorFactory] (main) Using ASTQueryTranslatorFactory
+2011-11-02 18:10:22,455 INFO  [org.hibernate.impl.SessionFactoryImpl] (main) building session factory
+2011-11-02 18:10:22,739 INFO  [org.hibernate.impl.SessionFactoryObjectFactory] (main) Factory name: persistence.unit:unitName=firelog-ear-4.0.1.0.ear/firelog-ejb-4.0.1.0.jar#firelog.ejb
+2011-11-02 18:10:22,741 INFO  [org.hibernate.util.NamingHelper] (main) JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+2011-11-02 18:10:22,764 INFO  [org.hibernate.util.NamingHelper] (main) Creating subcontext: persistence.unit:unitName=firelog-ear-4.0.1.0.ear
+2011-11-02 18:10:22,774 INFO  [org.hibernate.impl.SessionFactoryObjectFactory] (main) Bound factory to JNDI name: persistence.unit:unitName=firelog-ear-4.0.1.0.ear/firelog-ejb-4.0.1.0.jar#firelog.ejb
+2011-11-02 18:10:22,774 WARN  [org.hibernate.impl.SessionFactoryObjectFactory] (main) InitialContext did not implement EventContext
+2011-11-02 18:10:22,775 INFO  [org.hibernate.util.NamingHelper] (main) JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+2011-11-02 18:10:23,092 INFO  [org.jboss.jms.server.destination.QueueService] (main) Queue[/queue/firelog] started, fullSize=200000, pageSize=2000, downCacheSize=2000
+2011-11-02 18:10:23,146 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/firelog-loader
+2011-11-02 18:10:23,187 INFO  [com.kanaeki.firelog.listener.FirelogListener] (main) --------------------------------------------------
+2011-11-02 18:10:23,188 INFO  [com.kanaeki.firelog.listener.FirelogListener] (main)  Starting Firelog 
+2011-11-02 18:10:23,188 INFO  [com.kanaeki.firelog.listener.FirelogListener] (main) --------------------------------------------------
+2011-11-02 18:10:24,410 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/pss2.health
+2011-11-02 18:10:30,896 INFO  [org.jboss.ejb3.clientmodule.ClientENCInjectionContainer] (main) STARTED CLIENT ENC CONTAINER: itext-2.1.7
+2011-11-02 18:10:31,299 INFO  [org.jboss.wsf.framework.management.DefaultEndpointRegistry] (main) register: jboss.ws:context=opt.report/ws,endpoint=OperatorReportUsageDataServicerBean
+2011-11-02 18:10:31,543 INFO  [org.jboss.wsf.stack.jbws.WSDLFilePublisher] (main) WSDL published to: file:/C:/jboss-5.1.0.GA/server/pss2/data/wsdl/operator-report-7.1-SNAPSHOT.ear/report-ejb-7.1-SNAPSHOT.jar/OperatorReportUsageDataServicer3494883607771896894.wsdl
+2011-11-02 18:10:32,525 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/opt.report/ws
+2011-11-02 18:10:32,564 WARNING [javax.enterprise.resource.webcontainer.jsf.config] (main) Unable to process deployment descriptor for context '/opt.report/ws'
+2011-11-02 18:10:32,565 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/opt.report/ws'
+2011-11-02 18:10:33,578 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/opt.report
+2011-11-02 18:10:33,718 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/opt.report'
+2011-11-02 18:10:34,173 INFO  [org.jboss.web.tomcat.service.deployers.TomcatDeployment] (main) deploy, ctxPath=/report
+2011-11-02 18:10:34,243 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (main) Initializing Mojarra (1.2_12-b01-FCS) for context '/report'
+2011-11-02 18:10:42,419 WARN  [org.jboss.injection.EJBRemoteHandler] (main) EJBTHREE-1289: Using legacy EjbEncInjector, because mappedName for enc "env/com.akuacom.pss2.email.EmailManagerBean/eao", field "eao" is null (container.environmentRefGroup.annotatedEjbReferences = null)
+2011-11-02 18:10:42,421 ERROR [org.jboss.jms.client.container.ClosedInterceptor] (main) ClosedInterceptor.ClientSessionDelegate[ja-0v916iug-1-3iyz5iug-xmwmek-75d3r2f4]: method createObjectMessage() did not go through, the interceptor is CLOSED
+2011-11-02 18:10:42,423 WARN  [org.jboss.injection.EJBRemoteHandler] (main) EJBTHREE-1289: Using legacy EjbEncInjector, because mappedName for enc "env/com.akuacom.pss2.email.EmailManagerBean/notifier", field "notifier" is null (container.environmentRefGroup.annotatedEjbReferences = null)
+2011-11-02 18:10:53,284 INFO  [org.jboss.jpa.deployment.PersistenceUnitDeployment] (main) Starting persistence unit persistence.unit:unitName=pss2.ear/drms-core-ejb-7.1-SNAPSHOT.jar#core
+2011-11-02 18:10:53,288 INFO  [org.hibernate.ejb.Ejb3Configuration] (main) Processing PersistenceUnitInfo [
+	name: core
+	...]
+2011-11-02 18:10:53,507 WARN  [org.hibernate.ejb.Ejb3Configuration] (main) Persistence provider caller does not implement the EJB3 spec correctly. PersistenceUnitInfo.getNewTempClassLoader() is null.
+2011-11-02 18:10:54,046 INFO  [org.hibernate.cfg.search.HibernateSearchEventListenerRegister] (main) Unable to find org.hibernate.search.event.FullTextIndexEventListener on the classpath. Hibernate Search is not enabled.
+2011-11-02 18:10:54,179 INFO  [org.hibernate.connection.ConnectionProviderFactory] (main) Initializing connection provider: org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider
+2011-11-02 18:10:54,180 INFO  [org.hibernate.ejb.connection.InjectedDataSourceConnectionProvider] (main) Using provided datasource
+2011-11-02 18:10:54,198 INFO  [org.hibernate.dialect.Dialect] (main) Using dialect: org.hibernate.dialect.MySQLDialect
+2011-11-02 18:10:54,205 INFO  [org.hibernate.transaction.TransactionFactoryFactory] (main) Transaction strategy: org.hibernate.ejb.transaction.JoinableCMTTransactionFactory
+2011-11-02 18:10:54,206 INFO  [org.hibernate.transaction.TransactionManagerLookupFactory] (main) instantiating TransactionManagerLookup: org.hibernate.transaction.JBossTransactionManagerLookup
+2011-11-02 18:10:54,207 INFO  [org.hibernate.transaction.TransactionManagerLookupFactory] (main) instantiated TransactionManagerLookup
+2011-11-02 18:10:54,208 INFO  [org.hibernate.hql.ast.ASTQueryTranslatorFactory] (main) Using ASTQueryTranslatorFactory
+2011-11-02 18:10:54,328 INFO  [org.hibernate.impl.SessionFactoryImpl] (main) building session factory
+2011-11-02 18:10:55,610 INFO  [org.hibernate.impl.SessionFactoryObjectFactory] (main) Factory name: persistence.unit:unitName=pss2.ear/drms-core-ejb-7.1-SNAPSHOT.jar#core
+2011-11-02 18:10:55,610 INFO  [org.hibernate.util.NamingHelper] (main) JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+2011-11-02 18:10:55,640 INFO  [org.hibernate.util.NamingHelper] (main) Creating subcontext: persistence.unit:unitName=pss2.ear
+2011-11-02 18:10:55,645 INFO  [org.hibernate.impl.SessionFactoryObjectFactory] (main) Bound factory to JNDI name: persistence.unit:unitName=pss2.ear/drms-core-ejb-7.1-SNAPSHOT.jar#core
+2011-11-02 18:10:55,646 WARN  [org.hibernate.impl.SessionFactoryObjectFactory] (main) InitialContext did not implement EventContext
+2011-11-02 18:10:55,654 INFO  [org.hibernate.tool.hbm2ddl.SchemaValidator] (main) Running schema validator
+2011-11-02 18:10:55,654 INFO  [org.hibernate.tool.hbm2ddl.SchemaValidator] (main) fetching database metadata
+2011-11-02 18:10:55,764 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.task
+2011-11-02 18:10:55,764 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [ancestry, startmillis, lasttrigger, type, stopmillis, period, version, creator, creationtime, modifier, name, parent_uuid, value, modifiedtime, uuid]
+2011-11-02 18:10:55,775 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.baseline_config
+2011-11-02 18:10:55,776 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [maxmarate, baseline_model_uuid, minmarate, excludeddaysofweekfromcalc, eventendtime, excludeabnormaldayimplclass, excludeholiday, creator, version, creationtime, modifier, maendtime, owner_uuid, excludeholidayfromcalc, description, name, excludeddaysofweek, eventstarttime, modifiedtime, mastarttime, excludeeventday, uuid]
+2011-11-02 18:10:55,786 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.baseline_model
+2011-11-02 18:10:55,786 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, calcimplclass, implclass, description, name, modifiedtime, daypickerimplclass, uuid, creator, version]
+2011-11-02 18:10:55,795 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.bid_block
+2011-11-02 18:10:55,795 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, endtimeh, starttimem, endtimem, starttimeh, bid_config_uuid, modifiedtime, uuid, creator, version]
+2011-11-02 18:10:55,802 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.bid_config
+2011-11-02 18:10:55,802 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [drasbidding, respondbytimem, defaultbidkw, program_uuid, minbidkw, version, minconsectutiveblocks, creator, modifier, creationtime, modifiedtime, accepttimeoutperiodm, uuid, respondbytimeh, drasrespondbyperiodm]
+2011-11-02 18:10:55,808 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.bid_level_mapping
+2011-11-02 18:10:55,808 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, timeblock, participant_uuid, normal, moderate, programname, high, uuid]
+2011-11-02 18:10:55,815 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.client_conversation_state
+2011-11-02 18:10:55,815 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [operationmodevalue, conversationstateid, creationtime, commtime, eventidentifier, drasclientid, eventmodnumber, eventstatus, programname, uuid, push]
+2011-11-02 18:10:55,821 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.client_status
+2011-11-02 18:10:55,822 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, endtime, duration, starttime, status, uuid, client_uuid, clientname]
+2011-11-02 18:10:55,829 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.constraint_invalid_date
+2011-11-02 18:10:55,829 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, invaliddate, program_participant_constraint_uuid, modifiedtime, uuid, creator, version]
+2011-11-02 18:10:55,839 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.contact
+2011-11-02 18:10:55,840 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [onseasonnotihours, external, commnotification, defaultmsgthreshold, state, lastname, firstname, ownerid, type, version, creator, modifier, creationtime, address, offseasonnotihours, priority, description, msgthreshold, modifiedtime, uuid, ownertype, supporttype, eventnotification]
+2011-11-02 18:10:55,846 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.contacts_offline_error
+2011-11-02 18:10:55,847 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, contactsuuid, participant_uuid, modifiedtime, programname, uuid, offlineerror, creator, version]
+2011-11-02 18:10:55,859 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.core_property
+2011-11-02 18:10:55,859 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, stringvalue, booleanvalue, doublevalue, textvalue, modifiedtime, propertyname, uuid, type, version, creator]
+2011-11-02 18:10:55,875 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.custom_rule
+2011-11-02 18:10:55,876 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [notifyaction, signalaction, operator, threshold, program_participant_uuid, mode, version, creator, modifier, creationtime, source, sortorder, start, value, modifiedtime, uuid, variable, end]
+2011-11-02 18:10:55,885 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.dataentry
+2011-11-02 18:10:55,885 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, valuetype, stringvalue, time, dataset_uuid, value, actual, uuid, datasource_uuid]
+2011-11-02 18:10:55,892 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.dataentry_temp
+2011-11-02 18:10:55,892 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, valuetype, stringvalue, time, dataset_uuid, value, actual, uuid, datasource_uuid]
+2011-11-02 18:10:55,902 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.dataset
+2011-11-02 18:10:55,903 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [interpolated, calcimplclass, calculationimplclass, enumtitles, graphtype, valueprecision, period, version, creator, modifier, creationtime, unit, sync, description, name, modifiedtime, datatype, uuid, colorhint]
+2011-11-02 18:10:55,910 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.datasource
+2011-11-02 18:10:55,910 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, enabled, name, uuid, ownertype, ownerid]
+2011-11-02 18:10:55,919 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.datasource_usage
+2011-11-02 18:10:55,920 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, baseline_state, uuid, date, lastactual, maxgap, datasource_uuid]
+2011-11-02 18:10:55,926 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.dbp_event_creation
+2011-11-02 18:10:55,926 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, status, description, filename, uuid, date, autocreation]
+2011-11-02 18:10:55,934 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.dbpevent
+2011-11-02 18:10:55,934 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [currentbidstate, drasrespondby, respondby, uuid]
+2011-11-02 18:10:55,941 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.drwebsite_property
+2011-11-02 18:10:55,942 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, stringvalue, textvalue, modifiedtime, propertyname, uuid, creator, version]
+2011-11-02 18:10:55,950 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event
+2011-11-02 18:10:55,951 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, manual, issuedtime, endtime, starttime, neartime, status, programname, uuid, receivedtime, eventname]
+2011-11-02 18:10:55,958 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_bid_block
+2011-11-02 18:10:55,961 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [endtime, creationtime, starttime, uuid, eventname]
+2011-11-02 18:10:55,977 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_participant
+2011-11-02 18:10:55,977 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [ancestry, participant_uuid, bidstate, version, creator, modifier, creationtime, event_uuid, eventmodnumber, name, parent_uuid, value, modifiedtime, uuid]
+2011-11-02 18:10:55,985 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_participant_bid_entry
+2011-11-02 18:10:55,986 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [event_participant_uuid, endtime, creationtime, pricelevel, starttime, reductionkw, active, uuid]
+2011-11-02 18:10:55,994 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_participant_rule
+2011-11-02 18:10:55,995 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [event_participant_uuid, notifyaction, signalaction, operator, threshold, mode, version, creator, modifier, creationtime, source, sortorder, start, value, modifiedtime, uuid, variable, end]
+2011-11-02 18:10:56,003 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_participant_signal
+2011-11-02 18:10:56,004 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [event_participant_uuid, creationtime, modifier, modifiedtime, signal_def_uuid, uuid, creator, version]
+2011-11-02 18:10:56,011 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_participant_signal_entry
+2011-11-02 18:10:56,012 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, stringvalue, time, expired, modifiedtime, eventparticipantsignaluuid, uuid, ruleid, numbervalue, creator, version]
+2011-11-02 18:10:56,018 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_signal
+2011-11-02 18:10:56,018 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, event_uuid, modifiedtime, signal_def_uuid, uuid, creator, version]
+2011-11-02 18:10:56,025 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_signal_entry
+2011-11-02 18:10:56,025 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, eventsignaluuid, stringvalue, time, expired, modifiedtime, uuid, numbervalue, creator, version]
+2011-11-02 18:10:56,034 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_template
+2011-11-02 18:10:56,034 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, name, modifiedtime, programname, uuid, creator, version]
+2011-11-02 18:10:56,042 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.event_template_signalentry
+2011-11-02 18:10:56,043 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, relativestarttime, name, owner_id, value, modifiedtime, signaltype, uuid, creator, version]
+2011-11-02 18:10:56,054 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.history_baseline_dataentry
+2011-11-02 18:10:56,054 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, valuetype, stringvalue, time, dataset_uuid, value, actual, uuid, datasource_uuid]
+2011-11-02 18:10:56,065 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.history_event
+2011-11-02 18:10:56,066 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [endtime, starttime, scheduledendtime, cancelled, registeredshed, program_uuid, issuetime, numprogramparticipants, numusageenabled, creationtime, programname, uuid, scheduledstarttime, registeredusageshed, eventname]
+2011-11-02 18:10:56,076 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.history_event_participant
+2011-11-02 18:10:56,077 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [endtime, starttime, averageshed, client, participantname, percentage, participant_uuid, totalshed, parent, registeredshed, creationtime, offlineperevent, participation, uuid, history_event_uuid, eventname]
+2011-11-02 18:10:56,099 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.history_event_participant_signal
+2011-11-02 18:10:56,099 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, participantname, participant_uuid, signalendtime, signalvalue, signaltime, signalname, uuid, eventname, history_event_participant_uuid]
+2011-11-02 18:10:56,108 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.message
+2011-11-02 18:10:56,108 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [to, status, subject, from, type, contenttype, contactid, content, creationtime, username, senttime, priority, programname, uuid, eventname]
+2011-11-02 18:10:56,115 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.message_filter_setting
+2011-11-02 18:10:56,115 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, cleanmsgminute, cleanmsghour, duration, msgthreshold, frequency, uuid, msgexpiretime, filterstatus]
+2011-11-02 18:10:56,123 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.noaa_weather
+2011-11-02 18:10:56,123 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [date, version, creator, creationtime, modifier, forecasthigh0, forecasthigh3, forecasthigh4, forecasthigh1, forecasthigh2, modifiedtime, forecasthigh5, uuid, high, reportingstation, isfinal]
+2011-11-02 18:10:56,139 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.participant
+2011-11-02 18:10:56,139 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [servicestreetaddress, clientcanfailconfirmation, optout, client, manualcontrolexpires, dataenabler, abank, manualcontrol, metername, type, feedback, testparticipant, longitude, commtime, notificationlevel, status, parent, hostaddress, directaccessparticipant, offlinewarning, operationmode, modifier, startdate, modifiedtime, installer, latitude, uuid, comment, enddate, demandlimiting, serviceplan, aggregator, meterid, eventstatus, lastname, servicecityname, premisenumber, push, noteslastupdate, version, creator, rateeffectivedate, lastprice, pnode, activated, shedperhourkw, gridlocation, uisactive, customername, zip, participantname, testaccount, usertype, firstname, clientallowedtooptout, ip, creationtime, slap, address, account, enrollmentdate, notesauthor, notes]
+2011-11-02 18:10:56,150 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.participant_contact
+2011-11-02 18:10:56,151 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [demandnormalnotificationlast, demandmoderatenotificationinterval, participant_uuid, external, commnotification, demandwarningnotificationlast, demandmoderatenotificationlast, type, description, msgthreshold, offlineerror, demandwarningnotificationinterval, eventnotification, onseasonnotihours, demandmoderatenotifications, demandlimitingnotifications, ratelimitexceedednotificationlast, defaultmsgthreshold, demandhighnotifications, creationtime, ratelimitexceedednotifications, offseasonnotihours, address, demandnormalnotifications, demandhighnotificationlast, ratelimitexceedednotificationinterval, demandhighnotificationinterval, demandnormalnotificationinterval, demandwarningnotifications, uuid]
+2011-11-02 18:10:56,159 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.participant_manualsignal
+2011-11-02 18:10:56,159 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, participant_uuid, name, value, uuid]
+2011-11-02 18:10:56,169 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.peakchoice_message
+2011-11-02 18:10:56,171 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, content, to, username, subject, programname, from, uuid, type, eventname]
+2011-11-02 18:10:56,190 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program
+2011-11-02 18:10:56,193 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [validatorclass, longprogramname, programtype, mustissuebdbe, minissuetostartm, state, programclass, maxstarttimem, maxdurationm, version, minstarttimem, creator, lasterroropcontact, testprogram, minstarttimeh, description, priority, pendingtimedbeh, name, pendingtimedbem, uischeduleeventstring, autoaccept, uiconfigureprogramstring, utilityprogramname, mindurationm, classname, begineffectivetime, validatorconfigfile, creationtime, modifier, maxendtimem, notificationparam1, endeffectivetime, maxissuetimeh, autorepeattimeofday, minendtimeh, manualcreatable, modifiedtime, maxstarttimeh, uuid, maxissuetimem, uiconfigureeventstring, maxendtimeh, minendtimem]
+2011-11-02 18:10:56,209 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_matrix
+2011-11-02 18:10:56,210 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [modifier, creationtime, program2uuid, modifiedtime, coexist, uuid, program1uuid, creator, version]
+2011-11-02 18:10:56,221 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_participant
+2011-11-02 18:10:56,221 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [ancestry, optstatus, clientconfig, participant_uuid, state, program_uuid, version, creator, modifier, creationtime, name, parent_uuid, value, modifiedtime, programname, uuid, uisactive]
+2011-11-02 18:10:56,230 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_participant_bid_entry
+2011-11-02 18:10:56,230 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, blockstart, pricelevel, reductionkw, modifiedtime, active, blockend, uuid, program_participant_uuid, creator, version]
+2011-11-02 18:10:56,238 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_participant_constraint
+2011-11-02 18:10:56,238 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [notifyaction, minduration, consecutiveaction, minactive, minnotify, maxactive, maxnotify, activeaction, program_participant_uuid, creator, version, creationtime, modifier, maxconsecutived, durationaction, modifiedtime, maxduration, uuid]
+2011-11-02 18:10:56,247 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_participant_rule
+2011-11-02 18:10:56,247 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [notifyaction, signalaction, operator, threshold, program_participant_uuid, mode, version, creator, modifier, creationtime, source, sortorder, start, value, modifiedtime, uuid, variable, end]
+2011-11-02 18:10:56,256 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_rtp_config
+2011-11-02 18:10:56,256 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [endtime, starttime, starttemperature, program_uuid, version, creator, creationtime, modifier, unit, rate, name, modifiedtime, endtemperature, uuid, seasonname]
+2011-11-02 18:10:56,264 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_rule
+2011-11-02 18:10:56,264 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [notifyaction, signalaction, program_uuid, operator, threshold, mode, version, creator, modifier, creationtime, source, sortorder, start, value, modifiedtime, uuid, variable, end]
+2011-11-02 18:10:56,273 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_signal
+2011-11-02 18:10:56,274 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, modifiedtime, signal_def_uuid, program_uuid, uuid, creator, version]
+2011-11-02 18:10:56,283 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.program_signal_entry
+2011-11-02 18:10:56,283 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, stringvalue, time, expired, modifiedtime, uuid, numbervalue, creator, version, programsignaluuid]
+2011-11-02 18:10:56,294 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.rtp_ftp_configuration
+2011-11-02 18:10:56,295 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [port, maxtemperature, scaninterval, lastprocesstime, mintemperature, password, url, scanendtime, scanstarttime, creationtime, username, sendnotification, path, filename, uuid, required]
+2011-11-02 18:10:56,304 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.rtp_remote_price
+2011-11-02 18:10:56,306 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, price, modifiedtime, programname, uuid, creator, version, eventname, intervaltime]
+2011-11-02 18:10:56,317 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.sce_ftp_config
+2011-11-02 18:10:56,317 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [port, backuppath, host, configname, scaninterval, available, password, scanendtime, upload, fixedfilename, scanstarttime, creationtime, username, filenametemplate, formattedfilename, timermanagerclass, uuid, required]
+2011-11-02 18:10:56,326 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.scertp_event
+2011-11-02 18:10:56,326 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [amended, reportingweatherstation, hightemperature, uuid, temp_range]
+2011-11-02 18:10:56,333 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.season_config
+2011-11-02 18:10:56,333 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, startdate, name, modifiedtime, program_uuid, uuid, enddate, creator, version]
+2011-11-02 18:10:56,340 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.signal_def
+2011-11-02 18:10:56,340 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, inputsignal, modifiedtime, signalname, levelsignal, uuid, type, creator, version]
+2011-11-02 18:10:56,347 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.signal_level_def
+2011-11-02 18:10:56,347 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [creationtime, modifier, stringvalue, modifiedtime, signal_def_uuid, uuid, defaultvalue, creator, version]
+2011-11-02 18:10:56,354 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) table found: pss2.sub_account
+2011-11-02 18:10:56,354 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (main) columns: [participant_uuid, premisenumber, version, creator, creationtime, modifier, startdate, modifiedtime, uuid, comment, enddate, enrollmentdate, subaccountid]
+2011-11-02 18:10:56,357 INFO  [org.hibernate.util.NamingHelper] (main) JNDI InitialContext properties:{java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory, java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces}
+2011-11-02 18:37:55,251 INFO  [org.jboss.web.WebService] (main) Using RMI server codebase: http://127.0.0.1:8083/
+ e${2011-11-02 18:37:59,542 INFO  [org.jboss.wsf.stack.jbws.NativeServerConfig] (main) JBoss Web Services - Stack Native Core
+ e${2011-11-02 18:37:59,542 INFO  [org.jboss.wsf.stack.jbws.NativeServerConfig] (main) 3.1.2.GA
+ e${2011-11-02 18:38:00,106 INFO  [org.jboss.dependency.plugins.AttributeCallbackItem] (main) Owner callback not implemented.
+ e${2011-11-02 18:38:00,820 INFO  [org.jboss.logbridge.LogNotificationListener] (main) Adding notification listener for logging mbean "jboss.system:service=Logging,type=Log4jService" to server org.jboss.mx.server.MBeanServerImpl@4b90725e[ defaultDomain='jboss' ]
+ e${

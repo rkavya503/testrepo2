@@ -1,0 +1,210 @@
+<definitions name="APIWebService"
+	targetNamespace="urn-com-caiso-ads-webservices-api"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="urn-com-caiso-ads-webservices-api"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<message name="APIWebService_getTrajectoryData">
+		<part name="batchUID" type="xsd:string" />
+	</message>
+	<message name="APIWebService_getDispatchBatchesSinceUIDResponse">
+		<part name="result" type="xsd:string" />
+	</message>
+	<message name="APIWebService_getBatchStatusResponse">
+		<part name="result" type="xsd:int" />
+	</message>
+	<message name="APIWebService_submitMSSLFRequest">
+		<part name="request" type="xsd:string" />
+	</message>
+	<message name="APIWebService_getBatchHeaderResponse">
+		<part name="result" type="xsd:string" />
+	</message>
+	<message name="APIWebService_isNewTrajDataResponse">
+		<part name="result" type="xsd:boolean" />
+	</message>
+	<message name="APIWebService_getDispatchBatchResponse">
+		<part name="result" type="xsd:string" />
+	</message>
+	<message name="APIWebService_getDispatchBatch">
+		<part name="batchUID" type="xsd:string" />
+	</message>
+	<message name="APIWebService_getBatchStatus">
+		<part name="batchUID" type="xsd:string" />
+	</message>
+	<message name="APIWebService_submitMSSLFRequestResponse">
+		<part name="result" type="xsd:string" />
+	</message>
+	<message name="APIWebService_getDispatchBatchesSinceUID">
+		<part name="batchUID" type="xsd:string" />
+	</message>
+	<message name="APIWebService_getBatchHeader">
+		<part name="batchUID" type="xsd:string" />
+	</message>
+	<message name="APIWebService_getTrajectoryDataResponse">
+		<part name="result" type="xsd:string" />
+	</message>
+	<message name="APIWebService_isNewTrajData">
+		<part name="batchUID" type="xsd:string" />
+	</message>
+	<message name="APIWebService_validateDispatchBatch">
+		<part name="batchUID" type="xsd:string" />
+	</message>
+	<message name="APIWebService_validateDispatchBatchResponse" />
+	<portType name="APIWebService">
+		<operation name="getDispatchBatchesSinceUID"
+			parameterOrder="batchUID">
+			<input
+				message="tns:APIWebService_getDispatchBatchesSinceUID" />
+			<output
+				message="tns:APIWebService_getDispatchBatchesSinceUIDResponse" />
+		</operation>
+		<operation name="getBatchStatus" parameterOrder="batchUID">
+			<input message="tns:APIWebService_getBatchStatus" />
+			<output message="tns:APIWebService_getBatchStatusResponse" />
+		</operation>
+		<operation name="getDispatchBatch" parameterOrder="batchUID">
+			<input message="tns:APIWebService_getDispatchBatch" />
+			<output
+				message="tns:APIWebService_getDispatchBatchResponse" />
+		</operation>
+		<operation name="getBatchHeader" parameterOrder="batchUID">
+			<input message="tns:APIWebService_getBatchHeader" />
+			<output message="tns:APIWebService_getBatchHeaderResponse" />
+		</operation>
+		<operation name="isNewTrajData" parameterOrder="batchUID">
+			<input message="tns:APIWebService_isNewTrajData" />
+			<output message="tns:APIWebService_isNewTrajDataResponse" />
+		</operation>
+		<operation name="getTrajectoryData" parameterOrder="batchUID">
+			<input message="tns:APIWebService_getTrajectoryData" />
+			<output
+				message="tns:APIWebService_getTrajectoryDataResponse" />
+		</operation>
+		<operation name="validateDispatchBatch"
+			parameterOrder="batchUID">
+			<input message="tns:APIWebService_validateDispatchBatch" />
+			<output
+				message="tns:APIWebService_validateDispatchBatchResponse" />
+		</operation>
+		<operation name="submitMSSLFRequest" parameterOrder="request">
+			<input message="tns:APIWebService_submitMSSLFRequest" />
+			<output
+				message="tns:APIWebService_submitMSSLFRequestResponse" />
+		</operation>
+	</portType>
+	<binding name="APIWebServiceBinding" type="tns:APIWebService">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="getDispatchBatchesSinceUID">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</input>
+			<output>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</output>
+		</operation>
+		<operation name="getBatchStatus">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</input>
+			<output>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</output>
+		</operation>
+		<operation name="getDispatchBatch">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</input>
+			<output>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</output>
+		</operation>
+		<operation name="getBatchHeader">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</input>
+			<output>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</output>
+		</operation>
+		<operation name="isNewTrajData">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</input>
+			<output>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</output>
+		</operation>
+		<operation name="getTrajectoryData">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</input>
+			<output>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</output>
+		</operation>
+		<operation name="validateDispatchBatch">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</input>
+			<output>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</output>
+		</operation>
+		<operation name="submitMSSLFRequest">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</input>
+			<output>
+				<soap:body
+					
+					namespace="urn-com-caiso-ads-webservices-api" use="literal"  />
+			</output>
+		</operation>
+	</binding>
+	<service name="APIWebService">
+		<port binding="tns:APIWebServiceBinding"
+			name="APIWebServicePort">
+			<soap:address
+				location="http://fpapjbos25:8080/ADS/APIWebService" />
+		</port>
+	</service>
+</definitions>

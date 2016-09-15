@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<signals>
+    <signal>
+        <serviceId>v007</serviceId>
+        <level>normal</level>
+    </signal>
+    <signal>
+        <serviceId>v008</serviceId>
+        <level>high</level>
+    </signal>
+    <signal>
+        <serviceId>v009</serviceId>
+        <level>moderate</level>
+    </signal>
+</signals>

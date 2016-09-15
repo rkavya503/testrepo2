@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app version="2.5"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name>obix-server</display-name>
+  <description>oBIX Server</description>
+  <distributable/>
+
+  <context-param>
+    <param-name>oBIXServerParam</param-name>
+    <param-value>oBIX server param</param-value>
+  </context-param>
+
+  <servlet>
+    <servlet-name>obix-dataService</servlet-name>
+    <servlet-class>com.akuacom.pss2.obix.servlet.DataServiceServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>obix-dataService</servlet-name>
+    <url-pattern>/obix/dataService/*</url-pattern>
+  </servlet-mapping>
+
+  <mime-mapping>
+    <extension>xsl</extension>
+    <mime-type>text/xml</mime-type>
+  </mime-mapping>
+  <mime-mapping>
+    <extension>xml</extension>
+    <mime-type>text/xml</mime-type>
+  </mime-mapping>
+
+  <!-- Welcome file processing order -->
+  <welcome-file-list>
+    <welcome-file>welcome.html</welcome-file>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>OBIXRESTWS</web-resource-name>
+      <url-pattern>/obix/dataService/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>PSS2WS</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>PSS2WS</realm-name>
+  </login-config>
+  <security-role>
+    <description>PSS2WS</description>
+    <role-name>PSS2WS</role-name>
+  </security-role>
+
+</web-app>
+

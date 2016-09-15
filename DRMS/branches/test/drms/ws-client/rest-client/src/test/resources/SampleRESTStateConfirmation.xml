@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:eventStateConfirmation currentTime="31.0" drasClientID="DRC-245"
+	eventIdentifier="35648" eventModNumber="0" eventStateID="843451309"
+	operationModeValue="MODERATE" optInStatus="true" programName="SAMPLE"
+	schemaVersion="" xmlns:p="urn:EventState"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:EventState EventState.xsd ">
+</p:eventStateConfirmation>

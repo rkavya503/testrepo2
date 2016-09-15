@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="file:DR-034A-17 Schema.xsd">
+	<Sequence name="eventStateConfirmation"
+		type="0-DRAS-EventStateConfirmation-2008-1">
+		<String name="programName" value="CPP" />
+		<Unsigned name="eventModNumber" value="0" />
+		<String name="eventIdentifier" value="35648" />
+		<String name="drasClientID" value="DRC-245" />
+		<Unsigned name="eventStateID" value="843451309" />
+		<String name="schemaVersion" value="0.9" />
+		<Enumerated name="operationModeValue" value="MODERATE" />
+		<Boolean name="optInStatus" value="true" />
+		<Real name="currentTime" value="31.0" />
+	</Sequence>
+</CSML>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+	
+	<changeSet id="1" author="satya" >
+	<preConditions onFail="MARK_RAN">  
+    <not><tableExists schemaName="mobimsg" tableName="Preference" /></not>
+    </preConditions>
+
+	  <comment>
+          Creating table Prerfence for mobimsg
+      </comment>
+      <sql>
+		CREATE TABLE `Preference` (
+        `deviceKey` varchar(200) DEFAULT NULL,
+        `data` text,
+         UNIQUE KEY `deviceKey` (`deviceKey`) 
+        )  
+	   </sql>
+    </changeSet>	
+	
+	<changeSet id="2" author="satya" >
+	<preConditions onFail="MARK_RAN">  
+    <not><tableExists schemaName="mobimsg" tableName="AlertedKeys" /></not>
+    </preConditions>
+
+	  <comment>
+          Creating table AlertedKeys for mobimsg
+      </comment>
+      <sql>
+		 CREATE TABLE `AlertedKeys` (
+         `alertedKey` varchar(255) DEFAULT NULL,
+          UNIQUE KEY `alertedKey` (`alertedKey`)
+          ) 
+	   </sql>
+    </changeSet>
+	
+	<changeSet id="3" author="satya" >
+	  <comment>
+          Creating table Alert_History for mobimsg
+      </comment>
+      <sql>
+		CREATE TABLE `Alert_History` (
+        `uuid` int(11) NOT NULL AUTO_INCREMENT,
+        `deviceKey` varchar(200) DEFAULT NULL,
+        `message` text,
+        `alertTime` datetime DEFAULT NULL,
+        `programName` varchar(255) DEFAULT NULL,
+        `product` varchar(45) DEFAULT NULL,
+        `startTime` datetime DEFAULT NULL,
+        `endTime` datetime DEFAULT NULL,
+        PRIMARY KEY (`uuid`),
+        KEY `deviceKey` (`deviceKey`)
+        )  
+	   </sql>
+    </changeSet>
+	
+	
+    
+</databaseChangeLog>

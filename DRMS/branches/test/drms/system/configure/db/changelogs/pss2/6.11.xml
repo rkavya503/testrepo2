@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <changeSet id="1" author="Veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from
+                    core_property;
+				</sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                core_property where propertyName='feature.participantNotes';
+			</sqlCheck>
+        </preConditions>
+        <comment>
+           DRMS-5424 feature.participantNotes flag
+        </comment>
+        <sql>insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0, 'feature.participantNotes',
+            null, false, null, null, 'Boolean', 'script', null, now(),
+            null);
+		</sql>
+    </changeSet>
+
+    <changeSet id="2" author="Veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from
+                    core_property;
+				</sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                core_property where propertyName='feature.participantInfo';
+			</sqlCheck>
+        </preConditions>
+        <comment>
+           DRMS-5661 feature.participantInfo flag
+        </comment>
+        <sql>insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0, 'feature.participantInfo',
+            null, false, null, null, 'Boolean', 'script', null, now(),
+            null);
+		</sql>
+    </changeSet>
+
+    <changeSet id="3" author="Veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from
+                    core_property;
+				</sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                core_property where propertyName='feature.participantsUpload';
+			</sqlCheck>
+        </preConditions>
+        <comment>
+           DRMS-2429 feature.participantsUpload flag
+        </comment>
+        <sql>insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0, 'feature.participantsUpload',
+            null, false, null, null, 'Boolean', 'script', null, now(),
+            null);
+		</sql>
+    </changeSet>
+    <!-- <changeSet id="4" author="Veera"> <comment>DRMS-5424 Participant 
+        Notes</comment> <createTable tableName="participant_notes"> <column name="uuid" 
+        type="VARCHAR(32)"> <constraints nullable="false" primaryKey="true" /> </column> 
+        <column name="version" type="int(11)"> <constraints nullable="false" /> </column> 
+        <column name="creationTime" type="DATETIME"> <constraints nullable="true" 
+        /> </column> <column name="modifiedTime" type="DATETIME"> <constraints nullable="true" 
+        /> </column> <column name="modifier" type="varchar(255)"> <constraints nullable="true" 
+        /> </column> <column name="creator" type="varchar(255)"> <constraints nullable="true" 
+        /> </column> <column name="participant_uuid" type="varchar(32)"> <constraints 
+        nullable="false" /> </column> <column name="notes" type="LONGTEXT"> <constraints 
+        nullable="true" /> </column> </createTable> </changeSet> -->
+    <changeSet id="5" author="Veera">
+        <comment>DRMS-5661 Participant Info</comment>
+        <addColumn tableName="participant">
+            <column name="customerName" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="serviceStreetAddress" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="serviceCityName" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="zip" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="ABank" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="SLAP" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="PNode" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="servicePlan" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="rateEffectiveDate" type="datetime">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="directAccessParticipant" type="boolean">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="6" author="Veera">
+        <comment>DRMS-2518 Enable/Disable participants based on UIS</comment>
+        <addColumn tableName="participant">
+            <column name="uisActive" type="boolean"
+                defaultValueBoolean="true">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="7" author="Veera">
+        <comment>DRMS-2519 Enable/Disable program participants based on UIS</comment>
+        <addColumn tableName="program_participant">
+            <column name="uisActive" type="boolean"
+                defaultValueBoolean="true">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="8" author="Veera">
+        <comment>DRMS-5661 Test Participant Flag - for now this field is nullable to overcome any liquibase problems</comment>
+        <addColumn tableName="participant">
+            <column name="testParticipant" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="9" author="Brian">
+        <comment>DRMS-5247</comment>
+        <update tableName="core_property">
+            <column name="stringValue" value="firelog-ear-4.0.1.0" />
+            <where>propertyName = 'firelog'</where>
+        </update>
+    </changeSet>
+
+    <!-- <changeSet id="9" author="Dichen"> <comment>DRMS-5085</comment> 
+        <update tableName="program"> <column name="minStartTimeH" valueNumeric="13"/> 
+        <column name="maxStartTimeH" valueNumeric="13"/> <column name="minEndTimeH" 
+        valueNumeric="19"/> <column name="maxEndTimeH" valueNumeric="19"/> <column 
+        name="minStartTimeM" valueNumeric="0"/> <column name="maxStartTimeM" valueNumeric="0"/> 
+        <column name="minEndTimeM" valueNumeric="0"/> <column name="maxEndTimeM" 
+        valueNumeric="0"/> <where>name = 'PeakChoice - BestEffort1-7'</where> </update> 
+        </changeSet> -->
+
+    <changeSet id="10" author="Linda">
+        <comment>DRMS-5660 FTP upload of Participant information</comment>
+        <addColumn tableName="scedbp_dispatch_config">
+            <column name="configName" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+        <addUniqueConstraint tableName="scedbp_dispatch_config"
+            columnNames="configName" constraintName="pk_configName" />
+        <addColumn tableName="scedbp_dispatch_config">
+            <column name="filenameTemplate" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="scedbp_dispatch_config">
+            <column name="available" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="11" author="Linda">
+        <comment>DRMS-5660 FTP upload of Participant information</comment>
+        <renameTable oldTableName="scedbp_dispatch_config"
+            newTableName="sce_ftp_config" />
+		<addColumn tableName="sce_ftp_config">
+            <column name="timerManagerClass" type="varchar(64)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+
+    </changeSet>
+
+    <changeSet id="12" author="Linda">
+        <comment>DRMS-5660 FTP upload of Participant information</comment>
+        <sql>insert into sce_ftp_config(uuid, configName, scanStartTime,
+            scanEndTime, scanInterval, formattedFilename, fixedFilename,
+            creationTime, timerManagerClass) values (REPLACE(uuid(), '-', ''), 'SCEDBP',
+            '15:00',
+            '22:00', '10', 'yyyyMMdd', 'DBP_BID_REPORT', now(), 'com.akuacom.pss2.program.sceftp.SCEDBPDispatchManager');</sql>
+        <sql>insert into sce_ftp_config(uuid, configName, scanStartTime,
+            scanEndTime, scanInterval, formattedFilename, fixedFilename,
+            creationTime, timerManagerClass) values (REPLACE(uuid(), '-', ''),
+            'SCEPART','15:00',
+            '22:00', '10', 'yyyy-MM-dd', 'DRAS_Customer_Info_Report', now(),'com.akuacom.pss2.program.sceftp.PartticipantUploadTimer');
+		</sql>
+    </changeSet>
+
+    <changeSet id="13" author="Veera">
+        <comment>DRMS-5424 Participant Notes</comment>
+        <addColumn tableName="participant">
+            <column name="notes" type="LONGTEXT">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="notesLastUpdate" type="DATETIME">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="14" author="Steve">
+        <comment>DRMS-5650 dataset and datasource need unuque constraint on name</comment>
+        <sql>ALTER TABLE `pss2`.`dataset` ADD UNIQUE INDEX
+            `unqdset`(`name`);
+		</sql>
+        <sql>ALTER TABLE `pss2`.`datasource` ADD UNIQUE INDEX
+            `unqdsource`(`ownerID`, `name`);</sql>
+    </changeSet>
+
+    <changeSet id="15" author="Veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from
+                    core_property;
+				</sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                core_property where propertyName='feature.demandLimiting';
+			</sqlCheck>
+        </preConditions>
+        <comment>
+           DRMS-5739 feature.demandLimiting flag
+        </comment>
+        <sql>insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0, 'feature.demandLimiting',
+            null, true, null, null, 'Boolean', 'script', null, now(),
+            null);
+		</sql>
+    </changeSet>
+
+
+    <changeSet id="16" author="Veera">
+        <comment>
+           DRMS-5739 demand limiting
+        </comment>
+        <addColumn tableName="participant">
+            <column name="demandLimiting" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <!-- <addColumn tableName="participant"> <column name="demandLimitingBlockadeStart" 
+            type="DATETIME"> <constraints nullable="true" /> </column> </addColumn> <addColumn 
+            tableName="participant"> <column name="demandLimitingBlockadeEnd" type="DATETIME"> 
+            <constraints nullable="true" /> </column> </addColumn> <addColumn tableName="participant"> 
+            <column name="intervalMeterFrequency" type="INTEGER" defaultValueNumeric="5"> 
+            <constraints nullable="true" /> </column> </addColumn> <addColumn tableName="participant"> 
+            <column name="loadLimit" type="double"> <constraints nullable="true" /> </column> 
+            </addColumn> <addColumn tableName="participant"> <column name="rateInterval" 
+            type="INTEGER" defaultValueNumeric="15"> <constraints nullable="true" /> 
+            </column> </addColumn> <addColumn tableName="participant"> <column name="normalBandPercentage" 
+            type="double" defaultValueNumeric="75"> <constraints nullable="true" /> </column> 
+            </addColumn> <addColumn tableName="participant"> <column name="normalBandWattage" 
+            type="double"> <constraints nullable="true" /> </column> </addColumn> <addColumn 
+            tableName="participant"> <column name="moderateBandPercentage" type="double" 
+            defaultValueNumeric="80"> <constraints nullable="true" /> </column> </addColumn> 
+            <addColumn tableName="participant"> <column name="moderateBandWattage" type="double"> 
+            <constraints nullable="true" /> </column> </addColumn> <addColumn tableName="participant"> 
+            <column name="highBandPercentage" type="double" defaultValueNumeric="95"> 
+            <constraints nullable="true" /> </column> </addColumn> <addColumn tableName="participant"> 
+            <column name="highBandWattage" type="double"> <constraints nullable="true" 
+            /> </column> </addColumn> -->
+    </changeSet>
+
+    <changeSet id="17" author="Veera">
+        <comment>
+           DRMS-5739 demand limiting
+        </comment>
+        <addColumn tableName="participant_contact">
+            <column name="demandLimitingNotifications" type="boolean"
+                defaultValueBoolean="true">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="rateLimitExceededNotifications" type="boolean"
+                defaultValueBoolean="true">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="rateLimitExceededNotificationInterval"
+                type="INTEGER">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="rateLimitExceededNotificationLast"
+                type="DATETIME">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandModerateNotifications" type="boolean"
+                defaultValueBoolean="true">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandModerateNotificationInterval"
+                type="INTEGER">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandModerateNotificationLast" type="DATETIME">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandHighNotifications" type="boolean"
+                defaultValueBoolean="true">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandHighNotificationInterval" type="INTEGER">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandHighNotificationLast" type="DATETIME">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandNormalNotifications" type="boolean"
+                defaultValueBoolean="true">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandNormalNotificationInterval" type="INTEGER">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandNormalNotificationLast" type="DATETIME">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandWarningNotifications" type="boolean"
+                defaultValueBoolean="true">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandWarningNotificationInterval"
+                type="INTEGER">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant_contact">
+            <column name="demandWarningNotificationLast" type="DATETIME">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="18" author="Chris">
+        <comment>DRMS-5741 Scorecard - Value for Avalable Participants Registered Shed is incorrect </comment>
+        <addColumn tableName="history_event_participant">
+            <column name="parent" type="varchar(64)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="19" author="Veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from
+                    core_property;
+				</sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                core_property where propertyName='feature.demandLimiting.Notifications';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+           DRMS-5739 feature.demandLimiting flag
+        </comment>
+        <sql>insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0,
+            'feature.demandLimiting.Notifications',
+            null, true, null, null, 'Boolean', 'script', null, now(),
+            null);
+	</sql>
+    </changeSet>
+    <!-- <changeSet id="20" author="Veera"> <preConditions onFail="MARK_RAN"> 
+        <not> <sqlCheck expectedResult="0"> select count(*) from core_property; </sqlCheck> 
+        </not> <sqlCheck expectedResult="0"> select count(*) from core_property where 
+        propertyName='feature.demandLimiting.normalBand'; </sqlCheck> </preConditions> 
+        <comment> DRMS-5739 feature.demandLimiting flag </comment> <sql>insert into 
+        core_property(uuid, version, propertyName, stringValue, booleanValue, doubleValue, 
+        textValue, type, creator, modifier, creationTime, modifiedTime) values (REPLACE(uuid(), 
+        '-', ''), 0, 'feature.demandLimiting.normalBand', null, false, 75.00, null, 
+        'Number', 'script', null, now(), null);</sql> </changeSet> <changeSet id="21" 
+        author="Veera"> <preConditions onFail="MARK_RAN"> <not> <sqlCheck expectedResult="0"> 
+        select count(*) from core_property; </sqlCheck> </not> <sqlCheck expectedResult="0"> 
+        select count(*) from core_property where propertyName='feature.demandLimiting.moderateBand'; 
+        </sqlCheck> </preConditions> <comment> DRMS-5739 feature.demandLimiting flag 
+        </comment> <sql>insert into core_property(uuid, version, propertyName, stringValue, 
+        booleanValue, doubleValue, textValue, type, creator, modifier, creationTime, 
+        modifiedTime) values (REPLACE(uuid(), '-', ''), 0, 'feature.demandLimiting.moderateBand', 
+        null, false, 80.00, null, 'Number', 'script', null, now(), null);</sql> </changeSet> 
+        <changeSet id="22" author="Veera"> <preConditions onFail="MARK_RAN"> <not> 
+        <sqlCheck expectedResult="0"> select count(*) from core_property; </sqlCheck> 
+        </not> <sqlCheck expectedResult="0"> select count(*) from core_property where 
+        propertyName='feature.demandLimiting.highBand'; </sqlCheck> </preConditions> 
+        <comment> DRMS-5739 feature.demandLimiting flag </comment> <sql>insert into 
+        core_property(uuid, version, propertyName, stringValue, booleanValue, doubleValue, 
+        textValue, type, creator, modifier, creationTime, modifiedTime) values (REPLACE(uuid(), 
+        '-', ''), 0, 'feature.demandLimiting.highBand', null, false, 95.00, null, 
+        'Number', 'script', null, now(), null);</sql> </changeSet> <changeSet id="23" 
+        author="Veera"> <preConditions onFail="MARK_RAN"> <not> <sqlCheck expectedResult="0"> 
+        select count(*) from core_property; </sqlCheck> </not> <sqlCheck expectedResult="0"> 
+        select count(*) from core_property where propertyName='feature.demandLimiting.intervalMeterFrequency'; 
+        </sqlCheck> </preConditions> <comment> DRMS-5739 feature.demandLimiting flag 
+        </comment> <sql>insert into core_property(uuid, version, propertyName, stringValue, 
+        booleanValue, doubleValue, textValue, type, creator, modifier, creationTime, 
+        modifiedTime) values (REPLACE(uuid(), '-', ''), 0, 'feature.demandLimiting.intervalMeterFrequency', 
+        null, false, 5, null, 'Number', 'script', null, now(), null);</sql> </changeSet> 
+        <changeSet id="24" author="Veera"> <preConditions onFail="MARK_RAN"> <not> 
+        <sqlCheck expectedResult="0"> select count(*) from core_property; </sqlCheck> 
+        </not> <sqlCheck expectedResult="0"> select count(*) from core_property where 
+        propertyName='feature.demandLimiting.rateInterval'; </sqlCheck> </preConditions> 
+        <comment> DRMS-5739 feature.demandLimiting flag </comment> <sql>insert into 
+        core_property(uuid, version, propertyName, stringValue, booleanValue, doubleValue, 
+        textValue, type, creator, modifier, creationTime, modifiedTime) values (REPLACE(uuid(), 
+        '-', ''), 0, 'feature.demandLimiting.rateInterval', null, false, 15, null, 
+        'Number', 'script', null, now(), null);</sql> </changeSet> <changeSet id="25" 
+        author="Veera"> <preConditions onFail="MARK_RAN"> <not> <sqlCheck expectedResult="0"> 
+        select count(*) from core_property; </sqlCheck> </not> <sqlCheck expectedResult="0"> 
+        select count(*) from core_property where propertyName='feature.demandLimiting.notificationInterval'; 
+        </sqlCheck> </preConditions> <comment> DRMS-5739 feature.demandLimiting flag 
+        </comment> <sql>insert into core_property(uuid, version, propertyName, stringValue, 
+        booleanValue, doubleValue, textValue, type, creator, modifier, creationTime, 
+        modifiedTime) values (REPLACE(uuid(), '-', ''), 0, 'feature.demandLimiting.notificationInterval', 
+        null, false, 15, null, 'Number', 'script', null, now(), null);</sql> </changeSet> 
+        <changeSet id="26" author="Veera"> <preConditions onFail="MARK_RAN"> <not> 
+        <sqlCheck expectedResult="0"> select count(*) from core_property; </sqlCheck> 
+        </not> <sqlCheck expectedResult="0"> select count(*) from core_property where 
+        propertyName='feature.demandLimiting.eventSpan'; </sqlCheck> </preConditions> 
+        <comment> DRMS-5739 feature.demandLimiting flag </comment> <sql>insert into 
+        core_property(uuid, version, propertyName, stringValue, booleanValue, doubleValue, 
+        textValue, type, creator, modifier, creationTime, modifiedTime) values (REPLACE(uuid(), 
+        '-', ''), 0, 'feature.demandLimiting.eventSpan', null, false, 15, null, 'Number', 
+        'script', null, now(), null);</sql> </changeSet> <changeSet id="27" author="Veera"> 
+        <comment> DRMS-5739 demand limiting </comment> <addColumn tableName="participant"> 
+        <column name="demandLimitingBlockade" type="boolean" defaultValueBoolean="false"> 
+        <constraints nullable="true" /> </column> </addColumn> </changeSet> -->
+
+    <changeSet id="28" author="Steve">
+        <comment>
+           DRMS-5836 Merge IRR extensions to data manager schema
+        </comment>
+        <addColumn tableName="datasource">
+            <column name="ownerType" type="int(11)"
+                defaultValueNumeric="0">
+            </column>
+        </addColumn>
+        <addColumn tableName="dataset">
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="dataset">
+            <column name="graphType" type="int(11)"
+                defaultValueNumeric="0">
+            </column>
+        </addColumn>
+        <addColumn tableName="dataset">
+            <column name="valuePrecision" type="int(11)"
+                defaultValueNumeric="0">
+            </column>
+        </addColumn>
+        <addColumn tableName="dataset">
+            <column name="colorHint" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="dataset">
+            <column name="interpolated" type="tinyint(1)"
+                defaultValueNumeric="0">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="dataset">
+            <column name="dataType" type="int(11)"
+                defaultValueNumeric="0">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="dataset">
+            <column name="enumTitles" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet id="29" author="Veera">
+        <comment>
+           DRMS-5739 demand limiting
+        </comment>
+        <addColumn tableName="program_rule">
+            <column name="threshold" type="varchar(60)"
+                defaultValue="NA">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="program_rule">
+            <column name="notifyAction" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="program_rule">
+            <column name="signalAction" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="30" author="Veera">
+        <comment>
+           DRMS-5739 demand limiting
+        </comment>
+        <addColumn tableName="program_participant_rule">
+            <column name="threshold" type="varchar(60)"
+                defaultValue="NA">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="program_participant_rule">
+            <column name="notifyAction" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="program_participant_rule">
+            <column name="signalAction" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="31" author="Veera">
+        <comment>
+           DRMS-5739 demand limiting
+        </comment>
+        <addColumn tableName="custom_rule">
+            <column name="threshold" type="varchar(60)"
+                defaultValue="NA">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="custom_rule">
+            <column name="notifyAction" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="custom_rule">
+            <column name="signalAction" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="32" author="Veera">
+        <comment>
+           DRMS-5739 demand limiting
+        </comment>
+        <addColumn tableName="event_participant_rule">
+            <column name="threshold" type="varchar(60)"
+                defaultValue="NA">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="event_participant_rule">
+            <column name="notifyAction" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="event_participant_rule">
+            <column name="signalAction" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="33" author="Ahmed">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from
+                    core_property;
+				</sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                core_property where propertyName='feature.noaa.link';
+			</sqlCheck>
+        </preConditions>
+        <comment>
+           DRMS-3553 feature..NOAA.link flag
+        </comment>
+        <sql>insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0, 'feature.noaa.link',
+            null, false, null, null, 'Boolean', 'script', null, now(),
+            null);
+		</sql>
+    </changeSet>
+
+    <changeSet id="34" author="Chris">
+        <comment>DRMS-5807 Set client confirmation level at client level</comment>
+        <addColumn tableName="participant">
+            <column name="clientCanFailConfirmation" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <include
+        file="db/changelogs/fixtures/program/program_demand_limiting.xml" />
+
+    <changeSet id="35" author="Nicole">
+        <comment>DRMS-5909 Problem of report legacy data loading</comment>
+        <sql>INSERT INTO client_status(UUID, client_uuid,
+            clientName,STATUS,
+            startTime,endTime,duration,creationTime)
+            SELECT REPLACE(UUID(), '-', '') AS UUID,
+            client_no_log.uuid AS client_uuid, participantName,0 AS STATUS,NOW() AS startTime,NULL
+            AS endTime,0,NOW() AS creationTime
+            FROM(
+            SELECT a.uuid,a.participantName, IF(a.status=0, TRUE,FALSE) AS online,
+            COUNT(b.client_uuid) AS times
+            FROM (SELECT * FROM participant a WHERE a.client =1) a
+            LEFT JOIN client_status b ON a.client = 1 AND a.uuid = b.client_uuid
+            GROUP BY a.uuid,a.participantName,online
+            ) client_no_log WHERE times =0
+		</sql>
+    </changeSet>
+
+    <changeSet id="35" author="Veera">
+        <comment>
+           DRMS-5862 Notes author
+        </comment>
+        <addColumn tableName="participant">
+            <column name="notesAuthor" type="varchar(64)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="36" author="Veera">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from
+                    core_property;
+                </sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                core_property where
+                propertyName='feature.demandLimiting.MockMeter';
+            </sqlCheck>
+        </preConditions>
+        <comment>
+           DRMS-5739 Demand Limiting
+        </comment>
+        <sql>insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0,
+            'feature.demandLimiting.MockMeter',
+            null, false, null, null,
+            'Boolean', 'script', null, now(),
+            null);</sql>
+    </changeSet>
+
+    <changeSet id="35" author="Linda">
+        <comment>DRMS-5923 DBP Event Creation Log: Cannot tell if DBP DA event was created manually or by an FTP drop</comment>
+        <addColumn tableName="dbp_event_creation">
+            <column name="autoCreation" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+	
+	<changeSet id="36" author="Frank">
+        <comment>DRMS-5900 Refactory usage related codes (ph1 to meet current jira bug request, not considering history data migration.)</comment>
+        <sql>
+			DROP TABLE IF EXISTS `datasource_usage`;
+			CREATE TABLE `datasource_usage` (
+			  `uuid` varchar(32) NOT NULL,
+			  `datasource_uuid` varchar(32) DEFAULT NULL,
+			  `date` date DEFAULT NULL,
+			  `maxgap` float DEFAULT NULL,
+			  `lastactual` datetime DEFAULT NULL,
+			  `baseline_state` tinyint(1) DEFAULT NULL,
+			  `creationTime` datetime DEFAULT NULL,
+			  PRIMARY KEY (`uuid`)
+			);
+		</sql>
+    </changeSet>
+    
+    <changeSet id="37" author="Chris">
+        <comment>DRMS-6049 Changes to SCE Account info report</comment>
+        <addColumn tableName="participant">
+            <column name="premiseNumber" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="startDate" type="datetime">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="endDate" type="datetime">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="38" author="Ahmed">
+        <comment>DRMS-6141 Adding Test program field to distinguish program participation</comment>
+        <addColumn tableName="program">
+            <column name="testProgram" type="boolean"
+                defaultValueBoolean="false">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+	<changeSet id="39" author="Nicole">
+		<preConditions onFail="MARK_RAN">
+			<not><columnExists columnName="temp_range" tableName="scertp_event" schemaName="pss2"/></not>
+		</preConditions> 
+		<comment>DRMS-6108 Email notification for revised prices does not include temp classfier</comment>
+		<addColumn tableName="scertp_event">
+			<column name="temp_range" type="varchar(40)">
+				<constraints nullable="true" />
+			</column>
+		</addColumn>	
+    </changeSet>
+	
+	<changeSet id="40" author="Frank">
+        <comment>DRMS-5920 Telemetry tab doesn't get Usage data</comment>
+        <addColumn tableName="dataset">
+            <column name="calculationImplClass" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+<!--  
+	<changeSet id="41" author="Frank">
+        <comment>DRMS-5920 Telemetry tab doesn't get Usage data</comment>
+        <sql>delete from dataset;
+			insert  into `dataset`(`uuid`,`version`,`name`,`unit`,`sync`,`period`,`creator`,`modifier`,`creationTime`,`modifiedTime`,`calcImplClass`,`description`,`graphType`,`valuePrecision`,`colorHint`,`interpolated`,`dataType`,`enumTitles`,`calculationImplClass`) values (REPLACE(uuid(), '-', ''),0,'Usage','kWh',1,900,'script',NULL,now(),NULL,NULL,'Demand',0,0,'0xff0000',0,0,NULL,'com.akuacom.pss2.data.irr.UsageDataCalculationHandlerBean'),(REPLACE(uuid(), '-', ''),0,'Baseline','kWh',1,900,NULL,NULL,now(),NULL,NULL,'Baseline',0,0,'0x0000ff',0,0,NULL,'com.akuacom.pss2.data.irr.BaselineDataCalculationHandlerBean'),(REPLACE(uuid(), '-', ''),0,'EventStartIndicator','event',1,900,NULL,NULL,now(),NULL,NULL,'EventStart',0,0,'0x000000',0,2,NULL,'com.akuacom.pss2.data.irr.EventStartDataCalculationHandlerBean'),(REPLACE(uuid(), '-', ''),0,'EventEndIndicator','event',1,900,NULL,NULL,now(),NULL,NULL,'EventEnd',0,0,'0x000000',0,2,NULL,'com.akuacom.pss2.data.irr.EventEndDataCalculationHandlerBean');
+		</sql>
+    </changeSet>
+-->
+	
+	<changeSet id="42" author="Chris">
+        <comment>DRMS-6049 Changes to SCE Account info report</comment>
+        <addColumn tableName="participant">
+            <column name="comment" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="enrollmentDate" type="datetime">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+
+
+	<changeSet id="43" author="Frank updated by Veera">
+		<preConditions onFail="MARK_RAN">
+			<sqlCheck expectedResult="0">
+				select count(*) from
+				dataset where name = 'Usage';
+                </sqlCheck>
+		</preConditions>
+		<comment>DRMS-5920 Telemetry tab doesn't get Usage data</comment>
+
+		<sql>
+			insert into
+			`dataset`(`uuid`,`version`,`name`,`unit`,`sync`,`period`,`creator`,`modifier`,`creationTime`,`modifiedTime`,`calcImplClass`,`description`,`graphType`,`valuePrecision`,`colorHint`,`interpolated`,`dataType`,`enumTitles`,`calculationImplClass`)
+			values (REPLACE(uuid(), '-',
+			''),0,'Usage','kWh',1,900,'script',NULL,now(),NULL,NULL,'Demand',0,0,'0xff0000',0,0,NULL,'com.akuacom.pss2.data.irr.UsageDataCalculationHandlerBean');
+		</sql>
+	</changeSet>
+
+
+	<changeSet id="44" author="Frank updated by Veera">
+		<preConditions onFail="MARK_RAN">
+			<sqlCheck expectedResult="0">
+				select count(*) from
+				dataset where name = 'Baseline';
+                </sqlCheck>
+		</preConditions>
+		<comment>DRMS-5920 Telemetry tab doesn't get Usage data</comment>
+
+		<sql>
+			insert into
+			`dataset`(`uuid`,`version`,`name`,`unit`,`sync`,`period`,`creator`,`modifier`,`creationTime`,`modifiedTime`,`calcImplClass`,`description`,`graphType`,`valuePrecision`,`colorHint`,`interpolated`,`dataType`,`enumTitles`,`calculationImplClass`)
+			values (REPLACE(uuid(), '-',
+			''),0,'Baseline','kWh',1,900,NULL,NULL,now(),NULL,NULL,'Baseline',0,0,'0x0000ff',0,0,NULL,'com.akuacom.pss2.data.irr.BaselineDataCalculationHandlerBean');
+		</sql>
+	</changeSet>
+
+	<changeSet id="45" author="Frank updated by Veera">
+		<preConditions onFail="MARK_RAN">
+			<sqlCheck expectedResult="0">
+				select count(*) from
+				dataset where name = 'EventStartIndicator';
+                </sqlCheck>
+		</preConditions>
+		<comment>DRMS-5920 Telemetry tab doesn't get Usage data</comment>
+
+		<sql>
+			insert into
+			`dataset`(`uuid`,`version`,`name`,`unit`,`sync`,`period`,`creator`,`modifier`,`creationTime`,`modifiedTime`,`calcImplClass`,`description`,`graphType`,`valuePrecision`,`colorHint`,`interpolated`,`dataType`,`enumTitles`,`calculationImplClass`)
+			values (REPLACE(uuid(), '-',
+			''),0,'EventStartIndicator','event',1,900,NULL,NULL,now(),NULL,NULL,'EventStart',0,0,'0x000000',0,2,NULL,'com.akuacom.pss2.data.irr.EventStartDataCalculationHandlerBean');
+		</sql>
+	</changeSet>
+
+	<changeSet id="46" author="Frank updated by Veera">
+		<preConditions onFail="MARK_RAN">
+			<sqlCheck expectedResult="0">
+				select count(*) from
+				dataset where name = 'EventEndIndicator';
+                </sqlCheck>
+		</preConditions>
+		<comment>DRMS-5920 Telemetry tab doesn't get Usage data</comment>
+
+		<sql>
+			insert into
+			`dataset`(`uuid`,`version`,`name`,`unit`,`sync`,`period`,`creator`,`modifier`,`creationTime`,`modifiedTime`,`calcImplClass`,`description`,`graphType`,`valuePrecision`,`colorHint`,`interpolated`,`dataType`,`enumTitles`,`calculationImplClass`)
+			values (REPLACE(uuid(), '-',
+			''),0,'EventEndIndicator','event',1,900,NULL,NULL,now(),NULL,NULL,'EventEnd',0,0,'0x000000',0,2,NULL,'com.akuacom.pss2.data.irr.EventEndDataCalculationHandlerBean');
+		</sql>
+	</changeSet>
+
+
+	<changeSet id="47" author="Veera">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<sqlCheck expectedResult="0">
+					select count(*) from
+					dataset where name = 'Usage';
+                </sqlCheck>
+			</not>
+		</preConditions>
+		<comment>DRMS-5920 Telemetry tab doesn't get Usage data</comment>
+
+		<sql>
+		UPDATE dataset
+			SET
+				unit = 'kWh',
+				sync = 1,
+				period = 900,
+				creator = 'script',
+				modifier = NULL,
+				creationTime = now(),
+				modifiedTime = NULL,
+				calcImplClass = NULL,
+				description = 'Demand',
+				graphType = 0,
+				valuePrecision = 0,
+				colorHint = '0xff0000',
+				interpolated = 0,
+				dataType = 0,
+				enumTitles = NULL,
+				calculationImplClass = 'com.akuacom.pss2.data.irr.UsageDataCalculationHandlerBean'
+		WHERE name = 'Usage';
+		</sql>
+	</changeSet>
+	
+	<changeSet id="48" author="Frank">
+		<comment>DRMS-6183  add foreign key reference constraint to dataset table</comment>
+		<sql>
+			CREATE TABLE dataentry_back LIKE dataentry;
+			INSERT INTO dataentry_back SELECT * FROM dataentry GROUP  BY datasource_uuid, TIME;
+			UPDATE dataentry_back SET dataset_uuid=(SELECT UUID FROM dataset WHERE NAME='Usage');
+			TRUNCATE dataentry;
+			INSERT INTO dataentry SELECT * FROM dataentry_back;
+			DROP TABLE IF EXISTS dataentry_back;
+			
+			CREATE TABLE dataentry_back LIKE dataentry;
+			INSERT INTO dataentry_back SELECT * FROM history_baseline_dataentry GROUP  BY datasource_uuid, TIME;
+			UPDATE dataentry_back SET dataset_uuid=(SELECT UUID FROM dataset WHERE NAME='Baseline');
+			TRUNCATE history_baseline_dataentry;
+			INSERT INTO history_baseline_dataentry SELECT * FROM dataentry_back;
+			DROP TABLE IF EXISTS dataentry_back;
+			
+			ALTER TABLE `dataentry` ADD CONSTRAINT `FK_dataset` FOREIGN KEY (`dataset_uuid`) REFERENCES `dataset` (`uuid`);
+			ALTER TABLE `dataentry` ADD CONSTRAINT `FK_datasource` FOREIGN KEY (`datasource_uuid`) REFERENCES `datasource` (`uuid`);
+			ALTER TABLE `history_baseline_dataentry` ADD CONSTRAINT `FK_historydataset` FOREIGN KEY (`dataset_uuid`) REFERENCES `dataset` (`uuid`);
+			ALTER TABLE `history_baseline_dataentry` ADD CONSTRAINT `FK_historydatasource` FOREIGN KEY (`datasource_uuid`) REFERENCES `datasource` (`uuid`);
+		</sql>
+	</changeSet>
+		
+</databaseChangeLog>

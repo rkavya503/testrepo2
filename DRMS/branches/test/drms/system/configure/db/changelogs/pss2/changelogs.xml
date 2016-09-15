@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+
+
+    <include file="db/changelogs/pss2/6.8.xml" />
+    <include file="db/changelogs/pss2/6.9.xml" />
+    <include file="db/changelogs/pss2/6.10.xml" />
+    <include file="db/changelogs/pss2/6.11.xml" />
+	<include file="db/changelogs/pss2/7.0.xml" />
+	<include file="db/changelogs/pss2/7.1.xml" />
+	<include file="db/changelogs/pss2/7.2.xml" />
+	<include file="db/changelogs/pss2/7.3.xml" />
+	<include file="db/changelogs/pss2/7.4.xml" />
+	<include file="db/changelogs/pss2/7.5.xml" />
+	<include file="db/changelogs/pss2/7.6.xml" />
+	<include file="db/changelogs/pss2/7.7.xml" />
+	<include file="db/changelogs/pss2/7.9.xml" />
+	<include file="db/changelogs/pss2/7.10.xml" />
+	<include file="db/changelogs/pss2/7.11.xml" />
+	<include file="db/changelogs/pss2/7.12.xml" />
+	<include file="db/changelogs/pss2/7.13.xml" />
+	<include file="db/changelogs/pss2/7.14.xml" />
+	<include file="db/changelogs/pss2/7.15.xml" />
+	<include file="db/changelogs/pss2/7.16.xml" />
+	<include file="db/changelogs/pss2/7.17.xml" />
+	<include file="db/changelogs/pss2/7.18.xml" />
+	<include file="db/changelogs/pss2/7.19.xml" />
+	<include file="db/changelogs/pss2/7.20.xml" />
+	<include file="db/changelogs/pss2/7.21.xml" />
+	<include file="db/changelogs/pss2/7.23.xml" />
+	<include file="db/changelogs/pss2/7.24.xml" />
+	<include file="db/changelogs/pss2/7.26.xml" />
+	<include file="db/changelogs/pss2/7.27.xml" />
+    
+    <!-- DO NOT ADD CHANGESETS TO THIS FILE -->
+    <!-- Use the included file corresponding to the current version -->
+    
+</databaseChangeLog>

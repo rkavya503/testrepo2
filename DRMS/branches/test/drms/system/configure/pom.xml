@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.akuacom.drms.system</groupId>
+		<artifactId>system-parent</artifactId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+	<groupId>com.akuacom.drms.system.configure</groupId>
+	<artifactId>configure</artifactId>
+	<version>7.26-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>configure-parent</name>
+	<modules>
+		<!-- <module>jboss</module> -->
+		<!-- <module>test-data</module> -->
+		<!-- <module>server</module> -->
+		<!-- <module>db</module> -->
+	</modules>
+
+	<profiles>
+		<!-- configure targets -->
+		<profile>
+			<id>configure</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>uber</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+										<property name="drmsVersion" value="${project.version}" />
+										<property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="configure:install" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>sce</id>
+			<properties>
+				<installDrwebsiteEar>true</installDrwebsiteEar>
+			</properties>
+		</profile>
+		<profile>
+			<id>loadKML</id>
+			<properties>
+				<loadKMLData>true</loadKMLData>
+				<loadDRWebsiteZipCode>true</loadDRWebsiteZipCode>
+			</properties>
+		</profile>
+		<profile>
+			<id>configureCache</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+										<property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="configure:install:cache" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>configureAll</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+										<property name="drmsVersion" value="${project.version}" />
+										<property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="configure:install:all" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>configureAutoGen</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+										<property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="configure:install:autoGen" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>configureInstallNativeServer</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+										<property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="server:install:native" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>configureMin</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+										<property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="configure:install:min" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>configureCloudCluster</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+										<property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="cconfigure:install:cloudCluster" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>installJbHome</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>installjb5</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+                                        <property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="install.jb5" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>cleanJbHome</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-clean-plugin</artifactId>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>${jbossHome}</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+									<followSymlinks>true</followSymlinks>
+								</fileset>
+							</filesets>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Database -->
+        <profile>
+            <id>dbCreate</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>pre-integration-test</phase>
+                                <configuration>
+                                    <target>
+                                        <property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+                                        <ant antfile="build.xml">
+                                            <target name="db:drop" />
+                                            <target name="db:create" />
+                                        </ant>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>dbReset</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>pre-integration-test</phase>
+                                <configuration>
+                                    <target>
+                                        <property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+                                        <ant antfile="build.xml">
+                                            <target name="db:reset" />
+                                        </ant>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>dbUpdate</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>pre-integration-test</phase>
+                                <configuration>
+                                    <target>
+                                        <property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+                                        <ant antfile="build.xml">
+                                            <target name="db:update" />
+                                        </ant>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+		<!-- Test Data -->
+		<profile>
+			<id>loadData</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+										<property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="db:load:testData" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>loadFl</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+										<property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="load.fl" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- Test Variables -->
+		<profile>
+			<id>configureSystemVariables</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>uber</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>pre-integration-test</phase>
+								<configuration>
+									<target>
+										<property name="drmsVersion" value="${project.version}" />
+                                        <property name="basedir" value="." />
+										<ant antfile="build.xml">
+											<target name="db:variables" />
+										</ant>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

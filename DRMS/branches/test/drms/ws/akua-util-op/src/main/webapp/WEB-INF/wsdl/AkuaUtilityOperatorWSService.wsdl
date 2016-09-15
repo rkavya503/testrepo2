@@ -1,0 +1,1424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="AkuaUtilityOperatorWSService" targetNamespace="http://www.openadr.org/DRAS/AkuaUtilityOperator/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns9="http://www.openadr.org/DRAS/AkuaUtilityDREvent" xmlns:ns12="http://www.openadr.org/DRAS/AkuaContact" xmlns:ns5="http://www.openadr.org/DRAS/EventInfo" xmlns:ns13="http://www.openadr.org/DRAS/AkuaProperty" xmlns:ns6="http://www.openadr.org/DRAS/AkuaUtilityProgram" xmlns:ns10="http://www.openadr.org/DRAS/AkuaEventInfo" xmlns:ns7="http://www.openadr.org/DRAS/ParticipantAccount" xmlns:ns11="http://www.openadr.org/DRAS/AkuaSignal" xmlns:ns8="http://www.openadr.org/DRAS/Bid" xmlns:ns2="http://www.openadr.org/DRAS/DRASClient" xmlns:ns1="http://www.openadr.org/DRAS/UtilityProgram" xmlns:ns4="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:ns3="http://www.openadr.org/DRAS/AkuaDRASClientData" xmlns:tns="http://www.openadr.org/DRAS/AkuaUtilityOperator/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <types>
+
+    <xs:schema targetNamespace="http://www.openadr.org/DRAS/AkuaUtilityOperator/" version="1.0" xmlns:ns1="http://www.openadr.org/DRAS/UtilityProgram" xmlns:ns2="http://www.openadr.org/DRAS/AkuaDRASClientData" xmlns:ns3="http://www.openadr.org/DRAS/AkuaUtilityProgram" xmlns:ns4="http://www.openadr.org/DRAS/ParticipantAccount" xmlns:ns5="http://www.openadr.org/DRAS/AkuaUtilityDREvent" xmlns:ns6="http://www.openadr.org/DRAS/AkuaSignal" xmlns:ns7="http://www.openadr.org/DRAS/AkuaContact" xmlns:ns8="http://www.openadr.org/DRAS/AkuaProperty" xmlns:ns9="http://www.openadr.org/DRAS/AkuaRTPConfig" xmlns:ns10="http://www.openadr.org/DRAS/AkuaSeasonConfig" xmlns:tns="http://www.openadr.org/DRAS/AkuaUtilityOperator/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:import namespace="http://www.openadr.org/DRAS/UtilityProgram" schemaLocation="UtilityProgram.xsd"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaDRASClientData" schemaLocation="AkuaDRASClientData.xsd"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaUtilityProgram" schemaLocation="AkuaUtilityProgram.xsd"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/ParticipantAccount" schemaLocation="ParticipantAccount.xsd"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaUtilityDREvent" schemaLocation="AkuaUtilityDREvent.xsd"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaSignal" schemaLocation="AkuaSignal.xsd"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaContact" schemaLocation="AkuaContact.xsd"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaProperty" schemaLocation="AkuaProperty.xsd"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaRTPConfig" schemaLocation="AkuaRTPConfig.xsd"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaSeasonConfig" schemaLocation="AkuaSeasonConfig.xsd"/>
+    <xs:element name="CreateEventTemplate" nillable="true" type="tns:CreateEventTemplate"/>
+   <xs:element name="CreateEventTemplateResponse" nillable="true" type="tns:CreateEventTemplateResponse"/>
+   <xs:element name="CreateProgram" nillable="true" type="tns:CreateProgram"/>
+   <xs:element name="CreateProgramResponse" nillable="true" type="tns:CreateProgramResponse"/>
+   <xs:element name="GetContacts" nillable="true" type="tns:GetContacts"/>
+   <xs:element name="GetContactsResponse" nillable="true" type="tns:GetContactsResponse"/>
+   <xs:element name="GetDRASClientData" nillable="true" type="tns:GetDRASClientData"/>
+   <xs:element name="GetDRASClientDataResponse" nillable="true" type="tns:GetDRASClientDataResponse"/>
+   <xs:element name="GetDREvents" nillable="true" type="tns:GetDREvents"/>
+   <xs:element name="GetDREventsResponse" nillable="true" type="tns:GetDREventsResponse"/>
+   <xs:element name="GetEventTemplates" nillable="true" type="tns:GetEventTemplates"/>
+   <xs:element name="GetEventTemplatesResponse" nillable="true" type="tns:GetEventTemplatesResponse"/>
+   <xs:element name="GetPrograms" nillable="true" type="tns:GetPrograms"/>
+   <xs:element name="GetProgramsResponse" nillable="true" type="tns:GetProgramsResponse"/>
+   <xs:element name="GetProperties" nillable="true" type="tns:GetProperties"/>
+   <xs:element name="GetPropertiesResponse" nillable="true" type="tns:GetPropertiesResponse"/>
+   <xs:element name="GetSignals" nillable="true" type="tns:GetSignals"/>
+   <xs:element name="GetSignalsResponse" nillable="true" type="tns:GetSignalsResponse"/>
+   <xs:element name="SearchDRASClientData" nillable="true" type="tns:SearchDRASClientData"/>
+   <xs:element name="SearchDRASClientDataResponse" nillable="true" type="tns:SearchDRASClientDataResponse"/>
+   <xs:element name="SearchDRASParticipants" nillable="true" type="tns:SearchDRASParticipants"/>
+   <xs:element name="SearchDRASParticipantsResponse" nillable="true" type="tns:SearchDRASParticipantsResponse"/>
+   <xs:element name="UpdateContacts" nillable="true" type="tns:UpdateContacts"/>
+   <xs:element name="UpdateContactsResponse" nillable="true" type="tns:UpdateContactsResponse"/>
+   <xs:element name="UpdateEventTemplate" nillable="true" type="tns:UpdateEventTemplate"/>
+   <xs:element name="UpdateEventTemplateResponse" nillable="true" type="tns:UpdateEventTemplateResponse"/>
+   <xs:element name="UpdateProgram" nillable="true" type="tns:UpdateProgram"/>
+   <xs:element name="UpdateProgramResponse" nillable="true" type="tns:UpdateProgramResponse"/>
+   <xs:element name="UpdateProperties" nillable="true" type="tns:UpdateProperties"/>
+   <xs:element name="UpdatePropertiesResponse" nillable="true" type="tns:UpdatePropertiesResponse"/>
+   <xs:element name="UpdateSignals" nillable="true" type="tns:UpdateSignals"/>
+   <xs:element name="UpdateSignalsResponse" nillable="true" type="tns:UpdateSignalsResponse"/>
+   <xs:element name="GetRTPConfigs" nillable="true" type="tns:GetRTPConfigs"/>
+   <xs:element name="GetRTPConfigsResponse" nillable="true" type="tns:GetRTPConfigsResponse"/>
+   <xs:element name="GetSeasonConfigs" nillable="true" type="tns:GetSeasonConfigs"/>
+   <xs:element name="GetSeasonConfigsResponse" nillable="true" type="tns:GetSeasonConfigsResponse"/>
+   <xs:element name="UpdateRTPConfigs" nillable="true" type="tns:UpdateRTPConfigs"/>
+   <xs:element name="UpdateRTPConfigsResponse" nillable="true" type="tns:UpdateRTPConfigsResponse"/>
+   <xs:element name="UpdateSeasonConfigs" nillable="true" type="tns:UpdateSeasonConfigs"/>
+   <xs:element name="UpdateSeasonConfigsResponse" nillable="true" type="tns:UpdateSeasonConfigsResponse"/>
+   <xs:complexType name="GetDRASClientData">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="participants" nillable="true" type="ns1:ParticipantList"/>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="ns1:ListOfProgramNames"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDRASClientDataResponse">
+    <xs:sequence>
+     <xs:element name="clientData" type="ns2:ListofClientData"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateProgram">
+    <xs:sequence>
+     <xs:element name="program" type="ns3:AkuaUtilityProgram"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateProgramResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetPrograms">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns1:ListOfProgramNames"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetProgramsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programs" nillable="true" type="ns3:AkuaUtilityProgramList"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateProgram">
+    <xs:sequence>
+     <xs:element name="program" type="ns3:AkuaUtilityProgram"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateProgramResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SearchDRASParticipants">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="searchHandler" nillable="true" type="ns2:AkuaDRASSearchHandler"/>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns1:ListOfProgramNames"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SearchDRASParticipantsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="searchHandler" nillable="true" type="ns2:AkuaDRASSearchHandler"/>
+     <xs:element minOccurs="0" name="participantAccounts" nillable="true" type="ns4:ListOfParticipantAccounts"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SearchDRASClientData">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="searchHandler" nillable="true" type="ns2:AkuaDRASSearchHandler"/>
+     <xs:element minOccurs="0" name="programNames" nillable="true" type="ns1:ListOfProgramNames"/>
+     <xs:element minOccurs="0" name="participantIDs" nillable="true" type="ns2:ListOfIDs"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SearchDRASClientDataResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="searchHandler" nillable="true" type="ns2:AkuaDRASSearchHandler"/>
+     <xs:element minOccurs="0" name="clientDataList" nillable="true" type="ns2:ListofClientData"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateEventTemplate">
+    <xs:sequence>
+     <xs:element name="EventTemplate" type="ns5:UtilityDREvent"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="CreateEventTemplateResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetEventTemplates">
+    <xs:sequence>
+     <xs:element name="programName" type="xs:string"/>
+     <xs:element minOccurs="0" name="eventTemplateNames" nillable="true" type="ns5:ListOfEventIDs"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetEventTemplatesResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="eventTemplates" nillable="true" type="ns5:ListOfUtilityDREvents"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateEventTemplate">
+    <xs:sequence>
+     <xs:element name="eventTemplate" type="ns5:UtilityDREvent"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateEventTemplateResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDREvents">
+    <xs:sequence>
+     <xs:element name="programName" type="xs:string"/>
+     <xs:element minOccurs="0" name="DREventNames" nillable="true" type="ns5:ListOfEventIDs"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetDREventsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="DREvents" nillable="true" type="ns5:ListOfUtilityDREvents"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetSignals">
+    <xs:sequence>
+     <xsd:element name="programName" type="xsd:string" nillable="true"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetSignalsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="signals" nillable="true" type="ns6:ListOfSignals"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateSignals">
+    <xs:sequence>
+     <xs:element name="signals" type="ns6:ListOfSignals"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateSignalsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetContacts">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="ownerType" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="ownerID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetContactsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="contacts" nillable="true" type="ns7:ListOfContacts"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateContacts">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="ownerType" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="ownerID" nillable="true" type="xs:string"/>
+     <xs:element name="contacts" type="ns7:ListOfContacts"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateContactsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetProperties">
+    <xs:sequence>
+     <xs:element name="empty" type="xs:anyType" nillable="true"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetPropertiesResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="properties" nillable="true" type="ns8:ListOfProperties"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateProperties">
+    <xs:sequence>
+     <xs:element name="properties" type="ns8:ListOfProperties"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdatePropertiesResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetRTPConfigs">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetRTPConfigsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="rtpConfigTable" nillable="true" type="ns9:ListOfRTPConfigs"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateRTPConfigs">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+     <xs:element name="rtpConfigs" type="ns9:ListOfRTPConfigs"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateRTPConfigsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetSeasonConfigs">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetSeasonConfigsResponse">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="seasonConfigTable" nillable="true" type="ns10:ListOfSeasonConfigs"/>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateSeasonConfigs">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+     <xs:element name="seasonConfigs" type="ns10:ListOfSeasonConfigs"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UpdateSeasonConfigsResponse">
+    <xs:sequence>
+     <xs:element name="returnValue" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/ProgramConstraint" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ProgramConstraint">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="eventWindow" nillable="true" type="tns:EventWindow"/>
+     <xs:element minOccurs="0" name="eventWindowFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="maxEventDuration" type="xs:double"/>
+     <xs:element minOccurs="0" name="maxEventDurationFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="notificationWindow" nillable="true" type="tns:NotificationWindow"/>
+     <xs:element minOccurs="0" name="notificationFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="blackOutDateTimes" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="dateTimeWindow" nillable="true" type="tns:DateTimeWindow"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="blackOutDateTimeFilter" nillable="true" type="tns:ConstraintFilter"/>
+     <xs:element minOccurs="0" name="validDateTimes" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="dateTimeWindow" nillable="true" type="tns:DateTimeWindow"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="maxConsecutiveDays" type="xs:unsignedLong"/>
+     <xs:element minOccurs="0" name="maxConsecutiveDaysFilter" nillable="true" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="constraintID" type="xs:string" use="required"/>
+    <xs:attribute name="programName" type="xs:string" use="required"/>
+    <xs:attribute name="participantID" type="xs:string"/>
+    <xs:attribute name="DRASClientID" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="EventWindow">
+    <xs:sequence>
+     <xs:element name="startTime" type="xs:time"/>
+     <xs:element name="endTime" type="xs:time"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="NotificationWindow">
+    <xs:sequence>
+     <xs:element name="minimumTime" type="xs:unsignedLong"/>
+     <xs:element name="maximumTime" type="xs:unsignedLong"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="DateTimeWindow">
+    <xs:sequence>
+     <xs:element name="startDateTime" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="endDateTime" nillable="true" type="xs:dateTime"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="ConstraintFilter">
+    <xs:restriction base="xs:string">
+     <xs:enumeration value="ACCEPT"/>
+     <xs:enumeration value="REJECT"/>
+     <xs:enumeration value="FORCE"/>
+     <xs:enumeration value="RESTRICT"/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/EventInfo" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/EventInfo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="EventInfoType">
+    <xs:sequence>
+     <xs:element name="scheduleType" type="xs:string"/>
+     <xs:element minOccurs="0" name="schedule">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="timeSlot" type="xs:double"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="enumerations" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="value" nillable="true" type="xs:double"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="minValue" type="xs:double"/>
+     <xs:element minOccurs="0" name="maxValue" type="xs:double"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="typeID" type="tns:EventInfoTypeID" use="required"/>
+   </xs:complexType>
+   <xs:simpleType name="EventInfoTypeID">
+    <xs:restriction base="xs:string">
+     <xs:enumeration value="PRICE_ABSOLUTE"/>
+     <xs:enumeration value="PRICE_RELATIVE"/>
+     <xs:enumeration value="PRICE_MULTIPLE"/>
+     <xs:enumeration value="LOAD_LEVEL"/>
+     <xs:enumeration value="LOAD_AMOUNT"/>
+     <xs:enumeration value="LOAD_PERCENTAGE"/>
+     <xs:enumeration value="GRID_RELIABILITY"/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/AkuaContact" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/AkuaContact" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfContacts">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="contact" nillable="true" type="tns:AkuaContact"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaContact">
+    <xs:sequence>
+     <xs:element name="id" type="xs:string" minOccurs="0" nillable="true"/>
+     <xs:element name="address" type="xs:string"/>
+     <xs:element minOccurs="0" name="type" type="xs:string"/>
+     <xs:element minOccurs="0" name="firstName" type="xs:string"  nillable="true"/>
+     <xs:element minOccurs="0" name="lastName" type="xs:string"  nillable="true"/>
+     <xs:element minOccurs="0" name="offSeasonNotiHours" type="xs:double"/>
+     <xs:element minOccurs="0" name="onSeasonNotiHours" type="xs:double"/>
+     <xs:element minOccurs="0" name="commNotification" type="xs:boolean"/>
+     <xs:element minOccurs="0" name="eventNotification" type="xs:boolean"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/AkuaProperty" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/AkuaProperty" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfProperties">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="property" nillable="true" type="tns:AkuaProperty"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaProperty">
+    <xs:sequence>
+     <xs:element name="id" minOccurs="0" type="xs:string" nillable="true"/>
+     <xs:element name="name" type="xs:string"/>
+     <xs:element minOccurs="0" name="value" type="xs:string"/>
+     <xs:element minOccurs="0" name="type" type="xs:string"/>
+     <xs:element minOccurs="0" name="default" type="xs:string" nillable="true"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/AkuaEventInfo" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/AkuaEventInfo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="EventInfoInstance">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="values" nillable="true" type="tns:Values"/>
+     <xs:element minOccurs="0" name="participants" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="accountID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="groups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="endTime" type="xs:double"/>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="eventInfoTypeName" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="Values">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="value" nillable="true" type="tns:EventInfoValue"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="EventInfoValue">
+    <xs:sequence>
+     <xs:element name="value" type="xs:double"/>
+     <xs:element minOccurs="0" name="startTime" type="xs:double"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/UtilityProgram" version="1.0" xmlns:ns1="http://www.openadr.org/DRAS/ProgramConstraint" xmlns:tns="http://www.openadr.org/DRAS/UtilityProgram" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:import namespace="http://www.openadr.org/DRAS/ProgramConstraint"/>
+   <xs:complexType name="ParticipantList">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="accounts" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="participantID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="groups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="locations" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="location" nillable="true" type="ns2:Location" xmlns:ns2="http://www.openadr.org/DRAS/DRASClient"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfProgramNames">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="programID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="UtilityProgram">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="programConstraints" nillable="true" type="ns1:ProgramConstraint"/>
+     <xs:element minOccurs="0" name="biddingConfiguration" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="submitImmediate" type="xs:boolean"/>
+        <xs:element name="submitTime" type="xs:double"/>
+        <xs:element name="fixedPrice" type="xs:boolean"/>
+        <xs:element name="fixedSchedule" type="xs:boolean"/>
+        <xs:element name="fixedLoad" type="xs:boolean"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="eventInfoTypes" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="eventInfoType" nillable="true" type="ns3:EventInfoType" xmlns:ns3="http://www.openadr.org/DRAS/EventInfo"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="participants" nillable="true" type="tns:ParticipantList"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="priority" type="xs:integer"/>
+   </xs:complexType>
+   <xs:complexType name="ProgramInfo">
+    <xs:sequence>
+     <xs:element name="programName" type="xs:string"/>
+     <xs:element minOccurs="0" name="programConstraints" type="ns1:ProgramConstraint"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/AkuaUtilityProgram" version="1.0" xmlns:ns1="http://www.openadr.org/DRAS/UtilityProgram" xmlns:ns2="http://www.openadr.org/DRAS/AkuaRTPConfig" xmlns:ns3="http://www.openadr.org/DRAS/AkuaSeasonConfig" xmlns:tns="http://www.openadr.org/DRAS/AkuaUtilityProgram" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:import namespace="http://www.openadr.org/DRAS/UtilityProgram"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaRTPConfig"/>
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaSeasonConfig"/>
+   <xs:complexType name="AkuaUtilityProgram">
+    <xs:complexContent>
+     <xs:extension base="ns1:UtilityProgram">
+      <xs:sequence>
+       <xs:element name="validatorClass" type="xs:string"/>
+       <xs:element name="utiltyProgramName" type="xs:string"/>
+       <xs:element name="className" type="xs:string"/>
+       <xs:element name="uiScheduleEventString" type="xs:string"/>
+       <xs:element name="notificationParam1" type="xs:string"/>
+       <xs:element name="testProgram" type="xs:boolean"/>
+       <xs:element name="repeatingEvents" type="xs:boolean"/>
+       <xs:element name="remoteProgram" type="xs:boolean"/>
+       <xs:element minOccurs="0" name="contactEmails" nillable="true" type="tns:AkuaContactEmailList"/>
+       <xs:element name="minIssueToStartM" type="xs:int"/>
+       <xs:element name="mustIssueBDBE" type="xs:boolean"/>
+       <xs:element name="maxIssueTime" nillable="true" type="xs:dateTime"/>
+       <xs:element name="minStartTime" nillable="true" type="xs:dateTime"/>
+       <xs:element name="maxStartTime" nillable="true" type="xs:dateTime"/>
+       <xs:element name="minEndTime" nillable="true" type="xs:dateTime"/>
+       <xs:element name="maxEndTime" nillable="true" type="xs:dateTime"/>
+       <xs:element name="minDurationM" type="xs:int"/>
+       <xs:element name="maxDurationM" type="xs:int"/>
+       <xs:element name="pendingTimeDBE" nillable="true" type="xs:dateTime"/>
+       <xs:element name="manualCreatable" type="xs:boolean"/>
+       <xs:element name="signals" type="tns:AkuaSignalList"/>
+       <xs:element minOccurs="0" name="modeTransitions" nillable="true" type="tns:AkuaModeTransitionList"/>
+       <xs:element minOccurs="0" name="bidConfig" nillable="true" type="tns:AkuaBidConfig"/>
+       <xs:element name="startDate" type="xs:dateTime" nillable="true"></xs:element>
+       <xs:element name="endDate" type="xs:dateTime" nillable="true"></xs:element>
+      </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+   <xs:complexType name="AkuaContactEmailList">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="contactEmail" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaSignalList">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="signal" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaModeTransitionList">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="modeTransition" nillable="true" type="tns:AkuaModeTransition"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaModeTransition">
+    <xs:sequence>
+     <xs:element name="startTime" type="xs:dateTime"/>
+     <xs:element name="signal" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaBidConfig">
+    <xs:sequence>
+     <xs:element name="minBidKW" type="xs:double"/>
+     <xs:element name="defaultBidKW" type="xs:double"/>
+     <xs:element name="minConsectutiveBlocks" type="xs:int"/>
+     <xs:element name="drasBidding" type="xs:boolean"/>
+     <xs:element name="respondByTime" type="xs:dateTime"/>
+     <xs:element name="drasRespondByPeriodM" type="xs:int"/>
+     <xs:element name="acceptTimeoutPeriodM" type="xs:int"/>
+     <xs:element minOccurs="0" name="bidBlocks" nillable="true" type="tns:AkuaBidBlockList"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaBidBlockList">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="bidBlock" nillable="true" type="tns:AkuaBidBlock"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaBidBlock">
+    <xs:sequence>
+     <xs:element name="startTime" type="xs:dateTime"/>
+     <xs:element name="endTime" type="xs:dateTime"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaUtilityProgramList">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="program" nillable="true" type="tns:AkuaUtilityProgram"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/AkuaSignal" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/AkuaSignal" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfSignals">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="signal" nillable="true" type="tns:AkuaSignal"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaSignal">
+    <xs:sequence>
+     <xs:element name="id" type="xs:string" nillable="true"/>
+     <xs:element name="signalName" type="xs:string"/>
+     <xs:element minOccurs="0" name="type" type="xs:string"/>
+     <xs:element minOccurs="0" name="numberType" type="xs:string"/>
+     <xs:element minOccurs="0" name="value" type="tns:ListOfValues"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfValues">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="value" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/AkuaDRASClientData" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/AkuaDRASClientData" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListofClientData">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="data" nillable="true" type="tns:ClientData"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ClientData">
+    <xs:sequence>
+     <xs:element name="clientID" type="xs:string"/>
+     <xs:element minOccurs="0" name="participantID" type="xs:string"/>
+     <xs:element minOccurs="0" name="programIDs" type="tns:ListOfIDs"/>
+     <xs:element minOccurs="0" name="pending" type="xs:string"/>
+     <xs:element minOccurs="0" name="mode" type="xs:string"/>
+     <xs:element minOccurs="0" name="lastContact" type="xs:string"/>
+     <xs:element name="aveShedPerHour" type="xs:double"/>
+     <xs:element minOccurs="0" name="status" type="xs:string"/>
+     <xs:element minOccurs="0" name="mySiteURL" type="xs:string"/>
+     <xs:element minOccurs="0" name="graphURL" type="xs:string"/>
+     <xs:element minOccurs="0" name="param1" type="xs:string"/>
+     <xs:element minOccurs="0" name="param2" type="xs:string"/>
+     <xs:element minOccurs="0" name="param3" type="xs:string"/>
+     <xs:element minOccurs="0" name="clientDataAttributeList" nillable="true" type="tns:ListOfClientDataAttributes"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfIDs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="id" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfClientDataAttributes">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="clientDataAttributeList" nillable="true" type="tns:ClientDataAttribute"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ClientDataAttribute">
+    <xs:sequence>
+     <xs:element name="name" type="xs:string"/>
+     <xs:element name="value" type="xs:string"/>
+     <xs:element minOccurs="0" name="type" type="xs:string"/>
+     <xs:element minOccurs="0" name="unit" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaDRASSearchHandler">
+    <xs:sequence>
+     <xs:element name="sortField" nillable="true" type="xs:string"/>
+     <xs:element name="sortByDirection" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="searchCriteriaList" nillable="true" type="tns:ListofSearchCriteria"/>
+     <xs:element minOccurs="0" name="drasCursor" nillable="true" type="tns:AkuaDRASCursor"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListofSearchCriteria">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="searchCriteriaList" nillable="true" type="tns:AkuaDRASSearchCriteria"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaDRASSearchCriteria">
+    <xs:sequence>
+     <xs:element name="fieldName" type="xs:string"/>
+     <xs:element name="operator" type="xs:string"/>
+     <xs:element name="fieldValue" type="xs:string"/>
+     <xs:element name="joinOperator" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaDRASCursor">
+    <xs:sequence>
+     <xs:element name="startIndex" type="xs:int"/>
+     <xs:element name="pageSize" type="xs:int"/>
+     <xs:element name="total" type="xs:int"/>
+     <xs:element name="selectedPage" type="xs:int"/>
+     <xs:element name="maxPageSize" type="xs:int"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/Bid" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="Bid">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="bidBlocks">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="block" nillable="true" type="ns1:BidBlock" xmlns:ns1="http://www.openadr.org/DRAS/Bid"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="participantAccount" type="xs:string" use="required"/>
+    <xs:attribute name="programName" type="xs:string"/>
+    <xs:attribute name="eventID" type="xs:string"/>
+    <xs:attribute name="options" type="xs:string"/>
+    <xs:attribute name="signature" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="BidBlock">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="load" type="xs:double"/>
+     <xs:element minOccurs="0" name="price" type="xs:double"/>
+     <xs:element minOccurs="0" name="duration" type="xs:double"/>
+     <xs:element minOccurs="0" name="timePeriod">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="startTime" type="xs:dateTime"/>
+        <xs:element name="endTime" type="xs:dateTime"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/ParticipantAccount" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/ParticipantAccount" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfParticipantAccounts">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="participantAccount" nillable="true" type="tns:ParticipantAccount"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ParticipantAccount">
+    <xs:sequence>
+     <xs:element name="participantName" type="xs:string"/>
+     <xs:element name="userName" type="xs:string"/>
+     <xs:element minOccurs="0" name="userGroups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="userName" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="programs" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="program" nillable="true" type="ns1:ProgramInfo" xmlns:ns1="http://www.openadr.org/DRAS/UtilityProgram"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="utilityGroups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="participantGroups" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="DRASClients" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="clientID" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="contactInformation" nillable="true" type="tns:ContactInformation"/>
+     <xs:element minOccurs="0" name="standingBids" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="bid" nillable="true" type="ns2:Bid" xmlns:ns2="http://www.openadr.org/DRAS/Bid"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="accountID" type="xs:string" use="required"/>
+   </xs:complexType>
+   <xs:complexType name="ContactInformation">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="emailAddresses" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="address" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="voiceNumbers" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="number" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="pagerNumbers" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="number" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="faxNumbers" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="0" name="number" nillable="true" type="xs:string"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/DRASClient" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="Location">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="gridLocation" type="xs:string"/>
+     <xs:element minOccurs="0" name="address" type="xs:string"/>
+     <xs:element minOccurs="0" name="coordinate" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="latitude" type="xs:double"/>
+        <xs:element name="longitude" type="xs:double"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/AkuaUtilityDREvent" version="1.0" xmlns:ns1="http://www.openadr.org/DRAS/AkuaEventInfo" xmlns:tns="http://www.openadr.org/DRAS/AkuaUtilityDREvent" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:import namespace="http://www.openadr.org/DRAS/AkuaEventInfo"/>
+   <xs:complexType name="UtilityDREvent">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="destinations" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element minOccurs="0" name="participants" nillable="true">
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="participantID" nillable="true" type="xs:string"/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="groups" nillable="true">
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element maxOccurs="unbounded" minOccurs="0" name="groupID" nillable="true" type="xs:string"/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="locations" nillable="true">
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element name="location" nillable="true" type="ns2:Location" xmlns:ns2="http://www.openadr.org/DRAS/DRASClient"/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+        <xs:element minOccurs="0" name="drasClients" nillable="true">
+         <xs:complexType>
+          <xs:sequence>
+           <xs:element name="drasClientID" nillable="true" type="xs:string"/>
+          </xs:sequence>
+         </xs:complexType>
+        </xs:element>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element name="eventTiming" type="tns:EventTiming"/>
+     <xs:element minOccurs="0" name="biddingInformation" nillable="true">
+      <xs:complexType>
+       <xs:sequence>
+        <xs:element name="openingTime" type="xs:dateTime"/>
+        <xs:element name="closingTime" type="xs:dateTime"/>
+       </xs:sequence>
+      </xs:complexType>
+     </xs:element>
+     <xs:element minOccurs="0" name="eventInformation" nillable="true" type="tns:EventInformation"/>
+    </xs:sequence>
+    <xs:attribute name="eventIdentifier" type="xs:string" use="required"/>
+    <xs:attribute name="schemaVersion" type="xs:string"/>
+    <xs:attribute name="eventModNumber" type="xs:unsignedInt" use="required"/>
+    <xs:attribute name="programName" type="xs:string" use="required"/>
+    <xs:attribute name="utilityITName" type="xs:string"/>
+   </xs:complexType>
+   <xs:complexType name="EventTiming">
+    <xs:sequence>
+     <xs:element name="notificationTime" type="xs:dateTime"/>
+     <xs:element name="startTime" type="xs:dateTime"/>
+     <xs:element name="endTime" type="xs:dateTime"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="EventInformation">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="eventInfoInstance" nillable="true" type="ns1:EventInfoInstance"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfEventIDs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="eventID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ListOfUtilityDREvents">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="DREvent" nillable="true" type="tns:UtilityDREvent"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+  <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/AkuaRTPConfig" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/AkuaRTPConfig" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfRTPConfigs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="priceTable" nillable="true" type="tns:AkuaRTPConfig"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaRTPConfig">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+     <xs:element name="name" type="xs:string"/>
+     <xs:element minOccurs="0" name="seasonName" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+     <xs:element minOccurs="0" name="startTime" nillable="true" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="endTime" nillable="true" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="startTemperature" type="xs:double"/>
+     <xs:element minOccurs="0" name="endTemperature" type="xs:double"/>
+     <xs:element minOccurs="0" name="rate" type="xs:double"/>
+     <xs:element name="unit" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+  <xs:schema elementFormDefault="qualified" targetNamespace="http://www.openadr.org/DRAS/AkuaSeasonConfig" version="1.0" xmlns:tns="http://www.openadr.org/DRAS/AkuaSeasonConfig" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:complexType name="ListOfSeasonConfigs">
+    <xs:sequence>
+     <xs:element maxOccurs="unbounded" minOccurs="0" name="seasonTable" nillable="true" type="tns:AkuaSeasonConfig"/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="AkuaSeasonConfig">
+    <xs:sequence>
+     <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+     <xs:element name="name" type="xs:string"/>
+     <xs:element minOccurs="0" name="startDate" nillable="true" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+     <xs:element minOccurs="0" name="programName" nillable="true" type="xs:string"/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+  </types>
+  <message name="AkuaUtilityOperator_GetDREvents">
+    <part name="GetDREvents" element="tns:GetDREvents">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateProgramResponse">
+    <part name="UpdateProgramResponse" element="tns:UpdateProgramResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateProgram">
+    <part name="UpdateProgram" element="tns:UpdateProgram">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetEventTemplatesResponse">
+    <part name="GetEventTemplatesResponse" element="tns:GetEventTemplatesResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetSignalsResponse">
+    <part name="GetSignalsResponse" element="tns:GetSignalsResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetDREventsResponse">
+    <part name="GetDREventsResponse" element="tns:GetDREventsResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_SearchDRASClientData">
+    <part name="SearchDRASClientData" element="tns:SearchDRASClientData">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateEventTemplate">
+    <part name="UpdateEventTemplate" element="tns:UpdateEventTemplate">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_CreateEventTemplate">
+    <part name="CreateEventTemplate" element="tns:CreateEventTemplate">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetSignals">
+    <part name="GetSignals" element="tns:GetSignals">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetContacts">
+    <part name="GetContacts" element="tns:GetContacts">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetContactsResponse">
+    <part name="GetContactsResponse" element="tns:GetContactsResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_SearchDRASParticipants">
+    <part name="SearchDRASParticipants" element="tns:SearchDRASParticipants">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdatePropertiesResponse">
+    <part name="UpdatePropertiesResponse" element="tns:UpdatePropertiesResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateProperties">
+    <part name="UpdateProperties" element="tns:UpdateProperties">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateContacts">
+    <part name="UpdateContacts" element="tns:UpdateContacts">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateEventTemplateResponse">
+    <part name="UpdateEventTemplateResponse" element="tns:UpdateEventTemplateResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateContactsResponse">
+    <part name="UpdateContactsResponse" element="tns:UpdateContactsResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateSignals">
+    <part name="UpdateSignals" element="tns:UpdateSignals">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateSignalsResponse">
+    <part name="UpdateSignalsResponse" element="tns:UpdateSignalsResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_CreateEventTemplateResponse">
+    <part name="CreateEventTemplateResponse" element="tns:CreateEventTemplateResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetEventTemplates">
+    <part name="GetEventTemplates" element="tns:GetEventTemplates">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_SearchDRASParticipantsResponse">
+    <part name="SearchDRASParticipantsResponse" element="tns:SearchDRASParticipantsResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetDRASClientData">
+    <part name="GetDRASClientData" element="tns:GetDRASClientData">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetProperties">
+    <part name="GetProperties" element="tns:GetProperties">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetProgramsResponse">
+    <part name="GetProgramsResponse" element="tns:GetProgramsResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetDRASClientDataResponse">
+    <part name="GetDRASClientDataResponse" element="tns:GetDRASClientDataResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetPropertiesResponse">
+    <part name="GetPropertiesResponse" element="tns:GetPropertiesResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetPrograms">
+    <part name="GetPrograms" element="tns:GetPrograms">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_SearchDRASClientDataResponse">
+    <part name="SearchDRASClientDataResponse" element="tns:SearchDRASClientDataResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_CreateProgram">
+    <part name="CreateProgram" element="tns:CreateProgram">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_CreateProgramResponse">
+    <part name="CreateProgramResponse" element="tns:CreateProgramResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateRTPConfigs">
+    <part name="UpdateRTPConfigs" element="tns:UpdateRTPConfigs">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateSeasonConfigs">
+    <part name="UpdateSeasonConfigs" element="tns:UpdateSeasonConfigs">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateSeasonConfigsResponse">
+    <part name="UpdateSeasonConfigsResponse" element="tns:UpdateSeasonConfigsResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_UpdateRTPConfigsResponse">
+    <part name="UpdateRTPConfigsResponse" element="tns:UpdateRTPConfigsResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetSeasonConfigs">
+    <part name="GetSeasonConfigs" element="tns:GetSeasonConfigs">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetSeasonConfigsResponse">
+    <part name="GetSeasonConfigsResponse" element="tns:GetSeasonConfigsResponse">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetRTPConfigs">
+    <part name="GetRTPConfigs" element="tns:GetRTPConfigs">
+    </part>
+  </message>
+  <message name="AkuaUtilityOperator_GetRTPConfigsResponse">
+    <part name="GetRTPConfigsResponse" element="tns:GetRTPConfigsResponse">
+    </part>
+  </message>
+  <portType name="AkuaUtilityOperator">
+    <operation name="CreateEventTemplate" parameterOrder="CreateEventTemplate">
+      <input message="tns:AkuaUtilityOperator_CreateEventTemplate">
+    </input>
+      <output message="tns:AkuaUtilityOperator_CreateEventTemplateResponse">
+    </output>
+    </operation>
+    <operation name="CreateProgram" parameterOrder="CreateProgram">
+      <input message="tns:AkuaUtilityOperator_CreateProgram">
+    </input>
+      <output message="tns:AkuaUtilityOperator_CreateProgramResponse">
+    </output>
+    </operation>
+    <operation name="GetContacts" parameterOrder="GetContacts">
+      <input message="tns:AkuaUtilityOperator_GetContacts">
+    </input>
+      <output message="tns:AkuaUtilityOperator_GetContactsResponse">
+    </output>
+    </operation>
+    <operation name="GetDRASClientData" parameterOrder="GetDRASClientData">
+      <input message="tns:AkuaUtilityOperator_GetDRASClientData">
+    </input>
+      <output message="tns:AkuaUtilityOperator_GetDRASClientDataResponse">
+    </output>
+    </operation>
+    <operation name="GetDREvents" parameterOrder="GetDREvents">
+      <input message="tns:AkuaUtilityOperator_GetDREvents">
+    </input>
+      <output message="tns:AkuaUtilityOperator_GetDREventsResponse">
+    </output>
+    </operation>
+    <operation name="GetEventTemplates" parameterOrder="GetEventTemplates">
+      <input message="tns:AkuaUtilityOperator_GetEventTemplates">
+    </input>
+      <output message="tns:AkuaUtilityOperator_GetEventTemplatesResponse">
+    </output>
+    </operation>
+    <operation name="GetPrograms" parameterOrder="GetPrograms">
+      <input message="tns:AkuaUtilityOperator_GetPrograms">
+    </input>
+      <output message="tns:AkuaUtilityOperator_GetProgramsResponse">
+    </output>
+    </operation>
+    <operation name="GetProperties" parameterOrder="GetProperties">
+      <input message="tns:AkuaUtilityOperator_GetProperties">
+    </input>
+      <output message="tns:AkuaUtilityOperator_GetPropertiesResponse">
+    </output>
+    </operation>
+    <operation name="GetSignals" parameterOrder="GetSignals">
+      <input message="tns:AkuaUtilityOperator_GetSignals">
+    </input>
+      <output message="tns:AkuaUtilityOperator_GetSignalsResponse">
+    </output>
+    </operation>
+    <operation name="SearchDRASClientData" parameterOrder="SearchDRASClientData">
+      <input message="tns:AkuaUtilityOperator_SearchDRASClientData">
+    </input>
+      <output message="tns:AkuaUtilityOperator_SearchDRASClientDataResponse">
+    </output>
+    </operation>
+    <operation name="SearchDRASParticipants" parameterOrder="SearchDRASParticipants">
+      <input message="tns:AkuaUtilityOperator_SearchDRASParticipants">
+    </input>
+      <output message="tns:AkuaUtilityOperator_SearchDRASParticipantsResponse">
+    </output>
+    </operation>
+    <operation name="UpdateContacts" parameterOrder="UpdateContacts">
+      <input message="tns:AkuaUtilityOperator_UpdateContacts">
+    </input>
+      <output message="tns:AkuaUtilityOperator_UpdateContactsResponse">
+    </output>
+    </operation>
+    <operation name="UpdateEventTemplate" parameterOrder="UpdateEventTemplate">
+      <input message="tns:AkuaUtilityOperator_UpdateEventTemplate">
+    </input>
+      <output message="tns:AkuaUtilityOperator_UpdateEventTemplateResponse">
+    </output>
+    </operation>
+    <operation name="UpdateProgram" parameterOrder="UpdateProgram">
+      <input message="tns:AkuaUtilityOperator_UpdateProgram">
+    </input>
+      <output message="tns:AkuaUtilityOperator_UpdateProgramResponse">
+    </output>
+    </operation>
+    <operation name="UpdateProperties" parameterOrder="UpdateProperties">
+      <input message="tns:AkuaUtilityOperator_UpdateProperties">
+    </input>
+      <output message="tns:AkuaUtilityOperator_UpdatePropertiesResponse">
+    </output>
+    </operation>
+    <operation name="UpdateSignals" parameterOrder="UpdateSignals">
+      <input message="tns:AkuaUtilityOperator_UpdateSignals">
+    </input>
+      <output message="tns:AkuaUtilityOperator_UpdateSignalsResponse">
+    </output>
+    </operation>
+    <operation name="GetRTPConfigs" parameterOrder="GetRTPConfigs">
+      <input message="tns:AkuaUtilityOperator_GetRTPConfigs">
+    </input>
+      <output message="tns:AkuaUtilityOperator_GetRTPConfigsResponse">
+    </output>
+    </operation>
+    <operation name="GetSeasonConfigs" parameterOrder="GetSeasonConfigs">
+      <input message="tns:AkuaUtilityOperator_GetSeasonConfigs">
+    </input>
+      <output message="tns:AkuaUtilityOperator_GetSeasonConfigsResponse">
+    </output>
+    </operation>
+    <operation name="UpdateRTPConfigs" parameterOrder="UpdateRTPConfigs">
+      <input message="tns:AkuaUtilityOperator_UpdateRTPConfigs">
+    </input>
+      <output message="tns:AkuaUtilityOperator_UpdateRTPConfigsResponse">
+    </output>
+    </operation>
+    <operation name="UpdateSeasonConfigs" parameterOrder="UpdateSeasonConfigs">
+      <input message="tns:AkuaUtilityOperator_UpdateSeasonConfigs">
+    </input>
+      <output message="tns:AkuaUtilityOperator_UpdateSeasonConfigsResponse">
+    </output>
+    </operation>
+  </portType>
+  <binding name="AkuaUtilityOperatorBinding" type="tns:AkuaUtilityOperator">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="CreateEventTemplate">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/CreateEventTemplate"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="CreateProgram">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/CreateProgram"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetContacts">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetContacts"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDRASClientData">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetDRASClientData"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetDREvents">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetDREvents"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetEventTemplates">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetEventTemplates"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetPrograms">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetPrograms"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetProperties">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetProperties"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetSignals">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetSignals"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SearchDRASClientData">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/SearchDRASClientData"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="SearchDRASParticipants">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/SearchDRASParticipants"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateContacts">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateContacts"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateEventTemplate">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateEventTemplate"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateProgram">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateProgram"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateProperties">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateProperties"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateSignals">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateSignals"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetRTPConfigs">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetRTPConfigs"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="GetSeasonConfigs">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetSeasonConfigs"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateRTPConfigs">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateRTPConfigs"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="UpdateSeasonConfigs">
+      <soap:operation soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateSeasonConfigs"/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="AkuaUtilityOperatorWSService">
+    <port name="AkuaUtilityOperatorPort" binding="tns:AkuaUtilityOperatorBinding">
+      <soap:address location="http://127.0.0.1:8080/AkuaUtilityOperatorWS/AkuaUtilityOperatorWS"/>
+    </port>
+  </service>
+</definitions>

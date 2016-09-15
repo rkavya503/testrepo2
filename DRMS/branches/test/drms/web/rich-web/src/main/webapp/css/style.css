@@ -1,0 +1,305 @@
+body {
+	color: #000000;
+	text-align: center;
+	margin: 0px;
+	font-family: verdana, arial, sans-serif;
+	font-size: small;
+	background-color: #FFFFFF;
+}
+
+A:link {
+	COLOR: #27577D;
+	text-decoration: none
+}
+
+A:visited {
+	COLOR: #5D819D;
+	text-decoration: none
+}
+
+A:active {
+	COLOR: #5D819D;
+	text-decoration: none
+}
+
+A:hover {
+	COLOR: #FF7300;
+	text-decoration: underline
+}
+
+#page_wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	width: 100%;
+	text-align: left;
+	min-width: 820px;
+}
+
+#header {
+	float: left;
+	width: 100%;
+	font-size: .8em;
+	line-height: normal;
+	overflow: auto;
+	margin: 0 0 8px 0;
+}
+
+#standard #header {
+	background: #DAE0D2 url("../images/layout/header_background-wide.jpg")
+		repeat-x left bottom;
+}
+
+#home #header {
+	background: #DAE0D2 url("../imgages/layout/header_background-wide.jpg")
+		no-repeat left bottom;
+}
+
+h1 {
+	margin: 0;
+	padding-top: 20px;
+	padding-left: 25px;
+	font-size: 2.5em;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+h2 {
+	margin: 0;
+	padding-left: 25px;
+	font-size: 1.2em;
+	font-weight: bold;
+	letter-spacing: 2px;
+	color: #eec48b;
+}
+
+#navright {
+	margin: 0;
+	padding: 5px 20px 0;
+	list-style: none;
+}
+
+#navright li {
+	float: right;
+	margin: 0;
+	padding: 0 15px 0 15px;
+	border-right: solid #ffffff 1px;
+}
+
+#navright li.last {
+	border-right: none #fffff 0px;
+	padding: 0 0px 0 15px;
+}
+
+#navright a {
+	float: right;
+	display: block;
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+}
+
+/* Commented Backslash Hack
+   hides rule from IE5-Mac \*/
+#navright a {
+	float: none;
+}
+
+/* End IE5-Mac hack */
+#content_wrapper {
+	padding-top: 5px;
+	clear: both;
+	margin: 10px 20px;
+	padding-bottom: 10px; /*overflow:auto;*/
+}
+
+#page_footer {
+	background-color: #fff;
+	clear: both;
+	border-top: solid #5d819d 1px;
+	margin: 5px 10px 20px 10px;
+}
+
+#page_footer .akua {
+	padding-top: 5px;
+	padding-bottom: 10px;
+	margin-bottom: 0px;
+	text-align: right;
+	font-size: 0.9em;
+	color: #93abbe;
+	letter-spacing: 1px;
+}
+
+table {
+	position: relative;
+	top: -4px;
+	left: -4px;
+	width: 100%;
+	border: solid 1px #2b4e82;
+	background: #ffffff;
+}
+
+table caption {
+	color: #000;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin: 0;
+	padding: 8px 20px;
+	text-align: left;
+	background: #d4e0e6;
+	border-top: 1px solid #000;
+	border-right: 1px solid #000000;
+	border-left: 1px solid #000;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+}
+
+table th {
+	margin: 0;
+	padding: 2px 5px 2px 20px;
+	text-align: left;
+	border-bottom: 1px solid #b5b5b5;
+	color: #fff;
+	font-size: 0.8em;
+	background-color: #2bb0ff;
+	border-right: 1px dotted #ffffff;
+}
+
+table th img {
+	text-align: right;
+	float: right;
+}
+
+table th a {
+	display: block;
+}
+
+table th a:link,table th a:visited {
+	color: #ffffff;
+}
+
+table th a:hover {
+	color: #2b4e82;
+	text-decoration: none;
+}
+
+table td img {
+	float: right;
+	margin-left: 0;
+	border-width: 0;
+}
+
+table td {
+	margin: 0;
+	padding: 4px 20px;
+	text-align: left;
+	border-bottom: 1px solid #b5b5b5;
+}
+
+table tr {
+	background: #fbfcfc;
+}
+
+table tr.alt {
+	background: #f1f1f1;
+}
+
+.tablestyle {
+	background: #919191;
+	margin-bottom: 15px;
+}
+
+.sort_down {
+	background: #428bd5 url("../images/layout/sort_up.png") no-repeat right
+		center;
+}
+
+.sort_up {
+	background: #428bd5 url("../images/layout/sort_down.png") no-repeat right
+		center;
+}
+
+.current_sort a {
+	padding-right: 20px;
+}
+
+.edit_tools img {
+	float: right;
+	padding-left: 15px;
+	border: 0;
+}
+
+.select_box {
+	padding-right: 0px;
+	border-right: none;
+}
+
+.time {
+	font-size: .8em;
+	color: #999999;
+}
+
+.edit_item a {
+	background: url("../images/layout/pencil.gif") no-repeat right center;
+}
+
+.edit_item a {
+	padding-right: 20px;
+}
+
+table td a {
+	display: block;
+}
+
+.status-green {
+	color: #48b15f;
+	background-color: #48b15f;
+}
+
+.status-yellow {
+	background-color: #fff35c;
+}
+
+.status-red {
+	background-color: #aa0000;
+}
+
+.null {
+	color: #999999;
+}
+
+table .colcenter {
+	text-align: center;
+}
+
+.float_left {
+	float: left;
+	margin-right: 10px;
+}
+
+.float_right {
+	float: right;
+	margin-left: 10px;
+}
+
+.float_right p,.float_left p {
+	color: #e1912f;
+	font-size: 0.6em;
+	text-align: center;
+}
+
+.arrow_list {
+	margin-left: 10px;
+	padding-left: 0;
+	list-style: none;
+}
+
+.arrow_list li {
+	padding-left: 10px;
+	background-image: url("../images/layout/arrow.gif");
+	background-repeat: no-repeat;
+	background-position: 0 7px;
+	font-size: 0.8em;
+	line-height: 1.4em;
+}

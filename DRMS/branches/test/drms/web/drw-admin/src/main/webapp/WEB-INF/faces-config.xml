@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+
+	<!--custom jsf tag with better accessibility support -->
+	<component>
+		<description>A tab section within a tab panel</description>
+		<component-type>com.akuacom.jsf.Tab</component-type>
+		<component-class>com.akuacom.jsf.component.HtmlTab</component-class>
+		<component-extension>
+			<component-family>com.akuacom.jsf.Tab</component-family>
+			<renderer-type>com.akuacom.jsf.TabRenderer</renderer-type>
+		</component-extension>
+	</component>
+	<component>
+		<description>Command Link</description>
+		<component-type>com.akuacom.jsf.CommandLink</component-type>
+		<component-class>com.akuacom.jsf.component.HtmlCommandLink</component-class>
+		<component-extension>
+			<component-family>javax.faces.Command</component-family>
+			<renderer-type>com.akuacom.jsf.CommandLinkRenderer</renderer-type>
+		</component-extension>
+	</component>
+
+	<!-- Customer renderkit to improve accessibility to existing JSF components -->
+	<render-kit>
+		<renderer>
+			<display-name>Cell Render</display-name>
+			<component-family>org.richfaces.Column</component-family>
+			<renderer-type>org.richfaces.renderkit.CellRenderer</renderer-type>
+			<renderer-class>com.akuacom.jsf.renderkit.CellRenderer</renderer-class>
+		</renderer>
+		<renderer>
+			<display-name>Accessible CommandLink</display-name>
+			<component-family>javax.faces.Command</component-family>
+			<renderer-type>com.akuacom.jsf.CommandLinkRenderer</renderer-type>
+			<renderer-class>com.akuacom.jsf.renderkit.AccessibleCommandLinkRender</renderer-class>
+		</renderer>
+		<renderer>
+			<component-family>com.akuacom.jsf.Tab</component-family>
+			<renderer-type>com.akuacom.jsf.TabRenderer</renderer-type>
+			<renderer-class>com.akuacom.jsf.renderkit.AccessibleTabRenderer</renderer-class>
+		</renderer>
+		<renderer>
+			<component-family>javax.faces.Message</component-family>
+			<renderer-type>javax.faces.Message</renderer-type>
+			<renderer-class>com.akuacom.jsf.renderkit.AccessibleMessageRenderer</renderer-class>
+		</renderer>
+		<renderer>
+			<component-family>javax.faces.Messages</component-family>
+			<renderer-type>javax.faces.Messages</renderer-type>
+			<renderer-class>com.akuacom.jsf.renderkit.AccessibleMessagesRenderer</renderer-class>
+		</renderer>		
+	</render-kit>
+	
+	<managed-bean>
+		<managed-bean-name>sdpEventAdvisor</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.event.creation.sdp.SdpEventCreationAdvisor</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+ 	</managed-bean> 
+ 	
+ 	<managed-bean>
+		<managed-bean-name>activeEvents</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.event.monitor.AbstractActiveEvents</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+ 	</managed-bean> 
+ 	
+ 	<managed-bean>
+		<managed-bean-name>historyEvents</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.event.monitor.AbstractHistoryEvents</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+ 	</managed-bean> 
+ 	
+ 	<managed-bean>
+        <managed-bean-name>bipHistoryEvents</managed-bean-name>
+        <managed-bean-class>com.akuacom.pss2.drw.event.monitor.BipHistoryEvents</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean> 
+    
+    <managed-bean>
+        <managed-bean-name>apiHistoryEvents</managed-bean-name>
+        <managed-bean-class>com.akuacom.pss2.drw.event.monitor.ApiHistoryEvents</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean> 
+    
+     <managed-bean>
+        <managed-bean-name>bip2013HistoryEvents</managed-bean-name>
+        <managed-bean-class>com.akuacom.pss2.drw.event.monitor.Bip2013HistoryEvents</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean> 
+    
+    
+ 	<managed-bean>
+		<managed-bean-name>bip2013EventAdvisor</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.event.creation.bip2013.Bip2013EventCreationAdvisor</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+ 	</managed-bean> 
+ 	
+ 	
+ 	<managed-bean>
+		<managed-bean-name>apiEventAdvisor</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.event.creation.api.ApiEventCreationAdvisor</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+ 	</managed-bean> 
+	<managed-bean>
+		<managed-bean-name>bipEventAdvisor</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.event.creation.bip.BipEventCreationAdvisor</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+ 	</managed-bean> 
+	<managed-bean>
+		<description>Programs</description>
+		<managed-bean-name>programs</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.admin.ProgramsBackingBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+	  <description>Footer</description>
+	  <managed-bean-name>footer</managed-bean-name>
+	  <managed-bean-class>com.akuacom.pss2.drw.admin.Footer</managed-bean-class>
+	  <managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>	
+     
+	<managed-bean>
+	  <description>FileUploadBean</description>
+	  <managed-bean-name>fileUploadBean</managed-bean-name>
+	  <managed-bean-class>com.akuacom.pss2.drw.admin.FileUploadBean</managed-bean-class>
+	  <managed-bean-scope>request</managed-bean-scope>
+	 </managed-bean>	
+
+ <!-- Footer backing bean for logo, copyright etc  -->
+ 	<managed-bean>
+	  <description>common configurations</description>
+	  <managed-bean-name>pss2Config</managed-bean-name>
+	  <managed-bean-class>com.akuacom.pss2.web.common.Config</managed-bean-class>
+	  <managed-bean-scope>request</managed-bean-scope>
+ 	</managed-bean>
+ 	
+	 
+	 <managed-bean>
+      <description>ConfUploadBean</description>
+      <managed-bean-name>confUploadBean</managed-bean-name>
+      <managed-bean-class>com.akuacom.pss2.drw.admin.ConfUploadBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+     </managed-bean>    
+     
+    <managed-bean>
+      <description>locationKmlBean</description>
+      <managed-bean-name>locationKmlBean</managed-bean-name>
+      <managed-bean-class>com.akuacom.pss2.drw.admin.LocationKmlBackingBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+     </managed-bean>   
+	 
+	<navigation-rule>
+	  <navigation-case>
+	   <from-outcome>programs</from-outcome>
+	   <to-view-id>/jsp/programs.jsp</to-view-id>
+	  </navigation-case>
+	  <navigation-case>
+	   <from-outcome>upload</from-outcome>
+	   <to-view-id>/jsp/upload.jsp</to-view-id>
+	  </navigation-case>
+	  <navigation-case>
+       <from-outcome>uploadConf</from-outcome>
+       <to-view-id>/jsp/uploadConf.jsp</to-view-id>
+      </navigation-case>
+      <navigation-case>
+       <from-outcome>geographicConfig</from-outcome>
+       <to-view-id>/jsp/locationKml.jsp</to-view-id>
+      </navigation-case>
+  </navigation-rule>
+	 
+</faces-config>

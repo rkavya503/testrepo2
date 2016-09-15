@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webservices xmlns="http://java.sun.com/xml/ns/j2ee" version="1.1"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_web_services_1_1.xsd">
+    <webservice-description>
+        <display-name>PSS2WS</display-name>
+        <webservice-description-name>PSS2WS</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/PSS2WS.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>build/mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <display-name>PSS2WSSEI</display-name>
+            <port-component-name>PSS2WSSEI</port-component-name>
+            <wsdl-port xmlns:wsdl-port_ns__="http://pss2.lbl.gov">wsdl-port_ns__:PSS2WSSEIPort</wsdl-port>
+            <service-endpoint-interface>com.akuacom.pss2.clientws.legacy.PSS2WSSEI</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>PSS2WS</servlet-link>
+            </service-impl-bean>
+        </port-component>
+    </webservice-description>
+</webservices>

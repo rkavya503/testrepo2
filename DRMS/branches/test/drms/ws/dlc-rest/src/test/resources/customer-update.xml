@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customers>
+    <customer>
+        <serviceId>v007</serviceId>
+        <participantPassword>Word_p007</participantPassword>
+    </customer>
+    <customer>
+        <serviceId>v008</serviceId>
+        <participantName>s008</participantName>
+        <clientName>s008.c1</clientName>
+    </customer>
+</customers>

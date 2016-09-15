@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.openadr.org/DRAS/PartData" elementFormDefault="qualified"
+	targetNamespace="http://www.openadr.org/DRAS/PartData" version="1.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+            <xs:complexType name="PartDataSet">
+            	<xs:sequence>
+            		<xs:element name="id" type="xs:long"/>
+                    <xs:element name="name" minOccurs="0" type="xs:string"/>
+                    <xs:element name="unit" minOccurs="0" type="xs:string"/>
+                    <xs:element name="sync" type="xs:boolean"></xs:element>
+            		<xs:element name="period" type="xs:long"></xs:element>
+                    <xs:element name="participantName" type="xs:string" minOccurs="0" ></xs:element>
+                    <xs:element name="partDataEntryList" type="tns:ListOfPartDataEntry"/>
+
+            	</xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="PartDataEntry">
+            	<xs:sequence>
+            		<xs:element name="id" type="xs:long"></xs:element>
+                    <xs:element name="time" type="xs:dateTime" minOccurs="0" ></xs:element>
+                    <xs:element name="value" type="xs:string" minOccurs="0" ></xs:element>
+                    <xs:element name="participantName" type="xs:string" minOccurs="0" ></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="DateRange">
+            	<xs:sequence>
+                    <xs:element name="startTime" type="xs:dateTime"></xs:element>
+                    <xs:element name="endTime" type="xs:dateTime"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="ListOfPartDataEntry">
+            	<xs:sequence>
+            		<xs:element name="partDataEntryList" minOccurs="0" type="tns:PartDataEntry" maxOccurs="unbounded"></xs:element>
+            	</xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="ListOfPartDataSet">
+            	<xs:sequence>
+            		<xs:element name="partDataList" minOccurs="0" type="tns:PartDataSet" maxOccurs="unbounded"></xs:element>
+            	</xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="ListOfDateRange">
+            	<xs:sequence>
+            		<xs:element name="dateRangeList" minOccurs="0" type="tns:DateRange" maxOccurs="unbounded"></xs:element>
+            	</xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="ListOfIDs">
+            	<xs:sequence>
+            		<xs:element name="id" minOccurs="0" type="xs:string" maxOccurs="unbounded" nillable="true"></xs:element>
+            	</xs:sequence>
+            </xs:complexType>
+
+</xs:schema>

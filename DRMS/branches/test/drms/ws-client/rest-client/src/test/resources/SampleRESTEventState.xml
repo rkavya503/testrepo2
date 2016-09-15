@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:eventState 
+	programName="SAMPLE" 
+	eventModNumber="0"
+	eventIdentifier="35648" 
+	drasClientID="DRC-245" 
+	eventStateID="843451309" 
+	schemaVersion="20080509"
+	drasName="Akuacom 4.3"
+    testEvent="false"
+    offLine="false"
+	xmlns:p="urn:EventState"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:EventState http://bacnet.openadr.com/DRAS/EventState.xsd">
+	<p:simpleDRModeData>
+		<p:EventStatus>ACTIVE</p:EventStatus>
+		<p:OperationModeValue>MODERATE</p:OperationModeValue>
+		<p:currentTime>30.5</p:currentTime>
+		<p:operationModeSchedule>
+			<p:modeSlot>
+				<p:OperationModeValue>MODERATE</p:OperationModeValue>
+				<p:modeTimeSlot>0</p:modeTimeSlot>
+			</p:modeSlot>
+			<p:modeSlot>
+				<p:OperationModeValue>HIGH</p:OperationModeValue>
+				<p:modeTimeSlot>60</p:modeTimeSlot>
+			</p:modeSlot>
+		</p:operationModeSchedule>
+	</p:simpleDRModeData>
+	<p:drEventData>
+		<p:notificationTime>2008-03-06T11:59:00.00</p:notificationTime>
+		<p:startTime>2008-03-06T12:00:00.00</p:startTime>
+		<p:endTime>2008-03-06T12:02:00.00</p:endTime>
+	</p:drEventData>
+</p:eventState>

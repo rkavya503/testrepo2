@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5"   
+    xmlns="http://java.sun.com/xml/ns/javaee"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">                      
+         
+    <display-name>website</display-name>
+    
+    <distributable />
+    <listener>
+        <!--Instantiate the application level listener first. Let it do the init work.-->
+        <listener-class>com.akuacom.pss2.web.listener.ServletListener</listener-class>
+    </listener>
+    <listener>
+        <!--This is session level listener. Works for each user session.-->
+        <listener-class>com.akuacom.pss2.web.session.SessionListener</listener-class>
+    </listener>
+	
+    <!-- Added explicit timeout section for local debugging uses.-->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <filter>
+        <filter-name>ResponseOverrideFilter</filter-name>
+        <filter-class>org.displaytag.filter.ResponseOverrideFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ResponseOverrideFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>ResponseOverrideFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    <!-- This filter examines every .do and .jsp request for if it's authenticated
+     and if it's timed out. The filter will forward the response to index.html
+     if user is not authenticated or user is timed out.-->
+    <filter>
+        <filter-name>LoginLogoutFilter</filter-name>
+        <filter-class>com.akuacom.pss2.web.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginLogoutFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginLogoutFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AccessFilter</filter-name>
+        <filter-class>com.akuacom.pss2.web.filter.AccessFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AccessFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
+	<filter>
+	    <filter-name>XSS</filter-name>
+	    <filter-class>com.akuacom.pss2.core.CrossScriptingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>XSS</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+    <!-- servlet settings -->
+    <!--  Added for Struts Capability  -->
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+
+        <!--     <init-param>
+                  <param-name>application</param-name>
+                  <param-value>ApplicationResources</param-value>
+          </init-param>
+        -->
+
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/conf/struts-config.xml</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>2</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>detail</param-name>
+            <param-value>2</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>validate</param-name>
+            <param-value>true</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>chainConfig</param-name>
+            <param-value>org/apache/struts/tiles/chain-config.xml</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>application</param-name>
+            <param-value>pss2Web</param-value>
+        </init-param>
+
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <!-- Standard Action Servlet Mapping -->
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <display-name>GetGraphImage</display-name>
+        <servlet-name>GetGraphImage</servlet-name>
+        <servlet-class>com.akuacom.pss2.core.CreateGraphImageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetGraphImage</servlet-name>
+        <url-pattern>/GetGraphImage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <display-name>LoginServlet</display-name>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.akuacom.pss2.web.login.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+
+    <!-- Welcome file -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- Security Settings -->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>website</web-resource-name>
+            <url-pattern>*.do</url-pattern>
+            <url-pattern>/Login</url-pattern>
+            <url-pattern>/secure/*</url-pattern>
+            <url-pattern>/summary.jsp</url-pattern>
+            <url-pattern>/status.jsp</url-pattern>
+            <url-pattern>/options.jsp</url-pattern>
+            <url-pattern>/about.jsp</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>website</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <login-config>
+        <!-- <auth-method>CLIENT-CERT</auth-method> -->
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/WEB-INF/jsp/login.jsp</form-login-page>
+            <form-error-page>/WEB-INF/jsp/login_error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description>website</description>
+        <role-name>website</role-name>
+    </security-role>
+</web-app>

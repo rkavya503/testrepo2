@@ -1,0 +1,10 @@
+This is a file used by developers to check in their first file and undertand the process.  
+
+See more @ https://akuacom.jira.com/wiki/display/DRMS/Development+Environment
+
+Add your name to the list below.
+
+-Developer---YYYY-MM-DD
+Aaron Roller=2010-10-08
+Reid Hartenbower=2010-10-18
+Brian Chapman=2010-10-25

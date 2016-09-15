@@ -1,0 +1,76 @@
+ul#nav  { margin:0; padding:5px 20px 0; list-style:none;  }
+#nav li { float:left; background:url("images/layout/left.gif") no-repeat left top; margin:0; padding:0 0 0 9px; }
+#nav a { float:left; display:block; background:url("images/layout/right.gif") no-repeat right top; padding:5px 20px 2px 11px; text-decoration:none; font-weight:bold; color:#fff; }
+/* Commented Backslash Hack
+   hides rule from IE5-Mac \*/
+#nav a {float:none;}
+/* End IE5-Mac hack */
+#nav a:hover { color: #fbffac;  }
+#nav #current { background-image:url("images/layout/left_on.gif"); }
+#nav #current a { background-image:url("images/layout/right_on.gif"); color:#27577D; padding-bottom:3px; }
+
+#navright { padding-left: 0px; padding-bottom: 0; padding-right: 0px; padding-top: 0px; width: 500px; right: 20px; top: 15px; position: absolute; margin:0; list-style:none; }
+#navright li { float:right; margin:0; padding:0 15px 0 15px; border-right: solid #ffffff 1px; }
+#navright li.last { border-right: none #ffffff 0px; }
+#navright a { float:right; display:block; text-decoration:none; color:black; }
+/* Commented Backslash Hack
+   hides rule from IE5-Mac \*/
+#navright a {float:none;}
+/* End IE5-Mac hack */
+
+
+#subnav_dummy {
+	width:800px;
+	height:20px;
+	background:#16557f;
+	border-left: 1px solid #2bb0ff;
+	border-right: 1px solid #2bb0ff;
+	border-bottom: 1px solid #2bb0ff;
+}
+#subnav ul {
+	padding-top: 3px;
+	padding-bottom: 3px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-size: 12px;
+	background: #16557f;
+	border-left: 1px solid #2bb0ff;
+	border-right: 1px solid #2bb0ff;
+	border-bottom: 1px solid #2bb0ff;
+}
+#subnav ul li {
+	list-style: none;
+	display: inline;
+}
+#subnav ul li a {
+	padding: 3px 0.5em;
+	border-bottom: none;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+#subnav ul li a:link:hover, #subnav ul li a:visited:hover {
+	color: #2bb0ff;
+}
+
+#subpage_options_password ul li a#subnav_options_password,
+#subpage_options_emails ul li a#subnav_options_emails,
+#subpage_options_contacts ul li a#subnav_options_contacts,
+#subpage_options_about ul li a#subnav_options_about
+#subpage_options_properties ul li a#subnav_options_properties,
+#subpage_options_signals ul li a#subnav_options_signals,
+#subpage_options_pmatrix ul li a#subnav_options_pmatrix,
+#subpage_options_nssettings ul li a#subnav_options_nssettings,
+#subpage_report_logs ul li a#subnav_report_logs,
+#subpage_report_event_list ul li a#subnav_report_event_list,
+#subpage_report_event_signals ul li a#subnav_report_event_signals,
+#subpage_report_account ul li a#subnav_report_account,
+#subpage_report_obixOnline ul li a#subnav_report_obixOnline,
+#subpage_report_event_participation ul li a#subnav_report_event_participation,
+#subpage_report_client_participation ul li a#subnav_report_client_participation,
+#subpage_report_dbp_event_creation ul li a#subnav_report_dbp_event_creation,
+#subpage_report_offline ul li a#subnav_report_offline,
+#subpage_report_weather ul li a#subnav_report_weather
+{
+	color: #2bb0ff;
+}

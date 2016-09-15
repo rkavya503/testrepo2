@@ -1,0 +1,215 @@
+<?xml version="1.0" ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:svg="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink" lang="en-US">
+
+<head>
+
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml;charset=utf-8" />
+
+<title>SVG</title>
+
+<script src="./js/uncraphael.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/util.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/widgets.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/prog.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/usagedata.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://www.google.com/jsapi"></script>
+<img src="./redDot.png" height="6" height="6" />
+</head>
+
+<body>
+	<div id="divEventGaugeCPP24HourNotice0"
+		style="width: 120px; height: 60px" />
+
+
+
+	<script>
+		akuacom.widgets.drawEventGauge({
+			id : "divEventGaugeCPP24HourNotice0",
+			w : 120,
+			begin : 6.0,
+			near : 8.0,
+			start : 14.0,
+			stop : 18.0,
+			end : 21.0,
+			nstyle : [ "gradient", "arrow" ]
+		})
+	</script>
+	<div id="divEventGaugeCPP24HourNotice1"
+		style="width: 120px; height: 60px" />
+	<script>
+		akuacom.widgets.drawEventGauge({
+			id : "divEventGaugeCPP24HourNotice1",
+			w : 120,
+			begin : 6.0,
+			near : 10.0,
+			start : 18.0,
+			stop : 21.5,
+			end : 23.9,
+			nstyle : [ "gradient", "arrow" ]
+		})
+	</script>
+	<table>
+
+		<tr>
+			<td align="center" style="vertical-align: text-top; font-size: 120%">Event
+				Potential</td>
+		</tr>
+		<tr>
+			<!-- large shed gauge -->
+			<td><div id="divLShedGaugeCPP24HourNotice" /> <script>
+				akuacom.widgets.drawShedGauge({
+					id : "divLShedGaugeCPP24HourNotice",
+					w : 100,
+					prog : progs["CPP24HourNotice"],
+					g : true
+				})
+			</script> </script></td>
+		</tr>
+		<tr>
+
+			<td align="center"><span style="font-size: 8pt">17.06 kW
+					Available Shed</span></td>
+		</tr>
+		<tr>
+			<td align="center"><span style="font-size: 9pt">55.93 kW
+					Total Registered Shed</span>
+			</td>
+		</tr>
+	</table>
+
+	<table>
+		<tr>
+			<td align="center" style="font-size: 120%">Pending Events</td>
+		</tr>
+
+		<tr>
+			<td align="center" style="font-size: 120%">110527</td>
+
+		</tr>
+		<tr>
+			<!-- pending event widget -->
+			<td align="center"><div id="divEventGaugeCPP24HourNotice2"
+					style="width: 120px; height: 60px" /> <script>
+						akuacom.widgets.drawEventGauge({
+							id : "divEventGaugeCPP24HourNotice2",
+							w : 120,
+							begin : 6.0,
+							near : 16.0,
+							start : 18.0,
+							stop : 21.5,
+							end : 22.0,
+							nstyle : [ "gradient", "arrow" ]
+						})
+					</script>
+			</td>
+		</tr>
+
+	</table>
+
+	<table>
+		<tr>
+			<td align="center" style="font-size: 120%">Offline Clients</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="divOLCPP24HourNotice" style="font-size: small" /> <script>
+					akuacom.data.offline("divOLCPP24HourNotice",
+							progs["CPP24HourNotice"])
+				</script></td>
+
+		</tr>
+		<div style="text-align: center"></div>
+		<tr>
+			<td align="center" style="font-size: 120%">Opt Outs</td>
+		</tr>
+		<tr>
+			<td>
+
+				<div id="divOOCPP24HourNotice" style="font-size: small" /> <script>
+					akuacom.data.optOut("divOOCPP24HourNotice",
+							progs["CPP24HourNotice"])
+				</script></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<td align="center" style="font-size: 120%">Pending Events</td>
+		</tr>
+
+		<tr>
+			<td align="center" style="font-size: 120%">110527</td>
+		</tr>
+
+		<tr>
+			<!-- pending event widget -->
+			<td align="center"><div id="divEventGaugeCPP24HourNotice4"
+					style="width: 120px; height: 60px" />
+				<script>
+					akuacom.widgets.drawEventGauge({
+						id : "divEventGaugeCPP24HourNotice4",
+						w : 120,
+						begin : 6.0,
+						near : 8.0,
+						start : 14.0,
+						stop : 18.0,
+						end : 21.0,
+						nstyle : [ "gradient", "arrow" ]
+					})
+				</script>
+			</td>
+		</tr>
+
+	</table>
+
+	<table>
+		<tr>
+			<td width="30%">
+				<table>
+					<tr>
+						<td align="center">Program Summary</td>
+					</tr>
+					<tr>
+
+						<td align="center" style="font-size: 8px">Real-Time Energy</td>
+					</tr>
+					<tr>
+						<td align="center"><div id="divUcLCPP4HourNotice"
+								style="width: 75px; height: 75px" />
+							<script>
+								akuacom.widgets.shedLegend({
+									id : "divUcLCPP4HourNotice",
+									w : 75,
+									h : 75
+								})
+							</script>
+						</td>
+					</tr>
+				</table></td>
+
+			<td width="70%"><div id="divUcCPP4HourNotice"
+					style="width: 300px; height: 120px" />
+				<script>
+					akuacom.widgets.drawShedGraph({
+						id : "divUcCPP4HourNotice",
+						w : 300,
+						h : 100,
+						xoff : 35,
+						yoff : 10,
+						starts : [ 12.00 ],
+						stops : [ 16.00 ],
+						prog : progs["CPP4HourNotice"],
+						useGrid : true
+					})
+				</script>
+
+			</td>
+		</tr>
+	</table>
+
+</body>
+
+</html>

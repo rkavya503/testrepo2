@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <changeSet id="1" author="brian">
+        <comment>DRMS-4452 TEST</comment>
+    </changeSet>
+
+    <changeSet id="2" author="brian">
+        <update tableName="core_property">
+            <column name="stringValue" value="xcel" />
+            <where>propertyName='utilityName'</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="3" author="brian">
+        <update tableName="core_property">
+            <column name="stringValue" value="XCEL" />
+            <where>propertyName='utilityDisplayName'</where>
+        </update>
+    </changeSet>
+    <changeSet id="4" author="brian">
+        <update tableName="core_property">
+            <column name="stringValue" value="http://www.xcelenergy.com" />
+            <where>propertyName='contactURLLink'</where>
+        </update>
+    </changeSet>
+    <changeSet id="5" author="brian">
+        <update tableName="core_property">
+            <column name="stringValue" value="ops@akuacom.com" />
+            <where>propertyName='contactEMail'</where>
+        </update>
+    </changeSet>
+    <changeSet id="6" author="brian">
+        <update tableName="core_property">
+            <column name="stringValue" value="ops@akuacom.com" />
+            <where>propertyName='operatorEMails'</where>
+        </update>
+    </changeSet>
+    <changeSet id="7" author="brian">
+        <update tableName="core_property">
+            <column name="stringValue" value="false" />
+            <where>propertyName='feature.news'</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

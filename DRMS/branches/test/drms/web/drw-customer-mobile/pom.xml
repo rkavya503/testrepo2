@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>web-parent</artifactId>
+    <groupId>com.akuacom.drms.web</groupId>
+    <version>7.26-SNAPSHOT</version>
+  </parent>
+  <groupId>com.akuacom.drms.web</groupId>
+  <artifactId>drw-customer-mobile</artifactId>
+  <version>7.26-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>drw-customer-mobile</name>
+  
+<dependencies>
+    <dependency>
+		<groupId>com.akuacom.drms.web</groupId>
+		<artifactId>common-web</artifactId>
+		<type>war</type>
+	</dependency>
+	<dependency>
+		<groupId>com.akuacom.drms.lib</groupId>
+		<artifactId>jsf-lib</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.akuacom.drms.core</groupId>
+		<artifactId>drms-core</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.akuacom.drms.drw</groupId>
+		<artifactId>drw-ejb</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.akuacom.drms.lib</groupId>
+		<artifactId>drms-util</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.akuacom.common</groupId>
+		<artifactId>util-ejb</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.akuacom.drms.web</groupId>
+		<artifactId>util-web</artifactId>
+	</dependency>	
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-annotations</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>servlet-api</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>javax.ejb</groupId>
+		<artifactId>ejb-api</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>jsp-api</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>javax.faces</groupId>
+		<artifactId>jsf-api</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>javax.faces</groupId>
+		<artifactId>jsf-impl</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.richfaces.framework</groupId>
+		<artifactId>richfaces-api</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.richfaces.framework</groupId>
+		<artifactId>richfaces-impl</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.richfaces.ui</groupId>
+		<artifactId>richfaces-ui</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>javax.el</groupId>
+		<artifactId>el-api</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>org.jboss.resteasy</groupId>
+		<artifactId>resteasy-jaxrs</artifactId>
+	</dependency>
+	
+	<dependency>
+		<groupId>org.jboss.resteasy</groupId>
+		<artifactId>resteasy-jettison-provider</artifactId>
+	</dependency>
+  </dependencies>
+  
+  <build>
+	 <!-- Pack service API- java interfaces in the web module so that these service are visible to web app which resides in different applications (ear) 
+	    other than pss2.ear.
+		NOTE: This is temporary solution. API layer should be seperated from implementation and be made a seperate jar in the future when loosely-coupled 
+		architecture is adopted.
+	 -->
+     <plugins>
+       <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-dependency-plugin</artifactId>
+         <version>2.3</version>
+         <executions>
+           <execution>
+             <id>unpack</id>
+             <phase>compile</phase>
+             <goals>
+               <goal>unpack</goal>
+             </goals>
+             <configuration>
+               <artifactItems>
+                 <artifactItem>
+                   <groupId>com.akuacom.drms.core</groupId>
+                   <artifactId>drms-core-ejb</artifactId>
+                   <type>jar</type>
+                   <overWrite>true</overWrite>
+                   <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                   <destFileName>drms-core-interface.jar</destFileName>
+				   <includes>com/akuacom/pss2/**/*Manager.class,
+							com/akuacom/pss2/**/*Manager$R.class,
+							com/akuacom/pss2/**/*Manager$L.class,
+							com/akuacom/pss2/core/ProgramEJB.class
+							com/akuacom/pss2/core/ProgramEJB$L.class
+							com/akuacom/pss2/core/ProgramEJB$R.class
+				   </includes>
+                 </artifactItem>
+               </artifactItems>
+                <outputDirectory>${project.build.directory}/wars</outputDirectory>
+               <overWriteReleases>true</overWriteReleases>
+               <overWriteSnapshots>true</overWriteSnapshots>
+             </configuration>
+           </execution>
+         </executions>
+       </plugin>
+     </plugins>
+   </build>  
+
+</project>

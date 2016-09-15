@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+    <mbean code="org.jboss.jms.server.destination.QueueService"
+      name="jboss.messaging.destination:service=Queue,name=pss2email"
+      xmbean-dd="xmdesc/Queue-xmbean.xml">
+      <depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends>
+      <depends>jboss.messaging:service=PostOffice</depends>
+      <attribute name="Clustered">${clusterEnabled}</attribute>
+   </mbean>   
+    <mbean code="org.jboss.jms.server.destination.QueueService"
+      name="jboss.messaging.destination:service=Queue,name=pss2envoy"
+      xmbean-dd="xmdesc/Queue-xmbean.xml">
+      <depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends>
+      <depends>jboss.messaging:service=PostOffice</depends>
+      <attribute name="Clustered">${clusterEnabled}</attribute>
+   </mbean>   
+    <mbean code="org.jboss.jms.server.destination.QueueService"
+      name="jboss.messaging.destination:service=Queue,name=pss2peakchoice"
+      xmbean-dd="xmdesc/Queue-xmbean.xml">
+      <depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends>
+      <depends>jboss.messaging:service=PostOffice</depends>
+      <attribute name="Clustered">${clusterEnabled}</attribute>
+   </mbean>   
+<!--  <mbean code="org.jboss.jms.server.destination.QueueService" -->
+<!--       name="jboss.messaging.destination:service=Queue,name=firelog" -->
+<!--       xmbean-dd="xmdesc/Queue-xmbean.xml"> -->
+<!--       <depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends> -->
+<!--       <depends>jboss.messaging:service=PostOffice</depends> -->
+<!--       <attribute name="Clustered">${clusterEnabled}</attribute> -->
+<!--    </mbean> -->
+ <mbean code="org.jboss.jms.server.destination.QueueService"
+      name="jboss.messaging.destination:service=Queue,name=pss2push"
+      xmbean-dd="xmdesc/Queue-xmbean.xml">
+      <depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends>
+      <depends>jboss.messaging:service=PostOffice</depends>
+      <attribute name="Clustered">${clusterEnabled}</attribute>
+   </mbean>
+ <mbean code="org.jboss.jms.server.destination.QueueService"
+      name="jboss.messaging.destination:service=Queue,name=participantIntervalMeterDataUpdate"
+      xmbean-dd="xmdesc/Queue-xmbean.xml">
+      <depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends>
+      <depends>jboss.messaging:service=PostOffice</depends>
+      <attribute name="Clustered">${clusterEnabled}</attribute>
+   </mbean>
+   
+ <mbean code="org.jboss.jms.server.destination.QueueService"
+      name="jboss.messaging.destination:service=Queue,name=apxDispatchQueue"
+      xmbean-dd="xmdesc/Queue-xmbean.xml">
+      <depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends>
+      <depends>jboss.messaging:service=PostOffice</depends>
+      <attribute name="Clustered">${clusterEnabled}</attribute>
+   </mbean>
+      
+   <mbean code="org.jboss.jms.server.destination.QueueService"
+      name="jboss.messaging.destination:service=Queue,name=asynchCallQueue"
+      xmbean-dd="xmdesc/Queue-xmbean.xml">
+      <depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends>
+      <depends>jboss.messaging:service=PostOffice</depends>
+      <attribute name="Clustered">${clusterEnabled}</attribute>
+   </mbean>
+   <mbean code="org.jboss.jms.server.destination.TopicService"
+		name="jboss.messaging.destination:service=Topic,name=pss2"
+		xmbean-dd="xmdesc/Topic-xmbean.xml">
+		<depends optional-attribute-name="ServerPeer">jboss.messaging:service=ServerPeer</depends>
+		<depends>jboss.messaging:service=PostOffice</depends>
+		<attribute name="Clustered">${clusterEnabled}</attribute>
+	</mbean>   
+</server>

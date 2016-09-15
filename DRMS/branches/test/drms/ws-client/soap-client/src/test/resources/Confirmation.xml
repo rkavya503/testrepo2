@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:eventStateConfirmation currentTime="125.0" drasClientID="akua1"
+	eventIdentifier="AKUA_20090526-102141" eventModNumber="0" eventStateID="0"
+	operationModeValue="MODERATE" optInStatus="true" programName="AKUA"
+	schemaVersion="1.0" xmlns:p="urn:EventState"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:EventState http://openadr.lbl.gov/src/1/EventState.xsd">
+</p:eventStateConfirmation>

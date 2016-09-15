@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="common"
+         basedir="."
+         xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+    <!-- *********************************
+         Properties
+         ********************************* -->
+    <tstamp />
+    <!-- normally would use configureDir as defined in project, but
+         maven doesn't play well :( -->
+    <property name="configureDir" value="${basedir}/." />
+    <property name="lib.dir" value="${configureDir}/lib" />
+    <property name="jboss.service.cmd" value="/etc/init.d/jboss" />
+    <property name="drmsEarUpdatePolicy" value="never" />
+    <property name="mysqlConnectorVersion" value="5.1.16" />
+
+    <import file="${configureDir}/properties.xml" />
+
+    <!-- *********************************
+         Setup NEXUS Repository and Define Dependencies
+         ********************************* -->
+    <path id="maven-ant-tasks.classpath"
+          path="${lib.dir}/maven-ant-tasks-2.1.0.jar" />
+    <typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+             uri="antlib:org.apache.maven.artifact.ant"
+             classpathref="maven-ant-tasks.classpath" />
+
+    <artifact:remoteRepository id="akuacom.nexus"
+                               url="http://nexus.openadr.com/content/groups/public/">
+        <releases enabled="true" updatePolicy="never" />
+        <snapshots enabled="true" updatePolicy="${drmsEarUpdatePolicy}" />
+        <!-- note, this is not o.k. to have a password in a build file, 
+               we must find a way to provide the encrypted credentials -->
+        <authentication username="temporary" password="openAdr" />
+    </artifact:remoteRepository>
+
+    <!-- *********************************
+         Import Libaries 
+         ********************************* -->
+    <artifact:dependencies pathId="ant-contrib-ant-contrib-artifact">
+        <dependency groupId="ant-contrib"
+                    artifactId="ant-contrib"
+                    version="1.0b3"
+                    type="jar" />
+        <remoteRepository refid="akuacom.nexus" />
+    </artifact:dependencies>
+
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
+        <classpath>
+            <pathelement location="${ant-contrib:ant-contrib:jar}" />
+        </classpath>
+    </taskdef>
+
+    <!-- allows access to pom properties -->
+    <!--    <artifact:pom id="mypom" file="pom.xml" /> -->
+    <!-- ================================= 
+              target: test.maven              
+             ================================= -->
+    <target name="test.maven" description="description">
+        <echo>${mypom.version}</echo>
+    </target>
+
+    <!-- *********************************
+          Targets
+          ********************************* -->
+    <!-- verify.env -->
+    <target name="verify.env">
+        <!--        <echo>${ant.project.name}: verify.env</echo> -->
+        <fail unless="mysqlPassword"
+              message="environment variable MYSQL_PWD doesn't exist" />
+        <fail unless="pss2OpEmails"
+              message="variable pss2OpEmails is not set" />
+        <fail unless="jbossHome"
+              message="environment variable JBOSS_HOME doesn't exist" />
+        <fail unless="akuaEmailOnly"
+              message="environment variable akuacomEmailOnly doesn't exist (must be true or false)" />
+        <if>
+            <not>
+                <or>
+                    <equals arg1="${akuaEmailOnly}" arg2="true" />
+                    <equals arg1="${akuaEmailOnly}" arg2="false" />
+                </or>
+            </not>
+            <then>
+                <fail message="environment variable akuacomEmailOnly must be true or false (is ${akuaEmailOnly})" />
+            </then>
+        </if>
+        <fail unless="drmsUtilConfig"
+              message="environment variable DRMS_UTIL_CONFIG doesn't exist" />
+        <fail unless="drmsEnv"
+              message="environment variable DRMS_ENV doesn't exist" />
+    </target>
+
+    <target name="system:variables">
+        <echo>basedir: ${basedir}</echo>
+        <echo>mysqlPassword:  ${mysqlPassword}</echo>
+        <echo>pss2OpEmails:   ${pss2OpEmails}</echo>
+        <echo>jbossHome:      ${jbossHome}</echo>
+        <echo>akuaEmailOnly:  ${akuaEmailOnly}</echo>
+        <echo>drmsUtilConfig: ${drmsUtilConfig}</echo>
+        <echo>drmsEnv:        ${drmsEnv}</echo>
+        <echo>
+        </echo>
+        <echo>db.pss2.name:      ${db.pss2.name}</echo>
+        <echo>db.pss2.host:      ${db.pss2.host}</echo>
+        <echo>db.pss2.port:      ${db.pss2.port}</echo>
+        <echo>db.pss2.adminuser: ${db.pss2.adminuser}</echo>
+        <echo>
+        </echo>
+    </target>
+
+    <!-- echo.hostname -->
+    <target name="system:hostname">
+        <exec executable="hostname" outputproperty="systemHostname" />
+        <echo>systemHostname: ${systemHostname}</echo>
+    </target>
+
+    <target name="server:start"
+            description="Start jboss using the service command">
+        <echo>Stopping JBoss</echo>
+        <exec executable="${jboss.service.cmd}" failonerror="true">
+            <arg line="start" />
+        </exec>
+    </target>
+
+    <target name="server:stop"
+            description="Stop jboss using the service command">
+        <echo>Stopping JBoss</echo>
+        <exec executable="${jboss.service.cmd}" failonerror="true">
+            <arg line="stop" />
+        </exec>
+    </target>
+
+    <target name="server:restart"
+            description="Stop jboss using the service command">
+        <echo>Stopping JBoss</echo>
+        <exec executable="${jboss.service.cmd}" failonerror="true">
+            <arg line="restart" />
+        </exec>
+    </target>
+</project>

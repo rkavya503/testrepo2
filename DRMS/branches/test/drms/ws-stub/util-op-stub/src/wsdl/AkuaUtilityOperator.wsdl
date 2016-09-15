@@ -1,0 +1,1337 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://www.openadr.org/DRAS/AkuaUtilityOperator/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AkuaUtilityOperator"
+    targetNamespace="http://www.openadr.org/DRAS/AkuaUtilityOperator/"
+    xmlns:xsd0="http://www.openadr.org/DRAS/AkuaUtilityProgram"
+    xmlns:xsd1="http://www.openadr.org/DRAS/UtilityProgram"
+    xmlns:xsd2="http://www.openadr.org/DRAS/AkuaUtilityDREvent"
+    xmlns:xsd3="http://www.openadr.org/DRAS/AkuaSignal"
+    xmlns:xsd4="http://www.openadr.org/DRAS/ParticipantAccount"
+    xmlns:xsd5="http://www.openadr.org/DRAS/AkuaContact"
+    xmlns:xsd6="http://www.openadr.org/DRAS/AkuaProperty"
+    xmlns:xsd7="http://www.openadr.org/DRAS/AkuaRTPConfig"
+    xmlns:xsd8="http://www.openadr.org/DRAS/AkuaSeasonConfig"
+    xmlns:xsd9="http://www.openadr.org/DRAS/AkuaDRASClientData">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                targetNamespace="http://www.openadr.org/DRAS/AkuaUtilityOperator/">
+            <xsd:import namespace="http://www.openadr.org/DRAS/UtilityProgram"
+				schemaLocation="UtilityProgram.xsd">
+			</xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/AkuaUtilityProgram"
+				schemaLocation="AkuaUtilityProgram.xsd">
+			</xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/AkuaDRASClientData"
+				schemaLocation="AkuaDRASClientData.xsd">
+			</xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/ParticipantAccount"
+				schemaLocation="ParticipantAccount.xsd">
+			</xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/AkuaUtilityDREvent"
+				schemaLocation="AkuaUtilityDREvent.xsd">
+			</xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/AkuaSignal"
+				schemaLocation="AkuaSignal.xsd">
+			</xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/AkuaContact"
+				schemaLocation="AkuaContact.xsd">
+			</xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/AkuaProperty"
+				schemaLocation="AkuaProperty.xsd">
+			</xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/AkuaRTPConfig"
+				schemaLocation="AkuaRTPConfig.xsd">
+			</xsd:import>
+            <xsd:import namespace="http://www.openadr.org/DRAS/AkuaSeasonConfig"
+				schemaLocation="AkuaSeasonConfig.xsd">
+			</xsd:import>
+
+            <xsd:element name="SearchDRASParticipants" type="tns:SearchDRASParticipants"/>
+            <xsd:element name="SearchDRASParticipantsResponse" type="tns:SearchDRASParticipantsResponse"/>
+            <xsd:complexType name="SearchDRASParticipants">
+            <xsd:sequence>
+                <xsd:element name="searchHandler" minOccurs="0" nillable="true" type="xsd9:AkuaDRASSearchHandler"/>
+                <xsd:element name="programNames" minOccurs="0" nillable="true" type="xsd1:ListOfProgramNames"/>
+            </xsd:sequence>
+           </xsd:complexType>
+           <xsd:complexType name="SearchDRASParticipantsResponse">
+            <xsd:sequence>
+                <xsd:element name="searchHandler" minOccurs="0" nillable="true" type="xsd9:AkuaDRASSearchHandler"/>
+                <xsd:element name="participantAccounts" minOccurs="0" nillable="true" type="xsd4:ListOfParticipantAccounts">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                List of all ParticipantAccount objects satisfying the
+                                search criteria.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                 </xsd:element>
+                <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+           </xsd:complexType>
+
+            <xsd:element name="SearchDRASClientData" type="tns:SearchDRASClientData"/>
+            <xsd:element name="SearchDRASClientDataResponse" type="tns:SearchDRASClientDataResponse"/>
+            <xsd:complexType name="SearchDRASClientData">
+            <xsd:sequence>
+                <xsd:element name="searchHandler" minOccurs="0" nillable="true" type="xsd9:AkuaDRASSearchHandler"/>
+                <xsd:element name="programNames" minOccurs="0" nillable="true" type="xsd1:ListOfProgramNames"/>
+                <xsd:element name="participantIDs" minOccurs="0" nillable="true" type="xsd9:ListOfIDs"/>
+            </xsd:sequence>
+           </xsd:complexType>
+           <xsd:complexType name="SearchDRASClientDataResponse">
+            <xsd:sequence>
+                <xsd:element name="searchHandler" minOccurs="0" nillable="true" type="xsd9:AkuaDRASSearchHandler"/>
+                <xsd:element name="clientDataList" minOccurs="0" nillable="true" type="xsd9:ListofClientData">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                List of all ClientData objects satisfying the
+                                search criteria.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                 </xsd:element>
+                <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+           </xsd:complexType>
+
+            <xsd:element name="GetDRASClientData" type="tns:GetDRASClientData"/>
+            <xsd:element name="GetDRASClientDataResponse" type="tns:GetDRASClientDataResponse"/>
+            <xsd:complexType name="GetDRASClientData">
+            <xsd:sequence>
+                <xsd:element name="participants" minOccurs="0" nillable="true" type="xsd1:ParticipantList"/>
+                <xsd:element name="programName" minOccurs="0" nillable="true" type="xsd1:ListOfProgramNames"/>
+            </xsd:sequence>
+           </xsd:complexType>
+           <xsd:complexType name="GetDRASClientDataResponse">
+            <xsd:sequence>
+                <xsd:element name="clientData" type="xsd9:ListofClientData"/>
+                <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+				        </xsd:annotation>
+                </xsd:element>
+            </xsd:sequence>
+           </xsd:complexType>
+
+            <xsd:element name="CreateProgram" type="tns:CreateProgram"/>
+			<xsd:element name="CreateProgramResponse" type="tns:CreateProgramResponse"/>
+            <xsd:complexType name="CreateProgram">
+				<xsd:sequence>
+                    <xsd:element name="program" type="xsd0:AkuaUtilityProgram">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the UtilityProgram object that defines the
+                                Program being created. Its name must not already exist
+                                within the DRAS
+
+                                There are seperate methods for adding and deleting
+                                Participants from Programs, so it is not necessary that
+                                the list of Participanst be defined when the Program is
+                                first created.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="CreateProgramResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="GetPrograms" type="tns:GetPrograms"/>
+			<xsd:element name="GetProgramsResponse" type="tns:GetProgramsResponse"/>
+            <xsd:complexType name="GetPrograms">
+				<xsd:sequence>
+                    <xsd:element name="programNames" minOccurs="0" nillable="true" type="xsd1:ListOfProgramNames"/>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetProgramsResponse">
+				<xsd:sequence>                    
+                    <xsd:element name="programs" minOccurs="0" nillable="true" type="xsd0:AkuaUtilityProgramList"/>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="UpdateProgram" type="tns:UpdateProgram"/>
+			<xsd:element name="UpdateProgramResponse" type="tns:UpdateProgramResponse"/>
+            <xsd:complexType name="UpdateProgram">
+				<xsd:sequence>
+                    <xsd:element name="program" type="xsd0:AkuaUtilityProgram">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the UtilityProgram object that defines the
+                                Program being updated.
+
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdateProgramResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="CreateEventTemplate" type="tns:CreateEventTemplate"/>
+			<xsd:element name="CreateEventTemplateResponse" type="tns:CreateEventTemplateResponse"/>
+            <xsd:complexType name="CreateEventTemplate">
+				<xsd:sequence>
+                    <xsd:element name="EventTemplate" type="xsd2:UtilityDREvent">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the EventTemplate object that defines the
+                                EventTemplate being created. Its name must not already exist
+                                within the DRAS
+
+                                There are seperate methods for adding and deleting
+                                Participants from EventTemplates, so it is not necessary that
+                                the list of Participanst be defined when the EventTemplate is
+                                first created.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="CreateEventTemplateResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="GetEventTemplates" type="tns:GetEventTemplates"/>
+			<xsd:element name="GetEventTemplatesResponse" type="tns:GetEventTemplatesResponse"/>
+            <xsd:complexType name="GetEventTemplates">
+				<xsd:sequence>
+                    <xsd:element name="programName" type="xsd:string"/>
+                    <xsd:element name="eventTemplateNames" minOccurs="0" nillable="true" type="xsd2:ListOfEventIDs"/>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetEventTemplatesResponse">
+				<xsd:sequence>
+                    <xsd:element name="eventTemplates" minOccurs="0" nillable="true" type="xsd2:ListOfUtilityDREvents"/>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="UpdateEventTemplate" type="tns:UpdateEventTemplate"/>
+			<xsd:element name="UpdateEventTemplateResponse" type="tns:UpdateEventTemplateResponse"/>
+            <xsd:complexType name="UpdateEventTemplate">
+				<xsd:sequence>
+                    <xsd:element name="eventTemplate" type="xsd2:UtilityDREvent">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the UtilityEventTemplate object that defines the
+                                EventTemplate being updated.
+
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdateEventTemplateResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="GetDREvents" type="tns:GetDREvents"/>
+			<xsd:element name="GetDREventsResponse" type="tns:GetDREventsResponse"/>
+            <xsd:complexType name="GetDREvents">
+				<xsd:sequence>
+                    <xsd:element name="programName" type="xsd:string"/>
+                    <xsd:element name="DREventNames" minOccurs="0" nillable="true" type="xsd2:ListOfEventIDs"/>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetDREventsResponse">
+				<xsd:sequence>
+                    <xsd:element name="DREvents" minOccurs="0" nillable="true" type="xsd2:ListOfUtilityDREvents"/>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+
+			<xsd:element name="GetSignals" type="tns:GetSignals"/>
+            <xsd:element name="GetSignalsResponse" type="tns:GetSignalsResponse"/>
+            <xsd:complexType name="GetSignals">
+				<xsd:sequence>
+					<xsd:element name="programName" type="xsd:string" nillable="true"/>
+                </xsd:sequence>
+			</xsd:complexType>
+            <xsd:complexType name="GetSignalsResponse">
+				<xsd:sequence>
+					<xsd:element name="signals" minOccurs="0" nillable="true" type="xsd3:ListOfSignals">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of akua singals.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="UpdateSignals" type="tns:UpdateSignals"/>
+			<xsd:element name="UpdateSignalsResponse" type="tns:UpdateSignalsResponse"/>
+            <xsd:complexType name="UpdateSignals">
+				<xsd:sequence>
+                    <xsd:element name="signals" type="xsd3:ListOfSignals">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of signals object for update.
+
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdateSignalsResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="GetContacts" type="tns:GetContacts"/>
+            <xsd:element name="GetContactsResponse" type="tns:GetContactsResponse"/>
+            <xsd:complexType name="GetContacts">
+				<xsd:sequence>
+					<xsd:element name="ownerType" type="xsd:string" minOccurs="0" nillable="true" />
+                    <xsd:element name="ownerID" type="xsd:string" minOccurs="0" nillable="true" />
+                </xsd:sequence>
+			</xsd:complexType>
+            <xsd:complexType name="GetContactsResponse">
+				<xsd:sequence>
+					<xsd:element name="contacts" minOccurs="0" nillable="true" type="xsd5:ListOfContacts">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of akua contacts.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="UpdateContacts" type="tns:UpdateContacts"/>
+			<xsd:element name="UpdateContactsResponse" type="tns:UpdateContactsResponse"/>
+            <xsd:complexType name="UpdateContacts">
+				<xsd:sequence>
+                    <xsd:element name="ownerType" type="xsd:string" minOccurs="0" nillable="true" />
+                    <xsd:element name="ownerID" type="xsd:string" minOccurs="0" nillable="true" />
+                    <xsd:element name="contacts" type="xsd5:ListOfContacts">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of Contacts object for update.
+
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdateContactsResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="GetProperties" type="tns:GetProperties"/>
+            <xsd:element name="GetPropertiesResponse" type="tns:GetPropertiesResponse"/>
+            <xsd:complexType name="GetProperties">
+				<xsd:sequence>
+					<xsd:element name="empty" nillable="true"/>
+                </xsd:sequence>
+			</xsd:complexType>
+            <xsd:complexType name="GetPropertiesResponse">
+				<xsd:sequence>
+					<xsd:element name="properties" minOccurs="0" nillable="true" type="xsd6:ListOfProperties">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of akua properties.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="UpdateProperties" type="tns:UpdateProperties"/>
+			<xsd:element name="UpdatePropertiesResponse" type="tns:UpdatePropertiesResponse"/>
+            <xsd:complexType name="UpdateProperties">
+				<xsd:sequence>
+                    <xsd:element name="properties" type="xsd6:ListOfProperties">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of properties object for update.
+
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdatePropertiesResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="GetRTPConfigs" type="tns:GetRTPConfigs"/>
+            <xsd:element name="GetRTPConfigsResponse" type="tns:GetRTPConfigsResponse"/>
+            <xsd:complexType name="GetRTPConfigs">
+				<xsd:sequence>
+					<xsd:element name="programName" type="xsd:string" minOccurs="0" nillable="true" />
+                </xsd:sequence>
+			</xsd:complexType>
+            <xsd:complexType name="GetRTPConfigsResponse">
+				<xsd:sequence>
+					<xsd:element name="rtpConfigTable" minOccurs="0" nillable="true" type="xsd7:ListOfRTPConfigs">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of akua rtpConfigs.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="UpdateRTPConfigs" type="tns:UpdateRTPConfigs"/>
+			<xsd:element name="UpdateRTPConfigsResponse" type="tns:UpdateRTPConfigsResponse"/>
+            <xsd:complexType name="UpdateRTPConfigs">
+				<xsd:sequence>
+                    <xsd:element name="programName" type="xsd:string" minOccurs="0" nillable="true" />
+                    <xsd:element name="rtpConfigs" type="xsd7:ListOfRTPConfigs">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of RTPConfigs object for update.
+
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdateRTPConfigsResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="GetSeasonConfigs" type="tns:GetSeasonConfigs"/>
+            <xsd:element name="GetSeasonConfigsResponse" type="tns:GetSeasonConfigsResponse"/>
+            <xsd:complexType name="GetSeasonConfigs">
+				<xsd:sequence>
+					<xsd:element name="programName" type="xsd:string" minOccurs="0" nillable="true" />
+                </xsd:sequence>
+			</xsd:complexType>
+            <xsd:complexType name="GetSeasonConfigsResponse">
+				<xsd:sequence>
+					<xsd:element name="seasonConfigTable" minOccurs="0" nillable="true" type="xsd8:ListOfSeasonConfigs">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a list of akua seasonConfigs.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:element name="UpdateSeasonConfigs" type="tns:UpdateSeasonConfigs"/>
+			<xsd:element name="UpdateSeasonConfigsResponse" type="tns:UpdateSeasonConfigsResponse"/>
+            <xsd:complexType name="UpdateSeasonConfigs">
+				<xsd:sequence>
+                    <xsd:element name="programName" type="xsd:string" minOccurs="0" nillable="true" />
+                    <xsd:element name="seasonConfigs" type="xsd8:ListOfSeasonConfigs">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is the list of SeasonConfigs object for update.
+
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="UpdateSeasonConfigsResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                This is a string used to signify SUCCESS or FAILURE. If
+                                the string value is SUCCESS then the operation was
+                                successful. If the value is not SUCCESS then this
+                                signifies FAILURE and there may be additional free form
+                                text which can be used to further elaborate on the
+                                nature of the error.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+			</xsd:complexType>
+            
+        </xsd:schema>
+    </wsdl:types>
+
+    <wsdl:message name="GetDRASClientDataRequest">
+       <wsdl:part name="GetDRASClientData" element="tns:GetDRASClientData"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDRASClientDataResponse">
+     	<wsdl:part name="GetDRASClientDataResponse" element="tns:GetDRASClientDataResponse"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="SearchDRASParticipantsRequest">
+       <wsdl:part name="SearchDRASParticipants" element="tns:SearchDRASParticipants"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SearchDRASParticipantsResponse">
+     	<wsdl:part name="SearchDRASParticipantsResponse" element="tns:SearchDRASParticipantsResponse"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="SearchDRASClientDataRequest">
+       <wsdl:part name="SearchDRASClientData" element="tns:SearchDRASClientData"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SearchDRASClientDataResponse">
+     	<wsdl:part name="SearchDRASClientDataResponse" element="tns:SearchDRASClientDataResponse"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="CreateProgramRequest">
+        <wsdl:part name="CreateProgram" element="tns:CreateProgram"/>
+    </wsdl:message>
+    <wsdl:message name="CreateProgramResponse">
+        <wsdl:part name="CreateProgramResponse" element="tns:CreateProgramResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetProgramsRequest">
+        <wsdl:part name="GetPrograms" element="tns:GetPrograms"/>
+    </wsdl:message>
+    <wsdl:message name="GetProgramsResponse">
+        <wsdl:part name="GetProgramsResponse" element="tns:GetProgramsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateProgramRequest">
+        <wsdl:part name="UpdateCreateProgram" element="tns:UpdateProgram"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateProgramResponse">
+        <wsdl:part name="UpdateProgramResponse" element="tns:UpdateProgramResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="CreateEventTemplateRequest">
+        <wsdl:part name="CreateEventTemplate" element="tns:CreateEventTemplate"/>
+    </wsdl:message>
+    <wsdl:message name="CreateEventTemplateResponse">
+        <wsdl:part name="CreateEventTemplateResponse" element="tns:CreateEventTemplateResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetEventTemplatesRequest">
+        <wsdl:part name="GetEventTemplates" element="tns:GetEventTemplates"/>
+    </wsdl:message>
+    <wsdl:message name="GetEventTemplatesResponse">
+        <wsdl:part name="GetEventTemplatesResponse" element="tns:GetEventTemplatesResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateEventTemplateRequest">
+        <wsdl:part name="UpdateCreateEventTemplate" element="tns:UpdateEventTemplate"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateEventTemplateResponse">
+        <wsdl:part name="UpdateEventTemplateResponse" element="tns:UpdateEventTemplateResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetDREventsRequest">
+        <wsdl:part name="GetDREvents" element="tns:GetDREvents"/>
+    </wsdl:message>
+    <wsdl:message name="GetDREventsResponse">
+        <wsdl:part name="GetDREventsResponse" element="tns:GetDREventsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetSignalsRequest">
+        <wsdl:part name="GetSignals" element="tns:GetSignals"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetSignalsResponse">
+        <wsdl:part name="GetSignalsResponse" element="tns:GetSignalsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateSignalsRequest">
+        <wsdl:part name="UpdateSignals" element="tns:UpdateSignals"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateSignalsResponse">
+        <wsdl:part name="UpdateSignalsResponse" element="tns:UpdateSignalsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetContactsRequest">
+        <wsdl:part name="GetContacts" element="tns:GetContacts"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetContactsResponse">
+        <wsdl:part name="GetContactsResponse" element="tns:GetContactsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateContactsRequest">
+        <wsdl:part name="UpdateContacts" element="tns:UpdateContacts"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateContactsResponse">
+        <wsdl:part name="UpdateContactsResponse" element="tns:UpdateContactsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetPropertiesRequest">
+        <wsdl:part name="GetProperties" element="tns:GetProperties"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetPropertiesResponse">
+        <wsdl:part name="GetPropertiesResponse" element="tns:GetPropertiesResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdatePropertiesRequest">
+        <wsdl:part name="UpdateProperties" element="tns:UpdateProperties"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="UpdatePropertiesResponse">
+        <wsdl:part name="UpdatePropertiesResponse" element="tns:UpdatePropertiesResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetRTPConfigsRequest">
+        <wsdl:part name="GetRTPConfigs" element="tns:GetRTPConfigs"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetRTPConfigsResponse">
+        <wsdl:part name="GetRTPConfigsResponse" element="tns:GetRTPConfigsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateRTPConfigsRequest">
+        <wsdl:part name="UpdateRTPConfigs" element="tns:UpdateRTPConfigs"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateRTPConfigsResponse">
+        <wsdl:part name="UpdateRTPConfigsResponse" element="tns:UpdateRTPConfigsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="GetSeasonConfigsRequest">
+        <wsdl:part name="GetSeasonConfigs" element="tns:GetSeasonConfigs"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="GetSeasonConfigsResponse">
+        <wsdl:part name="GetSeasonConfigsResponse" element="tns:GetSeasonConfigsResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateSeasonConfigsRequest">
+        <wsdl:part name="UpdateSeasonConfigs" element="tns:UpdateSeasonConfigs"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="UpdateSeasonConfigsResponse">
+        <wsdl:part name="UpdateSeasonConfigsResponse" element="tns:UpdateSeasonConfigsResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="AkuaUtilityOperator">
+
+        <wsdl:operation name="GetDRASClientData">
+        	<wsdl:input message="tns:GetDRASClientDataRequest"></wsdl:input>
+        	<wsdl:output message="tns:GetDRASClientDataResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchDRASParticipants">
+        	<wsdl:input message="tns:SearchDRASParticipantsRequest"></wsdl:input>
+        	<wsdl:output message="tns:SearchDRASParticipantsResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="SearchDRASClientData">
+        	<wsdl:input message="tns:SearchDRASClientDataRequest"></wsdl:input>
+        	<wsdl:output message="tns:SearchDRASClientDataResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateProgram">
+            <wsdl:documentation>
+                This function is used to create a new akua program.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:CreateProgramRequest"></wsdl:input>
+            <wsdl:output message="tns:CreateProgramResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetPrograms">
+            <wsdl:documentation>
+                This function is used to get list of akua programs.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetProgramsRequest"></wsdl:input>
+            <wsdl:output message="tns:GetProgramsResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateProgram">
+            <wsdl:documentation>
+                This function is used to update an Akua program.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:UpdateProgramRequest"></wsdl:input>
+            <wsdl:output message="tns:UpdateProgramResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="CreateEventTemplate">
+            <wsdl:documentation>
+                This function is used to create a new akua EventTemplate.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:CreateEventTemplateRequest"></wsdl:input>
+            <wsdl:output message="tns:CreateEventTemplateResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetEventTemplates">
+            <wsdl:documentation>
+                This function is used to get list of akua EventTemplates.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetEventTemplatesRequest"></wsdl:input>
+            <wsdl:output message="tns:GetEventTemplatesResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetDREvents">
+            <wsdl:documentation>
+                This function is used to get list of akua DREvents.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetDREventsRequest"></wsdl:input>
+            <wsdl:output message="tns:GetDREventsResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="UpdateEventTemplate">
+            <wsdl:documentation>
+                This function is used to update an Akua EventTemplate.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:UpdateEventTemplateRequest"></wsdl:input>
+            <wsdl:output message="tns:UpdateEventTemplateResponse"></wsdl:output>
+        </wsdl:operation>
+        
+        <wsdl:operation name="GetSignals">
+            <wsdl:documentation>
+                This function is used to list of akua Signals.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetSignalsRequest"></wsdl:input>
+        	<wsdl:output message="tns:GetSignalsResponse"></wsdl:output>
+        </wsdl:operation>
+       
+         <wsdl:operation name="UpdateSignals">
+            <wsdl:documentation>
+                This function is used to update list of akua Signals.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:UpdateSignalsRequest"></wsdl:input>
+        	<wsdl:output message="tns:UpdateSignalsResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetContacts">
+            <wsdl:documentation>
+                This function is used to list of akua Contacts.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetContactsRequest"></wsdl:input>
+        	<wsdl:output message="tns:GetContactsResponse"></wsdl:output>
+        </wsdl:operation>
+
+         <wsdl:operation name="UpdateContacts">
+            <wsdl:documentation>
+                This function is used to update list of akua Contacts.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:UpdateContactsRequest"></wsdl:input>
+        	<wsdl:output message="tns:UpdateContactsResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetProperties">
+            <wsdl:documentation>
+                This function is used to list of akua Properties.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetPropertiesRequest"></wsdl:input>
+        	<wsdl:output message="tns:GetPropertiesResponse"></wsdl:output>
+        </wsdl:operation>
+
+         <wsdl:operation name="UpdateProperties">
+            <wsdl:documentation>
+                This function is used to update list of akua Properties.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:UpdatePropertiesRequest"></wsdl:input>
+        	<wsdl:output message="tns:UpdatePropertiesResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetRTPConfigs">
+            <wsdl:documentation>
+                This function is used to list of akua RTPConfigs.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetRTPConfigsRequest"></wsdl:input>
+        	<wsdl:output message="tns:GetRTPConfigsResponse"></wsdl:output>
+        </wsdl:operation>
+
+         <wsdl:operation name="UpdateRTPConfigs">
+            <wsdl:documentation>
+                This function is used to update list of akua RTPConfigs.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:UpdateRTPConfigsRequest"></wsdl:input>
+        	<wsdl:output message="tns:UpdateRTPConfigsResponse"></wsdl:output>
+        </wsdl:operation>
+
+        <wsdl:operation name="GetSeasonConfigs">
+            <wsdl:documentation>
+                This function is used to list of akua SeasonConfigs.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:GetSeasonConfigsRequest"></wsdl:input>
+        	<wsdl:output message="tns:GetSeasonConfigsResponse"></wsdl:output>
+        </wsdl:operation>
+
+         <wsdl:operation name="UpdateSeasonConfigs">
+            <wsdl:documentation>
+                This function is used to update list of akua SeasonConfigs.
+
+                Authorized Users:
+
+                - All DRAS Operators
+
+                - All Utility/ISO Operators
+
+            </wsdl:documentation>
+            <wsdl:input message="tns:UpdateSeasonConfigsRequest"></wsdl:input>
+        	<wsdl:output message="tns:UpdateSeasonConfigsResponse"></wsdl:output>
+        </wsdl:operation>
+        
+    </wsdl:portType>
+    <wsdl:binding name="AkuaUtilityOperatorSOAP"
+    	type="tns:AkuaUtilityOperator">
+
+    	<soap:binding style="document" 
+    		transport="http://schemas.xmlsoap.org/soap/http" />
+
+    	<wsdl:operation name="GetDRASClientData">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetDRASClientData" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal" />
+    		</wsdl:output>
+    	</wsdl:operation>
+
+    	<wsdl:operation name="SearchDRASParticipants">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/SearchDRASParticipants" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal" />
+    		</wsdl:output>
+    	</wsdl:operation>
+
+    	<wsdl:operation name="SearchDRASClientData">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/SearchDRASClientData" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal" />
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="CreateProgram">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/CreateProgram" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+    	<wsdl:operation name="GetPrograms">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetPrograms" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+    	<wsdl:operation name="UpdateProgram">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateProgram" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="CreateEventTemplate">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/CreateEventTemplate" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+    	<wsdl:operation name="GetEventTemplates">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetEventTemplates" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+    	<wsdl:operation name="GetDREvents">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetDREvents" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="UpdateEventTemplate">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateEventTemplate" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="GetSignals">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetSignals" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="UpdateSignals">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateSignals" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="GetContacts">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetContacts" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="UpdateContacts">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateContacts" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="GetProperties">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetProperties" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="UpdateProperties">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateProperties" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="GetRTPConfigs">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetRTPConfigs" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="UpdateRTPConfigs">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateRTPConfigs" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+
+        <wsdl:operation name="GetSeasonConfigs">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/GetSeasonConfigs" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+        <wsdl:operation name="UpdateSeasonConfigs">
+    		<soap:operation
+    			soapAction="http://www.openadr.org/DRAS/AkuaUtilityOperator/UpdateSeasonConfigs" />
+    		<wsdl:input>
+    			<soap:body use="literal"/>
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal"/>
+    		</wsdl:output>
+    	</wsdl:operation>
+
+    </wsdl:binding>
+    <wsdl:service name="AkuaUtilityOperatorService">
+        <wsdl:port binding="tns:AkuaUtilityOperatorSOAP"
+            name="AkuaUtilityOperatorPort">
+            <soap:address location="http://www.openadr.org/DRAS/" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

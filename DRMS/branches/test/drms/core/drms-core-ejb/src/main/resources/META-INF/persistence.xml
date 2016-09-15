@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	version="1.0">
+	<persistence-unit name="core" transaction-type="JTA">
+		<jta-data-source>java:/mysql-pss2-ds</jta-data-source>
+
+		<class>com.akuacom.pss2.client.ClientManualSignal</class>
+		<class>com.akuacom.pss2.contact.Contact</class>
+		<class>com.akuacom.pss2.contact.ContactsOfflineError</class>
+		<class>com.akuacom.pss2.data.PDataSource</class>
+		<class>com.akuacom.pss2.data.PDataEntry</class>
+		<class>com.akuacom.pss2.data.PEventDataEntry</class>
+		<class>com.akuacom.pss2.data.PDataSet</class>
+		<class>com.akuacom.pss2.data.usage.CurrentUsageDataEntry</class>
+		<class>com.akuacom.pss2.data.usage.BaselineModel</class>
+		<class>com.akuacom.pss2.data.usage.BaselineConfig</class>
+		<class>com.akuacom.pss2.email.MessageEntity</class>
+		<class>com.akuacom.pss2.email.PeakChoiceMessageEntity</class>
+		<class>com.akuacom.pss2.event.participant.signal.EventParticipantSignal</class>
+		<class>com.akuacom.pss2.event.participant.signal.EventParticipantSignalEntry</class>
+		<class>com.akuacom.pss2.event.participant.EventParticipant</class>
+		<class>com.akuacom.pss2.event.participant.EventParticipantRule</class>
+		<class>com.akuacom.pss2.event.signal.EventSignal</class>
+		<class>com.akuacom.pss2.event.signal.EventSignalEntry</class>
+		<class>com.akuacom.pss2.event.Event</class>
+		<class>com.akuacom.pss2.event.ClientConversationState</class>
+		<class>com.akuacom.pss2.nssettings.NSSettings</class>
+		<class>com.akuacom.pss2.participant.contact.ParticipantContact</class>
+		<class>com.akuacom.pss2.participant.Participant</class>
+		<class>com.akuacom.pss2.program.bidding.BidBlock</class>
+		<class>com.akuacom.pss2.program.bidding.BidConfig</class>
+		<class>com.akuacom.pss2.program.dbp.EventParticipantBidEntry</class>
+		<class>com.akuacom.pss2.program.participant.ProgramParticipantBidLevelMap</class>
+		<class>com.akuacom.pss2.program.dbp.DBPEvent</class>
+		<class>com.akuacom.pss2.program.dbp.EventBidBlock</class>
+		<class>com.akuacom.pss2.program.eventtemplate.EventTemplate</class>
+		<class>com.akuacom.pss2.program.eventtemplate.EventTemplateSignalEntry</class>
+		<class>com.akuacom.pss2.program.participant.Constraint</class>
+		<class>com.akuacom.pss2.program.participant.CustomRule</class>
+		<class>com.akuacom.pss2.program.participant.InvalidDate</class>
+		<class>com.akuacom.pss2.program.participant.ProgramParticipant</class>
+		<class>com.akuacom.pss2.program.participant.ProgramParticipantBidEntry</class>
+		<class>com.akuacom.pss2.program.participant.ProgramParticipantRule</class>
+		<class>com.akuacom.pss2.program.matrix.ProgramMatrix</class>
+		<class>com.akuacom.pss2.program.rtp.RTPPrice</class>
+		<class>com.akuacom.pss2.program.scertp.entities.Weather</class>
+		<class>com.akuacom.pss2.program.scertp.RTPConfig</class>
+		<class>com.akuacom.pss2.program.signal.ProgramSignal</class>
+		<class>com.akuacom.pss2.program.signal.ProgramSignalEntry</class>
+		<class>com.akuacom.pss2.program.Program</class>
+		<class>com.akuacom.pss2.program.cpp.CPPProgram</class>
+		<class>com.akuacom.pss2.program.irr.IRRProgram</class>
+		<class>com.akuacom.pss2.program.dbp.DBPProgram</class>
+		<class>com.akuacom.pss2.program.demo.DemoProgram</class>
+		<class>com.akuacom.pss2.program.dl.DemandLimitingProgram</class>
+		<class>com.akuacom.pss2.program.testProgram.TestProgram</class>
+		<class>com.akuacom.pss2.program.pc.PeakChoiceProgram</class>
+		<class>com.akuacom.pss2.program.rds.RDSProgram</class>
+		<class>com.akuacom.pss2.program.rtp.RTPProgram</class>
+		<class>com.akuacom.pss2.program.scertp.SCERTPEvent</class>
+		<class>com.akuacom.pss2.program.scertp.SCERTPProgram</class>
+		<class>com.akuacom.pss2.program.ProgramRule</class>
+		<class>com.akuacom.pss2.season.SeasonConfig</class>
+		<class>com.akuacom.pss2.signal.SignalDef</class>
+		<class>com.akuacom.pss2.signal.SignalLevelDef</class>
+		<class>com.akuacom.pss2.subaccount.SubAccount</class>
+        <class>com.akuacom.pss2.system.Task</class>
+<!--        <class>com.akuacom.pss2.system.Quotation</class>-->
+		<class>com.akuacom.pss2.system.property.CoreProperty</class>
+		<class>com.akuacom.pss2.program.dbp.DBPEventCreation</class>
+		<class>com.akuacom.pss2.participant.ParticipantRtpStrategy</class>
+		<class>com.akuacom.pss2.history.ClientStatus</class>
+		<class>com.akuacom.pss2.history.HistoryEventParticipant</class>
+		<class>com.akuacom.pss2.history.HistoryEvent</class>
+		<class>com.akuacom.pss2.history.HistoryEventParticipantSignal</class>
+
+		<!--
+			Read only, view object entries for performance. Should be able to
+			delete after refactor
+		-->
+		<class>com.akuacom.pss2.program.ProgramPerf</class>
+		<class>com.akuacom.pss2.participant.ParticipantPerf</class>
+		<class>com.akuacom.pss2.participant.contact.ParticipantContactPerf</class>
+
+		<class>com.akuacom.pss2.participant.ParticipantESPerf</class>
+		<class>com.akuacom.pss2.client.ClientManualSignalESPerf</class>
+		<class>com.akuacom.pss2.event.participant.EventParticipantESPerf</class>
+		<class>com.akuacom.pss2.event.EventESPerf</class>
+		<class>com.akuacom.pss2.event.signal.EventSignalESPerf</class>
+		<class>com.akuacom.pss2.event.signal.EventSignalEntryESPerf</class>
+		<class>com.akuacom.pss2.event.participant.signal.EventParticipantSignalESPerf</class>
+		<class>com.akuacom.pss2.event.participant.signal.EventParticipantSignalEntryESPerf</class>
+
+		<class>com.akuacom.pss2.program.DRwebsite.DREventProperty</class>
+
+		<class>com.akuacom.pss2.program.sceftp.SCEFTPConfig</class>
+		<class>com.akuacom.pss2.rtp.ftp.RTPFTPConfiguration</class>
+		<class>com.akuacom.pss2.data.usage.DataSourceUsage</class>
+		<class>com.akuacom.pss2.data.gridpoint.GridPointConfiguration</class>
+		<class>com.akuacom.pss2.task.RoutineStatus</class>
+		<class>com.akuacom.pss2.weather.ForecastWeather</class>
+		<class>com.akuacom.pss2.weather.ForecastWmo</class>
+		<class>com.akuacom.pss2.weather.ForecastConfig</class>
+		<class>com.akuacom.pss2.weather.WeatherCategory</class>
+		
+		
+		<class>com.akuacom.pss2.participant.ParticipantShedEntry</class>
+		
+		<class>com.akuacom.pss2.task.TimerConfig</class>
+		<class>com.akuacom.pss2.report.entities.ClientOfflineReportEntity</class>
+		<class>com.akuacom.pss2.report.entities.ClientOfflineReport</class>
+		<class>com.akuacom.pss2.ge.GeConfiguration</class>
+		<class>com.akuacom.pss2.openadr2.endpoint.Endpoint</class>
+		<class>com.akuacom.pss2.openadr2.endpoint.EndpointMapping</class>
+		<class>com.akuacom.pss2.openadr2.opt.OptRequest</class>
+		<class>com.akuacom.pss2.openadr2.opt.OptAvailability</class>
+		<class>com.akuacom.pss2.openadr2.opt.OptResource</class>
+		<class>com.akuacom.pss2.openadr2.opt.OptTarget</class>
+		<class>com.akuacom.pss2.openadr2.poll.OadrPollState</class>
+		<class>com.akuacom.pss2.openadr2.event.EventRequest</class>
+		<class>com.akuacom.pss2.program.apx.ApxAggregator</class>	
+		<class>com.akuacom.pss2.program.aggregator.ProgramAggregator</class>	
+		<class>com.akuacom.pss2.openadr2.report.Report</class>
+		<class>com.akuacom.pss2.openadr2.report.ReportDataSource</class>
+		<class>com.akuacom.pss2.openadr2.report.ReportDescription</class>
+		<class>com.akuacom.pss2.openadr2.report.ReportRequest</class>
+		<class>com.akuacom.pss2.openadr2.report.ReportSubject</class>
+		<class>com.akuacom.pss2.openadr2.report.ItemBase</class>	
+		<class>com.akuacom.pss2.openadr2.report.VenReportRequestHistory</class>
+		<class>com.akuacom.pss2.openadr2.report.telemetry.VenResourceStatus</class>
+		
+		<properties>
+			<!--
+				Defaults are now located in
+				jboss_dir/server/default/deployers/ejb3.deployer/META-INF/jpa-deployers-jboss-beans.xml
+				ONLY add properties here to override defaults
+			-->
+			<!--
+				<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQLDialect"/> <property
+				name="hibernate.show_sql" value="false"/> <property
+				name="hibernate.format_sql" value="false"/> <property
+				name="hibernate.hbm2ddl.auto" value="validate"/> <property
+				name="hibernate.cache.use_second_level_cache" value="true"/>
+				<property name="hibernate.cache.use_query_cache" value="true"/>
+				<property name="hibernate.cache.region.factory_class"
+				value="org.hibernate.cache.jbc2.JndiMultiplexedJBossCacheRegionFactory"/>
+				<property name="hibernate.cache.region.jbc2.cachefactory"
+				value="java:CacheManager"/> <property
+				name="hibernate.cache.region.jbc2.cfg.entity" value="mvcc-entity"/>
+				<property name="hibernate.cache.region.jbc2.cfg.query"
+				value="local-query"/> <property name="hibernate.cache.region_prefix"
+				value="core"/>
+			-->
+		</properties>
+	</persistence-unit>
+</persistence>

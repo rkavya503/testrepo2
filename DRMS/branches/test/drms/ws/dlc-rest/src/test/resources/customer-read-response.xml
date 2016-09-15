@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Response>
+    <Errors>0</Errors>
+    <customers>
+        <customer>
+            <serviceId>p1</serviceId>
+            <participantName>p1</participantName>
+            <clientName>p1.c1</clientName>
+        </customer>
+        <customer>
+            <serviceId>p2</serviceId>
+            <participantName>p2</participantName>
+        </customer>
+    </customers>
+</Response>

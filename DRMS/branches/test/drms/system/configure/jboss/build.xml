@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<project name="jboss"
+         default="install.jb5"
+         basedir="."
+         xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+    <!-- includes -->
+    <!-- normally would use configureDir as defined in project, but
+         maven doesn't play well :( -->
+    <property name="configureDir" value="${basedir}/.." />
+    <property name="lib.dir" value="${configureDir}/lib" />
+    <import file="${configureDir}/common.xml" />
+
+    <property name="jboss.download.file"
+              value="target/jboss-5.1.0.GA-jdk6.zip" />
+
+    <!-- verify.env -->
+    <target name="verify.env">
+        <echo>${ant.project.name}: verify.env</echo>
+        <echo>${ant.project.name}: Installing to ${jbossHome}</echo>
+    </target>
+
+    <target name="install.jb5"
+            depends="verify.env"
+            description="install jboss5">
+
+        <artifact:dependencies pathId="devHomePath">
+            <dependency groupId="com.akuacom.system.configure.resource"
+                        artifactId="jboss"
+                        version="5.1.0.GA-jdk6"
+                        type="zip" />
+            <remoteRepository refid="akuacom.nexus" />
+        </artifact:dependencies>
+        <copy file="${com.akuacom.system.configure.resource:jboss:zip}"
+              tofile="${jboss.download.file}" />
+        <unzip src="${jboss.download.file}" dest="${jbossHome}/../">
+        </unzip>
+
+    </target>
+
+</project>

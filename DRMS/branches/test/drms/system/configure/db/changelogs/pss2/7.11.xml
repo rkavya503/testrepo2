@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	
+    <changeSet id="1" author="Liu">
+        <comment>
+               DRMS-7605 24 registered shed values based on hour of the day
+        </comment>
+		<addColumn tableName="participant">
+            <column name="shedType" type="VARCHAR(20)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+	<changeSet id="2" author="Liu">
+        <comment>
+               DRMS-7605 24 registered shed values based on hour of the day
+        </comment>
+		<sql>
+		UPDATE participant SET shedType='SIMPLE';
+        </sql>
+    </changeSet>
+	<changeSet id="3" author="Liu">
+        <comment>
+            DRMS-7605 24 registered shed values based on hour of the day
+        </comment>
+        <sql>
+			DROP TABLE IF EXISTS `participant_shed_entry`;
+
+			CREATE TABLE `participant_shed_entry` (
+			  `uuid` varchar(32) NOT NULL,
+			  `creationTime` datetime DEFAULT NULL,
+			  `participant_uuid` varchar(32) NOT NULL,
+			  `hourIndex` int(11) NOT NULL,
+			  `value` double NOT NULL,
+			  PRIMARY KEY (`uuid`)
+			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+        </sql>
+    </changeSet>
+	<changeSet id="4" author="Liu">
+        <comment>
+            DRMS-7666 UK TEMPERATURE SUPPORT
+        </comment>
+        <sql>
+			insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0, 'weather.uk.apikey',
+            '030dca1a-fb28-4e7a-85b7-c93408e6b5ee', null, null, null, 'String', 'script', null, now(),
+            null);
+		</sql>
+    </changeSet>
+	<changeSet id="5" author="Liu">
+        <comment>
+            DRMS-7666 UK TEMPERATURE SUPPORT
+        </comment>
+        <sql>
+			insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0, 'weather.uk.url.forecast',
+            'http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/xml/', null, null, null, 'String', 'script', null, now(),
+            null);
+		</sql>
+    </changeSet>
+	<changeSet id="6" author="Liu">
+        <comment>
+            DRMS-7666 UK TEMPERATURE SUPPORT
+        </comment>
+        <sql>
+			insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0, 'weather.uk.url.observation',
+            'http://datapoint.metoffice.gov.uk/public/data/val/wxobs/all/xml/', null, null, null, 'String', 'script', null, now(),
+            null);
+		</sql>
+    </changeSet>
+	<changeSet id="7" author="Linda">
+        <comment>
+           DRMS-7627  Support disabling the opt-out button from event
+        </comment>
+		<sql>		        
+		        insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.eventOptoutEnabled',
+                null, true, null, null, 'Boolean', 'script', null, now(),
+                null);
+		</sql>
+    </changeSet>
+    <changeSet id="8" author="Linda">
+        <comment>DRMS-7627 Support disabling the opt-out button from event</comment>
+        <addColumn tableName="participant">
+            <column name="defaultEventOptoutEnabled" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+        <addColumn tableName="participant">
+            <column name="partEventOptoutEnabled" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false" />
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

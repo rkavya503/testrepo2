@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="1" author="MR">
+		<comment>
+			Add report database tables for openadr 2.0b
+		</comment>
+		<sql>
+			CREATE  TABLE reportrequest (
+			  UUID VARCHAR(250) NOT NULL,
+			  creationTime DATETIME NULL,
+			  creator VARCHAR(250) NULL,
+			  modifiedTime DATETIME NULL,
+			  modifier VARCHAR(250) NULL,
+			  version INT NULL,
+			  requestId VARCHAR(250) NULL,
+			  venId VARCHAR(250) NULL,
+			  PRIMARY KEY (UUID));
+			
+			CREATE TABLE report (
+			  UUID VARCHAR(255) NOT NULL,
+			  creationTime DATETIME NULL,
+			  creator VARCHAR(255),
+			  modifiedTime DATETIME NULL,
+			  modifier VARCHAR(255),
+			  version INT NULL,
+			  cancelled boolean DEFAULT false,
+			  created boolean DEFAULT false,
+			  createdDate DATETIME,
+			  duration bigint NOT NULL,
+			  reportId VARCHAR(255),
+			  reportName VARCHAR(255),
+			  reportRequestId VARCHAR(255),
+			  reportSpecifierId VARCHAR(255),
+			  start DATETIME,
+			  toCancel boolean DEFAULT false,
+			  toCreate boolean DEFAULT false,
+			  reportrequest_uuid VARCHAR(255),
+			  reporttofollow boolean DEFAULT false,
+			  PRIMARY KEY (UUID),
+			  CONSTRAINT reportrequest_reportrequest_uuid FOREIGN KEY (reportrequest_uuid)
+			  REFERENCES reportrequest(UUID) 
+			  ON DELETE NO ACTION
+			  ON UPDATE NO ACTION );
+			  
+			CREATE  TABLE itembase (
+			  UUID VARCHAR(250) NOT NULL ,
+			  creationTime DATETIME NULL ,
+			  creator VARCHAR(45) NULL ,
+			  modifiedTime DATETIME NULL ,
+			  modifier VARCHAR(45) NULL ,
+			  version INT NULL ,
+			  itemDescription VARCHAR(250) NULL ,
+			  itemUnits VARCHAR(45) NULL ,
+			  siScaleCode VARCHAR(45) NULL ,
+			  PRIMARY KEY (UUID));
+			  
+			CREATE  TABLE reportsubject (
+			  UUID VARCHAR(250) NOT NULL ,
+			  creationTime DATETIME NULL ,
+			  modifiedTime DATETIME NULL ,
+			  modifier VARCHAR(45) NULL ,
+			  creator VARCHAR(45) NULL ,
+			  version INT NULL ,
+			  type VARCHAR(45) NULL ,
+			  device VARCHAR(45) NULL ,
+			  reportdescription_uuid VARCHAR(255),
+			  PRIMARY KEY (UUID));
+
+			CREATE  TABLE reportdatasource (
+				UUID VARCHAR(250) NOT NULL ,
+				creationTime DATETIME NULL ,
+				creator VARCHAR(45) NULL ,
+				modifiedTime DATETIME NULL ,
+				modifier VARCHAR(45) NULL ,
+				version INT NULL ,
+				device VARCHAR(250) NULL ,
+				type VARCHAR(250) NULL ,
+				reportdescription_uuid VARCHAR(45) NULL ,
+				PRIMARY KEY (UUID));
+
+			CREATE TABLE reportdescription (
+			  UUID VARCHAR(250) NOT NULL,
+			  creationTime DATETIME NULL,
+			  creator VARCHAR(45) NULL ,
+			  modifiedTime DATETIME NULL,
+			  modifier VARCHAR(45) NULL ,
+			  version INT NULL,
+			  marketContext varchar(250) DEFAULT NULL,
+			  readingType varchar(250) DEFAULT NULL,
+			  reportId varchar(250) DEFAULT NULL,
+			  reportType varchar(250) DEFAULT NULL,
+			  rId varchar(250) DEFAULT NULL,
+			  samplingMaxPeriod BIGINT NOT NULL,
+			  samplingMinPeriod BIGINT NOT NULL,
+			  itembase_uuid varchar(250) DEFAULT NULL,
+			  report_uuid varchar(250) DEFAULT NULL,
+			  toCancel boolean DEFAULT false,
+			  toCreate boolean DEFAULT false,
+			  cancelled boolean DEFAULT false,
+			  created boolean DEFAULT false,
+			  uiGranularity BIGINT DEFAULT 0,
+			  uiReportBackDuration BIGINT DEFAULT 0,
+			  uiDtStart DATETIME NULL,
+			  uiDuration BIGINT DEFAULT 0,
+			  PRIMARY KEY (UUID),
+			  KEY report_uuid_idx (report_uuid),
+			  KEY itembase_uuid_idx (itembase_uuid),
+			  CONSTRAINT report_uuid FOREIGN KEY (report_uuid) REFERENCES report (UUID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+			  CONSTRAINT itembase_uuid FOREIGN KEY (itembase_uuid) REFERENCES itembase (UUID) ON DELETE NO ACTION ON UPDATE NO ACTION
+			)
+		</sql>
+	</changeSet>
+	
+	<changeSet id="2" author="MR">
+		<comment>
+			Add table VenReportRequestHistory for openadr 2.0b
+		</comment>
+		<sql>
+			create table venreportrequesthistory (
+				UUID varchar(255) not null,
+				creationTime DATETIME NULL,
+				creator VARCHAR(45) NULL ,
+				modifiedTime DATETIME NULL,
+				modifier VARCHAR(45) NULL ,
+				version INT NULL,
+				reportRequestId varchar(255),
+				requestId varchar(255),
+				venId varchar(255),
+				cancelled boolean DEFAULT false,
+				created boolean DEFAULT false,
+				cancelRequestId varchar(255),
+				primary key (UUID),
+				CONSTRAINT venreportrequesthistory_venId_reportRequestId_key UNIQUE (venId , reportRequestId )
+			);
+			
+			ALTER TABLE reportrequest ADD UNIQUE INDEX venId_UNIQUE (venId ASC);
+										
+			ALTER TABLE reportdatasource  ADD CONSTRAINT reportdescription_uuid 
+			FOREIGN KEY (reportdescription_uuid) REFERENCES reportdescription(UUID) 
+			ON DELETE NO ACTION ON UPDATE NO ACTION, ADD INDEX reportdescription_uuid_idx (reportdescription_uuid ASC);
+			
+			ALTER TABLE reportsubject ADD CONSTRAINT reportdescription_uuids 
+			FOREIGN KEY (reportdescription_uuid) REFERENCES reportdescription (UUID)
+			ON DELETE NO ACTION ON UPDATE NO ACTION, ADD INDEX reportdescription_uuids_idx (reportdescription_uuid ASC);
+				
+		</sql>
+	   </changeSet>	
+
+	<changeSet id="3" author="Krishna">
+        <comment>
+              DRMS 8356: static web page
+        </comment>
+		<sql>	
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'feature.news.url',
+				'about', null, null, null, 'String', 'script', null, now(),
+				null);
+		</sql>
+    </changeSet>
+	
+	<changeSet id="4" author="Ram">
+		<comment>
+			change default value of group_concat_max_len that is being used in method GROUP_CONCAT()
+		</comment>
+		<sql>
+				set global group_concat_max_len=10240;		
+		</sql>	
+	</changeSet>
+	
+	<changeSet id="5" author="Bindu">
+        <comment>
+              DRMS 8740: Mobile App URL
+        </comment>
+		<sql>	
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'appstore.url',
+				'about:blank', null, null, null, 'String', 'script', null, now(),
+				null);
+		</sql>
+		
+		<sql>	
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'playstore.url',
+				'about:blank', null, null, null, 'String', 'script', null, now(),
+				null);
+		</sql>
+		
+		<sql>	
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'mobileDR',
+				'true', null, null, null, 'String', 'script', null, now(),
+				null);
+		</sql>
+		
+    </changeSet>
+	
+</databaseChangeLog>

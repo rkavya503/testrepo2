@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.schneider-electric.com/WebServices" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.schneider-electric.com/WebServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.schneider-electric.com/WebServices">
+      <s:element name="CheckForCurtailmentEvents">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="programID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckForCurtailmentEventsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckForCurtailmentEventsResult" type="tns:CurtailmentResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CurtailmentResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RequestID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResultCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Events" type="tns:ArrayOfCurtailmentEvent" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCurtailmentEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CurtailmentEvent" nillable="true" type="tns:CurtailmentEvent" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CurtailmentEvent" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultSummary" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventStart" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventEnd" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TypeCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoadLevelID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirmLoad" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CurtailmentLoadLevelEvent">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CurtailmentEvent" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CurtailmentFirmLoadEvent">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CurtailmentEvent" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CurtailmentEventsRecieved">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="requestID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="resultCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurtailmentEventsRecievedResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="CurtailmentResponse" nillable="true" type="tns:CurtailmentResponse" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckForCurtailmentEventsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckForCurtailmentEvents" />
+  </wsdl:message>
+  <wsdl:message name="CheckForCurtailmentEventsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckForCurtailmentEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="CurtailmentEventsRecievedSoapIn">
+    <wsdl:part name="parameters" element="tns:CurtailmentEventsRecieved" />
+  </wsdl:message>
+  <wsdl:message name="CurtailmentEventsRecievedSoapOut">
+    <wsdl:part name="parameters" element="tns:CurtailmentEventsRecievedResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckForCurtailmentEventsHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="programID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckForCurtailmentEventsHttpGetOut">
+    <wsdl:part name="Body" element="tns:CurtailmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CurtailmentEventsRecievedHttpGetIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="requestID" type="s:string" />
+    <wsdl:part name="resultCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CurtailmentEventsRecievedHttpGetOut" />
+  <wsdl:message name="CheckForCurtailmentEventsHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="programID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckForCurtailmentEventsHttpPostOut">
+    <wsdl:part name="Body" element="tns:CurtailmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="CurtailmentEventsRecievedHttpPostIn">
+    <wsdl:part name="userName" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="requestID" type="s:string" />
+    <wsdl:part name="resultCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CurtailmentEventsRecievedHttpPostOut" />
+  <wsdl:portType name="CurtailmentServiceSoap">
+    <wsdl:operation name="CheckForCurtailmentEvents">
+      <wsdl:input message="tns:CheckForCurtailmentEventsSoapIn" />
+      <wsdl:output message="tns:CheckForCurtailmentEventsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurtailmentEventsRecieved">
+      <wsdl:input message="tns:CurtailmentEventsRecievedSoapIn" />
+      <wsdl:output message="tns:CurtailmentEventsRecievedSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CurtailmentServiceHttpGet">
+    <wsdl:operation name="CheckForCurtailmentEvents">
+      <wsdl:input message="tns:CheckForCurtailmentEventsHttpGetIn" />
+      <wsdl:output message="tns:CheckForCurtailmentEventsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurtailmentEventsRecieved">
+      <wsdl:input message="tns:CurtailmentEventsRecievedHttpGetIn" />
+      <wsdl:output message="tns:CurtailmentEventsRecievedHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CurtailmentServiceHttpPost">
+    <wsdl:operation name="CheckForCurtailmentEvents">
+      <wsdl:input message="tns:CheckForCurtailmentEventsHttpPostIn" />
+      <wsdl:output message="tns:CheckForCurtailmentEventsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurtailmentEventsRecieved">
+      <wsdl:input message="tns:CurtailmentEventsRecievedHttpPostIn" />
+      <wsdl:output message="tns:CurtailmentEventsRecievedHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CurtailmentServiceSoap" type="tns:CurtailmentServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckForCurtailmentEvents">
+      <soap:operation soapAction="http://www.schneider-electric.com/WebServices/CheckForCurtailmentEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurtailmentEventsRecieved">
+      <soap:operation soapAction="http://www.schneider-electric.com/WebServices/CurtailmentEventsRecieved" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CurtailmentServiceSoap12" type="tns:CurtailmentServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckForCurtailmentEvents">
+      <soap12:operation soapAction="http://www.schneider-electric.com/WebServices/CheckForCurtailmentEvents" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurtailmentEventsRecieved">
+      <soap12:operation soapAction="http://www.schneider-electric.com/WebServices/CurtailmentEventsRecieved" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CurtailmentServiceHttpGet" type="tns:CurtailmentServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="CheckForCurtailmentEvents">
+      <http:operation location="/CheckForCurtailmentEvents" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurtailmentEventsRecieved">
+      <http:operation location="/CurtailmentEventsRecieved" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CurtailmentServiceHttpPost" type="tns:CurtailmentServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="CheckForCurtailmentEvents">
+      <http:operation location="/CheckForCurtailmentEvents" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurtailmentEventsRecieved">
+      <http:operation location="/CurtailmentEventsRecieved" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CurtailmentService">
+    <wsdl:port name="CurtailmentServiceSoap" binding="tns:CurtailmentServiceSoap">
+      <soap:address location="https://epotest.energyinteractive.com/sdgeepo/webService/CurtailmentWebService/CurtailmentService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CurtailmentServiceSoap12" binding="tns:CurtailmentServiceSoap12">
+      <soap12:address location="https://epotest.energyinteractive.com/sdgeepo/webService/CurtailmentWebService/CurtailmentService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CurtailmentServiceHttpGet" binding="tns:CurtailmentServiceHttpGet">
+      <http:address location="http://epotest.energyinteractive.com/sdgeepo/webService/CurtailmentWebService/CurtailmentService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CurtailmentServiceHttpPost" binding="tns:CurtailmentServiceHttpPost">
+      <http:address location="http://epotest.energyinteractive.com/sdgeepo/webService/CurtailmentWebService/CurtailmentService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

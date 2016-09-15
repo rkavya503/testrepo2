@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress WebProperties -->
+<web-app version="2.5"   
+    xmlns="http://java.sun.com/xml/ns/javaee"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>ParticipantOperatorWS</display-name>
+    <servlet>
+        <display-name>ParticipantOperatorWS</display-name>
+        <servlet-name>ParticipantOperatorWS</servlet-name>
+        <servlet-class>com.akuacom.pss2.utilopws.ParticipantOperatorWS</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ParticipantOperatorWS</servlet-name>
+        <url-pattern>/ParticipantOperatorWS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ParticipantOperatorWS</servlet-name>
+        <url-pattern>/nossl/ParticipantOperatorWS</url-pattern>
+    </servlet-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>ParticipantOperatorWS</web-resource-name>
+            <url-pattern>/ParticipantOperatorWS</url-pattern>           
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>website</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>ParticipantOperatorWS</web-resource-name>
+            <url-pattern>/nossl/ParticipantOperatorWS</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>website</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee> 
+        </user-data-constraint>
+    </security-constraint>
+
+    <login-config>
+         <auth-method>BASIC</auth-method>
+    </login-config>
+    <security-role>
+        <description>website</description>
+        <role-name>website</role-name>
+    </security-role>
+
+</web-app>

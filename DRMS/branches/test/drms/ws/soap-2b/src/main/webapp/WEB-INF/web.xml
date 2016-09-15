@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress WebProperties -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>soap-2b</display-name>
+   <servlet>
+    <display-name>oadr2bvtn</display-name>
+    <servlet-name>oadr2bvtn</servlet-name>
+    <servlet-class>com.akuacom.pss2.oadr2b.vtn.VtnDrasSoapService</servlet-class>
+  </servlet> 
+  <servlet-mapping>
+    <servlet-name>oadr2bvtn</servlet-name>
+    <url-pattern>/oadr2bvtn/Oadr2bVtnDrasService</url-pattern>
+  </servlet-mapping> 
+</web-app>

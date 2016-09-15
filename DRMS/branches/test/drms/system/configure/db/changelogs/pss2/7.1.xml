@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+
+
+    <!-- See http://liquibase.org/manual/home for documentation -->
+
+    <changeSet id="1" author="Linda">
+        <comment>
+           DRMS-5117 Have a Date Format Core Property to support date formats
+        </comment>
+        <sql>
+            DELETE FROM core_property WHERE propertyName='feature.international.format';
+        </sql>
+    </changeSet>
+    <changeSet id="2" author="Linda">
+        <comment>
+           DRMS-5117 Have a Date Format Core Property to support date formats
+        </comment>
+        <sql>
+		    insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.date.format',
+                'MM/dd/yyyy', null, null, null, 'String', 'script', null, now(),
+                null);
+        </sql>
+    </changeSet>
+       <changeSet id="3" author="Ahmed">
+        <comment>
+           DRMS-6422 Change telemtry graph label from "Projcted Normal Usage" to "Baseline"
+        </comment>
+        <sql>
+			UPDATE dataset SET description='Baseline' WHERE name='Baseline';
+		</sql>
+    </changeSet>
+
+      <changeSet id="4" author="Ahmed">
+        <comment>
+           DRMS-6422 Change telemtry graph label to event start
+        </comment>
+        <sql>
+			UPDATE dataset SET description='Event Start' WHERE name='EventStartIndicator';
+		</sql>
+    </changeSet>
+
+    <changeSet id="5" author="Ahmed">
+        <comment>
+           DRMS-6422 Change telemtry graph label event end
+        </comment>
+        <sql>
+			UPDATE dataset SET description='Event End' WHERE name='EventEndIndicator';
+		</sql>
+    </changeSet>
+    
+    <changeSet id="6" author="Chris">
+        <comment>
+           DRMS-5829 Add OBIX communication status and last upload time information to the client status page
+        </comment>
+        <sql>
+             insert into core_property (uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.usageClientTimeOut',
+                null, null, 15, null, 'Number', 'script', null, now(),
+                null);
+        </sql>
+    </changeSet>
+    <changeSet id="7" author="Linda">
+        <comment>
+           DRMS-5117 Have a Date Format Core Property to support time formats
+        </comment>
+        <sql>
+		    insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'feature.time.24hours',
+                null, true, null, null, 'Boolean', 'script', null, now(),
+                null);
+        </sql>
+    </changeSet>
+	<changeSet id="8" author="Nicole">
+        <comment>
+           DRMS-6499 Update dataset table usage and baseline with period interval of 15 minutes
+        </comment>
+        <sql>
+		    update dataset SET period=900 WHERE name="Baseline";
+			update dataset SET period=900 WHERE name="Usage";
+        </sql>
+    </changeSet>
+	    <changeSet id="9" author="Linda">
+        <comment>
+           DRMS-6424 remove lagecy report enable flag and core property
+        </comment>
+        <sql>
+            DELETE FROM core_property WHERE propertyName='feature.reportEventList';
+            DELETE FROM core_property WHERE propertyName='feature.reportEventParticipation';
+            DELETE FROM core_property WHERE propertyName='feature.reportClientNonParticipation';
+            DELETE FROM core_property WHERE propertyName='feature.reportOffline';
+        </sql>
+    </changeSet>
+	    <changeSet id="10" author="Linda">
+        <comment>
+           DRMS-6543 remove the unused participant information sync function
+        </comment>
+        <sql>
+            DELETE FROM core_property WHERE propertyName='sce.ftp.host';
+            DELETE FROM core_property WHERE propertyName='sce.ftp.port';
+            DELETE FROM core_property WHERE propertyName='sce.ftp.username';
+            DELETE FROM core_property WHERE propertyName='sce.ftp.password';
+            DELETE FROM core_property WHERE propertyName='sce.participant.synchronization.active';
+            DELETE FROM core_property WHERE propertyName='sce.participant.sync.filepath';
+            DELETE FROM core_property WHERE propertyName='sce.participant.sync.filename';
+            DELETE FROM core_property WHERE propertyName='sce.participant.sync.scan.duration(hour)';
+            DELETE FROM core_property WHERE propertyName='sce.participant.sync.scan.time';
+        </sql>
+    </changeSet>
+	<changeSet id="11" author="Linda">
+        <comment>
+           DRMS-6525 create grid point web service configuration table and set default value
+        </comment>
+        <sql>
+			DROP TABLE IF EXISTS `grid_point_configuration`;
+			CREATE TABLE `grid_point_configuration` (
+			  `uuid` varchar(32) NOT NULL,
+			  `authenticationURL` varchar(255) DEFAULT NULL,
+			  `username` varchar(32) DEFAULT NULL,
+			  `password` varchar(32) DEFAULT NULL,
+			  `retrieveDataURL` varchar(255) DEFAULT NULL,
+			  `timeInterval` int(11) DEFAULT NULL,
+			  `fixScopeEnabled`  bit(1) DEFAULT NULL,
+			  `fixScopeValue` int(11) DEFAULT NULL,
+			  `dateBackScope` int(11) DEFAULT NULL,
+			  `creationTime` datetime DEFAULT NULL,
+			  PRIMARY KEY (`uuid`)
+			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+			
+			INSERT INTO grid_point_configuration (UUID, authenticationURL, username, PASSWORD, 
+			retrieveDataURL, timeInterval, fixScopeEnabled, fixScopeValue, dateBackScope, creationTime) 
+			VALUE (REPLACE(UUID(), '-', ''), 'https://admtools-admview.admmicro.net/ADMTools/auth/wslogin.asmx',
+			'Honeywell', 'hwell$123', 'https://admtools-admview.admmicro.net/ADMTools/admview/admdata.asmx',
+			15, b'1', 1440, 14, now());
+        </sql>
+    </changeSet>
+	<changeSet id="12" author="Linda">
+        <comment>
+           DRMS-6525 create grid point web service configuration table and set default value
+        </comment>
+		<addColumn tableName="datasource">
+            <column name="siteID" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+        <addColumn tableName="datasource">
+		<column name="serviceProvider" type="VARCHAR(255)">
+			<constraints nullable="true" />
+		</column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="13" author="Liu">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sqlCheck expectedResult="0">
+                    select count(*) from
+                    core_property;
+				</sqlCheck>
+            </not>
+            <sqlCheck expectedResult="0">
+                select count(*) from
+                core_property where propertyName='feature.enableDataService';
+			</sqlCheck>
+        </preConditions>
+        <comment>
+           DRMS-6568 Enable/Disable data service feature to the core-properties table
+        </comment>
+        <sql>insert into core_property(uuid, version, propertyName,
+            stringValue, booleanValue, doubleValue, textValue, type,
+            creator, modifier, creationTime, modifiedTime) values
+            (REPLACE(uuid(), '-', ''), 0, 'feature.enableDataService',
+            null, false, null, null, 'Boolean', 'script', null, now(),
+            null);
+		</sql>
+    </changeSet>
+		<changeSet id="14" author="Linda">
+        <comment>
+           DRMS-6540 add last valid data
+        </comment>
+		<addColumn tableName="grid_point_configuration">
+            <column name="lastValidData" type="datetime">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
+	<changeSet id="15" author="Linda">
+        <comment>
+           DRMS-6540 remove last valid data
+        </comment>
+		<dropColumn columnName="lastValidData" tableName="grid_point_configuration"/>
+    </changeSet>
+
+	<changeSet id="16" author="Ahmed">
+        <comment>
+               DRMS-6453 add an entry for quickview errors
+        </comment>
+		<sql>update core_property set stringValue = 'notification,comms,event,quickview,AccountManagerServerLoginModule,ProgramManagerBean,webservice,SlowMethodInterceptor,HistoricalWeatherParserHandler,org.jboss.logging.util.LoggerStream,AccMgrWS,org.hibernate.event.def.AbstractFlushingEventListener,DataServiceBean,.jboss.logging.util.LoggerStream,org.apache.catalina.core.StandardWrapperValve,org.jboss.ws.core.jaxrpc.SOAPFaultHelperJAXRPC'
+            where propertyName = 'logCategories'
+        </sql>
+    </changeSet>
+	
+	 <changeSet id="17" author="Frank">
+        <comment>
+           DRMS-6541 Trigger baseline calculation in midnight till all usage data of the passed one day were retrieved
+        </comment>
+        <sql>
+		    insert into core_property(uuid, version, propertyName,
+                stringValue, booleanValue, doubleValue, textValue, type,
+                creator, modifier, creationTime, modifiedTime) values
+                (REPLACE(uuid(), '-', ''), 0, 'baseline.calculate.timepoint',
+                "05:00:00", null, null, null, 'String', 'script', null, now(),
+                null);
+        </sql>
+    </changeSet>
+	<changeSet id="18" author="Daoping">
+        <comment>
+               DRMS-6607 add indexes and  alert engine type from innodb to MyISAm to improve query performance on very large tables
+        </comment>
+		<sql>
+			ALTER TABLE dataentry DROP FOREIGN KEY FK_datasource;
+			ALTER TABLE dataentry DROP FOREIGN KEY FK_dataset;
+			ALTER TABLE dataentry  ENGINE=MYISAM COMMENT='' ROW_FORMAT=DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+				
+			ALTER TABLE history_baseline_dataentry DROP FOREIGN KEY  FK_historydatasource;
+			ALTER TABLE history_baseline_dataentry DROP FOREIGN KEY  FK_historydataset;
+			ALTER TABLE dataentry ADD INDEX dataentry_dataset(dataset_uuid);
+			ALTER TABLE dataentry ADD INDEX dataset_time(time);
+
+			ALTER TABLE dataentry DROP FOREIGN KEY FK_datasource;
+			ALTER TABLE dataentry DROP FOREIGN KEY FK_dataset;
+			ALTER TABLE history_baseline_dataentry ENGINE=MYISAM COMMENT='' ROW_FORMAT=DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+			ALTER TABLE history_baseline_dataentry ADD INDEX history_baseline_time(time);
+        </sql>
+    </changeSet>
+	<changeSet id="19" author="Daoping">
+        <comment>
+               DRMS-6607  add event_dataentry table to store baseline/usage data for an event 
+        </comment>
+		<sql>
+			DROP TABLE IF EXISTS `event_dataentry`;
+			CREATE TABLE `event_dataentry` (
+			`uuid` VARCHAR(32) NOT NULL,
+			`dataset_uuid` VARCHAR(32) NOT NULL,
+			`eventName` VARCHAR(32) NOT NULL,
+			`time` DATETIME NOT NULL,
+			`value` DOUBLE DEFAULT NULL,
+			`creationTime` DATETIME DEFAULT NULL,
+			`stringValue` VARCHAR(128) DEFAULT NULL,
+			`valueType` VARCHAR(255) NOT NULL,
+			`actual` TINYINT(1) DEFAULT '1',
+			PRIMARY KEY (`uuid`),
+			KEY `FK_evt_dataset` (`dataset_uuid`),
+			KEY `FK_evt_event` (`eventName`),
+			CONSTRAINT `FK_evt_dataset` FOREIGN KEY (`dataset_uuid`) REFERENCES `dataset` (`uuid`),
+			CONSTRAINT `FK_evt_event` FOREIGN KEY (`eventName`) REFERENCES `event` (`eventName`),
+			UNIQUE KEY `UQ_evt_key` (`eventName`,`dataset_uuid`,`time`)
+			) ENGINE=INNODB DEFAULT CHARSET=latin1;
+        </sql>
+    </changeSet>
+	<changeSet id="20" author="Daoping">
+        <comment>
+               DRMS-6607  add event_dataentry table to store baseline/usage data for an event 
+        </comment>
+		<sql>
+			DROP TABLE IF EXISTS `event_dataentry`;
+			CREATE TABLE `event_dataentry` (
+			`uuid` VARCHAR(32) NOT NULL,
+			`dataset_uuid` VARCHAR(32) NOT NULL,
+			`eventName` VARCHAR(32) NOT NULL,
+			`time` DATETIME NOT NULL,
+			`value` DOUBLE DEFAULT NULL,
+			`creationTime` DATETIME DEFAULT NULL,
+			`stringValue` VARCHAR(128) DEFAULT NULL,
+			`valueType` VARCHAR(255) NOT NULL,
+			`actual` TINYINT(1) DEFAULT '1',
+			PRIMARY KEY (`uuid`),
+			KEY `FK_evt_dataset` (`dataset_uuid`),
+			CONSTRAINT `FK_evt_dataset` FOREIGN KEY (`dataset_uuid`) REFERENCES `dataset` (`uuid`),
+			UNIQUE KEY `UQ_evt_key` (`eventName`,`dataset_uuid`,`time`)
+			) ENGINE=INNODB DEFAULT CHARSET=latin1;
+        </sql>
+    </changeSet>
+	<changeSet id="21" author="Nicole">
+        <comment>
+           OPS-397 Core Properties: interpolate.windowsize should be 60.
+        </comment>
+        <sql>
+		    UPDATE core_property SET doubleValue = 60 WHERE propertyname = "interpolate.windowsize";
+        </sql>
+    </changeSet>
+	<changeSet id="22" author="Liu">
+        <comment>
+          DRMS-6121 add an editable "information" column to the "Clients" tab
+        </comment>
+        <addColumn tableName="participant">
+			<column name="deviceType" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+	</changeSet>
+	<changeSet id="23" author="Steve">
+        <comment>
+           DRMS-6591 Add foreign key constraint to link event_participant to its participant
+        </comment>
+        <sql>
+	    ALTER TABLE `pss2`.`event_participant` 
+		ADD CONSTRAINT `FK_event_participant_3` FOREIGN KEY `FK_event_participant_3` (`participant_uuid`) REFERENCES `participant` (`uuid`);
+        </sql>
+    </changeSet>
+	<changeSet id="24" author="Steve">
+        <comment>
+           DRMS-6614 Add unique key for dataentry_temp table
+        </comment>
+        <sql>
+		ALTER TABLE `pss2`.`dataentry_temp` ADD UNIQUE `uq_dataentry_temp` (`dataset_uuid`, `datasource_uuid`, `time`);
+        </sql>
+    </changeSet>
+	<changeSet id="25" author="Frank">
+        <comment>
+           DRMS-6582 Usage: Morning Adjustment not working correctly.
+        </comment>
+        <sql>
+		UPDATE baseline_config SET maxMARate=0.2,minMARate=-0.2;
+        </sql>
+    </changeSet>
+	<changeSet id="26" author="Daoping">
+        <comment>
+           DRMS-6614 Add indexes for performance
+        </comment>
+        <sql>
+		ALTER TABLE `pss2`.`datasource_usage` ADD UNIQUE `uq_datasource_usage` (`datasource_uuid`, `date`);
+		ALTER TABLE `pss2`.`datasource_usage` ADD INDEX `idx_dsu_ds` (`datasource_uuid`);
+		ALTER TABLE `pss2`.`datasource_usage` ADD INDEX `idx_dsu_date` (`date`);
+		ALTER TABLE `pss2`.`history_event_participant` ADD INDEX `idx_hep_partid` (`participant_uuid`);
+		ALTER TABLE `pss2`.`history_event_participant` ADD INDEX `idx_hep_partname` (`participantName`);
+		ALTER TABLE `pss2`.`history_event_participant` ADD INDEX `idx_hep_evt_name` (`eventName`);
+		ALTER TABLE `pss2`.`history_event_participant` ADD INDEX `idx_hep_evt_uuid` (`history_event_uuid`);
+		ALTER TABLE `pss2`.`history_event` ADD INDEX `idx_he_progname` (`programName`);
+		ALTER TABLE `pss2`.`history_event` ADD INDEX `idx_he_evtstart` (`startTime`);
+		ALTER TABLE `pss2`.`history_event` ADD INDEX `idx_he_evtname` (`eventName`);
+		ALTER TABLE `pss2`.`history_event` ADD INDEX `idx_he_promname` (`program_uuid`);
+		ALTER TABLE `pss2`.`event` ADD INDEX `idx_event_progname` (`programName`);
+		ALTER TABLE `pss2`.`program_participant` ADD INDEX `idx_pp_promid` (`program_uuid`);
+		ALTER TABLE `pss2`.`program_participant` ADD INDEX `idx_pp_partid` (`participant_uuid`);
+		ALTER TABLE `pss2`.`program_participant` ADD INDEX `idx_pp_ancestry` (`ancestry`);
+		ALTER TABLE `pss2`.`participant` ADD INDEX `idx_part_parent` (`parent`);
+		ALTER TABLE `pss2`.`participant` ADD INDEX `idx_part_name` (`participantName`);
+		ALTER TABLE `pss2`.`event_dataentry` ADD INDEX `idx_ed_time` (`time`);
+		ALTER TABLE `pss2`.`event_dataentry` ADD INDEX `idx_ed_evtname` (`eventName`);
+		ALTER TABLE `pss2`.`datasource` ADD INDEX `idx_ds_name` (`name`);
+		ALTER TABLE `pss2`.`datasource` ADD INDEX `idx_ds_owner` (`ownerID`);
+     </sql>
+    </changeSet>
+	 <changeSet id="27" author="Nicole">
+        <update tableName="core_property">
+            <column name="booleanValue" valueBoolean="false" />
+            <where>propertyName='feature.peakchoice'</where>
+        </update>
+    </changeSet>
+	<changeSet id="28" author="Nicole">
+        <comment>
+           DRMS-6582 Usage: Morning Adjustment not working correctly.
+        </comment>
+        <sql>
+		UPDATE baseline_config SET maxMARate=0,minMARate=-0;
+        </sql>
+    </changeSet>
+	
+	<changeSet id="29" author="Frank">
+        <comment>
+           DRMS-6691
+        </comment>
+        <sql>
+		DROP TABLE IF EXISTS `history_baseline_dataentry_temp`;
+
+		CREATE TABLE `history_baseline_dataentry_temp` (
+		  `uuid` VARCHAR(32) NOT NULL,
+		  `dataset_uuid` VARCHAR(32) NOT NULL,
+		  `datasource_uuid` VARCHAR(32) NOT NULL,
+		  `time` DATETIME NOT NULL,
+		  `value` DOUBLE DEFAULT NULL,
+		  `creationTime` DATETIME DEFAULT NULL,
+		  `stringValue` VARCHAR(128) DEFAULT NULL,
+		  `valueType` VARCHAR(255) NOT NULL,
+		  `actual` TINYINT(1) DEFAULT '1',
+		  PRIMARY KEY (`uuid`),
+		  KEY `FK_historydataset` (`dataset_uuid`),
+		  KEY `FK_historydatasource` (`datasource_uuid`),
+		  KEY `history_baseline_time` (`time`)
+		) ENGINE=MYISAM DEFAULT CHARSET=latin1;
+        </sql>
+    </changeSet>
+</databaseChangeLog>

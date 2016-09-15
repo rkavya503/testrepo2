@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	
+	<changeSet id="1" author="liu">
+        <comment>
+               DRMS-7958 SCE 2013 CBP programs consolidation
+               DRMS-7958 SCE 2013:CBP programs consolidation
+        </comment>
+		<sql>	
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'feature.enableCBPConsolidation',
+				null, true, null, null, 'Boolean', 'script', null, now(),
+				null);
+		</sql>
+    </changeSet>
+	<changeSet id="2" author="liu">
+        <comment>
+              DRMS-8282 Offline email improvements
+        </comment>
+		<sql>	
+				insert into core_property(uuid, version, propertyName,
+				stringValue, booleanValue, doubleValue, textValue, type,
+				creator, modifier, creationTime, modifiedTime) values
+				(REPLACE(uuid(), '-', ''), 0, 'helpDeskEmailAddress',
+				'AUTODR@sce.com', null, null, null, 'String', 'script', null, now(),
+				null);
+		</sql>
+    </changeSet>
+	<changeSet id="3" author="liu">
+        <comment>
+				DRMS-7958 SCE 2013 CBP programs consolidation
+		</comment>
+		<sql>	
+				alter table program add programGroup varchar(255);
+		</sql>
+    </changeSet>	
+	<changeSet id="4" author="liu">
+        <comment>
+             DRMS-7958 SCE 2013 CBP programs consolidation
+        </comment>
+		<sql>	
+				delete from core_property where propertyName = 'feature.enableCBPConsolidation'
+		</sql>
+    </changeSet>	
+	<changeSet id="5" author="linda">
+        <comment>
+               DRMS-8105 add default duration value from demo program
+        </comment>
+		<sql>		        
+			ALTER TABLE program ADD COLUMN defaultDuration int(11) DEFAULT null;
+		</sql>
+    </changeSet>
+	<changeSet id="6" author="linda">
+        <comment>
+               DRMS-8105 remove core property demo.event.default.duration
+        </comment>
+		<delete tableName="core_property">
+			<where>propertyName='demo.event.default.duration'</where>
+		</delete>
+    </changeSet>
+	<changeSet id="7" author="linda">
+        <comment>
+               DRMS-8423 add default duration for demo and client test program
+        </comment>
+		<sql>		    
+			update program p
+			set p.defaultDuration = 120
+			where p.className in('com.akuacom.pss2.program.demo.DemoProgramEJB','com.akuacom.pss2.program.testProgram.TestProgramEJB');
+		</sql>
+    </changeSet>
+	<changeSet id="8" author="linda">
+        <comment>
+               DRMS-7930 modify attachFileContent to MEDIUMTEXT type
+        </comment>
+		<sql>
+			alter table message modify attachFileContent MEDIUMTEXT;		
+		</sql>
+    </changeSet>
+</databaseChangeLog>

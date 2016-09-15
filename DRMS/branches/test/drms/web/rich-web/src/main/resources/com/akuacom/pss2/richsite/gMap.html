@@ -1,0 +1,29 @@
+<script>
+    try {
+	    function drawMap#{id}() {
+	        var myCenter = #{center}     
+	        var myOptions = {
+	               zoom: 4,
+	               center: myCenter,
+	               mapTypeId: google.maps.MapTypeId.ROADMAP,
+	        }
+	        var map = new google.maps.Map(document.getElementById("#{id}"), myOptions);
+	               
+	        try {
+	            var markerData = #{markerData}; 
+	            for(i in markerData) {
+	                var m = new google.maps.Marker( {
+	                       position: new google.maps.LatLng(markerData[i][0], markerData[i][1]),
+	                       title: markerData[i][2],
+	                       map:map,
+	                       icon: "http://localhost:8080/pss2.utility/images/build.png"})
+	            }
+	        }catch(e) {
+	            alert("error " + e)
+	        }
+	    }
+	    drawMap#{id}();
+    }catch(ex) {
+    	   alert(ex)
+    }
+</script>

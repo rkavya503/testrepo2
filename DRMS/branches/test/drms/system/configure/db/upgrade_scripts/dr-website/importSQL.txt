@@ -1,0 +1,5 @@
+
+LOAD DATA LOCAL INFILE 'history_event.csv' INTO TABLE `pss2`.`report_event` FIELDS ESCAPED BY '\\' TERMINATED BY ','LINES TERMINATED BY '\n'  IGNORE 1 LINES (`programName`, `eventName`, `startTime`, `endTime`, @cancelled) set `cancelled`=b'0';
+
+
+LOAD DATA LOCAL INFILE 'History_DailyTempsRTP.csv' INTO TABLE `pss2`.`noaa_weather` FIELDS ESCAPED BY '\\' TERMINATED BY ','LINES TERMINATED BY '\n'  IGNORE 7 LINES (@date, @temp) set `uuid`=REPLACE(uuid(), '-', ''),`date`=@date, `high`=@temp, `forecastHigh0`=0,`forecastHigh1`=0,`forecastHigh2`=0,`forecastHigh3`=0,`forecastHigh4`=0,`forecastHigh5`=0;

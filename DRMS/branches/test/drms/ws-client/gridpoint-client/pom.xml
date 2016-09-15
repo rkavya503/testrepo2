@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>ws-client-parent</artifactId>
+		<groupId>com.akuacom.drms.ws-client</groupId>
+		<version>7.26-SNAPSHOT</version>
+    </parent>
+    <groupId>com.akuacom.drms.ws-client</groupId>
+    <artifactId>gridpoint-client</artifactId>
+    <version>7.26-SNAPSHOT</version>
+	<name>gridpoint-client</name>
+    <dependencies>		
+		<dependency>
+			<groupId>org.apache.ws.commons.axiom</groupId> 
+			<artifactId>axiom-api</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.ws.commons.axiom</groupId> 
+			<artifactId>axiom-impl</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.axis2</groupId> 
+			<artifactId>axis2-adb</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.axis2</groupId> 
+			<artifactId>axis2-kernel</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.axis2</groupId> 
+			<artifactId>axis2-transport-http</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.axis2</groupId> 
+			<artifactId>axis2-transport-local</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-codec</groupId> 
+			<artifactId>commons-codec</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-httpclient</groupId> 
+			<artifactId>commons-httpclient</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>commons-logging</groupId> 
+			<artifactId>commons-logging</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId> 
+			<artifactId>jakarta-httpcore</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.neethi</groupId> 
+			<artifactId>neethi</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId> 
+			<artifactId>servlet-api</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.ws.commons.schema</groupId> 
+			<artifactId>XmlSchema</artifactId> 
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.mail</groupId> 
+			<artifactId>mail</artifactId> 
+		</dependency>
+		
+    </dependencies>
+    <build>
+        <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>          
+        </configuration>
+      </plugin>
+    </plugins>
+    </build>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+</project>

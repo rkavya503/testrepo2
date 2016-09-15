@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ads.caiso.com"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	targetNamespace="http://ads.caiso.com/InstructionDetail">
+	
+	<element name="instructionDetail">
+		<complexType>
+			<sequence>
+				<element minOccurs="0" name="serviceType"
+					type="xsd:string" />
+				<element minOccurs="0" name="mw" type="xsd:double" />
+			</sequence>
+			<attribute name="segNo" type="xsd:int" use="required" />
+		</complexType>
+	</element>
+</schema>

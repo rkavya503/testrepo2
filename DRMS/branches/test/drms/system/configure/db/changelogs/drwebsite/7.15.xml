@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!-- NOTE !!!! -->
+    <!-- If this file is moved, the attribute 'logicalFilePath' *MUST* be 
+        added to the databaseChangeLog tag with a value equal to the previous relative 
+        path of this file from drms/system/configure. For example, if this file was 
+        in trunk/drms/system/configure/db/changelogs/pss2/changelogs.xml and was 
+        moved to trunk/drms/system/configure/database/pss2/chnagelogs.xml, the attribute 
+        logicalFilePath="db/changelogs/pss2/changelogs.xml" must be set or else the 
+        changesets within this file will be re-applied to existing databases. This 
+        could result in undesired behavior. See DRMS-5553 for more info. -->
+    <!-- !!!! -->
+    <!-- See http://liquibase.org/manual/home for documentation -->	
+	<changeSet id="1" author="Linda">		
+		<comment>DRMS-8041	Add event name for CBP program</comment>
+		<addColumn tableName="event">
+            <column name="eventName" type="VARCHAR(64)">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+	</changeSet>
+	<changeSet id="2" author="Liu">		
+		<comment>DRMS-8038 </comment>
+		<sql>
+			insert into `program` (`uuid`, `name`, `utilityName`, `programClass`, `longProgramName`, `creationTime`, `product`) 
+			values(REPLACE(uuid(), '-', ''),'BIP','Time-of-Use Base Interruptible Program','BIP','Time-of-Use Base Interruptible Program',now(),'BIP2013');
+			
+			insert into `program` (`uuid`, `name`, `utilityName`, `programClass`, `longProgramName`, `creationTime`, `product`) 
+			values(REPLACE(uuid(), '-', ''),'CBP 1-4 DO','CBP','CBP','CBP',now(),'CBP 1-4 DO');
+			
+			insert into `program` (`uuid`, `name`, `utilityName`, `programClass`, `longProgramName`, `creationTime`, `product`) 
+			values(REPLACE(uuid(), '-', ''),'CBP 2-6 DO','CBP','CBP','CBP',now(),'CBP 2-6 DO');
+			
+			insert into `program` (`uuid`, `name`, `utilityName`, `programClass`, `longProgramName`, `creationTime`, `product`) 
+			values(REPLACE(uuid(), '-', ''),'CBP 4-8 DO','CBP','CBP','CBP',now(),'CBP 4-8 DO');
+			
+			insert into `program` (`uuid`, `name`, `utilityName`, `programClass`, `longProgramName`, `creationTime`, `product`) 
+			values(REPLACE(uuid(), '-', ''),'CBP 1-4 DA','CBP','CBP','CBP',now(),'CBP 1-4 DA');
+			
+			insert into `program` (`uuid`, `name`, `utilityName`, `programClass`, `longProgramName`, `creationTime`, `product`) 
+			values(REPLACE(uuid(), '-', ''),'CBP 2-6 DA','CBP','CBP','CBP',now(),'CBP 2-6 DA');
+			
+			insert into `program` (`uuid`, `name`, `utilityName`, `programClass`, `longProgramName`, `creationTime`, `product`) 
+			values(REPLACE(uuid(), '-', ''),'CBP 4-8 DA','CBP','CBP','CBP',now(),'CBP 4-8 DA');
+		</sql>
+	</changeSet>
+</databaseChangeLog>

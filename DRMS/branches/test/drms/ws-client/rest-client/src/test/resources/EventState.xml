@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<p:listOfEventState xmlns:p="http://www.openadr.org/DRAS/EventState"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://openadr.lbl.gov/src/1/EventState.xsd">
+	<p:eventStates programName="AKUA" eventModNumber="0"
+		eventIdentifier="AKUA_20091217-102141" drasClientID="test"
+		eventStateID="0" schemaVersion="1.0" drasName="Akuacom 5.0"
+		testEvent="false" offLine="false">
+		<p:simpleDRModeData>
+			<p:EventStatus>ACTIVE</p:EventStatus>
+			<p:OperationModeValue>MODERATE</p:OperationModeValue>
+			<p:currentTime>125</p:currentTime>
+			<p:operationModeSchedule>
+				<p:modeSlot>
+					<p:OperationModeValue>MODERATE</p:OperationModeValue>
+					<p:modeTimeSlot>120</p:modeTimeSlot>
+				</p:modeSlot>
+			</p:operationModeSchedule>
+		</p:simpleDRModeData>
+		<p:drEventData>
+			<p:notificationTime>2009-12-18T10:25:00.0</p:notificationTime>
+			<p:startTime>2009-12-18T10:27:00.0</p:startTime>
+			<p:endTime>2009-12-18T10:30:00.0</p:endTime>
+		</p:drEventData>
+	</p:eventStates>
+</p:listOfEventState>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="scorecard" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="208"/>
+	<style name="table">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="1.0" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#8FCCCC">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#CFE6E6">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#FFFFFF"/>
+			<bottomPen lineWidth="0.5" lineColor="#FFFFFF"/>
+		</box>
+	</style>
+	<parameter name="eventName" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportDateRange" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="advNotification" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="reportDuration" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="totProgramRegShed" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="availableRegShed" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="rteRegisteredShed" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="rteAverageActualShed" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\chris\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="programName" class="java.lang.String"/>
+	<parameter name="eventStartDate" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="eventEndDate" class="java.lang.String"/>
+	<parameter name="numProgPart" class="java.lang.String"/>
+	<parameter name="avProgPart" class="java.lang.String"/>
+	<parameter name="numUsageEnabled" class="java.lang.String"/>
+	<parameter name="startOfDay" class="java.lang.String"/>
+	<parameter name="endOfDay" class="java.lang.String"/>
+	<parameter name="rteRegShed" class="java.lang.Double"/>
+	<parameter name="rteAveActShed" class="java.lang.Double"/>
+	<field name="time" class="java.util.Date"/>
+	<field name="actualValue" class="java.lang.Double"/>
+	<field name="baselineValue" class="java.lang.Double"/>
+	<field name="startLine" class="java.lang.Double"/>
+	<field name="endLine" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="279" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="12" y="208" width="529" height="62" backcolor="#99CCFF"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="12" y="159" width="529" height="41" backcolor="#C7DFF7"/>
+			</rectangle>
+			<rectangle radius="10">
+				<reportElement x="12" y="68" width="529" height="83" backcolor="#99CCFF"/>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="39" isPrintInFirstWholeBand="true" forecolor="#FFFFFF" backcolor="#4A75B5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Scorecard]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="39" width="555" height="20" forecolor="#FFFFFF" backcolor="#88B8DD"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Event Statistics]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="281" y="68" width="248" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{programName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="89" width="107" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{eventStartDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="89" width="109" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{eventEndDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="110" width="248" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{advNotification}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="131" width="248" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{reportDuration}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="160" width="248" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{numProgPart}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="180" width="246" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{totProgramRegShed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="230" width="248" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{availableRegShed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="250" width="218" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{rteAverageActualShed}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="210" width="246" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{avProgPart}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="68" width="258" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Program]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="89" width="258" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Event Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="110" width="258" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Event Advanced Notification]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="131" width="258" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Event Duration]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="160" width="258" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Program Enrollment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="180" width="258" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Program Registered Shed (per Hour)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="89" width="21" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="208" width="258" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Available Participants]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="230" width="282" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Available Participants - Registered Shed (per hour)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="250" width="299" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Available Participants - Average Actual Shed (per hour)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="518">
+			<timeSeriesChart>
+				<chart customizerClass="com.akuacom.pss2.opt.report.scorecard.LineChartCustomizer">
+					<reportElement x="4" y="25" width="548" height="329"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<timeSeriesDataset timePeriod="Minute">
+					<timeSeries>
+						<seriesExpression><![CDATA["Actual"]]></seriesExpression>
+						<timePeriodExpression><![CDATA[$F{time}]]></timePeriodExpression>
+						<valueExpression><![CDATA[$F{actualValue}]]></valueExpression>
+					</timeSeries>
+					<timeSeries>
+						<seriesExpression><![CDATA["Baseline"]]></seriesExpression>
+						<timePeriodExpression><![CDATA[$F{time}]]></timePeriodExpression>
+						<valueExpression><![CDATA[$F{baselineValue}]]></valueExpression>
+					</timeSeries>
+					<timeSeries>
+						<seriesExpression><![CDATA["Event Start"]]></seriesExpression>
+						<timePeriodExpression><![CDATA[$F{time}]]></timePeriodExpression>
+						<valueExpression><![CDATA[$F{startLine}]]></valueExpression>
+					</timeSeries>
+					<timeSeries>
+						<seriesExpression><![CDATA["Event End"]]></seriesExpression>
+						<timePeriodExpression><![CDATA[$F{time}]]></timePeriodExpression>
+						<valueExpression><![CDATA[$F{endLine}]]></valueExpression>
+					</timeSeries>
+				</timeSeriesDataset>
+				<timeSeriesPlot isShowShapes="false">
+					<plot/>
+					<timeAxisFormat>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
+					</timeAxisFormat>
+					<valueAxisLabelExpression><![CDATA["kW"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
+					</valueAxisFormat>
+				</timeSeriesPlot>
+			</timeSeriesChart>
+			<bar3DChart>
+				<chart customizerClass="com.akuacom.pss2.opt.report.scorecard.Bar3DChartCustomizer">
+					<reportElement x="152" y="394" width="257" height="124"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["Registered Available Shed"]]></seriesExpression>
+						<categoryExpression><![CDATA[""]]></categoryExpression>
+						<valueExpression><![CDATA[$P{rteRegShed}]]></valueExpression>
+						<labelExpression><![CDATA[$P{rteRegShed}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["Actual Available Shed"]]></seriesExpression>
+						<categoryExpression><![CDATA[""]]></categoryExpression>
+						<valueExpression><![CDATA[$P{rteAveActShed}]]></valueExpression>
+						<labelExpression><![CDATA[$P{rteAveActShed}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot isShowLabels="true">
+					<plot/>
+					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
+					<categoryAxisFormat>
+						<axisFormat verticalTickLabels="true">
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["kW"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#FFFFFF" backcolor="#88B8DD"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Event Load Shed]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

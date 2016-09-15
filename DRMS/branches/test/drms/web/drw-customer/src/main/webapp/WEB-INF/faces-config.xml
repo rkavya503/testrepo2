@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="1.2" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd">
+	
+	<application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <!-- <supported-locale>XXX</supported-locale>-->
+        </locale-config>
+	        
+        <view-handler>com.akuacom.jsf.view.RestoreAnywayViewHandler</view-handler>
+    </application>
+			    
+	<!--custom jsf tag with better accessibility support -->
+	<component>
+  		<description>A tab section within a tab panel</description>
+        <component-type>com.akuacom.jsf.Tab</component-type>
+    	<component-class>com.akuacom.jsf.component.HtmlTab</component-class>
+	    <component-extension>
+      		<component-family>com.akuacom.jsf.Tab</component-family>
+      		<renderer-type>com.akuacom.jsf.TabRenderer</renderer-type>
+    	</component-extension>
+     </component>
+	<component>
+  		<description>Command Link</description>
+        <component-type>com.akuacom.jsf.CommandLink</component-type>
+    	<component-class>com.akuacom.jsf.component.HtmlCommandLink</component-class>
+	    <component-extension>
+      		<component-family>javax.faces.Command</component-family>
+      		<renderer-type>com.akuacom.jsf.CommandLinkRenderer</renderer-type>
+    	</component-extension>
+     </component>
+	
+	
+	<component>
+  		<description>The &amp;lt;richext:dataTable&amp;gt; component for tables rendering that allows choosing data from a model and obtains built-in support of Ajax updates.</description>
+        <component-type>com.akuacom.jsf.DataTable</component-type>
+    	<component-class>com.akuacom.jsf.component.ExtendedHtmlDataTable</component-class>
+    
+		<facet>
+  			<description>Defines the footer content</description>
+          	<facet-name>footer</facet-name>
+    	</facet>
+		<facet>
+  			<description>Defines the caption content</description>
+          	<facet-name>caption</facet-name>
+    	</facet>
+		<facet>
+  			<description>Defines the header content</description>
+          	<facet-name>header</facet-name>
+    	</facet>
+	    <component-extension>
+      		<component-family>com.akuacom.jsf.DataTable</component-family>
+      		<renderer-type>com.akuacom.jsf.DataTableRenderer</renderer-type>
+    	</component-extension>
+    </component>
+	
+	<!-- Customer renderkit to improve accessibility to existing JSF components -->
+	<render-kit>
+		<renderer>
+			<component-family>org.richfaces.Calendar</component-family>
+			<renderer-type>org.richfaces.CalendarRenderer</renderer-type>
+			<renderer-class>com.akuacom.jsf.renderkit.AccessibleCalendarRenderer</renderer-class>
+		</renderer>
+		<renderer>
+			<display-name>Accessible CommandLink</display-name>
+			<component-family>javax.faces.Command</component-family>
+			<renderer-type>com.akuacom.jsf.CommandLinkRenderer</renderer-type>
+			<renderer-class>com.akuacom.jsf.renderkit.AccessibleCommandLinkRender</renderer-class>
+		</renderer>
+		<renderer>
+			<component-family>org.richfaces.Datascroller</component-family>
+			<renderer-type>org.richfaces.DataScrollerRenderer</renderer-type>
+			<renderer-class>com.akuacom.jsf.renderkit.AccessibleDatascrollerRenderer</renderer-class>
+		</renderer>
+		<renderer>
+			<component-family>org.richfaces.DataTable</component-family>
+			<renderer-type>org.richfaces.DataTableRenderer</renderer-type>
+			<renderer-class>com.akuacom.jsf.renderkit.AccessibleDataTableRenderer</renderer-class>
+		</renderer>
+		<renderer>
+			<component-family>com.akuacom.jsf.Tab</component-family>
+			<renderer-type>com.akuacom.jsf.TabRenderer</renderer-type>
+			<renderer-class>com.akuacom.jsf.renderkit.AccessibleTabRenderer</renderer-class>
+		</renderer>
+		<renderer>
+			<component-family>javax.faces.Message</component-family>
+			<renderer-type>javax.faces.Message</renderer-type>
+			<renderer-class>
+				com.akuacom.jsf.renderkit.AccessibleMessageRenderer
+			</renderer-class>
+		</renderer>		
+		 <renderer>
+    	  	<component-family>javax.faces.Messages</component-family>
+      		<renderer-type>javax.faces.Messages</renderer-type>
+      		<renderer-class>
+        		com.akuacom.jsf.renderkit.AccessibleMessagesRenderer
+        	</renderer-class>
+        </renderer>
+        <renderer>
+        	<component-family>javax.faces.Form</component-family>
+      		<renderer-type>javax.faces.Form</renderer-type>
+      		<renderer-class>
+        		com.akuacom.jsf.renderkit.AccessibleFormRenderer
+        	</renderer-class>
+        </renderer>
+	</render-kit>
+	
+	<managed-bean>
+		<description>eventCache</description>
+		<managed-bean-name>eventCache</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.model.EventCache</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<description>drFrame</description>
+		<managed-bean-name>drFrame</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.jsf.DRFrameBackingBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>drListView</description>
+		<managed-bean-name>drListView</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.jsf.ListViewUIBackingBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+        <description>drMapView</description>
+        <managed-bean-name>drMapView</managed-bean-name>
+        <managed-bean-class>com.akuacom.pss2.drw.jsf.MapViewUIBackingBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+	<managed-bean>
+		<description>drKiosk</description>
+		<managed-bean-name>drKiosk</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.jsf.KioskUIBackingBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>	
+	<managed-bean>
+		<description>drTextContext</description>
+		<managed-bean-name>drTextContext</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.jsf.TextContextBackingBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<description>drBlockView</description>
+		<managed-bean-name>drBlockView</managed-bean-name>
+		<managed-bean-class>com.akuacom.pss2.drw.jsf.block.BlockUIBackingBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>	
+	<converter>
+		<converter-id>drEventStartTimeCalendarConverter</converter-id>
+		<converter-class>com.akuacom.pss2.drw.converter.DREventStartTimeCalendarConverter</converter-class>
+	</converter>
+	<converter>
+		<converter-id>drEventEndTimeCalendarConverter</converter-id>
+		<converter-class>com.akuacom.pss2.drw.converter.DREventEndTimeCalendarConverter</converter-class>
+	</converter>
+</faces-config>

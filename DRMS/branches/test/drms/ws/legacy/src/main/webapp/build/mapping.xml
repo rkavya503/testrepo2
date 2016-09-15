@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee    http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd">
+  <package-mapping>
+    <package-type>com.akuacom.pss2</package-type>
+    <namespaceURI>http://pss2.lbl.gov</namespaceURI>
+  </package-mapping>
+  <package-mapping>
+    <package-type>com.akuacom.pss2</package-type>
+    <namespaceURI>http://pss2.lbl.gov</namespaceURI>
+  </package-mapping>
+  <java-xml-type-mapping>
+    <java-type>com.akuacom.pss2.util.PriceScheduleEntry</java-type>
+    <root-type-qname xmlns:typeNS="http://pss2.lbl.gov">typeNS:PriceScheduleEntry</root-type-qname>
+    <qname-scope>complexType</qname-scope>
+    <variable-mapping>
+      <java-variable-name>date</java-variable-name>
+      <xml-element-name>date</xml-element-name>
+    </variable-mapping>
+    <variable-mapping>
+      <java-variable-name>priceDPKWH</java-variable-name>
+      <xml-element-name>priceDPKWH</xml-element-name>
+    </variable-mapping>
+  </java-xml-type-mapping>
+  <java-xml-type-mapping>
+    <java-type>com.akuacom.pss2.util.PriceSchedule</java-type>
+    <root-type-qname xmlns:typeNS="http://pss2.lbl.gov">typeNS:PriceSchedule</root-type-qname>
+    <qname-scope>complexType</qname-scope>
+    <variable-mapping>
+      <java-variable-name>currentPriceDPKWH</java-variable-name>
+      <xml-element-name>currentPriceDPKWH</xml-element-name>
+    </variable-mapping>
+    <variable-mapping>
+      <java-variable-name>entries</java-variable-name>
+      <xml-element-name>entries</xml-element-name>
+    </variable-mapping>
+  </java-xml-type-mapping>
+  <service-interface-mapping>
+    <service-interface>com.akuacom.pss2.PSS2WS</service-interface>
+    <wsdl-service-name xmlns:serviceNS="http://pss2.lbl.gov">serviceNS:PSS2WS</wsdl-service-name>
+    <port-mapping>
+      <port-name>PSS2WSSEIPort</port-name>
+      <java-port-name>PSS2WSSEIPort</java-port-name>
+    </port-mapping>
+  </service-interface-mapping>
+  <service-endpoint-interface-mapping>
+    <service-endpoint-interface>com.akuacom.pss2.clientws.legacy.PSS2WSSEI</service-endpoint-interface>
+    <wsdl-port-type xmlns:portTypeNS="http://pss2.lbl.gov">portTypeNS:PSS2WSSEI</wsdl-port-type>
+    <wsdl-binding xmlns:bindingNS="http://pss2.lbl.gov">bindingNS:PSS2WSSEIBinding</wsdl-binding>
+    <service-endpoint-method-mapping>
+      <java-method-name>getPrice</java-method-name>
+      <wsdl-operation>getPrice</wsdl-operation>
+      <method-param-parts-mapping>
+        <param-position>0</param-position>
+        <param-type>double</param-type>
+        <wsdl-message-mapping>
+          <wsdl-message xmlns:wsdlMsgNS="http://pss2.lbl.gov">wsdlMsgNS:PSS2WSSEI_getPrice</wsdl-message>
+          <wsdl-message-part-name>double_1</wsdl-message-part-name>
+          <parameter-mode>IN</parameter-mode>
+        </wsdl-message-mapping>
+      </method-param-parts-mapping>
+      <wsdl-return-value-mapping>
+        <method-return-value>double</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://pss2.lbl.gov">wsdlMsgNS:PSS2WSSEI_getPriceResponse</wsdl-message>
+        <wsdl-message-part-name>result</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+    <service-endpoint-method-mapping>
+      <java-method-name>getPriceSchedule</java-method-name>
+      <wsdl-operation>getPriceSchedule</wsdl-operation>
+      <method-param-parts-mapping>
+        <param-position>0</param-position>
+        <param-type>com.akuacom.pss2.util.PriceSchedule</param-type>
+        <wsdl-message-mapping>
+          <wsdl-message xmlns:wsdlMsgNS="http://pss2.lbl.gov">wsdlMsgNS:PSS2WSSEI_getPriceSchedule</wsdl-message>
+          <wsdl-message-part-name>PriceSchedule_1</wsdl-message-part-name>
+          <parameter-mode>IN</parameter-mode>
+        </wsdl-message-mapping>
+      </method-param-parts-mapping>
+      <wsdl-return-value-mapping>
+        <method-return-value>com.akuacom.pss2.util.PriceSchedule</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://pss2.lbl.gov">wsdlMsgNS:PSS2WSSEI_getPriceScheduleResponse</wsdl-message>
+        <wsdl-message-part-name>result</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+    <service-endpoint-method-mapping>
+      <java-method-name>isAPEEventPending</java-method-name>
+      <wsdl-operation>isAPEEventPending</wsdl-operation>
+      <wsdl-return-value-mapping>
+        <method-return-value>boolean</method-return-value>
+        <wsdl-message xmlns:wsdlMsgNS="http://pss2.lbl.gov">wsdlMsgNS:PSS2WSSEI_isAPEEventPendingResponse</wsdl-message>
+        <wsdl-message-part-name>result</wsdl-message-part-name>
+      </wsdl-return-value-mapping>
+    </service-endpoint-method-mapping>
+  </service-endpoint-interface-mapping>
+</java-wsdl-mapping>

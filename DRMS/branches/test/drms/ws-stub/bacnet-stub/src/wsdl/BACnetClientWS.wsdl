@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="bacnet" targetNamespace="urn:bacnet-web-services"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+	xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+	xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:ns="urn:bacnet_ws"
+	xmlns:tns="urn:bacnet-web-services"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<types>
+		<schema targetNamespace="urn:bacnet-web-services"
+			xmlns="http://www.w3.org/2001/XMLSchema"
+			attributeFormDefault="unqualified"
+			elementFormDefault="unqualified">
+			<import
+				namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+			<complexType name="ArrayOfstring">
+				<sequence>
+					<element maxOccurs="unbounded" minOccurs="0"
+						name="item" type="xsd:string" />
+				</sequence>
+			</complexType>
+			<element name="result" type="xsd:string" />
+			<element name="options" type="xsd:string" />
+			<element name="path" type="xsd:string" />
+			<element name="basePath" type="xsd:string" />
+			<element name="index" type="xsd:unsignedInt" />
+			<element name="count" type="xsd:unsignedInt" />
+			<element name="value" type="xsd:string" />
+			<element name="start" type="xsd:string" />
+			<element name="interval" type="xsd:string" />
+			<element name="response" type="xsd:hexBinary" />
+			<element name="request" type="xsd:hexBinary" />
+		</schema>
+
+	</types>
+
+	<message name="getValueRequest">
+		<part name="options" type="xsd:string" />
+		<part name="path" type="xsd:string" />
+	</message>
+
+	<message name="getValueResponse">
+		<part name="result" type="xsd:string" />
+	</message>
+
+	<message name="setValueRequest">
+		<part name="options" type="xsd:string" />
+		<part name="path" type="xsd:string" />
+		<part name="value" type="xsd:string" />
+	</message>
+
+	<message name="setValueResponse">
+		<part name="result" type="xsd:string" />
+	</message>
+
+	<message name="getDefaultLocaleRequest">
+		<part name="options" type="xsd:string" />
+	</message>
+
+	<message name="getDefaultLocaleResponse">
+		<part name="result" type="xsd:string" />
+	</message>
+
+	<message name="getSupportedLocalsRequest">
+		<part name="options" type="xsd:string" />
+	</message>
+
+	<message name="getSupportedLocalsResponse">
+		<part name="results" type="tns:ArrayOfstring" />
+	</message>
+
+	<portType name="bacnetPortType">
+		<operation name="getValue">
+			<documentation>
+				Service definition of function ns__getValue
+			</documentation>
+			<input message="tns:getValueRequest" />
+			<output message="tns:getValueResponse" />
+		</operation>
+		<operation name="setValue">
+			<documentation>
+				Service definition of function ns__setValue
+			</documentation>
+			<input message="tns:setValueRequest" />
+			<output message="tns:setValueResponse" />
+		</operation>
+		<operation name="getDefaultLocale">
+			<documentation>
+				Service definition of function ns__getDefaultLocale
+			</documentation>
+			<input message="tns:getDefaultLocaleRequest" />
+			<output message="tns:getDefaultLocaleResponse" />
+		</operation>
+		<operation name="getSupportedLocals">
+			<documentation>
+				Service definition of function ns__getSupportedLocals
+			</documentation>
+			<input message="tns:getSupportedLocalsRequest" />
+			<output message="tns:getSupportedLocalsResponse" />
+		</operation>
+	</portType>
+
+	<binding name="bacnet" type="tns:bacnetPortType">
+		<SOAP:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="getValue">
+			<SOAP:operation soapAction="" style="rpc" />
+			<input>
+				<SOAP:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:bacnet_ws" use="literal" />
+			</input>
+			<output>
+				<SOAP:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:bacnet_ws" use="literal" />
+			</output>
+		</operation>
+		<operation name="setValue">
+			<SOAP:operation soapAction="" style="rpc" />
+			<input>
+				<SOAP:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:bacnet_ws" use="literal" />
+			</input>
+			<output>
+				<SOAP:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:bacnet_ws" use="literal" />
+			</output>
+		</operation>
+		<operation name="getDefaultLocale">
+			<SOAP:operation soapAction="" style="rpc" />
+			<input>
+				<SOAP:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:bacnet_ws" use="literal" />
+			</input>
+			<output>
+				<SOAP:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:bacnet_ws" use="literal" />
+			</output>
+		</operation>
+		<operation name="getSupportedLocals">
+			<SOAP:operation soapAction="" style="rpc" />
+			<input>
+				<SOAP:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:bacnet_ws" use="literal" />
+			</input>
+			<output>
+				<SOAP:body
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					namespace="urn:bacnet_ws" use="literal" />
+			</output>
+		</operation>
+	</binding>
+
+	<service name="bacnet">
+		<documentation>DRAS bacnet</documentation>
+		<port binding="tns:bacnet" name="bacnet">
+			<SOAP:address
+				location="http://bacnet.openadr.com/DRASClientWS/bacnet" />
+		</port>
+	</service>
+
+</definitions>

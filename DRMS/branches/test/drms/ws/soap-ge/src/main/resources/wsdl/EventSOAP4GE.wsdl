@@ -1,0 +1,56 @@
+<definitions name='EventSOAPWS4GEImplService' targetNamespace='http://www.openadr.org/DRAS/EventSOAP4GE/' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://www.openadr.org/DRAS/EventSOAP4GE/' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xs:schema targetNamespace='http://www.openadr.org/DRAS/EventSOAP4GE/' version='1.0' xmlns:tns='http://www.openadr.org/DRAS/EventSOAP4GE/' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:element name='SubmitAdrEvent' type='tns:SubmitAdrEvent'/>
+   <xs:element name='SubmitAdrEventResponse' type='tns:SubmitAdrEventResponse'/>
+   <xs:complexType name='SubmitAdrEvent'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='SubmitAdrEventStc' type='tns:SubmitAdrEventStc'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='SubmitAdrEventStc'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='ADRSite' type='xs:string'/>
+     <xs:element minOccurs='0' name='StartTime' type='xs:string'/>
+     <xs:element minOccurs='0' name='EndTime' type='xs:string'/>
+     <xs:element minOccurs='0' name='EventName' type='xs:string'/>
+     <xs:element minOccurs='0' name='ShedAmount' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='SubmitAdrEventResponse'>
+    <xs:sequence>
+     <xs:element form='qualified' minOccurs='0' name='returnValue' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+  </xs:schema>
+ </types>
+ <message name='DRASEventSOAP4GE_SubmitAdrEvent'>
+  <part element='tns:SubmitAdrEvent' name='SubmitAdrEvent'></part>
+ </message>
+ <message name='DRASEventSOAP4GE_SubmitAdrEventResponse'>
+  <part element='tns:SubmitAdrEventResponse' name='SubmitAdrEventResponse'></part>
+ </message>
+ <portType name='DRASEventSOAP4GE'>
+  <operation name='SubmitAdrEvent' parameterOrder='SubmitAdrEvent'>
+   <input message='tns:DRASEventSOAP4GE_SubmitAdrEvent'></input>
+   <output message='tns:DRASEventSOAP4GE_SubmitAdrEventResponse'></output>
+  </operation>
+ </portType>
+ <binding name='DRASEventSOAP4GEBinding' type='tns:DRASEventSOAP4GE'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='SubmitAdrEvent'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+ </binding>
+ <service name='EventSOAPWS4GEImplService'>
+  <port binding='tns:DRASEventSOAP4GEBinding' name='DRASEventSOAP4GEPort'>
+   <soap:address location='http://127.0.0.1:8080/SOAPEventWS4GE/nossl/soap4GE'/>
+  </port>
+ </service>
+</definitions>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+    <mbean code="com.akuacom.pss2.singleton.HATimerSingleton"
+      name="jboss.ha:service=AkuaSingletonsController">
+      <!-- Dependency to control where is deployed, 
+      only will be deployed to master node in a cluster, 
+      this dependency can be removed (except production) to deploy anywhere or to develop it -->
+      <depends>jboss.ha:service=HASingletonDeployer,type=Barrier</depends>
+   </mbean>   
+</server>

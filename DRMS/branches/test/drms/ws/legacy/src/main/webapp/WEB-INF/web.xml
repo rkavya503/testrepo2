@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress WebProperties -->
+<web-app version="2.5"   
+    xmlns="http://java.sun.com/xml/ns/javaee"   
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>PSS2WS</display-name>
+    <servlet>
+        <display-name>PSS2WS</display-name>
+        <servlet-name>PSS2WS</servlet-name>
+        <servlet-class>com.akuacom.pss2.clientws.legacy.PSS2WS</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PSS2WS</servlet-name>
+        <url-pattern>/PSS2WS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PSS2WS</servlet-name>
+        <url-pattern>/nossl/PSS2WS</url-pattern>
+    </servlet-mapping>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>PSS2WS</web-resource-name>
+            <url-pattern>/nossl/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>PSS2WS</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+         </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>PSS2WS</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>PSS2WS</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+         </user-data-constraint>
+    </security-constraint>
+    <login-config>
+         <auth-method>BASIC</auth-method>
+        <realm-name>PSS2WS</realm-name>
+    </login-config>
+    <security-role>
+        <description>PSS2WS</description>
+        <role-name>PSS2WS</role-name>
+    </security-role>
+</web-app>

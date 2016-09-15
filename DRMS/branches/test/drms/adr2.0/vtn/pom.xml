@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>adr2-parent</artifactId>
+		<groupId>com.akuacom.drms.adr2</groupId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+	<groupId>com.akuacom.drms.adr2</groupId>
+	<artifactId>vtn</artifactId>
+	<version>7.26-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>vtn</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.akuacom.drms.adr2</groupId>
+			<artifactId>vtn_api</artifactId>
+		</dependency>
+		<dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>com.honeywell.dras</groupId>
+			<artifactId>openadr</artifactId>
+			<version>8.4.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.honeywell.dras.openadr2</groupId>
+			<artifactId>eipayloads</artifactId>
+			<version>8.4.3.2</version>
+		</dependency> 
+		<dependency>
+			<groupId>com.akuacom.drms.core</groupId>
+			<artifactId>drms-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.akuacom.drms.core</groupId>
+			<artifactId>drms-core-ejb</artifactId>
+		</dependency>		
+	</dependencies>
+</project>

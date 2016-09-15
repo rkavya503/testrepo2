@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   	<parent>
+		<artifactId>common-parent</artifactId>
+		<groupId>com.akuacom.common</groupId>
+		<version>7.26-SNAPSHOT</version>
+	</parent>
+	<groupId>com.akuacom.common</groupId>
+	<artifactId>drms-logger</artifactId>
+	<version>7.26-SNAPSHOT</version>
+	<name>drms-logger</name>
+    <packaging>jar</packaging>	
+	<description> 
+		extension for log4j to support custom fields in log, and others
+	</description>
+   <dependencies>
+       <dependency>
+           <groupId>log4j</groupId>
+           <artifactId>log4j</artifactId>
+       </dependency>
+      <dependency>
+         <groupId>com.kanaeki.firelog.lib</groupId>
+         <artifactId>firelog-util</artifactId>
+      </dependency>
+	  <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+      </dependency>
+	  <dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjrt</artifactId>
+		<scope>compile</scope>
+	</dependency>
+  </dependencies>
+</project>

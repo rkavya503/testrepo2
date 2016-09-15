@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?><Job><UserReference>5a0ec4d3-4100-4f</UserReference><Command>submit</Command><Message><Subject><![CDATA[Voluntary participation Curtailment Notification]]></Subject><MessageArg><Name>SENDER</Name><Value><![CDATA[Inter-Act]]></Value></MessageArg><MessageArg><Name>BODY</Name><Value><![CDATA[
+
+Meter(s):	GEP/LBNL DBP TEST ACCOUNT
+Event ID:	4207
+Program:	DBP - Auto Day-of DBP
+Type:		Voluntary participation
+Settlement:	Baseline - Actual
+
+Event Date:	8/16/2007
+Start:	16:00 PDT
+End:		18:00 PDT
+
+Respond By:	2007/08/16 15:45 PDT
+
+PRICES:
+16:00 to 17:00 at 0.5 $/KWH
+17:00 to 18:00 at 0.5 $/KWH
+
+
+Please respond to the notice at http://63.82.251.15/pge]]></Value></MessageArg><MessageArg><Name>EMAIL_ADDR</Name><Value><![CDATA[Inter-Act]]></Value></MessageArg><MessageArg><Name>EventID</Name><Value><![CDATA[4207]]></Value></MessageArg><MessageArg><Name>IsTestEvent</Name><Value><![CDATA[False]]></Value></MessageArg><MessageArg><Name>EventCondition</Name><Value><![CDATA[EventIssued]]></Value></MessageArg><MessageArg><Name>MeterName</Name><Value><![CDATA[GEP/LBNL DBP TEST ACCOUNT]]></Value></MessageArg><MessageArg><Name>MeterDescription</Name><Value><![CDATA[GEP/LBNL DBP TEST ACCOUNT]]></Value></MessageArg><MessageArg><Name>ProgramName</Name><Value><![CDATA[DBP - Auto Day-of DBP]]></Value></MessageArg><MessageArg><Name>ProgramType</Name><Value><![CDATA[Voluntary participation]]></Value></MessageArg><MessageArg><Name>ServicePointID</Name><Value><![CDATA[GEP_LBNL_DBP_TEST_ACCOUNT]]></Value></MessageArg><MessageArg><Name>Account ID</Name><Value><![CDATA[1234567890_GEP_LBNL_DBP_TEST_ACCOUNT]]></Value></MessageArg><MessageArg><Name>Account number</Name><Value><![CDATA[1234567890]]></Value></MessageArg><MessageArg><Name>SettlementType</Name><Value><![CDATA[Baseline - Actual]]></Value></MessageArg><MessageArg><Name>EventStartDate</Name><Value><![CDATA[2007-08-16T16:00:00]]></Value></MessageArg><MessageArg><Name>EventEndDate</Name><Value><![CDATA[2007-08-16T18:00:00]]></Value></MessageArg><MessageArg><Name>TimeZone</Name><Value><![CDATA[PDT]]></Value></MessageArg><MessageArg><Name>RespondBy</Name><Value><![CDATA[2007-08-16T15:45:00]]></Value></MessageArg><MessageArg><Name>OperatorMessage</Name><Value><![CDATA[]]></Value></MessageArg><MessageArg><Name>URL</Name><Value><![CDATA[http://63.82.251.15/pge]]></Value></MessageArg><MessageArg><Name>EnergyUnit</Name><Value><![CDATA[KWH]]></Value></MessageArg><MessageArg><Name>EnergyPriceUnit</Name><Value><![CDATA[$/KWH]]></Value></MessageArg><MessageArg><Name>BlockStartDate1</Name><Value><![CDATA[2007-08-16T16:00:00]]></Value></MessageArg><MessageArg><Name>BlockEndDate1</Name><Value><![CDATA[2007-08-16T17:00:00]]></Value></MessageArg><MessageArg><Name>BlockPrice1</Name><Value><![CDATA[0.5]]></Value></MessageArg><MessageArg><Name>BlockStartDate2</Name><Value><![CDATA[2007-08-16T17:00:00]]></Value></MessageArg><MessageArg><Name>BlockEndDate2</Name><Value><![CDATA[2007-08-16T18:00:00]]></Value></MessageArg><MessageArg><Name>BlockPrice2</Name><Value><![CDATA[0.5]]></Value></MessageArg></Message><Contact><FirstName><![CDATA[adrlbl@lbl.gov]]></FirstName><LastName><![CDATA[]]></LastName><ContactMethod><Transport>email</Transport><Ordinal>0</Ordinal><EmailAddress><![CDATA[adrlbl@lbl.gov]]></EmailAddress></ContactMethod></Contact><Block><DeliveryRequest><MessagePath>Message[1]</MessagePath><ContactMethodPath>Contact[1]/ContactMethod[1]</ContactMethodPath></DeliveryRequest></Block><Message><Subject><![CDATA[Voluntary participation Curtailment Notification]]></Subject><MessageArg><Name>SENDER</Name><Value><![CDATA[Inter-Act]]></Value></MessageArg><MessageArg><Name>BODY</Name><Value><![CDATA[
+
+Meter(s):	GEP/LBNL DBP TEST ACCOUNT
+Event ID:	4207
+Program:	DBP - Auto Day-of DBP
+Type:		Voluntary participation
+Settlement:	Baseline - Actual
+
+Event Date:	8/16/2007
+Start:	16:00 PDT
+End:		18:00 PDT
+
+Respond By:	2007/08/16 15:45 PDT
+
+PRICES:
+16:00 to 17:00 at 0.5 $/KWH
+17:00 to 18:00 at 0.5 $/KWH
+
+
+Please respond to the notice at http://63.82.251.15/pge]]></Value></MessageArg><MessageArg><Name>EMAIL_ADDR</Name><Value><![CDATA[Inter-Act]]></Value></MessageArg><MessageArg><Name>EventID</Name><Value><![CDATA[4207]]></Value></MessageArg><MessageArg><Name>IsTestEvent</Name><Value><![CDATA[False]]></Value></MessageArg><MessageArg><Name>EventCondition</Name><Value><![CDATA[EventIssued]]></Value></MessageArg><MessageArg><Name>MeterName</Name><Value><![CDATA[GEP/LBNL DBP TEST ACCOUNT]]></Value></MessageArg><MessageArg><Name>MeterDescription</Name><Value><![CDATA[GEP/LBNL DBP TEST ACCOUNT]]></Value></MessageArg><MessageArg><Name>ProgramName</Name><Value><![CDATA[DBP - Auto Day-of DBP]]></Value></MessageArg><MessageArg><Name>ProgramType</Name><Value><![CDATA[Voluntary participation]]></Value></MessageArg><MessageArg><Name>ServicePointID</Name><Value><![CDATA[GEP_LBNL_DBP_TEST_ACCOUNT]]></Value></MessageArg><MessageArg><Name>Account ID</Name><Value><![CDATA[1234567890_GEP_LBNL_DBP_TEST_ACCOUNT]]></Value></MessageArg><MessageArg><Name>Account number</Name><Value><![CDATA[1234567890]]></Value></MessageArg><MessageArg><Name>SettlementType</Name><Value><![CDATA[Baseline - Actual]]></Value></MessageArg><MessageArg><Name>EventStartDate</Name><Value><![CDATA[2007-08-16T16:00:00]]></Value></MessageArg><MessageArg><Name>EventEndDate</Name><Value><![CDATA[2007-08-16T18:00:00]]></Value></MessageArg><MessageArg><Name>TimeZone</Name><Value><![CDATA[PDT]]></Value></MessageArg><MessageArg><Name>RespondBy</Name><Value><![CDATA[2007-08-16T15:45:00]]></Value></MessageArg><MessageArg><Name>OperatorMessage</Name><Value><![CDATA[]]></Value></MessageArg><MessageArg><Name>URL</Name><Value><![CDATA[http://63.82.251.15/pge]]></Value></MessageArg><MessageArg><Name>EnergyUnit</Name><Value><![CDATA[KWH]]></Value></MessageArg><MessageArg><Name>EnergyPriceUnit</Name><Value><![CDATA[$/KWH]]></Value></MessageArg><MessageArg><Name>BlockStartDate1</Name><Value><![CDATA[2007-08-16T16:00:00]]></Value></MessageArg><MessageArg><Name>BlockEndDate1</Name><Value><![CDATA[2007-08-16T17:00:00]]></Value></MessageArg><MessageArg><Name>BlockPrice1</Name><Value><![CDATA[0.5]]></Value></MessageArg><MessageArg><Name>BlockStartDate2</Name><Value><![CDATA[2007-08-16T17:00:00]]></Value></MessageArg><MessageArg><Name>BlockEndDate2</Name><Value><![CDATA[2007-08-16T18:00:00]]></Value></MessageArg><MessageArg><Name>BlockPrice2</Name><Value><![CDATA[0.5]]></Value></MessageArg></Message><Contact><FirstName><![CDATA[pgeauto-dr@gepllc.com]]></FirstName><LastName><![CDATA[]]></LastName><ContactMethod><Transport>email</Transport><Ordinal>0</Ordinal><EmailAddress><![CDATA[dgranlund@gepllc.com]]></EmailAddress></ContactMethod></Contact><Block><DeliveryRequest><MessagePath>Message[2]</MessagePath><ContactMethodPath>Contact[2]/ContactMethod[1]</ContactMethodPath></DeliveryRequest></Block></Job>

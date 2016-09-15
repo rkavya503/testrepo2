@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://ads.caiso.com"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ns0="http://ads.caiso.com/InstructionDetail"
+	elementFormDefault="qualified"
+	targetNamespace="http://ads.caiso.com">
+
+	<import schemaLocation="InstructionDetail.xsd"
+		namespace="http://ads.caiso.com/InstructionDetail" />
+
+	<element name="DispatchBatch">
+		<complexType>
+			<sequence>
+				<element name="marketID" type="xsd:string" />
+				<element name="batchStatus" type="xsd:int" />
+				<element name="batchReceived" type="xsd:dateTime" />
+				<element minOccurs="0" name="batchSent"
+					type="xsd:dateTime" />
+				<element minOccurs="0" name="batchExpires"
+					type="xsd:dateTime" />
+				<element name="batchType" type="xsd:int" />
+				<element name="startTime" type="xsd:dateTime" />
+				<element name="dispatchMode" type="xsd:int" />
+				<element name="bindingFlag" type="xsd:string" />
+				<element name="revisionNo" type="xsd:int" />
+				<element minOccurs="0" name="instructions">
+					<complexType>
+						<sequence>
+							<element maxOccurs="unbounded" minOccurs="0"
+								ref="tns:instruction" />
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="batchUID" type="xsd:string" use="required" />
+		</complexType>
+	</element>
+
+	<element name="instruction">
+		<complexType>
+			<sequence>
+				<element name="batchUID" type="xsd:string" />
+				<element name="resourceId" type="xsd:string" />
+				<element minOccurs="0" name="startTime"
+					type="xsd:dateTime" />
+				<element minOccurs="0" name="endTime"
+					type="xsd:dateTime" />
+				<element minOccurs="0" name="dot" type="xsd:double" />
+				<element minOccurs="0" name="oosEnergyCode"
+					type="xsd:string" />
+				<element minOccurs="0" name="asType" type="xsd:string" />
+				<element name="instructionType" type="xsd:int" />
+				<element minOccurs="0" name="preGoto" type="xsd:double" />
+				<element minOccurs="0" name="bidDelay" type="xsd:int" />
+				<element minOccurs="0" name="minAccept"
+					type="xsd:double" />
+				<element minOccurs="0" name="acceptDot"
+					type="xsd:double" />
+				<element minOccurs="0" name="acceptStatus"
+					type="xsd:string" />
+				<element minOccurs="0" name="responder"
+					type="xsd:string" />
+				<element minOccurs="0" name="reasonCode" type="xsd:int" />
+				<element minOccurs="0" name="oprAcceptDot"
+					type="xsd:double" />
+				<element minOccurs="0" name="oprAcceptStatus"
+					type="xsd:string" />
+				<element minOccurs="0" name="oprResponder"
+					type="xsd:string" />
+				<element minOccurs="0" name="oprReasonCode"
+					type="xsd:int" />
+				<element minOccurs="0" name="validated"
+					type="xsd:dateTime" />
+				<element minOccurs="0" name="validatedBy"
+					type="xsd:string" />
+				<element minOccurs="0" name="apiValidated"
+					type="xsd:dateTime" />
+				<element minOccurs="0" name="apiValidatedBy"
+					type="xsd:string" />
+				<element name="revisionNumber" type="xsd:int" />
+				<element name="statusCode" type="xsd:int" />
+				<element minOccurs="0" name="clearedMW"
+					type="xsd:double" />
+				<element minOccurs="0" name="awardMW" type="xsd:double" />
+				<element minOccurs="0" name="selfSchedMW"
+					type="xsd:double" />
+				<element minOccurs="0" name="hourlyMw"
+					type="xsd:double" />
+				<element minOccurs="0" name="rmrTestRequestor"
+					type="xsd:string" />
+				<element minOccurs="0" name="detail">
+					<complexType>
+						<sequence>
+							<element maxOccurs="unbounded" minOccurs="0"
+								ref="ns0:instructionDetail" />
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="instructionUID" type="xsd:string"
+				use="required" />
+		</complexType>
+	</element>
+
+	<element name="trajectoryBatch">
+		<complexType>
+			<sequence>
+				<element name="batchReceived" type="xsd:dateTime" />
+				<element name="bindingFlag" type="xsd:string" />
+				<element minOccurs="0" name="batchSent"
+					type="xsd:dateTime" />
+				<element minOccurs="0" name="dopList">
+					<complexType>
+						<sequence>
+							<element maxOccurs="unbounded" minOccurs="0"
+								ref="tns:trajectoryDop" />
+						</sequence>
+					</complexType>
+				</element>
+				<element minOccurs="0" name="complianceList">
+					<complexType>
+						<sequence>
+							<element maxOccurs="unbounded" minOccurs="0"
+								ref="tns:trajectoryCompliance" />
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="batchUID" type="xsd:string" use="required" />
+		</complexType>
+	</element>
+
+	<element name="trajectoryDop">
+		<complexType>
+			<sequence>
+				<element name="resourceId" type="xsd:string" />
+				<element name="dop" type="xsd:double" />
+				<element name="targetTime" type="xsd:dateTime" />
+				<element name="sequenceNumber" type="xsd:int" />
+			</sequence>
+			<attribute name="dopUID" type="xsd:string" use="required" />
+		</complexType>
+	</element>
+
+	<element name="trajectoryCompliance">
+		<complexType>
+			<sequence>
+				<element name="resourceId" type="xsd:string" />
+				<element name="startTime" type="xsd:dateTime" />
+				<element name="mwh" type="xsd:double" />
+				<element name="complFlag" type="xsd:string" />
+			</sequence>
+			<attribute name="complianceUID" type="xsd:string"
+				use="required" />
+		</complexType>
+	</element>
+
+	<element name="APIDispatchResponse">
+		<complexType>
+			<sequence>
+				<element name="dispatchBatchList">
+					<complexType>
+						<sequence>
+							<element maxOccurs="unbounded" minOccurs="0"
+								ref="tns:DispatchBatch" />
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="APITrajectoryResponse">
+		<complexType>
+			<sequence>
+				<element name="trajectoryBatchList">
+					<complexType>
+						<sequence>
+							<element maxOccurs="unbounded" minOccurs="0"
+								ref="tns:trajectoryBatch" />
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="MSSLFRequest">
+		<complexType>
+			<sequence>
+				<element name="scMSSBatchId" type="xsd:string" />
+				<element minOccurs="0"
+					name="mssLFInstructionRequests">
+					<complexType>
+						<sequence>
+							<element maxOccurs="unbounded" minOccurs="0"
+								ref="tns:MSSLFInstructionRequest" />
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="MSSLFInstructionRequest">
+		<complexType>
+			<sequence>
+				<element name="scMSSBatchId" type="xsd:string" />
+				<element name="scMSSLFInstructionId" type="xsd:string" />
+				<element name="resourceId" type="xsd:string" />
+				<element name="startTime" type="xsd:dateTime" />
+				<element name="endTime" type="xsd:dateTime" />
+				<element name="loadFollowingMW" type="xsd:double" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="MSSLFResponse">
+		<complexType>
+			<sequence>
+				<element name="caisoMSSBatchId" type="xsd:string" />
+				<element name="scMSSBatchId" type="xsd:string" />
+				<element minOccurs="0"
+					name="mssLFInstructionResponses">
+					<complexType>
+						<sequence>
+							<element maxOccurs="unbounded" minOccurs="0"
+								ref="tns:MSSLFInstructionResponse" />
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="MSSLFInstructionResponse">
+		<complexType>
+			<sequence>
+				<element name="caisoMSSBatchId" type="xsd:string" />
+				<element name="caisoMSSLFInstructionId"
+					type="xsd:string" />
+				<element name="scMSSBatchId" type="xsd:string" />
+				<element name="scMSSLFInstructionId" type="xsd:string" />
+				<element name="validated" type="xsd:boolean" />
+			</sequence>
+		</complexType>
+	</element>
+</schema>

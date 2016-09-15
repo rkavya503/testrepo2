@@ -1,0 +1,217 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	width: 1000px;
+	margin:auto;
+	font-family: Arial, Helvetica, sans-serif;
+	
+}
+.DR-login
+{
+	font-size:13px;
+	margin: 10px 0 10px 20px;
+}
+a {
+	color: #417300;
+	text-decoration:none;
+}
+#DR-topbanner{
+	width: 1000px;
+	height: 83px;
+}
+
+#DR-pagetitle{
+	font-weight:bold;
+	font-size: 37.27px;
+	color: #000000;
+	float:right;
+	margin: 10px 0;
+}
+#DR-topbox{
+	background-image: url('images/layout/DP-topboxbg.jpg');
+	border: none;
+	width: 1000px;
+	min-height: 348px;
+	position: relative;
+}
+#DR-tbpopup{
+	background-color: #ffffff;
+	width: 486px;
+	min-height: 230px;
+	position: absolute;
+	top: 37px;
+	left: 30px;
+}
+#DR-tbpptitle{
+	font-size: 24px;
+	font-weight: strong;
+	color: #000000;
+	width: 380px;
+	margin: 30px 0 30px 20px;
+}
+
+.DR-tbrow{
+	width: 446px;
+	margin: 10px 0 10px 20px;
+
+}
+#DR-username{
+	float: left;
+	border: 1px #ccc solid;
+	box-shadow: 1px #333;
+	margin:0;
+	width:168px;
+	min-height: 29px;
+	
+}
+#DR-password{
+	float: left;
+	border: 1px #ccc solid;
+	box-shadow: 1px #333;
+	margin-left: 10px;
+	width: 160px;
+	min-height: 29px;
+	margin-top:0px;
+}
+
+#DR-loginbtn {
+	float: left;
+	background-image: url('images/layout/DR-btn-login.png');
+	background-position: left top;
+	margin: -32px 0 10px 368px;
+	width:64px;
+	min-height: 29px;
+	cursor: pointer;
+	border:0;
+}
+
+#DR-tbline{
+	clear:both;
+	width: 450px;
+	font-size: 14px;
+	font-weight: normal;
+	color: #000000;
+
+}
+
+#DR-forgotpw{
+	clear:both;
+	font-size: 13px;
+	font-weight: normal;
+	float: left;
+	margin-top:10px;
+}
+#DR-newtoADR{
+	font-size: 13px;
+	font-weight: normal;
+	float: left;
+	margin-top:10px;
+	margin-left: 20px;
+
+}
+#DR-poweredby{
+	float: left;
+	margin: -25px 0 0 272px;
+}
+.DR-tbrow img{
+	float: left;
+	margin: -8px 0 0 0px;
+	vertical-align: center;
+}
+#DR-mainbody{
+	width: 950px;
+	margin: 10px 25px 10px 25px;
+}
+#DR-mainbody p{
+	font-size: 14px;
+	font-weight: normal;
+	color: #000000;
+	line-height: 24px;	
+	margin: 0;
+}
+#DR-mainbody h3{
+	font-size: 22px;
+	font-weight: strong;
+	color: #000000;
+	line-height: auto;
+	font-weight: normal;
+}
+ul{
+	margin:0px;
+	padding-left: 16px;
+}
+li{
+	padding-left: 27px;
+	font-size: 14px;
+}
+
+#DR-question12 li{
+	font-size: 12px;
+}
+#DR-left{
+	width: 522px;
+	min-height: 273px;
+	float: left;
+}
+#DR-right{
+	float: left;
+	width: 417px;
+	height:222px;
+	margin: 14px 0 0 10px;
+}
+#DR-FAQbody{
+	width: 950px;
+	margin: 10px 25px 10px 25px;
+}
+
+#DR-FAQbody h3{
+	font-size: 22px;
+	font-weight: strong;
+	color: #000000;
+	line-height: auto;
+	font-weight: normal;
+}
+
+#DR-FAQbody .section{
+	border: 1px #ccc solid;
+	border-radius: 4px;
+	width: 950px;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+#DR-FAQbody .question{
+	font-weight: bold;
+	background-color: #a3c5d9;
+	padding: 10px 10px 10px 25px;
+}
+#DR-FAQbody .answer{
+	padding: 10px 25px;
+	display:none;
+}
+#DR-FAQbody .plussign1, .plussign2, .plussign3, .plussign4, .plussign5, .plussign6, .plussign7, .plussign8, .plussign9, .plussign10, .plussign11, .plussign12{
+	float: right;	
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	background-image: url('images/layout/add_device.gif');
+
+}
+
+
+#DR-footer{
+	margin: 10px 25px;
+	min-height: 140px;
+}
+#DR-footer1{
+	float: right;
+	width: 187px;
+	margin: -1px -1px 0 0;
+	
+}
+#DR-footer2{
+	float: right;
+	width: 300px;
+	font-size: 13px;
+	margin: -5px -40px 0 0;
+}

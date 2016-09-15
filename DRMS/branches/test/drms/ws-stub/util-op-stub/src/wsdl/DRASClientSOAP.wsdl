@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.openadr.org/DRAS/DRASClientSOAP/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DRASClientSOAP"
+	targetNamespace="http://www.openadr.org/DRAS/DRASClientSOAP/"
+	xmlns:xsd1="http://www.openadr.org/DRAS/EventState">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="http://www.openadr.org/DRAS/DRASClientSOAP/">
+			<xsd:import
+				namespace="http://www.openadr.org/DRAS/EventState"
+				schemaLocation="EventState.xsd">
+			</xsd:import>
+
+			<xsd:element name="GetEventStates" type="tns:GetEventStates" />
+			<xsd:element name="GetEventStatesResponse"
+				type="tns:GetEventStatesResponse" />
+			<xsd:complexType name="GetEventStates">
+				<xsd:sequence>
+					<xsd:element name="empty" />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="GetEventStatesResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								This is a string used to signify SUCCESS
+								or FAILURE. If the string value is
+								SUCCESS then the operation was
+								successful. If the value is not SUCCESS
+								then this signifies FAILURE and there
+								may be additional free form text which
+								can be used to further elaborate on the
+								nature of the error.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="eventStates"
+						type="xsd1:ListOfEventStates">
+						<xsd:annotation>
+							<xsd:documentation>
+								foobar.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:element name="SetEventStateConfirmation"
+				type="tns:SetEventStateConfirmation" />
+			<xsd:element name="SetEventStateConfirmationResponse"
+				type="tns:SetEventStateConfirmationResponse" />
+			<xsd:complexType name="SetEventStateConfirmation">
+				<xsd:sequence>
+					<xsd:element name="eventStateConfirmation"
+						type="xsd1:EventStateConfirmation">
+						<xsd:annotation>
+							<xsd:documentation>
+								foobar.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="SetEventStateConfirmationResponse">
+				<xsd:sequence>
+					<xsd:element name="returnValue" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>
+								This is a string used to signify SUCCESS
+								or FAILURE. If the string value is
+								SUCCESS then the operation was
+								successful. If the value is not SUCCESS
+								then this signifies FAILURE and there
+								may be additional free form text which
+								can be used to further elaborate on the
+								nature of the error.
+							</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="GetEventStatesRequest">
+		<wsdl:part name="GetEventStates" element="tns:GetEventStates" />
+	</wsdl:message>
+	<wsdl:message name="GetEventStatesResponse">
+		<wsdl:part name="GetEventStatesResponse"
+			element="tns:GetEventStatesResponse" />
+	</wsdl:message>
+	<wsdl:message name="SetEventStateConfirmationRequest">
+		<wsdl:part name="SetEventStateConfirmation"
+			element="tns:SetEventStateConfirmation" />
+	</wsdl:message>
+	<wsdl:message name="SetEventStateConfirmationResponse">
+		<wsdl:part name="SetEventStateConfirmationResponse"
+			element="tns:SetEventStateConfirmationResponse" />
+	</wsdl:message>
+
+	<wsdl:portType name="DRASClientSOAP">
+		<wsdl:operation name="GetEventStates">
+			<wsdl:input message="tns:GetEventStatesRequest"></wsdl:input>
+			<wsdl:output message="tns:GetEventStatesResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SetEventStateConfirmation">
+			<wsdl:input
+				message="tns:SetEventStateConfirmationRequest">
+			</wsdl:input>
+			<wsdl:output
+				message="tns:SetEventStateConfirmationResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="DRASClientSOAPSOAP" type="tns:DRASClientSOAP">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetEventStates">
+			<soap:operation
+				soapAction="http://www.openadr.org/DRAS/DRASClientSOAP/GetEventStates" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="SetEventStateConfirmation">
+			<soap:operation
+				soapAction="http://www.openadr.org/DRAS/DRASClientSOAP/SetEventStateConfirmation" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="DRASClientSOAP">
+		<wsdl:port binding="tns:DRASClientSOAPSOAP"
+			name="DRASClientSOAPPort">
+			<soap:address location="http://www.openadr.org/DRAS/" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

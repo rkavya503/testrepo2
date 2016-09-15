@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="properties"
+         basedir="."
+         xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+
+    <!-- includes -->
+
+    <!-- properties -->
+    <property name="resourceDir" value="${basedir}/resource" />
+
+    <!-- load environment variables -->
+    <property environment="env" />
+
+    <!-- intentially empty because either you have it in the path or you've 
+        overridden it in settings.xml.. the full bath to the bin dir including a 
+        tailing slash /usr/local/mysql/bin/ -->
+    <property name="mysqlBin" value="" />
+    
+    <condition property="jbossHome" value="${env.JBOSS_HOME}">
+        <isset property="env.JBOSS_HOME" />
+    </condition>
+    
+    <condition property="mysqlPassword" value="${env.MYSQL_PWD}">
+        <isset property="env.MYSQL_PWD" />
+    </condition>
+    
+    <condition property="drmsEnv" value="${env.DRMS_ENV}">
+        <isset property="env.DRMS_ENV" />
+    </condition>
+    <property name="drmsEnv" value="development" />
+        
+    <condition property="akuaEmailOnly" value="${env.akuacomEmailOnly}">
+        <isset property="env.akuacomEmailOnly" />
+    </condition>
+    
+    <condition property="drmsConfig" value="${env.DRMS_CONFIG}">
+        <isset property="env.DRMS_CONFIG" />
+    </condition>
+    <property name="drmsConfig" value="${resourceDir}/config/default" />
+    <property name="drmsBaseConfig" value="${resourceDir}/config/base" />
+
+    <condition property="drmsUtilConfig" value="${env.DRMS_UTIL_CONFIG}">
+        <isset property="env.DRMS_UTIL_CONFIG" />
+    </condition>
+    <property name="drmsUtilConfig" value="${resourceDir}/utilities/default" />
+    <property name="drmsBaseUtilConfig" value="${resourceDir}/utilities/base" />
+
+    <!-- Utility Configuration Properties -->
+    <!--
+        Adher to inheritance of local environment, local default, then base configuration.
+    -->
+    <property file="${drmsUtilConfig}/environments/${drmsEnv}/config.conf" />
+    <property file="${drmsUtilConfig}/config.conf" />
+    <property file="${drmsBaseUtilConfig}/config.conf" />
+
+    <!-- Configuration Properties -->
+    <!-- make sure drmsConfig is read before drmsBaseConfig to preserve the proper overrides -->
+    <property file="${drmsConfig}/config.conf" />
+    <property file="${drmsBaseConfig}/config.conf" />
+    <property file="${drmsUtilConfig}/config.conf" />
+    <property file="${drmsBaseUtilConfig}/config.conf" />
+	<property name="com.honeywell.dras.vtn.dras.service.VtnDrasServiceUrl" value="http://127.0.0.01:8080/SOAPClientWS/soap/Oadr2bVtnDrasService?wsdl"/>
+</project>

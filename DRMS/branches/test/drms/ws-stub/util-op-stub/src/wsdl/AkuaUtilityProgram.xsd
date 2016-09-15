@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio 1.0.8.0 (http://www.liquid-technologies.com) -->
+<xs:schema xmlns:tns="http://www.openadr.org/DRAS/AkuaUtilityProgram" elementFormDefault="qualified"
+	targetNamespace="http://www.openadr.org/DRAS/AkuaUtilityProgram" version="1.0"
+    xmlns:ns0="http://www.openadr.org/DRAS/UtilityProgram"
+    xmlns:ns1="http://www.openadr.org/DRAS/AkuaRTPConfig"
+    xmlns:ns2="http://www.openadr.org/DRAS/AkuaSeasonConfig"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="UtilityProgram.xsd"
+		namespace="http://www.openadr.org/DRAS/UtilityProgram" />
+    <xs:import schemaLocation="AkuaRTPConfig.xsd"
+		namespace="http://www.openadr.org/DRAS/AkuaRTPConfig" />
+    <xs:import schemaLocation="AkuaSeasonConfig.xsd"
+		namespace="http://www.openadr.org/DRAS/AkuaSeasonConfig" />
+            <xs:complexType name="AkuaUtilityProgram">
+                <xs:complexContent>
+                    <xs:extension base="ns0:UtilityProgram">
+                        <xs:sequence>
+                            <xs:element name="validatorClass" type="xs:string"></xs:element>
+                            <xs:element name="utiltyProgramName" type="xs:string"></xs:element>
+                            <xs:element name="className" type="xs:string"></xs:element>
+                            <xs:element name="uiScheduleEventString" type="xs:string"></xs:element>
+                            <xs:element name="notificationParam1" type="xs:string"></xs:element>
+                            <xs:element name="testProgram" type="xs:boolean"></xs:element>
+                            <xs:element name="repeatingEvents" type="xs:boolean"></xs:element>
+                            <xs:element name="remoteProgram" type="xs:boolean"></xs:element>
+                            <xs:element minOccurs="0" name="contactEmails" nillable="true" type="tns:AkuaContactEmailList"/>
+                            <xs:element name="minIssueToStartM" type="xs:int"></xs:element>
+                            <xs:element name="mustIssueBDBE" type="xs:boolean"></xs:element>
+                            <xs:element name="maxIssueTime" type="xs:dateTime" nillable="true"></xs:element>
+                            <xs:element name="minStartTime" type="xs:dateTime" nillable="true"></xs:element>
+                            <xs:element name="maxStartTime" type="xs:dateTime" nillable="true"></xs:element>
+                            <xs:element name="minEndTime" type="xs:dateTime" nillable="true"></xs:element>
+                            <xs:element name="maxEndTime" type="xs:dateTime" nillable="true"></xs:element>
+                            <xs:element name="minDurationM" type="xs:int"></xs:element>
+                            <xs:element name="maxDurationM" type="xs:int"></xs:element>
+                            <xs:element name="pendingTimeDBE" type="xs:dateTime" nillable="true"></xs:element>
+                            <xs:element name="manualCreatable" type="xs:boolean"></xs:element>
+                            <xs:element minOccurs="1" name="signals" type="tns:AkuaSignalList"/>
+                            <xs:element minOccurs="0" name="modeTransitions" nillable="true" type="tns:AkuaModeTransitionList"/>
+                            <xs:element name="bidConfig" type="tns:AkuaBidConfig" minOccurs="0" nillable="true" />
+                            <xs:element name="startDate" type="xs:dateTime" nillable="true"></xs:element>
+                            <xs:element name="endDate" type="xs:dateTime" nillable="true"></xs:element>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="AkuaModeTransition">
+                <xs:sequence>
+                    <xs:element minOccurs="1" name="startTime" type="xs:dateTime" />
+                    <xs:element minOccurs="1" name="signal" type="xs:string" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AkuaBidConfig">
+                <xs:sequence>
+                    <xs:element minOccurs="1" name="minBidKW" type="xs:double" />
+                    <xs:element minOccurs="1" name="defaultBidKW" type="xs:double" />
+                    <xs:element minOccurs="1" name="minConsectutiveBlocks" type="xs:int" />
+                    <xs:element minOccurs="1" name="drasBidding" type="xs:boolean" />
+                    <xs:element minOccurs="1" name="respondByTime" type="xs:dateTime" />
+                    <xs:element minOccurs="1" name="drasRespondByPeriodM" type="xs:int" />
+                    <xs:element minOccurs="1" name="acceptTimeoutPeriodM" type="xs:int" />
+                    <xs:element minOccurs="0" name="bidBlocks" nillable="true" type="tns:AkuaBidBlockList"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AkuaContactEmailList">
+                <xs:sequence>
+                    <xs:element name="contactEmail" minOccurs="0" type="xs:string" maxOccurs="unbounded" nillable="true"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AkuaSignalList">
+                <xs:sequence>
+                    <xs:element name="signal" minOccurs="0" type="xs:string" maxOccurs="unbounded" nillable="true"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AkuaModeTransitionList">
+                <xs:sequence>
+                    <xs:element name="modeTransition" minOccurs="0" type="tns:AkuaModeTransition" maxOccurs="unbounded" nillable="true"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AkuaBidBlock">
+                <xs:sequence>
+                    <xs:element minOccurs="1" name="startTime" type="xs:dateTime" />
+                    <xs:element minOccurs="1" name="endTime" type="xs:dateTime" />
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AkuaBidBlockList">
+                <xs:sequence>
+                    <xs:element name="bidBlock" minOccurs="0" type="tns:AkuaBidBlock" maxOccurs="unbounded" nillable="true"></xs:element>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="AkuaUtilityProgramList">
+                <xs:sequence>
+                    <xs:element name="program" minOccurs="0" maxOccurs="unbounded" type="tns:AkuaUtilityProgram"/>
+                </xs:sequence>
+            </xs:complexType>
+</xs:schema>

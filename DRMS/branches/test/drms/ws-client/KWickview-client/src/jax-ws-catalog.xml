@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://epotest.energyinteractive.com/sdgeepo/webService/CurtailmentWebService/CurtailmentService.asmx?WSDL" uri="wsdl/epotest.energyinteractive.com/sdgeepo/webService/CurtailmentWebService/CurtailmentService.asmx.wsdl"/>
+</catalog>

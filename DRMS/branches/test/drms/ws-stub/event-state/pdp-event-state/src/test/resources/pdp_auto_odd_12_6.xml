@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:listOfEventState xsi:schemaLocation="http://openadr.lbl.gov/src/1/EventState.xsd"
+	xmlns:p="http://www.openadr.org/DRAS/EventState" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<p:eventStates offLine="false" testEvent="false"
+		drasName="Akuacom 5.0" schemaVersion="1.0" eventStateID="254937106"
+		drasClientID="akuaPW.11" eventIdentifier="100830-161206"
+		eventModNumber="1" programName="PDP - Auto PDP Odd 12-6">
+		<p:simpleDRModeData>
+			<p:EventStatus>FAR</p:EventStatus>
+			<p:OperationModeValue>NORMAL</p:OperationModeValue>
+			<p:currentTime>-330443.615</p:currentTime>
+			<p:operationModeSchedule>
+				<p:modeSlot>
+					<p:OperationModeValue>HIGH</p:OperationModeValue>
+					<p:modeTimeSlot>0</p:modeTimeSlot>
+				</p:modeSlot>
+			</p:operationModeSchedule>
+		</p:simpleDRModeData>
+		<p:drEventData>
+			<p:notificationTime>2010-08-30T16:12:07.000-07:00</p:notificationTime>
+			<p:startTime>2010-09-03T12:00:00.000-07:00</p:startTime>
+			<p:endTime>2010-09-03T18:00:00.000-07:00</p:endTime>
+			<p:eventInfoInstances>
+				<p:eventInfoTypeID>PRICE_RELATIVE</p:eventInfoTypeID>
+				<p:eventInfoName>cpp_price</p:eventInfoName>
+				<p:eventInfoValues>
+					<p:value>1.2</p:value>
+					<p:timeOffset>0</p:timeOffset>
+				</p:eventInfoValues>
+			</p:eventInfoInstances>
+		</p:drEventData>
+	</p:eventStates>
+</p:listOfEventState>

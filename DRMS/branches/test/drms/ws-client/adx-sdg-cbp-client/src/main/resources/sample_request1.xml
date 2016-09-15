@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<Request version="EXAPI 2.0">
+    <Username>ctang</Username>
+    <Password>ct4190</Password>
+    <Domain>ITRON</Domain>
+    <OemId>itron</OemId>
+    <OemPassword>summer</OemPassword>
+    <RequestType>commit</RequestType>
+    <Job>
+        <Message>
+            <Subject>
+                <![CDATA[Voluntary Curtailment Notification]]>
+            </Subject>
+            <MessageArg>
+                <Name>SENDER</Name>
+                <Value>
+                    <![CDATA[Curtailment Admin]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>BODY</Name>
+                <Value>
+                    <![CDATA[Voluntary Load Curtailment Notification
+                    *************************************************
+                    
+                    LBL cpp test 5:48PM
+                    
+                    Facility: spcorp.bfbuil.Bay pt 15
+                    Event ID: 120
+                    Program: CPP Program
+                    Type: Voluntary
+                    Settlement: Baseline-Actual
+                    
+                    Curtailment Start:12/14/2007 19:00 PDT
+                    Curtailment End:12/14/2007 23:00 PDT
+                    Respond:12/14/2007 18:45 PDT
+                    
+                    PRICES:
+                    19:00 to 23:00 at $19/MWh
+                    
+                    
+                    Please respond to the notice
+                    at http://qa35MR1/itron
+                    
+                    ]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>EMAIL_ADDR</Name>
+                <Value>
+                    <![CDATA[Sreelatha.Cheemalapati@itron.com]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>THEME</Name>
+                <Value>ITRON:</Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>CurMsgType</Name>
+                <Value>
+                    <![CDATA[0]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>BlockStartDateLocal</Name>
+                <Value>
+                    <![CDATA[13:00]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>BlockStartDateLocal</Name>
+                <Value>
+                    <![CDATA[13:00]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>BlockEndDateLocal</Name>
+                <Value>
+                    <![CDATA[16:00]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>BlockPrice</Name>
+                <Value>
+                    <![CDATA[19]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>EventID</Name>
+                <Value>
+                    <![CDATA[120]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>FacilityID</Name>
+                <Value>
+                    <![CDATA[100173]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>ProgramName</Name>
+                <Value>
+                    <![CDATA[CBP 1-4 DA]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>StartDate</Name>
+                <Value>
+                   <![CDATA[12/14/2007 14:00 PDT]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>EndDate</Name>
+                <Value>
+                    <![CDATA[12/14/2007 17:00 PDT]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>RespondBy</Name>
+                <Value>
+                    <![CDATA[12/14/2007 11:45 PDT]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>Description</Name>
+                <Value>
+                    <![CDATA[spcorp.bfbuil.Bay pt 15]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>EventType</Name>
+                <Value>
+                    <![CDATA[Voluntary]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>Settlement</Name>
+                <Value>
+                    <![CDATA[Baseline-Actual]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>SubjectMessage</Name>
+                <Value>
+                    <![CDATA[Voluntary Load Curtailment Notification]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>OperatorMessage</Name>
+                <Value>
+                    <![CDATA[LBL cpp test 5:48PM]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>URL</Name>
+                <Value>
+                    <![CDATA[http://qa35MR1/itron]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>PriceType</Name>
+                <Value>
+                    <![CDATA[PRICES]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>Username</Name>
+                <Value>
+                    <![CDATA[Bay Usr]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>USER_DOW</Name>
+                <Value>
+                    <![CDATA[Wednesday]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>USER_DATE</Name>
+                <Value>
+                    <![CDATA[12/14/2007]]>
+                </Value>
+            </MessageArg>
+            <MessageArg>
+                <Name>PriceList</Name>
+                <Value>
+                    <![CDATA[13:00 to 16:00 at $19/MWh
+                    ]]>
+                </Value>
+            </MessageArg>
+        </Message>
+        <Contact label="Callback">
+            <FirstName>Call</FirstName>
+            <LastName>back</LastName>
+            <ContactMethod label="url">
+                <Transport>url</Transport>
+                <URLAddress>http://65.115.93.117:6688</URLAddress>
+            </ContactMethod>
+        </Contact>
+        <Contact label="Email_Recipient_0">
+            <FirstName>
+                <![CDATA[Bay Usr]]>
+            </FirstName>
+            <ContactMethod label="email">
+                <Transport>email</Transport>
+                <Qualifier>office</Qualifier>
+                <EmailAddress>carol.tang@Itron.com</EmailAddress>
+            </ContactMethod>
+        </Contact>
+        <Block>
+            <DeliveryRequest label="Email_Recipient_0">
+                <MessagePath>Message[1]</MessagePath>
+                <ContactMethodPath>
+    Contact[@label="Email_Recipient_0"]/ContactMethod[@label="email"]
+  </ContactMethodPath>
+            </DeliveryRequest>
+            <Notification>
+                <DeliveryRequest>
+                    <DeliveryRequestArg>
+                        <Name>$USER_Delivery_Request</Name>
+                        <Value>//Block/DeliveryRequest</Value>
+                    </DeliveryRequestArg>
+                    <MessagePath>Message[1]</MessagePath>
+                    <ContactMethodPath>Contact[@label="Callback"]/ContactMethod[@label="url"]</ContactMethodPath>
+                </DeliveryRequest>
+            </Notification>
+        </Block>
+    </Job>
+</Request>

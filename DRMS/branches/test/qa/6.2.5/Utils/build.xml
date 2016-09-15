@@ -1,0 +1,74 @@
+<project name="ConfigureParticipants" default="ConfigureParticipants" basedir=".">
+
+  <property name="src"      location = "src"/>
+  <property name="build"      location = "build"/>
+  <property name="libs"      location = "../lib"/>
+  <property name="testresults"      location = "junit-results"/>
+  <property name="testreport"      location = "junit-report"/>
+
+<path id="junit.class.path">
+    <pathelement location="${libs}/junit-4.9b2.jar"/>
+    <pathelement location="${libs}/selenium-java-client-driver.jar"/>
+    <pathelement location="${libs}/selenium-server-standalone-2.0b3.jar"/>
+    <pathelement location="${build}"/>	
+</path>
+
+ <target name="clean" >  
+    <delete dir="${build}"/>
+    <delete dir="${testresults}"/>
+    <delete dir="${testreport}"/>
+  </target>
+
+ <target name="makedir" >  
+    <mkdir dir="${build}"/>
+    <mkdir dir="${testresults}"/>
+    <mkdir dir="${testreport}"/>
+  </target>
+
+ <target name="compile" depends="clean, makedir"> 
+     <javac
+	srcdir="${src}" destdir="${build}"
+	debug="true" includeAntRuntime="false">
+	<classpath refid="junit.class.path"/>
+     </javac>
+ </target>
+
+ <target name="run_junit_tests_requiring_server_started">
+     <antcall target="start-selenium-server"/>
+     <junit printsummary="yes" fork="yes" errorproperty="junit.error" failureproperty="junit.error">
+	<classpath refid="junit.class.path"/>
+	<formatter type="xml"/>
+	<test todir="${testresults}" name="com.qa.Utils.Configuration" />
+	</junit>
+	<antcall target="report-junit"/>
+	<antcall target="stop-selenium-server"/>
+	<fail if="junit.error" message="Selenium test failed. See reports!"/>
+ </target>
+<target name="ConfigureParticipants" depends="compile" description="Creating Participants.">
+	<antcall target="run_junit_tests_requiring_server_started"/>
+</target>
+<target name="report-junit">
+	<junitreport todir="${testreport}">
+		<fileset dir="${testresults}">
+			<include name="TEST-*.xml"/>
+		</fileset>
+		<report format="frames" todir="${testreport}"/>
+	</junitreport>
+</target>
+<target name="start-selenium-server">
+	<java jar="${libs}/selenium-server-standalone-2.0b3.jar" fork="true" spawn="true"/>
+    <waitfor maxwait="2" maxwaitunit="minute" checkevery="100">
+	<http url="http://localhost:4444/selenium-server/driver/? cmd=testComplete"/>
+	</waitfor>
+</target>
+<target name="stop-selenium-server">
+	<get taskname="selenium-shutdown"
+		src="http://localhost:4444/selenium-server/driver/? cmd=shutDownSeleniumServer"
+		dest="${testresults}\selenium-shutdown-output.txt" ignoreerrors="true"/>
+</target>
+
+</project>
+
+
+
+  

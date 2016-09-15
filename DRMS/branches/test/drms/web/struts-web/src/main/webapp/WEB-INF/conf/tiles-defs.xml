@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+<tiles-definitions>
+
+    <definition name=".mainLayout" path="/WEB-INF/jsp/tile-layout.jsp">
+        <put name="title"  value="DR Automation Server: Price Server System" />
+        <put name="header" value="/WEB-INF/jsp/tile-header.jsp" />
+        <put name="tabs"   value="/tabs.do" />
+        <put name="content"   value="/WEB-INF/jsp/tile-body.jsp" />
+        <put name="footer" value="/WEB-INF/jsp/tile-footer.jsp" />
+    </definition>
+
+    <definition name="tile.nssettings" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/nssettings.jsp"/>
+    </definition>
+
+    <definition name="tile.error" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/error.jsp"/>
+    </definition>
+
+    <definition name="tile.clientMap" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/tile-header2.jsp" />
+        <put name="content" value="/WEB-INF/jsp/commdev/clientsMap-body.jsp"/>
+    </definition>
+
+    <definition name="tile.participantsMap" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/tile-header2.jsp" />
+        <put name="content" value="/WEB-INF/jsp/commdev/participantsMap-body.jsp"/>
+    </definition>
+
+    <definition name="tile.opdash" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/tile-header2.jsp" />
+        <put name="content" value="/WEB-INF/jsp/commdev/opdash-body.jsp"/>
+    </definition>
+<!-- Clone Part -->
+    <definition name="tile.programDetail" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/tile-header2.jsp" />
+        <put name="content" value="/WEB-INF/jsp/program/programDetail-body.jsp"/>
+    </definition>
+   
+    <!-- Clone Part -->
+      <definition name="tile.programCloneEdit" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/tile-header2.jsp" />
+        <put name="content" value="/WEB-INF/jsp/program/programClone-body.jsp"/>
+      </definition>
+    <!-- End Clone -->
+    <definition name="tile.programDeleteEdit" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/tile-header2.jsp" />
+        <put name="content" value="/WEB-INF/jsp/program/programDelete-body.jsp"/>
+    </definition>
+    
+    <definition name="tile.programClone" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/tile-header2.jsp" />
+        <put name="content" value="/WEB-INF/jsp/uohome/uohome-body.jsp"/>
+    </definition>
+
+
+
+    <definition name="tile.commDevDetail" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/commdev/commDevDetail-body.jsp"/>
+    </definition>
+
+    <definition name="tile.commDevEdit" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/commdev/commDevEdit-body.jsp"/>
+    </definition>
+
+     <definition name="tile.commDevEditPassword" extends=".mainLayout">
+         <put name="header" value="/WEB-INF/jsp/tile-header2.jsp" />
+        <put name="content" value="/WEB-INF/jsp/commdev/passwordResetEdit.jsp"/>
+    </definition>
+
+    <definition name="tile.commDevView" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/commdev/commDevView-body.jsp"/>
+    </definition>
+
+    <definition name="tile.LogList" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/event/cppEvent-header.jsp"/>
+        <put name="content" value="/WEB-INF/jsp/log/logList-body.jsp"/>
+    </definition>
+
+    <definition name="tile.LogForward" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/log/logForward-body.jsp"/>
+    </definition>
+
+    <definition name="tile.logDetail" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/log/logDetail-body.jsp"/>
+    </definition>
+
+    <definition name="tile.eventList" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/tile-header2.jsp" />
+        <put name="content" value="/WEB-INF/jsp/event/eventList-body.jsp"/>
+    </definition>
+
+    <definition name="tile.cppEventDetail" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/event/cppEvent-header.jsp"/>
+        <put name="content" value="/WEB-INF/jsp/event/cppEvent-body.jsp"/>
+    </definition>
+
+    <definition name="tile.cppEventView" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/event/cppEventView-body.jsp"/>
+    </definition>
+    
+    <definition name="tile.cppConfirmEventView" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/event/cppConfirmEventView-body.jsp"/>
+    </definition>
+
+    <definition name="tile.dbpEventDetail" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/event/cppEvent-header.jsp"/>
+        <put name="content" value="/WEB-INF/jsp/event/dbpEvent-body.jsp"/>
+    </definition>
+
+    <definition name="tile.dbpNoBidEventDetail" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/event/cppEvent-header.jsp"/>
+        <put name="content" value="/WEB-INF/jsp/event/dbpNoBidEvent-body.jsp"/>
+    </definition>
+    
+   
+    <definition name="tile.dbpEventView" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/event/dbpEventView-body.jsp"/>
+    </definition>
+
+    <definition name="tile.dbpNoBidEventView" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/event/dbpNoBidEventView-body.jsp"/>
+    </definition>
+    
+    <definition name="tile.dbpNoBidConfirmEventView" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/event/dbpNoBidConfirmEventView-body.jsp"/>
+    </definition>
+
+    <definition name="tile.sceRTPEventView" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/event/sceRTPEventView-body.jsp"/>
+    </definition>
+
+    <definition name="tile.issueEventDetail" extends="tile.cppEventDetail">
+        <put name="content" value="/WEB-INF/jsp/event/issueEvent-body.jsp"/>
+    </definition>
+
+    <definition name="tile.testEventDetail" extends="tile.cppEventDetail">
+        <put name="content" value="/WEB-INF/jsp/event/testEvent-body.jsp"/>
+    </definition>
+
+    <definition name="tile.buttonOnlyEventDetail" extends="tile.cppEventDetail">
+        <put name="content" value="/WEB-INF/jsp/event/buttonOnlyEvent-body.jsp"/>
+    </definition>
+
+    <definition name="tile.sceRTPEventDetail" extends="tile.cppEventDetail">
+        <put name="content" value="/WEB-INF/jsp/event/sceRTPEvent-body.jsp"/>
+    </definition>
+
+    <definition name="tile.signalList" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/event/signal/signalList-body.jsp"/>
+    </definition>
+
+    <definition name="tile.signalDetail" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/event/signal/signalDetail-header.jsp"/>
+        <put name="content" value="/WEB-INF/jsp/event/signal/signalDetail-body.jsp"/>
+    </definition>
+
+    <definition name="tile.program" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/tile-header2.jsp"/>
+        <put name="content" value="/WEB-INF/jsp/program/programParticipants-body.jsp"/>
+    </definition>
+
+    <definition name="tile.weatherDetail" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/weatherDetail-body.jsp"/>
+    </definition>
+
+    <definition name="tile.options" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/options-body.jsp"/>
+    </definition>
+
+    <definition name="tile.emails" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/emails-body.jsp"/>
+    </definition>
+
+    <definition name="tile.emailDetails" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/email-details-body.jsp"/>
+    </definition>
+
+    <definition name="tile.optionsContacts" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/options-contacts-body.jsp"/>
+    </definition>
+
+    <definition name="tile.optionsAbout" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/options-about-body.jsp"/>
+    </definition>
+
+    <definition name="tile.optionsProperties" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/options-properties-body.jsp"/>
+    </definition>
+
+    <definition name="tile.optionsSignals" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/options-signals-body.jsp"/>
+    </definition>
+
+    <definition name="tile.uohome" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/uohome/uohome-body.jsp"/>
+    </definition>
+
+    <definition name="tile.uoevent" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/uohome/uoevent-body.jsp"/>
+    </definition>
+    <definition name="tile.eventTemplate" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/uohome/eventTemplate-body.jsp"/>
+    </definition>
+    <definition name="tile.uoeventList" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/uohome/uoeventList-body.jsp"/>
+    </definition>
+    <definition name="tile.uoparticipantList" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/uohome/uoparticipantList-body.jsp"/>
+    </definition>
+
+    <definition name="tile.about" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/about/about-body.jsp"/>
+    </definition>
+
+    <definition name="tile.news" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/news/news-body.jsp"/>
+    </definition>
+
+    <definition name="tile.report" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/event/cppEvent-header.jsp"/>
+        <put name="content" value="/WEB-INF/jsp/report/report-body.jsp"/>
+    </definition>
+
+    <definition name="tile.home" extends=".mainLayout">
+        <put name="header" value="/WEB-INF/jsp/event/cppEvent-header.jsp"/>
+        <put name="content" value="/WEB-INF/jsp/home/home-body.jsp"/>
+    </definition>
+
+    <definition name="tile.sceAccounts" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/commdev/sceAccounts.jsp"/>
+    </definition>
+
+    <definition name="tile.eventSignalReport" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/signalReport-body.jsp"/>
+    </definition>
+
+    <definition name="tile.eventListReport" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/eventListReport-body.jsp"/>
+    </definition>
+
+    <definition name="tile.eventParticipantListReport" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/eventParticipantListReport-body.jsp"/>
+    </definition>
+
+    <definition name="tile.accountsReport" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/accountsReport-body.jsp"/>
+    </definition>
+    
+    <definition name="tile.obixOnlineReport" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/obixOnlineReport-body.jsp"/>
+    </definition>
+
+    <definition name="tile.participationReport" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/participationReport-body.jsp"/>
+    </definition>
+
+    <definition name="tile.clientParticipationReport" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/clientParticipationReport-body.jsp"/>
+    </definition>
+
+	<definition name="tile.dbpEventCreationReport" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/dbpEventCreationReport-body.jsp"/>
+    </definition>
+
+    <definition name="tile.offlineReport" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/offlineReport-body.jsp"/>
+    </definition>
+
+    <definition name="tile.weatherReport" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/report/weatherReport-body.jsp"/>
+    </definition>
+
+    <definition name="tile.programMatrix" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/programMatrix-body.jsp"/>
+    </definition>
+
+    <definition name="tile.editBid" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/event/editBid-body.jsp"/>
+    </definition>
+  
+    <definition name="tile.dataCreator" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/partdata/dataCreator-body.jsp"/>
+    </definition>
+
+    <definition name="tile.dbpSimulator" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/dbpSimulator-body.jsp"/>
+    </definition>
+
+    <definition name="tile.varoliiTest" extends=".mainLayout">
+        <put name="content" value="/WEB-INF/jsp/options/varolii-body.jsp"/>
+    </definition>
+
+    <!--
+        <definition name=".mainTabs" path="/common/layouts/vboxLayout.jsp" >
+            <putList name="list" >
+                <add value=".menu.links" />
+                <add value=".menu.taglib.references" />
+                <add value=".menu.printer.friendly" />
+                <add value=".menu.old.documents" />
+            </putList>
+        </definition>
+    -->
+
+</tiles-definitions>
