@@ -1,0 +1,1 @@
+create table course (id int,name varchar(30),cost varchar(30),duration varchar(30));
