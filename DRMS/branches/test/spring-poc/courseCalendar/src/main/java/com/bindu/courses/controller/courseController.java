@@ -54,9 +54,9 @@ public class courseController {
 		 @RequestMapping(value="/deletcourse/{id}",method = RequestMethod.GET)  
 		    public ModelAndView delete(@PathVariable int id){  
 			 courseDao.delete(id);  
-			 ModelAndView model = new ModelAndView();		
-				model.setViewName("home");
-				return model;
+//			 List<?> courses = courseDao.getCourseById(id);  
+//			  return new ModelAndView("viewcourse","courses",courses); 
+			 return new ModelAndView("redirect:/add"); 
 		    } 
 		 
 		 @RequestMapping(value="/editcourse/{name}",method = RequestMethod.GET)  
@@ -65,14 +65,6 @@ public class courseController {
 		        return new ModelAndView("editcourse","command",course);  
 		    }  
 		 
-		/* @RequestMapping(value="/editsave") 
-		    public ModelAndView editsave(@ModelAttribute("course") Course course){  
-			 System.out.println("coming:::::::::::::::::::::::::::::::::");
-			 	courseDao.saveCourse(course);  
-			 	List<?> courses = courseDao.getCourseByName(course.getName()); 
-			 	System.out.println("coming:::::::::::::::::::::::::::::::::");
-			 	 return new ModelAndView("viewcourse","courses",courses);  
-		    }*/  
 		  @RequestMapping(value="/editsave",method = RequestMethod.POST)  
 		    public ModelAndView editsave(@ModelAttribute("course") Course course){  
 			  courseDao.saveCourse(course);
