@@ -23,6 +23,11 @@ public class CourseDAO  {
 		
 			return hibernateTemplate.find("from Course where name in (?)",courseName );
 	}
+	
+	public List<?> getCourseById(int id){  
+			
+			return hibernateTemplate.find("from Course where id in (?)",id );
+	}
 
 	public void delete(int id) {
 		
