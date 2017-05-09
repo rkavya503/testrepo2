@@ -1,5 +1,8 @@
 package com.bindu.courses.entity;
 
+import org.hibernate.annotations.Entity;
+
+@Entity
 public class Course {
 	Integer id;
 	String name;
