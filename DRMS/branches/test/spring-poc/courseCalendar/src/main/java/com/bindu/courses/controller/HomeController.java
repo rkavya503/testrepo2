@@ -65,7 +65,8 @@ public class HomeController {
 	        	System.out.println(e);
 	        	 return new ModelAndView("failure","filename",path+"/"+filename); 
 	        	}  
-	        return new ModelAndView("sucess","filename",path+"/"+filename);  
+	       // return new ModelAndView("addtrainer","filename",path+"/"+filename);  
+	        return new ModelAndView("redirect:/addtrainer");
 	    }  
 	
 }

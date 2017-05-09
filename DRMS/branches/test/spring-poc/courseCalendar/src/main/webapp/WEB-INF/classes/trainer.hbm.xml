@@ -3,13 +3,12 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.bindu.courses.entity.Course" table="course">
-		<id name="id">
+	<class name="com.bindu.courses.entity.Trainer" table="trainer">
+		<id name="mobilenumber">
 			<generator class="assigned"></generator>
 		</id>
 
 		<property name="name"></property>
-		<property name="cost"></property>
-		<property name="duration"></property>
+		<property name="subject"></property>
 	</class>
 </hibernate-mapping>
