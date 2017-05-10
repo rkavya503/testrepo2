@@ -1,3 +1,4 @@
+create database edureka;
 create table course (id int(10),name varchar(30),cost varchar(30),duration varchar(30));
 
 create table trainer (mobilenumber int(11),name varchar(30),subject varchar(30));
