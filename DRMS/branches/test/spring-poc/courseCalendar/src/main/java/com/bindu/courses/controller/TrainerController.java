@@ -1,6 +1,14 @@
 package com.bindu.courses.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -57,9 +65,23 @@ public class TrainerController {
 			 return new ModelAndView("redirect:/addtrainer"); 
 		    } 
 		 @RequestMapping(value="/downloadresume/{subject}",method = RequestMethod.GET)  
-		    public void downloadResume(@PathVariable int subject){  
-			 //trainerDao.delete(subject);  
-			// return new ModelAndView("redirect:/addtrainer"); 
+		    public void downloadResume(@PathVariable String subject,HttpSession session, HttpServletRequest request, HttpServletResponse response){  
+			System.out.println("download resume:::::::::::::");
+			 String path=session.getServletContext().getRealPath("/"); 
+			 String fileName = subject+".pdf";
+			 Path file = Paths.get(path, fileName);
+		        if (Files.exists(file)) 
+		        {
+		            response.setContentType("application/pdf");
+		            response.addHeader("Content-Disposition", "attachment; filename="+fileName);
+		            try
+		            {
+		                Files.copy(file, response.getOutputStream());
+		                response.getOutputStream().flush();
+		            } 
+		            catch (IOException ex) {
+		                ex.printStackTrace();
+		            }
+		        }
 		    } 
-		 
 }
