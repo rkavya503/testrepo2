@@ -10,7 +10,7 @@
    <td>${trainer.name}</td>  
    <td>${trainer.subject}</td>  
    <td><a href="delettrainer/${trainer.mobilenumber}">Delete</a></td> 
-   <td><a href="delettrainer/${trainer.subject}">Download</a></td>  
+   <td><a href="downloadresume/${trainer.subject}">Download</a></td>  
    </tr> 
    </c:forEach> 
    </table>  
