@@ -14,7 +14,7 @@ import com.bindu.courses.dao.CourseDAO;
 import com.bindu.courses.entity.Course;
 
 @Controller
-public class courseController {
+public class courseController 
 	
 
 	 @Autowired  
