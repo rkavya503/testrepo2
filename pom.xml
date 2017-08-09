@@ -8,12 +8,6 @@
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<properties>
-		<nexusBaseUrl>https://aznexus.openadr.com/nexus/content
-		</nexusBaseUrl>
-        <nexusUrl>${nexusBaseUrl}/groups/public</nexusUrl>
-        <nexusDistributionUrl>${nexusBaseUrl}/repositories
-		</nexusDistributionUrl>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdkVersion>1.6</jdkVersion>
         <developerConnection>${project.scm.connection}</developerConnection>
 		<java-version>1.6</java-version>
@@ -22,59 +16,8 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
-	<repositories>
-        <repository>
-            <id>central</id>
-            <url>${nexusUrl}</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <!-- build with mvn -U if you want to update your snapshots 
-                    also, M2Eclipse plugin offers Maven -> Update Dependencies menu -->
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-	<distributionManagement>
-        <!-- use the following if you're not using a snapshot version. -->
-        <repository>
-            <id>central</id>
-            <name>Releases</name>
-            <url>${nexusDistributionUrl}/releases/</url>
-        </repository>
-        <!-- use the following if you ARE using a snapshot version. -->
-        <snapshotRepository>
-            <id>central</id>
-            <name>Snapshots</name>
-            <url>${nexusDistributionUrl}/snapshots/</url>
-        </snapshotRepository>
-        <site>
-            <id>drms-site</id>
-            <name>DRMS</name>
-            <url>site</url>
-        </site>
-    </distributionManagement>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>central</id>
-            <url>${nexusUrl}</url>
-            <snapshots>
-                <enabled>false</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-	
-	
-	
 	<dependencies>
-		<!-- Spring -->
-
-
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
