@@ -237,12 +237,12 @@
 		
 	</dependencies>
 	<scm>
-        <connection>scm:svn:https://akuasvn.openadr.com/svn/akuarepo/DRMS/branches/test/spring-poc/courseCalendar
+        <connection>scm:git:https://github.com/Satyaranjanm/Practice.git
 		</connection>
-        <developerConnection>scm:svn:https://akuasvn.openadr.com/svn/akuarepo/DRMS/branches/test/spring-poc/courseCalendar
+        <developerConnection>scm:git:https://github.com/Satyaranjanm/Practice.git
 		</developerConnection>
-        <url>https://akuasvn.openadr.com/svn/akuarepo/DRMS/branches/test/spring-poc/courseCalendar</url>
-    </scm>
+        <url>https://github.com/Satyaranjanm/Practice.git</url>
+        </scm>
 	<build>
 		<plugins>
 			<plugin>
