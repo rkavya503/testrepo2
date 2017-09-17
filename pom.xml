@@ -7,7 +7,7 @@
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<properties>
-		<nexusBaseUrl>https://aznexus.openadr.com/nexus/content
+		<nexusBaseUrl>http://13.82.146.9:8081/nexus/content
 		</nexusBaseUrl>
         <nexusUrl>${nexusBaseUrl}/groups/public</nexusUrl>
         <nexusDistributionUrl>${nexusBaseUrl}/repositories
