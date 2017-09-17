@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/2.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/2.4 http://maven.apache.org/maven-v2.4.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bindu</groupId>
 	<artifactId>demo</artifactId>
@@ -8,14 +7,70 @@
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<properties>
+		<nexusBaseUrl>https://aznexus.openadr.com/nexus/content
+		</nexusBaseUrl>
+        <nexusUrl>${nexusBaseUrl}/groups/public</nexusUrl>
+        <nexusDistributionUrl>${nexusBaseUrl}/repositories
+		</nexusDistributionUrl>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdkVersion>1.6</jdkVersion>
         <developerConnection>${project.scm.connection}</developerConnection>
 		<java-version>1.6</java-version>
 		<org.springframework-version>3.1.1.RELEASE
 		</org.springframework-version>
+		<org.springframework-version>3.1.1.RELEASE
+		</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+
+        <!-- RUNTIME ENVIRONMENT VARIABLES -->
+        <!-- These are overridden by the values in settings.xml They are 
+            here as backups in case settings.xml isn't setup correctly. -->
+        <jbossJavaOpts>${env.JAVA_OPTS}</jbossJavaOpts>
+        <pss2OpEmails>${env.PSS2_OP_EMAILS}</pss2OpEmails>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	<repositories>
+        <repository>
+            <id>central</id>
+            <url>${nexusUrl}</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <!-- build with mvn -U if you want to update your snapshots 
+                    also, M2Eclipse plugin offers Maven -> Update Dependencies menu -->
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+	<distributionManagement>
+        <!-- use the following if you're not using a snapshot version. -->
+        <repository>
+            <id>central</id>
+            <name>Releases</name>
+            <url>${nexusDistributionUrl}/releases/</url>
+        </repository>
+        <!-- use the following if you ARE using a snapshot version. -->
+        <snapshotRepository>
+            <id>central</id>
+            <name>Snapshots</name>
+            <url>${nexusDistributionUrl}/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>${nexusUrl}</url>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 	<dependencies>
 		<dependency>
@@ -226,6 +281,16 @@
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <!-- Needed to install instead of just compiling the 
+                        newly changed libraries. -->
+                    <preparationGoals>clean install</preparationGoals>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 	<reporting>
