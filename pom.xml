@@ -237,12 +237,10 @@
 		
 	</dependencies>
 	<scm>
-        <connection>scm:git:https://github.com/Satyaranjanm/Practice.git
-		</connection>
-        <developerConnection>scm:git:https://github.com/Satyaranjanm/Practice.git
-		</developerConnection>
-        <url>https://github.com/Satyaranjanm/Practice.git</url>
-        </scm>
+		<url>https://github.com/Satyaranjanm/Practice.git</url>
+		<connection>scm:git:git://github.com/Satyaranjanm/Practice.git</connection>
+		<developerConnection>scm:git:git@github.com/Satyaranjanm/Practice.git</developerConnection>
+	</scm>
 	<build>
 		<plugins>
 			<plugin>
